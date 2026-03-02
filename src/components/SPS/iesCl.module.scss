@@ -1,0 +1,22 @@
+// container
+// Split layout custom
+.splitCustomContainer {
+  display: grid;
+  grid-template-columns: 5fr 7fr;
+  align-items: center;
+  justify-content: center;
+  @media (max-width: 992px) {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+}
+.splitFalseCusContainer {
+  display: grid;
+  grid-template-columns: 7fr 5fr;
+  align-items: center;
+  justify-content: center;
+  @media (max-width: 992px) {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+}

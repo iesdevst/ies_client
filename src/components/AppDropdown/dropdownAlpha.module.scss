@@ -1,0 +1,129 @@
+.drawer-base {
+  border-radius: 5px;
+  background-color: #D135FF;
+  position: absolute;
+  scrollbar-width: thin;
+  z-index: 200;
+
+  //   wait build set themes
+  //   &.is-dark {
+  //     background-color: rgb(51, 51, 51);
+  //   }
+}
+
+.down {
+  border: 2px solid white;
+  // animate
+  transition:
+    padding 0.3s 0.15s,
+    max-height 0.3s,
+    opacity 0.3s 0.15s,
+    tarnsform 0.3s,
+    Z top 0.3s,
+    right 0.3s;
+  padding: 0px;
+  opacity: 0;
+  top: calc(100% + 10px);
+
+  scrollbar-color: transparent transparent;
+  &.open {
+    // animate
+    transition:
+      padding 0.3s,
+      max-height 0.3s 0.15s,
+      opacity 0.3s,
+      tarnsform 0.3s,
+      top 0.3s,
+      right 0.3s;
+    padding: 8px;
+    opacity: 1;
+    scrollbar-color: rgb(65, 65, 65) grey;
+  }
+}
+
+.up {
+  // animate
+  transition:
+    padding 0.3s 0.15s,
+    max-height 0.3s,
+    opacity 0.3s 0.15s,
+    tarnsform 0.3s,
+    bottom 0.3s,
+    right 0.3s;
+  padding: 0px;
+  opacity: 0;
+  bottom: calc(100% + 10px);
+
+  scrollbar-color: transparent transparent;
+  &.open {
+    // animate
+    transition:
+      padding 0.3s,
+      max-height 0.3s 0.15s,
+      opacity 0.3s,
+      tarnsform 0.3s,
+      bottom 0.3s,
+      right 0.3s;
+    padding: 8px;
+    opacity: 1;
+    scrollbar-color: rgb(65, 65, 65) grey;
+  }
+}
+
+.left {
+  // animate
+  transition:
+    padding 0.3s 0.15s,
+    max-width 0.3s,
+    opacity 0.3s 0.15s,
+    tarnsform 0.3s,
+    top 0.3s,
+    right 0.3s;
+  padding: 0px;
+  opacity: 0;
+  right: calc(100% + 10px);
+
+  scrollbar-color: transparent transparent;
+  &.open {
+    // animate
+    transition:
+      padding 0.3s,
+      max-width 0.3s 0.15s,
+      opacity 0.3s,
+      tarnsform 0.3s,
+      top 0.3s,
+      right 0.3s;
+    padding: 8px;
+    opacity: 1;
+    scrollbar-color: rgb(65, 65, 65) grey;
+  }
+}
+
+.right {
+  // animate
+  transition:
+    padding 0.3s 0.15s,
+    max-width 0.3s,
+    opacity 0.3s 0.15s,
+    tarnsform 0.3s,
+    top 0.3s,
+    left 0.3s;
+  padding: 0px;
+  opacity: 0;
+  left: calc(100% + 10px);
+
+  scrollbar-color: transparent transparent;
+  &.open {
+    // animate
+    transition:
+      padding 0.3s,
+      max-width 0.3s 0.15s,
+      opacity 0.3s,
+      tarnsform 0.3s,
+      top 0.3s,
+      left 0.3s;
+    padding: 8px;
+    opacity: 1;
+    scrollbar-color: rgb(65, 65, 65) grey;
+  }
+}

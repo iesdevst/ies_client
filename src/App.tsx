@@ -1,35 +1,62 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { QueryClientProvider } from '@tanstack/react-query';
+import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
+import { ConfigProvider, theme } from 'antd';
+import ErrorBoundary from 'antd/es/alert/ErrorBoundary';
+import { Suspense } from 'react';
+
+import { Message, NotifyProvider } from './components';
+import FallbackLoading from './FallbackLoading';
+import { queryClient } from './lib/react-query';
+import AppRouter from './routes/AppRouter';
+import { useNotifyStore } from './store';
 
 function App() {
-  const [count, setCount] = useState(0)
-
+  const { shiftBEQ, shiftBSQ, basicErrorQue, basicSuccessQue } =
+    useNotifyStore();
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    <ConfigProvider
+      theme={{
+        token: {
+          colorPrimary: '#15383A',
+          colorText: 'black',
+        },
+        algorithm: theme.darkAlgorithm,
+        components: {
+          Layout: { headerBg: 'transparent' },
+          Button: {
+            colorBgContainer: '#B5B5B5',
+            colorText: 'white',
+          },
+          Tabs: { horizontalMargin: '0px' },
+          Descriptions: { itemPaddingBottom: 4 },
+        },
+      }}
+    >
+      <ErrorBoundary>
+        <QueryClientProvider client={queryClient}>
+          <Suspense fallback={<FallbackLoading />}>
+            <AppRouter />
+          </Suspense>
+          <ReactQueryDevtools
+            initialIsOpen={false}
+            buttonPosition='bottom-left'
+          />
+        </QueryClientProvider>
+
+        <NotifyProvider
+          basicQue={basicErrorQue}
+          type='error'
+          shiftBsicQue={shiftBEQ}
+        />
+        <NotifyProvider
+          basicQue={basicSuccessQue}
+          type='success'
+          shiftBsicQue={shiftBSQ}
+        />
+      </ErrorBoundary>
+      <Message />
+    </ConfigProvider>
+  );
 }
 
-export default App
+export default App;
