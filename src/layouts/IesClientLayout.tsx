@@ -4,6 +4,7 @@ import { Outlet } from 'react-router-dom';
 import FooterIes from './components/FooterIes';
 import HeaderIes from './components/HeaderIes';
 import styles from './iesClLayout.module.scss';
+import { PageContainer } from '@/components';
 
 const { Content } = Layout;
 
@@ -29,18 +30,20 @@ const IesClientLayout: React.FC = () => {
 
         <HeaderIes />
         {/* Content Area */}
-        <Content
-          className='ant-layout-content'
-          ref={contentRef}
-          style={{
-            flex: 1,
-            overflowY: 'auto',
-            background: 'transparent',
-            paddingBottom: 120,
-          }}
-        >
-          <Outlet />
-        </Content>
+        <PageContainer>
+          <Content
+            className='ant-layout-content'
+            ref={contentRef}
+            style={{
+              flex: 1,
+              overflowY: 'auto',
+              background: 'transparent',
+              paddingBottom: 120,
+            }}
+          >
+            <Outlet />
+          </Content>
+        </PageContainer>
 
         <FooterIes />
       </Layout>

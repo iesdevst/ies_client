@@ -43,3 +43,12 @@ html {
 
   scrollbar-width: none !important;
 }
+
+.ant-carousel .slick-dots li.slick-active::after {
+  background: #0f5787 !important;
+  width: 100% !important;
+  height: 100% !important;
+  width: 30px !important;
+  height: 30px !important;
+  border-radius: 50% !important;
+}

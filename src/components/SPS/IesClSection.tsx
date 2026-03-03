@@ -1,12 +1,13 @@
-import { Button, Col, Divider, Flex, Row } from 'antd';
+import { Button, Carousel, Col, Divider, Flex, Image, Row } from 'antd';
 import type { CSSProperties, ReactNode } from 'react';
 import { Text, Title } from '../AntTypography';
 import styles from './iesCl.module.scss';
 
 export type SubSecLayout =
   | 'systemCardSplit'
-  | 'productSl'
+  | 'slideCus'
   | 'imageBackground'
+  | 'vidPr'
   | 'simple';
 
 interface BasePageIesSecProps {
@@ -32,13 +33,22 @@ interface SCSLayoutProps extends BasePageIesSecProps {
   reverse?: boolean;
 }
 
-interface PrdSlLayoutProps extends BasePageIesSecProps {
-  layout: 'productSl';
+interface SlideCusLayoutProps extends BasePageIesSecProps {
+  layout: 'slideCus';
+  images: Array<string>;
 }
 
 interface SimpleLayoutProps extends BasePageIesSecProps {
   layout: 'simple';
   divider: boolean;
+}
+
+interface VidPrLayoutProps extends BasePageIesSecProps {
+  layout: 'vidPr';
+  vidLink?: string;
+  titVid: string;
+  desVid: string;
+  bottomTit: string;
 }
 
 interface ImgBgLayoutProps extends BasePageIesSecProps {
@@ -50,7 +60,8 @@ interface ImgBgLayoutProps extends BasePageIesSecProps {
 
 export type SubSectionProps =
   | SCSLayoutProps
-  | PrdSlLayoutProps
+  | SlideCusLayoutProps
+  | VidPrLayoutProps
   | ImgBgLayoutProps
   | SimpleLayoutProps;
 
@@ -69,17 +80,31 @@ export const IesClSection: React.FC<SubSectionProps> = (props) => {
     className,
   } = props || {};
 
-  const renderPrdSlLayout = (props: PrdSlLayoutProps) => {
-    const {} = props;
+  const renderSlideCusLayout = (props: SlideCusLayoutProps) => {
+    const { images } = props;
 
     return (
-      <div className={`${className} rounded-lg`}>
-        {title && (
-          <Title level={2} className='!text-white !font-bold !text-center'>
-            {title}
-          </Title>
-        )}
-        {children}
+      <div className={`${className}`}>
+        <Carousel
+          pauseOnHover={false}
+          autoplay
+          effect='fade'
+          dots
+          arrows
+          className={styles.dotCustom}
+        >
+          {images.map((img, index) => (
+            <div key={index} className='!w-full'>
+              <img
+                src={img}
+                style={{
+                  objectFit: 'cover',
+                }}
+                className='relative !w-full !h-[87.7vh]'
+              />
+            </div>
+          ))}
+        </Carousel>
       </div>
     );
   };
@@ -198,6 +223,75 @@ export const IesClSection: React.FC<SubSectionProps> = (props) => {
     );
   };
 
+  const renderVidPrLayout = (props: VidPrLayoutProps) => {
+    const { desVid, titVid, bottomTit, vidLink } = props;
+
+    return (
+      <Flex
+        className='!w-full items-stretch'
+        align='end'
+        justify='space-between'
+      >
+        {/* LEFT - VIDEO */}
+        {vidLink && (
+          <div className='!flex-[2] !pl-20'>
+            <div className='w-full aspect-video !pb-7'>
+              <iframe
+                className='w-full !h-full rounded-xl shadow-lg'
+                src={vidLink}
+                title='YouTube video'
+                allowFullScreen
+              />
+            </div>
+          </div>
+        )}
+
+        <div className='flex-[1.5] relative mb-10'>
+          <Col className='relative pr-18 '>
+            <div className='absolute right-20 bottom-60 z-20 w-full'>
+              <Row
+                className='bg-[#2b2f6b] pb-4'
+                justify={'space-between'}
+                align={'middle'}
+              >
+                <Title
+                  level={3}
+                  className='!m-0 !mt-6 !ml-10 !text-[#ffd58a] whitespace-pre-line'
+                >
+                  {titVid}
+                </Title>
+                <Image
+                  src='https://www.vlu.edu.vn/images/section-1-pattern.svg'
+                  preview={false}
+                  className='!h-25'
+                />
+              </Row>
+            </div>
+
+            <div className='pl-17 py-7'>
+              <Text className='mb-8 !text-lg !text-start' color='#2d334d'>
+                {desVid}
+              </Text>
+            </div>
+
+            <Row justify={'end'} align={'middle'} className='!gap-x-4'>
+              <Title level={4} className='!m-0'>
+                {bottomTit}
+              </Title>
+
+              <Button
+                shape='circle'
+                className='!bg-red-600 !border-none !text-white flex items-center justify-center'
+              >
+                〉
+              </Button>
+            </Row>
+          </Col>
+        </div>
+      </Flex>
+    );
+  };
+
   const renderSimpleLayout = (props: SimpleLayoutProps) => {
     const { divider } = props;
     return (
@@ -214,11 +308,14 @@ export const IesClSection: React.FC<SubSectionProps> = (props) => {
 
   const renderSec = () => {
     switch (layout) {
-      case 'productSl':
-        return renderPrdSlLayout(props as PrdSlLayoutProps);
+      case 'slideCus':
+        return renderSlideCusLayout(props as SlideCusLayoutProps);
 
       case 'systemCardSplit':
         return renderSCSLayout(props as SCSLayoutProps);
+
+      case 'vidPr':
+        return renderVidPrLayout(props as VidPrLayoutProps);
 
       case 'imageBackground':
         return renderImgBgLayout(props as ImgBgLayoutProps);

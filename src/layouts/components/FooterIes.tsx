@@ -65,9 +65,6 @@ const FooterIes: React.FC = () => {
       style={{
         background: 'linear-gradient(0deg, #ffffff, #f3f3f3)',
         textAlign: 'center',
-        position: 'fixed',
-        bottom: 0,
-        left: 0,
         width: '100%',
         zIndex: 10,
       }}
