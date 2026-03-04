@@ -1,13 +1,15 @@
-import { Button, Carousel, Col, Divider, Flex, Image, Row } from 'antd';
+import { RightOutlined } from '@ant-design/icons';
+import { Button, Card, Carousel, Col, Divider, Flex, Image, Row } from 'antd';
 import type { CSSProperties, ReactNode } from 'react';
 import { Text, Title } from '../AntTypography';
 import styles from './iesCl.module.scss';
-
 export type SubSecLayout =
   | 'systemCardSplit'
   | 'slideCus'
   | 'imageBackground'
+  | 'trainingSl'
   | 'vidPr'
+  | 'newsFeature'
   | 'simple';
 
 interface BasePageIesSecProps {
@@ -51,6 +53,15 @@ interface VidPrLayoutProps extends BasePageIesSecProps {
   bottomTit: string;
 }
 
+interface TrainingSlProps extends BasePageIesSecProps {
+  layout: 'traningSl';
+  trainTit: string;
+  trainDes: string;
+  trainImgSl: Array<{ icon: string; title: string }>;
+  statisTit: string;
+  statistics: Array<{ num: string; des: string }>;
+}
+
 interface ImgBgLayoutProps extends BasePageIesSecProps {
   layout: 'imageBackground';
   titleExtra?: string;
@@ -58,11 +69,20 @@ interface ImgBgLayoutProps extends BasePageIesSecProps {
   description?: string;
 }
 
+interface NewsFeatureLayoutProps extends BasePageIesSecProps {
+  layout: 'newsFeature';
+  feature: boolean;
+  butTit?: string;
+  featCard: Array<{ imgC: string; tit: string; butCard: string; des: string }>;
+}
+
 export type SubSectionProps =
   | SCSLayoutProps
   | SlideCusLayoutProps
   | VidPrLayoutProps
+  | TrainingSlProps
   | ImgBgLayoutProps
+  | NewsFeatureLayoutProps
   | SimpleLayoutProps;
 
 export const IesClSection: React.FC<SubSectionProps> = (props) => {
@@ -292,6 +312,109 @@ export const IesClSection: React.FC<SubSectionProps> = (props) => {
     );
   };
 
+  const renderTrainSlLayout = (props: TrainingSlProps) => {
+    const { trainDes, trainImgSl, trainTit, statistics, statisTit } = props;
+    return (
+      <div className='!w-full !h-full'>
+        <div
+          className="
+    relative 
+    z-0
+    before:content-[''] 
+    before:absolute 
+    before:top-50
+    before:left-0
+    before:w-1/6
+    before:h-4/5
+    before:bg-[#1951a1] 
+    before:-z-10
+  "
+        >
+          <Flex
+            justify='flex-start'
+            align='center'
+            gap={100}
+            className='!px-22'
+          >
+            <Title className='!m-0 !text-white'>{trainTit}</Title>
+            <Text className='!text-lg mt-2' color='white'>
+              {trainDes}
+            </Text>
+          </Flex>
+          <Carousel
+            autoplay={false}
+            effect={!mb ? 'fade' : 'scrollx'}
+            dots={true}
+            arrows={false}
+            slidesPerRow={mb ? 1 : 3}
+            className={`${styles.dotTrainCustom} dot-train my-15 px-20`}
+          >
+            {trainImgSl.map((item, index) => (
+              <div key={index} className='!pr-10'>
+                <div className='relative rounded-xl overflow-hidden'>
+                  <img
+                    src={item.icon}
+                    style={{
+                      width: '100%',
+                      height: '30vh',
+                      objectFit: 'cover',
+                    }}
+                    className='!rounded-xl '
+                  />
+                  <div className='absolute bottom-0 left-0 pl-6 pb-2'>
+                    <Title
+                      className='!font-bold !m-0 !text-white'
+                      key={index}
+                      level={4}
+                    >
+                      {item.title}
+                    </Title>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </Carousel>
+        </div>
+        <div>
+          <Flex
+            justify='space-between'
+            align='center'
+            className='relative z-10 bg-[#1951a1]'
+          >
+            <div className='flex-[3] !text-start '>
+              <Button className='!bg-transparent !pl-20' type='text'>
+                <Title className='!m-0 !text-white' level={4}>
+                  {statisTit}
+                </Title>
+                <div className='w-full h-full !bg-[#FBBF24] rounded-r-full flex items-center justify-center px-3'>
+                  <RightOutlined className='!text-red-500 !font-semibold ' />
+                </div>
+              </Button>
+            </div>
+
+            <div className='flex-[4] !py-20 bg-gradient-to-r from-blue-900 to-blue-800'>
+              <Row className='gap-x-15 pl-20'>
+                {statistics.map((item, index) => (
+                  <Col key={index}>
+                    <Title className='!m-0 !mb-3 !font-bold !text-5xl !text-[#FBBF24]'>
+                      {item.num}
+                    </Title>
+                    <Text
+                      className='whitespace-pre-line !text-lg '
+                      color='white'
+                    >
+                      {item.des}
+                    </Text>
+                  </Col>
+                ))}
+              </Row>
+            </div>
+          </Flex>
+        </div>
+      </div>
+    );
+  };
+
   const renderSimpleLayout = (props: SimpleLayoutProps) => {
     const { divider } = props;
     return (
@@ -302,6 +425,66 @@ export const IesClSection: React.FC<SubSectionProps> = (props) => {
             <Divider />
           </div>
         )}
+      </div>
+    );
+  };
+
+  const renderNewsFeatLayout = (props: NewsFeatureLayoutProps) => {
+    const { feature = false, butTit, featCard } = props;
+
+    return (
+      <div className={`${className}`}>
+        <Flex justify='space-between' align='center'>
+          <Title>{title}</Title>
+
+          {butTit && (
+            <div>
+              <Button className='!bg-transparent !pl-20' type='text'>
+                <Title className='!m-0 !text-black' level={4}>
+                  {butTit}
+                </Title>
+                <div className='w-full h-full !bg-[#FBBF24] rounded-r-full flex items-center justify-center px-3'>
+                  <RightOutlined className='!text-red-500 !font-semibold ' />
+                </div>
+              </Button>
+            </div>
+          )}
+        </Flex>
+        {feature && children}
+
+        <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8'>
+          {featCard.map((item, index) => (
+            <Card
+              key={index}
+              hoverable
+              className='rounded-2xl overflow-hidden shadow-lg !border-none !bg-white'
+              cover={
+                <img
+                  src={item.imgC}
+                  alt='Workshop'
+                  className='h-[200px] w-full object-cover'
+                />
+              }
+            >
+              <div className='!px-5 !py-3'>
+                <Flex justify='space-between' align='center' className='!py-2'>
+                  <Title level={5} className='!text-blue-500 !m-0'>
+                    {item.tit}
+                  </Title>
+
+                  <div className='relative'>
+                    <div className='bg-blue-600 text-white px-5 py-1 font-semibold text-sm'>
+                      {item.butCard}
+                    </div>
+                    <div className='absolute right-[-8px] top-1/2 -translate-y-1/2 w-3 h-3 bg-white rotate-45'></div>
+                  </div>
+                </Flex>
+
+                <Text className='font-semibold mb-6 !text-lg'>{item.des}</Text>
+              </div>
+            </Card>
+          ))}
+        </div>
       </div>
     );
   };
@@ -317,8 +500,14 @@ export const IesClSection: React.FC<SubSectionProps> = (props) => {
       case 'vidPr':
         return renderVidPrLayout(props as VidPrLayoutProps);
 
+      case 'traningSl':
+        return renderTrainSlLayout(props as TrainingSlProps);
+
       case 'imageBackground':
         return renderImgBgLayout(props as ImgBgLayoutProps);
+
+      case 'newsFeature':
+        return renderNewsFeatLayout(props as NewsFeatureLayoutProps);
 
       case 'simple':
         return renderSimpleLayout(props as SimpleLayoutProps);

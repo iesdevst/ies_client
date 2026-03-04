@@ -1,4 +1,6 @@
+import NewAndEvent from './components/NewAndEvent';
 import SlideCusIes from './components/SlideCusIes';
+import TrainingSl from './components/TrainingSl';
 import VidPrIes from './components/VidPrIes';
 
 const Dashboard: React.FC = () => {
@@ -6,6 +8,8 @@ const Dashboard: React.FC = () => {
     <>
       <SlideCusIes />
       <VidPrIes />
+      <TrainingSl />
+      <NewAndEvent />
     </>
   );
 };

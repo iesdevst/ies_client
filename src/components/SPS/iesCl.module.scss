@@ -43,10 +43,54 @@
     width: 30px !important;
     height: 30px !important;
     border-radius: 50% !important;
-    background: rgb(218, 216, 216)!important;
+    background: rgb(218, 216, 216) !important;
     padding: 0 !important;
     clip-path: inset(0 0 0 50%);
     transition: all 0.3s ease;
     opacity: 0.9 !important;
   }
 }
+
+.dotTrainCustom {
+  :global(.slick-slider) {
+    height: 100%;
+  }
+
+  :global(.slick-list) {
+    height: 100%;
+  }
+
+  :global(.slick-dots) {
+    position: relative !important;
+    bottom: 0 !important;
+  }
+  :global(.slick-dots.slick-dots-bottom) {
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+    gap: 14px;
+  }
+
+  :global(.slick-dots li button::before) {
+    display: none !important;
+  }
+
+  :global(.slick-dots li) {
+    width: 16px !important;
+    height: 16px !important;
+    padding: 0 !important;
+  }
+
+  :global(.slick-dots li button) {
+    width: 16px !important;
+    height: 16px !important;
+    border-radius: 50% !important;
+    background: rgb(218, 216, 216) !important;
+    padding: 0 !important;
+    clip-path: inset(0 0 0 50%);
+    transition: all 0.3s ease;
+    opacity: 0.9 !important;
+  }
+}
+
+
