@@ -1,4 +1,4 @@
-import { Col, Image } from 'antd';
+import { Col, Image, Typography } from 'antd';
 import KTDT from '@/assets/imgs/ktdt_nfc.jpg';
 import KTO from '@/assets/imgs/kto_nfc.jpg';
 import TKDH from '@/assets/imgs/tkdh_nfc.jpg';
@@ -9,24 +9,29 @@ import TSN from '@/assets/imgs/top_str_news.jpg';
 import THTN from '@/assets/imgs/top_str_thtn.jpg';
 import { IesClSection, Text, Title } from '@/components';
 
+const { Paragraph } = Typography;
+
 const NewAndEvent: React.FC = () => {
   const topSn = [
     {
       sti: THTN,
       tit: "IESCollege students are attracted to the 'Practical Learning – Practical Work' model.",
+      specTit: 'Sustainable Development',
     },
     {
       sti: HTDHM,
       tit: "EHOU organizes a specialized class: 'Understanding Business Law and Economic Contracts' for students",
+      specTit: 'Educational Cooperation',
     },
     {
       sti: LTS,
       tit: 'Admissions for Law Program – Hanoi Open University 2022',
-      specTit: 'Training partnership with Hanoi Open University.',
+      specTit: 'Admissions',
     },
     {
       sti: MISA,
       tit: 'Event on the signing of the software transfer agreement to support training between MISA Joint Stock Company and Sai Gon Information Technology and Economics College (IESCOLLEGE).',
+      specTit: 'Educational Cooperation',
     },
   ];
 
@@ -61,11 +66,11 @@ const NewAndEvent: React.FC = () => {
       featCard={featCdt}
       butTit='View all News & Events'
       children={
-        <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8'>
+        <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8 mb-3.5'>
           <div>
             <Col className='pt-6 pb-16'>
               <Image src={TSN} preview={false} />
-              <div className='w-3/4'>
+              <div className='w-4/5'>
                 <Title className='!text-blue-500' level={5}>
                   ACADEMICS & QUALITY ASSURANCE
                 </Title>
@@ -80,20 +85,29 @@ const NewAndEvent: React.FC = () => {
           <div className='pt-6'>
             {topSn.map((item, index) => (
               <div
-                className='grid grid-cols-1 md:grid-cols-3 lg:grid-cols-3 mb-10'
+                className={`grid grid-cols-1 md:grid-cols-4 lg:grid-cols-4 mb-3.5 ${index === 0 ? '' : ' !border-t border-gray-300 pt-7'}`}
                 key={index}
               >
                 <div className='col-span-1'>
                   <Image
                     src={item.sti}
-                    className='!w-42 !h-22 col-span-1'
+                    className='!w-46 !h-25 col-span-1 rounded-lg'
                     preview={false}
                   />
                 </div>
-                <div className='col-span-2'>
+                <div className='col-span-3 pl-5 pt-2.5'>
                   <Col className='flex flex-col col-span-2'>
-                    {item.specTit && <Text>{item.specTit}</Text>}
-                    <Text>{item.tit}</Text>
+                    {item.specTit && (
+                      <Title level={4} className='!text-blue-500'>
+                        {item.specTit}
+                      </Title>
+                    )}
+                    <Paragraph
+                      className='!font-bold !text-md'
+                      ellipsis={{ rows: 2 }}
+                    >
+                      {item.tit}
+                    </Paragraph>
                   </Col>
                 </div>
               </div>

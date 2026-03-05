@@ -146,53 +146,13 @@ export const IesClSection: React.FC<SubSectionProps> = (props) => {
         >
           {!reverse ? (
             <>
-              <Flex justify='end'>
-                <Col
-                  className={`flex flex-col ${!mb ? '!w-2/3 mb-12' : '!w-full px-5'} gap-y-2`}
-                >
-                  <Row align={'middle'} className='gap-x-0.5'>
-                    <Title level={4} className='!m-0 !text-purple-500 !mr-0.5'>
-                      {fstTit}
-                    </Title>
-                    <Title level={4} className='!font-bold !m-0 !text-white'>
-                      {titleSplit}
-                    </Title>
-                  </Row>
-                  <Text defaultFontSize={14} className='!text-white'>
-                    {desSplit}
-                  </Text>
-                  <div className={`${!mb ? '' : 'text-center my-5'}`}>
-                    <Button className='!bg-transparent !px-14 !py-3 !text-white !text-xs !border !border-white w-2/12 !rounded-2xl'>
-                      {butSplit}
-                    </Button>
-                  </div>
-                </Col>
-              </Flex>
+              {children}
               {splitFeat}
             </>
           ) : (
             <>
               {splitFeat}
-              <Col
-                className={`flex flex-col ${!mb ? '!w-2/3' : '!w-full px-5'} gap-y-2`}
-              >
-                <Row align={'middle'} className='gap-x-0.5'>
-                  <Title level={4} className='!m-0 !text-purple-500 !mr-0.5'>
-                    {fstTit}
-                  </Title>
-                  <Title level={4} className='!font-bold !m-0 !text-white'>
-                    {titleSplit}
-                  </Title>
-                </Row>
-                <Text defaultFontSize={14} className='!text-white'>
-                  {desSplit}
-                </Text>
-                <div className={`${!mb ? '' : 'text-center my-7'}`}>
-                  <Button className='!bg-transparent !px-14 !py-3 !text-white !text-xs !border !border-white w-2/12 !rounded-2xl'>
-                    {butSplit}
-                  </Button>
-                </div>
-              </Col>
+              {children}
             </>
           )}
         </Flex>
@@ -430,11 +390,15 @@ export const IesClSection: React.FC<SubSectionProps> = (props) => {
   };
 
   const renderNewsFeatLayout = (props: NewsFeatureLayoutProps) => {
-    const { feature = false, butTit, featCard } = props;
+    const { feature = true, butTit, featCard } = props;
 
     return (
       <div className={`${className}`}>
-        <Flex justify='space-between' align='center'>
+        <Flex
+          justify='space-between'
+          align='center'
+          className={`${!feature ? '!mb-3.5' : ''}`}
+        >
           <Title>{title}</Title>
 
           {butTit && (
@@ -452,38 +416,67 @@ export const IesClSection: React.FC<SubSectionProps> = (props) => {
         </Flex>
         {feature && children}
 
-        <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8'>
-          {featCard.map((item, index) => (
-            <Card
-              key={index}
-              hoverable
-              className='rounded-2xl overflow-hidden shadow-lg !border-none !bg-white'
-              cover={
-                <img
-                  src={item.imgC}
-                  alt='Workshop'
-                  className='h-[200px] w-full object-cover'
-                />
-              }
-            >
-              <div className='!px-5 !py-3'>
-                <Flex justify='space-between' align='center' className='!py-2'>
-                  <Title level={5} className='!text-blue-500 !m-0'>
-                    {item.tit}
-                  </Title>
+        <div className='grid grid-cols-1 md:grid-cols-3 lg:grid-cols-3 gap-8'>
+          {feature ? (
+            <>
+              {featCard.map((item, index) => (
+                <Card
+                  key={index}
+                  hoverable
+                  className='rounded-2xl overflow-hidden shadow-lg !border-none !bg-white'
+                  cover={
+                    <img
+                      src={item.imgC}
+                      alt='Workshop'
+                      className='h-[200px] w-full object-cover'
+                    />
+                  }
+                >
+                  <div className='!px-5 !py-3'>
+                    <Flex
+                      justify='space-between'
+                      align='center'
+                      className='!py-2'
+                    >
+                      <Title level={5} className='!text-blue-500 !m-0'>
+                        {item.tit}
+                      </Title>
 
-                  <div className='relative'>
-                    <div className='bg-blue-600 text-white px-5 py-1 font-semibold text-sm'>
-                      {item.butCard}
-                    </div>
-                    <div className='absolute right-[-8px] top-1/2 -translate-y-1/2 w-3 h-3 bg-white rotate-45'></div>
+                      <div className='relative'>
+                        <div className='bg-blue-600 text-white px-5 py-1 font-semibold text-sm'>
+                          {item.butCard}
+                        </div>
+                        <div className='absolute right-[-8px] top-1/2 -translate-y-1/2 w-3 h-3 bg-white rotate-45'></div>
+                      </div>
+                    </Flex>
+
+                    <Text className='font-semibold mb-6 !text-lg'>
+                      {item.des}
+                    </Text>
                   </div>
-                </Flex>
-
-                <Text className='font-semibold mb-6 !text-lg'>{item.des}</Text>
-              </div>
-            </Card>
-          ))}
+                </Card>
+              ))}
+            </>
+          ) : (
+            <>
+              {featCard.map((item, index) => (
+                <Col key={index}>
+                  <img
+                    src={item.imgC}
+                    className='!h-65 w-full mb-3.5 rounded-lg'
+                  />
+                  <Title level={4}>{item.tit}</Title>
+                  <p className='!text-lg mb-2'>{item.des}</p>
+                  <Button
+                    type='text'
+                    className='!text-blue-600 !p-0 !font-bold !text-md'
+                  >
+                    {item.butCard}
+                  </Button>
+                </Col>
+              ))}
+            </>
+          )}
         </div>
       </div>
     );
