@@ -6,7 +6,7 @@ import styles from './iesCl.module.scss';
 export type SubSecLayout =
   | 'systemCardSplit'
   | 'slideCus'
-  | 'imageBackground'
+  | 'topic'
   | 'trainingSl'
   | 'vidPr'
   | 'newsFeature'
@@ -27,11 +27,7 @@ interface BasePageIesSecProps {
 
 interface SCSLayoutProps extends BasePageIesSecProps {
   layout: 'systemCardSplit';
-  fstTit?: string;
-  titleSplit?: string;
-  butSplit?: string;
   splitFeat?: React.ReactNode;
-  desSplit?: string;
   reverse?: boolean;
 }
 
@@ -62,18 +58,31 @@ interface TrainingSlProps extends BasePageIesSecProps {
   statistics: Array<{ num: string; des: string }>;
 }
 
-interface ImgBgLayoutProps extends BasePageIesSecProps {
-  layout: 'imageBackground';
-  titleExtra?: string;
-  imageSrc?: string;
-  description?: string;
+interface TopicLayoutProps extends BasePageIesSecProps {
+  layout: 'topic';
+  topImaTit: string;
+  topTitBut?: string;
+  botBut?: string;
+  botTit?: string;
+  lstBut: string;
+  topicI: string;
+  topicCt: Array<{ tit: string; des: string; bgColor: string }>;
+  methodLst: Array<{ thodAv: string; meTit: string }>;
 }
 
 interface NewsFeatureLayoutProps extends BasePageIesSecProps {
   layout: 'newsFeature';
   feature: boolean;
   butTit?: string;
-  featCard: Array<{ imgC: string; tit: string; butCard: string; des: string }>;
+  featCard: Array<{
+    imgC: string;
+    tit?: string;
+    butCard?: string;
+    des?: string;
+  }>;
+  bonusTit?: string;
+  moreBut?: string;
+  moreClass?: string;
 }
 
 export type SubSectionProps =
@@ -81,14 +90,14 @@ export type SubSectionProps =
   | SlideCusLayoutProps
   | VidPrLayoutProps
   | TrainingSlProps
-  | ImgBgLayoutProps
+  | TopicLayoutProps
   | NewsFeatureLayoutProps
   | SimpleLayoutProps;
 
 export const IesClSection: React.FC<SubSectionProps> = (props) => {
   const {
     id,
-    dark,
+    // dark,
     mb,
     children,
     style,
@@ -110,7 +119,7 @@ export const IesClSection: React.FC<SubSectionProps> = (props) => {
           autoplay
           effect='fade'
           dots
-          arrows
+          arrows={false}
           className={styles.dotCustom}
         >
           {images.map((img, index) => (
@@ -129,8 +138,7 @@ export const IesClSection: React.FC<SubSectionProps> = (props) => {
     );
   };
   const renderSCSLayout = (props: SCSLayoutProps) => {
-    const { fstTit, titleSplit, splitFeat, desSplit, reverse, butSplit } =
-      props;
+    const { splitFeat, reverse } = props;
     return (
       <Col className='w-full'>
         {title && (
@@ -159,45 +167,108 @@ export const IesClSection: React.FC<SubSectionProps> = (props) => {
       </Col>
     );
   };
-  const renderImgBgLayout = (props: ImgBgLayoutProps) => {
-    const { imageSrc, titleExtra, description } = props;
+  const renderTopicLayout = (props: TopicLayoutProps) => {
+    const {
+      topicI,
+      topicCt,
+      topImaTit,
+      topTitBut,
+      botBut,
+      botTit,
+      lstBut,
+      methodLst,
+    } = props;
 
     return (
-      <div
-        data-testid='image-bg-container'
-        className={`${className} relative w-full`}
-        style={{
-          backgroundImage: `url(${imageSrc})`,
-          backgroundSize: 'cover',
-          backgroundPosition: 'center',
-          height: '60vh',
-          width: '100%',
-          display: 'flex',
-          flexDirection: 'column',
-          justifyContent: 'center',
-          alignItems: 'center',
-          textAlign: 'center',
-          color: dark ? 'white' : 'black',
-          ...style,
-        }}
-      >
-        <div className='relative z-10 w-[90%] max-w-[700px] px-4 text-center'>
-          {titleExtra && (
-            <h2 className='text-base md:text-xl font-bold uppercase'>
-              {titleExtra}
-            </h2>
+      <div className='!space-y-5'>
+        <Flex justify='space-between' align='start'>
+          <Image src={topImaTit} className='!w-150' preview={false} />
+
+          {topTitBut && (
+            <div>
+              <Button className='!bg-transparent !pl-20' type='text'>
+                <Title className='!m-0 !text-black' level={4}>
+                  {topTitBut}
+                </Title>
+                <div className='w-full h-full !bg-[#FBBF24] rounded-r-full flex items-center justify-center px-3'>
+                  <RightOutlined className='!text-red-500 !font-semibold ' />
+                </div>
+              </Button>
+            </div>
           )}
-          {title && (
-            <h2 className='text-lg md:text-2xl font-bold mb-6 md:mb-12'>
-              {title}
-            </h2>
-          )}
-          {description && (
-            <p className='text-sm md:text-base text-white mb-4'>
-              {description}
-            </p>
-          )}
-          {children}
+        </Flex>
+        <Flex>
+          <div className='flex-2 flex justify-end mr-2.5'>
+            <Image src={topicI} preview={false} className='!h-130 !w-130' />
+          </div>
+
+          <div className='pt-10 flex-3 space-y-9'>
+            {topicCt.map((item, index) => (
+              <Col
+                key={index}
+                className={`${item.bgColor} py-7 px-6 rounded-xl`}
+              >
+                <Title level={4} className='!text-[#ffe2a9]'>
+                  {item.tit}
+                </Title>
+                <p
+                  className='!text-white !text-xl whitespace-pre-line'
+                  style={{
+                    fontWeight: '450',
+                  }}
+                >
+                  {item.des}
+                </p>
+              </Col>
+            ))}
+          </div>
+        </Flex>
+        <div className='mt-15 !space-y-10'>
+          <Flex justify='space-between' align='center'>
+            <Title className='!m-0'>{botTit}</Title>
+
+            {botBut && (
+              <div>
+                <Button className='!bg-transparent !pl-20' type='text'>
+                  <Title className='!m-0 !text-black' level={4}>
+                    {botBut}
+                  </Title>
+                  <div className='w-full h-full !bg-[#FBBF24] rounded-r-full flex items-center justify-center px-3'>
+                    <RightOutlined className='!text-red-500 !font-semibold ' />
+                  </div>
+                </Button>
+              </div>
+            )}
+          </Flex>
+          <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8'>
+            {methodLst.map((item, index) => (
+              <Row
+                key={index}
+                justify={'start'}
+                align={'top'}
+                className='gap-x-5'
+              >
+                <div>
+                  <Image
+                    src={item.thodAv}
+                    preview={false}
+                    className='!w-15 !h-17'
+                  />
+                </div>
+                <Col>
+                  <Title level={4} className='!m-0 !mb-2.5'>
+                    {item.meTit}
+                  </Title>
+                  <Button
+                    type='text'
+                    className='!text-blue-500 !font-bold !text-lg !p-0'
+                  >
+                    {lstBut}
+                  </Button>
+                </Col>
+              </Row>
+            ))}
+          </div>
         </div>
       </div>
     );
@@ -390,7 +461,14 @@ export const IesClSection: React.FC<SubSectionProps> = (props) => {
   };
 
   const renderNewsFeatLayout = (props: NewsFeatureLayoutProps) => {
-    const { feature = true, butTit, featCard } = props;
+    const {
+      feature = true,
+      butTit,
+      featCard,
+      bonusTit,
+      moreBut,
+      moreClass,
+    } = props;
 
     return (
       <div className={`${className}`}>
@@ -415,68 +493,89 @@ export const IesClSection: React.FC<SubSectionProps> = (props) => {
           )}
         </Flex>
         {feature && children}
+        <div className={`${moreClass}`}>
+          {bonusTit && moreBut && (
+            <Flex justify='space-between' align='center' className='!mb-10'>
+              <Title className='!m-0 !font-bold' level={3}>
+                {bonusTit}
+              </Title>
+              <div>
+                <Button className='!bg-transparent !pl-20' type='text'>
+                  <Title className='!m-0 !text-black' level={4}>
+                    {moreBut}
+                  </Title>
+                  <div className='w-full h-full !bg-[#FBBF24] rounded-r-full flex items-center justify-center px-3'>
+                    <RightOutlined className='!text-red-500 !font-semibold ' />
+                  </div>
+                </Button>
+              </div>
+            </Flex>
+          )}
+          <div className='grid grid-cols-1 md:grid-cols-3 lg:grid-cols-3 gap-8'>
+            {feature ? (
+              <>
+                {featCard.map((item, index) => (
+                  <Card
+                    key={index}
+                    hoverable
+                    className='rounded-2xl overflow-hidden shadow-lg !border-none !bg-white'
+                    cover={
+                      <img
+                        src={item.imgC}
+                        alt='Workshop'
+                        className='h-[200px] w-full object-cover'
+                      />
+                    }
+                  >
+                    <div className='!px-5 !py-3'>
+                      {item.tit ||
+                        (item.butCard && (
+                          <Flex
+                            justify='space-between'
+                            align='center'
+                            className='!py-2'
+                          >
+                            <Title level={5} className='!text-blue-500 !m-0'>
+                              {item.tit}
+                            </Title>
 
-        <div className='grid grid-cols-1 md:grid-cols-3 lg:grid-cols-3 gap-8'>
-          {feature ? (
-            <>
-              {featCard.map((item, index) => (
-                <Card
-                  key={index}
-                  hoverable
-                  className='rounded-2xl overflow-hidden shadow-lg !border-none !bg-white'
-                  cover={
+                            <div className='relative'>
+                              <div className='bg-blue-600 text-white px-5 py-1 font-semibold text-sm'>
+                                {item.butCard}
+                              </div>
+                              <div className='absolute right-[-8px] top-1/2 -translate-y-1/2 w-3 h-3 bg-white rotate-45'></div>
+                            </div>
+                          </Flex>
+                        ))}
+
+                      <Text className='font-semibold mb-6 !text-lg'>
+                        {item.des}
+                      </Text>
+                    </div>
+                  </Card>
+                ))}
+              </>
+            ) : (
+              <>
+                {featCard.map((item, index) => (
+                  <Col key={index}>
                     <img
                       src={item.imgC}
-                      alt='Workshop'
-                      className='h-[200px] w-full object-cover'
+                      className='!h-65 w-full mb-3.5 rounded-lg'
                     />
-                  }
-                >
-                  <div className='!px-5 !py-3'>
-                    <Flex
-                      justify='space-between'
-                      align='center'
-                      className='!py-2'
+                    <Title level={4}>{item.tit}</Title>
+                    <p className='!text-lg mb-2'>{item.des}</p>
+                    <Button
+                      type='text'
+                      className='!text-blue-600 !p-0 !font-bold !text-md'
                     >
-                      <Title level={5} className='!text-blue-500 !m-0'>
-                        {item.tit}
-                      </Title>
-
-                      <div className='relative'>
-                        <div className='bg-blue-600 text-white px-5 py-1 font-semibold text-sm'>
-                          {item.butCard}
-                        </div>
-                        <div className='absolute right-[-8px] top-1/2 -translate-y-1/2 w-3 h-3 bg-white rotate-45'></div>
-                      </div>
-                    </Flex>
-
-                    <Text className='font-semibold mb-6 !text-lg'>
-                      {item.des}
-                    </Text>
-                  </div>
-                </Card>
-              ))}
-            </>
-          ) : (
-            <>
-              {featCard.map((item, index) => (
-                <Col key={index}>
-                  <img
-                    src={item.imgC}
-                    className='!h-65 w-full mb-3.5 rounded-lg'
-                  />
-                  <Title level={4}>{item.tit}</Title>
-                  <p className='!text-lg mb-2'>{item.des}</p>
-                  <Button
-                    type='text'
-                    className='!text-blue-600 !p-0 !font-bold !text-md'
-                  >
-                    {item.butCard}
-                  </Button>
-                </Col>
-              ))}
-            </>
-          )}
+                      {item.butCard}
+                    </Button>
+                  </Col>
+                ))}
+              </>
+            )}
+          </div>
         </div>
       </div>
     );
@@ -496,8 +595,8 @@ export const IesClSection: React.FC<SubSectionProps> = (props) => {
       case 'traningSl':
         return renderTrainSlLayout(props as TrainingSlProps);
 
-      case 'imageBackground':
-        return renderImgBgLayout(props as ImgBgLayoutProps);
+      case 'topic':
+        return renderTopicLayout(props as TopicLayoutProps);
 
       case 'newsFeature':
         return renderNewsFeatLayout(props as NewsFeatureLayoutProps);

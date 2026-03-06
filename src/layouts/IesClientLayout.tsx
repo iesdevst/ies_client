@@ -38,7 +38,6 @@ const IesClientLayout: React.FC = () => {
               flex: 1,
               overflowY: 'auto',
               background: 'transparent',
-              paddingBottom: 120,
             }}
           >
             <Outlet />
