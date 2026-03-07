@@ -1,8 +1,9 @@
 import { Layout } from 'antd';
-import React, { useRef } from 'react';
+import React, { useRef, useState } from 'react';
 import { Outlet } from 'react-router-dom';
 import FooterIes from './components/FooterIes';
 import HeaderIes from './components/HeaderIes';
+import MegaDrawer from './components/MegaDrawer';
 import styles from './iesClLayout.module.scss';
 import { PageContainer } from '@/components';
 
@@ -10,6 +11,7 @@ const { Content } = Layout;
 
 const IesClientLayout: React.FC = () => {
   const contentRef = useRef<HTMLDivElement>(null);
+  const [drawerKey, setDrawerKey] = useState<string | null>(null);
 
   return (
     <>
@@ -28,7 +30,7 @@ const IesClientLayout: React.FC = () => {
       >
         {/* Header */}
 
-        <HeaderIes />
+        <HeaderIes setDrawerKey={setDrawerKey} />
         {/* Content Area */}
         <PageContainer>
           <Content
@@ -46,6 +48,7 @@ const IesClientLayout: React.FC = () => {
 
         <FooterIes />
       </Layout>
+      <MegaDrawer activeKey={drawerKey} onClose={() => setDrawerKey(null)} />
     </>
   );
 };

@@ -83,7 +83,7 @@ const FieldOfStudy: React.FC = () => {
                 after graduation.
               </Text>
               <div>
-                <Button className='!bg-transparent !pl-20' type='text'>
+                <Button className='!bg-transparent !p-0 mt-3' type='text'>
                   <Title className='!m-0 !text-black' level={4}>
                     Explore all Majors
                   </Title>

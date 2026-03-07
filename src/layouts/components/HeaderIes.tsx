@@ -1,85 +1,71 @@
-import { Image, Layout, Space } from 'antd';
+import { Flex, Image, Layout } from 'antd';
 import MediaQuery, { useMediaQuery } from 'react-responsive';
-import type { LinkProps } from 'react-router-dom';
-import { Link } from 'react-router-dom';
+import NavLst from './NavLst';
 import IES_LOGO_MB from '@/assets/imgs/ies_logo_notext.png';
 import IES_LOGO_URL from '@/assets/imgs/ies_logo_text.png';
-import IesClientLang from '@/components/AppDropdown/IesClientLang';
-
-const ManualLink = ({ ...props }: LinkProps & { isActive?: boolean }) => {
-  const { isActive = false, ...linkProps } = props || {};
-
-  return (
-    <Link
-      style={{
-        color: isActive ? 'purple' : 'black',
-        textDecoration: isActive ? 'underline' : 'none',
-        fontSize: 18,
-      }}
-      {...linkProps}
-    />
-  );
-};
+import IesClientLang from '@/components/AppDropdown';
+import { PrefetchLink } from '@/components/PrefetchLink';
+import { ROUTES } from '@/constants';
 
 const { Header } = Layout;
 
-const HeaderIes = () => {
+interface IHeaderIes {
+  setDrawerKey: (key: string | null) => void;
+}
+
+const HeaderIes: React.FC<IHeaderIes> = (props) => {
+  const { setDrawerKey } = props;
   const isMobile = useMediaQuery({ maxWidth: 1024 });
 
   return (
     <>
       <Header
         style={{
-          padding: isMobile ? '0px 10px' : '0px 30px',
+          padding: isMobile ? '0px 10px' : '20px 30px',
           height: 30,
           backgroundColor: '#2d334d',
         }}
         className='!flex !items-center !shadow-2xl '
       >
         <MediaQuery minWidth={1025}>
-          <Space size='large' className='!gap-x-4'>
-            <ManualLink to={`/`} className='!text-white'>
-              IES
-            </ManualLink>
+          <div className='!w-full pr-10'>
+            <Flex justify='end' align='center' gap={15}>
+              <PrefetchLink
+                to={ROUTES.ROOT}
+                className='!text-white !bg-blue-500 px-3 py-0.5 rounded-sm !text-lg'
+              >
+                IES
+              </PrefetchLink>
 
-            <ManualLink to={`/`} className='!text-white'>
-              IES staff
-            </ManualLink>
-          </Space>
+              <PrefetchLink to={ROUTES.ROOT} className='!text-white !text-lg'>
+                IES staff
+              </PrefetchLink>
+            </Flex>
+          </div>
         </MediaQuery>
       </Header>
       <Header
         style={{
-          padding: isMobile ? '0px 10px' : '0px 30px',
+          padding: isMobile ? '0px 10px' : '40px 40px',
           height: 60,
-          borderBottom: '1px solid #adc0e3',
         }}
-        className='!flex !items-center !justify-between !shadow-2xl'
+        className='!flex !items-center !justify-between !bg-white'
       >
-        <Link to='/' className='!block !flex !items-center'>
+        <PrefetchLink
+          to={ROUTES.DASHBOARD}
+          className='!block !flex !items-center'
+        >
           <Image
-            className='!w-20 !h-20'
+            className='!w-42 !h-25'
             src={isMobile ? IES_LOGO_MB : IES_LOGO_URL}
             alt='VIETRON Technology Company Limited'
             preview={false}
           />
-        </Link>
+        </PrefetchLink>
         <MediaQuery minWidth={1025}>
-          <Space size='large' className='!gap-x-4'>
-            <ManualLink to={`/`}>Home</ManualLink>
-
-            <ManualLink to={`/`}>About</ManualLink>
-
-            <ManualLink to={`/`}>Academics</ManualLink>
-            <ManualLink to={`/`}>Admissions</ManualLink>
-            <ManualLink to={`/`}>Careers</ManualLink>
-            <ManualLink to={`/`}>IES news</ManualLink>
-            <ManualLink to={`/`}>Training Partnerships</ManualLink>
-            <ManualLink to={`/`}>VE Disclosure</ManualLink>
-
-            <IesClientLang />
-          </Space>
+          <NavLst setDrawerKey={setDrawerKey} />
         </MediaQuery>
+        <IesClientLang />
 
         <MediaQuery maxWidth={1024}>
           <div
