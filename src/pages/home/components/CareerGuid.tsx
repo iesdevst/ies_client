@@ -60,7 +60,8 @@ const CareerGuid: React.FC = () => {
 
           <div className='w-full pr-20 pl-32'>
             <Carousel
-              autoplay={false}
+              autoplay
+              pauseOnHover={false}
               dots={false}
               arrows={true}
               slidesPerRow={4}

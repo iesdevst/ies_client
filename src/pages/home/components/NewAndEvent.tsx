@@ -75,8 +75,8 @@ const NewAndEvent: React.FC = () => {
                   ACADEMICS & QUALITY ASSURANCE
                 </Title>
                 <Text className='!text-xl !font-bold'>
-                  IES Students explore AI applications in Biomedicine with
-                  Experts from Deakin University (Australia)
+                  Prof. Ngô Bảo Châu: “A university degree isn’t necessarily
+                  required.”
                 </Text>
               </div>
             </Col>

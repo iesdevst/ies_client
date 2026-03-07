@@ -47,6 +47,7 @@ const PartnerSl: React.FC = () => {
           <div className='w-full'>
             <Carousel
               autoplay
+              pauseOnHover={false}
               dots={true}
               arrows={false}
               slidesPerRow={4}

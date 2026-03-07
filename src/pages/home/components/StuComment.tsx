@@ -53,7 +53,7 @@ const StuComment = () => {
           </Flex>
         </div>
       }
-      className='mt-20 !min-h-[60vh]'
+      className='!min-h-[60vh]'
       style={{
         backgroundImage: `url(${STBG})`,
         backgroundRepeat: 'no-repeat',

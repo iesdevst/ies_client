@@ -373,7 +373,8 @@ export const IesClSection: React.FC<SubSectionProps> = (props) => {
             </Text>
           </Flex>
           <Carousel
-            autoplay={false}
+            autoplay
+            pauseOnHover={false}
             effect={!mb ? 'fade' : 'scrollx'}
             dots={true}
             arrows={false}

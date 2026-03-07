@@ -77,7 +77,7 @@ const TrainingSl: React.FC = () => {
       trainImgSl={data}
       statisTit='Explore our milestones'
       statistics={staticDt}
-      className='!h-full !mt-15 bg-blue-400 pt-18'
+      className='!h-full !mt-5 bg-blue-400 pt-18'
     />
   );
 };
