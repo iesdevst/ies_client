@@ -7,13 +7,11 @@ import {
 import { Button, Collapse, Row } from 'antd';
 import { IesClSection, Text, Title } from '@/components';
 
-const { Panel } = Collapse;
-
 const contacts = [
   {
     key: '1',
-    title: 'ACADEMIC AFFAIRS',
-    content: (
+    label: 'ACADEMIC AFFAIRS',
+    children: (
       <>
         <Row justify={'start'} align={'middle'} className='gap-x-1'>
           <Title level={5} className='!m-0'>
@@ -24,10 +22,12 @@ const contacts = [
             Vietnam
           </Text>
         </Row>
+
         <Row justify={'start'} align={'middle'} className='gap-x-1'>
-          <PhoneFilled className='!text-black' />{' '}
+          <PhoneFilled className='!text-black' />
           <Text>0901.309.866 - EXT: 6969</Text>
         </Row>
+
         <Row justify={'start'} align={'middle'} className='gap-x-1'>
           <MailFilled />
           <Text>tuyensinh@cnktdn.edu.vn</Text>
@@ -37,8 +37,8 @@ const contacts = [
   },
   {
     key: '2',
-    title: 'DEPARTMENT OF STUDENT AFFAIRS',
-    content: (
+    label: 'DEPARTMENT OF STUDENT AFFAIRS',
+    children: (
       <>
         <Row justify={'start'} align={'middle'} className='gap-x-1'>
           <Title level={5} className='!m-0'>
@@ -62,8 +62,8 @@ const contacts = [
   },
   {
     key: '3',
-    title: 'INDUSTRY RELATIONS ACADEMIC, CAREER DEVELOPMENT CENTER',
-    content: (
+    label: 'INDUSTRY RELATIONS ACADEMIC, CAREER DEVELOPMENT CENTER',
+    children: (
       <>
         <Row justify={'start'} align={'middle'} className='gap-x-1'>
           <Title level={5} className='!m-0'>
@@ -87,8 +87,8 @@ const contacts = [
   },
   {
     key: '4',
-    title: 'DEPARTMENT OF ADMISSION & COMMUNICATION',
-    content: (
+    label: 'DEPARTMENT OF ADMISSION & COMMUNICATION',
+    children: (
       <>
         <Row justify={'start'} align={'middle'} className='gap-x-1'>
           <Title level={5} className='!m-0'>
@@ -112,8 +112,8 @@ const contacts = [
   },
   {
     key: '5',
-    title: 'CENTER FOR INFORMATION TECHNOLOGY',
-    content: (
+    label: 'CENTER FOR INFORMATION TECHNOLOGY',
+    children: (
       <>
         <Row justify={'start'} align={'middle'} className='gap-x-1'>
           <Title level={5} className='!m-0'>
@@ -150,6 +150,7 @@ const ContactKey: React.FC = () => {
           <div className='w-1/2 border-b border-[#cfd2d8]'>
             <Collapse
               accordion
+              items={contacts}
               expandIconPosition='end'
               expandIcon={({ isActive }) => (
                 <PlusOutlined
@@ -159,17 +160,7 @@ const ContactKey: React.FC = () => {
                 />
               )}
               className='!border-none contact-collapse'
-            >
-              {contacts.map((item) => (
-                <Panel
-                  header={item.title}
-                  key={item.key}
-                  className='!border-[#cfd2d8]'
-                >
-                  {item.content}
-                </Panel>
-              ))}
-            </Collapse>
+            />
           </div>
 
           <div className='mt-7 '>

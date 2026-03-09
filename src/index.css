@@ -112,9 +112,48 @@ html {
 .contact-collapse .ant-collapse-content {
   background: transparent !important;
 }
-
-.contact-collapse .ant-collapse-content-box {
+c .contact-collapse .ant-collapse-content-box {
   background: transparent !important;
 }
 
+.contact-collapse .ant-collapse-item {
+  border-bottom: 1px solid #cfd2d8;
+}
 
+/* Smooth Drawer animation */
+
+.ant-drawer-content-wrapper {
+  transition: opacity 0.5s ease !important;
+}
+
+.ant-drawer-mask {
+  transition: opacity 0.45s ease !important;
+}
+
+/* Premium menu reveal */
+
+.mega-menu-content {
+  animation: megaMenuReveal 0.6s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+.mega-menu-hide {
+  animation: megaMenuHide 0.6s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+@keyframes megaMenuReveal {
+  from {
+    clip-path: inset(0 0 100% 0);
+  }
+  to {
+    clip-path: inset(0 0 0 0);
+  }
+}
+
+@keyframes megaMenuHide {
+  from {
+    clip-path: inset(0 0 0 0);
+  }
+  to {
+    clip-path: inset(0 0 100% 0);
+  }
+}

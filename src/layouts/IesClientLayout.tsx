@@ -6,12 +6,13 @@ import HeaderIes from './components/HeaderIes';
 import MegaDrawer from './components/MegaDrawer';
 import styles from './iesClLayout.module.scss';
 import { PageContainer } from '@/components';
+import type { RoutePath } from '@/constants';
 
 const { Content } = Layout;
 
 const IesClientLayout: React.FC = () => {
   const contentRef = useRef<HTMLDivElement>(null);
-  const [drawerKey, setDrawerKey] = useState<string | null>(null);
+  const [drawerKey, setDrawerKey] = useState<RoutePath | null>(null);
 
   return (
     <>

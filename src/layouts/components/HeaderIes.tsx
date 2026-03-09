@@ -5,12 +5,12 @@ import IES_LOGO_MB from '@/assets/imgs/ies_logo_notext.png';
 import IES_LOGO_URL from '@/assets/imgs/ies_logo_text.png';
 import IesClientLang from '@/components/AppDropdown';
 import { PrefetchLink } from '@/components/PrefetchLink';
-import { ROUTES } from '@/constants';
+import { ROUTES, type RoutePath } from '@/constants';
 
 const { Header } = Layout;
 
 interface IHeaderIes {
-  setDrawerKey: (key: string | null) => void;
+  setDrawerKey: (key: RoutePath | null) => void;
 }
 
 const HeaderIes: React.FC<IHeaderIes> = (props) => {

@@ -1,4 +1,4 @@
-import { Carousel, Flex, Image } from 'antd';
+import { Carousel, Col, Flex, Image } from 'antd';
 
 import CNPH from '@/assets/imgs/cnph_tt.svg';
 import DO from '@/assets/imgs/div_oost_tt.webp';
@@ -27,10 +27,10 @@ const PartnerSl: React.FC = () => {
             align='start'
             className='!px-45 !w-full'
           >
-            <Title className='flex-1 !font-bold'>
-              Internship Partner
-              <Title className='!font-bold'>Institution</Title>
-            </Title>
+            <Col className='flex-1'>
+              <Title className=' !font-bold !m-0'>Internship Partner</Title>
+              <Title className='!font-bold !m-0'>Institution</Title>
+            </Col>
             <div className='flex-1'>
               <Text className=''>
                 An institution that collaborates with businesses to develop and

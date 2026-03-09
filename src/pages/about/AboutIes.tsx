@@ -1,12 +1,14 @@
 import { Col, Flex, Image, Tabs, type TabsProps } from 'antd';
-import { useCallback, useEffect, useMemo, useState } from 'react';
+import { lazy, useCallback, useEffect, useMemo, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
-import AbCoreValue from './components/AbCoreValue';
-import AbOverview from './components/Aboverview';
-import AbVision from './components/AbVision';
 import IESLG from '@/assets/imgs/ies_logo_text.png';
 import { Text, Title } from '@/components';
 import { AboutTab } from '@/constants';
+
+const AbOverview = lazy(() => import('@/pages/about/components/AbOverview'));
+const AbVision = lazy(() => import('@/pages/about/components/AbVision'));
+const AbCoreValue = lazy(() => import('@/pages/about/components/AbCoreValue'));
+
 const AboutIes: React.FC = () => {
   const [searchParams, setSearchParams] = useSearchParams();
   const [activeKey, setActiveKey] = useState<AboutTab>();

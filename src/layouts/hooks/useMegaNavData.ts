@@ -1,13 +1,12 @@
-import { ROUTES } from '@/constants';
+import { ROUTES, type RoutePath } from '@/constants';
 
-export const useMegaNavData = () => {
+export const useMegaNavData = (): Array<MegaNavItem> => {
   return [
     {
       key: ROUTES.ABOUT,
       label: 'About',
       sections: [
         {
-          title: 'Overview',
           links: [
             { label: 'Vision & Mission', route: ROUTES.ABOUT_VISION },
             { label: 'Core Values', route: ROUTES.ABOUT_COREVALUES },
@@ -21,19 +20,26 @@ export const useMegaNavData = () => {
       label: 'Academics',
       sections: [
         {
-          title: 'Programs',
+          title: 'IT & Office',
           links: [
-            { label: 'Undergraduate', route: '/' },
-            { label: 'Postgraduate', route: '/' },
-            { label: 'Online Programs', route: '/' },
+            { label: 'Applied Informatics', route: '/' },
+            { label: 'Office Administration', route: '/' },
           ],
         },
         {
-          title: 'Resources',
+          title: 'Hospitality & Services',
+          links: [{ label: 'Hotel Management & Business', route: '/' }],
+        },
+        {
+          title: 'Design & Creativity',
+          links: [{ label: 'Fine Arts Design', route: '/' }],
+        },
+        {
+          title: 'Business & Management',
           links: [
-            { label: 'Library', route: '/' },
-            { label: 'Research', route: '/' },
-            { label: 'Academic Calendar', route: '/' },
+            { label: 'Business Administration', route: '/' },
+            { label: 'Marketing', route: '/' },
+            { label: 'Accounting', route: '/' },
           ],
         },
       ],
@@ -44,18 +50,20 @@ export const useMegaNavData = () => {
       label: 'Admissions',
       sections: [
         {
-          title: 'Apply',
+          title: 'IES',
           links: [
-            { label: 'How to Apply', route: '/' },
-            { label: 'Requirements', route: '/' },
-            { label: 'Tuition Fees', route: '/' },
+            { label: 'Vocational College Admissions', route: '/' },
+            { label: '10th Grade Admissions', route: '/' },
           ],
         },
         {
-          title: 'Support',
+          title: 'Educational Partnerships',
           links: [
-            { label: 'Scholarships', route: '/' },
-            { label: 'International Students', route: '/' },
+            { label: 'Hanoi Open University Admissions', route: '/' },
+            {
+              label: 'HCM City University of Technology Admissions',
+              route: '/',
+            },
           ],
         },
       ],
@@ -66,7 +74,6 @@ export const useMegaNavData = () => {
       label: 'Career Opportunities',
       sections: [
         {
-          title: 'Careers',
           links: [
             { label: 'Job Openings', route: '/' },
             { label: 'Faculty Positions', route: '/' },
@@ -80,12 +87,12 @@ export const useMegaNavData = () => {
       label: 'News & Events',
       sections: [
         {
-          title: 'Updates',
-          links: [
-            { label: 'Latest News', route: '/' },
-            { label: 'Events', route: '/' },
-            { label: 'Press Releases', route: '/' },
-          ],
+          title: 'IES news',
+          links: [{ label: 'Latest News', route: '/' }],
+        },
+        {
+          title: 'IES events',
+          links: [{ label: 'Events', route: '/' }],
         },
       ],
     },
@@ -95,13 +102,36 @@ export const useMegaNavData = () => {
       label: 'Public Disclosure',
       sections: [
         {
-          title: 'Information',
+          title: 'Quality Assessment',
           links: [
-            { label: 'Reports', route: '/' },
-            { label: 'Policies', route: '/' },
+            { label: 'Quality Assurance System – 2025', route: '/' },
+            { label: 'Quality Assurance System – 2026', route: '/' },
+          ],
+        },
+        {
+          title: 'Academic Plans',
+          links: [
+            { label: 'Full Program Training Plan 2025–2026', route: '/' },
+            { label: 'Full Program Training Plan 2026–2027', route: '/' },
           ],
         },
       ],
     },
   ];
+};
+
+export type MegaNavLink = {
+  label: string;
+  route: RoutePath;
+};
+
+export type MegaNavSec = {
+  title?: string;
+  links: Array<MegaNavLink>;
+};
+
+export type MegaNavItem = {
+  key: RoutePath;
+  label: string;
+  sections: Array<MegaNavSec>;
 };

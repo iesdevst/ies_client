@@ -10,9 +10,11 @@ export const HOME_SEGMENT = 'dashboard' as const;
 export const ABOUT_SEGMENT = 'about-ies' as const;
 export const ACADEMIS_SEGMENT = 'academics' as const;
 export const ADMISSIONS_SEGMENT = 'admissions' as const;
-export const CAREEROP_SEGMENT = 'news' as const;
+export const CAREEROP_SEGMENT = 'careeop' as const;
 export const NEWS_SEGMENT = 'news' as const;
 export const PUBDIS_SEGMENT = 'disclosure' as const;
+
+export type RoutePath = (typeof ROUTES)[keyof typeof ROUTES];
 
 export const ROUTES = {
   ROOT: '/',

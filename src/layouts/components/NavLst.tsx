@@ -1,9 +1,10 @@
 import { CaretDownFilled } from '@ant-design/icons';
 import { Button, Space } from 'antd';
 import { useMegaNavData } from '../hooks';
+import type { RoutePath } from '@/constants';
 
 interface INavLst {
-  setDrawerKey: (key: string) => void;
+  setDrawerKey: (key: RoutePath) => void;
 }
 
 const NavLst: React.FC<INavLst> = (props) => {
