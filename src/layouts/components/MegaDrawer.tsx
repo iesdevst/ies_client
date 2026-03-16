@@ -22,11 +22,8 @@ const MegaDrawer: React.FC<IMegaDrawer> = (props) => {
   const activeMenu = data.find((item) => item.key === activeKey);
 
   const drawerCloseHd = () => {
-    setDrClose(true);
-    setTimeout(() => {
-      setDrClose(false);
-      onClose();
-    }, 600);
+    setDrClose(false);
+    onClose();
   };
 
   return (

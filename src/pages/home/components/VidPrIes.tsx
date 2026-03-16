@@ -1,6 +1,8 @@
+import { useMediaQuery } from 'react-responsive';
 import { IesClSection } from '@/components';
 
 const VidPrIes: React.FC = () => {
+  const isMb = useMediaQuery({ maxWidth: 1024 });
   return (
     <IesClSection
       id='vidPr'
@@ -10,7 +12,8 @@ const VidPrIes: React.FC = () => {
       titVid={`A launching ground for inspirational
 impacts`}
       vidLink='https://www.youtube.com/embed/8G1vC-hJjjc?si=Q_cV53WSlXUtmrA7'
-      className='h-full'
+      mb={isMb}
+      height={`${!isMb ? '70vh' : '52vh'}`}
     />
   );
 };

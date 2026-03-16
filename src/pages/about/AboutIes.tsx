@@ -1,6 +1,7 @@
 import { Col, Flex, Image, Tabs, type TabsProps } from 'antd';
 import { lazy, useCallback, useEffect, useMemo, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
+import styles from './iesAbout.module.scss';
 import IESLG from '@/assets/imgs/ies_logo_text.png';
 import { Text, Title } from '@/components';
 import { AboutTab } from '@/constants';
@@ -17,21 +18,42 @@ const AboutIes: React.FC = () => {
     () => [
       {
         key: AboutTab.Aboverview,
-        label: 'Overview',
+        label: (
+          <Title
+            level={4}
+            className={`${activeKey === AboutTab.Aboverview ? '!text-white' : '!text-black'} !m-0`}
+          >
+            Overview
+          </Title>
+        ),
         children: <AbOverview />,
       },
       {
         key: AboutTab.Vision,
-        label: 'Vision',
+        label: (
+          <Title
+            level={4}
+            className={`${activeKey === AboutTab.Vision ? '!text-white' : '!text-black'} !m-0`}
+          >
+            Vision
+          </Title>
+        ),
         children: <AbVision />,
       },
       {
         key: AboutTab.Corevalues,
-        label: 'Core Values',
+        label: (
+          <Title
+            level={4}
+            className={`${activeKey === AboutTab.Corevalues ? '!text-white' : '!text-black'} !m-0`}
+          >
+            Core Values
+          </Title>
+        ),
         children: <AbCoreValue />,
       },
     ],
-    [],
+    [activeKey],
   );
 
   const handleChangeTab = useCallback(
@@ -81,7 +103,13 @@ const AboutIes: React.FC = () => {
           </Col>
         </Flex>
       </div>
-      <Tabs activeKey={activeKey} items={tabs} onChange={handleChangeTab} />
+      <Tabs
+        activeKey={activeKey}
+        items={tabs}
+        onChange={handleChangeTab}
+        type='card'
+        className={`${styles.customTabs} !mt-5`}
+      />
     </section>
   );
 };

@@ -1,7 +1,8 @@
 import { Flex, Image, Layout } from 'antd';
 import MediaQuery, { useMediaQuery } from 'react-responsive';
+import MegaMbDrawer from './MegaMbDrawer';
 import NavLst from './NavLst';
-import IES_LOGO_MB from '@/assets/imgs/ies_logo_notext.png';
+import IES_LOGO_MB from '@/assets/imgs/ies_logo_hoziro.png';
 import IES_LOGO_URL from '@/assets/imgs/ies_logo_text.png';
 import IesClientLang from '@/components/AppDropdown';
 import { PrefetchLink } from '@/components/PrefetchLink';
@@ -15,67 +16,66 @@ interface IHeaderIes {
 
 const HeaderIes: React.FC<IHeaderIes> = (props) => {
   const { setDrawerKey } = props;
-  const isMobile = useMediaQuery({ maxWidth: 1024 });
+  const isMb = useMediaQuery({ maxWidth: 1024 });
 
   return (
     <>
-      <Header
-        style={{
-          padding: isMobile ? '0px 10px' : '20px 30px',
-          height: 30,
-          backgroundColor: '#2d334d',
-        }}
-        className='!flex !items-center !shadow-2xl '
-      >
-        <MediaQuery minWidth={1025}>
-          <div className='!w-full pr-10'>
-            <Flex justify='end' align='center' gap={15}>
-              <PrefetchLink
-                to={ROUTES.ROOT}
-                className='!text-white !bg-blue-500 px-3 py-0.5 rounded-sm !text-lg'
-              >
-                IES
-              </PrefetchLink>
+      <MediaQuery minWidth={1025}>
+        <Header
+          style={{
+            padding: '20px 30px',
+            height: 30,
+            backgroundColor: '#2d334d',
+          }}
+          className='!flex !items-center !shadow-2xl '
+        >
+          <Flex
+            justify='center'
+            align='center'
+            gap={40}
+            className='!w-full !pl-80 '
+          >
+            <PrefetchLink
+              to={ROUTES.ROOT}
+              className='!text-white !bg-blue-500 px-3 py-0.5 rounded-sm !text-lg'
+            >
+              IES College
+            </PrefetchLink>
+            <PrefetchLink to={ROUTES.ROOT} className='!text-white !text-lg'>
+              IES Student
+            </PrefetchLink>
 
-              <PrefetchLink to={ROUTES.ROOT} className='!text-white !text-lg'>
-                IES staff
-              </PrefetchLink>
-            </Flex>
-          </div>
-        </MediaQuery>
-      </Header>
+            <PrefetchLink to={ROUTES.ROOT} className='!text-white !text-lg'>
+              IES College staff
+            </PrefetchLink>
+            <IesClientLang />
+          </Flex>
+        </Header>
+      </MediaQuery>
       <Header
         style={{
-          padding: isMobile ? '0px 10px' : '40px 40px',
+          padding: isMb ? '0px 10px' : '40px 40px',
           height: 60,
         }}
-        className='!flex !items-center !justify-between !bg-white'
+        className='!flex !items-center !justify-center gap-x-60 !bg-white'
       >
         <PrefetchLink
           to={ROUTES.DASHBOARD}
           className='!block !flex !items-center'
         >
           <Image
-            className='!w-42 !h-25'
-            src={isMobile ? IES_LOGO_MB : IES_LOGO_URL}
-            alt='VIETRON Technology Company Limited'
+            className={`${!isMb ? '!w-42 !h-25' : '!w-auto !h-auto !mt-1.5 pr-12'}`}
+            src={isMb ? IES_LOGO_MB : IES_LOGO_URL}
+            alt='ies_logo'
             preview={false}
           />
         </PrefetchLink>
         <MediaQuery minWidth={1025}>
           <NavLst setDrawerKey={setDrawerKey} />
         </MediaQuery>
-        <IesClientLang />
 
         <MediaQuery maxWidth={1024}>
-          <div
-            style={{
-              display: 'flex',
-              alignItems: 'center',
-              gap: '9px',
-              flex: 1,
-            }}
-          ></div>
+          <MegaMbDrawer />
         </MediaQuery>
       </Header>
     </>

@@ -4,7 +4,7 @@ import { Outlet } from 'react-router-dom';
 import FooterIes from './components/FooterIes';
 import HeaderIes from './components/HeaderIes';
 import MegaDrawer from './components/MegaDrawer';
-import styles from './iesClLayout.module.scss';
+import styles from './styles/iesClLayout.module.scss';
 import { PageContainer } from '@/components';
 import type { RoutePath } from '@/constants';
 

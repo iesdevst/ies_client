@@ -1,4 +1,4 @@
-import { RightOutlined } from '@ant-design/icons';
+import { ArrowRightOutlined, RightOutlined } from '@ant-design/icons';
 import { Button, Card, Carousel, Col, Divider, Flex, Image, Row } from 'antd';
 import type { CSSProperties, ReactNode } from 'react';
 import { Text, Title } from '../AntTypography';
@@ -115,10 +115,10 @@ export const IesClSection: React.FC<SubSectionProps> = (props) => {
     return (
       <div className={`${className}`}>
         <Carousel
-          pauseOnHover={false}
+          pauseOnHover={true}
           autoplay
-          effect='fade'
-          dots
+          effect={`${!mb ? 'fade' : 'scrollx'}`}
+          dots={!mb}
           arrows={false}
           className={styles.dotCustom}
         >
@@ -127,7 +127,7 @@ export const IesClSection: React.FC<SubSectionProps> = (props) => {
               <img
                 src={img}
                 style={{
-                  objectFit: 'fill',
+                  objectFit: !mb ? 'fill' : 'revert-layer',
                   zIndex: -1,
                 }}
                 className='relative !w-full !h-[87.7vh]'
@@ -280,14 +280,15 @@ export const IesClSection: React.FC<SubSectionProps> = (props) => {
 
     return (
       <Flex
+        vertical={mb}
         className='!w-full items-stretch'
-        align='end'
+        align={`${!mb ? 'end' : 'center'}`}
         justify='space-between'
       >
         {/* LEFT - VIDEO */}
         {vidLink && (
-          <div className='!flex-[2] !pl-20'>
-            <div className='w-full aspect-video !pb-7'>
+          <div className={`relative ${!mb ? '!flex-[2] !pl-20' : ''}`}>
+            <div className='w-full aspect-video !pb-7 '>
               <iframe
                 className='w-full !h-full rounded-xl shadow-lg'
                 src={vidLink}
@@ -295,15 +296,13 @@ export const IesClSection: React.FC<SubSectionProps> = (props) => {
                 allowFullScreen
               />
             </div>
-          </div>
-        )}
 
-        <div className='flex-[1.5] relative mb-10'>
-          <Col className='relative pr-18 '>
-            <div className='absolute right-20 bottom-60 z-20 w-full'>
+            <div
+              className={`absolute z-20 ${!mb ? 'left-220 top-20 w-2/3' : 'right-0 top-0 !w-full'}`}
+            >
               <Row
                 className='bg-[#2b2f6b] pb-4'
-                justify={'space-between'}
+                justify={!mb ? 'space-between' : 'center'}
                 align={'middle'}
               >
                 <Title
@@ -319,14 +318,22 @@ export const IesClSection: React.FC<SubSectionProps> = (props) => {
                 />
               </Row>
             </div>
+          </div>
+        )}
 
-            <div className='pl-17 py-7'>
+        <div className={`${!mb ? 'mb-10 flex-[1.5]' : ''}`}>
+          <Col className={`${!mb ? 'pr-18' : ''}`}>
+            <div className={`${!mb ? 'pl-17 py-7' : 'px-5'}`}>
               <Text className='mb-8 !text-lg !text-start' color='#2d334d'>
                 {desVid}
               </Text>
             </div>
 
-            <Row justify={'end'} align={'middle'} className='!gap-x-4'>
+            <Row
+              justify={`${!mb ? 'end' : 'start'}`}
+              align={'middle'}
+              className={`!gap-x-3 ${!mb ? '' : 'pl-5 mt-3.5'}`}
+            >
               <Title level={4} className='!m-0'>
                 {bottomTit}
               </Title>
@@ -335,7 +342,7 @@ export const IesClSection: React.FC<SubSectionProps> = (props) => {
                 shape='circle'
                 className='!bg-red-600 !border-none !text-white flex items-center justify-center'
               >
-                〉
+                <ArrowRightOutlined />
               </Button>
             </Row>
           </Col>

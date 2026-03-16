@@ -1,0 +1,28 @@
+/* mobile drawer collapse */
+
+.mbMegaCollapse {
+  :global(.ant-collapse-item) {
+    border-bottom: 1px solid #cfd2d8;
+    padding: 10px 0;
+  }
+
+  :global(.ant-collapse-header) {
+    border: none !important;
+  }
+
+  :global(.ant-collapse-content) {
+    background: transparent !important;
+    border-top: none !important;
+
+    .ant-collapse-content-box {
+      background: transparent !important;
+      padding: 2.5px 16px 20px 16px !important;
+    }
+  }
+}
+
+.mbDrawer {
+  :global(.ant-drawer-body) {
+    padding: 0;
+  }
+}
