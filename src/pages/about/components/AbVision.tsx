@@ -17,7 +17,8 @@ const AbVision = () => {
           src={AB_VS_CR}
           className='!w-full'
           style={{
-            objectFit: 'cover',
+            objectFit: 'fill',
+            height: '65vh',
           }}
         />
       </div>
@@ -44,7 +45,7 @@ const AbVision = () => {
           <div className='flex-1 flex justify-center'>
             <Button
               type='default'
-              className='!border-none !bg-[#5EA61F] !rounded-3xl !px-7 !py-6 !font-semibold !text-lg'
+              className='!border-none !bg-[#5EA61F] !rounded-3xl !px-7 !py-6 !font-semibold !text-lg hover:!bg-[#b1e087] hover:!text-black'
             >
               Contact Now
             </Button>

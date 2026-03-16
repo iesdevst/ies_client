@@ -14,10 +14,12 @@ type AllLocaleDefinition = Record<
   { locale: IesClientLangEnum; label: React.ReactNode; flagCode: string }
 >;
 
-type IIesLangProps = Omit<IDropdownAlphaProps, 'items'>;
+type IIesLangProps = Omit<IDropdownAlphaProps, 'items'> & {
+  colorT?: string;
+};
 
 const IesClientLang: React.FunctionComponent<IIesLangProps> = (props) => {
-  const { ...dropdownProps } = props || {};
+  const { colorT, ...dropdownProps } = props || {};
   const dropRef = useRef<DropdownAlphaRef>(null);
   const { i18n } = useTranslation();
   const { language, changeLanguage } = i18n;
@@ -86,10 +88,12 @@ const IesClientLang: React.FunctionComponent<IIesLangProps> = (props) => {
     >
       <div className='!flex !items-center'>
         <Flag country={currentLanguage.flagCode} size={24} className='mr-2' />
-        <Title level={5} className='!m-0 !text-black'>
+        <Title level={5} className={`!m-0 ${colorT ? colorT : '!text-black'}`}>
           {currentLanguage.label}
         </Title>
-        <DownOutlined className='!ml-1 !mt-1 !text-black' />
+        <DownOutlined
+          className={`!ml-1 !mt-1 ${colorT ? colorT : '!text-black'}`}
+        />
       </div>
     </DropdownAlpha>
   );

@@ -1,9 +1,9 @@
-import { Col, Flex, Image, Tabs, type TabsProps } from 'antd';
+import { Tabs, type TabsProps } from 'antd';
 import { lazy, useCallback, useEffect, useMemo, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import styles from './iesAbout.module.scss';
-import IESLG from '@/assets/imgs/ies_logo_text.png';
-import { Text, Title } from '@/components';
+import VAM from '@/assets/imgs/vision_mission_crs.png';
+import { Title } from '@/components';
 import { AboutTab } from '@/constants';
 
 const AbOverview = lazy(() => import('@/pages/about/components/AbOverview'));
@@ -77,38 +77,23 @@ const AboutIes: React.FC = () => {
     }
   }, [searchParams, setSearchParams]);
   return (
-    <section>
-      <div>
-        <Flex justify='space-between' align='center' className='!px-30'>
-          <div>
-            <Image src={IESLG} preview={false} className='!w-125 !h-125' />
-          </div>
-
-          <Col className='!text-center'>
-            <Title className='!m-0 !mb-1.5 !text-black !font-bold'>
-              ABOUT IES COLLEGE
-            </Title>
-            <Title className='!m-0 !mb-6 !text-black !font-bold'>
-              Modern Workforce Training
-            </Title>
-            <Text color='black' className='!text-lg'>
-              IES College provides a strong academic foundation linked to
-              real-world practice.
-            </Text>
-            <br />
-            <Text color='black' className='!text-lg'>
-              Helping students build practical skills and be ready for the job
-              market.
-            </Text>
-          </Col>
-        </Flex>
+    <section className='!bg-white'>
+      <div className='!w-full !h-full'>
+        <img
+          src={VAM}
+          className='!w-full'
+          style={{
+            objectFit: 'fill',
+            height: '80vh',
+          }}
+        />
       </div>
       <Tabs
         activeKey={activeKey}
         items={tabs}
         onChange={handleChangeTab}
         type='card'
-        className={`${styles.customTabs} !mt-5`}
+        className={`${styles.customTabs} !mt-3`}
       />
     </section>
   );

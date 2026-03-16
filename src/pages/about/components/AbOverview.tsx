@@ -16,7 +16,7 @@ const AbOverview: React.FC = () => {
             <Button
               size='large'
               type='default'
-              className='!border-none !bg-black ml-5'
+              className='!border-none !bg-black ml-5  hover:!bg-gray-400 hover:!text-black'
             >
               Contact Now
             </Button>
