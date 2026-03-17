@@ -6,6 +6,7 @@ import IesClientLayout from '@/layouts/IesClientLayout';
 
 const Dashboard = lazy(() => import('@/pages/home/Dashboard'));
 const About = lazy(() => import('@/pages/about/AboutIes'));
+const Academics = lazy(() => import('@/pages/training/IesTraining'));
 
 export const router = createBrowserRouter([
   {
@@ -20,6 +21,7 @@ export const router = createBrowserRouter([
         children: [
           { path: ROUTES.DASHBOARD, element: <Dashboard /> },
           { path: ROUTES.ABOUT, element: <About /> },
+          { path: ROUTES.ACADEMICS, element: <Academics /> },
         ],
       },
       { path: '*', element: <div>Not Found Page</div> },

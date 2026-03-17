@@ -1,0 +1,39 @@
+.iesTrainTabs {
+  :global {
+    .ant-tabs-nav::before {
+      border-bottom: none !important;
+    }
+    .ant-tabs-nav-wrap {
+      background: #2f6fd6;
+      padding: 10px;
+      border-radius: 999px;
+      margin: 0 320px 0 320px;
+    }
+
+    .ant-tabs-tab {
+      color: #fff;
+      font-weight: 500;
+      border-radius: 999px;
+      padding: 6px 18px;
+      transition: all 0.3s ease;
+    }
+
+    .ant-tabs-tab:hover {
+      color: #fff;
+      opacity: 0.85;
+    }
+
+    .ant-tabs-tab-active {
+      background: #fff;
+    }
+
+    .ant-tabs-tab-active .ant-tabs-tab-btn {
+      color: #2f6fd6 !important;
+      font-weight: 600;
+    }
+
+    .ant-tabs-ink-bar {
+      display: none; // ẩn line dưới
+    }
+  }
+}

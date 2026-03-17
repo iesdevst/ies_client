@@ -11,8 +11,8 @@ const AbVision = lazy(() => import('@/pages/about/components/AbVision'));
 const AbCoreValue = lazy(() => import('@/pages/about/components/AbCoreValue'));
 
 const AboutIes: React.FC = () => {
-  const [searchParams, setSearchParams] = useSearchParams();
-  const [activeKey, setActiveKey] = useState<AboutTab>();
+  const [abtSearchParams, setAbtSearchParams] = useSearchParams();
+  const [abtActiveKey, setAbtActiveKey] = useState<AboutTab>();
 
   const tabs: TabsProps['items'] = useMemo(
     () => [
@@ -21,7 +21,7 @@ const AboutIes: React.FC = () => {
         label: (
           <Title
             level={4}
-            className={`${activeKey === AboutTab.Aboverview ? '!text-white' : '!text-black'} !m-0`}
+            className={`${abtActiveKey === AboutTab.Aboverview ? '!text-white' : '!text-black'} !m-0`}
           >
             Overview
           </Title>
@@ -33,7 +33,7 @@ const AboutIes: React.FC = () => {
         label: (
           <Title
             level={4}
-            className={`${activeKey === AboutTab.Vision ? '!text-white' : '!text-black'} !m-0`}
+            className={`${abtActiveKey === AboutTab.Vision ? '!text-white' : '!text-black'} !m-0`}
           >
             Vision
           </Title>
@@ -45,7 +45,7 @@ const AboutIes: React.FC = () => {
         label: (
           <Title
             level={4}
-            className={`${activeKey === AboutTab.Corevalues ? '!text-white' : '!text-black'} !m-0`}
+            className={`${abtActiveKey === AboutTab.Corevalues ? '!text-white' : '!text-black'} !m-0`}
           >
             Core Values
           </Title>
@@ -53,29 +53,29 @@ const AboutIes: React.FC = () => {
         children: <AbCoreValue />,
       },
     ],
-    [activeKey],
+    [abtActiveKey],
   );
 
   const handleChangeTab = useCallback(
     (key: string) => {
-      searchParams.set('tab', key);
-      setSearchParams(searchParams, { replace: true });
-      setActiveKey(key as AboutTab);
+      abtSearchParams.set('tab', key);
+      setAbtSearchParams(abtSearchParams, { replace: true });
+      setAbtActiveKey(key as AboutTab);
     },
-    [searchParams, setSearchParams],
+    [abtSearchParams, setAbtSearchParams],
   );
 
   useEffect(() => {
-    const tab = searchParams.get('tab');
+    const tab = abtSearchParams.get('tab');
 
     if (tab) {
-      setActiveKey(tab as AboutTab);
+      setAbtActiveKey(tab as AboutTab);
     } else {
-      searchParams.set('tab', AboutTab.Aboverview);
-      setSearchParams(searchParams, { replace: true });
-      setActiveKey(AboutTab.Aboverview);
+      abtSearchParams.set('tab', AboutTab.Aboverview);
+      setAbtSearchParams(abtSearchParams, { replace: true });
+      setAbtActiveKey(AboutTab.Aboverview);
     }
-  }, [searchParams, setSearchParams]);
+  }, [abtSearchParams, setAbtSearchParams]);
   return (
     <section className='!bg-white'>
       <div className='!w-full !h-full'>
@@ -89,7 +89,7 @@ const AboutIes: React.FC = () => {
         />
       </div>
       <Tabs
-        activeKey={activeKey}
+        activeKey={abtActiveKey}
         items={tabs}
         onChange={handleChangeTab}
         type='card'

@@ -1,4 +1,8 @@
 .customTabs {
+  :global(.ant-tabs-nav::before) {
+    border-bottom: 1px solid rgb(141, 177, 190) !important;
+  }
+
   :global(.ant-tabs-nav-wrap) {
     margin-left: 20px !important;
   }

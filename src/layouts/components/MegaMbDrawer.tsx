@@ -20,14 +20,14 @@ import { PrefetchLink } from '@/components/PrefetchLink';
 import { ROUTES, type RoutePath } from '@/constants';
 
 const MegaMbDrawer: React.FC = () => {
-  const navMbItems = useMegaNavData();
+  const { data } = useMegaNavData();
   const navigate = useNavigate();
   const [mbDrawerOpen, setMbDrawerOpen] = useState(false);
   const [actClKey, setActClKey] = useState<RoutePath | Array<RoutePath>>();
 
   // menu collaspe
 
-  const items: CollapseProps['items'] = navMbItems.map((navI) => {
+  const items: CollapseProps['items'] = data.map((navI) => {
     const isAct = Array.isArray(actClKey)
       ? actClKey.includes(navI.key)
       : actClKey === navI.key;

@@ -1,10 +1,11 @@
 import { ROUTES, type RoutePath } from '@/constants';
 
-export const useMegaNavData = (): Array<MegaNavItem> => {
-  return [
+export const useMegaNavData = (): { data: Array<MegaNavItem> } => {
+  const data: Array<MegaNavItem> = [
     {
       key: ROUTES.ABOUT,
       label: 'About',
+      overW: true,
       sections: [
         {
           links: [
@@ -16,38 +17,38 @@ export const useMegaNavData = (): Array<MegaNavItem> => {
     },
 
     {
-      key: ROUTES.ACADEMIS,
+      key: ROUTES.ACADEMICS,
       label: 'Academics',
+      overW: false,
       sections: [
+        // {
+        //   title: 'Short-term Training Programs',
+        //   links: [
+        //     { label: '', route: '/' },
+        //     { label: '', route: '/' },
+        //   ],
+        // },
         {
-          title: 'IT & Office',
+          title: 'Intermediate Vocational Training Programs',
           links: [
-            { label: 'Applied Informatics', route: '/' },
-            { label: 'Office Administration', route: '/' },
+            { label: 'All Courses', route: ROUTES.ACADEMICS_ALL },
+            { label: 'IT & Office', route: ROUTES.ACADEMICS_IT },
+            { label: 'Hospitality & Services', route: ROUTES.ACADEMICS_HOSPI },
+            { label: 'Design & Creativity', route: ROUTES.ACADEMICS_DESIGN },
+            { label: 'Business & Management', route: ROUTES.ACADEMICS_BUSI },
           ],
         },
-        {
-          title: 'Hospitality & Services',
-          links: [{ label: 'Hotel Management & Business', route: '/' }],
-        },
-        {
-          title: 'Design & Creativity',
-          links: [{ label: 'Fine Arts Design', route: '/' }],
-        },
-        {
-          title: 'Business & Management',
-          links: [
-            { label: 'Business Administration', route: '/' },
-            { label: 'Marketing', route: '/' },
-            { label: 'Accounting', route: '/' },
-          ],
-        },
+        // {
+        //   title: "University Admissions",
+        //   links: [{ label: "", route: "/" }],
+        // },
       ],
     },
 
     {
       key: ROUTES.ADMISSIONS,
       label: 'Admissions',
+      overW: false,
       sections: [
         {
           title: 'IES',
@@ -72,6 +73,7 @@ export const useMegaNavData = (): Array<MegaNavItem> => {
     {
       key: ROUTES.CAREEROP,
       label: 'Career Opportunities',
+      overW: false,
       sections: [
         {
           links: [
@@ -85,6 +87,7 @@ export const useMegaNavData = (): Array<MegaNavItem> => {
     {
       key: ROUTES.NEWS,
       label: 'News & Events',
+      overW: false,
       sections: [
         {
           title: 'IES news',
@@ -100,6 +103,7 @@ export const useMegaNavData = (): Array<MegaNavItem> => {
     {
       key: ROUTES.PUBDIS,
       label: 'Public Disclosure',
+      overW: false,
       sections: [
         {
           title: 'Quality Assessment',
@@ -118,6 +122,7 @@ export const useMegaNavData = (): Array<MegaNavItem> => {
       ],
     },
   ];
+  return { data };
 };
 
 export type MegaNavLink = {
@@ -133,5 +138,6 @@ export type MegaNavSec = {
 export type MegaNavItem = {
   key: RoutePath;
   label: string;
+  overW: boolean;
   sections: Array<MegaNavSec>;
 };
