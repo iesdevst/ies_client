@@ -31,11 +31,20 @@ export const useMegaNavData = (): { data: Array<MegaNavItem> } => {
         {
           title: 'Intermediate Vocational Training Programs',
           links: [
-            { label: 'All Courses', route: ROUTES.ACADEMICS_ALL },
-            { label: 'IT & Office', route: ROUTES.ACADEMICS_IT },
-            { label: 'Hospitality & Services', route: ROUTES.ACADEMICS_HOSPI },
-            { label: 'Design & Creativity', route: ROUTES.ACADEMICS_DESIGN },
-            { label: 'Business & Management', route: ROUTES.ACADEMICS_BUSI },
+            { label: 'All Courses', route: ROUTES.ACADEMICSVOCA_ALL },
+            { label: 'IT & Office', route: ROUTES.ACADEMICSVOCA_IT },
+            {
+              label: 'Hospitality & Services',
+              route: ROUTES.ACADEMICSVOCA_HOSPI,
+            },
+            {
+              label: 'Design & Creativity',
+              route: ROUTES.ACADEMICSVOCA_DESIGN,
+            },
+            {
+              label: 'Business & Management',
+              route: ROUTES.ACADEMICSVOCA_BUSI,
+            },
           ],
         },
         // {

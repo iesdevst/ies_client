@@ -7,16 +7,20 @@ import {
 } from '@ant-design/icons';
 import { Button, Card, Col, Flex, Image, Row } from 'antd';
 import { useMemo, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { useTrainingData } from '../hooks';
 import { Text, Title } from '@/components';
+import { ROUTES } from '@/constants';
+import { ProgramSlugEnum } from '@/utils';
 
 interface IProgLstCard {
-  slugName?: string;
+  slugName: ProgramSlugEnum;
 }
 
 const ProgLstCard: React.FC<IProgLstCard> = (props) => {
   const { slugName } = props || {};
   const { data } = useTrainingData();
+  const navigate = useNavigate();
   const [expandedMap, setExpandedMap] = useState<Record<string, boolean>>({});
   const toggleExpand = (key: string) => {
     setExpandedMap((prev) => ({
@@ -26,9 +30,10 @@ const ProgLstCard: React.FC<IProgLstCard> = (props) => {
   };
 
   const trainings = useMemo(() => {
-    const programs = slugName
-      ? data.filter((item) => item.slug === slugName)
-      : data;
+    const programs =
+      slugName !== ProgramSlugEnum.All
+        ? data.filter((item) => item.slug === slugName)
+        : data;
 
     return programs.flatMap((prog) =>
       prog.trainings.map((train) => ({
@@ -117,6 +122,9 @@ const ProgLstCard: React.FC<IProgLstCard> = (props) => {
                 <Button
                   type='default'
                   className='!bg-[#2974D7] !w-full !border-none !rounded-2xl hover:!bg-[#6aa1e8]'
+                  onClick={() =>
+                    navigate(`${ROUTES.DEMICS_DETAIL}/${train.progType}`)
+                  }
                 >
                   Explore Program
                 </Button>

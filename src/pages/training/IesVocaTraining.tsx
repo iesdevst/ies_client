@@ -3,42 +3,43 @@ import { lazy, useCallback, useEffect, useMemo, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import styles from './iesTraining.module.scss';
 import { Title } from '@/components';
-import { AcademicsTab } from '@/constants';
+import { AcademicsVocaTab } from '@/constants';
+import { ProgramSlugEnum } from '@/utils';
 
 const ProgLstCard = lazy(
   () => import('@/pages/training/components/ProgLstCard'),
 );
 
-const IesTraining: React.FC = () => {
+const IesVocaTraining: React.FC = () => {
   const [trainSearchPrs, setTrainSearchPrs] = useSearchParams();
-  const [trainActKey, setTrainActKey] = useState<AcademicsTab>();
+  const [trainActKey, setTrainActKey] = useState<AcademicsVocaTab>();
 
   const tabs: TabsProps['items'] = useMemo(
     () => [
       {
-        key: AcademicsTab.AllCour,
+        key: AcademicsVocaTab.AllCour,
         label: 'All Programs',
-        children: <ProgLstCard />,
+        children: <ProgLstCard slugName={ProgramSlugEnum.All} />,
       },
       {
-        key: AcademicsTab.Design,
+        key: AcademicsVocaTab.Design,
         label: 'Design & Creativity',
-        children: <ProgLstCard slugName='design' />,
+        children: <ProgLstCard slugName={ProgramSlugEnum.Design} />,
       },
       {
-        key: AcademicsTab.Business,
+        key: AcademicsVocaTab.Business,
         label: 'Business & Management',
-        children: <ProgLstCard slugName='busiMana' />,
+        children: <ProgLstCard slugName={ProgramSlugEnum.Business} />,
       },
       {
-        key: AcademicsTab.Hospitality,
+        key: AcademicsVocaTab.Hospitality,
         label: 'Hospitality & Services',
-        children: <ProgLstCard slugName='hospitality' />,
+        children: <ProgLstCard slugName={ProgramSlugEnum.Hospitality} />,
       },
       {
-        key: AcademicsTab.ItOffice,
+        key: AcademicsVocaTab.ItOffice,
         label: 'IT & Office',
-        children: <ProgLstCard slugName='it-office' />,
+        children: <ProgLstCard slugName={ProgramSlugEnum.IT} />,
       },
     ],
     [trainActKey],
@@ -48,7 +49,7 @@ const IesTraining: React.FC = () => {
     (key: string) => {
       trainSearchPrs.set('tab', key);
       setTrainSearchPrs(trainSearchPrs, { replace: true });
-      setTrainActKey(key as AcademicsTab);
+      setTrainActKey(key as AcademicsVocaTab);
     },
     [trainSearchPrs, setTrainSearchPrs],
   );
@@ -56,11 +57,11 @@ const IesTraining: React.FC = () => {
   useEffect(() => {
     const tab = trainSearchPrs.get('tab');
     if (tab) {
-      setTrainActKey(tab as AcademicsTab);
+      setTrainActKey(tab as AcademicsVocaTab);
     } else {
-      trainSearchPrs.set('tab', AcademicsTab.AllCour);
+      trainSearchPrs.set('tab', AcademicsVocaTab.AllCour);
       setTrainSearchPrs(trainSearchPrs, { replace: true });
-      setTrainActKey(AcademicsTab.AllCour);
+      setTrainActKey(AcademicsVocaTab.AllCour);
     }
   }, [trainSearchPrs, setTrainSearchPrs]);
 
@@ -83,4 +84,4 @@ const IesTraining: React.FC = () => {
   );
 };
 
-export default IesTraining;
+export default IesVocaTraining;
