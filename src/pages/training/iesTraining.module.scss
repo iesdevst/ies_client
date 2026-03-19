@@ -37,3 +37,49 @@
     }
   }
 }
+
+.iesTrainDtTabs {
+  :global {
+    .ant-tabs-nav::before {
+      border-bottom: none !important;
+    }
+    .ant-tabs-nav-wrap {
+      padding: 0;
+    }
+
+    .ant-tabs-tab {
+      color: black;
+      font-weight: 700;
+      padding: 6px 18px;
+      transition: all 0.3s ease !important;
+      background: white;
+      border-radius: 10px 10px 0 0;
+      margin: 0 0 0 10px !important;
+    }
+
+    .ant-tabs-tab:hover {
+      color: #fff;
+      opacity: 0.85;
+      background-color: #c44bc4;
+    }
+
+    .ant-tabs-tab-active {
+      background: #c92cc9;
+    }
+
+    .ant-tabs-tab-active .ant-tabs-tab-btn {
+      color: white !important;
+      font-weight: 600;
+    }
+
+    .ant-tabs-ink-bar {
+      display: none;
+    }
+  }
+}
+
+.breadCrumbCus ol {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}

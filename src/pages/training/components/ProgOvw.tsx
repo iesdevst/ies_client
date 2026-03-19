@@ -1,4 +1,5 @@
 import { Col } from 'antd';
+import { useMediaQuery } from 'react-responsive';
 import type { OvwDetail } from '../hooks';
 import { Text, Title } from '@/components';
 
@@ -7,10 +8,14 @@ interface IProgOvwProps {
 }
 
 const ProgOvw: React.FC<IProgOvwProps> = (props) => {
+  const isMb = useMediaQuery({ maxWidth: 1024 });
+
   const { ovwDt } = props;
 
   return (
-    <section className='bg-white p-10 rounded-2xl'>
+    <section
+      className={`bg-white rounded-2xl ${!isMb ? 'p-10' : 'pb-10 pt-5 px-3.5'}`}
+    >
       {ovwDt && (
         <div className='space-y-5'>
           <Col className='!space-y-4'>

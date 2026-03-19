@@ -18,7 +18,7 @@ export const useMegaNavData = (): { data: Array<MegaNavItem> } => {
 
     {
       key: ROUTES.ACADEMICS,
-      label: 'Academics',
+      label: 'Admissions',
       overW: false,
       sections: [
         // {
@@ -56,7 +56,7 @@ export const useMegaNavData = (): { data: Array<MegaNavItem> } => {
 
     {
       key: ROUTES.ADMISSIONS,
-      label: 'Admissions',
+      label: 'Academics',
       overW: false,
       sections: [
         {

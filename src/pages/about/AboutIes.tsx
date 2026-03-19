@@ -1,10 +1,12 @@
-import { Tabs, type TabsProps } from 'antd';
+import { RightOutlined } from '@ant-design/icons';
+import { Breadcrumb, Tabs, type TabsProps } from 'antd';
 import { lazy, useCallback, useEffect, useMemo, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import styles from './iesAbout.module.scss';
 import VAM from '@/assets/imgs/vision_mission_crs.png';
-import { Title } from '@/components';
-import { AboutTab } from '@/constants';
+import { Text, Title } from '@/components';
+import { PrefetchLink } from '@/components/PrefetchLink';
+import { AboutTab, ROUTES } from '@/constants';
 
 const AbOverview = lazy(() => import('@/pages/about/components/AbOverview'));
 const AbVision = lazy(() => import('@/pages/about/components/AbVision'));
@@ -78,14 +80,41 @@ const AboutIes: React.FC = () => {
   }, [abtSearchParams, setAbtSearchParams]);
   return (
     <section className='!bg-white'>
-      <div className='!w-full !h-full'>
-        <img
-          src={VAM}
-          className='!w-full'
-          style={{
-            objectFit: 'fill',
-            height: '80vh',
-          }}
+      <div
+        className='!w-full !h-full pb-150 pt-10'
+        style={{
+          backgroundImage: `url(${VAM})`,
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          backgroundRepeat: 'no-repeat',
+        }}
+      >
+        <Breadcrumb
+          className={`!bg-[#eaeaea] !w-1/7 !ml-25 !py-3 !rounded-full ${styles.breadCrumbCusAb}`}
+          separator={<RightOutlined className='!text-black' />}
+          items={[
+            {
+              title: (
+                <PrefetchLink
+                  to={ROUTES.DASHBOARD}
+                  style={{
+                    color: 'black',
+                    fontWeight: 700,
+                    fontSize: '15px',
+                  }}
+                >
+                  Dasboard
+                </PrefetchLink>
+              ),
+            },
+            {
+              title: (
+                <Text color='#199b9f' className='!text-[16px] !font-semibold'>
+                  About IES
+                </Text>
+              ),
+            },
+          ]}
         />
       </div>
       <Tabs

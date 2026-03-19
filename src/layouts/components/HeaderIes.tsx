@@ -54,10 +54,10 @@ const HeaderIes: React.FC<IHeaderIes> = (props) => {
       </MediaQuery>
       <Header
         style={{
-          padding: isMb ? '0px 10px' : '40px 40px',
+          padding: isMb ? '30px 20px 0 20px' : '55px 40px',
           height: 60,
         }}
-        className='!flex !items-center !justify-center gap-x-60 !bg-white'
+        className={`!flex !items-center !justify-center ${!isMb ? 'gap-x-60' : 'gap-x-20'} !bg-white`}
       >
         <PrefetchLink
           to={ROUTES.DASHBOARD}

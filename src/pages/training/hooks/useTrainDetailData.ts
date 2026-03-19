@@ -1,3 +1,12 @@
+import ACCTD from '@/assets/imgs/accounting_detail.png';
+import APPIFD from '@/assets/imgs/applied_info_detail.png';
+import ADSD from '@/assets/imgs/art_ds_detail.png';
+import BUSID from '@/assets/imgs/busi_admin_detail.png';
+import HOSD from '@/assets/imgs/hospi_manage_detail.png';
+import INDUSD from '@/assets/imgs/idustrial_detail.png';
+import ITD from '@/assets/imgs/it_detail.png';
+import MTKD from '@/assets/imgs/mtk_details.png';
+import OFAD from '@/assets/imgs/office_admin_detail.png';
 import { ProgTypeEnum } from '@/utils';
 
 export const useTrainDetailData = (): { data: Array<DetailTrain> } => {
@@ -6,6 +15,7 @@ export const useTrainDetailData = (): { data: Array<DetailTrain> } => {
       program: 'IT & Office',
       progTitle: 'Applied Informatics',
       industryType: ProgTypeEnum.AppInfo,
+      imgDetail: APPIFD,
       overview: {
         intro:
           'Applied Informatics is the use of computer technology to support and improve human life in many different fields. With the rapid development of technology today, applied informatics plays an important role in the growth and development of businesses.',
@@ -35,6 +45,7 @@ export const useTrainDetailData = (): { data: Array<DetailTrain> } => {
       program: 'IT & Office',
       progTitle: 'Information Technology',
       industryType: ProgTypeEnum.IT,
+      imgDetail: ITD,
       overview: {
         intro:
           'Information Technology (IT) plays a crucial role in promoting the development of modern society. IT not only contributes significantly to economic growth but also profoundly changes the way wealth is created, as well as human lifestyles and thinking. The application of IT in automating production and business is an inevitable trend, always emphasized due to its great importance in all economic and social fields, especially in the context of the Fourth Industrial Revolution (Industry 4.0) which is impacting the entire world today.',
@@ -67,6 +78,7 @@ export const useTrainDetailData = (): { data: Array<DetailTrain> } => {
       program: 'IT & Office',
       progTitle: 'Industrial & Residential Electrical',
       industryType: ProgTypeEnum.Indus,
+      imgDetail: INDUSD,
       overview: {
         intro:
           'Industrial and Residential Electrical Engineering at the intermediate level is a field that involves work in both civil and industrial sectors such as: repairing electrical and electronic equipment; designing, programming, installing, inspecting, operating, maintaining, servicing, and repairing electrical, electronic, and automation systems in accordance with technical requirements and safety standards, meeting Level 4 requirements in the Vietnam National Qualifications Framework.',
@@ -99,6 +111,7 @@ export const useTrainDetailData = (): { data: Array<DetailTrain> } => {
       program: 'Hospitality & Services',
       progTitle: 'Office Administration',
       industryType: ProgTypeEnum.Office,
+      imgDetail: OFAD,
       overview: {
         intro:
           'An office secretary is responsible for tasks related to general management and administration within an office. They also handle paperwork, administrative and human resource duties, documents, records, meetings, and reception of guests. Today, office secretary has become a common profession in society, playing a vital role in the management and operation of businesses.',
@@ -131,6 +144,7 @@ export const useTrainDetailData = (): { data: Array<DetailTrain> } => {
       program: 'Hospitality & Services',
       progTitle: 'Hospitality Management',
       industryType: ProgTypeEnum.Hospi,
+      imgDetail: HOSD,
       overview: {
         intro:
           'Hotel Management and Business is a field that specializes in training and providing knowledge related to managing and organizing activities in restaurants and hotels.\n\nHotel management and business involves the comprehensive management of all operations of a hotel or accommodation facility, including front office, housekeeping, food and beverage services, marketing, financial management, and human resource management, with the goal of delivering a comfortable experience and meeting customer needs while ensuring business efficiency and maximizing profits.',
@@ -163,6 +177,7 @@ export const useTrainDetailData = (): { data: Array<DetailTrain> } => {
       program: 'Business & Management',
       progTitle: 'Marketing',
       industryType: ProgTypeEnum.Mkt,
+      imgDetail: MTKD,
       overview: {
         intro:
           'What will students learn in the intermediate-level Marketing program? What career opportunities are available after graduation? Is it possible to pursue higher education? Let’s explore the Marketing program at IES.\n\nWith various definitions, Marketing is generally understood as all activities that bring products or services from producers to consumers. These activities include market research, understanding customer needs, developing products or services, promotion, and distribution, with the goals of meeting customer needs, attracting and retaining customers, and achieving business objectives.',
@@ -195,6 +210,7 @@ export const useTrainDetailData = (): { data: Array<DetailTrain> } => {
       program: 'Business & Management',
       progTitle: 'Business Administration',
       industryType: ProgTypeEnum.Business,
+      imgDetail: BUSID,
       overview: {
         intro:
           'Business Management is the process of working with and through individuals, groups, and other resources (equipment, capital, technology) to achieve the goals of an enterprise. It is a highly important role that requires personnel with professional expertise, strong problem-solving abilities, and effective interpersonal skills.',
@@ -227,6 +243,7 @@ export const useTrainDetailData = (): { data: Array<DetailTrain> } => {
       program: 'Computer-Aided Design',
       progTitle: 'Computer-Aided Design',
       industryType: ProgTypeEnum.CompuDs,
+      imgDetail: ADSD,
       overview: {
         intro:
           'The intermediate-level program in Computer-Aided Art and Design (CAAD) is designed to train technicians with professional ethics, cooperation skills, respect for laws and workplace regulations, and good health to support employment and further learning, meeting socio-economic development needs.\n\nThe program focuses on software, hardware, and mathematical tools used to display and present two-dimensional or three-dimensional objects on computer screens. It prepares students with knowledge and skills in computer-aided artistic design.',
@@ -259,6 +276,7 @@ export const useTrainDetailData = (): { data: Array<DetailTrain> } => {
       program: 'Business & Management',
       progTitle: 'Accounting',
       industryType: ProgTypeEnum.Accounting,
+      imgDetail: ACCTD,
       overview: {
         intro:
           'Corporate Accounting is an essential department in all organizations, companies, and enterprises. Any business requires personnel to analyze finances, monitor income and expenses, and manage value-added taxes. Therefore, the role of corporate accountants is more important than ever, holding significant influence within companies, making accounting indispensable.',
@@ -310,6 +328,7 @@ export type TuiApply = {
 export type DetailTrain = {
   program: string;
   progTitle: string;
+  imgDetail: string;
   industryType: ProgTypeEnum;
   overview: OvwDetail;
   info: AdmissInfo;

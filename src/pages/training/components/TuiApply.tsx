@@ -1,4 +1,5 @@
 import { Col } from 'antd';
+import { useMediaQuery } from 'react-responsive';
 import type { TuiApply } from '../hooks';
 import { Text, Title } from '@/components';
 
@@ -8,13 +9,17 @@ interface ITuiApplyProps {
 
 const TuiApply: React.FC<ITuiApplyProps> = (props) => {
   const { tuiApplyDt } = props;
+  const isMb = useMediaQuery({ maxWidth: 1024 });
+
   return (
-    <section className='bg-white p-10 rounded-2xl'>
+    <section
+      className={`bg-white rounded-2xl ${!isMb ? 'p-10' : 'pb-10 pt-5 px-3.5'}`}
+    >
       {tuiApplyDt && (
         <div className='space-y-5'>
           <Col className='!space-y-4'>
             <Title className='!m-0 !text-[#BE3691]' level={3}>
-              I. Introduction
+              I. Admission Requirements
             </Title>
             <Text
               style={{
@@ -27,7 +32,7 @@ const TuiApply: React.FC<ITuiApplyProps> = (props) => {
           </Col>
           <Col>
             <Title className='!m-0 !text-[#BE3691]' level={3}>
-              II. Training Objectives
+              II. Application Documents
             </Title>
             <Text
               style={{
@@ -40,7 +45,7 @@ const TuiApply: React.FC<ITuiApplyProps> = (props) => {
           </Col>
           <Col>
             <Title className='!m-0 !text-[#BE3691]' level={3}>
-              III. Training Content
+              III. Location and Working Hours
             </Title>
             <Text
               style={{
