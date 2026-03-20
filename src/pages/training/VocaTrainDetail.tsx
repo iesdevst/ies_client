@@ -3,6 +3,7 @@ import { Breadcrumb, Col, Image, Row, Tabs, type TabsProps } from 'antd';
 import { lazy, useCallback, useEffect, useMemo, useState } from 'react';
 import { useMediaQuery } from 'react-responsive';
 import { useParams, useSearchParams } from 'react-router-dom';
+import ProgRegisterForm from './components/ProgRegisterForm';
 import { useTrainDetailData } from './hooks';
 import styles from './iesTraining.module.scss';
 import DTP from '@/assets/imgs/detail__train_paint.png';
@@ -42,6 +43,11 @@ const VocaTrainDetail: React.FC = () => {
         key: TrainDetailTab.Apply,
         label: 'Tuition & Apply',
         children: <TuiApply tuiApplyDt={detailTrainDt?.apply} />,
+      },
+      {
+        key: TrainDetailTab.Register,
+        label: 'Register Form',
+        children: <ProgRegisterForm />,
       },
     ],
     [trainDtActKey],

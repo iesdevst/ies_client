@@ -39,9 +39,9 @@ export interface QueryConfig<
   TError = DefaultError,
   TQueryKey extends QueryKey = QueryKey,
 > extends Omit<
-    UseQueryOptions<TQueryFnData, TError, TData, TQueryKey>,
-    'queryKey' | 'queryFn'
-  > {
+  UseQueryOptions<TQueryFnData, TError, TData, TQueryKey>,
+  'queryKey' | 'queryFn'
+> {
   cacheTime?: number;
 }
 
@@ -52,9 +52,9 @@ export interface MutationConfig<
   TVariables = unknown,
   TContext = unknown,
 > extends Omit<
-    UseMutationOptions<TData, TError, TVariables, TContext>,
-    'mutationFn'
-  > {
+  UseMutationOptions<TData, TError, TVariables, TContext>,
+  'mutationFn'
+> {
   onSuccess?: (
     data: TData,
     variables: TVariables,

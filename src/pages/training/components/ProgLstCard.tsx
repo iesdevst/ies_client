@@ -51,7 +51,7 @@ const ProgLstCard: React.FC<IProgLstCard> = (props) => {
           return (
             <Card
               key={key}
-              className='!h-full !bg-white !border-gray-300 shadow-md hover:!shadow-xl transition !p-6 !rounded-2xl'
+              className='!h-full !border-gray-300 shadow-md hover:!shadow-xl transition !p-6 !rounded-2xl'
             >
               <Row justify={'start'} align={'middle'} className='gap-x-6'>
                 <div>
@@ -121,7 +121,7 @@ const ProgLstCard: React.FC<IProgLstCard> = (props) => {
               <div>
                 <Button
                   type='default'
-                  className='!bg-[#2974D7] !w-full !border-none !rounded-2xl hover:!bg-[#6aa1e8]'
+                  className='!bg-[#2974D7] !w-full !border-none !rounded-2xl hover:!bg-[#6aa1e8] hover:!text-black'
                   onClick={() =>
                     navigate(`${ROUTES.DEMICS_DETAIL}/${train.progType}`)
                   }

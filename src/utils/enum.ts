@@ -23,4 +23,27 @@ enum ProgTypeEnum {
   CompuDs = 'compuai-design',
 }
 
-export { IesClientLangEnum, ProgramSlugEnum, ProgTypeEnum };
+enum CapacityRoleEnum {
+  Student = 'student',
+  Parent = 'parent',
+}
+
+enum InterestProgramEnum {
+  OfficeIT = 'office-it',
+  InformationTechnology = 'information-technology',
+  IndustrialElectrical = 'industrial-electrical',
+  OfficeAdministration = 'office-administration',
+  HotelManagement = 'hotel-management',
+  Marketing = 'marketing',
+  BusinessAdministration = 'business-administration',
+  GraphicDesign = 'graphic-design',
+  Accounting = 'accounting',
+}
+
+export {
+  IesClientLangEnum,
+  ProgramSlugEnum,
+  ProgTypeEnum,
+  CapacityRoleEnum,
+  InterestProgramEnum,
+};

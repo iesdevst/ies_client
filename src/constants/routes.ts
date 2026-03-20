@@ -21,6 +21,7 @@ export const TrainDetailTab = {
   Overview: 'overview',
   Admission: 'admission',
   Apply: 'apply',
+  Register: 'register',
 };
 
 export type TrainDetailTab =
@@ -54,6 +55,7 @@ export const ROUTES = {
   DEMICS_DETAIL_OVW: `/${DEMIC_DETAIL_SEGMENT}?tab=${TrainDetailTab.Overview}`,
   DEMICS_DETAIL_ADMISS: `/${DEMIC_DETAIL_SEGMENT}?tab=${TrainDetailTab.Admission}`,
   DEMICS_DETAIL_APPLY: `/${DEMIC_DETAIL_SEGMENT}?tab=${TrainDetailTab.Apply}`,
+  DEMICS_DETAIL_REGISTER: `/${DEMIC_DETAIL_SEGMENT}?tab=${TrainDetailTab.Register}`,
   ADMISSIONS: `/${ADMISSIONS_SEGMENT}`,
   CAREEROP: `/${CAREEROP_SEGMENT}`,
   NEWS: `/${NEWS_SEGMENT}`,

@@ -1,6 +1,6 @@
-import Axios, { AxiosError, AxiosHeaders } from 'axios';
 import type { AxiosRequestConfig, InternalAxiosRequestConfig } from 'axios';
-import { useUserStore } from '@/store';
+import Axios, { AxiosError, AxiosHeaders } from 'axios';
+import { ROUTES } from '@/constants';
 import { logger, storage } from '@/utils';
 
 export function authRequestInterceptor(
@@ -22,7 +22,7 @@ const api = Axios.create({
   baseURL: import.meta.env.VITE_AXIOS_BASE,
 });
 
-export const yfHandleLogout = () => useUserStore.getState().reset();
+// export const yfHandleLogout = () => useUserStore.getState().reset();
 
 // Request
 api.interceptors.request.use((config) => {
@@ -44,8 +44,8 @@ api.interceptors.response.use(
     );
 
     if (error.response?.status === 401) {
-      yfHandleLogout();
-      window.location.href = '/public';
+      // yfHandleLogout();
+      window.location.href = ROUTES.DASHBOARD;
     }
     return Promise.reject(error);
   },

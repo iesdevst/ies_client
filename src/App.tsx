@@ -1,6 +1,6 @@
 import { QueryClientProvider } from '@tanstack/react-query';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
-import { ConfigProvider, theme } from 'antd';
+import { ConfigProvider } from 'antd';
 import ErrorBoundary from 'antd/es/alert/ErrorBoundary';
 import { Suspense } from 'react';
 
@@ -17,10 +17,10 @@ function App() {
     <ConfigProvider
       theme={{
         token: {
-          colorPrimary: '#15383A',
+          colorPrimary: '#ca78ca',
           colorText: 'black',
         },
-        algorithm: theme.darkAlgorithm,
+        // algorithm: theme.darkAlgorithm,
         components: {
           Layout: { headerBg: 'transparent' },
           Button: {

@@ -1,3 +1,5 @@
+import { CapacityRoleEnum, InterestProgramEnum } from './enum';
+
 type AppOption<O = object, V = string | number> = {
   label: string;
   value: V;
@@ -21,46 +23,94 @@ export const enumToOptions = (enumObj: object): AppOption[] => {
     }));
 };
 
-// const eNumEntities = <T extends Record<string, string | number>>(
-//   originEnum: T,
-// ) => {
-//   const keys = Object.keys(originEnum).filter((key) =>
-//     isNaN(Number(key)),
-//   ) as Array<keyof T>;
+const eNumEntities = <T extends Record<string, string | number>>(
+  originEnum: T,
+) => {
+  const keys = Object.keys(originEnum).filter((key) =>
+    isNaN(Number(key)),
+  ) as Array<keyof T>;
 
-//   const values = keys.map((key) => originEnum[key]) as Array<ValueOf<T>>;
+  const values = keys.map((key) => originEnum[key]) as Array<ValueOf<T>>;
 
-//   return { keys, values };
-// };
+  return { keys, values };
+};
 
-// const countryCodeEnumObj: EnumObjBase<typeof CountryCodeEnum> = {
-//   TW: { label: 'TW', value: CountryCodeEnum.TW },
-//   US: { label: 'US', value: CountryCodeEnum.US },
-//   CN: { label: 'CN', value: CountryCodeEnum.CN },
-//   JP: { label: 'JP', value: CountryCodeEnum.JP },
-//   DE: { label: 'DE', value: CountryCodeEnum.DE },
-//   FR: { label: 'FR', value: CountryCodeEnum.FR },
-//   IN: { label: 'IN', value: CountryCodeEnum.IN },
-//   SG: { label: 'SG', value: CountryCodeEnum.SG },
-//   TH: { label: 'TH', value: CountryCodeEnum.TH },
-//   KR: { label: 'KR', value: CountryCodeEnum.KR },
-//   MY: { label: 'MY', value: CountryCodeEnum.MY },
-//   PH: { label: 'PH', value: CountryCodeEnum.PH },
-//   VN: { label: 'VN', value: CountryCodeEnum.VN },
-//   GB: { label: 'GB', value: CountryCodeEnum.GB },
-//   AU: { label: 'AU', value: CountryCodeEnum.AU },
-//   CA: { label: 'CA', value: CountryCodeEnum.CA },
-//   BR: { label: 'BR', value: CountryCodeEnum.BR },
-//   ZA: { label: 'ZA', value: CountryCodeEnum.ZA },
-//   MX: { label: 'MX', value: CountryCodeEnum.MX },
-//   AE: { label: 'AE', value: CountryCodeEnum.AE },
-//   SA: { label: 'SA', value: CountryCodeEnum.SA },
-// };
+const capacityRoleEnumsObj: EnumObjBase<
+  typeof CapacityRoleEnum,
+  { color: string }
+> = {
+  Student: {
+    label: 'Student',
+    value: CapacityRoleEnum.Student,
+    color: 'grey',
+  },
+  Parent: {
+    label: 'Parent',
+    value: CapacityRoleEnum.Parent,
+    color: '#1554ad',
+  },
+};
 
-// const countryCodeEnumOptions = Object.keys(CountryCodeEnum).map((key) => {
-//   const enumKey = key as keyof typeof CountryCodeEnum;
-//   const { label = 'undefined', value } = countryCodeEnumObj[enumKey];
-//   return { label, value };
-// });
-// export { countryCodeEnumOptions };
+const capacityRoleOptions = eNumEntities<typeof CapacityRoleEnum>(
+  CapacityRoleEnum,
+).keys.map((enumKey) => {
+  const { label, value, color } = capacityRoleEnumsObj[enumKey];
+  return { label, value, color };
+});
+
+const interestProgramEnumsObj: EnumObjBase<
+  typeof InterestProgramEnum,
+  { group?: string }
+> = {
+  OfficeIT: {
+    label: 'Office IT',
+    value: InterestProgramEnum.OfficeIT,
+  },
+  InformationTechnology: {
+    label: 'Information Technology',
+    value: InterestProgramEnum.InformationTechnology,
+  },
+  IndustrialElectrical: {
+    label: 'Industrial & Residential Electrical',
+    value: InterestProgramEnum.IndustrialElectrical,
+  },
+  OfficeAdministration: {
+    label: 'Office Administration',
+    value: InterestProgramEnum.OfficeAdministration,
+  },
+  HotelManagement: {
+    label: 'Hotel Management',
+    value: InterestProgramEnum.HotelManagement,
+  },
+  Marketing: {
+    label: 'Marketing',
+    value: InterestProgramEnum.Marketing,
+  },
+  BusinessAdministration: {
+    label: 'Business Administration',
+    value: InterestProgramEnum.BusinessAdministration,
+  },
+  GraphicDesign: {
+    label: 'Graphic Design',
+    value: InterestProgramEnum.GraphicDesign,
+  },
+  Accounting: {
+    label: 'Accounting',
+    value: InterestProgramEnum.Accounting,
+  },
+};
+
+const interestProgramOptions = eNumEntities<typeof InterestProgramEnum>(
+  InterestProgramEnum,
+).keys.map((enumKey) => {
+  const { label, value, group } = interestProgramEnumsObj[enumKey];
+  return { label, value, group };
+});
+
+export {
+  capacityRoleEnumsObj,
+  capacityRoleOptions,
+  interestProgramEnumsObj,
+  interestProgramOptions,
+};
 export type { AppOption };
