@@ -8,6 +8,7 @@ const Dashboard = lazy(() => import('@/pages/home/Dashboard'));
 const About = lazy(() => import('@/pages/about/AboutIes'));
 const AcademicsVoca = lazy(() => import('@/pages/training/IesVocaTraining'));
 const VoCaTrainDetail = lazy(() => import('@/pages/training/VocaTrainDetail'));
+const ShortCourse = lazy(() => import('@/pages/training/ShortCourse'));
 
 export const router = createBrowserRouter([
   {
@@ -26,6 +27,10 @@ export const router = createBrowserRouter([
           {
             path: `${ROUTES.DEMICS_DETAIL}/:progType`,
             element: <VoCaTrainDetail />,
+          },
+          {
+            path: `${ROUTES.ADMISSIONS_SC}`,
+            element: <ShortCourse />,
           },
         ],
       },

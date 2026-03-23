@@ -17,33 +17,32 @@ export const useMegaNavData = (): { data: Array<MegaNavItem> } => {
     },
 
     {
-      key: ROUTES.ACADEMICS,
+      key: ROUTES.ADMISSIONS,
       label: 'Admissions',
       overW: false,
       sections: [
-        // {
-        //   title: 'Short-term Training Programs',
-        //   links: [
-        //     { label: '', route: '/' },
-        //     { label: '', route: '/' },
-        //   ],
-        // },
+        {
+          title: 'Short-term Training Programs',
+          links: [
+            { label: 'Short-term Training Page', route: ROUTES.ADMISSIONS_SC },
+          ],
+        },
         {
           title: 'Intermediate Vocational Training Programs',
           links: [
-            { label: 'All Courses', route: ROUTES.ACADEMICSVOCA_ALL },
-            { label: 'IT & Office', route: ROUTES.ACADEMICSVOCA_IT },
+            { label: 'All Courses', route: ROUTES.ADMISSIONSVOCA_ALL },
+            { label: 'IT & Office', route: ROUTES.ADMISSIONSVOCA_IT },
             {
               label: 'Hospitality & Services',
-              route: ROUTES.ACADEMICSVOCA_HOSPI,
+              route: ROUTES.ADMISSIONSVOCA_HOSPI,
             },
             {
               label: 'Design & Creativity',
-              route: ROUTES.ACADEMICSVOCA_DESIGN,
+              route: ROUTES.ADMISSIONSVOCA_DESIGN,
             },
             {
               label: 'Business & Management',
-              route: ROUTES.ACADEMICSVOCA_BUSI,
+              route: ROUTES.ADMISSIONSVOCA_BUSI,
             },
           ],
         },

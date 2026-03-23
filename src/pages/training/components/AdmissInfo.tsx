@@ -1,14 +1,15 @@
 import { Col } from 'antd';
 import { useMediaQuery } from 'react-responsive';
-import type { AdmissInfo } from '../hooks';
+import type { AdmissInfo, AdmissScInfo } from '../hooks';
 import { Text, Title } from '@/components';
 
 interface IAdmissInfoProps {
-  admisInfoDt: AdmissInfo | undefined;
+  admisInfoDt?: AdmissInfo | undefined;
+  admisScInfoDt?: AdmissScInfo | undefined;
 }
 
 const AdmissInfo: React.FC<IAdmissInfoProps> = (props) => {
-  const { admisInfoDt } = props;
+  const { admisInfoDt, admisScInfoDt } = props;
   const isMb = useMediaQuery({ maxWidth: 1024 });
 
   return (
@@ -41,6 +42,37 @@ const AdmissInfo: React.FC<IAdmissInfoProps> = (props) => {
               className='!text-md !font-semibold !mt-2 !block'
             >
               {admisInfoDt.method}
+            </Text>
+          </Col>
+        </div>
+      )}
+
+      {admisScInfoDt && (
+        <div className='space-y-5'>
+          <Col className='!space-y-4'>
+            <Title className='!m-0 !text-[#6472cf]' level={3}>
+              I. Admission Requirements
+            </Title>
+            <Text
+              style={{
+                whiteSpace: 'pre-line',
+              }}
+              className='!text-md !font-semibold !mt-2 !block'
+            >
+              {admisScInfoDt.require}
+            </Text>
+          </Col>
+          <Col>
+            <Title className='!m-0 !text-[#6472cf]' level={3}>
+              II. Admission Method
+            </Title>
+            <Text
+              style={{
+                whiteSpace: 'pre-line',
+              }}
+              className='!text-md !font-semibold !mt-2 !block'
+            >
+              {admisScInfoDt.method}
             </Text>
           </Col>
         </div>

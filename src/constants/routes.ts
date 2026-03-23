@@ -6,7 +6,7 @@ export const AboutTab = {
 
 export type AboutTab = (typeof AboutTab)[keyof typeof AboutTab];
 
-export const AcademicsVocaTab = {
+export const AdmissionVocaTab = {
   AllCour: 'all-courses',
   ItOffice: 'it-office',
   Hospitality: 'hospitality',
@@ -14,8 +14,8 @@ export const AcademicsVocaTab = {
   Business: 'business',
 };
 
-export type AcademicsVocaTab =
-  (typeof AcademicsVocaTab)[keyof typeof AcademicsVocaTab];
+export type AdmissionVocaTab =
+  (typeof AdmissionVocaTab)[keyof typeof AdmissionVocaTab];
 
 export const TrainDetailTab = {
   Overview: 'overview',
@@ -27,11 +27,21 @@ export const TrainDetailTab = {
 export type TrainDetailTab =
   (typeof TrainDetailTab)[keyof typeof TrainDetailTab];
 
+export const ShortCrsTab = {
+  Mixology: 'mixology',
+  Cooking: 'cooking',
+  Baking: 'Baking',
+  UsingAi: 'using-ai',
+};
+
+export type ShortCrsTab = (typeof ShortCrsTab)[keyof typeof ShortCrsTab];
+
 export const HOME_SEGMENT = 'dashboard' as const;
 export const ABOUT_SEGMENT = 'about-ies' as const;
 export const ACADEMICS_SEGMENT = 'academics' as const;
-export const DEMIC_DETAIL_SEGMENT = 'demics-detail' as const;
 export const ADMISSIONS_SEGMENT = 'admissions' as const;
+export const DEMIC_DETAIL_SEGMENT = 'demics-detail' as const;
+export const ADMISSIONS_SHORT_SEGMENT = 'admissions-short-course' as const;
 export const CAREEROP_SEGMENT = 'careeop' as const;
 export const NEWS_SEGMENT = 'news' as const;
 export const PUBDIS_SEGMENT = 'disclosure' as const;
@@ -45,18 +55,23 @@ export const ROUTES = {
   ABOUT_OVERVIEW: `/${ABOUT_SEGMENT}?tab=${AboutTab.Aboverview}`,
   ABOUT_VISION: `/${ABOUT_SEGMENT}?tab=${AboutTab.Vision}`,
   ABOUT_COREVALUES: `/${ABOUT_SEGMENT}?tab=${AboutTab.Corevalues}`,
-  ACADEMICS: `/${ACADEMICS_SEGMENT}`,
-  ACADEMICSVOCA_ALL: `/${ACADEMICS_SEGMENT}?tab=${AcademicsVocaTab.AllCour}`,
-  ACADEMICSVOCA_IT: `/${ACADEMICS_SEGMENT}?tab=${AcademicsVocaTab.ItOffice}`,
-  ACADEMICSVOCA_HOSPI: `/${ACADEMICS_SEGMENT}?tab=${AcademicsVocaTab.Hospitality}`,
-  ACADEMICSVOCA_BUSI: `/${ACADEMICS_SEGMENT}?tab=${AcademicsVocaTab.Business}`,
-  ACADEMICSVOCA_DESIGN: `/${ACADEMICS_SEGMENT}?tab=${AcademicsVocaTab.Design}`,
+  ADMISSIONS: `/${ADMISSIONS_SEGMENT}`,
+  ADMISSIONSVOCA_ALL: `/${ACADEMICS_SEGMENT}?tab=${AdmissionVocaTab.AllCour}`,
+  ADMISSIONSVOCA_IT: `/${ACADEMICS_SEGMENT}?tab=${AdmissionVocaTab.ItOffice}`,
+  ADMISSIONSVOCA_HOSPI: `/${ACADEMICS_SEGMENT}?tab=${AdmissionVocaTab.Hospitality}`,
+  ADMISSIONSVOCA_BUSI: `/${ACADEMICS_SEGMENT}?tab=${AdmissionVocaTab.Business}`,
+  ADMISSIONSVOCA_DESIGN: `/${ACADEMICS_SEGMENT}?tab=${AdmissionVocaTab.Design}`,
   DEMICS_DETAIL: `/${DEMIC_DETAIL_SEGMENT}`,
   DEMICS_DETAIL_OVW: `/${DEMIC_DETAIL_SEGMENT}?tab=${TrainDetailTab.Overview}`,
   DEMICS_DETAIL_ADMISS: `/${DEMIC_DETAIL_SEGMENT}?tab=${TrainDetailTab.Admission}`,
   DEMICS_DETAIL_APPLY: `/${DEMIC_DETAIL_SEGMENT}?tab=${TrainDetailTab.Apply}`,
   DEMICS_DETAIL_REGISTER: `/${DEMIC_DETAIL_SEGMENT}?tab=${TrainDetailTab.Register}`,
-  ADMISSIONS: `/${ADMISSIONS_SEGMENT}`,
+  ADMISSIONS_SC: `/${ADMISSIONS_SHORT_SEGMENT}`,
+  ADMISSIONS_SC_MIX: `/${ADMISSIONS_SHORT_SEGMENT}?tab=${ShortCrsTab.Mixology}`,
+  ADMISSIONS_SC_COOK: `/${ADMISSIONS_SHORT_SEGMENT}?tab=${ShortCrsTab.Cooking}`,
+  ADMISSIONS_SC_BAKING: `/${ADMISSIONS_SHORT_SEGMENT}?tab=${ShortCrsTab.Baking}`,
+  ADMISSIONS_SC_UAI: `/${ADMISSIONS_SHORT_SEGMENT}?tab=${ShortCrsTab.UsingAi}`,
+  ACADEMICS: `/${ACADEMICS_SEGMENT}`,
   CAREEROP: `/${CAREEROP_SEGMENT}`,
   NEWS: `/${NEWS_SEGMENT}`,
   PUBDIS: `/${PUBDIS_SEGMENT}`,

@@ -3,7 +3,7 @@ import { lazy, useCallback, useEffect, useMemo, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import styles from '../iesTraining.module.scss';
 import { Title } from '@/components';
-import { AcademicsVocaTab } from '@/constants';
+import { AdmissionVocaTab } from '@/constants';
 import { ProgramSlugEnum } from '@/utils';
 
 const ProgLstCard = lazy(
@@ -12,32 +12,32 @@ const ProgLstCard = lazy(
 
 const VocaTrainLst: React.FC = () => {
   const [trainSearchPrs, setTrainSearchPrs] = useSearchParams();
-  const [trainActKey, setTrainActKey] = useState<AcademicsVocaTab>();
+  const [trainActKey, setTrainActKey] = useState<AdmissionVocaTab>();
 
   const tabs: TabsProps['items'] = useMemo(
     () => [
       {
-        key: AcademicsVocaTab.AllCour,
+        key: AdmissionVocaTab.AllCour,
         label: 'All Programs',
         children: <ProgLstCard slugName={ProgramSlugEnum.All} />,
       },
       {
-        key: AcademicsVocaTab.Design,
+        key: AdmissionVocaTab.Design,
         label: 'Design & Creativity',
         children: <ProgLstCard slugName={ProgramSlugEnum.Design} />,
       },
       {
-        key: AcademicsVocaTab.Business,
+        key: AdmissionVocaTab.Business,
         label: 'Business & Management',
         children: <ProgLstCard slugName={ProgramSlugEnum.Business} />,
       },
       {
-        key: AcademicsVocaTab.Hospitality,
+        key: AdmissionVocaTab.Hospitality,
         label: 'Hospitality & Services',
         children: <ProgLstCard slugName={ProgramSlugEnum.Hospitality} />,
       },
       {
-        key: AcademicsVocaTab.ItOffice,
+        key: AdmissionVocaTab.ItOffice,
         label: 'IT & Office',
         children: <ProgLstCard slugName={ProgramSlugEnum.IT} />,
       },
@@ -49,7 +49,7 @@ const VocaTrainLst: React.FC = () => {
     (key: string) => {
       trainSearchPrs.set('tab', key);
       setTrainSearchPrs(trainSearchPrs, { replace: true });
-      setTrainActKey(key as AcademicsVocaTab);
+      setTrainActKey(key as AdmissionVocaTab);
     },
     [trainSearchPrs, setTrainSearchPrs],
   );
@@ -57,11 +57,11 @@ const VocaTrainLst: React.FC = () => {
   useEffect(() => {
     const tab = trainSearchPrs.get('tab');
     if (tab) {
-      setTrainActKey(tab as AcademicsVocaTab);
+      setTrainActKey(tab as AdmissionVocaTab);
     } else {
-      trainSearchPrs.set('tab', AcademicsVocaTab.AllCour);
+      trainSearchPrs.set('tab', AdmissionVocaTab.AllCour);
       setTrainSearchPrs(trainSearchPrs, { replace: true });
-      setTrainActKey(AcademicsVocaTab.AllCour);
+      setTrainActKey(AdmissionVocaTab.AllCour);
     }
   }, [trainSearchPrs, setTrainSearchPrs]);
 

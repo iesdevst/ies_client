@@ -40,10 +40,18 @@ enum InterestProgramEnum {
   Accounting = 'accounting',
 }
 
+enum ShortCrsTypeEnum {
+  Mixology = 'ixology',
+  Cooking = 'cook',
+  Baking = 'baking',
+  UsingAi = 'using-ai',
+}
+
 export {
   IesClientLangEnum,
   ProgramSlugEnum,
   ProgTypeEnum,
   CapacityRoleEnum,
   InterestProgramEnum,
+  ShortCrsTypeEnum,
 };

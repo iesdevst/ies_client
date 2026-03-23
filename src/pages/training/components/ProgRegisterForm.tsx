@@ -3,8 +3,8 @@ import {
   SelectOutlined,
   SendOutlined,
 } from '@ant-design/icons';
-import { Button, Flex, Form, Input, Row, Select } from 'antd';
-import React, { useState } from 'react';
+import { Button, Flex, Form, Input, Row, Select, type InputRef } from 'antd';
+import React, { useRef, useState } from 'react';
 import { useMediaQuery } from 'react-responsive';
 import ProgTypeModal from './ProgTypeModal';
 import { useClientRegisSend } from '@/api';
@@ -16,14 +16,21 @@ import {
   InterestProgramEnum,
 } from '@/utils';
 
-const ProgRegisterForm: React.FC = () => {
+interface IProgRegisterFormProps {
+  shortCrc?: boolean;
+}
+
+const ProgRegisterForm: React.FC<IProgRegisterFormProps> = (props) => {
+  const { shortCrc } = props;
   const [form] = Form.useForm();
-  const { pushBSQ } = useNotifyStore();
+  const { pushBSQ, pushBEQ } = useNotifyStore();
   const mb = useMediaQuery({ maxWidth: 1024 });
   const [progTopen, setProgTopen] = useState(false);
   const [progType, setProgType] = useState<Array<InterestProgramEnum>>([]);
+  const phoneRef = useRef<InputRef>(null);
+  const ageRef = useRef<InputRef>(null);
 
-  const { sendRegis } = useClientRegisSend({
+  const { sendRegis, isLoad } = useClientRegisSend({
     onSuccess: () => {
       pushBSQ([
         {
@@ -32,8 +39,36 @@ const ProgRegisterForm: React.FC = () => {
         },
       ]);
       form.resetFields();
+      setProgType([]);
+    },
+    onError: () => {
+      pushBEQ([
+        {
+          title: 'IES College Error',
+          des: 'Send failed',
+        },
+      ]);
     },
   });
+
+  // phone number spec validation
+  const handleKeyPress = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (!/[0-9]/.test(e.key)) {
+      e.preventDefault();
+    }
+  };
+
+  const handleBlur = () => {
+    const value = phoneRef.current?.input?.value || '';
+    if (value.length !== 9) {
+      form.setFields([
+        { name: 'phoneNum', errors: ['Incorrect phone number format!'] },
+      ]);
+    } else {
+      form.setFields([{ name: 'phoneNum', errors: [] }]);
+      form.setFieldsValue({ phoneNum: value });
+    }
+  };
 
   const handleSelectProg = (prog: InterestProgramEnum) => {
     setProgType((prev) => {
@@ -52,9 +87,10 @@ const ProgRegisterForm: React.FC = () => {
   };
 
   const handleRegisSend = (values: ProgRegisFormVra) => {
+    const fullPhone = `${values.countryCode}${values.phoneNum}`;
     sendRegis({
       name: values.name,
-      phone: values.phoneNum,
+      phone: fullPhone,
       email: values.email,
       age: values.age,
       location: values.location,
@@ -68,11 +104,13 @@ const ProgRegisterForm: React.FC = () => {
     <section
       className={`bg-white rounded-2xl ${!mb ? 'py-10 px-17' : 'pb-10 pt-5 px-3.5'}`}
     >
-      <Title className='!text-center !mb-12 italic !text-[#ca78ca] !font-bold'>
+      <Title
+        className={`!text-center !mb-12 italic ${!shortCrc ? '!text-[#ca78ca]' : '!text-[#6472cf]'} !font-bold`}
+      >
         Join Our Program
       </Title>
       <Form form={form} layout='vertical' onFinish={handleRegisSend}>
-        <Flex gap={!mb ? 50 : 12}>
+        <Flex gap={!mb ? 50 : 0} vertical={mb}>
           <Form.Item
             name='name'
             label='Name'
@@ -82,15 +120,42 @@ const ProgRegisterForm: React.FC = () => {
             <Input className='' placeholder='Please enter your name' />
           </Form.Item>
 
-          <Form.Item
-            name='phoneNum'
-            label='Phone Number'
-            rules={[
-              { required: true, message: 'Please enter your phone number' },
-            ]}
-            className='w-full'
-          >
-            <Input placeholder='Please enter your phone number' />
+          <Form.Item label='Phone Number' className='w-full'>
+            <Input.Group compact>
+              {/* Country code */}
+              <Form.Item
+                name='countryCode'
+                noStyle
+                initialValue='+84'
+                rules={[{ required: true, message: 'Select country code' }]}
+              >
+                <Select style={{ width: 100 }}>
+                  <Select.Option value='+84'>+84</Select.Option>
+                </Select>
+              </Form.Item>
+
+              {/* Phone number */}
+              <Form.Item
+                name='phoneNum'
+                noStyle
+                rules={[
+                  { required: true, message: 'Please enter your phone number' },
+                  {
+                    pattern: /^[0-9]{9}$/,
+                    message: 'Incorrect phone number format!',
+                  },
+                ]}
+              >
+                <Input
+                  ref={phoneRef}
+                  placeholder='Enter phone number'
+                  maxLength={9}
+                  onKeyPress={handleKeyPress}
+                  onBlur={handleBlur}
+                  style={{ width: 'calc(100% - 100px)' }}
+                />
+              </Form.Item>
+            </Input.Group>
           </Form.Item>
         </Flex>
 
@@ -132,7 +197,28 @@ const ProgRegisterForm: React.FC = () => {
             rules={[{ required: true, message: 'Please enter student age' }]}
             className='w-full'
           >
-            <Input placeholder='Please enter student age' />
+            <Input
+              ref={ageRef}
+              placeholder='Enter student age'
+              maxLength={2}
+              onKeyPress={(e) => {
+                if (!/[0-9]/.test(e.key)) e.preventDefault();
+              }}
+              onBlur={() => {
+                const valueStr = ageRef.current?.input?.value || '';
+                const value = Number(valueStr);
+
+                if (!valueStr || value < 16 || value > 99) {
+                  form.setFields([
+                    { name: 'age', errors: ['Age must be 16 or older'] },
+                  ]);
+                } else {
+                  form.setFields([{ name: 'age', errors: [] }]);
+                  form.setFieldsValue({ age: valueStr });
+                  console.log({ value });
+                }
+              }}
+            />
           </Form.Item>
           <Form.Item
             name='progType'
@@ -146,7 +232,7 @@ const ProgRegisterForm: React.FC = () => {
             className='w-full'
           >
             <Input
-              placeholder='Please select your interest programs'
+              placeholder='Please select your interest programs ->'
               readOnly
               value={
                 progType.length > 0
@@ -165,12 +251,14 @@ const ProgRegisterForm: React.FC = () => {
                       className='!text-black'
                     />
                     <SelectOutlined
+                      className='!text-xl'
                       style={{ cursor: 'pointer', color: '#c92cc9' }}
                       onClick={() => setProgTopen(true)}
                     />
                   </Row>
                 ) : (
                   <SelectOutlined
+                    className='!text-xl'
                     style={{ cursor: 'pointer', color: '#c92cc9' }}
                     onClick={() => setProgTopen(true)}
                   />
@@ -215,6 +303,8 @@ const ProgRegisterForm: React.FC = () => {
             size='large'
             block
             icon={<SendOutlined />}
+            loading={isLoad}
+            className={`${!shortCrc ? '' : '!bg-[#6472cf]'}`}
           >
             Send
           </Button>
@@ -235,4 +325,5 @@ export interface ProgRegisFormVra {
   capacityRole: CapacityRoleEnum;
   progType: Array<InterestProgramEnum>;
   question?: string;
+  countryCode: string;
 }
