@@ -1,5 +1,5 @@
 import { CaretDownFilled } from '@ant-design/icons';
-import { Button, Space } from 'antd';
+import { Button, Row, Space } from 'antd';
 import { useMegaNavData } from '../hooks';
 import type { RoutePath } from '@/constants';
 
@@ -24,10 +24,15 @@ const NavLst: React.FC<INavLst> = (props) => {
                 onClick={() => setDrawerKey(item.key)}
                 style={{ fontWeight: 500 }}
               >
-                {item.label}
+                <Row
+                  justify={'space-between'}
+                  align={'middle'}
+                  className='gap-x-1'
+                >
+                  <p>{item.label}</p>
+                  <CaretDownFilled className='!text-[10px] mt-0.5' />
+                </Row>
               </Button>
-
-              <CaretDownFilled className='!text-[#404040] !text-[10px]' />
             </div>
           ))}
         </Space>

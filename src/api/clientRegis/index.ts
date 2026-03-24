@@ -1,1 +1,2 @@
-export * from './useClientRegisSend';
+export * from './useIvRegisSend';
+export * from './useStRegisSend';

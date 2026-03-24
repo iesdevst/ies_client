@@ -1,22 +1,30 @@
 import { CloseCircleFilled } from '@ant-design/icons';
 import { Button, Checkbox, Flex, List, Modal } from 'antd';
 import { Title } from '@/components';
-import { interestProgramOptions, type InterestProgramEnum } from '@/utils';
 
-interface IProgTypeModalProps {
-  selectedProgs: Array<InterestProgramEnum>; // Danh sách ngành đã chọn
-  selectProg: (prog: InterestProgramEnum) => void; // Chọn thêm 1 ngành
-  deselectProg: (prog: InterestProgramEnum) => void; // Bỏ chọn 1 ngành (nếu muốn)
+interface IProgTypeModalProps<T> {
+  selectedProgs: Array<T>; // Danh sách ngành đã chọn
+  selectProg: (prog: T) => void; // Chọn thêm 1 ngành
+  deselectProg: (prog: T) => void; // Bỏ chọn 1 ngành (nếu muốn)
   visible: boolean;
   onClose: () => void;
+  options: Array<{ label: string; value: T; group?: string }>;
+  bgC?: string;
 }
 
-const ProgTypeModal: React.FC<IProgTypeModalProps> = (props) => {
-  const { selectedProgs, selectProg, deselectProg, visible, onClose } = props;
+const ProgTypeModal = <T,>(props: IProgTypeModalProps<T>) => {
+  const {
+    selectedProgs,
+    selectProg,
+    deselectProg,
+    visible,
+    onClose,
+    options,
+    bgC,
+  } = props;
 
-  const isSelected = (prog: InterestProgramEnum) =>
-    selectedProgs.includes(prog);
-  const toggleProg = (prog: InterestProgramEnum) => {
+  const isSelected = (prog: T) => selectedProgs.includes(prog);
+  const toggleProg = (prog: T) => {
     if (isSelected(prog)) deselectProg(prog);
     else selectProg(prog);
   };
@@ -32,10 +40,10 @@ const ProgTypeModal: React.FC<IProgTypeModalProps> = (props) => {
         <Flex
           justify='center'
           align='center'
-          className='!pt-2 !pb-2.5 !px-3 !bg-[#ca78ca]'
+          className={`!pt-2 !pb-2.5 !px-3 ${!bgC ? '!bg-[#ca78ca]' : bgC}`}
         >
           <Button
-            className='!w-full !bg-white !text-black !font-bold !rounded-3xl hover:!bg-[#ffc5ff] hover:!border-gray-400'
+            className='!w-full !bg-white !text-black !font-bold !rounded-3xl hover:!bg-[#d8cfe0] hover:!border-none'
             onClick={() => onClose()}
             disabled={selectedProgs.length === 0}
           >
@@ -47,7 +55,7 @@ const ProgTypeModal: React.FC<IProgTypeModalProps> = (props) => {
         <Flex
           justify='space-between'
           align='center'
-          className='!px-5 !py-3 !bg-[#ca78ca]'
+          className={`!px-5 !py-3 ${!bgC ? '!bg-[#ca78ca]' : bgC}`}
         >
           <Title className='!m-0 !text-white' level={3}>
             Program List
@@ -73,14 +81,14 @@ const ProgTypeModal: React.FC<IProgTypeModalProps> = (props) => {
       }
     >
       <List
-        className='!px-5 !bg-[#ede2ec]'
+        className={`!px-5 ${!bgC ? '!bg-[#ede2ec]' : '!bg-white'}`}
         itemLayout='horizontal'
-        dataSource={interestProgramOptions}
+        dataSource={options}
         renderItem={(item) => {
           const selected = isSelected(item.value);
           return (
             <List.Item
-              key={item.value}
+              key={String(item.value)}
               style={{ cursor: 'pointer', marginBottom: 4 }}
               onClick={() => toggleProg(item.value)}
             >

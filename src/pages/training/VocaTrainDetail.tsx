@@ -3,7 +3,6 @@ import { Breadcrumb, Col, Image, Row, Tabs, type TabsProps } from 'antd';
 import { lazy, useCallback, useEffect, useMemo, useState } from 'react';
 import { useMediaQuery } from 'react-responsive';
 import { useParams, useSearchParams } from 'react-router-dom';
-import ProgRegisterForm from './components/ProgRegisterForm';
 import { useTrainDetailData } from './hooks';
 import styles from './iesTraining.module.scss';
 import DTP from '@/assets/imgs/detail__train_paint.png';
@@ -14,6 +13,9 @@ import { ROUTES, TrainDetailTab } from '@/constants';
 const ProgOvw = lazy(() => import('@/pages/training/components/ProgOvw'));
 const AdmissInfo = lazy(() => import('@/pages/training/components/AdmissInfo'));
 const TuiApply = lazy(() => import('@/pages/training/components/TuiApply'));
+const IvRegisterForm = lazy(
+  () => import('@/pages/training/components/IvRegisterForm'),
+);
 
 const VocaTrainDetail: React.FC = () => {
   const isMb = useMediaQuery({ maxWidth: 1024 });
@@ -47,10 +49,10 @@ const VocaTrainDetail: React.FC = () => {
       {
         key: TrainDetailTab.Register,
         label: 'Register Form',
-        children: <ProgRegisterForm />,
+        children: <IvRegisterForm />,
       },
     ],
-    [trainDtActKey],
+    [detailTrainDt],
   );
 
   const hdlChangeTab = useCallback(

@@ -10,10 +10,11 @@ import TrainingSl from './components/TrainingSl';
 import TrainPro from './components/TrainPro';
 import VaM from './components/VaM';
 import VidPrIes from './components/VidPrIes';
+import { PageContainer } from '@/components';
 
 const Dashboard: React.FC = () => {
   return (
-    <>
+    <PageContainer>
       <SlideCusIes />
       <VidPrIes />
       <TrainingSl />
@@ -26,7 +27,7 @@ const Dashboard: React.FC = () => {
       <CareerGuid />
       <VaM />
       <ContactKey />
-    </>
+    </PageContainer>
   );
 };
 

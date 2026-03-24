@@ -1,18 +1,20 @@
 import { Col, Image, Row, Tabs, type TabsProps } from 'antd';
-import { lazy, useMemo, useState } from 'react';
+import { lazy, useCallback, useEffect, useMemo, useState } from 'react';
 import { useMediaQuery } from 'react-responsive';
+import { useSearchParams } from 'react-router-dom';
 import { useShortCrsData } from '../hooks';
 import styles from '../iesTraining.module.scss';
-import ProgRegisterForm from './ProgRegisterForm';
 import DTP from '@/assets/imgs/short_course_paint.png';
 import { Title } from '@/components';
+import { TrainDetailTab } from '@/constants';
 import type { ShortCrsTypeEnum } from '@/utils';
 
 const ProgOvw = lazy(() => import('@/pages/training/components/ProgOvw'));
 const AdmissInfo = lazy(() => import('@/pages/training/components/AdmissInfo'));
 const TuiApply = lazy(() => import('@/pages/training/components/TuiApply'));
-
-type ShortCrsDetailAct = 'ovwsc' | 'admsc' | 'tuisc' | 'rfsc';
+const StRegisForm = lazy(
+  () => import('@/pages/training/components/StRegisForm'),
+);
 
 interface IShortCrsDetailProps {
   scType: ShortCrsTypeEnum;
@@ -21,7 +23,8 @@ interface IShortCrsDetailProps {
 const ShortCrsDetail: React.FC<IShortCrsDetailProps> = (props) => {
   const { scType } = props;
   const isMb = useMediaQuery({ maxWidth: 1024 });
-  const [scActKey, setScActKey] = useState<ShortCrsDetailAct>('ovwsc');
+  const [stSearchPrs, setStSearchPrs] = useSearchParams();
+  const [stActKey, setStActKey] = useState<TrainDetailTab>();
   const { data } = useShortCrsData();
 
   const shortCrsDt = useMemo(() => {
@@ -32,28 +35,48 @@ const ShortCrsDetail: React.FC<IShortCrsDetailProps> = (props) => {
   const tabs: TabsProps['items'] = useMemo(
     () => [
       {
-        key: 'ovwsc',
+        key: TrainDetailTab.Overview,
         label: 'Program Overview',
         children: <ProgOvw ovwScDt={shortCrsDt?.overview} />,
       },
       {
-        key: 'admsc',
+        key: TrainDetailTab.Admission,
         label: 'Admissions Info',
         children: <AdmissInfo admisScInfoDt={shortCrsDt?.info} />,
       },
       {
-        key: 'tuisc',
+        key: TrainDetailTab.Apply,
         label: 'Tuition & Apply',
         children: <TuiApply tuiApplyScDt={shortCrsDt?.apply} />,
       },
       {
-        key: 'rfsc',
+        key: TrainDetailTab.Register,
         label: 'Register Form',
-        children: <ProgRegisterForm shortCrc={true} />,
+        children: <StRegisForm />,
       },
     ],
-    [],
+    [shortCrsDt],
   );
+
+  const hdlChangeTab = useCallback(
+    (key: string) => {
+      stSearchPrs.set('subTab', key);
+      setStSearchPrs(stSearchPrs, { replace: false });
+      setStActKey(key as TrainDetailTab);
+    },
+    [stSearchPrs, setStSearchPrs],
+  );
+
+  useEffect(() => {
+    const tab = stSearchPrs.get('subTab');
+    if (tab) {
+      setStActKey(tab as TrainDetailTab);
+    } else {
+      stSearchPrs.set('subTab', TrainDetailTab.Overview);
+      setStSearchPrs(stSearchPrs, { replace: false });
+      setStActKey(TrainDetailTab.Overview);
+    }
+  }, [stSearchPrs, setStSearchPrs]);
 
   return (
     <section className={`${!isMb ? 'px-15 py-20' : 'pt-10 py-20'}`}>
@@ -89,8 +112,8 @@ const ShortCrsDetail: React.FC<IShortCrsDetailProps> = (props) => {
         )}
         <div className='!mt-10'>
           <Tabs
-            activeKey={scActKey}
-            onChange={(key) => setScActKey(key as ShortCrsDetailAct)}
+            activeKey={stActKey}
+            onChange={hdlChangeTab}
             items={tabs}
             className={styles.iesShortSrcnDtTabs}
           />

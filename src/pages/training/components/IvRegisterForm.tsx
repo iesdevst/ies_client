@@ -7,21 +7,18 @@ import { Button, Flex, Form, Input, Row, Select, type InputRef } from 'antd';
 import React, { useRef, useState } from 'react';
 import { useMediaQuery } from 'react-responsive';
 import ProgTypeModal from './ProgTypeModal';
-import { useClientRegisSend } from '@/api';
+import { useIvRegisSend } from '@/api';
 import { Title } from '@/components';
 import { useNotifyStore } from '@/store';
 import {
   CapacityRoleEnum,
   capacityRoleOptions,
   InterestProgramEnum,
+  interestProgramOptions,
+  RegisterTrainingTypeEnum,
 } from '@/utils';
 
-interface IProgRegisterFormProps {
-  shortCrc?: boolean;
-}
-
-const ProgRegisterForm: React.FC<IProgRegisterFormProps> = (props) => {
-  const { shortCrc } = props;
+const IvRegisterForm: React.FC = () => {
   const [form] = Form.useForm();
   const { pushBSQ, pushBEQ } = useNotifyStore();
   const mb = useMediaQuery({ maxWidth: 1024 });
@@ -30,12 +27,12 @@ const ProgRegisterForm: React.FC<IProgRegisterFormProps> = (props) => {
   const phoneRef = useRef<InputRef>(null);
   const ageRef = useRef<InputRef>(null);
 
-  const { sendRegis, isLoad } = useClientRegisSend({
+  const { sendRegis, isLoad } = useIvRegisSend({
     onSuccess: () => {
       pushBSQ([
         {
           title: 'IES College Notify',
-          des: 'Register Send Succesfully',
+          des: 'Intermediate Vocational Register Send Succesfully',
         },
       ]);
       form.resetFields();
@@ -45,7 +42,7 @@ const ProgRegisterForm: React.FC<IProgRegisterFormProps> = (props) => {
       pushBEQ([
         {
           title: 'IES College Error',
-          des: 'Send failed',
+          des: 'Failed Send',
         },
       ]);
     },
@@ -86,9 +83,10 @@ const ProgRegisterForm: React.FC<IProgRegisterFormProps> = (props) => {
     });
   };
 
-  const handleRegisSend = (values: ProgRegisFormVra) => {
+  const handleRegisSend = (values: IvRegisFormVra) => {
     const fullPhone = `${values.countryCode}${values.phoneNum}`;
     sendRegis({
+      trainRegisType: RegisterTrainingTypeEnum.IV,
       name: values.name,
       phone: fullPhone,
       email: values.email,
@@ -96,7 +94,7 @@ const ProgRegisterForm: React.FC<IProgRegisterFormProps> = (props) => {
       location: values.location,
       capaRole: values.capacityRole,
       progInter: values.progType,
-      question: values.question,
+      question: values.question || '',
     });
   };
 
@@ -104,9 +102,7 @@ const ProgRegisterForm: React.FC<IProgRegisterFormProps> = (props) => {
     <section
       className={`bg-white rounded-2xl ${!mb ? 'py-10 px-17' : 'pb-10 pt-5 px-3.5'}`}
     >
-      <Title
-        className={`!text-center !mb-12 italic ${!shortCrc ? '!text-[#ca78ca]' : '!text-[#6472cf]'} !font-bold`}
-      >
+      <Title className='!text-center !mb-12 italic !text-[#ca78ca] !font-bold'>
         Join Our Program
       </Title>
       <Form form={form} layout='vertical' onFinish={handleRegisSend}>
@@ -271,6 +267,7 @@ const ProgRegisterForm: React.FC<IProgRegisterFormProps> = (props) => {
               selectedProgs={progType}
               selectProg={handleSelectProg}
               deselectProg={handleDeselectProg}
+              options={interestProgramOptions}
             />
           </Form.Item>
         </Flex>
@@ -298,13 +295,13 @@ const ProgRegisterForm: React.FC<IProgRegisterFormProps> = (props) => {
         {/* 送出  */}
         <Form.Item className='!mt-10 !mb-0'>
           <Button
-            type='primary'
+            type='default'
             htmlType='submit'
             size='large'
             block
             icon={<SendOutlined />}
             loading={isLoad}
-            className={`${!shortCrc ? '' : '!bg-[#6472cf]'}`}
+            className='!bg-[#ca78ca] !border-none'
           >
             Send
           </Button>
@@ -314,9 +311,9 @@ const ProgRegisterForm: React.FC<IProgRegisterFormProps> = (props) => {
   );
 };
 
-export default ProgRegisterForm;
+export default IvRegisterForm;
 
-export interface ProgRegisFormVra {
+export interface IvRegisFormVra {
   name: string;
   phoneNum: string;
   email: string;

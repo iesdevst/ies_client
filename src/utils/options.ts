@@ -1,4 +1,8 @@
-import { CapacityRoleEnum, InterestProgramEnum } from './enum';
+import {
+  CapacityRoleEnum,
+  InterestProgramEnum,
+  ShortTermTraingEnum,
+} from './enum';
 
 type AppOption<O = object, V = string | number> = {
   label: string;
@@ -107,10 +111,41 @@ const interestProgramOptions = eNumEntities<typeof InterestProgramEnum>(
   return { label, value, group };
 });
 
+const shortTermTrainEnumsObj: EnumObjBase<
+  typeof ShortTermTraingEnum,
+  { group?: string }
+> = {
+  BeveragePre: {
+    label: 'Beverage Preparation',
+    value: ShortTermTraingEnum.BeveragePre,
+  },
+  Cooking: {
+    label: 'Professional Cooking',
+    value: ShortTermTraingEnum.Cooking,
+  },
+  Baking: {
+    label: 'Baking',
+    value: ShortTermTraingEnum.Baking,
+  },
+  AiApp: {
+    label: 'AI Applications',
+    value: ShortTermTraingEnum.AiApp,
+  },
+};
+
+const shortTermTrainOptions = eNumEntities<typeof ShortTermTraingEnum>(
+  ShortTermTraingEnum,
+).keys.map((enumKey) => {
+  const { label, value, group } = shortTermTrainEnumsObj[enumKey];
+  return { label, value, group };
+});
+
 export {
   capacityRoleEnumsObj,
   capacityRoleOptions,
   interestProgramEnumsObj,
   interestProgramOptions,
+  shortTermTrainEnumsObj,
+  shortTermTrainOptions,
 };
 export type { AppOption };

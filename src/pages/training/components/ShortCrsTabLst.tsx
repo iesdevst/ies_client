@@ -3,7 +3,7 @@ import { lazy, useCallback, useEffect, useMemo, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import styles from '../iesTraining.module.scss';
 import { Title } from '@/components';
-import { AdmissionVocaTab, ShortCrsTab } from '@/constants';
+import { ShortCrsTab } from '@/constants';
 import { ShortCrsTypeEnum } from '@/utils';
 
 const ShortCrsDetail = lazy(
@@ -44,7 +44,7 @@ const ShortCrsTabLst: React.FC = () => {
     (key: string) => {
       shortCrsSearchPrs.set('tab', key);
       setshortCrsSearchPrs(shortCrsSearchPrs, { replace: true });
-      setShortCrsActKey(key as AdmissionVocaTab);
+      setShortCrsActKey(key as ShortCrsTab);
     },
     [shortCrsSearchPrs, setshortCrsSearchPrs],
   );

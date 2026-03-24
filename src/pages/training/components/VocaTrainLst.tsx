@@ -42,7 +42,7 @@ const VocaTrainLst: React.FC = () => {
         children: <ProgLstCard slugName={ProgramSlugEnum.IT} />,
       },
     ],
-    [trainActKey],
+    [],
   );
 
   const hdlChangeTab = useCallback(

@@ -29,15 +29,15 @@ enum CapacityRoleEnum {
 }
 
 enum InterestProgramEnum {
-  OfficeIT = 'office-it',
-  InformationTechnology = 'information-technology',
-  IndustrialElectrical = 'industrial-electrical',
-  OfficeAdministration = 'office-administration',
-  HotelManagement = 'hotel-management',
-  Marketing = 'marketing',
-  BusinessAdministration = 'business-administration',
-  GraphicDesign = 'graphic-design',
-  Accounting = 'accounting',
+  OfficeIT = 'Applied Informatics',
+  InformationTechnology = 'Information Technology',
+  IndustrialElectrical = 'Industrial & Residential-Electrical',
+  OfficeAdministration = 'Office Administration',
+  HotelManagement = 'Hospitality Management',
+  Marketing = 'Marketing',
+  BusinessAdministration = 'Business Administration',
+  GraphicDesign = 'Computer-Aided Design',
+  Accounting = 'Accounting',
 }
 
 enum ShortCrsTypeEnum {
@@ -47,6 +47,18 @@ enum ShortCrsTypeEnum {
   UsingAi = 'using-ai',
 }
 
+enum ShortTermTraingEnum {
+  BeveragePre = 'Beverage Preparation',
+  Cooking = 'Professional Cooking',
+  Baking = 'Baking',
+  AiApp = 'AI Applications',
+}
+
+enum RegisterTrainingTypeEnum {
+  ShortTerm = 'Short-term Training',
+  IV = 'Intermediate Vocational Training',
+}
+
 export {
   IesClientLangEnum,
   ProgramSlugEnum,
@@ -54,4 +66,6 @@ export {
   CapacityRoleEnum,
   InterestProgramEnum,
   ShortCrsTypeEnum,
+  ShortTermTraingEnum,
+  RegisterTrainingTypeEnum,
 };

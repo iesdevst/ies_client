@@ -1,11 +1,16 @@
 import { useMutation } from '@tanstack/react-query';
 import formspreeApi from '@/lib/formspree-api';
 import type { MutationConfig, MutationFn, QueryError } from '@/lib/react-query';
-import type { CapacityRoleEnum, InterestProgramEnum } from '@/utils';
+import type {
+  CapacityRoleEnum,
+  InterestProgramEnum,
+  RegisterTrainingTypeEnum,
+} from '@/utils';
 
 const epformspree = import.meta.env.VITE_FORMSPREE_ENDPOINT;
 
-export interface ClientRegisSendVar {
+export interface IvRegisSendVar {
+  trainRegisType: RegisterTrainingTypeEnum;
   capaRole: CapacityRoleEnum;
   name: string;
   phone: string;
@@ -16,28 +21,28 @@ export interface ClientRegisSendVar {
   question?: string;
 }
 
-export type ClientRegisSendRes = unknown;
+export type IvRegisSendRes = unknown;
 
-export const fetchClientRegisSet: MutationFn<
-  ClientRegisSendRes,
-  ClientRegisSendVar
+export const fetchIvRegisSet: MutationFn<
+  IvRegisSendRes,
+  IvRegisSendVar
 > = async (props) => {
-  const request = await formspreeApi.post<
-    ClientRegisSendVar,
-    ClientRegisSendRes
-  >(epformspree, { ...props, progInter: props.progInter.join(', ') });
+  const request = await formspreeApi.post<IvRegisSendVar, IvRegisSendRes>(
+    epformspree,
+    { ...props, progInter: props.progInter.join(', ') },
+  );
   return request;
 };
 
-type UseClientRegisSendOpts = MutationConfig<
-  ClientRegisSendRes,
+type UseIvRegisSendOpts = MutationConfig<
+  IvRegisSendRes,
   QueryError,
-  ClientRegisSendVar
+  IvRegisSendVar
 >;
 
-export const useClientRegisSend = (options?: UseClientRegisSendOpts) => {
+export const useIvRegisSend = (options?: UseIvRegisSendOpts) => {
   const mutation = useMutation({
-    mutationFn: fetchClientRegisSet,
+    mutationFn: fetchIvRegisSet,
     ...options,
   });
 
