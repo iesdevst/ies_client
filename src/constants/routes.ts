@@ -42,7 +42,7 @@ export const ACADEMICS_SEGMENT = 'academics' as const;
 export const ADMISSIONS_SEGMENT = 'admissions' as const;
 export const DEMIC_DETAIL_SEGMENT = 'demics-detail' as const;
 export const ADMISSIONS_SHORT_SEGMENT = 'admissions-short-course' as const;
-export const CAREEROP_SEGMENT = 'careeop' as const;
+export const PARTNERSHIP_SEGMENT = 'partnership' as const;
 export const NEWS_SEGMENT = 'news' as const;
 export const PUBDIS_SEGMENT = 'disclosure' as const;
 
@@ -93,7 +93,7 @@ export const ROUTES = {
   ADMISSIONS_SC_UAI_REGISTER: `${ADMISSIONS_SHORT_SEGMENT}?tab=${ShortCrsTab.UsingAi}&subTab=${TrainDetailTab.Register}`,
 
   ACADEMICS: `/${ACADEMICS_SEGMENT}`,
-  CAREEROP: `/${CAREEROP_SEGMENT}`,
+  PARTNERSHIP: `/${PARTNERSHIP_SEGMENT}`,
   NEWS: `/${NEWS_SEGMENT}`,
   PUBDIS: `/${PUBDIS_SEGMENT}`,
 };

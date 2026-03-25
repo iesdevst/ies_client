@@ -9,6 +9,7 @@ const About = lazy(() => import('@/pages/about/AboutIes'));
 const AcademicsVoca = lazy(() => import('@/pages/training/IesVocaTraining'));
 const VoCaTrainDetail = lazy(() => import('@/pages/training/VocaTrainDetail'));
 const ShortCourse = lazy(() => import('@/pages/training/ShortCourse'));
+const Partnership = lazy(() => import('@/pages/partnership/Partnership'));
 
 export const router = createBrowserRouter([
   {
@@ -31,6 +32,10 @@ export const router = createBrowserRouter([
           {
             path: `${ROUTES.ADMISSIONS_SC}`,
             element: <ShortCourse />,
+          },
+          {
+            path: `${ROUTES.PARTNERSHIP}`,
+            element: <Partnership />,
           },
         ],
       },
