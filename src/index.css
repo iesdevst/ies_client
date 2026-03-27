@@ -38,16 +38,6 @@ html {
   padding: 0 !important;
 }
 
-.ant-layout-content {
-  overflow-y: auto !important;
-
-  ::-webkit-scrollbar {
-    display: none !important;
-  }
-
-  scrollbar-width: none !important;
-}
-
 /* carousel arrow css  */
 
 .ant-carousel .slick-prev,
@@ -126,4 +116,17 @@ html {
 }
 .ant-modal-footer {
   margin: 0 !important;
+}
+
+.ant-back-top {
+  right: 30px;
+  bottom: 60px;
+  height: 40px;
+  width: 40px;
+  line-height: 40px;
+  border-radius: 4px;
+  background: linear-gradient(to bottom right, #1f1b2e, #4f46e5);
+  color: #fff;
+  text-align: center;
+  font-size: 22px;
 }

@@ -11,7 +11,12 @@ const steps = [
   'Participate in distance learning and earn your degree',
 ];
 
-const PartnershipRegis: React.FC = () => {
+interface IPartnershipRegis {
+  openRegisInSec: () => void;
+}
+
+const PartnershipRegis: React.FC<IPartnershipRegis> = (props) => {
+  const { openRegisInSec } = props;
   return (
     <IesClSection
       id='partnership-regis'
@@ -61,6 +66,7 @@ const PartnershipRegis: React.FC = () => {
               <Button
                 type='default'
                 className='!w-full !bg-gray-500 !border-none !rounded-2xl !font-bold !text-lg hover:!text-[#16265a]'
+                onClick={openRegisInSec}
               >
                 Consult with Us
               </Button>

@@ -1,6 +1,8 @@
 import {
   CapacityRoleEnum,
   InterestProgramEnum,
+  PartnershipProgEnum,
+  PsLocationRegis,
   ShortTermTraingEnum,
 } from './enum';
 
@@ -39,27 +41,43 @@ const eNumEntities = <T extends Record<string, string | number>>(
   return { keys, values };
 };
 
-const capacityRoleEnumsObj: EnumObjBase<
-  typeof CapacityRoleEnum,
-  { color: string }
-> = {
+const capacityRoleEnumsObj: EnumObjBase<typeof CapacityRoleEnum> = {
   Student: {
     label: 'Student',
     value: CapacityRoleEnum.Student,
-    color: 'grey',
   },
   Parent: {
     label: 'Parent',
     value: CapacityRoleEnum.Parent,
-    color: '#1554ad',
   },
 };
+const enrollmentAreaEnumsObj: EnumObjBase<typeof PsLocationRegis> = {
+  HN: {
+    label: 'Ha Noi city',
+    value: PsLocationRegis.HN,
+  },
+  HCM: {
+    label: 'Ho Chi Minh city',
+    value: PsLocationRegis.HCM,
+  },
+  Other: {
+    label: 'Other',
+    value: PsLocationRegis.Other,
+  },
+};
+
+const enrollmentAreaOptions = eNumEntities<typeof PsLocationRegis>(
+  PsLocationRegis,
+).keys.map((enumKey) => {
+  const { label, value } = enrollmentAreaEnumsObj[enumKey];
+  return { label, value };
+});
 
 const capacityRoleOptions = eNumEntities<typeof CapacityRoleEnum>(
   CapacityRoleEnum,
 ).keys.map((enumKey) => {
-  const { label, value, color } = capacityRoleEnumsObj[enumKey];
-  return { label, value, color };
+  const { label, value } = capacityRoleEnumsObj[enumKey];
+  return { label, value };
 });
 
 const interestProgramEnumsObj: EnumObjBase<
@@ -140,6 +158,63 @@ const shortTermTrainOptions = eNumEntities<typeof ShortTermTraingEnum>(
   return { label, value, group };
 });
 
+const partnershipProgEnumsObj: EnumObjBase<
+  typeof PartnershipProgEnum,
+  { group?: string }
+> = {
+  ECom: {
+    label: 'E-commerce',
+    value: PartnershipProgEnum.ECom,
+  },
+  BusiAd: {
+    label: 'Business Administration',
+    value: PartnershipProgEnum.BusiAd,
+  },
+  Accounting: {
+    label: 'Accounting',
+    value: PartnershipProgEnum.Accounting,
+  },
+  FinBank: {
+    label: 'Finance & Bankingn',
+    value: PartnershipProgEnum.FinBank,
+  },
+  IT: {
+    label: 'Information Technology',
+    value: PartnershipProgEnum.IT,
+  },
+  Law: {
+    label: 'Law',
+    value: PartnershipProgEnum.Law,
+  },
+  EcoLaw: {
+    label: 'Economic Law',
+    value: PartnershipProgEnum.EcoLaw,
+  },
+  EngLang: {
+    label: 'English Language',
+    value: PartnershipProgEnum.EngLang,
+  },
+  ChinaLang: {
+    label: 'Chinese Language',
+    value: PartnershipProgEnum.ChinaLang,
+  },
+  TouTraMana: {
+    label: 'Tourism & Travel Management',
+    value: PartnershipProgEnum.TouTraMana,
+  },
+  HotelMana: {
+    label: 'Hotel Management',
+    value: PartnershipProgEnum.HotelMana,
+  },
+};
+
+const partnershipProgOptions = eNumEntities<typeof PartnershipProgEnum>(
+  PartnershipProgEnum,
+).keys.map((enumKey) => {
+  const { label, value, group } = partnershipProgEnumsObj[enumKey];
+  return { label, value, group };
+});
+
 export {
   capacityRoleEnumsObj,
   capacityRoleOptions,
@@ -147,5 +222,9 @@ export {
   interestProgramOptions,
   shortTermTrainEnumsObj,
   shortTermTrainOptions,
+  partnershipProgEnumsObj,
+  partnershipProgOptions,
+  enrollmentAreaEnumsObj,
+  enrollmentAreaOptions,
 };
 export type { AppOption };

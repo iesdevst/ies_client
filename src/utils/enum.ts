@@ -28,6 +28,12 @@ enum CapacityRoleEnum {
   Parent = 'parent',
 }
 
+enum PsLocationRegis {
+  HN = 'Ha Noi city',
+  HCM = 'Ho Chi Minh city',
+  Other = 'Other',
+}
+
 enum InterestProgramEnum {
   OfficeIT = 'Applied Informatics',
   InformationTechnology = 'Information Technology',
@@ -57,6 +63,21 @@ enum ShortTermTraingEnum {
 enum RegisterTrainingTypeEnum {
   ShortTerm = 'Short-term Training',
   IV = 'Intermediate Vocational Training',
+  PartnershipHou = 'Partnership HOU',
+}
+
+enum PartnershipProgEnum {
+  ECom = 'E-commerce',
+  BusiAd = 'Business Administration',
+  Accounting = 'Accounting',
+  FinBank = 'Finance & Banking',
+  IT = 'Information Technology',
+  Law = 'Law',
+  EcoLaw = 'Economic Law',
+  EngLang = 'English Language',
+  ChinaLang = 'Chinese Language',
+  TouTraMana = 'Tourism & Travel Management',
+  HotelMana = 'Hotel Management',
 }
 
 export {
@@ -68,4 +89,6 @@ export {
   ShortCrsTypeEnum,
   ShortTermTraingEnum,
   RegisterTrainingTypeEnum,
+  PartnershipProgEnum,
+  PsLocationRegis,
 };

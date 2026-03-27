@@ -1,18 +1,29 @@
-import { Layout } from 'antd';
-import React, { useRef, useState } from 'react';
-import { Outlet } from 'react-router-dom';
+import { VerticalAlignTopOutlined } from '@ant-design/icons';
+import { BackTop, Layout } from 'antd';
+import React, { useEffect, useRef, useState } from 'react';
+import { Outlet, useLocation } from 'react-router-dom';
 import FooterIes from './components/FooterIes';
 import HeaderIes from './components/HeaderIes';
 import MegaDrawer from './components/MegaDrawer';
 import styles from './styles/iesClLayout.module.scss';
-import { PageContainer } from '@/components';
-import type { RoutePath } from '@/constants';
+import { ROUTES, type RoutePath } from '@/constants';
 
 const { Content } = Layout;
 
 const IesClientLayout: React.FC = () => {
   const contentRef = useRef<HTMLDivElement>(null);
   const [drawerKey, setDrawerKey] = useState<RoutePath | null>(null);
+  const presentLocation = useLocation();
+  const [showBackTop, setShowBackTop] = useState(false);
+
+  useEffect(() => {
+    const hdlScroll = () => {
+      setShowBackTop(window.scrollY > 300);
+    };
+
+    window.addEventListener('scroll', hdlScroll);
+    return () => window.removeEventListener('scroll', hdlScroll);
+  }, []);
 
   return (
     <>
@@ -26,28 +37,30 @@ const IesClientLayout: React.FC = () => {
           background: 'transparent',
           display: 'flex',
           flexDirection: 'column',
-          height: '100vh',
+          minHeight: '100vh',
         }}
       >
         {/* Header */}
 
         <HeaderIes setDrawerKey={setDrawerKey} />
         {/* Content Area */}
-        <PageContainer>
-          <Content
-            className='ant-layout-content'
-            ref={contentRef}
-            style={{
-              flex: 1,
-              overflowY: 'auto',
-              background: 'transparent',
-            }}
-          >
-            <Outlet />
-          </Content>
-        </PageContainer>
+
+        <Content
+          ref={contentRef}
+          style={{
+            flex: '1',
+            background: 'transparent',
+          }}
+        >
+          <Outlet />
+        </Content>
 
         <FooterIes />
+        {presentLocation.pathname === ROUTES.PARTNERSHIP && showBackTop && (
+          <BackTop className='!rounded-full !z-500' duration={300}>
+            <VerticalAlignTopOutlined style={{ fontSize: '22px' }} />
+          </BackTop>
+        )}
       </Layout>
       <MegaDrawer activeKey={drawerKey} onClose={() => setDrawerKey(null)} />
     </>

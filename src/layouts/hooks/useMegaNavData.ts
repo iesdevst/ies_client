@@ -46,10 +46,12 @@ export const useMegaNavData = (): { data: Array<MegaNavItem> } => {
             },
           ],
         },
-        // {
-        //   title: "University Admissions",
-        //   links: [{ label: "", route: "/" }],
-        // },
+        {
+          title: 'Partnership Training',
+          links: [
+            { label: 'Ha Noi Open University', route: ROUTES.PARTNERSHIP },
+          ],
+        },
       ],
     },
 
@@ -78,19 +80,19 @@ export const useMegaNavData = (): { data: Array<MegaNavItem> } => {
       ],
     },
 
-    {
-      key: ROUTES.CAREEROP,
-      label: 'Career Opportunities',
-      overW: false,
-      sections: [
-        {
-          links: [
-            { label: 'Job Openings', route: '/' },
-            { label: 'Faculty Positions', route: '/' },
-          ],
-        },
-      ],
-    },
+    // {
+    //   key: ROUTES.CAREEROP,
+    //   label: 'Career Opportunities',
+    //   overW: false,
+    //   sections: [
+    //     {
+    //       links: [
+    //         { label: 'Job Openings', route: '/' },
+    //         { label: 'Faculty Positions', route: '/' },
+    //       ],
+    //     },
+    //   ],
+    // },
 
     {
       key: ROUTES.NEWS,

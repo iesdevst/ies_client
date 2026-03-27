@@ -6,9 +6,9 @@ import {
 import { Button, Flex, Form, Input, Row, Select, type InputRef } from 'antd';
 import React, { useRef, useState } from 'react';
 import { useMediaQuery } from 'react-responsive';
-import ProgTypeModal from './ProgTypeModal';
 import { useStRegisSend } from '@/api';
 import { Title } from '@/components';
+import ProgTypeModal from '@/components/AntdModal';
 import { useNotifyStore } from '@/store';
 import {
   CapacityRoleEnum,

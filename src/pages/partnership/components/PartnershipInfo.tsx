@@ -47,7 +47,12 @@ const titpoint = [
   },
 ];
 
-const PartnershipInfo: React.FC = () => {
+interface IPartnershipInfo {
+  openRegisInSec: () => void;
+}
+
+const PartnershipInfo: React.FC<IPartnershipInfo> = (props) => {
+  const { openRegisInSec } = props;
   return (
     <IesClSection
       id='partnership-info'
@@ -71,6 +76,7 @@ const PartnershipInfo: React.FC = () => {
               <Button
                 type='default'
                 className='!w-4/5 !rounded-lg !py-4.5 !text-lg !bg-[#1667d9]'
+                onClick={openRegisInSec}
               >
                 Enroll now <ArrowRightOutlined />
               </Button>
@@ -103,7 +109,7 @@ const PartnershipInfo: React.FC = () => {
               gap={30}
             >
               {titpoint.map((point) => (
-                <Col>
+                <Col key={point.key}>
                   <Text color='#1667d9' className='!block !text-4xl'>
                     {point.icon}
                   </Text>
