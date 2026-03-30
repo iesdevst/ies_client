@@ -46,7 +46,7 @@ const HeaderIes: React.FC<IHeaderIes> = (props) => {
             </PrefetchLink>
 
             <PrefetchLink to={ROUTES.ROOT} className='!text-white !text-lg'>
-              IES College staff
+              IES College Staff
             </PrefetchLink>
             <IesClientLang colorT='!text-white' />
           </Flex>

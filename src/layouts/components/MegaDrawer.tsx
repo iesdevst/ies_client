@@ -35,7 +35,7 @@ const MegaDrawer: React.FC<IMegaDrawer> = (props) => {
       width='100%'
       closable={false}
       mask
-      zIndex={9999}
+      zIndex={999}
       styles={{
         body: { padding: 0 },
         content: { background: 'transparent', boxShadow: 'none' },

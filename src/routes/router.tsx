@@ -6,10 +6,16 @@ import IesClientLayout from '@/layouts/IesClientLayout';
 
 const Dashboard = lazy(() => import('@/pages/home/Dashboard'));
 const About = lazy(() => import('@/pages/about/AboutIes'));
-const AcademicsVoca = lazy(() => import('@/pages/training/IesVocaTraining'));
+const AdmissionsVoca = lazy(() => import('@/pages/training/IesVocaTraining'));
 const VoCaTrainDetail = lazy(() => import('@/pages/training/VocaTrainDetail'));
 const ShortCourse = lazy(() => import('@/pages/training/ShortCourse'));
 const Partnership = lazy(() => import('@/pages/partnership/Partnership'));
+const Academics = lazy(() => import('@/pages/education/Academics'));
+const EduLibrary = lazy(() => import('@/pages/education/EduLibrary'));
+const IesNews = lazy(() => import('@/pages/iesNews/IesNews'));
+const IesNewsDetails = lazy(() => import('@/pages/iesNews/IesNewsDetails'));
+const IesEvents = lazy(() => import('@/pages/iesNews/IesEvents'));
+const IesEventsDetails = lazy(() => import('@/pages/iesNews/IesEventsDetail'));
 
 export const router = createBrowserRouter([
   {
@@ -24,7 +30,7 @@ export const router = createBrowserRouter([
         children: [
           { path: ROUTES.DASHBOARD, element: <Dashboard /> },
           { path: ROUTES.ABOUT, element: <About /> },
-          { path: ROUTES.ACADEMICS, element: <AcademicsVoca /> },
+          { path: ROUTES.ADMISSIONS, element: <AdmissionsVoca /> },
           {
             path: `${ROUTES.DEMICS_DETAIL}/:progType`,
             element: <VoCaTrainDetail />,
@@ -36,6 +42,30 @@ export const router = createBrowserRouter([
           {
             path: `${ROUTES.PARTNERSHIP}`,
             element: <Partnership />,
+          },
+          {
+            path: `${ROUTES.ACADEMICS}`,
+            element: <Academics />,
+          },
+          {
+            path: `${ROUTES.DGTLIB}`,
+            element: <EduLibrary />,
+          },
+          {
+            path: `${ROUTES.NEWS}`,
+            element: <IesNews />,
+          },
+          {
+            path: `${ROUTES.NEWS_DETAILS}/:id`,
+            element: <IesNewsDetails />,
+          },
+          {
+            path: `${ROUTES.EVENTS}`,
+            element: <IesEvents />,
+          },
+          {
+            path: `${ROUTES.EVENTS_DETAILS}/:id`,
+            element: <IesEventsDetails />,
           },
         ],
       },

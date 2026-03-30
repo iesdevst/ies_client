@@ -39,11 +39,15 @@ export type ShortCrsTab = (typeof ShortCrsTab)[keyof typeof ShortCrsTab];
 export const HOME_SEGMENT = 'dashboard' as const;
 export const ABOUT_SEGMENT = 'about-ies' as const;
 export const ACADEMICS_SEGMENT = 'academics' as const;
+export const DGTLIB_SEGMENT = 'edulibrary' as const;
 export const ADMISSIONS_SEGMENT = 'admissions' as const;
 export const DEMIC_DETAIL_SEGMENT = 'demics-detail' as const;
 export const ADMISSIONS_SHORT_SEGMENT = 'admissions-short-course' as const;
 export const PARTNERSHIP_SEGMENT = 'partnership' as const;
 export const NEWS_SEGMENT = 'news' as const;
+export const NEWS_DETAILS_SEGMENT = 'news-details' as const;
+export const EVENTS_SEGMENT = 'events' as const;
+export const EVENTS_DETAILS_SEGMENT = 'events-details' as const;
 export const PUBDIS_SEGMENT = 'disclosure' as const;
 
 export type RoutePath = (typeof ROUTES)[keyof typeof ROUTES];
@@ -56,11 +60,11 @@ export const ROUTES = {
   ABOUT_VISION: `/${ABOUT_SEGMENT}?tab=${AboutTab.Vision}`,
   ABOUT_COREVALUES: `/${ABOUT_SEGMENT}?tab=${AboutTab.Corevalues}`,
   ADMISSIONS: `/${ADMISSIONS_SEGMENT}`,
-  ADMISSIONSVOCA_ALL: `/${ACADEMICS_SEGMENT}?tab=${AdmissionVocaTab.AllCour}`,
-  ADMISSIONSVOCA_IT: `/${ACADEMICS_SEGMENT}?tab=${AdmissionVocaTab.ItOffice}`,
-  ADMISSIONSVOCA_HOSPI: `/${ACADEMICS_SEGMENT}?tab=${AdmissionVocaTab.Hospitality}`,
-  ADMISSIONSVOCA_BUSI: `/${ACADEMICS_SEGMENT}?tab=${AdmissionVocaTab.Business}`,
-  ADMISSIONSVOCA_DESIGN: `/${ACADEMICS_SEGMENT}?tab=${AdmissionVocaTab.Design}`,
+  ADMISSIONSVOCA_ALL: `/${ADMISSIONS_SEGMENT}?tab=${AdmissionVocaTab.AllCour}`,
+  ADMISSIONSVOCA_IT: `/${ADMISSIONS_SEGMENT}?tab=${AdmissionVocaTab.ItOffice}`,
+  ADMISSIONSVOCA_HOSPI: `/${ADMISSIONS_SEGMENT}?tab=${AdmissionVocaTab.Hospitality}`,
+  ADMISSIONSVOCA_BUSI: `/${ADMISSIONS_SEGMENT}?tab=${AdmissionVocaTab.Business}`,
+  ADMISSIONSVOCA_DESIGN: `/${ADMISSIONS_SEGMENT}?tab=${AdmissionVocaTab.Design}`,
   DEMICS_DETAIL: `/${DEMIC_DETAIL_SEGMENT}`,
   DEMICS_DETAIL_OVW: `/${DEMIC_DETAIL_SEGMENT}?tab=${TrainDetailTab.Overview}`,
   DEMICS_DETAIL_ADMISS: `/${DEMIC_DETAIL_SEGMENT}?tab=${TrainDetailTab.Admission}`,
@@ -93,7 +97,11 @@ export const ROUTES = {
   ADMISSIONS_SC_UAI_REGISTER: `${ADMISSIONS_SHORT_SEGMENT}?tab=${ShortCrsTab.UsingAi}&subTab=${TrainDetailTab.Register}`,
 
   ACADEMICS: `/${ACADEMICS_SEGMENT}`,
+  DGTLIB: `/${DGTLIB_SEGMENT}`,
   PARTNERSHIP: `/${PARTNERSHIP_SEGMENT}`,
   NEWS: `/${NEWS_SEGMENT}`,
+  NEWS_DETAILS: `/${NEWS_DETAILS_SEGMENT}`,
+  EVENTS: `/${EVENTS_SEGMENT}`,
+  EVENTS_DETAILS: `/${EVENTS_DETAILS_SEGMENT}`,
   PUBDIS: `/${PUBDIS_SEGMENT}`,
 };

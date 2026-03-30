@@ -84,7 +84,7 @@ const VocaTrainDetail: React.FC = () => {
           {
             title: (
               <PrefetchLink
-                to={ROUTES.ACADEMICS}
+                to={ROUTES.ADMISSIONS}
                 style={{
                   color: 'black',
                   fontWeight: 700,

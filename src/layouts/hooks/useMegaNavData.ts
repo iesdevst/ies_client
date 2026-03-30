@@ -56,25 +56,16 @@ export const useMegaNavData = (): { data: Array<MegaNavItem> } => {
     },
 
     {
-      key: ROUTES.ADMISSIONS,
+      key: ROUTES.ACADEMICS,
       label: 'Academics',
       overW: false,
       sections: [
         {
-          title: 'IES',
+          title: 'IES Academics',
           links: [
-            { label: 'Vocational College Admissions', route: '/' },
-            { label: '10th Grade Admissions', route: '/' },
-          ],
-        },
-        {
-          title: 'Educational Partnerships',
-          links: [
-            { label: 'Hanoi Open University Admissions', route: '/' },
-            {
-              label: 'HCM City University of Technology Admissions',
-              route: '/',
-            },
+            { label: 'Academics Page', route: ROUTES.ACADEMICS },
+
+            { label: 'Digital Library', route: ROUTES.DGTLIB },
           ],
         },
       ],
@@ -101,36 +92,36 @@ export const useMegaNavData = (): { data: Array<MegaNavItem> } => {
       sections: [
         {
           title: 'IES news',
-          links: [{ label: 'Latest News', route: '/' }],
+          links: [{ label: 'Latest News', route: ROUTES.NEWS }],
         },
         {
           title: 'IES events',
-          links: [{ label: 'Events', route: '/' }],
+          links: [{ label: 'Events', route: ROUTES.EVENTS }],
         },
       ],
     },
 
-    {
-      key: ROUTES.PUBDIS,
-      label: 'Public Disclosure',
-      overW: false,
-      sections: [
-        {
-          title: 'Quality Assessment',
-          links: [
-            { label: 'Quality Assurance System – 2025', route: '/' },
-            { label: 'Quality Assurance System – 2026', route: '/' },
-          ],
-        },
-        {
-          title: 'Academic Plans',
-          links: [
-            { label: 'Full Program Training Plan 2025–2026', route: '/' },
-            { label: 'Full Program Training Plan 2026–2027', route: '/' },
-          ],
-        },
-      ],
-    },
+    // {
+    //   key: ROUTES.PUBDIS,
+    //   label: 'Public Disclosure',
+    //   overW: false,
+    //   sections: [
+    //     {
+    //       title: 'Quality Assessment',
+    //       links: [
+    //         { label: 'Quality Assurance System – 2025', route: '/' },
+    //         { label: 'Quality Assurance System – 2026', route: '/' },
+    //       ],
+    //     },
+    //     {
+    //       title: 'Academic Plans',
+    //       links: [
+    //         { label: 'Full Program Training Plan 2025–2026', route: '/' },
+    //         { label: 'Full Program Training Plan 2026–2027', route: '/' },
+    //       ],
+    //     },
+    //   ],
+    // },
   ];
   return { data };
 };
