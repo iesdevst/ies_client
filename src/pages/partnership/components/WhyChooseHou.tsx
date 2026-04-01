@@ -7,6 +7,7 @@ import {
   TagsOutlined,
 } from '@ant-design/icons';
 import { Col, Flex, Row } from 'antd';
+import { useMediaQuery } from 'react-responsive';
 import WCHB from '@/assets/imgs/why_choose_hou_bg.jpeg';
 import { IesClSection, Text, Title } from '@/components';
 
@@ -50,6 +51,7 @@ const whyChooseDt = [
 ];
 
 const WhyChooseHou: React.FC = () => {
+  const mb = useMediaQuery({ maxWidth: 1024 });
   return (
     <IesClSection
       id='why-choose-hou'
@@ -80,16 +82,28 @@ const WhyChooseHou: React.FC = () => {
               >
                 Why Educore?
               </Text>
-              <Title className='!m-0 !text-white !uppercase'>
+              <Title
+                level={!mb ? 1 : 2}
+                className='!m-0 !text-white !uppercase'
+              >
                 Equivalent to a formal
               </Title>
-              <Title className='!m-0 !text-white !uppercase'>
+              <Title
+                level={!mb ? 1 : 2}
+                className='!m-0 !text-white !uppercase'
+              >
                 full-time degree
               </Title>
             </div>
-            <Row gutter={[24, 24]} className='!gap-y-10'>
+            <Row gutter={!mb ? [24, 24] : [0, 0]} className='!gap-y-10'>
               {whyChooseDt.map((item, index) => (
-                <Col xs={24} sm={12} md={8} key={index} className='!px-22'>
+                <Col
+                  xs={24}
+                  sm={12}
+                  md={8}
+                  key={index}
+                  className={`${!mb ? '!px-22' : 'px-5'}`}
+                >
                   <Text color='white' className='!text-4xl'>
                     {item.icon}
                   </Text>

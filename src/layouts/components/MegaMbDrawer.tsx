@@ -172,7 +172,7 @@ const MegaMbDrawer: React.FC = () => {
           expandIconPosition='end'
           activeKey={actClKey}
           onChange={(key) => setActClKey(key)}
-          className={`!border-none !border-red-500 ${styles.mbMegaCollapse}`}
+          className={`!border-none  ${styles.mbMegaCollapse}`}
         />
       </Drawer>
     </>

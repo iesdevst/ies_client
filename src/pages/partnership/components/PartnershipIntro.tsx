@@ -1,6 +1,7 @@
 import { ArrowUpOutlined, LinkOutlined } from '@ant-design/icons';
 import { Button, Col, Flex, Image, Row } from 'antd';
 import { useCallback } from 'react';
+import { useMediaQuery } from 'react-responsive';
 import {
   Link,
   useLocation,
@@ -67,6 +68,9 @@ interface IPartnershipIntro {
 
 const PartnershipIntro: React.FC<IPartnershipIntro> = (props) => {
   const { openRegisInSec } = props;
+  const mb = useMediaQuery({ maxWidth: 767 });
+  const isTablet = useMediaQuery({ minWidth: 768, maxWidth: 1024 });
+
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -88,8 +92,16 @@ const PartnershipIntro: React.FC<IPartnershipIntro> = (props) => {
       divider={false}
       children={
         <section>
-          <div className='grid grid-cols-2 !py-15 !px-20'>
-            <Flex vertical justify='flex-start' align='flex-start' gap={20}>
+          <div
+            className={`grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 ${!mb ? ' !py-15 !px-20' : '!pt-6'}`}
+          >
+            <Flex
+              vertical
+              justify='flex-start'
+              align='flex-start'
+              gap={!mb ? 20 : 10}
+              className={`${!mb ? '!mr-3' : '!pl-3 !mb-6'}`}
+            >
               <Row justify={'center'} align={'middle'} className='gap-x-2'>
                 <LinkOutlined className='!text-[#1667d9]' />
                 <Title className='!m-0 !text-[#1667d9]' level={5}>
@@ -97,69 +109,89 @@ const PartnershipIntro: React.FC<IPartnershipIntro> = (props) => {
                 </Title>
               </Row>
               <div>
-                <Title className='!m-0 !text-5xl'>HANOI OPEN UNIVERSITY</Title>
-                <Title className='!m-0 !text-5xl'>
+                <Title className={`!m-0 ${!mb ? '!text-5xl' : '!text-2xl'}`}>
+                  HANOI OPEN UNIVERSITY
+                </Title>
+                <Title className={`!m-0 ${!mb ? '!text-5xl' : '!text-2xl'}`}>
                   E-LEARNING TRAINING CENTER
                 </Title>
               </div>
               <Col>
-                <Text className='!text-lg'>
+                <Text className={`!block ${!mb ? '!text-lg' : '!text-md'}`}>
                   No need to go to campus — still get a university degree
                 </Text>
-                <br />
-                <Text className='!text-lg'>
+
+                <Text className={`!block ${!mb ? '!text-lg' : '!text-md'}`}>
                   Is a university degree holding back your dreams?
                 </Text>
               </Col>
-              <Row justify={'center'} align={'bottom'} className='gap-x-10'>
-                <Image src={OUP} preview={false} className='!w-20 !h-20' />
+              <Row
+                justify={!mb ? 'start' : isTablet ? 'center' : 'space-between'}
+                align={'bottom'}
+                className={`!w-full ${!mb ? '!gap-x-10 ' : 'px-2'}`}
+              >
+                <Image
+                  src={OUP}
+                  preview={false}
+                  className={`${!mb ? '!w-20 !h-20' : '!w-12 !h-12'}`}
+                />
                 <Button
                   type='default'
-                  className='!border-[#1667d9] !text-[#1667d9] !bg-white !rounded-full !py-6 !px-20'
-                  size='large'
+                  className={`!border-[#1667d9] !text-[#1667d9] !bg-white !rounded-full ${!mb ? '!py-6 !px-20' : '!px-8 !py-4'}`}
+                  size={!mb ? 'large' : 'small'}
                   onClick={openRegisInSec}
                 >
                   Register Now
                 </Button>
               </Row>
             </Flex>
-            <div className='grid grid-cols-3 gap-y-5'>
+            <Row gutter={!mb ? [16, 20] : [0, 25]}>
               {srcollData.map((scroll) => (
-                <Flex
+                <Col
                   key={scroll.idTo}
-                  justify='end'
-                  align='flex-start'
-                  className='!w-full !h-full'
+                  xs={12}
+                  sm={12}
+                  md={12}
+                  lg={8}
+                  className={`${!mb ? '' : 'px-3'}`}
                 >
-                  <ManualLink
-                    to={scroll.to}
-                    style={{
-                      backgroundImage: `url(${scroll.img})`,
-                      backgroundSize: 'cover',
-                      backgroundPosition: 'center',
-                      backgroundRepeat: 'no-repeat',
-                    }}
-                    type='text'
-                    className='!rounded-xl !w-2/3 !h-full !flex !items-center !justify-center !block'
-                    onClick={(e) => {
-                      e.preventDefault();
-                      hdlScrollSec(scroll.idTo);
-                    }}
+                  <Flex
+                    justify='center'
+                    align='stretch'
+                    className='!w-full !h-full'
                   >
-                    <Text
-                      className='!font-bold !inline-block hover:!underline !bg-white !px-1 !opacity-80 !rounded-xl'
-                      color='#0e70eb'
+                    <ManualLink
+                      to={scroll.to}
+                      style={{
+                        backgroundImage: `url(${scroll.img})`,
+                        backgroundSize: 'cover',
+                        backgroundPosition: 'center',
+                        backgroundRepeat: 'no-repeat',
+                      }}
+                      type='text'
+                      className={`!rounded-xl !w-full !h-full !flex !items-center !justify-center ${!mb ? '' : 'py-6'}`}
+                      onClick={(e) => {
+                        e.preventDefault();
+                        hdlScrollSec(scroll.idTo);
+                      }}
                     >
-                      {scroll.label} <ArrowUpOutlined className='!rotate-45' />
-                    </Text>
-                  </ManualLink>
-                </Flex>
+                      <Text
+                        className='!font-bold hover:!underline !bg-white !px-2 py-1 !opacity-80 !rounded-xl'
+                        color='#0e70eb'
+                      >
+                        {scroll.label}{' '}
+                        <ArrowUpOutlined className='!rotate-45' />
+                      </Text>
+                    </ManualLink>
+                  </Flex>
+                </Col>
               ))}
-            </div>
+            </Row>
           </div>
         </section>
       }
       className='bg-white'
+      height={mb || isTablet ? '25vh' : ''}
     />
   );
 };

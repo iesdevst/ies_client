@@ -301,11 +301,30 @@ export const IesClSection: React.FC<SubSectionProps> = (props) => {
   const renderVidPrLayout = (props: VidPrLayoutProps) => {
     const { desVid, titVid, bottomTit, vidLink, tabletVid, miniSc } = props;
 
+    const getPositionClass = () => {
+      if (mb) return 'left-8 bottom-0 w-full';
+      if (tabletVid) return 'left-76 bottom-0 w-[60%]';
+      if (miniSc) return 'left-175 top-6';
+      return 'left-220 top-10';
+    };
+    const getImgH = () => {
+      if (mb) return 'h-15';
+      if (tabletVid) return 'h-20';
+      if (miniSc) return 'h-20';
+      return 'h-25';
+    };
+    const getTxtHdl = () => {
+      if (mb) return '!mt-8';
+      if (tabletVid) return '!mt-10 !text-2xl px-20';
+      if (miniSc) return '!mt-10';
+      return '!mt-20 !text-lg';
+    };
+
     return (
       <Flex
         vertical={mb || tabletVid}
         className='!w-full items-stretch'
-        align={`${tabletVid || mb ? 'center' : 'end'}`}
+        align={'center'}
         justify='space-between'
       >
         {/* LEFT - VIDEO */}
@@ -315,16 +334,14 @@ export const IesClSection: React.FC<SubSectionProps> = (props) => {
           >
             <div className='!w-full aspect-video !pb-7'>
               <iframe
-                className={`!h-full ${!tabletVid ? '!w-full' : '!w-[650px]'} rounded-xl shadow-lg !block`}
+                className={`!h-full ${!tabletVid ? '!w-full' : '!w-[750px]'} rounded-xl shadow-lg !block`}
                 src={vidLink}
                 title='YouTube video'
                 allowFullScreen
               />
             </div>
 
-            <div
-              className={`absolute z-20 w-2/3 ${mb ? 'left-8 bottom-0 w-full' : miniSc ? 'left-175 top-6' : 'left-200 top-10'} `}
-            >
+            <div className={`absolute z-20 w-2/3 ${getPositionClass()}`}>
               <div
                 className={`relative bg-[#2b2f6b] flex items-center justify-start ${!mb ? 'px-6 py-4' : 'py-1.5 px-2'}`}
               >
@@ -338,28 +355,25 @@ export const IesClSection: React.FC<SubSectionProps> = (props) => {
                 <img
                   src='https://www.vlu.edu.vn/images/section-1-pattern.svg'
                   alt='pattern'
-                  className={`absolute right-2 ${mb || tabletVid ? 'h-26' : miniSc ? 'h-15' : 'h-15'}`}
+                  className={`absolute right-2 ${getImgH()}`}
                 />
               </div>
             </div>
           </div>
         )}
 
-        <div className={`${!mb ? 'mb-10 flex-[1.5]' : 'mt-5'}`}>
-          <Col
-            className={`${mb || tabletVid ? '' : miniSc ? 'mt-5' : 'pr-10'}`}
-          >
-            <div className={`${!mb ? 'pl-5 py-7' : 'px-5'}`}>
-              <Text className='mb-8 !text-lg !text-start' color='#2d334d'>
+        <div className='flex-[1.5]'>
+          <Col>
+            <div className='px-5'>
+              <Text
+                className={`!mb-8 !text-start !block ${getTxtHdl()}`}
+                color='#2d334d'
+              >
                 {desVid}
               </Text>
             </div>
 
-            <Row
-              justify={`${!mb ? 'start' : 'end'}`}
-              align={'middle'}
-              className={`${!mb ? 'pl-17' : '!pr-5 mt-2'}`}
-            >
+            <Row justify={'center'} align={'middle'}>
               <Button shape='circle' type='text' className='flex items-center'>
                 <Title level={4} className='!m-0'>
                   {bottomTit}

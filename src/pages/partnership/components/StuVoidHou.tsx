@@ -1,4 +1,5 @@
 import { Col, Flex, Image, Row } from 'antd';
+import { useMediaQuery } from 'react-responsive';
 import HTDSV from '@/assets/imgs/htd_stu_void.jpg';
 import LDVSV from '@/assets/imgs/ldv_stu_void.jpg';
 import NMHSV from '@/assets/imgs/nmh_stu_void.jpg';
@@ -27,24 +28,29 @@ const stuVoidDt = [
 ];
 
 const StuVoidHou: React.FC = () => {
+  const mb = useMediaQuery({ maxWidth: 767 });
+  const isTablet = useMediaQuery({ minWidth: 768, maxWidth: 1024 });
+
   return (
     <IesClSection
       id='stu-void'
       layout='simple'
       divider={false}
       children={
-        <section className='p-30 bg-gray-700'>
+        <section
+          className={`bg-gray-700 ${mb ? 'px-6 py-20' : isTablet ? 'px-10 py-30' : 'p-30'}`}
+        >
           <Flex justify='space-between' align='center' className='!w-full'>
             <Image
               src={HOUAVT}
               preview={false}
-              className='!w-45 !h-45 !bg-white !rounded-2xl !py-0.5'
+              className={`!bg-white !rounded-2xl !py-0.5 ${mb || isTablet ? '!w-20 !h-20' : '!w-45 !h-45 '}`}
             />
             <div className='text-center'>
-              <Title className='!m-0 !text-white'>
+              <Title level={!mb ? 1 : 5} className='!m-0 !text-white'>
                 Student Voices on E-Learning
               </Title>
-              <Title className='!m-0 italic !text-white' level={3}>
+              <Title level={!mb ? 3 : 4} className='!m-0 italic !text-white'>
                 Hanoi Open University
               </Title>
             </div>
@@ -63,8 +69,9 @@ const StuVoidHou: React.FC = () => {
               <Col
                 key={index}
                 xs={24}
-                sm={12}
-                md={6}
+                sm={24}
+                md={24}
+                lg={6}
                 className='bg-gradient-to-br from-blue-400 to-gray-600 rounded-4xl py-5 text-white'
               >
                 <Flex vertical justify='center' align='center' gap={25}>

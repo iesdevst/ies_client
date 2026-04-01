@@ -6,6 +6,7 @@ import {
   QuestionCircleFilled,
 } from '@ant-design/icons';
 import { Button, Col, Flex, Image, List, Row } from 'antd';
+import { useMediaQuery } from 'react-responsive';
 import PI from '@/assets/imgs/partnership_info_sec.jpeg';
 import { IesClSection, Text, Title } from '@/components';
 
@@ -17,8 +18,7 @@ const questIf = [
   },
   {
     key: 2,
-    label:
-      'Lacking confidence in education, avoiding study,\n feeling too old now?',
+    label: 'Low confidence, avoiding study, too old?',
   },
   {
     key: 3,
@@ -53,6 +53,9 @@ interface IPartnershipInfo {
 
 const PartnershipInfo: React.FC<IPartnershipInfo> = (props) => {
   const { openRegisInSec } = props;
+  const mb = useMediaQuery({ maxWidth: 768 });
+  const isTablet = useMediaQuery({ minWidth: 768, maxWidth: 1024 });
+
   return (
     <IesClSection
       id='partnership-info'
@@ -60,15 +63,17 @@ const PartnershipInfo: React.FC<IPartnershipInfo> = (props) => {
       divider={false}
       children={
         <section className='bg-white'>
-          <div className='grid grid-cols-3 px-20'>
+          <div
+            className={`grid grid-cols-1 md:grid-cols-1 lg:grid-cols-3 ${mb || isTablet ? 'px-5' : 'px-20'}`}
+          >
             <Flex
               vertical
               justify='flex-start'
               align='flex-start'
               className='!h-full !pt-10'
-              gap={50}
+              gap={!mb ? 50 : 20}
             >
-              <Title className='!m-0'>
+              <Title level={mb || isTablet ? 2 : 1} className='!m-0'>
                 Does not having a <br />
                 degree hold you back <br />
                 or push you forward?
@@ -100,12 +105,16 @@ const PartnershipInfo: React.FC<IPartnershipInfo> = (props) => {
                 )}
               />
             </Flex>
-            <Image src={PI} preview={false} className='!w-5/6 !rounded-2xl' />
+            <Image
+              src={PI}
+              preview={false}
+              className={`!rounded-2xl ${!mb ? '!w-5/6' : ''}`}
+            />
             <Flex
               vertical
               justify='flex-start'
               align='flex-start'
-              className='!h-full !pt-3.5'
+              className={`!h-full ${!mb ? '!pt-3.5' : '!mt-10'}`}
               gap={30}
             >
               {titpoint.map((point) => (
@@ -131,6 +140,7 @@ const PartnershipInfo: React.FC<IPartnershipInfo> = (props) => {
           </div>
         </section>
       }
+      height={mb || isTablet ? '25vh' : ''}
     />
   );
 };

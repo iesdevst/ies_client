@@ -1,5 +1,6 @@
 import { CheckCircleFilled } from '@ant-design/icons';
 import { Button, Col, Flex, Image, List } from 'antd';
+import { useMediaQuery } from 'react-responsive';
 import PC from '@/assets/imgs/partnership_contact.jpeg';
 import { IesClSection, Text, Title } from '@/components';
 
@@ -17,17 +18,25 @@ interface IPartnershipRegis {
 
 const PartnershipRegis: React.FC<IPartnershipRegis> = (props) => {
   const { openRegisInSec } = props;
+  const mb = useMediaQuery({ maxWidth: 1024 });
   return (
     <IesClSection
       id='partnership-regis'
       layout='simple'
       divider={false}
       children={
-        <section className='pb-30'>
-          <Flex align='flex-start' className='!px-40' gap={15}>
-            <Col className='flex-2 bg-gradient-to-br from-[#1f1b2e] to-[#4f46e5] rounded-2xl pt-6.5 pl-10 !space-y-6'>
+        <section className={`${!mb ? 'pb-30' : 'pb-10 px-5'}`}>
+          <Flex
+            vertical={mb}
+            align='flex-start'
+            className={`${!mb ? '!px-40' : ''}`}
+            gap={15}
+          >
+            <Col
+              className={`bg-gradient-to-br from-[#1f1b2e] to-[#4f46e5] rounded-2xl  !space-y-6 ${!mb ? 'flex-2 pl-10 pt-6.5' : 'py-10 px-4'}`}
+            >
               <div>
-                <Title level={2} className='!m-0 !text-white'>
+                <Title level={!mb ? 2 : 3} className='!m-0 !text-white'>
                   Simple Admission in 5 Steps
                 </Title>
                 <Title level={2} className='!m-0 !text-white'>
@@ -48,24 +57,29 @@ const PartnershipRegis: React.FC<IPartnershipRegis> = (props) => {
                   </List.Item>
                 )}
               />
-              <Title className='!text-white'>
+              <Title level={!mb ? 1 : 4} className='!text-white'>
                 Over 30,000 students have earned their bachelor’s degrees
                 through Hanoi Open University’s E-Learning program.
               </Title>
             </Col>
-            <Col className='flex-1 bg-gradient-to-br from-[#1f1b2e] to-[#4f46e5] rounded-2xl py-5 px-3'>
-              <Title level={2} className='!text-white !m-0'>
+            <Col
+              className={`bg-gradient-to-br from-[#1f1b2e] to-[#4f46e5] rounded-2xl py-5 px-3 ${!mb ? 'flex-1' : ''}`}
+            >
+              <Title
+                level={2}
+                className={`!text-white !m-0 ${!mb ? '' : '!text-center'}`}
+              >
                 Get Advice
               </Title>
 
               <Image
                 src={PC}
                 preview={false}
-                className='!mt-2 !mb-1 !rounded-lg'
+                className={`!mt-2 !mb-1 !rounded-4xl ${!mb ? '' : 'p-5'}`}
               />
               <Button
                 type='default'
-                className='!w-full !bg-gray-500 !border-none !rounded-2xl !font-bold !text-lg hover:!text-[#16265a]'
+                className={`!w-full !bg-gray-500 !border-none !rounded-2xl !font-bold !text-lg hover:!text-[#16265a] ${!mb ? '' : '!py-6'}`}
                 onClick={openRegisInSec}
               >
                 Consult with Us
