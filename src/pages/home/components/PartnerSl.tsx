@@ -1,5 +1,6 @@
 import { Carousel, Col, Flex, Image } from 'antd';
 
+import { useMediaQuery } from 'react-responsive';
 import CNPH from '@/assets/imgs/cnph_tt.svg';
 import DO from '@/assets/imgs/div_oost_tt.webp';
 import FS from '@/assets/imgs/form_square_tt.jpg';
@@ -13,6 +14,8 @@ import { IesClSection, Text, Title } from '@/components';
 import styles from '@/components/SPS/iesCl.module.scss';
 
 const PartnerSl: React.FC = () => {
+  const mb = useMediaQuery({ maxWidth: 1024 });
+  const isTablet = useMediaQuery({ minWidth: 768, maxWidth: 1024 });
   const data = [GTTT, CNPH, LH, HS, RA, WW, FS, DO];
 
   return (
@@ -23,47 +26,54 @@ const PartnerSl: React.FC = () => {
       children={
         <div className='mt-15'>
           <Flex
+            vertical={mb}
             justify='space-between'
-            align='start'
-            className='!px-45 !w-full'
+            align={!mb ? 'start' : 'center'}
+            className={`!w-full ${!mb ? '!px-45' : ''}`}
           >
             <Col className='flex-1'>
               <Title className=' !font-bold !m-0'>Internship Partner</Title>
-              <Title className='!font-bold !m-0'>Institution</Title>
+              <Title className={`!font-bold !m-0 ${!mb ? '' : 'text-center'}`}>
+                Institution
+              </Title>
             </Col>
-            <div className='flex-1'>
-              <Text className=''>
-                An institution that collaborates with businesses to develop and
-                coordinate internship programs, creating opportunities for
-                students to participate in real-world projects and apply
-                knowledge in practical situations. Through these partnerships,
-                students gain hands-on experience and develop professional
-                skills in real working environments, preparing them for future
-                careers.
-              </Text>
-            </div>
+
+            <Text
+              className={`!block flex-1 px-5 mt-2 ${!isTablet ? '' : 'px-15 mt-5 !text-2xl'}`}
+            >
+              An institution that collaborates with businesses to develop and
+              coordinate internship programs, creating opportunities for
+              students to participate in real-world projects and apply knowledge
+              in practical situations. Through these partnerships, students gain
+              hands-on experience and develop professional skills in real
+              working environments, preparing them for future careers.
+            </Text>
           </Flex>
 
           <div className='w-full'>
             <Carousel
               autoplay
               pauseOnHover={false}
-              dots={true}
+              dots={!mb ? true : false}
               arrows={false}
-              slidesPerRow={4}
-              className={`${styles.dotTrainCustom} dot-train my-15 px-30`}
+              effect={!mb ? 'fade' : 'scrollx'}
+              slidesPerRow={!mb ? 4 : 2}
+              className={`${styles.dotTrainCustom} dot-train my-15 ${!isTablet ? '' : 'pr-20'}`}
             >
               {data.map((item, index) => (
                 <div key={index}>
-                  <Flex justify='space-between' align='start'>
+                  <Flex
+                    justify={!mb ? 'space-between' : 'center'}
+                    align='start'
+                  >
                     <Image
                       src={item}
                       style={{
-                        width: '100%',
+                        width: isTablet || mb ? '90%' : '100%',
                         height: '15vh',
                         objectFit: 'cover',
                       }}
-                      className='px-15 mb-5'
+                      className={`${!mb ? 'px-15 mb-5' : ''}`}
                       preview={false}
                     />
                   </Flex>
@@ -73,6 +83,7 @@ const PartnerSl: React.FC = () => {
           </div>
         </div>
       }
+      height={!mb ? '' : '45vh'}
     />
   );
 };

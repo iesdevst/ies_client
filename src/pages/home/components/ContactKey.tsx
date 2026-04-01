@@ -5,6 +5,7 @@ import {
   RightOutlined,
 } from '@ant-design/icons';
 import { Button, Collapse, Row } from 'antd';
+import { useMediaQuery } from 'react-responsive';
 import { IesClSection, Text, Title } from '@/components';
 
 const contacts = [
@@ -138,23 +139,30 @@ const contacts = [
 ];
 
 const ContactKey: React.FC = () => {
+  const mb = useMediaQuery({ maxWidth: 1024 });
+  const mnSc = useMediaQuery({ minWidth: 1024, maxWidth: 1279 });
+
   return (
     <IesClSection
       id='keyContact'
       layout='simple'
       divider={false}
       children={
-        <div className='mt-20 pt-20 pl-20 h-full flex flex-col'>
-          <Title>Key Contact</Title>
+        <div
+          className={`mt-20 h-full flex flex-col ${!mb ? 'pl-20 pt-20' : ' pt-10 pb-20'}`}
+        >
+          <Title className={`${!mb ? '' : '!text-center'}`}>Key Contact</Title>
 
-          <div className='w-1/2 border-b border-[#cfd2d8]'>
+          <div
+            className={`border-b border-[#cfd2d8] ${!mb ? 'w-1/2' : '!mx-5'}`}
+          >
             <Collapse
               accordion
               items={contacts}
               expandIconPosition='end'
               expandIcon={({ isActive }) => (
                 <PlusOutlined
-                  className={`!text-blue-600 !font-bold transition-transform ${
+                  className={`!text-blue-600 !font-bold transition-transform !text-lg ${
                     isActive ? 'rotate-45 !text-red-500' : ''
                   }`}
                 />
@@ -163,7 +171,7 @@ const ContactKey: React.FC = () => {
             />
           </div>
 
-          <div className='mt-7 '>
+          <div className={`mt-7 ${!mb ? '' : ' text-end'}`}>
             <Button type='text'>
               <Title className='!m-0 !text-black' level={4}>
                 View More
@@ -176,7 +184,7 @@ const ContactKey: React.FC = () => {
         </div>
       }
       className='bg-[#f2f5ff] mt-20'
-      height='74vh'
+      height={mb ? '40vh' : mnSc ? '95vh' : '74vh'}
     />
   );
 };

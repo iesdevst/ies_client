@@ -1,5 +1,5 @@
+import { useMediaQuery } from 'react-responsive';
 import DHHCMTS from '@/assets/imgs/dhhcmts_avt.avif';
-import DHMTS from '@/assets/imgs/dhmts_avt.avif';
 import VAM from '@/assets/imgs/ies_vam.png';
 import TPI from '@/assets/imgs/topic_img.png';
 import TSLM from '@/assets/imgs/tslm_avt.avif';
@@ -7,6 +7,7 @@ import TSTC from '@/assets/imgs/tstc_avt.avif';
 import { IesClSection } from '@/components';
 
 const VaM: React.FC = () => {
+  const mb = useMediaQuery({ maxWidth: 1024 });
   const topicDt = [
     {
       tit: 'Vision & Mission',
@@ -24,18 +25,15 @@ const VaM: React.FC = () => {
   ];
 
   const methodPr = [
-    { thodAv: TSLM, meTit: 'Grade 10 Admissions' },
-    { thodAv: TSTC, meTit: 'Intermediate College Admissions' },
-    { thodAv: DHMTS, meTit: 'Hanoi Open University Admissions' },
-    {
-      thodAv: DHHCMTS,
-      meTit: 'Ho Chi Minh City University of Technology Admissions',
-    },
+    { thodAv: TSLM, meTit: 'Short-term Training Admissions' },
+    { thodAv: TSTC, meTit: 'Intermediate Vocational Admissions' },
+    { thodAv: DHHCMTS, meTit: 'Hanoi Open University Admissions' },
   ];
   return (
     <IesClSection
       id='vAm'
       layout='topic'
+      mb={mb}
       topImaTit={TPI}
       topTitBut='Discover Now'
       topicCt={topicDt}
@@ -44,7 +42,7 @@ const VaM: React.FC = () => {
       botBut='Know more about us'
       methodLst={methodPr}
       topicI={VAM}
-      className='px-20 mt-20 !bg-[#f2f5ff] py-15'
+      className={`!bg-[#f2f5ff] py-15 ${!mb ? 'px-20 mt-20' : 'px-5'}`}
     />
   );
 };

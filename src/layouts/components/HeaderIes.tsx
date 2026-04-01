@@ -16,7 +16,7 @@ interface IHeaderIes {
 
 const HeaderIes: React.FC<IHeaderIes> = (props) => {
   const { setDrawerKey } = props;
-  const isMb = useMediaQuery({ maxWidth: 1024 });
+  const isMb = useMediaQuery({ maxWidth: 1180 });
 
   return (
     <>
@@ -54,17 +54,17 @@ const HeaderIes: React.FC<IHeaderIes> = (props) => {
       </MediaQuery>
       <Header
         style={{
-          padding: isMb ? '30px 20px 0 20px' : '55px 40px',
-          height: 60,
+          padding: isMb ? '0 40px 0 40px' : '55px 40px',
+          height: !isMb ? 60 : 80,
         }}
-        className={`!flex !items-center !justify-center ${!isMb ? 'gap-x-60' : 'gap-x-20'} !bg-white`}
+        className={`!flex !items-center  ${!isMb ? 'gap-x-60 !justify-center' : '!justify-between'} !bg-white`}
       >
         <PrefetchLink
           to={ROUTES.DASHBOARD}
           className='!block !flex !items-center'
         >
           <Image
-            className={`${!isMb ? '!w-42 !h-25' : '!w-auto !h-auto !mt-1.5 pr-12'}`}
+            className={`${!isMb ? '!w-42 !h-25' : '!w-auto !h-15 !mt-1.5 pr-12'}`}
             src={isMb ? IES_LOGO_MB : IES_LOGO_URL}
             alt='ies_logo'
             preview={false}

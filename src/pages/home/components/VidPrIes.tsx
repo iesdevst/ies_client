@@ -2,7 +2,9 @@ import { useMediaQuery } from 'react-responsive';
 import { IesClSection } from '@/components';
 
 const VidPrIes: React.FC = () => {
-  const isMb = useMediaQuery({ maxWidth: 1024 });
+  const isMb = useMediaQuery({ maxWidth: 767 });
+  const isTablet = useMediaQuery({ minWidth: 768, maxWidth: 1024 });
+  const miniScreen = useMediaQuery({ minWidth: 1024, maxWidth: 1279 });
   return (
     <IesClSection
       id='vidPr'
@@ -13,7 +15,9 @@ const VidPrIes: React.FC = () => {
 impacts`}
       vidLink='https://www.youtube.com/embed/8G1vC-hJjjc?si=Q_cV53WSlXUtmrA7'
       mb={isMb}
-      height={`${!isMb ? '70vh' : '52vh'}`}
+      height={`${!isMb ? '70vh' : '30vh'}`}
+      tabletVid={isTablet}
+      miniSc={miniScreen}
     />
   );
 };

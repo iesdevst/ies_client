@@ -1,3 +1,4 @@
+import { useMediaQuery } from 'react-responsive';
 import CNTT from '@/assets/imgs/cntt.jpg';
 import DNC from '@/assets/imgs/dcn.jpg';
 import KTDN from '@/assets/imgs/ktdn.png';
@@ -10,6 +11,7 @@ import VMT from '@/assets/imgs/vmt.png';
 import { IesClSection } from '@/components';
 
 const TrainingSl: React.FC = () => {
+  const mb = useMediaQuery({ maxWidth: 1024 });
   const data = [
     {
       title: 'Office Admin',
@@ -77,7 +79,8 @@ const TrainingSl: React.FC = () => {
       trainImgSl={data}
       statisTit='Explore our milestones'
       statistics={staticDt}
-      className='!h-full !mt-5 bg-blue-400 pt-18'
+      className='!h-full !mt-5 !bg-[#3e72b2] pt-18'
+      mb={mb}
     />
   );
 };

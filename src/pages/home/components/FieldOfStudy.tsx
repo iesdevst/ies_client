@@ -1,15 +1,16 @@
 import { RightOutlined } from '@ant-design/icons';
 import { Button, Col, Image, List, Row } from 'antd';
 
+import { useMediaQuery } from 'react-responsive';
 import DVKS from '@/assets/imgs/dv_ks.svg';
 import FBL from '@/assets/imgs/field_bot_left.avif';
-import MAVT from '@/assets/imgs/ies_logo_text.png';
 import KDQL from '@/assets/imgs/kd_qly.svg';
 import THVP from '@/assets/imgs/th_vp.svg';
 import TKST from '@/assets/imgs/tk_st.svg';
 import { IesClSection, Text, Title } from '@/components';
 
 const FieldOfStudy: React.FC = () => {
+  const mb = useMediaQuery({ maxWidth: 1024 });
   const fieldProDt = [
     {
       icon: THVP,
@@ -70,9 +71,11 @@ const FieldOfStudy: React.FC = () => {
       layout='simple'
       divider={false}
       children={
-        <div className='grid grid-cols-1 md:grid-cols-6 lg:grid-cols-6 gap-8 mb-3.5 mt-15 pt-18 bg-[#f5f6fc]'>
-          <Col className='!flex !flex-col col-span-2 !gap-y-10'>
-            <div className='pl-20'>
+        <div
+          className={`grid grid-cols-1 md:grid-cols-6 lg:grid-cols-6 gap-8 mb-3.5 mt-15 bg-[#f5f6fc] ${!mb ? 'pt-18' : 'py-18'}`}
+        >
+          <Col className='!flex !flex-col col-span-6 md:col-span-2 lg:col-span-2 !gap-y-10'>
+            <div className={`${!mb ? 'pl-20' : 'px-5'}`}>
               <Title>Field of study & Academic track</Title>
               <Text>
                 IES currently offers 4 training fields with 7 academic programs,
@@ -94,21 +97,23 @@ const FieldOfStudy: React.FC = () => {
               </div>
             </div>
 
-            <Image
-              src={FBL}
-              preview={false}
-              className='!rotate-[90deg] !w-60 !h-60'
-            />
+            {!mb && (
+              <Image
+                src={FBL}
+                preview={false}
+                className='!rotate-[90deg] !w-60 !h-60'
+              />
+            )}
           </Col>
 
-          <div className='col-span-4'>
+          <div className='col-span-6 md:col-span-4 lg:col-span-4'>
             <Row className='gap-x-20' justify={'start'} align={'top'}>
               {fieldProDt.map((item, index) => (
                 <Row
                   key={index}
                   align={'top'}
                   justify={'start'}
-                  className='mb-22 gap-x-3'
+                  className={`gap-x-3 ${!mb ? 'mb-22 ' : '!ml-2.5 mb-5'}`}
                 >
                   <Image src={item.icon} preview={false} />
                   <Col>
@@ -128,13 +133,11 @@ const FieldOfStudy: React.FC = () => {
                   </Col>
                 </Row>
               ))}
-              <div className='ml-auto mt-25'>
-                <Image src={MAVT} className='!w-60 !h-60' preview={false} />
-              </div>
             </Row>
           </div>
         </div>
       }
+      height={!mb ? '' : '36vh'}
     />
   );
 };

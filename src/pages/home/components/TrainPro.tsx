@@ -1,9 +1,11 @@
+import { useMediaQuery } from 'react-responsive';
 import CTLK from '@/assets/imgs/ctlk.avif';
 import CTTC from '@/assets/imgs/cttc.avif';
 import CTTT from '@/assets/imgs/cttt.avif';
 import { IesClSection } from '@/components';
 
 const TrainPro: React.FC = () => {
+  const mb = useMediaQuery({ maxWidth: 1024 });
   const noFeatCdt = [
     {
       imgC: CTTC,
@@ -32,7 +34,9 @@ const TrainPro: React.FC = () => {
       title='Training Programs'
       feature={false}
       featCard={noFeatCdt}
-      className='mt-20 px-10'
+      className={`mt-20 ${!mb ? 'px-10' : 'px-3'}`}
+      mb={mb}
+      height={!mb ? '' : '36vh'}
     />
   );
 };

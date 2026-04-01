@@ -1,5 +1,4 @@
 import { QueryClientProvider } from '@tanstack/react-query';
-import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 import { ConfigProvider } from 'antd';
 import ErrorBoundary from 'antd/es/alert/ErrorBoundary';
 import { Suspense } from 'react';
@@ -37,10 +36,10 @@ function App() {
           <Suspense fallback={<FallbackLoading />}>
             <AppRouter />
           </Suspense>
-          <ReactQueryDevtools
+          {/* <ReactQueryDevtools
             initialIsOpen={false}
             buttonPosition='bottom-left'
-          />
+          /> */}
         </QueryClientProvider>
 
         <NotifyProvider

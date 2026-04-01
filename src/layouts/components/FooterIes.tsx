@@ -1,5 +1,4 @@
 import { Col, Image, Layout, List, Row, Space } from 'antd';
-import { useTranslation } from 'react-i18next';
 import MediaQuery from 'react-responsive';
 
 import fb from '@/assets/imgs/fb_logo.png';
@@ -13,10 +12,7 @@ import { Text, Title } from '@/components';
 const { Footer } = Layout;
 
 const FooterIes: React.FC = () => {
-  const { t } = useTranslation('footerPageContent');
-
   const iconSize = 45;
-  const mbIconSz = 28;
 
   const aboutLst = [
     {
@@ -52,11 +48,10 @@ const FooterIes: React.FC = () => {
 
   const sAndF = [
     { key: 1, label: 'Hanoi Open University' },
-    { key: 2, label: 'HCM city University of Technology & Engineering' },
-    { key: 3, label: 'Applied Informatics' },
-    { key: 4, label: 'Information Technology' },
-    { key: 5, label: 'Office Administration' },
-    { key: 6, label: 'Marketing' },
+    { key: 2, label: 'Applied Informatics' },
+    { key: 3, label: 'Information Technology' },
+    { key: 4, label: 'Office Administration' },
+    { key: 5, label: 'Marketing' },
   ];
 
   return (
@@ -191,37 +186,66 @@ const FooterIes: React.FC = () => {
           </div>
         </MediaQuery>
         <MediaQuery maxWidth={1024}>
-          <div className='flex justify-between items-center px-2 py-2'>
-            <Image src={LogoFooter} alt='' preview={false} width={150} />
-            <p
-              style={{
-                color: 'rgba(172, 44, 255, 1)',
-                fontWeight: 'bold',
-              }}
-            >
-              {t('vietronFoot')}
-            </p>
-          </div>
-          <div>
-            <Space size='small'>
-              {socialLinks.map(({ href, img }, index) => (
-                <a
-                  key={index}
-                  href={href}
-                  target='_blank'
-                  rel='noopener noreferrer'
-                >
-                  <Image
-                    src={img}
-                    alt=''
-                    width={mbIconSz}
-                    height={mbIconSz}
-                    className='p-[4px] rounded-full'
-                    preview={false}
-                  />
-                </a>
+          <div className='px-4 py-4 text-center'>
+            {/* Logo */}
+            <Image src={LogoFooter} alt='' preview={false} width={140} />
+
+            {/* Contact */}
+            <div className='mt-3'>
+              <Text color='white' className='block text-sm'>
+                Email: tuyensinh@cnktdn.edu.vn
+              </Text>
+              <Text color='white' className='block text-sm'>
+                Hotline: 0901.309.866
+              </Text>
+            </div>
+
+            {/* Social */}
+            <div className='mt-4'>
+              <Space size='middle'>
+                {socialLinks.map(({ href, img }, index) => (
+                  <a
+                    key={index}
+                    href={href}
+                    target='_blank'
+                    rel='noopener noreferrer'
+                  >
+                    <Image
+                      src={img}
+                      alt=''
+                      width={32}
+                      height={32}
+                      className='rounded-full'
+                      preview={false}
+                    />
+                  </a>
+                ))}
+              </Space>
+            </div>
+
+            {/* About */}
+            <div className='mt-6 text-left'>
+              <Title level={5} className='!text-white'>
+                About IES
+              </Title>
+              {aboutLst.map((item) => (
+                <Text key={item.key} className='block !text-[#797a97] text-sm'>
+                  {item.label}
+                </Text>
               ))}
-            </Space>
+            </div>
+
+            {/* Schools */}
+            <div className='mt-6 text-left'>
+              <Title level={5} className='!text-white'>
+                Schools & Faculties
+              </Title>
+              {sAndF.map((item) => (
+                <Text key={item.key} className='block !text-[#797a97] text-sm'>
+                  {item.label}
+                </Text>
+              ))}
+            </div>
           </div>
         </MediaQuery>
       </div>

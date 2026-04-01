@@ -1,9 +1,11 @@
 import { Col, Flex, Image } from 'antd';
+import { useMediaQuery } from 'react-responsive';
 import STUC from '@/assets/imgs/stu_cm.jpg';
 import STBG from '@/assets/imgs/stu_cmt_bg.png';
 import { IesClSection } from '@/components';
 
 const StuComment = () => {
+  const mb = useMediaQuery({ maxWidth: 1024 });
   return (
     <IesClSection
       id='stuCm'
@@ -13,11 +15,13 @@ const StuComment = () => {
         <div className='relative w-full h-full'>
           <div className='absolute inset-0 bg-[#090a20]/90'></div>
           <Flex
+            vertical={mb}
             justify='space-between'
-            align='flex-start'
-            className='!pt-23 !px-25 !py-25'
+            align={!mb ? 'flex-start' : 'center'}
+            className={`!py-25 ${!mb ? '!pt-23 !px-25' : ''}`}
+            gap={!mb ? 60 : 10}
           >
-            <div className='flex-1 flex justify-end'>
+            <div className={`flex-1 flex justify-end ${!mb ? '' : 'px-3'}`}>
               <Image
                 src={STUC}
                 preview={false}
@@ -28,8 +32,12 @@ const StuComment = () => {
               />
             </div>
             <div className='flex-2'>
-              <Col className='pl-15 mt-15 !space-y-5'>
-                <p className='!text-[#e0e1e2] !text-[24px] pr-7'>
+              <Col
+                className={`!space-y-5 ${!mb ? "'pl-15 mt-15'" : 'px-6.5 mt-10'}`}
+              >
+                <p
+                  className={`!text-[#e0e1e2]  ${!mb ? 'pr-7 !text-[24px]' : '!text-sm'}`}
+                >
                   After returning from the United States, I decided to study
                   Events Management at Van Lang University, specifically the
                   International Education Institute. We have many opportunities
@@ -45,7 +53,7 @@ const StuComment = () => {
                   right choice.
                 </p>
                 <div className='space-y-1'>
-                  <p className='!text-white !font-bold text-xl'>Liam Ngo</p>
+                  <p className='!text-white !font-bold text-xl'>Le Duyen</p>
                   <p className='text-[#a5a7b9] text-lg'>Student</p>
                 </div>
               </Col>

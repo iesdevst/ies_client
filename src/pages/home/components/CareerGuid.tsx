@@ -1,4 +1,5 @@
 import { Carousel, Flex } from 'antd';
+import { useMediaQuery } from 'react-responsive';
 import CNTT from '@/assets/imgs/cntt_hn.png';
 import CC from '@/assets/imgs/ctm_hn_card.jpg';
 import KTDN from '@/assets/imgs/ktdn_hn.png';
@@ -12,6 +13,8 @@ import VTK from '@/assets/imgs/vtk_hn.png';
 import { IesClSection, Text, Title } from '@/components';
 
 const CareerGuid: React.FC = () => {
+  const mb = useMediaQuery({ maxWidth: 1024 });
+
   const cgSlide = [
     { cTit: 'Applied Information Technology', cImg: THDU },
     { cTit: 'Information Technology', cImg: CNTT },
@@ -40,12 +43,15 @@ const CareerGuid: React.FC = () => {
       id='carerrGuid'
       layout='newsFeature'
       feature={true}
+      mb={mb}
       children={
         <div className='mt-15 !space-y-10 mb-15'>
           <Flex
+            vertical={mb}
             justify='space-between'
             align='center'
-            className='!px-20 !w-full'
+            className={`!w-full ${!mb ? '!px-20' : '!px-6'}`}
+            gap={!mb ? 0 : 20}
           >
             <Title className='flex-1 !font-bold !m-0'>Career guidance</Title>
             <div className='flex-1'>
@@ -58,16 +64,16 @@ const CareerGuid: React.FC = () => {
             </div>
           </Flex>
 
-          <div className='w-full pr-20 pl-32'>
+          <div className={`w-full ${!mb ? 'pr-12 pl-22' : ''}`}>
             <Carousel
               autoplay
               pauseOnHover={false}
               dots={false}
-              arrows={true}
-              slidesPerRow={4}
+              arrows={!mb ? true : false}
+              slidesPerRow={!mb ? 4 : 1}
             >
               {cgSlide.map((item, index) => (
-                <div key={index} className='!pr-10'>
+                <div key={index} className={`${!mb ? '!pr-10' : '!px-8'}`}>
                   <div className='relative rounded-xl overflow-hidden'>
                     <img
                       src={item.cImg}
@@ -96,7 +102,7 @@ const CareerGuid: React.FC = () => {
       bonusTit='Career Exploration Project'
       moreBut='Explore all Projects'
       featCard={cgCard}
-      moreClass='px-20'
+      moreClass={!mb ? 'px-20' : 'px-5'}
     />
   );
 };

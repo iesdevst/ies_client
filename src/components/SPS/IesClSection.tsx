@@ -47,6 +47,8 @@ interface VidPrLayoutProps extends BasePageIesSecProps {
   titVid: string;
   desVid: string;
   bottomTit: string;
+  tabletVid?: boolean;
+  miniSc?: boolean;
 }
 
 interface TrainingSlProps extends BasePageIesSecProps {
@@ -182,12 +184,24 @@ export const IesClSection: React.FC<SubSectionProps> = (props) => {
 
     return (
       <div className='!space-y-5'>
-        <Flex justify='space-between' align='start'>
-          <Image src={topImaTit} className='!w-150' preview={false} />
+        <Flex
+          vertical={mb}
+          justify='space-between'
+          align={!mb ? 'start' : 'center'}
+          gap={!mb ? 0 : 20}
+        >
+          <Image
+            src={topImaTit}
+            className={`${!mb ? '!w-150' : ''}`}
+            preview={false}
+          />
 
           {topTitBut && (
             <div>
-              <Button className='!bg-transparent !pl-20' type='text'>
+              <Button
+                className={`!bg-transparent ${!mb ? '!pl-20' : ''}`}
+                type='text'
+              >
                 <Title className='!m-0 !text-black' level={4}>
                   {topTitBut}
                 </Title>
@@ -198,9 +212,13 @@ export const IesClSection: React.FC<SubSectionProps> = (props) => {
             </div>
           )}
         </Flex>
-        <Flex>
+        <Flex vertical={mb} align='center'>
           <div className='flex-2 flex justify-end mr-2.5'>
-            <Image src={topicI} preview={false} className='!h-130 !w-130' />
+            <Image
+              src={topicI}
+              preview={false}
+              className={`${!mb ? '!h-130 !w-130' : ''}`}
+            />
           </div>
 
           <div className='pt-10 flex-3 space-y-9'>
@@ -225,17 +243,19 @@ export const IesClSection: React.FC<SubSectionProps> = (props) => {
           </div>
         </Flex>
         <div className='mt-15 !space-y-10'>
-          <Flex justify='space-between' align='center'>
-            <Title className='!m-0'>{botTit}</Title>
+          <Flex vertical={mb} justify='space-between' align='center'>
+            <Title level={!mb ? 1 : 2} className={`${!mb ? '!m-0' : ''}`}>
+              {botTit}
+            </Title>
 
             {botBut && (
               <div>
-                <Button className='!bg-transparent !pl-20' type='text'>
+                <Button className='!bg-transparent !p-0' type='text'>
                   <Title className='!m-0 !text-black' level={4}>
                     {botBut}
                   </Title>
                   <div className='w-full h-full !bg-[#FBBF24] rounded-r-full flex items-center justify-center px-3'>
-                    <RightOutlined className='!text-red-500 !font-semibold ' />
+                    <RightOutlined className='!text-red-500 !font-semibold' />
                   </div>
                 </Button>
               </div>
@@ -253,11 +273,14 @@ export const IesClSection: React.FC<SubSectionProps> = (props) => {
                   <Image
                     src={item.thodAv}
                     preview={false}
-                    className='!w-15 !h-17'
+                    className={`${!mb ? '!w-15 !h-17' : '!w-8 !h-8'}`}
                   />
                 </div>
                 <Col>
-                  <Title level={4} className='!m-0 !mb-2.5'>
+                  <Title
+                    level={!mb ? 4 : 5}
+                    className={`${!mb ? '!m-0 !mb-2.5' : '!m-0'}`}
+                  >
                     {item.meTit}
                   </Title>
                   <Button
@@ -276,21 +299,23 @@ export const IesClSection: React.FC<SubSectionProps> = (props) => {
   };
 
   const renderVidPrLayout = (props: VidPrLayoutProps) => {
-    const { desVid, titVid, bottomTit, vidLink } = props;
+    const { desVid, titVid, bottomTit, vidLink, tabletVid, miniSc } = props;
 
     return (
       <Flex
-        vertical={mb}
+        vertical={mb || tabletVid}
         className='!w-full items-stretch'
-        align={`${!mb ? 'end' : 'center'}`}
+        align={`${tabletVid || mb ? 'center' : 'end'}`}
         justify='space-between'
       >
         {/* LEFT - VIDEO */}
         {vidLink && (
-          <div className={`relative ${!mb ? '!flex-[2] !pl-20' : ''}`}>
-            <div className='w-full aspect-video !pb-7 '>
+          <div
+            className={`relative ${mb || tabletVid ? '' : '!flex-[2] !pl-20'}`}
+          >
+            <div className='!w-full aspect-video !pb-7'>
               <iframe
-                className='w-full !h-full rounded-xl shadow-lg'
+                className={`!h-full ${!tabletVid ? '!w-full' : '!w-[650px]'} rounded-xl shadow-lg !block`}
                 src={vidLink}
                 title='YouTube video'
                 allowFullScreen
@@ -298,51 +323,48 @@ export const IesClSection: React.FC<SubSectionProps> = (props) => {
             </div>
 
             <div
-              className={`absolute z-20 ${!mb ? 'left-220 top-20 w-2/3' : 'right-0 top-0 !w-full'}`}
+              className={`absolute z-20 w-2/3 ${mb ? 'left-8 bottom-0 w-full' : miniSc ? 'left-175 top-6' : 'left-200 top-10'} `}
             >
-              <Row
-                className='bg-[#2b2f6b] pb-4'
-                justify={!mb ? 'space-between' : 'center'}
-                align={'middle'}
+              <div
+                className={`relative bg-[#2b2f6b] flex items-center justify-start ${!mb ? 'px-6 py-4' : 'py-1.5 px-2'}`}
               >
                 <Title
-                  level={3}
-                  className='!m-0 !mt-6 !ml-10 !text-[#ffd58a] whitespace-pre-line'
+                  level={mb || tabletVid ? 5 : miniSc ? 5 : 2}
+                  className='!m-0 !text-[#ffd58a] whitespace-pre-line'
                 >
                   {titVid}
                 </Title>
-                <Image
+
+                <img
                   src='https://www.vlu.edu.vn/images/section-1-pattern.svg'
-                  preview={false}
-                  className='!h-25'
+                  alt='pattern'
+                  className={`absolute right-2 ${mb || tabletVid ? 'h-26' : miniSc ? 'h-15' : 'h-15'}`}
                 />
-              </Row>
+              </div>
             </div>
           </div>
         )}
 
-        <div className={`${!mb ? 'mb-10 flex-[1.5]' : ''}`}>
-          <Col className={`${!mb ? 'pr-18' : ''}`}>
-            <div className={`${!mb ? 'pl-17 py-7' : 'px-5'}`}>
+        <div className={`${!mb ? 'mb-10 flex-[1.5]' : 'mt-5'}`}>
+          <Col
+            className={`${mb || tabletVid ? '' : miniSc ? 'mt-5' : 'pr-10'}`}
+          >
+            <div className={`${!mb ? 'pl-5 py-7' : 'px-5'}`}>
               <Text className='mb-8 !text-lg !text-start' color='#2d334d'>
                 {desVid}
               </Text>
             </div>
 
             <Row
-              justify={`${!mb ? 'end' : 'start'}`}
+              justify={`${!mb ? 'start' : 'end'}`}
               align={'middle'}
-              className={`!gap-x-3 ${!mb ? '' : 'pl-5 mt-3.5'}`}
+              className={`${!mb ? 'pl-17' : '!pr-5 mt-2'}`}
             >
-              <Title level={4} className='!m-0'>
-                {bottomTit}
-              </Title>
-
-              <Button
-                shape='circle'
-                className='!bg-red-600 !border-none !text-white flex items-center justify-center'
-              >
-                <ArrowRightOutlined />
+              <Button shape='circle' type='text' className='flex items-center'>
+                <Title level={4} className='!m-0'>
+                  {bottomTit}
+                </Title>
+                <ArrowRightOutlined className='!bg-red-600 !border-none !text-white !rounded-full p-2' />
               </Button>
             </Row>
           </Col>
@@ -370,24 +392,38 @@ export const IesClSection: React.FC<SubSectionProps> = (props) => {
   "
         >
           <Flex
-            justify='flex-start'
-            align='center'
-            gap={100}
-            className='!px-22'
+            vertical={mb}
+            justify={!mb ? 'flex-start' : ''}
+            align={!mb ? 'center' : 'start'}
+            gap={!mb ? 100 : 10}
+            className={`${!mb ? '!px-22' : '!pl-3'}`}
           >
             <Title className='!m-0 !text-white'>{trainTit}</Title>
             <Text className='!text-lg mt-2' color='white'>
               {trainDes}
             </Text>
+
+            {mb && (
+              <div className='!text-start'>
+                <Button className='!bg-transparent !p-0' type='text'>
+                  <Title className='!m-0 !text-white' level={4}>
+                    {statisTit}
+                  </Title>
+                  <div className='w-full h-full !bg-[#FBBF24] rounded-r-full flex items-center justify-center px-3'>
+                    <RightOutlined className='!text-red-500 !font-semibold ' />
+                  </div>
+                </Button>
+              </div>
+            )}
           </Flex>
           <Carousel
             autoplay
             pauseOnHover={false}
             effect={!mb ? 'fade' : 'scrollx'}
-            dots={true}
+            dots={!mb ? true : false}
             arrows={false}
             slidesPerRow={mb ? 1 : 3}
-            className={`${styles.dotTrainCustom} dot-train my-15 px-20`}
+            className={`${styles.dotTrainCustom} dot-train my-15 ${!mb ? 'px-20' : 'pl-11'}`}
           >
             {trainImgSl.map((item, index) => (
               <div key={index} className='!pr-10'>
@@ -415,39 +451,45 @@ export const IesClSection: React.FC<SubSectionProps> = (props) => {
             ))}
           </Carousel>
         </div>
+
         <div>
           <Flex
             justify='space-between'
             align='center'
             className='relative z-10 bg-[#1951a1]'
           >
-            <div className='flex-[3] !text-start '>
-              <Button className='!bg-transparent !pl-20' type='text'>
-                <Title className='!m-0 !text-white' level={4}>
-                  {statisTit}
-                </Title>
-                <div className='w-full h-full !bg-[#FBBF24] rounded-r-full flex items-center justify-center px-3'>
-                  <RightOutlined className='!text-red-500 !font-semibold ' />
-                </div>
-              </Button>
-            </div>
+            {!mb && (
+              <div className='flex-[3] !text-start '>
+                <Button className='!bg-transparent !pl-20' type='text'>
+                  <Title className='!m-0 !text-white' level={4}>
+                    {statisTit}
+                  </Title>
+                  <div className='w-full h-full !bg-[#FBBF24] rounded-r-full flex items-center justify-center px-3'>
+                    <RightOutlined className='!text-red-500 !font-semibold ' />
+                  </div>
+                </Button>
+              </div>
+            )}
 
             <div className='flex-[4] !py-20 bg-gradient-to-r from-blue-900 to-blue-800'>
-              <Row className='gap-x-15 pl-20'>
+              <Flex
+                vertical={mb}
+                className={`${!mb ? '!gap-x-15 !pl-20' : '!px-5 gap-y-5'}`}
+              >
                 {statistics.map((item, index) => (
                   <Col key={index}>
                     <Title className='!m-0 !mb-3 !font-bold !text-5xl !text-[#FBBF24]'>
                       {item.num}
                     </Title>
                     <Text
-                      className='whitespace-pre-line !text-lg '
+                      className={`${!mb ? 'whitespace-pre-line' : ''} !text-lg `}
                       color='white'
                     >
                       {item.des}
                     </Text>
                   </Col>
                 ))}
-              </Row>
+              </Flex>
             </div>
           </Flex>
         </div>
@@ -482,6 +524,7 @@ export const IesClSection: React.FC<SubSectionProps> = (props) => {
     return (
       <div className={`${className}`}>
         <Flex
+          vertical={mb}
           justify='space-between'
           align='center'
           className={`${!feature ? '!mb-3.5' : ''}`}
@@ -490,7 +533,10 @@ export const IesClSection: React.FC<SubSectionProps> = (props) => {
 
           {butTit && (
             <div>
-              <Button className='!bg-transparent !pl-20' type='text'>
+              <Button
+                className={`!bg-transparent ${!mb ? '!pl-20' : ''}`}
+                type='text'
+              >
                 <Title className='!m-0 !text-black' level={4}>
                   {butTit}
                 </Title>
@@ -504,12 +550,20 @@ export const IesClSection: React.FC<SubSectionProps> = (props) => {
         {feature && children}
         <div className={`${moreClass}`}>
           {bonusTit && moreBut && (
-            <Flex justify='space-between' align='center' className='!mb-10'>
+            <Flex
+              vertical={mb}
+              justify='space-between'
+              align='center'
+              className='!mb-10'
+            >
               <Title className='!m-0 !font-bold' level={3}>
                 {bonusTit}
               </Title>
               <div>
-                <Button className='!bg-transparent !pl-20' type='text'>
+                <Button
+                  className={`!bg-transparent ${!mb ? '!pl-20' : 'mt-5'}`}
+                  type='text'
+                >
                   <Title className='!m-0 !text-black' level={4}>
                     {moreBut}
                   </Title>
@@ -520,7 +574,7 @@ export const IesClSection: React.FC<SubSectionProps> = (props) => {
               </div>
             </Flex>
           )}
-          <div className='grid grid-cols-1 md:grid-cols-3 lg:grid-cols-3 gap-8'>
+          <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8'>
             {feature ? (
               <>
                 {featCard.map((item, index) => (
@@ -557,7 +611,7 @@ export const IesClSection: React.FC<SubSectionProps> = (props) => {
                           </Flex>
                         ))}
 
-                      <Text className='font-semibold mb-6 !text-lg'>
+                      <Text className='font-semibold mb-6 !text-lg !block'>
                         {item.des}
                       </Text>
                     </div>
@@ -573,7 +627,9 @@ export const IesClSection: React.FC<SubSectionProps> = (props) => {
                       className='!h-65 w-full mb-3.5 rounded-lg'
                     />
                     <Title level={4}>{item.tit}</Title>
-                    <p className='!text-lg mb-2'>{item.des}</p>
+                    <p className={`mb-2 ${!mb ? '!text-lg' : '!text-sm'}`}>
+                      {item.des}
+                    </p>
                     <Button
                       type='text'
                       className='!text-blue-600 !p-0 !font-bold !text-md'

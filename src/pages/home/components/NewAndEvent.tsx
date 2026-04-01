@@ -1,4 +1,5 @@
 import { Col, Image, Typography } from 'antd';
+import { useMediaQuery } from 'react-responsive';
 import KTDT from '@/assets/imgs/ktdt_nfc.jpg';
 import KTO from '@/assets/imgs/kto_nfc.jpg';
 import TKDH from '@/assets/imgs/tkdh_nfc.jpg';
@@ -12,6 +13,8 @@ import { IesClSection, Text, Title } from '@/components';
 const { Paragraph } = Typography;
 
 const NewAndEvent: React.FC = () => {
+  const mb = useMediaQuery({ maxWidth: 1024 });
+
   const topSn = [
     {
       sti: THTN,
@@ -62,15 +65,16 @@ const NewAndEvent: React.FC = () => {
       layout='newsFeature'
       title='Featured News & Events'
       feature={true}
-      className='mt-15 px-10'
+      mb={mb}
+      className={`mt-15 ${!mb ? 'px-10' : 'px-2'}`}
       featCard={featCdt}
       butTit='View all News & Events'
       children={
         <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8 mb-3.5'>
           <div>
-            <Col className='pt-6 pb-16'>
+            <Col className={`${!mb ? 'pt-6 pb-16' : 'mt-6'}`}>
               <Image src={TSN} preview={false} />
-              <div className='w-4/5'>
+              <div className={`${!mb ? 'w-4/5' : ''}`}>
                 <Title className='!text-blue-500' level={5}>
                   ACADEMICS & QUALITY ASSURANCE
                 </Title>
@@ -88,13 +92,12 @@ const NewAndEvent: React.FC = () => {
                 className={`grid grid-cols-1 md:grid-cols-4 lg:grid-cols-4 mb-3.5 ${index === 0 ? '' : ' !border-t border-gray-300 pt-7'}`}
                 key={index}
               >
-                <div className='col-span-1'>
-                  <Image
-                    src={item.sti}
-                    className='!w-46 !h-25 col-span-1 rounded-lg'
-                    preview={false}
-                  />
-                </div>
+                <Image
+                  src={item.sti}
+                  className={`col-span-1 rounded-lg ${!mb ? '!w-46 !h-25 ' : '!w-full !h-full'}`}
+                  preview={false}
+                />
+
                 <div className='col-span-3 pl-5 pt-2.5'>
                   <Col className='flex flex-col col-span-2'>
                     {item.specTit && (
