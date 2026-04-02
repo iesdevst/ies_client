@@ -5,7 +5,7 @@ import {
   RightOutlined,
 } from '@ant-design/icons';
 import { Breadcrumb, Tabs, Tooltip, type TabsProps } from 'antd';
-import { lazy, useCallback, useEffect, useMemo, useState } from 'react';
+import { lazy, useCallback, useMemo } from 'react';
 import { useMediaQuery } from 'react-responsive';
 import { useSearchParams } from 'react-router-dom';
 import ContactKey from '../home/components/ContactKey';
@@ -21,7 +21,8 @@ const AbCoreValue = lazy(() => import('@/pages/about/components/AbCoreValue'));
 
 const AboutIes: React.FC = () => {
   const [abtSearchParams, setAbtSearchParams] = useSearchParams();
-  const [abtActiveKey, setAbtActiveKey] = useState<AboutTab>();
+  const abtActiveKey = abtSearchParams.get('tab') || AboutTab.Aboverview;
+
   const mb = useMediaQuery({ maxWidth: 767 });
   const tablet = useMediaQuery({ minWidth: 768, maxWidth: 1024 });
 
@@ -87,24 +88,11 @@ const AboutIes: React.FC = () => {
 
   const handleChangeTab = useCallback(
     (key: string) => {
-      abtSearchParams.set('tab', key);
-      setAbtSearchParams(abtSearchParams, { replace: true });
-      setAbtActiveKey(key as AboutTab);
+      setAbtSearchParams({ tab: key }, { replace: true });
     },
-    [abtSearchParams, setAbtSearchParams],
+    [setAbtSearchParams],
   );
 
-  useEffect(() => {
-    const tab = abtSearchParams.get('tab');
-
-    if (tab) {
-      setAbtActiveKey(tab as AboutTab);
-    } else {
-      abtSearchParams.set('tab', AboutTab.Aboverview);
-      setAbtSearchParams(abtSearchParams, { replace: true });
-      setAbtActiveKey(AboutTab.Aboverview);
-    }
-  }, [abtSearchParams, setAbtSearchParams]);
   return (
     <section className='!bg-white pt-5'>
       <Breadcrumb

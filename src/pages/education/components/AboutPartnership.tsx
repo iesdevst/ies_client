@@ -18,13 +18,23 @@ const abPartnershipDt = [
   },
 ];
 
-const AboutPartnership = () => {
+interface IAboutPartnership {
+  mb: boolean;
+  tl: boolean;
+}
+
+const AboutPartnership: React.FC<IAboutPartnership> = (props) => {
+  const { mb, tl } = props;
   const navigate = useNavigate();
   return (
     <div>
-      <Row gutter={[50, 50]} justify='center' className='py-15 px-30 '>
+      <Row
+        gutter={mb || tl ? [0, 50] : [50, 50]}
+        justify='center'
+        className={`${mb ? 'px-5' : tl ? 'px-10' : 'px-30'} py-15`}
+      >
         {abPartnershipDt.map((pt) => (
-          <Col xs={24} sm={24} md={12} lg={12}>
+          <Col key={pt.tit} xs={24} sm={24} md={12} lg={12}>
             <Flex
               vertical
               justify='center'
@@ -32,8 +42,17 @@ const AboutPartnership = () => {
               className='text-center'
               gap={20}
             >
-              <Title className='!text-gray-500 !font-bold !m-0'>{pt.tit}</Title>
-              <Text className='!block !text-lg'>{pt.decs}</Text>
+              <Title
+                className='!text-gray-500 !font-bold !m-0'
+                level={mb || tl ? 3 : 1}
+              >
+                {pt.tit}
+              </Title>
+              <Text
+                className={`${mb ? '!text-sm' : tl ? '!text-lg px-5' : '!text-lg py-15'} !block`}
+              >
+                {pt.decs}
+              </Text>
               <Image src={pt.img} preview={false} className='!w-full !h-40' />
               <Button
                 className='!block w-5/6 !rounded-xl !text-black !font-bold hover:!text-white'

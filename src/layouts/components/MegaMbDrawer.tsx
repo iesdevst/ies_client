@@ -44,7 +44,7 @@ const MegaMbDrawer: React.FC = () => {
       children: (
         <div>
           <Button
-            className='!bg-transparent !p-0'
+            className='!bg-transparent !p-0 mb-2.5'
             type='text'
             size='small'
             onClick={() => {
@@ -60,7 +60,7 @@ const MegaMbDrawer: React.FC = () => {
               <RightOutlined className='!text-white !font-semibold !text-xs' />
             </div>
           </Button>
-          <div className='space-y-8 pt-2 !bg-white'>
+          <div className='space-y-8 py-4 !bg-white pl-2.5 !rounded-xl'>
             {navI.sections.map((sec, i) => (
               <div key={i}>
                 {sec.title && (
@@ -83,7 +83,7 @@ const MegaMbDrawer: React.FC = () => {
                       key={link.route}
                       to={link.route}
                       onClick={() => setMbDrawerOpen(false)}
-                      className='!text-black hover:!underline'
+                      className='!text-black hover:!underline !font-bold'
                       style={{
                         fontSize: '0.8rem',
                         fontFamily: "'IBM Plex Sans', sans-serif",

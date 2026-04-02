@@ -1,5 +1,6 @@
 import { HomeFilled, RightOutlined } from '@ant-design/icons';
 import { Breadcrumb, Flex, Image } from 'antd';
+import { useMediaQuery } from 'react-responsive';
 import AboutPartnership from './components/AboutPartnership';
 import AboutShortTerm from './components/AboutShortTerm';
 import AboutVoca from './components/AboutVoca';
@@ -11,8 +12,10 @@ import { PrefetchLink } from '@/components/PrefetchLink';
 import { ROUTES } from '@/constants';
 
 const Academics: React.FC = () => {
+  const mb = useMediaQuery({ maxWidth: 767 });
+  const tl = useMediaQuery({ minWidth: 768, maxWidth: 1024 });
   return (
-    <section>
+    <section className='!bg-white'>
       <div
         style={{
           backgroundImage: `url(${ACDB})`,
@@ -23,7 +26,7 @@ const Academics: React.FC = () => {
         // className='py-30'
       >
         <div
-          className='w-full h-full py-50 pl-25'
+          className={`w-full h-full ${mb || tl ? 'pl-8 pt-20 pb-2' : 'py-50 pl-25'}`}
           style={{
             maxWidth: '50%',
             backdropFilter: 'blur(3px)',
@@ -39,23 +42,36 @@ const Academics: React.FC = () => {
     `,
           }}
         >
-          <Title className='!m-0 !text-gray-500 italic'>
+          <Title
+            level={mb || tl ? 5 : 1}
+            className='!m-0 !text-gray-500 italic'
+          >
             Holistic Development
           </Title>
 
-          <Title className='!m-0 !mb-4 !text-gray-500 italic'>
+          <Title
+            level={mb || tl ? 5 : 1}
+            className={`${mb || tl ? '!m-0 !mb-1' : '!m-0 !mb-4 '} !text-gray-500 italic`}
+          >
             Through Programs
           </Title>
           <div className='ml-5'>
-            <Title className='!m-0 !text-5xl !mb-3 !font-bold'>
+            <Title
+              className={`${mb || tl ? '!text-xl' : '!text-5xl !mb-3'} !m-0 !font-bold`}
+            >
               DISTINCTIVE
             </Title>
-            <Title className='!m-0 !text-5xl !font-bold'>EDUCATION</Title>
+            <Title
+              className={`!m-0 ${mb || tl ? '!text-xl' : '!text-5xl'} !font-bold`}
+            >
+              EDUCATION
+            </Title>
           </div>
         </div>
       </div>
+
       <Breadcrumb
-        className={` !ml-25 !py-15  ${styles.breadCrumbEduca}`}
+        className={`${mb || tl ? '!ml-10 !py-5' : '!ml-25 !py-15'} ${styles.breadCrumbEduca}`}
         separator={<RightOutlined className='!text-black' />}
         items={[
           {
@@ -81,7 +97,7 @@ const Academics: React.FC = () => {
           },
         ]}
       />
-      <div className='px-60 py-15'>
+      <div className={`${mb ? 'px-5' : tl ? 'px-10' : 'px-60 py-15'}`}>
         <Flex align='center' gap='md'>
           <div className='flex-1 border-b border-gray-500 border-2'></div>
 
@@ -91,7 +107,7 @@ const Academics: React.FC = () => {
 
           <div className='flex-1 border-b border-gray-500 border-2'></div>
         </Flex>
-        <Text className='!text-lg !block'>
+        <Text className={`!block ${!mb ? '!text-lg' : '!leading-6'}`}>
           Saigon College of Information Technology and Economics (IES College)
           offers a flexible and diverse curriculum designed to develop practical
           skills and adaptability to market demands. With three main training
@@ -111,9 +127,9 @@ const Academics: React.FC = () => {
         </Flex>
       </div>
 
-      <AboutVoca />
-      <AboutShortTerm />
-      <AboutPartnership />
+      <AboutVoca tl={tl} mb={mb} />
+      <AboutShortTerm tl={tl} mb={mb} />
+      <AboutPartnership tl={tl} mb={mb} />
     </section>
   );
 };

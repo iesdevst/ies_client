@@ -14,7 +14,13 @@ const abShortDt = [
   { tit: 'AI Applications', img: AISAB, path: ROUTES.ADMISSIONS_SC_UAI },
 ];
 
-const AboutShortTerm = () => {
+interface IAboutShortTerm {
+  mb: boolean;
+  tl: boolean;
+}
+
+const AboutShortTerm: React.FC<IAboutShortTerm> = (props) => {
+  const { mb, tl } = props;
   const navigate = useNavigate();
 
   return (
@@ -22,7 +28,7 @@ const AboutShortTerm = () => {
       <div className='text-center'>
         <Title className='!m-0 !text-6xl'>Our</Title>
         <Title
-          className='!text-[#C2C8D0] !text-6xl !m-0'
+          className={`${!mb ? '!text-6xl' : '!text-5xl'} !text-[#C2C8D0] !m-0`}
           style={{
             WebkitTextStroke: '1px black', // độ dày + màu viền
             WebkitTextFillColor: '#C2C8D0', // màu chữ bên trong
@@ -31,21 +37,29 @@ const AboutShortTerm = () => {
           Training Journey
         </Title>
 
-        <div className='mt-4'>
-          <Text className='!block !text-lg !font-bold'>
+        <div className={`${!mb ? '!mt-4' : '!mt-8'}`}>
+          <Text
+            className={`!block !font-bold ${!mb ? '!text-lg' : '!text-sm'}`}
+          >
             Embark on a learning journey with us – grow your skills,
           </Text>
-          <Text className='!block  !text-lg !font-bold'>
+          <Text
+            className={`!block !font-bold ${!mb ? '!text-lg' : '!text-sm'}`}
+          >
             achieve success, and see results quickly
           </Text>
         </div>
       </div>
 
-      <Row gutter={[50, 50]} justify='center' className='pt-15 px-30'>
+      <Row
+        gutter={mb || tl ? [0, 50] : [50, 50]}
+        justify='center'
+        className='pt-15 px-5 md:!px-10 lg:!px-30'
+      >
         {abShortDt.map((abs) => (
           <Col key={abs.tit} xs={24} sm={24} md={12} lg={12}>
             <div
-              className='flex flex-col items-center bg-[#D5D6D7] py-8 px-3 !rounded-2xl cursor-pointer  !border '
+              className={`${!tl ? '' : 'mr-5 ml-5'} flex flex-col items-center bg-[#D5D6D7] py-8 px-3 !rounded-2xl cursor-pointer !border`}
               onClick={() => navigate(abs.path)}
             >
               <div className='flex flex-col items-center bg-[#D5D6D7] py-8 px-3 !rounded-2xl'>

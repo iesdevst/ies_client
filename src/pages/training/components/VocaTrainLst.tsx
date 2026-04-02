@@ -6,7 +6,7 @@ import {
   PieChartOutlined,
 } from '@ant-design/icons';
 import { Tabs, Tooltip, type TabsProps } from 'antd';
-import { lazy, useCallback, useEffect, useMemo, useState } from 'react';
+import { lazy, useCallback, useMemo } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import styles from '../iesTraining.module.scss';
 import { Title } from '@/components';
@@ -24,124 +24,118 @@ interface IVocaTrainLst {
 
 const VocaTrainLst: React.FC<IVocaTrainLst> = (props) => {
   const { mb, tl } = props;
+
   const [trainSearchPrs, setTrainSearchPrs] = useSearchParams();
-  const [trainActKey, setTrainActKey] = useState<AdmissionVocaTab>();
+
+  const trainActKey = trainSearchPrs.get('tab') || AdmissionVocaTab.AllCour;
+
+  const hdlChangeTab = useCallback(
+    (key: string) => {
+      setTrainSearchPrs({ tab: key }, { replace: true });
+    },
+    [setTrainSearchPrs],
+  );
 
   const tabs: TabsProps['items'] = useMemo(
     () => [
       {
         key: AdmissionVocaTab.AllCour,
-        label: !mb ? (
-          <Title
-            level={4}
-            className={`${trainActKey === AdmissionVocaTab.AllCour ? '!text-[#2f6fd6]' : '!text-white'} !m-0`}
-          >
-            All Programs
-          </Title>
-        ) : (
-          <Tooltip title='All Programs'>
-            <AppstoreOutlined
-              className={`${trainActKey === AdmissionVocaTab.AllCour ? '!text-[#2f6fd6]' : '!text-white'} !text-2xl`}
-            />
-          </Tooltip>
-        ),
+        label:
+          mb || tl ? (
+            <Tooltip title='All Programs'>
+              <AppstoreOutlined
+                className={`${trainActKey === AdmissionVocaTab.AllCour ? '!text-[#2f6fd6]' : '!text-white'} !text-2xl`}
+              />
+            </Tooltip>
+          ) : (
+            <Title
+              level={4}
+              className={`${trainActKey === AdmissionVocaTab.AllCour ? '!text-[#2f6fd6]' : '!text-white'} !m-0`}
+            >
+              All Programs
+            </Title>
+          ),
         children: <ProgLstCard slugName={ProgramSlugEnum.All} />,
       },
       {
         key: AdmissionVocaTab.Design,
-        label: !mb ? (
-          <Title
-            level={4}
-            className={`${trainActKey === AdmissionVocaTab.Design ? '!text-[#2f6fd6]' : '!text-white'} !m-0`}
-          >
-            Design & Creativity
-          </Title>
-        ) : (
-          <Tooltip title='Design & Creativity'>
-            <HighlightOutlined
-              className={`${trainActKey === AdmissionVocaTab.Design ? '!text-[#2f6fd6]' : '!text-white'} !text-2xl`}
-            />
-          </Tooltip>
-        ),
+        label:
+          mb || tl ? (
+            <Tooltip title='Design & Creativity'>
+              <HighlightOutlined
+                className={`${trainActKey === AdmissionVocaTab.Design ? '!text-[#2f6fd6]' : '!text-white'} !text-2xl`}
+              />
+            </Tooltip>
+          ) : (
+            <Title
+              level={4}
+              className={`${trainActKey === AdmissionVocaTab.Design ? '!text-[#2f6fd6]' : '!text-white'} !m-0`}
+            >
+              Design & Creativity
+            </Title>
+          ),
         children: <ProgLstCard slugName={ProgramSlugEnum.Design} />,
       },
       {
         key: AdmissionVocaTab.Business,
-        label: !mb ? (
-          <Title
-            level={4}
-            className={`${trainActKey === AdmissionVocaTab.Business ? '!text-[#2f6fd6]' : '!text-white'} !m-0`}
-          >
-            Business & Management
-          </Title>
-        ) : (
-          <Tooltip title='Business & Management'>
-            <PieChartOutlined
-              className={`${trainActKey === AdmissionVocaTab.Business ? '!text-[#2f6fd6]' : '!text-white'} !text-2xl`}
-            />
-          </Tooltip>
-        ),
+        label:
+          mb || tl ? (
+            <Tooltip title='Business & Management'>
+              <PieChartOutlined
+                className={`${trainActKey === AdmissionVocaTab.Business ? '!text-[#2f6fd6]' : '!text-white'} !text-2xl`}
+              />
+            </Tooltip>
+          ) : (
+            <Title
+              level={4}
+              className={`${trainActKey === AdmissionVocaTab.Business ? '!text-[#2f6fd6]' : '!text-white'} !m-0`}
+            >
+              Business & Management
+            </Title>
+          ),
         children: <ProgLstCard slugName={ProgramSlugEnum.Business} />,
       },
       {
         key: AdmissionVocaTab.Hospitality,
-        label: !mb ? (
-          <Title
-            level={4}
-            className={`${trainActKey === AdmissionVocaTab.Hospitality ? '!text-[#2f6fd6]' : '!text-white'} !m-0`}
-          >
-            Hospitality & Services
-          </Title>
-        ) : (
-          <Tooltip title='Hospitality & Services'>
-            <HomeOutlined
-              className={`${trainActKey === AdmissionVocaTab.Hospitality ? '!text-[#2f6fd6]' : '!text-white'} !text-2xl`}
-            />
-          </Tooltip>
-        ),
+        label:
+          mb || tl ? (
+            <Tooltip title='Hospitality & Services'>
+              <HomeOutlined
+                className={`${trainActKey === AdmissionVocaTab.Hospitality ? '!text-[#2f6fd6]' : '!text-white'} !text-2xl`}
+              />
+            </Tooltip>
+          ) : (
+            <Title
+              level={4}
+              className={`${trainActKey === AdmissionVocaTab.Hospitality ? '!text-[#2f6fd6]' : '!text-white'} !m-0`}
+            >
+              Hospitality & Services
+            </Title>
+          ),
         children: <ProgLstCard slugName={ProgramSlugEnum.Hospitality} />,
       },
       {
         key: AdmissionVocaTab.ItOffice,
-        label: !mb ? (
-          <Title
-            level={4}
-            className={`${trainActKey === AdmissionVocaTab.ItOffice ? '!text-[#2f6fd6]' : '!text-white'} !m-0`}
-          >
-            IT & Office
-          </Title>
-        ) : (
-          <Tooltip title='IT & Office'>
-            <LaptopOutlined
-              className={`${trainActKey === AdmissionVocaTab.ItOffice ? '!text-[#2f6fd6]' : '!text-white'} !text-2xl`}
-            />
-          </Tooltip>
-        ),
+        label:
+          mb || tl ? (
+            <Tooltip title='IT & Office'>
+              <LaptopOutlined
+                className={`${trainActKey === AdmissionVocaTab.ItOffice ? '!text-[#2f6fd6]' : '!text-white'} !text-2xl`}
+              />
+            </Tooltip>
+          ) : (
+            <Title
+              level={4}
+              className={`${trainActKey === AdmissionVocaTab.ItOffice ? '!text-[#2f6fd6]' : '!text-white'} !m-0`}
+            >
+              IT & Office
+            </Title>
+          ),
         children: <ProgLstCard slugName={ProgramSlugEnum.IT} />,
       },
     ],
-    [trainActKey, mb],
+    [trainActKey, mb, tl],
   );
-
-  const hdlChangeTab = useCallback(
-    (key: string) => {
-      trainSearchPrs.set('tab', key);
-      setTrainSearchPrs(trainSearchPrs, { replace: true });
-      setTrainActKey(key as AdmissionVocaTab);
-    },
-    [trainSearchPrs, setTrainSearchPrs],
-  );
-
-  useEffect(() => {
-    const tab = trainSearchPrs.get('tab');
-    if (tab) {
-      setTrainActKey(tab as AdmissionVocaTab);
-    } else {
-      trainSearchPrs.set('tab', AdmissionVocaTab.AllCour);
-      setTrainSearchPrs(trainSearchPrs, { replace: true });
-      setTrainActKey(AdmissionVocaTab.AllCour);
-    }
-  }, [trainSearchPrs, setTrainSearchPrs]);
 
   return (
     <section className='!bg-white !mt-20'>

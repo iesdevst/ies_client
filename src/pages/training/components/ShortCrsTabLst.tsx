@@ -5,7 +5,7 @@ import {
   RobotOutlined,
 } from '@ant-design/icons';
 import { Tabs, Tooltip, type TabsProps } from 'antd';
-import { lazy, useCallback, useEffect, useMemo, useState } from 'react';
+import { lazy, useCallback, useMemo } from 'react';
 import { useMediaQuery } from 'react-responsive';
 import { useSearchParams } from 'react-router-dom';
 import styles from '../iesTraining.module.scss';
@@ -18,9 +18,10 @@ const ShortCrsDetail = lazy(
 );
 
 const ShortCrsTabLst: React.FC = () => {
-  const [shortCrsSearchPrs, setshortCrsSearchPrs] = useSearchParams();
-  const [shortCrsActKey, setShortCrsActKey] = useState<ShortCrsTab>();
   const mb = useMediaQuery({ maxWidth: 767 });
+  const [shortCrsSearchPrs, setshortCrsSearchPrs] = useSearchParams();
+
+  const shortCrsActKey = shortCrsSearchPrs.get('tab') || ShortCrsTab.Mixology;
 
   const tabs: TabsProps['items'] = useMemo(
     () => [
@@ -102,23 +103,10 @@ const ShortCrsTabLst: React.FC = () => {
 
   const hdlChangeTab = useCallback(
     (key: string) => {
-      shortCrsSearchPrs.set('tab', key);
-      setshortCrsSearchPrs(shortCrsSearchPrs, { replace: true });
-      setShortCrsActKey(key as ShortCrsTab);
+      setshortCrsSearchPrs({ tab: key }, { replace: true });
     },
-    [shortCrsSearchPrs, setshortCrsSearchPrs],
+    [setshortCrsSearchPrs],
   );
-
-  useEffect(() => {
-    const tab = shortCrsSearchPrs.get('tab');
-    if (tab) {
-      setShortCrsActKey(tab as ShortCrsTab);
-    } else {
-      shortCrsSearchPrs.set('tab', ShortCrsTab.Mixology);
-      setshortCrsSearchPrs(shortCrsSearchPrs, { replace: true });
-      setShortCrsActKey(ShortCrsTab.Mixology);
-    }
-  }, [shortCrsSearchPrs, setshortCrsSearchPrs]);
 
   return (
     <section className='pt-15'>

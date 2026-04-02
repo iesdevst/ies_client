@@ -1,6 +1,21 @@
-import { RightOutlined } from '@ant-design/icons';
-import { Breadcrumb, Col, Image, Row, Tabs, type TabsProps } from 'antd';
-import { lazy, useCallback, useEffect, useMemo, useState } from 'react';
+import {
+  ApartmentOutlined,
+  FormOutlined,
+  InfoCircleOutlined,
+  ProfileOutlined,
+  RightOutlined,
+  WalletOutlined,
+} from '@ant-design/icons';
+import {
+  Breadcrumb,
+  Col,
+  Image,
+  Row,
+  Tabs,
+  Tooltip,
+  type TabsProps,
+} from 'antd';
+import { lazy, useCallback, useMemo } from 'react';
 import { useMediaQuery } from 'react-responsive';
 import { useParams, useSearchParams } from 'react-router-dom';
 import { useTrainDetailData } from './hooks';
@@ -18,9 +33,11 @@ const IvRegisterForm = lazy(
 );
 
 const VocaTrainDetail: React.FC = () => {
-  const isMb = useMediaQuery({ maxWidth: 1024 });
+  const isMb = useMediaQuery({ maxWidth: 768 });
+  const isTl = useMediaQuery({ minWidth: 769, maxWidth: 1024 });
+
   const [trainDtSearchPrs, setTrainDtSearchPrs] = useSearchParams();
-  const [trainDtActKey, setTrainDtActKey] = useState<TrainDetailTab>();
+  const trainDtActKey = trainDtSearchPrs.get('tab') || TrainDetailTab.Overview;
   const { data } = useTrainDetailData();
   const { progType } = useParams();
 
@@ -33,53 +50,98 @@ const VocaTrainDetail: React.FC = () => {
     () => [
       {
         key: TrainDetailTab.Overview,
-        label: 'Program Overview',
+        label: !isMb ? (
+          <Title
+            level={4}
+            className={`${trainDtActKey === TrainDetailTab.Overview ? '!text-white' : '!text-black'} !m-0`}
+          >
+            Program Overview
+          </Title>
+        ) : (
+          <Tooltip title='Program Overview'>
+            <ProfileOutlined
+              className={`${trainDtActKey === TrainDetailTab.Overview ? '!text-white' : '!text-black'} !text-lg`}
+            />
+          </Tooltip>
+        ),
         children: <ProgOvw ovwDt={detailTrainDt?.overview} />,
       },
       {
         key: TrainDetailTab.Admission,
-        label: 'Admissions Info',
+        label: !isMb ? (
+          <Title
+            level={4}
+            className={`${trainDtActKey === TrainDetailTab.Admission ? '!text-white' : '!text-black'} !m-0`}
+          >
+            Admissions Info
+          </Title>
+        ) : (
+          <Tooltip title='Admissions Info'>
+            <InfoCircleOutlined
+              className={`${trainDtActKey === TrainDetailTab.Admission ? '!text-white' : '!text-black'} !text-lg`}
+            />
+          </Tooltip>
+        ),
         children: <AdmissInfo admisInfoDt={detailTrainDt?.info} />,
       },
       {
         key: TrainDetailTab.Apply,
-        label: 'Tuition & Apply',
+        label: !isMb ? (
+          <Title
+            level={4}
+            className={`${trainDtActKey === TrainDetailTab.Apply ? '!text-white' : '!text-black'} !m-0`}
+          >
+            Tuition & Apply
+          </Title>
+        ) : (
+          <Tooltip title='Tuition & Apply'>
+            <WalletOutlined
+              className={`${trainDtActKey === TrainDetailTab.Apply ? '!text-white' : '!text-black'} !text-lg`}
+            />
+          </Tooltip>
+        ),
         children: <TuiApply tuiApplyDt={detailTrainDt?.apply} />,
       },
       {
         key: TrainDetailTab.Register,
-        label: 'Register Form',
+        label: !isMb ? (
+          <Title
+            level={4}
+            className={`${trainDtActKey === TrainDetailTab.Register ? '!text-white' : '!text-black'} !m-0`}
+          >
+            Register Form
+          </Title>
+        ) : (
+          <Tooltip title='Register Form'>
+            <FormOutlined
+              className={`${trainDtActKey === TrainDetailTab.Register ? '!text-white' : '!text-black'} !text-lg`}
+            />
+          </Tooltip>
+        ),
         children: <IvRegisterForm />,
       },
     ],
-    [detailTrainDt],
+    [detailTrainDt, trainDtActKey, isMb],
   );
 
   const hdlChangeTab = useCallback(
     (key: string) => {
-      trainDtSearchPrs.set('tab', key);
-      setTrainDtSearchPrs(trainDtSearchPrs, { replace: true });
-      setTrainDtActKey(key as TrainDetailTab);
+      setTrainDtSearchPrs({ tab: key }, { replace: true });
     },
-    [trainDtSearchPrs, setTrainDtSearchPrs],
+    [setTrainDtSearchPrs],
   );
 
-  useEffect(() => {
-    const tab = trainDtSearchPrs.get('tab');
-    if (tab) {
-      setTrainDtActKey(tab as TrainDetailTab);
-    } else {
-      trainDtSearchPrs.set('tab', TrainDetailTab.Overview);
-      setTrainDtSearchPrs(trainDtSearchPrs, { replace: true });
-      setTrainDtActKey(TrainDetailTab.Overview);
-    }
-  }, [trainDtSearchPrs, setTrainDtSearchPrs]);
-
   return (
-    <section className={`bg-white ${!isMb ? 'px-15 py-20' : 'pt-10 py-20'}`}>
+    <section
+      className={`bg-white ${isMb || isTl ? 'pt-10 py-20' : 'px-15 py-20'}`}
+    >
       <Breadcrumb
-        className={`!bg-[#eaeaea] !w-1/3 !ml-5.5 !py-3  !rounded-t-xl !border-t !border-x !border-[#dac7da]  ${styles.breadCrumbCus}`}
-        separator={<RightOutlined className='!text-black' />}
+        className={`!bg-[#eaeaea] !rounded-t-xl !border-t !border-x !border-[#dac7da] ${isMb ? 'w-2/3 !py-1.5 !ml-5' : isTl ? 'w-2/3 !py-1.5 !ml-5' : 'w-1/3 !ml-5.5 !py-3'}  ${styles.breadCrumbCus}`}
+        separator={
+          <RightOutlined
+            className={`!text-black  ${isMb ? 'px-3' : isTl ? 'px-15' : 'px-20'}`}
+          />
+        }
         items={[
           {
             title: (
@@ -91,45 +153,52 @@ const VocaTrainDetail: React.FC = () => {
                   fontSize: '15px',
                 }}
               >
-                Intermediate Vocational
+                {!isMb ? (
+                  'Intermediate Vocational'
+                ) : (
+                  <ApartmentOutlined className='!text-xl' />
+                )}
               </PrefetchLink>
             ),
           },
           {
             title: (
               <Text color='#C92CC9' className='!text-[16px] !font-semibold'>
-                {detailTrainDt?.progTitle}
+                Program Details
               </Text>
             ),
           },
         ]}
       />
       <div
-        className={`!bg-[#eaeaea] !rounded-3xl !border !border-[#dac7da] ${!isMb ? 'p-20' : 'px-2 pt-10 py-20'}`}
+        className={`!bg-[#eaeaea] !rounded-3xl !border !border-[#dac7da] ${isMb || isTl ? 'px-2 pt-10 py-20' : 'p-20'}`}
       >
         {detailTrainDt && (
           <Row
             justify='center'
             align='middle'
-            className={`${!isMb ? 'gap-x-30' : 'gap-y-12'}`}
+            className={`${isMb || isTl ? 'gap-y-12' : 'gap-x-30'}`}
           >
-            <Col xs={24} md={10} className='!text-center'>
+            <Col xs={24} md={12} className='!text-center'>
               <Title className='!m-0 !font-normal' level={5}>
                 {detailTrainDt.program}
               </Title>
 
-              <Title className='!m-0 !text-[#BE3691] !mt-0.5 !mb-5'>
+              <Title
+                level={isMb || isTl ? 3 : 1}
+                className='!m-0 !text-[#BE3691] !mt-0.5 !mb-5'
+              >
                 {detailTrainDt.progTitle}
               </Title>
 
               <Image src={DTP} preview={false} />
             </Col>
 
-            <Col xs={24} md={10} className='!text-center'>
+            <Col xs={24} md={12} className='!text-center'>
               <Image
                 src={detailTrainDt.imgDetail}
                 preview={false}
-                className='!h-[30vh] !w-[600px] rounded-xl shadow-2xl'
+                className={`${isMb ? '!h-[20vh] !w-[600px]' : isTl ? '!h-[20vh] !w-[350px]' : '!h-[30vh] !w-[600px]'} rounded-xl shadow-2xl`}
               />
             </Col>
           </Row>
@@ -140,6 +209,7 @@ const VocaTrainDetail: React.FC = () => {
             items={tabs}
             onChange={hdlChangeTab}
             className={styles.iesTrainDtTabs}
+            centered={isMb}
           />
         </div>
       </div>

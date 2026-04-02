@@ -78,12 +78,21 @@ const data = [
   },
 ];
 
-const AboutVoca = () => {
+interface IAboutVoca {
+  tl: boolean;
+  mb: boolean;
+}
+
+const AboutVoca: React.FC<IAboutVoca> = (props) => {
+  const { mb, tl } = props;
   const navigate = useNavigate();
 
   return (
-    <div className='px-50 py-15 !space-y-15'>
-      <Title className='!text-center !text-gray-500 mb-8'>
+    <div className='py-15 px-5 md:!px-10 lg:!px-30'>
+      <Title
+        level={mb || tl ? 3 : 1}
+        className='!text-center !text-gray-500 !mb-8'
+      >
         Intermediate Vocational Programs
       </Title>
 
@@ -100,7 +109,7 @@ const AboutVoca = () => {
               hoverable
               className='!bg-gray-500 hover:!shadow-4xl'
             >
-              <div className='pt-5 px-10'>
+              <div className='pt-5 pb-2 px-3 md:!px-8 lg:!px-10'>
                 {group.items.map((item, i) => (
                   <Row
                     key={i}

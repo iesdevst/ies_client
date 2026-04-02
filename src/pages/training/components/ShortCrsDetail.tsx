@@ -5,7 +5,7 @@ import {
   WalletOutlined,
 } from '@ant-design/icons';
 import { Col, Image, Row, Tabs, Tooltip, type TabsProps } from 'antd';
-import { lazy, useCallback, useEffect, useMemo, useState } from 'react';
+import { lazy, useCallback, useMemo } from 'react';
 import { useMediaQuery } from 'react-responsive';
 import { useSearchParams } from 'react-router-dom';
 import { useShortCrsData } from '../hooks';
@@ -31,7 +31,8 @@ const ShortCrsDetail: React.FC<IShortCrsDetailProps> = (props) => {
   const isMb = useMediaQuery({ maxWidth: 768 });
   const isTl = useMediaQuery({ minWidth: 769, maxWidth: 1024 });
   const [stSearchPrs, setStSearchPrs] = useSearchParams();
-  const [stActKey, setStActKey] = useState<TrainDetailTab>();
+  const stActKey = stSearchPrs.get('tab') || TrainDetailTab.Overview;
+
   const { data } = useShortCrsData();
 
   const shortCrsDt = useMemo(() => {
@@ -119,23 +120,10 @@ const ShortCrsDetail: React.FC<IShortCrsDetailProps> = (props) => {
 
   const hdlChangeTab = useCallback(
     (key: string) => {
-      stSearchPrs.set('subTab', key);
-      setStSearchPrs(stSearchPrs, { replace: false });
-      setStActKey(key as TrainDetailTab);
+      setStSearchPrs({ tab: key }, { replace: false });
     },
-    [stSearchPrs, setStSearchPrs],
+    [setStSearchPrs],
   );
-
-  useEffect(() => {
-    const tab = stSearchPrs.get('subTab');
-    if (tab) {
-      setStActKey(tab as TrainDetailTab);
-    } else {
-      stSearchPrs.set('subTab', TrainDetailTab.Overview);
-      setStSearchPrs(stSearchPrs, { replace: false });
-      setStActKey(TrainDetailTab.Overview);
-    }
-  }, [stSearchPrs, setStSearchPrs]);
 
   return (
     <section className={`${isMb || isTl ? 'pt-10 py-20' : 'px-15 py-20 '}`}>

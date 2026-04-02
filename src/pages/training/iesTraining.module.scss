@@ -7,7 +7,7 @@
       background: #2f6fd6;
       padding: 10px;
       border-radius: 999px;
-      margin: 0 320px 0 320px;
+      margin: 0 320px;
     }
 
     .ant-tabs-tab {
@@ -39,11 +39,11 @@
     :global {
       .ant-tabs-nav-wrap {
         padding: 20px 0;
-        margin: 0 !important;
+        margin: 0 250px !important;
       }
 
       .ant-tabs-tab {
-        margin: 0 !important;
+        margin: 0 35px 0 0 !important;
       }
     }
   }
@@ -52,14 +52,14 @@
   @media (max-width: 912px) {
     :global {
       .ant-tabs-nav-wrap {
-        margin: 0 6px;
         padding: 15px 20px;
+        margin: 0 150px !important;
       }
 
       .ant-tabs-tab {
         padding: 4px 10px;
         font-size: 12px;
-        margin: 0 15px !important;
+        margin: 0 20px !important;
       }
     }
   }
@@ -67,10 +67,14 @@
   /* Mobile */
   @media (max-width: 767px) {
     :global {
+      .ant-tabs-nav-wrap {
+        padding: 15px 10px;
+        margin: 0 15px !important;
+      }
       .ant-tabs-tab {
         padding: 4px 10px;
         font-size: 12px;
-        margin: 0 10px !important;
+        margin: 0 7.5px !important;
       }
     }
   }
@@ -86,7 +90,6 @@
     }
 
     .ant-tabs-tab {
-      color: black;
       font-weight: 700;
       padding: 6px 18px;
       transition: all 0.3s ease !important;
@@ -112,6 +115,16 @@
 
     .ant-tabs-ink-bar {
       display: none;
+    }
+  }
+
+  @media (max-width: 768px) {
+    :global(.ant-tabs-nav-wrap) {
+      margin: 0 !important;
+    }
+    :global(.ant-tabs-tab) {
+      padding: 5px 20px !important;
+      margin-right: 5px !important;
     }
   }
 }
@@ -214,7 +227,6 @@
     }
 
     .ant-tabs-tab {
-      color: black;
       font-weight: 700;
       padding: 6px 18px;
       transition: all 0.3s ease !important;
@@ -234,7 +246,6 @@
     }
 
     .ant-tabs-tab-active .ant-tabs-tab-btn {
-      color: white !important;
       font-weight: 600;
     }
 

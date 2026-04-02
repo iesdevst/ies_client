@@ -28,6 +28,7 @@ const IesVocaTraining = () => {
                 to={ROUTES.DASHBOARD}
                 style={{
                   color: 'black',
+
                   fontWeight: 700,
                   fontSize: '15px',
                 }}
