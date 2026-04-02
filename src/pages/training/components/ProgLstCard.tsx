@@ -7,6 +7,7 @@ import {
 } from '@ant-design/icons';
 import { Button, Card, Col, Flex, Image, Row } from 'antd';
 import { useMemo, useState } from 'react';
+import { useMediaQuery } from 'react-responsive';
 import { useNavigate } from 'react-router-dom';
 import { useTrainingData } from '../hooks';
 import { Text, Title } from '@/components';
@@ -18,6 +19,8 @@ interface IProgLstCard {
 }
 
 const ProgLstCard: React.FC<IProgLstCard> = (props) => {
+  const mb = useMediaQuery({ maxWidth: 767 });
+  const tablet = useMediaQuery({ minWidth: 768, maxWidth: 1024 });
   const { slugName } = props || {};
   const { data } = useTrainingData();
   const navigate = useNavigate();
@@ -44,32 +47,38 @@ const ProgLstCard: React.FC<IProgLstCard> = (props) => {
   }, [data, slugName]);
 
   return (
-    <section className='p-15'>
+    <section className='p-5 md:p-8 lg:p-15'>
       <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-7'>
         {trainings.map((train) => {
           const key = `${train.train}-${train.progTit}`;
           return (
             <Card
               key={key}
-              className='!h-full !border-gray-300 shadow-md hover:!shadow-xl transition !p-6 !rounded-2xl'
+              className='!h-full !border-gray-300 shadow-md hover:!shadow-xl transition !p-2 !rounded-2xl'
             >
-              <Row justify={'start'} align={'middle'} className='gap-x-6'>
+              <Flex vertical={mb || tablet} align='center' className='gap-x-6'>
                 <div>
                   <Image
                     src={train.trainPic}
                     preview={false}
-                    className='!w-18 !h-18 rounded-lg'
+                    className={`rounded-lg ${mb || tablet ? '!w-full !h-26' : '!w-18 !h-18'}`}
                   />
                 </div>
                 <Col>
-                  <Title level={5} className='!m-0 !font-normal !text-gray-500'>
+                  <Title
+                    level={5}
+                    className={`!m-0 !font-normal !text-gray-500 ${mb || tablet ? '!text-center' : ''}`}
+                  >
                     {train.progTit}
                   </Title>
-                  <Title level={4} className='!m-0'>
+                  <Title
+                    level={mb || tablet ? 5 : 4}
+                    className={`!m-0 ${mb || tablet ? '!text-center' : ''}`}
+                  >
                     {train.train}
                   </Title>
                 </Col>
-              </Row>
+              </Flex>
               <div
                 style={{
                   overflow: 'hidden',

@@ -6,6 +6,7 @@
   :global(.ant-tabs-nav-wrap) {
     margin-left: 20px !important;
   }
+
   :global(.ant-tabs-tab) {
     padding: 10px 70px !important;
     font-weight: 600;
@@ -21,9 +22,15 @@
 
   :global(.ant-tabs-tab.ant-tabs-tab-active) {
     background: rgb(43, 83, 98) !important;
+  }
 
-    .ant-typography {
-      color: white !important;
+  @media (max-width: 768px) {
+    :global(.ant-tabs-nav-wrap) {
+      margin-left: 15px !important;
+    }
+    :global(.ant-tabs-tab) {
+      padding: 5px 35px !important;
+      margin-right: 20px !important;
     }
   }
 }

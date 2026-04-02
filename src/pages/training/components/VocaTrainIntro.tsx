@@ -9,20 +9,32 @@ import LI from '@/assets/imgs/light_icon_voca_train.png';
 import TLCR from '@/assets/imgs/train_lst_bg_carou.avif';
 import { Text, Title } from '@/components';
 
-const VocaTrainIntro: React.FC = () => {
+interface IVocaTrainIntro {
+  mb: boolean;
+  tl: boolean;
+}
+
+const VocaTrainIntro: React.FC<IVocaTrainIntro> = (props) => {
+  const { mb, tl } = props;
   return (
-    <section className='bg-white px-20 pt-8'>
+    <section
+      className={`bg-white pt-8 ${mb ? 'px-5' : tl ? 'px-17' : 'px-20'}`}
+    >
       <Flex justify='center' align='center'>
         <Title
           style={{
             fontFamily: 'Boldonse, sans-serif',
           }}
-          className='!text-8xl italic'
+          className={`italic ${mb || tl ? '!text-2xl !mb-8' : '!text-8xl '}`}
         >
           Intermediate Vocational
         </Title>
       </Flex>
-      <Flex justify='center' align='flex-start'>
+      <Flex
+        vertical={mb || tl}
+        justify='center'
+        align={mb || tl ? 'center' : 'flex-start'}
+      >
         <div
           className='grid grid-cols-2 gap-10 py-7 px-10 rounded-2xl'
           style={{
@@ -54,7 +66,9 @@ const VocaTrainIntro: React.FC = () => {
           />
         </div>
 
-        <Col className='pl-10 space-y-25 mt-10'>
+        <Col
+          className={`${mb || tl ? 'mt-7 space-y-10' : 'pl-10 space-y-25 mt-10'}`}
+        >
           <div>
             <Text className='!font-bold !text-xl'>
               We provide a wide range of intermediate-level training programs,
@@ -64,9 +78,10 @@ const VocaTrainIntro: React.FC = () => {
           </div>
 
           <Flex
+            vertical={mb || tl}
             className='!p-7 !rounded-2xl'
             justify={'space-evenly'}
-            gap={60}
+            gap={mb || tl ? 25 : 60}
             style={{
               background: 'linear-gradient(135deg, #2F6FA3, #4A90C2)',
               boxShadow: '0 25px 12px rgba(0,0,0,0.1)',

@@ -76,7 +76,7 @@ const TuiApply: React.FC<ITuiApplyProps> = (props) => {
             </Text>
           </Col>
           <Col>
-            <Title className='!m-0 !text-[#6472cf]' level={1}>
+            <Title className='!m-0 !text-[#6472cf]' level={3}>
               II. Application Documents
             </Title>
             <Text

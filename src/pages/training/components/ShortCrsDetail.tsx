@@ -1,4 +1,10 @@
-import { Col, Image, Row, Tabs, type TabsProps } from 'antd';
+import {
+  FormOutlined,
+  InfoCircleOutlined,
+  ProfileOutlined,
+  WalletOutlined,
+} from '@ant-design/icons';
+import { Col, Image, Row, Tabs, Tooltip, type TabsProps } from 'antd';
 import { lazy, useCallback, useEffect, useMemo, useState } from 'react';
 import { useMediaQuery } from 'react-responsive';
 import { useSearchParams } from 'react-router-dom';
@@ -22,7 +28,8 @@ interface IShortCrsDetailProps {
 
 const ShortCrsDetail: React.FC<IShortCrsDetailProps> = (props) => {
   const { scType } = props;
-  const isMb = useMediaQuery({ maxWidth: 1024 });
+  const isMb = useMediaQuery({ maxWidth: 768 });
+  const isTl = useMediaQuery({ minWidth: 769, maxWidth: 1024 });
   const [stSearchPrs, setStSearchPrs] = useSearchParams();
   const [stActKey, setStActKey] = useState<TrainDetailTab>();
   const { data } = useShortCrsData();
@@ -36,26 +43,78 @@ const ShortCrsDetail: React.FC<IShortCrsDetailProps> = (props) => {
     () => [
       {
         key: TrainDetailTab.Overview,
-        label: 'Program Overview',
+        label: !isMb ? (
+          <Title
+            level={4}
+            className={`${stActKey === TrainDetailTab.Overview ? '!text-white' : '!text-black'} !m-0`}
+          >
+            Program Overview
+          </Title>
+        ) : (
+          <Tooltip title='Program Overview'>
+            <ProfileOutlined
+              className={`${stActKey === TrainDetailTab.Overview ? '!text-white' : '!text-black'} !text-lg`}
+            />
+          </Tooltip>
+        ),
         children: <ProgOvw ovwScDt={shortCrsDt?.overview} />,
       },
       {
         key: TrainDetailTab.Admission,
-        label: 'Admissions Info',
+        label: !isMb ? (
+          <Title
+            level={4}
+            className={`${stActKey === TrainDetailTab.Admission ? '!text-white' : '!text-black'} !m-0`}
+          >
+            Admissions Info
+          </Title>
+        ) : (
+          <Tooltip title='Admissions Info'>
+            <InfoCircleOutlined
+              className={`${stActKey === TrainDetailTab.Admission ? '!text-white' : '!text-black'} !text-lg`}
+            />
+          </Tooltip>
+        ),
         children: <AdmissInfo admisScInfoDt={shortCrsDt?.info} />,
       },
       {
         key: TrainDetailTab.Apply,
-        label: 'Tuition & Apply',
+        label: !isMb ? (
+          <Title
+            level={4}
+            className={`${stActKey === TrainDetailTab.Apply ? '!text-white' : '!text-black'} !m-0`}
+          >
+            Tuition & Apply
+          </Title>
+        ) : (
+          <Tooltip title='Tuition & Apply'>
+            <WalletOutlined
+              className={`${stActKey === TrainDetailTab.Apply ? '!text-white' : '!text-black'} !text-lg`}
+            />
+          </Tooltip>
+        ),
         children: <TuiApply tuiApplyScDt={shortCrsDt?.apply} />,
       },
       {
         key: TrainDetailTab.Register,
-        label: 'Register Form',
+        label: !isMb ? (
+          <Title
+            level={4}
+            className={`${stActKey === TrainDetailTab.Register ? '!text-white' : '!text-black'} !m-0`}
+          >
+            Register Form
+          </Title>
+        ) : (
+          <Tooltip title='Register Form'>
+            <FormOutlined
+              className={`${stActKey === TrainDetailTab.Register ? '!text-white' : '!text-black'} !text-lg`}
+            />
+          </Tooltip>
+        ),
         children: <StRegisForm />,
       },
     ],
-    [shortCrsDt],
+    [stActKey, isMb, shortCrsDt],
   );
 
   const hdlChangeTab = useCallback(
@@ -79,15 +138,15 @@ const ShortCrsDetail: React.FC<IShortCrsDetailProps> = (props) => {
   }, [stSearchPrs, setStSearchPrs]);
 
   return (
-    <section className={`${!isMb ? 'px-15 py-20' : 'pt-10 py-20'}`}>
+    <section className={`${isMb || isTl ? 'pt-10 py-20' : 'px-15 py-20 '}`}>
       <div
-        className={`!bg-[#eaeaea] !rounded-3xl !border !border-[#dac7da] ${!isMb ? 'p-20' : 'px-2 pt-10 py-20'}`}
+        className={`!bg-[#eaeaea] !rounded-3xl !border !border-[#dac7da] ${isMb || isTl ? 'px-2 pt-10 py-20' : 'p-20'}`}
       >
         {shortCrsDt && (
           <Row
             justify='center'
             align='middle'
-            className={`${!isMb ? 'gap-x-30' : 'gap-y-12'}`}
+            className={`${isMb || isTl ? 'gap-y-12' : 'gap-x-30'}`}
           >
             <Col xs={24} md={10} className='!text-center'>
               <Title className='!m-0 !font-normal' level={5}>
@@ -116,6 +175,8 @@ const ShortCrsDetail: React.FC<IShortCrsDetailProps> = (props) => {
             onChange={hdlChangeTab}
             items={tabs}
             className={styles.iesShortSrcnDtTabs}
+            type='card'
+            centered={isMb}
           />
         </div>
       </div>

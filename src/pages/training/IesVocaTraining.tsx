@@ -1,5 +1,6 @@
 import { RightOutlined } from '@ant-design/icons';
 import { Breadcrumb } from 'antd';
+import { useMediaQuery } from 'react-responsive';
 import ContactKey from '../home/components/ContactKey';
 import VocaTrainIntro from './components/VocaTrainIntro';
 import VocaTrainLst from './components/VocaTrainLst';
@@ -9,11 +10,17 @@ import { PrefetchLink } from '@/components/PrefetchLink';
 import { ROUTES } from '@/constants';
 
 const IesVocaTraining = () => {
+  const mb = useMediaQuery({ maxWidth: 767 });
+  const tablet = useMediaQuery({ minWidth: 768, maxWidth: 1024 });
   return (
     <section className='bg-white pt-6'>
       <Breadcrumb
-        className={`!bg-[#eaeaea] !w-1/4 !ml-20 !py-3 !rounded-full ${styles.breadCrumbCus}`}
-        separator={<RightOutlined className='!text-black' />}
+        className={`!bg-[#eaeaea] !rounded-full ${mb ? '!w-5/6 !py-1.5 !ml-2' : tablet ? 'w-2/5 !py-1.5 !ml-6' : '!w-1/4 !ml-15 !py-3'} ${styles.breadCrumbCus}`}
+        separator={
+          <RightOutlined
+            className={`!text-black ${mb ? '' : tablet ? 'px-2' : 'px-6'}`}
+          />
+        }
         items={[
           {
             title: (
@@ -39,8 +46,8 @@ const IesVocaTraining = () => {
         ]}
       />
 
-      <VocaTrainIntro />
-      <VocaTrainLst />
+      <VocaTrainIntro mb={mb} tl={tablet} />
+      <VocaTrainLst mb={mb} tl={tablet} />
       <ContactKey />
     </section>
   );
