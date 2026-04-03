@@ -139,7 +139,7 @@ const VocaTrainDetail: React.FC = () => {
         className={`!bg-[#eaeaea] !rounded-t-xl !border-t !border-x !border-[#dac7da] ${isMb ? 'w-2/3 !py-1.5 !ml-5' : isTl ? 'w-2/3 !py-1.5 !ml-5' : 'w-1/3 !ml-5.5 !py-3'}  ${styles.breadCrumbCus}`}
         separator={
           <RightOutlined
-            className={`!text-black  ${isMb ? 'px-3' : isTl ? 'px-15' : 'px-20'}`}
+            className={`!text-black  ${isMb ? 'px-3' : isTl ? 'px-15' : '!px-10'}`}
           />
         }
         items={[

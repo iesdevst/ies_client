@@ -130,3 +130,7 @@ html {
   text-align: center;
   font-size: 22px;
 }
+
+.ant-modal-content {
+  padding: 0 !important;
+}

@@ -3,7 +3,16 @@ import {
   SelectOutlined,
   SendOutlined,
 } from '@ant-design/icons';
-import { Button, Flex, Form, Input, Row, Select, type InputRef } from 'antd';
+import {
+  Button,
+  Flex,
+  Form,
+  Input,
+  Row,
+  Select,
+  Space,
+  type InputRef,
+} from 'antd';
 import React, { useRef, useState } from 'react';
 import { useMediaQuery } from 'react-responsive';
 import { useIvRegisSend } from '@/api';
@@ -23,7 +32,8 @@ const IvRegisterForm: React.FC = () => {
   const { pushBSQ, pushBEQ } = useNotifyStore();
   const mb = useMediaQuery({ maxWidth: 1024 });
   const [progTopen, setProgTopen] = useState(false);
-  const [progType, setProgType] = useState<Array<InterestProgramEnum>>([]);
+
+  const progType = Form.useWatch('progType', form) || [];
   const phoneRef = useRef<InputRef>(null);
   const ageRef = useRef<InputRef>(null);
 
@@ -36,7 +46,7 @@ const IvRegisterForm: React.FC = () => {
         },
       ]);
       form.resetFields();
-      setProgType([]);
+      // setProgType([]);
     },
     onError: () => {
       pushBEQ([
@@ -68,18 +78,20 @@ const IvRegisterForm: React.FC = () => {
   };
 
   const handleSelectProg = (prog: InterestProgramEnum) => {
-    setProgType((prev) => {
-      const next = prev.includes(prog) ? prev : [...prev, prog];
-      form.setFieldsValue({ progType: next });
-      return next;
-    });
+    const current = form.getFieldValue('progType') || [];
+
+    if (!current.includes(prog)) {
+      form.setFieldsValue({
+        progType: [...current, prog],
+      });
+    }
   };
 
   const handleDeselectProg = (prog: InterestProgramEnum) => {
-    setProgType((prev) => {
-      const next = prev.filter((p) => p !== prog);
-      form.setFieldsValue({ progType: next });
-      return next;
+    const current = form.getFieldValue('progType') || [];
+
+    form.setFieldsValue({
+      progType: current.filter((p: InterestProgramEnum) => p !== prog),
     });
   };
 
@@ -117,7 +129,7 @@ const IvRegisterForm: React.FC = () => {
           </Form.Item>
 
           <Form.Item label='Phone Number' className='w-full'>
-            <Input.Group compact>
+            <Space.Compact>
               {/* Country code */}
               <Form.Item
                 name='countryCode'
@@ -151,7 +163,7 @@ const IvRegisterForm: React.FC = () => {
                   style={{ width: 'calc(100% - 100px)' }}
                 />
               </Form.Item>
-            </Input.Group>
+            </Space.Compact>
           </Form.Item>
         </Flex>
 
@@ -241,8 +253,7 @@ const IvRegisterForm: React.FC = () => {
                     <CloseCircleFilled
                       onClick={(e) => {
                         e.stopPropagation();
-                        setProgType([]);
-                        form.setFieldsValue({ progType: undefined });
+                        form.setFieldsValue({ progType: [] });
                       }}
                       className='!text-black'
                     />
@@ -268,6 +279,7 @@ const IvRegisterForm: React.FC = () => {
               selectProg={handleSelectProg}
               deselectProg={handleDeselectProg}
               options={interestProgramOptions}
+              clearAll={() => form.setFieldsValue({ progType: [] })}
             />
           </Form.Item>
         </Flex>

@@ -1,6 +1,7 @@
 import { RightOutlined } from '@ant-design/icons';
 import { Breadcrumb, Flex, Image } from 'antd';
 import { useMemo } from 'react';
+import { useMediaQuery } from 'react-responsive';
 import { useParams } from 'react-router-dom';
 import ContactKey from '../home/components/ContactKey';
 import { useNewsData } from './hooks';
@@ -11,6 +12,8 @@ import { ROUTES } from '@/constants';
 const IesNewsDetails = () => {
   const { id } = useParams();
   const { data } = useNewsData();
+  const mb = useMediaQuery({ maxWidth: 767 });
+  const tl = useMediaQuery({ minWidth: 768, maxWidth: 1024 });
 
   const detailDt = useMemo(() => {
     if (!data || !id) return;
@@ -20,7 +23,7 @@ const IesNewsDetails = () => {
     <section className='bg-white'>
       <div className='!rounded-4xl !bg-[#dfe0e2] pt-10 py-20 mx-5'>
         <Breadcrumb
-          className={` !ml-25 !py-15  `}
+          className={`${mb ? '!ml-5 !mb-10' : tl ? '!ml-10 !mb-15' : '!ml-25 !py-15'}`}
           separator={<RightOutlined className='!text-black mx-6' />}
           items={[
             {
@@ -46,7 +49,7 @@ const IesNewsDetails = () => {
             },
           ]}
         />
-        <Title level={5} className='!text-center'>
+        <Title level={mb || tl ? 3 : 5} className='!text-center italic'>
           News
         </Title>
         {detailDt && (
@@ -55,10 +58,15 @@ const IesNewsDetails = () => {
               vertical
               justify='center'
               align='center'
-              className='!px-20'
+              className={`${mb ? '!px-4' : tl ? '!px-10' : '!px-20'}`}
               gap={40}
             >
-              <Title> {detailDt.newsTit}</Title>
+              <Title
+                level={mb || tl ? 3 : 1}
+                className={`${mb || tl ? '!text-center' : ''}`}
+              >
+                {detailDt.newsTit}
+              </Title>
               <Image src={detailDt.img} className='!rounded-2xl !w-full' />
               <Text
                 className='!block !text-lg'

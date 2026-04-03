@@ -3,7 +3,16 @@ import {
   SelectOutlined,
   SendOutlined,
 } from '@ant-design/icons';
-import { Button, Flex, Form, Input, Row, Select, type InputRef } from 'antd';
+import {
+  Button,
+  Flex,
+  Form,
+  Input,
+  Row,
+  Select,
+  Space,
+  type InputRef,
+} from 'antd';
 import React, { useRef, useState } from 'react';
 import { useMediaQuery } from 'react-responsive';
 import { useStRegisSend } from '@/api';
@@ -23,7 +32,7 @@ const StRegisterForm: React.FC = () => {
   const { pushBSQ, pushBEQ } = useNotifyStore();
   const mb = useMediaQuery({ maxWidth: 1024 });
   const [stTopen, setStTopen] = useState(false);
-  const [stType, setStType] = useState<Array<ShortTermTraingEnum>>([]);
+  const stType = Form.useWatch('shortTermType', form) || [];
   const phoneRef = useRef<InputRef>(null);
   const ageRef = useRef<InputRef>(null);
 
@@ -36,7 +45,6 @@ const StRegisterForm: React.FC = () => {
         },
       ]);
       form.resetFields();
-      setStType([]);
     },
     onError: () => {
       pushBEQ([
@@ -68,19 +76,13 @@ const StRegisterForm: React.FC = () => {
   };
 
   const handleSelectSt = (st: ShortTermTraingEnum) => {
-    setStType((prev) => {
-      const next = prev.includes(st) ? prev : [...prev, st];
-      form.setFieldsValue({ shortTermType: next });
-      return next;
-    });
+    const next = stType.includes(st) ? stType : [...stType, st];
+    form.setFieldsValue({ shortTermType: next });
   };
 
   const handleDeselectSt = (st: ShortTermTraingEnum) => {
-    setStType((prev) => {
-      const next = prev.filter((p) => p !== st);
-      form.setFieldsValue({ shortTermType: next });
-      return next;
-    });
+    const next = stType.filter((p: ShortTermTraingEnum) => p !== st);
+    form.setFieldsValue({ shortTermType: next });
   };
 
   const handleRegisSend = (values: StRegisFormVra) => {
@@ -116,9 +118,8 @@ const StRegisterForm: React.FC = () => {
             <Input className='' placeholder='Please enter your name' />
           </Form.Item>
 
-          <Form.Item label='Phone Number' className='w-full'>
-            <Input.Group compact>
-              {/* Country code */}
+          <Form.Item label='Phone Number' className='!w-full'>
+            <Space.Compact>
               <Form.Item
                 name='countryCode'
                 noStyle
@@ -130,7 +131,6 @@ const StRegisterForm: React.FC = () => {
                 </Select>
               </Form.Item>
 
-              {/* Phone number */}
               <Form.Item
                 name='phoneNum'
                 noStyle
@@ -151,7 +151,7 @@ const StRegisterForm: React.FC = () => {
                   style={{ width: 'calc(100% - 100px)' }}
                 />
               </Form.Item>
-            </Input.Group>
+            </Space.Compact>
           </Form.Item>
         </Flex>
 
@@ -241,8 +241,7 @@ const StRegisterForm: React.FC = () => {
                     <CloseCircleFilled
                       onClick={(e) => {
                         e.stopPropagation();
-                        setStType([]);
-                        form.setFieldsValue({ progType: undefined });
+                        form.setFieldsValue({ shortTermType: [] });
                       }}
                       className='!text-black'
                     />
@@ -269,6 +268,7 @@ const StRegisterForm: React.FC = () => {
               deselectProg={handleDeselectSt}
               options={shortTermTrainOptions}
               bgC='!bg-[#6472cf]'
+              clearAll={() => form.setFieldsValue({ shortTermType: [] })}
             />
           </Form.Item>
         </Flex>

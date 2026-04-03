@@ -31,7 +31,7 @@ const ShortCrsDetail: React.FC<IShortCrsDetailProps> = (props) => {
   const isMb = useMediaQuery({ maxWidth: 768 });
   const isTl = useMediaQuery({ minWidth: 769, maxWidth: 1024 });
   const [stSearchPrs, setStSearchPrs] = useSearchParams();
-  const stActKey = stSearchPrs.get('tab') || TrainDetailTab.Overview;
+  const stActKey = stSearchPrs.get('subTab') || TrainDetailTab.Overview;
 
   const { data } = useShortCrsData();
 
@@ -120,7 +120,11 @@ const ShortCrsDetail: React.FC<IShortCrsDetailProps> = (props) => {
 
   const hdlChangeTab = useCallback(
     (key: string) => {
-      setStSearchPrs({ tab: key }, { replace: false });
+      setStSearchPrs((prev) => {
+        const params = new URLSearchParams(prev);
+        params.set('subTab', key);
+        return params;
+      });
     },
     [setStSearchPrs],
   );

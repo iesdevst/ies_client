@@ -24,7 +24,10 @@ export const useMegaNavData = (): { data: Array<MegaNavItem> } => {
         {
           title: 'Short-term Training Programs',
           links: [
-            { label: 'Short-term Training Page', route: ROUTES.ADMISSIONS_SC },
+            {
+              label: 'Short-term Training Page',
+              route: ROUTES.ADMISSIONS_SC_MIX_OVW,
+            },
           ],
         },
         {

@@ -10,7 +10,7 @@ import { useMediaQuery } from 'react-responsive';
 import { useSearchParams } from 'react-router-dom';
 import ContactKey from '../home/components/ContactKey';
 import styles from './iesAbout.module.scss';
-import VAM from '@/assets/imgs/vision_mission_crs.png';
+import VAM from '@/assets/imgs/vision_and_mission_bn_page.png';
 import { Text, Title } from '@/components';
 import { PrefetchLink } from '@/components/PrefetchLink';
 import { AboutTab, ROUTES } from '@/constants';

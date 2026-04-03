@@ -8,7 +8,7 @@ export const useNewsData = (): { data: Array<NewsData> } => {
   const data: Array<NewsData> = [
     {
       id: '1',
-      newsTit: 'GS Ngô Bảo Châu: “Không nhất thiết phải có bằng Đại học',
+      newsTit: 'GS Ngô Bảo Châu: “Không nhất thiết phải có bằng Đại học”',
       desc: `GS Ngô Bảo Châu quan niệm giá trị của một con người không thể đánh giá dựa trên tiêu chí giỏi điều gì đó, mà còn căn cứ vào rất nhiều phẩm chất khác nhau.\n
 GS Cédric Villani và GS Ngô Bảo Châu trả lời câu hỏi của báo chí về quan điểm đối với kỳ thi THPT quốc gia, về việc phát triển những năng khiếu toán học.\n
 Là người thành công, GS Ngô Bảo Châu khuyên gì với những thí sinh trượt đại học năm nay?\n

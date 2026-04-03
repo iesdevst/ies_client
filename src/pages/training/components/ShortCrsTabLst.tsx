@@ -10,7 +10,7 @@ import { useMediaQuery } from 'react-responsive';
 import { useSearchParams } from 'react-router-dom';
 import styles from '../iesTraining.module.scss';
 import { Title } from '@/components';
-import { ShortCrsTab } from '@/constants';
+import { ShortCrsTab, TrainDetailTab } from '@/constants';
 import { ShortCrsTypeEnum } from '@/utils';
 
 const ShortCrsDetail = lazy(
@@ -103,7 +103,18 @@ const ShortCrsTabLst: React.FC = () => {
 
   const hdlChangeTab = useCallback(
     (key: string) => {
-      setshortCrsSearchPrs({ tab: key }, { replace: true });
+      setshortCrsSearchPrs(
+        (prev) => {
+          const params = new URLSearchParams(prev);
+
+          params.set('tab', key);
+
+          params.set('subTab', TrainDetailTab.Overview);
+
+          return params;
+        },
+        { replace: true },
+      );
     },
     [setshortCrsSearchPrs],
   );

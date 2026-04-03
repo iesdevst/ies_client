@@ -10,6 +10,7 @@ interface IProgTypeModalProps<T> {
   onClose: () => void;
   options: Array<{ label: string; value: T; group?: string }>;
   bgC?: string;
+  clearAll: () => void;
 }
 
 const ProgTypeModal = <T,>(props: IProgTypeModalProps<T>) => {
@@ -21,6 +22,7 @@ const ProgTypeModal = <T,>(props: IProgTypeModalProps<T>) => {
     onClose,
     options,
     bgC,
+    clearAll,
   } = props;
 
   const isSelected = (prog: T) => selectedProgs.includes(prog);
@@ -31,7 +33,7 @@ const ProgTypeModal = <T,>(props: IProgTypeModalProps<T>) => {
 
   return (
     <Modal
-      visible={visible}
+      open={visible}
       onCancel={onClose}
       closable={false}
       maskClosable={false}
@@ -72,7 +74,7 @@ const ProgTypeModal = <T,>(props: IProgTypeModalProps<T>) => {
               className='!text-white !font-bold'
               type='dashed'
               size='middle'
-              onClick={() => selectedProgs.forEach((p) => deselectProg(p))}
+              onClick={clearAll}
             >
               Clear All
             </Button>
@@ -97,7 +99,10 @@ const ProgTypeModal = <T,>(props: IProgTypeModalProps<T>) => {
                   <Flex justify='flex-start' align='center' gap={'large'}>
                     <Checkbox
                       checked={selected}
-                      onChange={() => toggleProg(item.value)}
+                      onChange={(e) => {
+                        e.stopPropagation();
+                        toggleProg(item.value);
+                      }}
                     />
                     <Title level={5} className='!m-0'>
                       {item.label}

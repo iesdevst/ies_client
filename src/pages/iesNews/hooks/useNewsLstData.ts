@@ -8,7 +8,7 @@ export const useNewsLstData = (): { data: Array<NewsLstData> } => {
   const data: Array<NewsLstData> = [
     {
       id: '1',
-      newsTit: 'GS Ngô Bảo Châu\n "Không nhất thiết phải có bằng Đại học"',
+      newsTit: 'GS Ngô Bảo Châu\n “Không nhất thiết phải có bằng Đại học”',
       desc: 'GS Ngô Bảo Châu quan niệm giá trị của một con người không thể  .........',
       img: NBCN,
     },

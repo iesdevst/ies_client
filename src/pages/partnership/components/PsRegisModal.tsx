@@ -12,6 +12,7 @@ import {
   Modal,
   Row,
   Select,
+  Space,
   type InputRef,
 } from 'antd';
 import { useRef, useState } from 'react';
@@ -37,7 +38,7 @@ const PsRegisModal: React.FC<IPsRegisModal> = (props) => {
   const { closePsm, openPsM } = props;
   const [form] = Form.useForm();
   const [psProgTopen, setPsProgTopen] = useState(false);
-  const [psProgType, setPsProgType] = useState<Array<PartnershipProgEnum>>([]);
+  const psProgType = Form.useWatch('major', form) || [];
   const phoneRef = useRef<InputRef>(null);
   const { pushBSQ, pushBEQ } = useNotifyStore();
 
@@ -51,7 +52,6 @@ const PsRegisModal: React.FC<IPsRegisModal> = (props) => {
         },
       ]);
       form.resetFields();
-      setPsProgType([]);
       closePsm();
     },
     onError: () => {
@@ -84,19 +84,13 @@ const PsRegisModal: React.FC<IPsRegisModal> = (props) => {
   };
 
   const hdlSelectPsProg = (prog: PartnershipProgEnum) => {
-    setPsProgType((prev) => {
-      const next = prev.includes(prog) ? prev : [...prev, prog];
-      form.setFieldsValue({ major: next });
-      return next;
-    });
+    const next = psProgType.includes(prog) ? psProgType : [...psProgType, prog];
+    form.setFieldsValue({ major: next });
   };
 
   const hdlDeselectPsProg = (prog: PartnershipProgEnum) => {
-    setPsProgType((prev) => {
-      const next = prev.filter((p) => p !== prog);
-      form.setFieldsValue({ major: next });
-      return next;
-    });
+    const next = psProgType.filter((p: PartnershipProgEnum) => p !== prog);
+    form.setFieldsValue({ major: next });
   };
 
   const hdlRegisSend = (values: PsRegisFormVra) => {
@@ -113,7 +107,7 @@ const PsRegisModal: React.FC<IPsRegisModal> = (props) => {
 
   return (
     <Modal
-      visible={openPsM}
+      open={openPsM}
       closable={false}
       maskClosable={false}
       keyboard={false}
@@ -155,7 +149,7 @@ const PsRegisModal: React.FC<IPsRegisModal> = (props) => {
             <Input placeholder='Please enter your name' />
           </Form.Item>
           <Form.Item label='Phone Number' className='w-full'>
-            <Input.Group compact>
+            <Space.Compact>
               {/* Country code */}
               <Form.Item
                 name='countryCode'
@@ -189,7 +183,7 @@ const PsRegisModal: React.FC<IPsRegisModal> = (props) => {
                   style={{ width: 'calc(100% - 100px)' }}
                 />
               </Form.Item>
-            </Input.Group>
+            </Space.Compact>
           </Form.Item>
           <Form.Item
             name='email'
@@ -243,8 +237,7 @@ const PsRegisModal: React.FC<IPsRegisModal> = (props) => {
                     <CloseCircleFilled
                       onClick={(e) => {
                         e.stopPropagation();
-                        setPsProgType([]);
-                        form.setFieldsValue({ progType: undefined });
+                        form.setFieldsValue({ major: [] });
                       }}
                       className='!text-black'
                     />
@@ -271,6 +264,7 @@ const PsRegisModal: React.FC<IPsRegisModal> = (props) => {
               deselectProg={hdlDeselectPsProg}
               options={partnershipProgOptions}
               bgC='!bg-[#6472cf]'
+              clearAll={() => form.setFieldsValue({ major: [] })}
             />
           </Form.Item>
         </Flex>
