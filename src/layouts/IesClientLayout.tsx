@@ -7,6 +7,7 @@ import HeaderIes from './components/HeaderIes';
 import MegaDrawer from './components/MegaDrawer';
 import styles from './styles/iesClLayout.module.scss';
 import { ROUTES, type RoutePath } from '@/constants';
+import { useUserStore } from '@/store';
 
 const { Content } = Layout;
 
@@ -15,6 +16,8 @@ const IesClientLayout: React.FC = () => {
   const [drawerKey, setDrawerKey] = useState<RoutePath | null>(null);
   const presentLocation = useLocation();
   const [showBackTop, setShowBackTop] = useState(false);
+
+  const { isDark } = useUserStore();
 
   useEffect(() => {
     const hdlScroll = () => {
@@ -34,7 +37,7 @@ const IesClientLayout: React.FC = () => {
 
       <Layout
         style={{
-          background: 'transparent',
+          background: isDark ? 'red' : 'transparent',
           display: 'flex',
           flexDirection: 'column',
           minHeight: '100vh',

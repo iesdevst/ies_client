@@ -15,7 +15,7 @@ import styles from '../styles/iesDrawerMb.module.scss';
 import IES_LOGO_MB from '@/assets/imgs/ies_logo_hoziro.png';
 import MNL from '@/assets/imgs/ies_logo_notext.png';
 import { Title } from '@/components';
-import IesClientLang from '@/components/AppDropdown';
+import IesClientLang from '@/components/Buttons/IesClientLang';
 import { PrefetchLink } from '@/components/PrefetchLink';
 import { ROUTES, type RoutePath } from '@/constants';
 

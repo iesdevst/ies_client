@@ -4,9 +4,11 @@ import MegaMbDrawer from './MegaMbDrawer';
 import NavLst from './NavLst';
 import IES_LOGO_MB from '@/assets/imgs/ies_logo_hoziro.png';
 import IES_LOGO_URL from '@/assets/imgs/ies_logo_text.png';
-import IesClientLang from '@/components/AppDropdown';
+import { ThemeSwitcher } from '@/components';
+import IesClientLang from '@/components/Buttons/IesClientLang';
 import { PrefetchLink } from '@/components/PrefetchLink';
 import { ROUTES, type RoutePath } from '@/constants';
+import { useUserStore } from '@/store';
 
 const { Header } = Layout;
 
@@ -17,7 +19,7 @@ interface IHeaderIes {
 const HeaderIes: React.FC<IHeaderIes> = (props) => {
   const { setDrawerKey } = props;
   const isMb = useMediaQuery({ maxWidth: 1180 });
-
+  const { isDark } = useUserStore();
   return (
     <>
       <MediaQuery minWidth={1025}>
@@ -49,6 +51,7 @@ const HeaderIes: React.FC<IHeaderIes> = (props) => {
               IES College Staff
             </PrefetchLink>
             <IesClientLang colorT='!text-white' />
+            <ThemeSwitcher />
           </Flex>
         </Header>
       </MediaQuery>
@@ -57,7 +60,7 @@ const HeaderIes: React.FC<IHeaderIes> = (props) => {
           padding: isMb ? '0 40px 0 40px' : '55px 40px',
           height: !isMb ? 60 : 80,
         }}
-        className={`!flex !items-center  ${!isMb ? 'gap-x-60 !justify-center' : '!justify-between'} !bg-white`}
+        className={`!flex !items-center  ${!isMb ? 'gap-x-60 !justify-center' : '!justify-between'} ${isDark ? '!bg-black' : '!bg-white'}`}
       >
         <PrefetchLink
           to={ROUTES.DASHBOARD}

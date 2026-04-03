@@ -20,8 +20,9 @@ export * from './Logo';
 
 export * from './Txt';
 
-export { default as VietronLang } from './AppDropdown';
 export * from './AppDropdown';
 export * from './SPS';
 
 export * from './ErrorBoundary';
+export * from './Base';
+export * from './Buttons';

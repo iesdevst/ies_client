@@ -9,12 +9,11 @@ type UserStoreInit = {
 interface IUserStore extends UserStoreInit {
   setLocale: (locale: UserStoreInit['locale']) => void;
   setIsDark: (isDark: boolean) => void;
-  reset: () => void;
 }
 
 const init: UserStoreInit = {
   locale: IesClientLangEnum.En_US,
-  isDark: false,
+  isDark: localStorage.getItem('isDark') === 'true' ? true : false,
 };
 const useUserStore = create<IUserStore>((set) => {
   // locale
@@ -32,16 +31,18 @@ const useUserStore = create<IUserStore>((set) => {
     set(() => ({ locale }));
   };
 
-  // reset setter
-  const reset = () => {
-    set((origin) => ({ ...init, locale: origin.locale }));
+  // themes
+  const setIsDark = (isDark: boolean) => {
+    set(() => ({ isDark }));
+    localStorage.setItem('isDark', String(isDark));
+    document.documentElement.classList.toggle('dark', isDark);
   };
+
   return {
     ...init,
     locale,
     setLocale,
-    setIsDark: (isDark: boolean) => set(() => ({ isDark })),
-    reset,
+    setIsDark,
   };
 });
 

@@ -1,17 +1,23 @@
 import { QueryClientProvider } from '@tanstack/react-query';
-import { ConfigProvider } from 'antd';
+import { ConfigProvider, theme } from 'antd';
 import ErrorBoundary from 'antd/es/alert/ErrorBoundary';
-import { Suspense } from 'react';
+import { Suspense, useEffect } from 'react';
 
-import { Message, NotifyProvider } from './components';
 import FallbackLoading from './FallbackLoading';
-import { queryClient } from './lib/react-query';
 import AppRouter from './routes/AppRouter';
-import { useNotifyStore } from './store';
+import { Message, NotifyProvider } from '@/components';
+import { queryClient } from '@/lib';
+import { useNotifyStore, useUserStore } from '@/store';
 
 function App() {
   const { shiftBEQ, shiftBSQ, basicErrorQue, basicSuccessQue } =
     useNotifyStore();
+  const isDark = useUserStore((state) => state.isDark);
+
+  useEffect(() => {
+    document.documentElement.classList.toggle('dark', isDark);
+  }, [isDark]);
+
   return (
     <ConfigProvider
       theme={{
@@ -19,7 +25,7 @@ function App() {
           colorPrimary: '#474669',
           colorText: 'black',
         },
-        // algorithm: theme.darkAlgorithm,
+        algorithm: isDark ? theme.darkAlgorithm : theme.defaultAlgorithm,
         components: {
           Layout: { headerBg: 'transparent' },
           Button: {

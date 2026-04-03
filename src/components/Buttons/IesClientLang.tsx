@@ -4,8 +4,11 @@ import { useMemo, useRef } from 'react';
 import Flag from 'react-flagkit';
 import { useTranslation } from 'react-i18next';
 import { Title } from '../AntTypography';
-import type { DropdownAlphaRef, IDropdownAlphaProps } from './DropdownAlpha';
-import DropdownAlpha from './DropdownAlpha';
+import type {
+  DropdownAlphaRef,
+  IDropdownAlphaProps,
+} from '../AppDropdown/DropdownAlpha';
+import DropdownAlpha from '../AppDropdown/DropdownAlpha';
 import { useUserStore } from '@/store';
 import { IesClientLangEnum } from '@/utils';
 
