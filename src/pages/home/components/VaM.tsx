@@ -5,9 +5,11 @@ import TPI from '@/assets/imgs/topic_img.png';
 import TSLM from '@/assets/imgs/tslm_avt.avif';
 import TSTC from '@/assets/imgs/tstc_avt.avif';
 import { IesClSection } from '@/components';
+import { useUserStore } from '@/store';
 
 const VaM: React.FC = () => {
   const mb = useMediaQuery({ maxWidth: 1024 });
+  const { isDark } = useUserStore();
   const topicDt = [
     {
       tit: 'Vision & Mission',
@@ -34,6 +36,7 @@ const VaM: React.FC = () => {
       id='vAm'
       layout='topic'
       mb={mb}
+      dark={isDark}
       topImaTit={TPI}
       topTitBut='Discover Now'
       topicCt={topicDt}
@@ -42,7 +45,7 @@ const VaM: React.FC = () => {
       botBut='Know more about us'
       methodLst={methodPr}
       topicI={VAM}
-      className={`!bg-[#f2f5ff] py-15 ${!mb ? 'px-20 mt-20' : 'px-5'}`}
+      className={`py-15 ${isDark ? '!bg-[#253933]' : '!bg-[#f2f5ff]'} ${!mb ? 'px-20 mt-20' : 'px-5'}`}
     />
   );
 };

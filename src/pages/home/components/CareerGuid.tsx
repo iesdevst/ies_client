@@ -11,10 +11,11 @@ import { default as TC, default as THDU } from '@/assets/imgs/thud_hn.png';
 import TKVP from '@/assets/imgs/tkvp_hn.png';
 import VTK from '@/assets/imgs/vtk_hn.png';
 import { IesClSection, Text, Title } from '@/components';
+import { useUserStore } from '@/store';
 
 const CareerGuid: React.FC = () => {
   const mb = useMediaQuery({ maxWidth: 1024 });
-
+  const { isDark } = useUserStore();
   const cgSlide = [
     { cTit: 'Applied Information Technology', cImg: THDU },
     { cTit: 'Information Technology', cImg: CNTT },
@@ -43,6 +44,7 @@ const CareerGuid: React.FC = () => {
       id='carerrGuid'
       layout='newsFeature'
       feature={true}
+      dark={isDark}
       mb={mb}
       children={
         <div className='mt-15 !space-y-10 mb-15'>
@@ -53,9 +55,16 @@ const CareerGuid: React.FC = () => {
             className={`!w-full ${!mb ? '!px-20' : '!px-6'}`}
             gap={!mb ? 0 : 20}
           >
-            <Title className='flex-1 !font-bold !m-0'>Career guidance</Title>
+            <Title
+              className={`flex-1 !font-bold !m-0 ${isDark ? '!text-white' : '!text-black'}`}
+            >
+              Career guidance
+            </Title>
             <div className='flex-1'>
-              <Text className='!text-lg font-semibold'>
+              <Text
+                className='!text-lg font-semibold'
+                color={isDark ? 'white' : ''}
+              >
                 Career Guidance helps students discover their strengths and
                 interests to choose suitable career paths. It supports them in
                 exploring opportunities and pursuing goals, helping them achieve

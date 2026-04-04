@@ -12,10 +12,12 @@ import WW from '@/assets/imgs/work_wise_tt.webp';
 import { IesClSection, Text, Title } from '@/components';
 
 import styles from '@/components/SPS/iesCl.module.scss';
+import { useUserStore } from '@/store';
 
 const PartnerSl: React.FC = () => {
   const mb = useMediaQuery({ maxWidth: 1024 });
   const isTablet = useMediaQuery({ minWidth: 768, maxWidth: 1024 });
+  const { isDark } = useUserStore();
   const data = [GTTT, CNPH, LH, HS, RA, WW, FS, DO];
 
   return (
@@ -32,14 +34,21 @@ const PartnerSl: React.FC = () => {
             className={`!w-full ${!mb ? '!px-45' : ''}`}
           >
             <Col className='flex-1'>
-              <Title className=' !font-bold !m-0'>Internship Partner</Title>
-              <Title className={`!font-bold !m-0 ${!mb ? '' : 'text-center'}`}>
+              <Title
+                className={`!m-0 !font-bold ${isDark ? '!text-white' : '!text-black'}`}
+              >
+                Internship Partner
+              </Title>
+              <Title
+                className={`!font-bold !m-0 ${isDark ? '!text-white' : ''} ${!mb ? '' : 'text-center'}`}
+              >
                 Institution
               </Title>
             </Col>
 
             <Text
               className={`!block flex-1 px-5 mt-2 ${!isTablet ? '' : 'px-15 mt-5 !text-2xl'}`}
+              color={isDark ? 'white' : ''}
             >
               An institution that collaborates with businesses to develop and
               coordinate internship programs, creating opportunities for

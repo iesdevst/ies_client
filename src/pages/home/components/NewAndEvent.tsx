@@ -9,12 +9,13 @@ import MISA from '@/assets/imgs/top_str_misa.jpg';
 import TSN from '@/assets/imgs/top_str_news.jpg';
 import THTN from '@/assets/imgs/top_str_thtn.jpg';
 import { IesClSection, Text, Title } from '@/components';
+import { useUserStore } from '@/store';
 
 const { Paragraph } = Typography;
 
 const NewAndEvent: React.FC = () => {
   const mb = useMediaQuery({ maxWidth: 1024 });
-
+  const { isDark } = useUserStore();
   const topSn = [
     {
       sti: THTN,
@@ -78,7 +79,10 @@ const NewAndEvent: React.FC = () => {
                 <Title className='!text-blue-500' level={5}>
                   ACADEMICS & QUALITY ASSURANCE
                 </Title>
-                <Text className='!text-xl !font-bold'>
+                <Text
+                  className='!text-xl !font-bold'
+                  color={isDark ? 'white' : ''}
+                >
                   Prof. Ngô Bảo Châu: “A university degree isn’t necessarily
                   required.”
                 </Text>
@@ -106,7 +110,7 @@ const NewAndEvent: React.FC = () => {
                       </Title>
                     )}
                     <Paragraph
-                      className='!font-bold !text-md'
+                      className={`${isDark ? '!text-white' : ''} !font-bold !text-md`}
                       ellipsis={{ rows: 2 }}
                     >
                       {item.tit}
@@ -118,6 +122,7 @@ const NewAndEvent: React.FC = () => {
           </div>
         </div>
       }
+      dark={isDark}
     />
   );
 };

@@ -16,7 +16,6 @@ const IesClientLayout: React.FC = () => {
   const [drawerKey, setDrawerKey] = useState<RoutePath | null>(null);
   const presentLocation = useLocation();
   const [showBackTop, setShowBackTop] = useState(false);
-
   const { isDark } = useUserStore();
 
   useEffect(() => {
@@ -37,7 +36,7 @@ const IesClientLayout: React.FC = () => {
 
       <Layout
         style={{
-          background: isDark ? 'red' : 'transparent',
+          background: isDark ? '#212223' : 'transparent',
           display: 'flex',
           flexDirection: 'column',
           minHeight: '100vh',
