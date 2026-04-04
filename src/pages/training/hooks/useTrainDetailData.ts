@@ -3,7 +3,7 @@ import APPIFD from '@/assets/imgs/applied_info_detail.png';
 import ADSD from '@/assets/imgs/art_ds_detail.png';
 import BUSID from '@/assets/imgs/busi_admin_detail.png';
 import HOSD from '@/assets/imgs/hospi_manage_detail.png';
-import INDUSD from '@/assets/imgs/idustrial_detail.png';
+import INDUSD from '@/assets/imgs/industrial_detail.png';
 import ITD from '@/assets/imgs/it_detail.png';
 import MTKD from '@/assets/imgs/mtk_details.png';
 import OFAD from '@/assets/imgs/office_admin_detail.png';
