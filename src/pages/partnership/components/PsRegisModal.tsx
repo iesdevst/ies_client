@@ -32,10 +32,11 @@ import {
 interface IPsRegisModal {
   openPsM: boolean;
   closePsm: () => void;
+  dark: boolean;
 }
 
 const PsRegisModal: React.FC<IPsRegisModal> = (props) => {
-  const { closePsm, openPsM } = props;
+  const { closePsm, openPsM, dark } = props;
   const [form] = Form.useForm();
   const [psProgTopen, setPsProgTopen] = useState(false);
   const psProgType = Form.useWatch('major', form) || [];
@@ -114,7 +115,10 @@ const PsRegisModal: React.FC<IPsRegisModal> = (props) => {
       footer={false}
       title={
         <Flex justify='space-between' align='center' className='!px-5 !py-3'>
-          <Row align={'middle'} className='gap-x-1.5'>
+          <Row
+            align={'middle'}
+            className={`${dark ? 'bg-gray-500 py-1 px-3 !rounded-xl' : ''} gap-x-1.5`}
+          >
             <Image src={OUP} preview={false} className='!w-7 !h-7' />
             <Title className='!m-0 !text-[#28156E]' level={3}>
               Talk to Our Advisor
@@ -122,7 +126,11 @@ const PsRegisModal: React.FC<IPsRegisModal> = (props) => {
           </Row>
 
           <Button
-            icon={<CloseCircleFilled className='!text-[#28156E]' />}
+            icon={
+              <CloseCircleFilled
+                className={`${dark ? '!text-gray-400' : '!text-[#28156E]'}`}
+              />
+            }
             type='link'
             size='large'
             onClick={() => {

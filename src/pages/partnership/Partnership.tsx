@@ -42,7 +42,11 @@ const Partnership: React.FC = () => {
       <StuVoidHou />
       <PartnershipProg dark={isDark} />
       <PartnershipRegis openRegisInSec={hdlSecOpenRegis} />
-      <PsRegisModal openPsM={openRegis} closePsm={() => setOpenRegis(false)} />
+      <PsRegisModal
+        openPsM={openRegis}
+        closePsm={() => setOpenRegis(false)}
+        dark={isDark}
+      />
     </PageContainer>
   );
 };
