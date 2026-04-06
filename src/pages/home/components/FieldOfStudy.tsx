@@ -2,16 +2,19 @@ import { RightOutlined } from '@ant-design/icons';
 import { Button, Col, Image, List, Row } from 'antd';
 
 import { useMediaQuery } from 'react-responsive';
+import { useNavigate } from 'react-router-dom';
 import DVKS from '@/assets/imgs/dv_ks.svg';
 import FBL from '@/assets/imgs/field_bot_left.avif';
 import KDQL from '@/assets/imgs/kd_qly.svg';
 import THVP from '@/assets/imgs/th_vp.svg';
 import TKST from '@/assets/imgs/tk_st.svg';
 import { IesClSection, Text, Title } from '@/components';
+import { ROUTES } from '@/constants';
 import { useUserStore } from '@/store';
 
 const FieldOfStudy: React.FC = () => {
   const mb = useMediaQuery({ maxWidth: 1024 });
+  const navigate = useNavigate();
   const { isDark } = useUserStore();
   const fieldProDt = [
     {
@@ -90,7 +93,11 @@ const FieldOfStudy: React.FC = () => {
                 after graduation.
               </Text>
               <div>
-                <Button className='!bg-transparent !p-0 mt-3' type='text'>
+                <Button
+                  className='!bg-transparent !p-0 mt-3'
+                  type='text'
+                  onClick={() => navigate(ROUTES.ADMISSIONSVOCA_ALL)}
+                >
                   <Title
                     className={`!m-0 ${isDark ? '!text-white' : '!text-black'}`}
                     level={4}

@@ -23,7 +23,7 @@ function App() {
       theme={{
         token: {
           colorPrimary: '#474669',
-          colorText: 'black',
+          colorText: isDark ? 'white' : 'black',
         },
         algorithm: isDark ? theme.darkAlgorithm : theme.defaultAlgorithm,
         components: {

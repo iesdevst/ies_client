@@ -6,101 +6,132 @@ import { Text, Title } from '@/components';
 interface ITuiApplyProps {
   tuiApplyDt?: TuiApply | undefined;
   tuiApplyScDt?: ScTuiApply | undefined;
+  dark: boolean;
 }
 
 const TuiApply: React.FC<ITuiApplyProps> = (props) => {
-  const { tuiApplyDt, tuiApplyScDt } = props;
+  const { tuiApplyDt, tuiApplyScDt, dark } = props;
   const isMb = useMediaQuery({ maxWidth: 1024 });
 
   return (
-    <section
-      className={`bg-white rounded-2xl ${!isMb ? 'p-10' : 'pb-10 pt-5 px-3.5'}`}
-    >
+    <section>
       {tuiApplyDt && (
-        <div className='space-y-5'>
-          <Col className='!space-y-4'>
-            <Title className='!m-0 !text-[#BE3691]' level={3}>
-              I. Admission Requirements
-            </Title>
-            <Text
-              style={{
-                whiteSpace: 'pre-line',
-              }}
-              className='!text-md !font-semibold !mt-2 !block'
-            >
-              {tuiApplyDt.requirement}
-            </Text>
-          </Col>
-          <Col>
-            <Title className='!m-0 !text-[#BE3691]' level={3}>
-              II. Application Documents
-            </Title>
-            <Text
-              style={{
-                whiteSpace: 'pre-line',
-              }}
-              className='!text-md !font-semibold !mt-2 !block'
-            >
-              {tuiApplyDt.document}
-            </Text>
-          </Col>
-          <Col>
-            <Title className='!m-0 !text-[#BE3691]' level={3}>
-              III. Location and Working Hours
-            </Title>
-            <Text
-              style={{
-                whiteSpace: 'pre-line',
-              }}
-              className='!text-md !font-semibold !mt-2 !block'
-            >
-              {tuiApplyDt.work}
-            </Text>
-          </Col>
+        <div
+          className={`${dark ? '!bg-gray-600' : 'bg-white'} rounded-2xl ${!isMb ? 'p-10' : 'pb-10 pt-5 px-3.5'}`}
+        >
+          <div className='space-y-5'>
+            <Col className='!space-y-4'>
+              <Title
+                className={`!m-0 ${dark ? '!text-[#ca78ca]' : ' !text-[#BE3691]'}`}
+                level={3}
+              >
+                I. Admission Requirements
+              </Title>
+              <Text
+                color={dark ? 'white' : ''}
+                style={{
+                  whiteSpace: 'pre-line',
+                }}
+                className='!text-md !font-semibold !mt-2 !block'
+              >
+                {tuiApplyDt.requirement}
+              </Text>
+            </Col>
+            <Col>
+              <Title
+                className={`!m-0 ${dark ? '!text-[#ca78ca]' : ' !text-[#BE3691]'}`}
+                level={3}
+              >
+                II. Application Documents
+              </Title>
+              <Text
+                color={dark ? 'white' : ''}
+                style={{
+                  whiteSpace: 'pre-line',
+                }}
+                className='!text-md !font-semibold !mt-2 !block'
+              >
+                {tuiApplyDt.document}
+              </Text>
+            </Col>
+            <Col>
+              <Title
+                className={`!m-0 ${dark ? '!text-[#ca78ca]' : ' !text-[#BE3691]'}`}
+                level={3}
+              >
+                III. Location and Working Hours
+              </Title>
+              <Text
+                color={dark ? 'white' : ''}
+                style={{
+                  whiteSpace: 'pre-line',
+                }}
+                className='!text-md !font-semibold !mt-2 !block'
+              >
+                {tuiApplyDt.work}
+              </Text>
+            </Col>
+          </div>
         </div>
       )}
 
       {tuiApplyScDt && (
-        <div className='space-y-5'>
-          <Col className='!space-y-4'>
-            <Title className='!m-0 !text-[#6472cf]' level={3}>
-              I. Admission Requirements
-            </Title>
-            <Text
-              style={{
-                whiteSpace: 'pre-line',
-              }}
-              className='!text-md !font-semibold !mt-2 !block'
-            >
-              {tuiApplyScDt.requirement}
-            </Text>
-          </Col>
-          <Col>
-            <Title className='!m-0 !text-[#6472cf]' level={3}>
-              II. Application Documents
-            </Title>
-            <Text
-              style={{
-                whiteSpace: 'pre-line',
-              }}
-              className='!text-md !font-semibold !mt-2 !block'
-            >
-              {tuiApplyScDt.document}
-            </Text>
-          </Col>
-          <Col>
-            <Title className='!m-0 !text-[#6472cf]' level={3}>
-              III. Location and Working Hours
-            </Title>
-            <Text
-              style={{
-                whiteSpace: 'pre-line',
-              }}
-              className='!text-md !font-semibold !mt-2 !block'
-            >
-              {tuiApplyScDt.work}
-            </Text>
-          </Col>
+        <div
+          className={`${dark ? '!bg-gray-600' : 'bg-white'} rounded-2xl ${!isMb ? 'p-10' : 'pb-10 pt-5 px-3.5'}`}
+        >
+          <div className='space-y-5'>
+            <Col className='!space-y-4'>
+              <Title
+                className={`!m-0 ${dark ? '!text-[#98c3ff]' : ' !text-[#6472cf]'}`}
+                level={3}
+              >
+                I. Admission Requirements
+              </Title>
+              <Text
+                color={dark ? 'white' : ''}
+                style={{
+                  whiteSpace: 'pre-line',
+                }}
+                className='!text-md !font-semibold !mt-2 !block'
+              >
+                {tuiApplyScDt.requirement}
+              </Text>
+            </Col>
+            <Col>
+              <Title
+                className={`!m-0 ${dark ? '!text-[#98c3ff]' : ' !text-[#6472cf]'}`}
+                level={3}
+              >
+                II. Application Documents
+              </Title>
+              <Text
+                color={dark ? 'white' : ''}
+                style={{
+                  whiteSpace: 'pre-line',
+                }}
+                className='!text-md !font-semibold !mt-2 !block'
+              >
+                {tuiApplyScDt.document}
+              </Text>
+            </Col>
+            <Col>
+              <Title
+                className={`!m-0 ${dark ? '!text-[#98c3ff]' : ' !text-[#6472cf]'}`}
+                level={3}
+              >
+                III. Location and Working Hours
+              </Title>
+              <Text
+                color={dark ? 'white' : ''}
+                style={{
+                  whiteSpace: 'pre-line',
+                }}
+                className='!text-md !font-semibold !mt-2 !block'
+              >
+                {tuiApplyScDt.work}
+              </Text>
+            </Col>
+          </div>
         </div>
       )}
     </section>

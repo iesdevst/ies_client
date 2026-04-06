@@ -21,15 +21,16 @@ const abPartnershipDt = [
 interface IAboutPartnership {
   mb: boolean;
   tl: boolean;
+  dark: boolean;
 }
 
 const AboutPartnership: React.FC<IAboutPartnership> = (props) => {
-  const { mb, tl } = props;
+  const { mb, tl, dark } = props;
   const navigate = useNavigate();
   return (
     <div>
       <Row
-        gutter={mb || tl ? [0, 50] : [50, 50]}
+        gutter={mb || tl ? [0, 50] : [0, 50]}
         justify='center'
         className={`${mb ? 'px-5' : tl ? 'px-10' : 'px-30'} py-15`}
       >
@@ -43,17 +44,22 @@ const AboutPartnership: React.FC<IAboutPartnership> = (props) => {
               gap={20}
             >
               <Title
-                className='!text-gray-500 !font-bold !m-0'
+                className={`${dark ? '!text-[#9393f1]' : '!text-gray-500'} !m-0 !font-bold`}
                 level={mb || tl ? 3 : 1}
               >
                 {pt.tit}
               </Title>
               <Text
-                className={`${mb ? '!text-sm' : tl ? '!text-lg px-5' : '!text-lg py-15'} !block`}
+                color={dark ? 'white' : 'black'}
+                className={`${mb ? '!text-sm' : tl ? '!text-lg px-5' : '!text-lg py-15 px-20'} !block`}
               >
                 {pt.decs}
               </Text>
-              <Image src={pt.img} preview={false} className='!w-full !h-40' />
+              <Image
+                src={pt.img}
+                preview={false}
+                className={`${dark ? '!bg-gray-400 p-3 !rounded-xl' : ''} !w-full !h-40`}
+              />
               <Button
                 className='!block w-5/6 !rounded-xl !text-black !font-bold hover:!text-white'
                 onClick={() => {

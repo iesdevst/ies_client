@@ -12,14 +12,13 @@ import { Text, Title } from '@/components';
 interface IVocaTrainIntro {
   mb: boolean;
   tl: boolean;
+  dark: boolean;
 }
 
 const VocaTrainIntro: React.FC<IVocaTrainIntro> = (props) => {
-  const { mb, tl } = props;
+  const { mb, tl, dark } = props;
   return (
-    <section
-      className={`bg-white pt-8 ${mb ? 'px-5' : tl ? 'px-17' : 'px-20'}`}
-    >
+    <section className={`pt-8 ${mb ? 'px-5' : tl ? 'px-17' : 'px-20'}`}>
       <Flex justify='center' align='center'>
         <Title
           style={{
@@ -70,7 +69,7 @@ const VocaTrainIntro: React.FC<IVocaTrainIntro> = (props) => {
           className={`${mb || tl ? 'mt-7 space-y-10' : 'pl-10 space-y-25 mt-10'}`}
         >
           <div>
-            <Text className='!font-bold !text-xl'>
+            <Text className='!font-bold !text-xl' color={dark ? 'white' : ''}>
               We provide a wide range of intermediate-level training programs,
               helping learners build practical skills and confidently enter the
               workforce.

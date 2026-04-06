@@ -17,7 +17,7 @@ const EduLibrary = () => {
       layout='simple'
       divider={false}
       children={
-        <section className={`bg-white ${mb ? 'px-2' : tl ? '' : ''}`}>
+        <section className={`${mb ? 'px-2' : tl ? '' : ''}`}>
           <Title className='!text-center !pt-15'>IES Digital Library</Title>
           <div
             style={{

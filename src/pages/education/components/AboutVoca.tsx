@@ -81,17 +81,18 @@ const data = [
 interface IAboutVoca {
   tl: boolean;
   mb: boolean;
+  dark: boolean;
 }
 
 const AboutVoca: React.FC<IAboutVoca> = (props) => {
-  const { mb, tl } = props;
+  const { mb, tl, dark } = props;
   const navigate = useNavigate();
 
   return (
     <div className='py-15 px-5 md:!px-10 lg:!px-30'>
       <Title
         level={mb || tl ? 3 : 1}
-        className='!text-center !text-gray-500 !mb-8'
+        className={`${dark ? '!text-[#9393f1]' : ' !text-gray-500'} !text-center !mb-8`}
       >
         Intermediate Vocational Programs
       </Title>

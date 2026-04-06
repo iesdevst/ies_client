@@ -9,6 +9,11 @@ html {
   margin: 0;
 }
 
+html.dark,
+body.dark {
+  background-color: #212223;
+}
+
 .test-absolute {
   z-index: 1;
   position: absolute;

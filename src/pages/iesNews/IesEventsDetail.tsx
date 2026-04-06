@@ -20,7 +20,7 @@ const IesEventsDetails = () => {
     return data.find((item) => String(item.id) === String(id));
   }, [data, id]);
   return (
-    <section className='bg-white'>
+    <section>
       <div className='!rounded-4xl !bg-[#dfe0e2] pt-10 py-20 mx-5'>
         <Breadcrumb
           className={`${mb ? '!ml-5 !mb-10' : tl ? '!ml-10 !mb-15' : '!ml-25 !py-15'}`}
@@ -49,7 +49,10 @@ const IesEventsDetails = () => {
             },
           ]}
         />
-        <Title level={mb || tl ? 3 : 5} className='!text-center italic'>
+        <Title
+          level={mb || tl ? 3 : 5}
+          className='!text-center italic !text-black'
+        >
           Event
         </Title>
         {detailDt && (
@@ -63,7 +66,7 @@ const IesEventsDetails = () => {
             >
               <Title
                 level={mb || tl ? 2 : 1}
-                className={`${mb || tl ? '!text-center' : ''}`}
+                className={`${mb || tl ? '!text-center' : ''} !text-black`}
               >
                 {detailDt.eventTit}
               </Title>

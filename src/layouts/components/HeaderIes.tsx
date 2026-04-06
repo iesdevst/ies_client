@@ -60,14 +60,14 @@ const HeaderIes: React.FC<IHeaderIes> = (props) => {
           padding: isMb ? '0 40px 0 40px' : '55px 40px',
           height: !isMb ? 60 : 80,
         }}
-        className={`!flex !items-center  ${!isMb ? 'gap-x-60 !justify-center' : '!justify-between'} ${isDark ? '!bg-gray-700' : '!bg-white'}`}
+        className={`!flex !items-center  ${!isMb ? 'gap-x-60 !justify-center' : '!gap-x-13 !justify-between'} ${isDark ? '!bg-gray-700' : '!bg-white'}`}
       >
         <PrefetchLink
           to={ROUTES.DASHBOARD}
           className='!block !flex !items-center'
         >
           <Image
-            className={`${!isMb ? '!w-42 !h-25' : '!w-auto !h-15 !mt-1.5 pr-12'} ${isDark ? 'bg-gray-300 !rounded-xl' : ''}`}
+            className={`${!isMb ? '!w-42 !h-25' : '!w-auto !h-15 !mt-1.5 pr-12 !pt-2 !pl-3'} ${isDark ? 'bg-gray-300 !rounded-xl' : ''}`}
             src={isMb ? IES_LOGO_MB : IES_LOGO_URL}
             alt='ies_logo'
             preview={false}

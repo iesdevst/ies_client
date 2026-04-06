@@ -10,9 +10,11 @@ import SkipExam from './components/SkipExam';
 import StuVoidHou from './components/StuVoidHou';
 import WhyChooseHou from './components/WhyChooseHou';
 import { PageContainer } from '@/components';
+import { useUserStore } from '@/store';
 
 const Partnership: React.FC = () => {
   const location = useLocation();
+  const { isDark } = useUserStore();
   const [openRegis, setOpenRegis] = useState(false);
   const hdlSecOpenRegis = () => {
     setOpenRegis(true);
@@ -32,13 +34,13 @@ const Partnership: React.FC = () => {
 
   return (
     <PageContainer>
-      <PartnershipIntro openRegisInSec={hdlSecOpenRegis} />
-      <PartnershipInfo openRegisInSec={hdlSecOpenRegis} />
+      <PartnershipIntro openRegisInSec={hdlSecOpenRegis} dark={isDark} />
+      <PartnershipInfo openRegisInSec={hdlSecOpenRegis} dark={isDark} />
       <WhyChooseHou />
       <PolicyNote />
       <SkipExam />
       <StuVoidHou />
-      <PartnershipProg />
+      <PartnershipProg dark={isDark} />
       <PartnershipRegis openRegisInSec={hdlSecOpenRegis} />
       <PsRegisModal openPsM={openRegis} closePsm={() => setOpenRegis(false)} />
     </PageContainer>

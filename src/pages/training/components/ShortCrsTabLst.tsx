@@ -17,7 +17,12 @@ const ShortCrsDetail = lazy(
   () => import('@/pages/training/components/ShortCrsDetail'),
 );
 
-const ShortCrsTabLst: React.FC = () => {
+interface IShortCrsTabLst {
+  dark: boolean;
+}
+
+const ShortCrsTabLst: React.FC<IShortCrsTabLst> = (props) => {
+  const { dark } = props;
   const mb = useMediaQuery({ maxWidth: 767 });
   const [shortCrsSearchPrs, setshortCrsSearchPrs] = useSearchParams();
 
@@ -121,7 +126,7 @@ const ShortCrsTabLst: React.FC = () => {
 
   return (
     <section className='pt-15'>
-      <div className='!bg-[#FFFCF2] pt-10'>
+      <div className={`${dark ? 'bg-gray-700' : '!bg-[#FFFCF2]'} pt-10`}>
         <div className='text-center mb-6'>
           <Title level={!mb ? 1 : 3} className='!text-[#6472cf]'>
             Short-term Training Programs

@@ -27,8 +27,14 @@ import {
   shortTermTrainOptions,
 } from '@/utils';
 
-const StRegisterForm: React.FC = () => {
+interface IStRegisterForm {
+  dark: boolean;
+}
+
+const StRegisterForm: React.FC<IStRegisterForm> = (props) => {
+  const { dark } = props;
   const [form] = Form.useForm();
+
   const { pushBSQ, pushBEQ } = useNotifyStore();
   const mb = useMediaQuery({ maxWidth: 1024 });
   const [stTopen, setStTopen] = useState(false);
@@ -102,9 +108,11 @@ const StRegisterForm: React.FC = () => {
 
   return (
     <section
-      className={`bg-white rounded-2xl ${!mb ? 'py-10 px-17' : 'pb-10 pt-5 px-3.5'}`}
+      className={`${dark ? '!bg-gray-600' : 'bg-white'} rounded-2xl ${!mb ? 'py-10 px-17' : 'pb-10 pt-5 px-3.5'}`}
     >
-      <Title className='!text-center !mb-12 italic !text-[#6472cf] !font-bold'>
+      <Title
+        className={`!text-center !mb-12 italic !font-bold ${dark ? '!text-[#98c3ff]' : ' !text-[#6472cf]'}`}
+      >
         Join Our Program
       </Title>
       <Form form={form} layout='vertical' onFinish={handleRegisSend}>

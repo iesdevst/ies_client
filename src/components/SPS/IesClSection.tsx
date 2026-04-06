@@ -1,6 +1,7 @@
 import { ArrowRightOutlined, RightOutlined } from '@ant-design/icons';
 import { Button, Card, Carousel, Col, Divider, Flex, Image, Row } from 'antd';
 import type { CSSProperties, ReactNode } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Text, Title } from '../AntTypography';
 import styles from './iesCl.module.scss';
 export type SubSecLayout =
@@ -23,6 +24,7 @@ interface BasePageIesSecProps {
   simpleFeat?: boolean;
   title?: string;
   mb?: boolean;
+  navigateGo?: string;
 }
 
 interface SCSLayoutProps extends BasePageIesSecProps {
@@ -81,6 +83,7 @@ interface NewsFeatureLayoutProps extends BasePageIesSecProps {
     tit?: string;
     butCard?: string;
     des?: string;
+    navigo?: string;
   }>;
   bonusTit?: string;
   moreBut?: string;
@@ -110,6 +113,8 @@ export const IesClSection: React.FC<SubSectionProps> = (props) => {
     simpleFeat = false,
     className,
   } = props || {};
+
+  const navigate = useNavigate();
 
   const renderSlideCusLayout = (props: SlideCusLayoutProps) => {
     const { images } = props;
@@ -309,8 +314,16 @@ export const IesClSection: React.FC<SubSectionProps> = (props) => {
   };
 
   const renderVidPrLayout = (props: VidPrLayoutProps) => {
-    const { desVid, titVid, bottomTit, vidLink, tabletVid, miniSc, dark } =
-      props;
+    const {
+      desVid,
+      titVid,
+      bottomTit,
+      vidLink,
+      tabletVid,
+      miniSc,
+      dark,
+      navigateGo,
+    } = props;
 
     const getPositionClass = () => {
       if (mb) return 'left-8 bottom-0 w-full';
@@ -384,17 +397,24 @@ export const IesClSection: React.FC<SubSectionProps> = (props) => {
               </Text>
             </div>
 
-            <Row justify={'center'} align={'middle'}>
-              <Button shape='circle' type='text' className='flex items-center'>
-                <Title
-                  level={4}
-                  className={`${dark ? '!text-white' : ''} !m-0`}
+            {bottomTit && navigateGo && (
+              <Row justify={'center'} align={'middle'}>
+                <Button
+                  shape='circle'
+                  type='text'
+                  className='flex items-center hover:!bg-transparent'
+                  onClick={() => navigate(navigateGo)}
                 >
-                  {bottomTit}
-                </Title>
-                <ArrowRightOutlined className='!bg-red-600 !border-none !text-white !rounded-full p-2' />
-              </Button>
-            </Row>
+                  <Title
+                    level={4}
+                    className={`${dark ? '!text-white' : ''} !m-0`}
+                  >
+                    {bottomTit}
+                  </Title>
+                  <ArrowRightOutlined className='!bg-red-600 !border-none !text-white !rounded-full p-2' />
+                </Button>
+              </Row>
+            )}
           </Col>
         </div>
       </Flex>
@@ -402,7 +422,14 @@ export const IesClSection: React.FC<SubSectionProps> = (props) => {
   };
 
   const renderTrainSlLayout = (props: TrainingSlProps) => {
-    const { trainDes, trainImgSl, trainTit, statistics, statisTit } = props;
+    const {
+      trainDes,
+      trainImgSl,
+      trainTit,
+      statistics,
+      statisTit,
+      navigateGo,
+    } = props;
     return (
       <div className='!w-full !h-full'>
         <div
@@ -433,14 +460,20 @@ export const IesClSection: React.FC<SubSectionProps> = (props) => {
 
             {mb && (
               <div className='!text-start'>
-                <Button className='!bg-transparent !p-0' type='text'>
-                  <Title className='!m-0 !text-white' level={4}>
-                    {statisTit}
-                  </Title>
-                  <div className='w-full h-full !bg-[#FBBF24] rounded-r-full flex items-center justify-center px-3'>
-                    <RightOutlined className='!text-red-500 !font-semibold ' />
-                  </div>
-                </Button>
+                {navigateGo && (
+                  <Button
+                    className='!bg-transparent !p-0'
+                    type='text'
+                    onClick={() => navigate(navigateGo)}
+                  >
+                    <Title className='!m-0 !text-white' level={4}>
+                      {statisTit}
+                    </Title>
+                    <div className='w-full h-full !bg-[#FBBF24] rounded-r-full flex items-center justify-center px-3'>
+                      <RightOutlined className='!text-red-500 !font-semibold ' />
+                    </div>
+                  </Button>
+                )}
               </div>
             )}
           </Flex>
@@ -488,14 +521,20 @@ export const IesClSection: React.FC<SubSectionProps> = (props) => {
           >
             {!mb && (
               <div className='flex-[3] !text-start '>
-                <Button className='!bg-transparent !pl-20' type='text'>
-                  <Title className='!m-0 !text-white' level={4}>
-                    {statisTit}
-                  </Title>
-                  <div className='w-full h-full !bg-[#FBBF24] rounded-r-full flex items-center justify-center px-3'>
-                    <RightOutlined className='!text-red-500 !font-semibold ' />
-                  </div>
-                </Button>
+                {navigateGo && (
+                  <Button
+                    className='!bg-transparent !pl-20'
+                    type='text'
+                    onClick={() => navigate(navigateGo)}
+                  >
+                    <Title className='!m-0 !text-white' level={4}>
+                      {statisTit}
+                    </Title>
+                    <div className='w-full h-full !bg-[#FBBF24] rounded-r-full flex items-center justify-center px-3'>
+                      <RightOutlined className='!text-red-500 !font-semibold ' />
+                    </div>
+                  </Button>
+                )}
               </div>
             )}
 
@@ -534,6 +573,7 @@ export const IesClSection: React.FC<SubSectionProps> = (props) => {
       moreBut,
       moreClass,
       dark,
+      navigateGo,
     } = props;
 
     return (
@@ -546,11 +586,12 @@ export const IesClSection: React.FC<SubSectionProps> = (props) => {
         >
           <Title className={`${dark ? '!text-white' : ''}`}>{title}</Title>
 
-          {butTit && (
+          {butTit && navigateGo && (
             <div>
               <Button
                 className={`!bg-transparent ${!mb ? '!pl-20' : ''}`}
                 type='text'
+                onClick={() => navigate(navigateGo)}
               >
                 <Title
                   className={`${dark ? '!text-white' : '!text-black'} !m-0`}
@@ -580,19 +621,6 @@ export const IesClSection: React.FC<SubSectionProps> = (props) => {
               >
                 {bonusTit}
               </Title>
-              <div>
-                <Button
-                  className={`!bg-transparent ${!mb ? '!pl-20' : 'mt-5'}`}
-                  type='text'
-                >
-                  <Title className='!m-0 !text-black' level={4}>
-                    {moreBut}
-                  </Title>
-                  <div className='w-full h-full !bg-[#FBBF24] rounded-r-full flex items-center justify-center px-3'>
-                    <RightOutlined className='!text-red-500 !font-semibold ' />
-                  </div>
-                </Button>
-              </div>
             </Flex>
           )}
           <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8'>
@@ -666,12 +694,15 @@ export const IesClSection: React.FC<SubSectionProps> = (props) => {
                     >
                       {item.des}
                     </p>
-                    <Button
-                      type='text'
-                      className='!text-blue-600 !p-0 !font-bold !text-md'
-                    >
-                      {item.butCard}
-                    </Button>
+                    {item.navigo && (
+                      <Button
+                        type='text'
+                        className='!text-blue-600 !p-0 !font-bold !text-md'
+                        onClick={() => navigate(item.navigo!)}
+                      >
+                        {item.butCard}
+                      </Button>
+                    )}
                   </Col>
                 ))}
               </>

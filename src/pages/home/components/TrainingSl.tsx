@@ -9,6 +9,7 @@ import THUD from '@/assets/imgs/thud.png';
 import TKVP from '@/assets/imgs/tkvp.png';
 import VMT from '@/assets/imgs/vmt.png';
 import { IesClSection } from '@/components';
+import { ROUTES } from '@/constants';
 
 const TrainingSl: React.FC = () => {
   const mb = useMediaQuery({ maxWidth: 1024 });
@@ -81,6 +82,7 @@ const TrainingSl: React.FC = () => {
       statistics={staticDt}
       className='!h-full !mt-5 !bg-[#3e72b2] pt-18'
       mb={mb}
+      navigateGo={ROUTES.ADMISSIONSVOCA_ALL}
     />
   );
 };

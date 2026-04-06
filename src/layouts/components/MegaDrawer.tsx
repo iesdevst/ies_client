@@ -157,7 +157,7 @@ const MegaDrawer: React.FC<IMegaDrawer> = (props) => {
                         />
                         <Title
                           level={3}
-                          className='uppercase !text-[#797a97] !m-0'
+                          className={`${isDark ? '!text-blue-500' : '!text-[#797a97]'} uppercase !m-0`}
                         >
                           {section.title}
                         </Title>
@@ -170,7 +170,7 @@ const MegaDrawer: React.FC<IMegaDrawer> = (props) => {
                           key={link.route}
                           to={link.route}
                           onClick={drawerCloseHd}
-                          className='!text-black hover:!underline'
+                          className={`hover:!underline ${isDark ? '!text-white' : '!text-black'}`}
                           style={{
                             fontWeight: 550,
                             fontSize: '1.1rem',

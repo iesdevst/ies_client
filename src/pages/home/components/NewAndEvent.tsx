@@ -1,5 +1,6 @@
 import { Col, Image, Typography } from 'antd';
 import { useMediaQuery } from 'react-responsive';
+import EVAI from '@/assets/imgs/events_ai.png';
 import KTDT from '@/assets/imgs/ktdt_nfc.jpg';
 import KTO from '@/assets/imgs/kto_nfc.jpg';
 import TKDH from '@/assets/imgs/tkdh_nfc.jpg';
@@ -7,8 +8,8 @@ import HTDHM from '@/assets/imgs/top_str_htdhm.jpg';
 import LTS from '@/assets/imgs/top_str_lts.jpg';
 import MISA from '@/assets/imgs/top_str_misa.jpg';
 import TSN from '@/assets/imgs/top_str_news.jpg';
-import THTN from '@/assets/imgs/top_str_thtn.jpg';
 import { IesClSection, Text, Title } from '@/components';
+import { ROUTES } from '@/constants';
 import { useUserStore } from '@/store';
 
 const { Paragraph } = Typography;
@@ -18,9 +19,9 @@ const NewAndEvent: React.FC = () => {
   const { isDark } = useUserStore();
   const topSn = [
     {
-      sti: THTN,
-      tit: "IESCollege students are attracted to the 'Practical Learning – Practical Work' model.",
-      specTit: 'Sustainable Development',
+      sti: EVAI,
+      tit: 'Build a Web Dashboard with Claude Code....',
+      specTit: 'IES workshop\n Claude Code - AI agent',
     },
     {
       sti: HTDHM,
@@ -43,19 +44,19 @@ const NewAndEvent: React.FC = () => {
     {
       imgC: KTDT,
       tit: 'Electronics Engineering',
-      butCard: '22-01-26',
+      butCard: '20-03-2026',
       des: 'Electrical and Electronics Engineering Technology: The Appeal of a Key Industrial Sector',
     },
     {
       imgC: KTO,
       tit: 'Automotive Engineering',
-      butCard: '29-10-22',
+      butCard: '01-03-2026',
       des: 'Automotive Engineering Technology: A “High-Value” Career with a Promising Future',
     },
     {
       imgC: TKDH,
       tit: 'Graphic Design',
-      butCard: '25-10-25',
+      butCard: '09-02-2026',
       des: 'Graphic Design: A Promising Field of Study',
     },
   ];
@@ -67,6 +68,7 @@ const NewAndEvent: React.FC = () => {
       title='Featured News & Events'
       feature={true}
       mb={mb}
+      navigateGo={ROUTES.NEWS}
       className={`mt-15 ${!mb ? 'px-10' : 'px-2'}`}
       featCard={featCdt}
       butTit='View all News & Events'

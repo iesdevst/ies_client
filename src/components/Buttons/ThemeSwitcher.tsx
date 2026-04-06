@@ -2,7 +2,12 @@ import { SunOutlined, MoonOutlined } from '@ant-design/icons';
 import { IesButton } from '@/components';
 import { useUserStore } from '@/store';
 
-export const ThemeSwitcher = () => {
+interface IThemeSwitcher {
+  classN?: string;
+}
+
+export const ThemeSwitcher: React.FC<IThemeSwitcher> = (props) => {
+  const { classN } = props;
   const isDark = useUserStore((state) => state.isDark);
   const setIsDark = useUserStore((state) => state.setIsDark);
 
@@ -14,7 +19,7 @@ export const ThemeSwitcher = () => {
     <IesButton
       type='text'
       icon={isDark ? <MoonOutlined /> : <SunOutlined />}
-      className='!text-xl'
+      className={`!text-xl ${classN}`}
       onClick={switchTheme}
     />
   );

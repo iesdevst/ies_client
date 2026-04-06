@@ -8,12 +8,14 @@ import styles from './iesTraining.module.scss';
 import { Text } from '@/components';
 import { PrefetchLink } from '@/components/PrefetchLink';
 import { ROUTES } from '@/constants';
+import { useUserStore } from '@/store';
 
 const IesVocaTraining = () => {
   const mb = useMediaQuery({ maxWidth: 767 });
   const tablet = useMediaQuery({ minWidth: 768, maxWidth: 1024 });
+  const { isDark } = useUserStore();
   return (
-    <section className='bg-white pt-6'>
+    <section className='pt-6'>
       <Breadcrumb
         className={`!bg-[#eaeaea] !rounded-full ${mb ? '!w-5/6 !py-1.5 !ml-2' : tablet ? 'w-2/5 !py-1.5 !ml-6' : '!w-1/4 !ml-15 !py-3'} ${styles.breadCrumbCus}`}
         separator={
@@ -47,8 +49,8 @@ const IesVocaTraining = () => {
         ]}
       />
 
-      <VocaTrainIntro mb={mb} tl={tablet} />
-      <VocaTrainLst mb={mb} tl={tablet} />
+      <VocaTrainIntro mb={mb} tl={tablet} dark={isDark} />
+      <VocaTrainLst mb={mb} tl={tablet} dark={isDark} />
       <ContactKey />
     </section>
   );

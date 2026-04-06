@@ -36,7 +36,7 @@ const IesClientLayout: React.FC = () => {
 
       <Layout
         style={{
-          background: isDark ? '#212223' : 'transparent',
+          background: isDark ? '#212223' : 'white',
           display: 'flex',
           flexDirection: 'column',
           minHeight: '100vh',

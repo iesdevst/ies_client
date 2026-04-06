@@ -1,6 +1,7 @@
 import { HomeFilled, RightOutlined } from '@ant-design/icons';
 import { Breadcrumb, Flex, Image } from 'antd';
 import { useMediaQuery } from 'react-responsive';
+import ContactKey from '../home/components/ContactKey';
 import AboutPartnership from './components/AboutPartnership';
 import AboutShortTerm from './components/AboutShortTerm';
 import AboutVoca from './components/AboutVoca';
@@ -10,12 +11,14 @@ import ACDB from '@/assets/imgs/academics_banner.png';
 import { Text, Title } from '@/components';
 import { PrefetchLink } from '@/components/PrefetchLink';
 import { ROUTES } from '@/constants';
+import { useUserStore } from '@/store';
 
 const Academics: React.FC = () => {
   const mb = useMediaQuery({ maxWidth: 767 });
   const tl = useMediaQuery({ minWidth: 768, maxWidth: 1024 });
+  const { isDark } = useUserStore();
   return (
-    <section className='!bg-white'>
+    <section>
       <div
         style={{
           backgroundImage: `url(${ACDB})`,
@@ -72,14 +75,18 @@ const Academics: React.FC = () => {
 
       <Breadcrumb
         className={`${mb || tl ? '!ml-10 !py-5' : '!ml-25 !py-15'} ${styles.breadCrumbEduca}`}
-        separator={<RightOutlined className='!text-black' />}
+        separator={
+          <RightOutlined
+            className={`${isDark ? '!text-white' : '!text-black'}`}
+          />
+        }
         items={[
           {
             title: (
               <PrefetchLink
                 to={ROUTES.DASHBOARD}
                 style={{
-                  color: 'black',
+                  color: isDark ? 'white' : 'black',
                   fontWeight: 700,
                   fontSize: '15px',
                 }}
@@ -90,7 +97,10 @@ const Academics: React.FC = () => {
           },
           {
             title: (
-              <Text color='#545969' className='!text-[16px] !font-bold'>
+              <Text
+                color={isDark ? '#9393f1' : '#545969'}
+                className='!text-[16px] !font-bold'
+              >
                 Academics Page
               </Text>
             ),
@@ -99,15 +109,24 @@ const Academics: React.FC = () => {
       />
       <div className={`${mb ? 'px-5' : tl ? 'px-10' : 'px-60 py-15'}`}>
         <Flex align='center' gap='md'>
-          <div className='flex-1 border-b border-gray-500 border-2'></div>
+          <div
+            className={`${isDark ? 'border-[#9393f1]' : 'border-gray-500'} flex-1 border-b border-2`}
+          ></div>
 
-          <Title className='!text-center !text-gray-500 mx-5'>
+          <Title
+            className={`${isDark ? '!text-[#9393f1]' : '!text-gray-500'} !text-center mx-5`}
+          >
             Our Programs
           </Title>
 
-          <div className='flex-1 border-b border-gray-500 border-2'></div>
+          <div
+            className={`${isDark ? 'border-[#9393f1]' : 'border-gray-500'} flex-1 border-b border-2`}
+          ></div>
         </Flex>
-        <Text className={`!block ${!mb ? '!text-lg' : '!leading-6'}`}>
+        <Text
+          color={isDark ? 'white' : ''}
+          className={`!block ${!mb ? '!text-lg' : '!leading-6'}`}
+        >
           Saigon College of Information Technology and Economics (IES College)
           offers a flexible and diverse curriculum designed to develop practical
           skills and adaptability to market demands. With three main training
@@ -127,9 +146,10 @@ const Academics: React.FC = () => {
         </Flex>
       </div>
 
-      <AboutVoca tl={tl} mb={mb} />
-      <AboutShortTerm tl={tl} mb={mb} />
-      <AboutPartnership tl={tl} mb={mb} />
+      <AboutVoca tl={tl} mb={mb} dark={isDark} />
+      <AboutShortTerm tl={tl} mb={mb} dark={isDark} />
+      <AboutPartnership tl={tl} mb={mb} dark={isDark} />
+      <ContactKey />
     </section>
   );
 };

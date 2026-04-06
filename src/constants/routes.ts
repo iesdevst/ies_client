@@ -76,7 +76,7 @@ export const ROUTES = {
   ADMISSIONS_SC_BAKING: `/${ADMISSIONS_SHORT_SEGMENT}?tab=${ShortCrsTab.Baking}`,
   ADMISSIONS_SC_UAI: `/${ADMISSIONS_SHORT_SEGMENT}?tab=${ShortCrsTab.UsingAi}`,
 
-  ADMISSIONS_SC_MIX_OVW: `${ADMISSIONS_SHORT_SEGMENT}?tab=${ShortCrsTab.Mixology}&subTab=${TrainDetailTab.Overview}`,
+  ADMISSIONS_SC_MIX_OVW: `/${ADMISSIONS_SHORT_SEGMENT}?tab=${ShortCrsTab.Mixology}&subTab=${TrainDetailTab.Overview}`,
   ADMISSIONS_SC_MIX_ADMISS: `${ADMISSIONS_SHORT_SEGMENT}?tab=${ShortCrsTab.Mixology}&subTab=${TrainDetailTab.Admission}`,
   ADMISSIONS_SC_MIX_APPLY: `${ADMISSIONS_SHORT_SEGMENT}?tab=${ShortCrsTab.Mixology}&subTab=${TrainDetailTab.Apply}`,
   ADMISSIONS_SC_MIX_REGISTER: `${ADMISSIONS_SHORT_SEGMENT}?tab=${ShortCrsTab.Mixology}&subTab=${TrainDetailTab.Register}`,

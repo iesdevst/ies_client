@@ -14,13 +14,15 @@ import { useMegaNavData } from '../hooks';
 import styles from '../styles/iesDrawerMb.module.scss';
 import IES_LOGO_MB from '@/assets/imgs/ies_logo_hoziro.png';
 import MNL from '@/assets/imgs/ies_logo_notext.png';
-import { Title } from '@/components';
+import { ThemeSwitcher, Title } from '@/components';
 import IesClientLang from '@/components/Buttons/IesClientLang';
 import { PrefetchLink } from '@/components/PrefetchLink';
 import { ROUTES, type RoutePath } from '@/constants';
+import { useUserStore } from '@/store';
 
 const MegaMbDrawer: React.FC = () => {
   const { data } = useMegaNavData();
+  const { isDark } = useUserStore();
   const navigate = useNavigate();
   const [mbDrawerOpen, setMbDrawerOpen] = useState(false);
   const [actClKey, setActClKey] = useState<RoutePath | Array<RoutePath>>();
@@ -36,7 +38,10 @@ const MegaMbDrawer: React.FC = () => {
       label: (
         <Title
           level={5}
-          className={`!m-0 !text-black uppercase ${isAct ? '!text-blue-500' : '!text-black'}`}
+          className={`
+  !m-0 uppercase
+  ${isAct ? '!text-blue-500' : isDark ? '!text-white' : '!text-black'}
+`}
         >
           {navI.label}
         </Title>
@@ -53,14 +58,19 @@ const MegaMbDrawer: React.FC = () => {
               navigate(navI.key);
             }}
           >
-            <Title className='!m-0 !text-black !mr-2' level={5}>
+            <Title
+              className={`${isDark ? '!text-white' : '!text-black'} !m-0 !mr-2`}
+              level={5}
+            >
               Overview
             </Title>
             <div className='w-full h-full !bg-blue-500 rounded-r-full flex items-center justify-center px-2'>
               <RightOutlined className='!text-white !font-semibold !text-xs' />
             </div>
           </Button>
-          <div className='space-y-8 py-4 !bg-white pl-2.5 !rounded-xl'>
+          <div
+            className={`space-y-8 py-4 pl-2.5 !rounded-xl ${isDark ? '!bg-[#212223]' : '!bg-white'}`}
+          >
             {navI.sections.map((sec, i) => (
               <div key={i}>
                 {sec.title && (
@@ -71,7 +81,10 @@ const MegaMbDrawer: React.FC = () => {
                   >
                     <Image src={MNL} preview={false} className='!w-8 !h-8' />
 
-                    <Title level={5} className='uppercase !text-[#797a97] !m-0'>
+                    <Title
+                      level={5}
+                      className={`${isDark ? '!text-blue-500' : '!text-[#797a97]'} uppercase !m-0`}
+                    >
                       {sec.title}
                     </Title>
                   </Row>
@@ -83,7 +96,7 @@ const MegaMbDrawer: React.FC = () => {
                       key={link.route}
                       to={link.route}
                       onClick={() => setMbDrawerOpen(false)}
-                      className='!text-black hover:!underline !font-bold'
+                      className={`${isDark ? '!text-white' : '!text-black'} hover:!underline !font-bold`}
                       style={{
                         fontSize: '0.8rem',
                         fontFamily: "'IBM Plex Sans', sans-serif",
@@ -108,7 +121,7 @@ const MegaMbDrawer: React.FC = () => {
         size='large'
         icon={<MenuOutlined />}
         onClick={() => setMbDrawerOpen(true)}
-        className='!text-black !font-semibold'
+        className={`${isDark ? '!text-white' : '!text-black'} !font-semibold`}
       />
 
       <Drawer
@@ -116,7 +129,7 @@ const MegaMbDrawer: React.FC = () => {
         onClose={() => setMbDrawerOpen(false)}
         closable={false}
         open={mbDrawerOpen}
-        className={`!bg-white ${styles.mbDrawer}`}
+        className={`${isDark ? '!bg-[#212223]' : '!bg-white'} ${styles.mbDrawer}`}
       >
         <div className='px-3 py-2.5'>
           <Flex justify='space-between' align='center'>
@@ -137,10 +150,11 @@ const MegaMbDrawer: React.FC = () => {
               <CloseOutlined />
             </Button>
           </Flex>
-          <Row justify={'start'} align={'middle'} className='mt-2'>
+          <Row justify={'space-between'} align={'middle'} className='mt-2'>
             <IesClientLang
               buttonProps={{ className: '!p-0 !border-none !bg-transparent' }}
             />
+            <ThemeSwitcher classN={`${!isDark ? '!text-[#212223]' : ''}`} />
           </Row>
         </div>
 

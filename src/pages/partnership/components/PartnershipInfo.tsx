@@ -49,10 +49,11 @@ const titpoint = [
 
 interface IPartnershipInfo {
   openRegisInSec: () => void;
+  dark: boolean;
 }
 
 const PartnershipInfo: React.FC<IPartnershipInfo> = (props) => {
-  const { openRegisInSec } = props;
+  const { openRegisInSec, dark } = props;
   const mb = useMediaQuery({ maxWidth: 768 });
   const isTablet = useMediaQuery({ minWidth: 768, maxWidth: 1024 });
 
@@ -62,7 +63,7 @@ const PartnershipInfo: React.FC<IPartnershipInfo> = (props) => {
       layout='simple'
       divider={false}
       children={
-        <section className='bg-white'>
+        <section className={`${dark ? '!bg-[#212223]' : 'bg-white'}`}>
           <div
             className={`grid grid-cols-1 md:grid-cols-1 lg:grid-cols-3 ${mb || isTablet ? 'px-5' : 'px-20'}`}
           >
@@ -93,6 +94,7 @@ const PartnershipInfo: React.FC<IPartnershipInfo> = (props) => {
                     <Row className='gap-x-3' align={'middle'}>
                       <QuestionCircleFilled className='!text-[#1667d9] !text-lg' />
                       <Text
+                        color={dark ? 'white' : ''}
                         style={{
                           whiteSpace: 'pre-line',
                         }}
@@ -126,7 +128,7 @@ const PartnershipInfo: React.FC<IPartnershipInfo> = (props) => {
                     {point.tit}
                   </Title>
                   <Text
-                    color='#6d6969'
+                    color={dark ? 'white' : '#6d6969'}
                     className='!block !text-[14.5px]'
                     style={{
                       whiteSpace: 'pre-line',

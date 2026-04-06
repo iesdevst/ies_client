@@ -1,5 +1,6 @@
 import { useMediaQuery } from 'react-responsive';
 import { IesClSection } from '@/components';
+import { ROUTES } from '@/constants';
 import { useUserStore } from '@/store';
 
 const VidPrIes: React.FC = () => {
@@ -24,6 +25,7 @@ const VidPrIes: React.FC = () => {
 impacts`}
       vidLink='https://www.youtube.com/embed/8G1vC-hJjjc?si=Q_cV53WSlXUtmrA7'
       mb={isMb}
+      navigateGo={ROUTES.ABOUT_OVERVIEW}
       height={getScH()}
       tabletVid={isTablet}
       miniSc={miniScreen}

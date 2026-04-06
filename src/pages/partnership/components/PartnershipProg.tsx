@@ -56,7 +56,12 @@ const majors = [
   },
 ];
 
-const PartnershipProg: React.FC = () => {
+interface IPartnershipProg {
+  dark: boolean;
+}
+
+const PartnershipProg: React.FC<IPartnershipProg> = (props) => {
+  const { dark } = props;
   const mb = useMediaQuery({ maxWidth: 767 });
   const isTablet = useMediaQuery({ minWidth: 768, maxWidth: 1024 });
   const miniScreen = useMediaQuery({ minWidth: 1024, maxWidth: 1279 });
@@ -78,7 +83,7 @@ const PartnershipProg: React.FC = () => {
                 HOU-Always Striving for Excellence
               </Title>
               <Row
-                gutter={!isTablet ? [0, 20] : [25, 20]}
+                gutter={!isTablet ? [0, 20] : [0, 20]}
                 justify='center'
                 className={`${mb || isTablet ? '' : miniScreen ? 'px-5' : 'px-20'}`}
               >
@@ -95,7 +100,7 @@ const PartnershipProg: React.FC = () => {
                       <Title level={2} className='!m-0 !text-white !font-black'>
                         {stat.num}
                       </Title>
-                      <Text className='!text-white'>{stat.decs}</Text>
+                      <Text color='white'>{stat.decs}</Text>
                     </div>
                   </Col>
                 ))}
@@ -131,7 +136,10 @@ const PartnershipProg: React.FC = () => {
                               <Text color='#5990cb' className='!block !text-lg'>
                                 {item.icon}
                               </Text>
-                              <Text className='!block !text-lg'>
+                              <Text
+                                color={dark ? 'white' : ''}
+                                className='!block !text-lg'
+                              >
                                 {item.label}
                               </Text>
                             </Flex>

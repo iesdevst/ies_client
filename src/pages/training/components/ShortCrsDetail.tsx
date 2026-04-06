@@ -13,6 +13,7 @@ import styles from '../iesTraining.module.scss';
 import DTP from '@/assets/imgs/short_course_paint.png';
 import { Title } from '@/components';
 import { TrainDetailTab } from '@/constants';
+import { useUserStore } from '@/store';
 import type { ShortCrsTypeEnum } from '@/utils';
 
 const ProgOvw = lazy(() => import('@/pages/training/components/ProgOvw'));
@@ -28,6 +29,7 @@ interface IShortCrsDetailProps {
 
 const ShortCrsDetail: React.FC<IShortCrsDetailProps> = (props) => {
   const { scType } = props;
+  const { isDark } = useUserStore();
   const isMb = useMediaQuery({ maxWidth: 768 });
   const isTl = useMediaQuery({ minWidth: 769, maxWidth: 1024 });
   const [stSearchPrs, setStSearchPrs] = useSearchParams();
@@ -58,7 +60,7 @@ const ShortCrsDetail: React.FC<IShortCrsDetailProps> = (props) => {
             />
           </Tooltip>
         ),
-        children: <ProgOvw ovwScDt={shortCrsDt?.overview} />,
+        children: <ProgOvw ovwScDt={shortCrsDt?.overview} dark={isDark} />,
       },
       {
         key: TrainDetailTab.Admission,
@@ -76,7 +78,7 @@ const ShortCrsDetail: React.FC<IShortCrsDetailProps> = (props) => {
             />
           </Tooltip>
         ),
-        children: <AdmissInfo admisScInfoDt={shortCrsDt?.info} />,
+        children: <AdmissInfo admisScInfoDt={shortCrsDt?.info} dark={isDark} />,
       },
       {
         key: TrainDetailTab.Apply,
@@ -94,7 +96,7 @@ const ShortCrsDetail: React.FC<IShortCrsDetailProps> = (props) => {
             />
           </Tooltip>
         ),
-        children: <TuiApply tuiApplyScDt={shortCrsDt?.apply} />,
+        children: <TuiApply tuiApplyScDt={shortCrsDt?.apply} dark={isDark} />,
       },
       {
         key: TrainDetailTab.Register,
@@ -112,10 +114,10 @@ const ShortCrsDetail: React.FC<IShortCrsDetailProps> = (props) => {
             />
           </Tooltip>
         ),
-        children: <StRegisForm />,
+        children: <StRegisForm dark={isDark} />,
       },
     ],
-    [stActKey, isMb, shortCrsDt],
+    [stActKey, isMb, shortCrsDt, isDark],
   );
 
   const hdlChangeTab = useCallback(
@@ -132,7 +134,7 @@ const ShortCrsDetail: React.FC<IShortCrsDetailProps> = (props) => {
   return (
     <section className={`${isMb || isTl ? 'pt-10 py-20' : 'px-15 py-20 '}`}>
       <div
-        className={`!bg-[#eaeaea] !rounded-3xl !border !border-[#dac7da] ${isMb || isTl ? 'px-2 pt-10 py-20' : 'p-20'}`}
+        className={`${isDark ? '!bg-gray-800' : '!bg-[#eaeaea]'} !rounded-3xl !border !border-[#dac7da] ${isMb || isTl ? 'px-2 pt-10 py-20' : 'p-20'}`}
       >
         {shortCrsDt && (
           <Row

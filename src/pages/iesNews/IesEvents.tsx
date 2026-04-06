@@ -7,12 +7,14 @@ import { useEventLstData } from './hooks';
 import { Text, Title } from '@/components';
 import { PrefetchLink } from '@/components/PrefetchLink';
 import { ROUTES } from '@/constants';
+import { useUserStore } from '@/store';
 
 const PAGE_SIZE = 3;
 
 const IesEvents = () => {
   const { data } = useEventLstData();
   const mb = useMediaQuery({ maxWidth: 767 });
+  const { isDark } = useUserStore();
   const sectionRef = useRef<HTMLDivElement | null>(null);
   const navigate = useNavigate();
   const [currentPage, setCurrentPage] = useState(1);
@@ -27,17 +29,21 @@ const IesEvents = () => {
     });
   }, [currentPage]);
   return (
-    <section ref={sectionRef} className='!bg-white'>
+    <section ref={sectionRef}>
       <Breadcrumb
         className={`${!mb ? '!ml-25 !py-15 ' : '!ml-5 !py-6'}`}
-        separator={<RightOutlined className='!text-black px-6' />}
+        separator={
+          <RightOutlined
+            className={`${isDark ? '!text-white' : '!text-black'} px-6`}
+          />
+        }
         items={[
           {
             title: (
               <PrefetchLink
                 to={ROUTES.DASHBOARD}
                 style={{
-                  color: 'black',
+                  color: isDark ? 'white' : 'black',
                   fontWeight: 700,
                   fontSize: '15px',
                 }}
@@ -48,7 +54,10 @@ const IesEvents = () => {
           },
           {
             title: (
-              <Text color='#545969' className='!text-[16px] !font-bold'>
+              <Text
+                color={isDark ? '#74abf9' : '#545969'}
+                className='!text-[16px] !font-bold'
+              >
                 Events
               </Text>
             ),

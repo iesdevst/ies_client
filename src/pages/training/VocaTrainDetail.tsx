@@ -24,6 +24,7 @@ import DTP from '@/assets/imgs/detail__train_paint.png';
 import { Text, Title } from '@/components';
 import { PrefetchLink } from '@/components/PrefetchLink';
 import { ROUTES, TrainDetailTab } from '@/constants';
+import { useUserStore } from '@/store';
 
 const ProgOvw = lazy(() => import('@/pages/training/components/ProgOvw'));
 const AdmissInfo = lazy(() => import('@/pages/training/components/AdmissInfo'));
@@ -35,7 +36,7 @@ const IvRegisterForm = lazy(
 const VocaTrainDetail: React.FC = () => {
   const isMb = useMediaQuery({ maxWidth: 768 });
   const isTl = useMediaQuery({ minWidth: 769, maxWidth: 1024 });
-
+  const { isDark } = useUserStore();
   const [trainDtSearchPrs, setTrainDtSearchPrs] = useSearchParams();
   const trainDtActKey = trainDtSearchPrs.get('tab') || TrainDetailTab.Overview;
   const { data } = useTrainDetailData();
@@ -64,7 +65,7 @@ const VocaTrainDetail: React.FC = () => {
             />
           </Tooltip>
         ),
-        children: <ProgOvw ovwDt={detailTrainDt?.overview} />,
+        children: <ProgOvw ovwDt={detailTrainDt?.overview} dark={isDark} />,
       },
       {
         key: TrainDetailTab.Admission,
@@ -82,7 +83,9 @@ const VocaTrainDetail: React.FC = () => {
             />
           </Tooltip>
         ),
-        children: <AdmissInfo admisInfoDt={detailTrainDt?.info} />,
+        children: (
+          <AdmissInfo admisInfoDt={detailTrainDt?.info} dark={isDark} />
+        ),
       },
       {
         key: TrainDetailTab.Apply,
@@ -100,7 +103,7 @@ const VocaTrainDetail: React.FC = () => {
             />
           </Tooltip>
         ),
-        children: <TuiApply tuiApplyDt={detailTrainDt?.apply} />,
+        children: <TuiApply tuiApplyDt={detailTrainDt?.apply} dark={isDark} />,
       },
       {
         key: TrainDetailTab.Register,
@@ -118,10 +121,10 @@ const VocaTrainDetail: React.FC = () => {
             />
           </Tooltip>
         ),
-        children: <IvRegisterForm />,
+        children: <IvRegisterForm dark={isDark} />,
       },
     ],
-    [detailTrainDt, trainDtActKey, isMb],
+    [detailTrainDt, trainDtActKey, isMb, isDark],
   );
 
   const hdlChangeTab = useCallback(
@@ -132,14 +135,12 @@ const VocaTrainDetail: React.FC = () => {
   );
 
   return (
-    <section
-      className={`bg-white ${isMb || isTl ? 'pt-10 py-20' : 'px-15 py-20'}`}
-    >
+    <section className={`${isMb || isTl ? 'pt-10 py-20' : 'px-15 py-20'}`}>
       <Breadcrumb
-        className={`!bg-[#eaeaea] !rounded-t-xl !border-t !border-x !border-[#dac7da] ${isMb ? 'w-2/3 !py-1.5 !ml-5' : isTl ? 'w-2/3 !py-1.5 !ml-5' : 'w-1/3 !ml-5.5 !py-3'}  ${styles.breadCrumbCus}`}
+        className={`${isDark ? '!bg-gray-800 !border-gray-600' : '!bg-[#eaeaea] !border-[#dac7da]'} !rounded-t-xl !border-t !border-x ${isMb ? 'w-2/3 !py-1.5 !ml-5' : isTl ? 'w-2/3 !py-1.5 !ml-5' : 'w-1/3 !ml-5.5 !py-3'}  ${styles.breadCrumbCus}`}
         separator={
           <RightOutlined
-            className={`!text-black  ${isMb ? 'px-3' : isTl ? 'px-15' : '!px-10'}`}
+            className={`${isDark ? '!text-white' : '!text-black'} ${isMb ? 'px-3' : isTl ? 'px-15' : '!px-10'}`}
           />
         }
         items={[
@@ -148,7 +149,7 @@ const VocaTrainDetail: React.FC = () => {
               <PrefetchLink
                 to={ROUTES.ADMISSIONS}
                 style={{
-                  color: 'black',
+                  color: isDark ? 'white' : 'black',
                   fontWeight: 700,
                   fontSize: '15px',
                 }}
@@ -171,7 +172,7 @@ const VocaTrainDetail: React.FC = () => {
         ]}
       />
       <div
-        className={`!bg-[#eaeaea] !rounded-3xl !border !border-[#dac7da] ${isMb || isTl ? 'px-2 pt-10 py-20' : 'p-20'}`}
+        className={`${isDark ? '!bg-gray-800 !border-gray-600' : '!bg-[#eaeaea] !border-[#dac7da]'} !rounded-3xl !border ${isMb || isTl ? 'px-2 pt-10 py-20' : 'p-20'}`}
       >
         {detailTrainDt && (
           <Row

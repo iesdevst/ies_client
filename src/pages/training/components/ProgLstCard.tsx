@@ -16,12 +16,13 @@ import { ProgramSlugEnum } from '@/utils';
 
 interface IProgLstCard {
   slugName: ProgramSlugEnum;
+  dark: boolean;
 }
 
 const ProgLstCard: React.FC<IProgLstCard> = (props) => {
   const mb = useMediaQuery({ maxWidth: 767 });
   const tablet = useMediaQuery({ minWidth: 768, maxWidth: 1024 });
-  const { slugName } = props || {};
+  const { slugName, dark } = props || {};
   const { data } = useTrainingData();
   const navigate = useNavigate();
   const [expandedMap, setExpandedMap] = useState<Record<string, boolean>>({});
@@ -54,7 +55,7 @@ const ProgLstCard: React.FC<IProgLstCard> = (props) => {
           return (
             <Card
               key={key}
-              className='!h-full !border-gray-300 shadow-md hover:!shadow-xl transition !p-2 !rounded-2xl'
+              className={`!h-full shadow-md hover:!shadow-xl transition !p-5 !rounded-2xl ${dark ? '' : '!border-gray-300'}`}
             >
               <Flex vertical={mb || tablet} align='center' className='gap-x-6'>
                 <div>
@@ -87,7 +88,10 @@ const ProgLstCard: React.FC<IProgLstCard> = (props) => {
                   WebkitBoxOrient: 'vertical',
                 }}
               >
-                <Text className='!font-semibold !mt-3 !block'>
+                <Text
+                  color={dark ? 'white' : 'black'}
+                  className='!font-semibold !mt-3 !block'
+                >
                   {train.desc}
                 </Text>
               </div>
@@ -113,18 +117,31 @@ const ProgLstCard: React.FC<IProgLstCard> = (props) => {
                 justify='space-around'
                 align='center'
                 className='!mb-2.5 !mt-5'
+                gap={tablet ? 10 : 0}
               >
                 <Row justify={'center'} align={'middle'} className='gap-x-1.5'>
-                  <UserOutlined className='!text-black' />
-                  <Text className='mt-1 !font-semibold'>IES Teacher</Text>
+                  <UserOutlined
+                    className={`${dark ? '!text-white' : '!text-black'}`}
+                  />
+                  <Text className='!font-semibold' color={dark ? 'white' : ''}>
+                    IES Teacher
+                  </Text>
                 </Row>
                 <Row justify={'center'} align={'middle'} className='gap-x-1.5'>
-                  <ClockCircleOutlined className='!text-black' />
-                  <Text className='!font-semibold'>12 month</Text>
+                  <ClockCircleOutlined
+                    className={`${dark ? '!text-white' : '!text-black'}`}
+                  />
+                  <Text color={dark ? 'white' : ''} className='!font-semibold'>
+                    12 month
+                  </Text>
                 </Row>
                 <Row justify={'center'} align={'middle'} className='gap-x-1.5'>
-                  <SafetyCertificateOutlined className='!text-black' />
-                  <Text className='!font-semibold'>Certificate</Text>
+                  <SafetyCertificateOutlined
+                    className={`${dark ? '!text-white' : '!text-black'}`}
+                  />
+                  <Text color={dark ? 'white' : ''} className='!font-semibold'>
+                    Certificate
+                  </Text>
                 </Row>
               </Flex>
               <div>

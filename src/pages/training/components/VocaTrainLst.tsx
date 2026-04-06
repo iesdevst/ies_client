@@ -20,10 +20,11 @@ const ProgLstCard = lazy(
 interface IVocaTrainLst {
   mb: boolean;
   tl: boolean;
+  dark: boolean;
 }
 
 const VocaTrainLst: React.FC<IVocaTrainLst> = (props) => {
-  const { mb, tl } = props;
+  const { mb, tl, dark } = props;
 
   const [trainSearchPrs, setTrainSearchPrs] = useSearchParams();
 
@@ -55,7 +56,7 @@ const VocaTrainLst: React.FC<IVocaTrainLst> = (props) => {
               All Programs
             </Title>
           ),
-        children: <ProgLstCard slugName={ProgramSlugEnum.All} />,
+        children: <ProgLstCard slugName={ProgramSlugEnum.All} dark={dark} />,
       },
       {
         key: AdmissionVocaTab.Design,
@@ -74,7 +75,7 @@ const VocaTrainLst: React.FC<IVocaTrainLst> = (props) => {
               Design & Creativity
             </Title>
           ),
-        children: <ProgLstCard slugName={ProgramSlugEnum.Design} />,
+        children: <ProgLstCard slugName={ProgramSlugEnum.Design} dark={dark} />,
       },
       {
         key: AdmissionVocaTab.Business,
@@ -93,7 +94,9 @@ const VocaTrainLst: React.FC<IVocaTrainLst> = (props) => {
               Business & Management
             </Title>
           ),
-        children: <ProgLstCard slugName={ProgramSlugEnum.Business} />,
+        children: (
+          <ProgLstCard slugName={ProgramSlugEnum.Business} dark={dark} />
+        ),
       },
       {
         key: AdmissionVocaTab.Hospitality,
@@ -112,7 +115,9 @@ const VocaTrainLst: React.FC<IVocaTrainLst> = (props) => {
               Hospitality & Services
             </Title>
           ),
-        children: <ProgLstCard slugName={ProgramSlugEnum.Hospitality} />,
+        children: (
+          <ProgLstCard slugName={ProgramSlugEnum.Hospitality} dark={dark} />
+        ),
       },
       {
         key: AdmissionVocaTab.ItOffice,
@@ -131,17 +136,20 @@ const VocaTrainLst: React.FC<IVocaTrainLst> = (props) => {
               IT & Office
             </Title>
           ),
-        children: <ProgLstCard slugName={ProgramSlugEnum.IT} />,
+        children: <ProgLstCard slugName={ProgramSlugEnum.IT} dark={dark} />,
       },
     ],
-    [trainActKey, mb, tl],
+    [trainActKey, mb, tl, dark],
   );
 
   return (
-    <section className='!bg-white !mt-20'>
-      <div className='!bg-[#FFFCF2] pt-10'>
+    <section className='!mt-20'>
+      <div className={`${dark ? '!bg-gray-800' : '!bg-[#FFFCF2]'} pt-10`}>
         <div className='text-center mb-6'>
-          <Title level={mb || tl ? 3 : 1} className='!text-[#2974D7]'>
+          <Title
+            level={mb || tl ? 3 : 1}
+            className={`${dark ? '!text-blue-100' : '!text-[#2974D7]'}`}
+          >
             Discover Intermediate Vocational Courses
           </Title>
         </div>

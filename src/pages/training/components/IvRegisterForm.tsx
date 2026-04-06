@@ -27,7 +27,12 @@ import {
   RegisterTrainingTypeEnum,
 } from '@/utils';
 
-const IvRegisterForm: React.FC = () => {
+interface IIvRegisterForm {
+  dark: boolean;
+}
+
+const IvRegisterForm: React.FC<IIvRegisterForm> = (props) => {
+  const { dark } = props;
   const [form] = Form.useForm();
   const { pushBSQ, pushBEQ } = useNotifyStore();
   const mb = useMediaQuery({ maxWidth: 1024 });
@@ -112,7 +117,7 @@ const IvRegisterForm: React.FC = () => {
 
   return (
     <section
-      className={`bg-white rounded-2xl ${!mb ? 'py-10 px-17' : 'pb-10 pt-5 px-3.5'}`}
+      className={`${dark ? 'bg-gray-600' : 'bg-white'} rounded-2xl ${!mb ? 'py-10 px-17' : 'pb-10 pt-5 px-3.5'}`}
     >
       <Title className='!text-center !mb-12 italic !text-[#ca78ca] !font-bold'>
         Join Our Program

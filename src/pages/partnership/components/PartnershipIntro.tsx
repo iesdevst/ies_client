@@ -64,10 +64,11 @@ const srcollData = [
 
 interface IPartnershipIntro {
   openRegisInSec: () => void;
+  dark: boolean;
 }
 
 const PartnershipIntro: React.FC<IPartnershipIntro> = (props) => {
-  const { openRegisInSec } = props;
+  const { openRegisInSec, dark } = props;
   const mb = useMediaQuery({ maxWidth: 767 });
   const isTablet = useMediaQuery({ minWidth: 768, maxWidth: 1024 });
 
@@ -117,11 +118,17 @@ const PartnershipIntro: React.FC<IPartnershipIntro> = (props) => {
                 </Title>
               </div>
               <Col>
-                <Text className={`!block ${!mb ? '!text-lg' : '!text-md'}`}>
+                <Text
+                  color={dark ? 'white' : ''}
+                  className={`!block ${!mb ? '!text-lg' : '!text-md'}`}
+                >
                   No need to go to campus — still get a university degree
                 </Text>
 
-                <Text className={`!block ${!mb ? '!text-lg' : '!text-md'}`}>
+                <Text
+                  color={dark ? 'white' : ''}
+                  className={`!block ${!mb ? '!text-lg' : '!text-md'}`}
+                >
                   Is a university degree holding back your dreams?
                 </Text>
               </Col>
@@ -133,11 +140,11 @@ const PartnershipIntro: React.FC<IPartnershipIntro> = (props) => {
                 <Image
                   src={OUP}
                   preview={false}
-                  className={`${!mb ? '!w-20 !h-20' : '!w-12 !h-12'}`}
+                  className={`${dark ? 'bg-white p-1 !rounded-xl' : ''} ${!mb ? '!w-20 !h-20' : '!w-12 !h-12'}`}
                 />
                 <Button
                   type='default'
-                  className={`!border-[#1667d9] !text-[#1667d9] !bg-white !rounded-full ${!mb ? '!py-6 !px-20' : '!px-8 !py-4'}`}
+                  className={`!border-[#1667d9] !text-[#1667d9] !font-bold !bg-white !rounded-full ${!mb ? '!py-6 !px-20' : '!px-8 !py-4'}`}
                   size={!mb ? 'large' : 'small'}
                   onClick={openRegisInSec}
                 >
@@ -190,7 +197,7 @@ const PartnershipIntro: React.FC<IPartnershipIntro> = (props) => {
           </div>
         </section>
       }
-      className='bg-white'
+      className={`${dark ? '!bg-[#212223]' : 'bg-white'}`}
       height={mb || isTablet ? '25vh' : ''}
     />
   );

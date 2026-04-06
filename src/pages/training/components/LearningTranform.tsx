@@ -1,11 +1,15 @@
 import { MessageOutlined } from '@ant-design/icons';
 import { Col, Flex, Row } from 'antd';
-
 import { useMediaQuery } from 'react-responsive';
 import { useLearnTfData } from '../hooks';
 import { Text, Title } from '@/components';
 
-const LearningTranform = () => {
+interface ILearningTranform {
+  dark: boolean;
+}
+
+const LearningTranform: React.FC<ILearningTranform> = (props) => {
+  const { dark } = props;
   const { data } = useLearnTfData();
   const mb = useMediaQuery({ maxWidth: 1023 });
   return (
@@ -18,7 +22,10 @@ const LearningTranform = () => {
           <Title className='!m-0 !uppercase'>What Our</Title>
           <Title className='!m-0 !uppercase'>Students Say</Title>
         </div>
-        <Text className='!inline-block !font-bold md:!text-lg lg:!text-lg !ml-6'>
+        <Text
+          color={dark ? 'white' : ''}
+          className='!inline-block !font-bold md:!text-lg lg:!text-lg !ml-6'
+        >
           Discover real experiences and feedback from our learners <br />
           as they progress through our short-term training programs.
         </Text>
@@ -45,11 +52,11 @@ const LearningTranform = () => {
                   align='flex-start'
                   className='!h-full'
                 >
-                  <MessageOutlined className='!text-2xl' />
+                  <MessageOutlined className='!text-2xl !text-black' />
 
                   <Title
                     level={3}
-                    className='!font-semibold m-0'
+                    className='!font-semibold m-0 !text-black'
                     style={{
                       whiteSpace: 'pre-line',
                     }}
