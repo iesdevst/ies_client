@@ -1,16 +1,19 @@
 import { Col, Image } from 'antd';
 import { useMediaQuery } from 'react-responsive';
+import { useNavigate } from 'react-router-dom';
 import ICL from '@/assets/imgs/intern_cl.png';
 import { IesClSection, Title } from '@/components';
+import { ROUTES } from '@/constants';
 
 const InternCollab: React.FC = () => {
   const mb = useMediaQuery({ maxWidth: 1024 });
+  const navigate = useNavigate();
   return (
     <IesClSection
       id='internColl'
       layout='systemCardSplit'
       children={
-        <Col className={`${!mb ? 'pl-25' : 'px-6 pt-10'}`}>
+        <Col className={`${!mb ? 'pl-25' : 'px-26 pt-10'}`}>
           <Title level={2} className='!font-bold  !mb-9'>
             Internship Partnerships: <br /> A Bridge to Career Opportunities
           </Title>
@@ -23,7 +26,10 @@ const InternCollab: React.FC = () => {
             their employment opportunities after graduation.
           </p>
 
-          <div className={`relative mt-10 ${!mb ? '!w-2/3' : ''}`}>
+          <div
+            className={`relative mt-10 !cursor-pointer ${!mb ? '!w-2/3' : ''}`}
+            onClick={() => navigate(ROUTES.PARTNERSHIP)}
+          >
             <div className='bg-blue-600 text-white px-5 py-2 font-semibold text-sm !text-center'>
               Explore our activities
             </div>
@@ -32,8 +38,8 @@ const InternCollab: React.FC = () => {
         </Col>
       }
       splitFeat={<Image src={ICL} preview={false} className='!h-100' />}
-      className='bg-[#febd25] mt-20'
-      height={!mb ? '' : '29vh'}
+      className='bg-[#febd25] mb-40'
+      height={!mb ? '20vh' : '29vh'}
     />
   );
 };

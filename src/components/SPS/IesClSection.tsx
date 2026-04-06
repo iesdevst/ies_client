@@ -1,4 +1,8 @@
-import { ArrowRightOutlined, RightOutlined } from '@ant-design/icons';
+import {
+  ArrowRightOutlined,
+  ArrowUpOutlined,
+  RightOutlined,
+} from '@ant-design/icons';
 import { Button, Card, Carousel, Col, Divider, Flex, Image, Row } from 'antd';
 import type { CSSProperties, ReactNode } from 'react';
 import { useNavigate } from 'react-router-dom';
@@ -70,8 +74,9 @@ interface TopicLayoutProps extends BasePageIesSecProps {
   botTit?: string;
   lstBut: string;
   topicI: string;
+  aboutTogo: string;
   topicCt: Array<{ tit: string; des: string; bgColor: string }>;
-  methodLst: Array<{ thodAv: string; meTit: string }>;
+  methodLst: Array<{ thodAv: string; meTit: string; methodGo: string }>;
 }
 
 interface NewsFeatureLayoutProps extends BasePageIesSecProps {
@@ -186,6 +191,8 @@ export const IesClSection: React.FC<SubSectionProps> = (props) => {
       lstBut,
       methodLst,
       dark,
+      navigateGo,
+      aboutTogo,
     } = props;
 
     return (
@@ -202,11 +209,12 @@ export const IesClSection: React.FC<SubSectionProps> = (props) => {
             preview={false}
           />
 
-          {topTitBut && (
+          {topTitBut && aboutTogo && (
             <div>
               <Button
                 className={`!bg-transparent ${!mb ? '!pl-20' : ''}`}
                 type='text'
+                onClick={() => navigate(aboutTogo)}
               >
                 <Title
                   className={`!m-0 ${dark ? '!text-white' : '!text-black'}`}
@@ -260,9 +268,13 @@ export const IesClSection: React.FC<SubSectionProps> = (props) => {
               {botTit}
             </Title>
 
-            {botBut && (
+            {botBut && navigateGo && (
               <div>
-                <Button className='!bg-transparent !p-0' type='text'>
+                <Button
+                  className='!bg-transparent !p-0'
+                  type='text'
+                  onClick={() => navigate(navigateGo)}
+                >
                   <Title
                     className={`!m-0 ${dark ? '!text-white' : '!text-black'}`}
                     level={4}
@@ -301,6 +313,7 @@ export const IesClSection: React.FC<SubSectionProps> = (props) => {
                   <Button
                     type='text'
                     className='!text-blue-500 !font-bold !text-lg !p-0'
+                    onClick={() => navigate(item.methodGo)}
                   >
                     {lstBut}
                   </Button>
@@ -630,7 +643,7 @@ export const IesClSection: React.FC<SubSectionProps> = (props) => {
                   <Card
                     key={index}
                     hoverable
-                    className={`${dark ? '!bg-gray-700' : '!bg-white'} rounded-2xl overflow-hidden shadow-lg !border-none `}
+                    className={`${dark ? '!bg-gray-700' : '!bg-white'} rounded-2xl overflow-hidden shadow-lg !border-none !cursor-default`}
                     cover={
                       <img
                         src={item.imgC}
@@ -697,10 +710,11 @@ export const IesClSection: React.FC<SubSectionProps> = (props) => {
                     {item.navigo && (
                       <Button
                         type='text'
-                        className='!text-blue-600 !p-0 !font-bold !text-md'
+                        className='!text-blue-600 !p-0 !font-bold !text-md !underline'
                         onClick={() => navigate(item.navigo!)}
                       >
-                        {item.butCard}
+                        {item.butCard}{' '}
+                        <ArrowUpOutlined className='!rotate-45' />
                       </Button>
                     )}
                   </Col>

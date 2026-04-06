@@ -36,7 +36,11 @@ const LearningTranform: React.FC<ILearningTranform> = (props) => {
           <Col key={item.id} xs={24} sm={12} md={12} lg={6}>
             <div
               className={`rounded-xl overflow-hidden h-full ${
-                item.type === 'image' ? '' : 'bg-gray-100 p-6'
+                item.type === 'image'
+                  ? ''
+                  : dark
+                    ? 'p-6 bg-gray-600'
+                    : 'bg-gray-100 p-6'
               }`}
             >
               {item.type === 'image' ? (
@@ -52,11 +56,13 @@ const LearningTranform: React.FC<ILearningTranform> = (props) => {
                   align='flex-start'
                   className='!h-full'
                 >
-                  <MessageOutlined className='!text-2xl !text-black' />
+                  <MessageOutlined
+                    className={`!text-2xl ${dark ? '!text-white' : ' !text-black'}`}
+                  />
 
                   <Title
                     level={3}
-                    className='!font-semibold m-0 !text-black'
+                    className={`!font-semibold m-0 ${dark ? '!text-white' : ' !text-black'}`}
                     style={{
                       whiteSpace: 'pre-line',
                     }}
@@ -64,7 +70,10 @@ const LearningTranform: React.FC<ILearningTranform> = (props) => {
                     {item.tit}
                   </Title>
                   <div>
-                    <Text className='text-gray-500 !text-lg inline-block'>
+                    <Text
+                      color={dark ? 'white' : '#6a7282'}
+                      className='!text-lg inline-block'
+                    >
                       {item.desc}
                     </Text>
                   </div>

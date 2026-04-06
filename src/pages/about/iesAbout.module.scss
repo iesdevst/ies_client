@@ -1,27 +1,47 @@
 .customTabs {
-  :global(.ant-tabs-nav::before) {
-    border-bottom: 1px solid rgb(141, 177, 190) !important;
-  }
+  :global {
+    .ant-tabs-nav::before {
+      border-bottom: 1px solid rgb(141, 177, 190) !important;
+    }
+    .ant-tabs-nav-wrap {
+      margin-left: 20px !important;
+    }
 
-  :global(.ant-tabs-nav-wrap) {
-    margin-left: 20px !important;
-  }
+    .ant-tabs-tab {
+      padding: 10px 70px !important;
+      font-weight: 600;
+      border: 1px solid rgb(141, 177, 190) !important;
+      background: white !important;
+      transition: all 0.5s ease;
+    }
 
-  :global(.ant-tabs-tab) {
-    padding: 10px 70px !important;
-    font-weight: 600;
-    border: 1px solid rgb(141, 177, 190) !important;
-    background: white !important;
-    transition: all 0.5s ease;
-
-    &:hover {
+    .ant-tabs-tab:hover {
       background: rgb(160, 203, 219) !important;
       cursor: pointer;
     }
-  }
 
-  :global(.ant-tabs-tab.ant-tabs-tab-active) {
-    background: rgb(43, 83, 98) !important;
+    .ant-tabs-tab-active {
+      background: rgb(43, 83, 98) !important;
+    }
+
+    .ant-tabs-tab-active .ant-tabs-tab-btn {
+      font-weight: 600;
+    }
+
+    .ant-tabs-ink-bar {
+      display: none;
+    }
+
+    /* ==================== DARK MODE ==================== */
+    :global(.dark) & {
+      .ant-tabs-tab {
+        background: gray !important;
+      }
+
+      .ant-tabs-tab-active {
+        background: rgb(43, 83, 98) !important;
+      }
+    }
   }
 
   @media (max-width: 768px) {

@@ -30,7 +30,7 @@ const coreVals = [
   },
 ];
 
-const AbCoreValue = () => {
+const AbCoreValue: React.FC = () => {
   const mb = useMediaQuery({ maxWidth: 1024 });
 
   return (

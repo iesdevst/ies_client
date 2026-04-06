@@ -18,7 +18,7 @@ const ProgOvw: React.FC<IProgOvwProps> = (props) => {
     <section>
       {ovwDt && (
         <div
-          className={`!bg-gray-600 rounded-2xl ${!isMb ? 'p-10' : 'pb-10 pt-5 px-3.5'}`}
+          className={`${dark ? '!bg-gray-600' : '!bg-white'} rounded-2xl ${!isMb ? 'p-10' : 'pb-10 pt-5 px-3.5'}`}
         >
           <div className='space-y-5'>
             <Col className='!space-y-4'>
@@ -96,7 +96,7 @@ const ProgOvw: React.FC<IProgOvwProps> = (props) => {
 
       {ovwScDt && (
         <div
-          className={`!bg-gray-600 rounded-2xl ${!isMb ? 'p-10' : 'pb-10 pt-5 px-3.5'}`}
+          className={`${dark ? '!bg-gray-600' : '!bg-white'} rounded-2xl ${!isMb ? 'p-10' : 'pb-10 pt-5 px-3.5'}`}
         >
           <div className='space-y-5'>
             <Col className='!space-y-4'>

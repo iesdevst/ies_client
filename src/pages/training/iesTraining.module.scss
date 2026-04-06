@@ -20,6 +20,7 @@
     .ant-tabs-tab:hover {
       color: #fff;
       opacity: 0.85;
+      cursor: pointer;
     }
 
     .ant-tabs-tab-active {
@@ -102,6 +103,7 @@
       color: #fff;
       opacity: 0.85;
       background-color: #c44bc4;
+      cursor: pointer;
     }
 
     .ant-tabs-tab-active {
@@ -109,7 +111,6 @@
     }
 
     .ant-tabs-tab-active .ant-tabs-tab-btn {
-      color: white !important;
       font-weight: 600;
     }
 

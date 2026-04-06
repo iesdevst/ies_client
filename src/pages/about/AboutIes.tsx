@@ -14,6 +14,7 @@ import VAM from '@/assets/imgs/vision_and_mission_bn_page.png';
 import { Text, Title } from '@/components';
 import { PrefetchLink } from '@/components/PrefetchLink';
 import { AboutTab, ROUTES } from '@/constants';
+import { useUserStore } from '@/store';
 
 const AbOverview = lazy(() => import('@/pages/about/components/AbOverview'));
 const AbVision = lazy(() => import('@/pages/about/components/AbVision'));
@@ -22,7 +23,7 @@ const AbCoreValue = lazy(() => import('@/pages/about/components/AbCoreValue'));
 const AboutIes: React.FC = () => {
   const [abtSearchParams, setAbtSearchParams] = useSearchParams();
   const abtActiveKey = abtSearchParams.get('tab') || AboutTab.Aboverview;
-
+  const { isDark } = useUserStore();
   const mb = useMediaQuery({ maxWidth: 767 });
   const tablet = useMediaQuery({ minWidth: 768, maxWidth: 1024 });
 
@@ -44,7 +45,7 @@ const AboutIes: React.FC = () => {
             />
           </Tooltip>
         ),
-        children: <AbOverview />,
+        children: <AbOverview dark={isDark} />,
       },
       {
         key: AboutTab.Vision,
@@ -62,7 +63,7 @@ const AboutIes: React.FC = () => {
             />
           </Tooltip>
         ),
-        children: <AbVision />,
+        children: <AbVision dark={isDark} />,
       },
       {
         key: AboutTab.Corevalues,
@@ -83,7 +84,7 @@ const AboutIes: React.FC = () => {
         children: <AbCoreValue />,
       },
     ],
-    [abtActiveKey, mb],
+    [abtActiveKey, mb, isDark],
   );
 
   const handleChangeTab = useCallback(
@@ -94,7 +95,7 @@ const AboutIes: React.FC = () => {
   );
 
   return (
-    <section className='!bg-white pt-5'>
+    <section className='pt-5'>
       <Breadcrumb
         className={`!bg-[#eaeaea] !rounded-t-3xl ${mb ? '!w-2/3 !py-1.5' : tablet ? 'w-1/3 !py-1.5' : '!w-1/5 !ml-15 !py-3'} ${styles.breadCrumbCusAb}`}
         separator={

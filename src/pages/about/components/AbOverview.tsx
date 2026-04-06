@@ -4,10 +4,15 @@ import OVW_LIB from '@/assets/imgs/ovw_lib.png';
 import OVW_STU from '@/assets/imgs/ovw_stu.png';
 import { Title } from '@/components';
 
-const AbOverview: React.FC = () => {
+interface IAbOverview {
+  dark: boolean;
+}
+
+const AbOverview: React.FC<IAbOverview> = (props) => {
+  const { dark } = props;
   const mb = useMediaQuery({ maxWidth: 1024 });
   return (
-    <div className='!bg-white pt-18 !space-y-20'>
+    <div className={`${dark ? '!bg-gray-800' : '!bg-white'} py-18 !space-y-20`}>
       <Flex
         vertical={mb}
         justify='space-between'
@@ -28,7 +33,7 @@ const AbOverview: React.FC = () => {
             <Button
               size='large'
               type='default'
-              className={`!border-none !bg-black hover:!bg-gray-400 hover:!text-black ${!mb ? 'w-full' : ''}`}
+              className={`!border-none !bg-black hover:!bg-gray-400 hover:!text-black !font-bold ${!mb ? 'w-full' : ''}`}
             >
               Contact Now
             </Button>

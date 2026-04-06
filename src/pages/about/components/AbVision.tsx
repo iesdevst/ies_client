@@ -12,7 +12,12 @@ const mission = [
   'Contribute to the development of education and workforce training that aligns with the evolving needs of the modern labor market.',
 ];
 
-const AbVision = () => {
+interface IAbVision {
+  dark: boolean;
+}
+
+const AbVision: React.FC<IAbVision> = (props) => {
+  const { dark } = props;
   const mb = useMediaQuery({ maxWidth: 767 });
   const tablet = useMediaQuery({ minWidth: 768, maxWidth: 1024 });
   return (
@@ -36,12 +41,15 @@ const AbVision = () => {
               justify={'center'}
               align={'middle'}
             >
-              <Title className='!m-0'>Shaping </Title>
+              <Title className={`${dark ? '!text-white' : '!text-black'} !m-0`}>
+                Shaping{' '}
+              </Title>
               <Title className='!m-0 !text-[#199BB2]'>the Future </Title>
             </Row>
             <Row justify={'center'} align={'middle'}>
               <Text
-                className={`${mb ? 'my-2' : tablet ? '!text-2xl my-5' : '!text-2xl !font-semibold !w-5/6 ml-5'}`}
+                color={dark ? 'white' : ''}
+                className={`${mb ? 'my-2' : tablet ? '!text-2xl my-5' : '!text-2xl !font-semibold !w-5/6 ml-5 mt-5'}`}
               >
                 The guiding principles that shape IES College’s education
                 <br />

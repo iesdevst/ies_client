@@ -5,6 +5,7 @@ import TPI from '@/assets/imgs/topic_img.png';
 import TSLM from '@/assets/imgs/tslm_avt.avif';
 import TSTC from '@/assets/imgs/tstc_avt.avif';
 import { IesClSection } from '@/components';
+import { ROUTES } from '@/constants';
 import { useUserStore } from '@/store';
 
 const VaM: React.FC = () => {
@@ -27,9 +28,21 @@ const VaM: React.FC = () => {
   ];
 
   const methodPr = [
-    { thodAv: TSLM, meTit: 'Short-term Training Admissions' },
-    { thodAv: TSTC, meTit: 'Intermediate Vocational Admissions' },
-    { thodAv: DHHCMTS, meTit: 'Hanoi Open University Admissions' },
+    {
+      thodAv: TSLM,
+      meTit: 'Short-term Training Admissions',
+      methodGo: ROUTES.ADMISSIONS_SC_MIX_OVW,
+    },
+    {
+      thodAv: TSTC,
+      meTit: 'Intermediate Vocational Admissions',
+      methodGo: ROUTES.ADMISSIONSVOCA_ALL,
+    },
+    {
+      thodAv: DHHCMTS,
+      meTit: 'Hanoi Open University Admissions',
+      methodGo: ROUTES.PARTNERSHIP,
+    },
   ];
   return (
     <IesClSection
@@ -40,10 +53,12 @@ const VaM: React.FC = () => {
       topImaTit={TPI}
       topTitBut='Discover Now'
       topicCt={topicDt}
-      botTit='Admissions Methods'
+      botTit='Admissions Methods & Our Academics'
       lstBut='Explore More'
-      botBut='Know more about us'
+      botBut='Know more about academics'
       methodLst={methodPr}
+      navigateGo={ROUTES.ACADEMICS}
+      aboutTogo={ROUTES.ABOUT_OVERVIEW}
       topicI={VAM}
       className={`py-15 ${isDark ? '!bg-[#253933]' : '!bg-[#f2f5ff]'} ${!mb ? 'px-20 mt-20' : 'px-5'}`}
     />
