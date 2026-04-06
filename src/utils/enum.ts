@@ -28,7 +28,7 @@ enum CapacityRoleEnum {
   Parent = 'parent',
 }
 
-enum PsLocationRegis {
+enum LocationRegis {
   HN = 'Ha Noi city',
   HCM = 'Ho Chi Minh city',
   Other = 'Other',
@@ -64,6 +64,7 @@ enum RegisterTrainingTypeEnum {
   ShortTerm = 'Short-term Training',
   IV = 'Intermediate Vocational Training',
   PartnershipHou = 'Partnership HOU',
+  IesContact = 'IES Advisory Services',
 }
 
 enum PartnershipProgEnum {
@@ -90,5 +91,5 @@ export {
   ShortTermTraingEnum,
   RegisterTrainingTypeEnum,
   PartnershipProgEnum,
-  PsLocationRegis,
+  LocationRegis,
 };

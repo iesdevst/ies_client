@@ -2,8 +2,8 @@ import { useMutation } from '@tanstack/react-query';
 import formspreeApi from '@/lib/formspree-api';
 import type { MutationConfig, MutationFn, QueryError } from '@/lib/react-query';
 import type {
+  LocationRegis,
   PartnershipProgEnum,
-  PsLocationRegis,
   RegisterTrainingTypeEnum,
 } from '@/utils';
 
@@ -14,7 +14,7 @@ export interface PsRegisSendVar {
   name: string;
   phone: string;
   email: string;
-  locationRegis: PsLocationRegis;
+  locationRegis: LocationRegis;
   psProgTrain: Array<PartnershipProgEnum>;
 }
 

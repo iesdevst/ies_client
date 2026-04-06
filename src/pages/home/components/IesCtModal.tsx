@@ -1,8 +1,4 @@
-import {
-  CloseCircleFilled,
-  SelectOutlined,
-  SendOutlined,
-} from '@ant-design/icons';
+import { CloseCircleFilled, SendOutlined } from '@ant-design/icons';
 import {
   Button,
   Flex,
@@ -15,36 +11,30 @@ import {
   Space,
   type InputRef,
 } from 'antd';
-import { useRef, useState } from 'react';
-import { usePsRegisSend } from '@/api';
-import OUP from '@/assets/imgs/open_uni_partnership.png';
+import { useRef } from 'react';
+import { useIesCt } from '@/api';
+import IES from '@/assets/imgs/ies_logo_notext.png';
 import { Title } from '@/components';
-import ProgTypeModal from '@/components/AntdModal';
 import { useNotifyStore } from '@/store';
 import {
   enrollmentAreaOptions,
   LocationRegis,
-  partnershipProgOptions,
   RegisterTrainingTypeEnum,
-  type PartnershipProgEnum,
 } from '@/utils';
 
-interface IPsRegisModal {
-  openPsM: boolean;
-  closePsm: () => void;
-  dark: boolean;
+interface IIesCtModal {
+  openCtM: boolean;
+  closeCtM: () => void;
 }
 
-const PsRegisModal: React.FC<IPsRegisModal> = (props) => {
-  const { closePsm, openPsM, dark } = props;
+const IesCtModal: React.FC<IIesCtModal> = (props) => {
+  const { closeCtM, openCtM } = props;
   const [form] = Form.useForm();
-  const [psProgTopen, setPsProgTopen] = useState(false);
-  const psProgType = Form.useWatch('major', form) || [];
   const phoneRef = useRef<InputRef>(null);
   const { pushBSQ, pushBEQ } = useNotifyStore();
 
   // mutation
-  const { sendRegis, isLoad } = usePsRegisSend({
+  const { sendCtRq, isLoad } = useIesCt({
     onSuccess: () => {
       pushBSQ([
         {
@@ -53,7 +43,7 @@ const PsRegisModal: React.FC<IPsRegisModal> = (props) => {
         },
       ]);
       form.resetFields();
-      closePsm();
+      closeCtM();
     },
     onError: () => {
       pushBEQ([
@@ -84,58 +74,41 @@ const PsRegisModal: React.FC<IPsRegisModal> = (props) => {
     }
   };
 
-  const hdlSelectPsProg = (prog: PartnershipProgEnum) => {
-    const next = psProgType.includes(prog) ? psProgType : [...psProgType, prog];
-    form.setFieldsValue({ major: next });
-  };
-
-  const hdlDeselectPsProg = (prog: PartnershipProgEnum) => {
-    const next = psProgType.filter((p: PartnershipProgEnum) => p !== prog);
-    form.setFieldsValue({ major: next });
-  };
-
-  const hdlRegisSend = (values: PsRegisFormVra) => {
+  const hdlCtSend = (values: IesCtFormVra) => {
     const fullPhone = `${values.countryCode}${values.phoneNum}`;
-    sendRegis({
-      trainRegisType: RegisterTrainingTypeEnum.PartnershipHou,
+    sendCtRq({
+      contactType: RegisterTrainingTypeEnum.IesContact,
       name: values.name,
       phone: fullPhone,
       email: values.email,
-      locationRegis: values.regisLocation,
-      psProgTrain: values.major,
+      locationAdvice: values.ctLocation,
+      adviceContent: values.adviceContent,
     });
   };
 
   return (
     <Modal
-      open={openPsM}
+      open={openCtM}
       closable={false}
       maskClosable={false}
       keyboard={false}
       footer={false}
       title={
         <Flex justify='space-between' align='center' className='!px-5 !py-3'>
-          <Row
-            align={'middle'}
-            className={`${dark ? 'bg-gray-500 py-1 px-3 !rounded-xl' : ''} gap-x-1.5`}
-          >
-            <Image src={OUP} preview={false} className='!w-7 !h-7' />
-            <Title className='!m-0 !text-[#28156E]' level={3}>
-              Talk to Our Advisor
+          <Row align={'middle'} className='gap-x-1.5'>
+            <Image src={IES} preview={false} className='!w-15 !h-10' />
+            <Title className='!m-0 !text-blue-500' level={3}>
+              Ask IES for Advice
             </Title>
           </Row>
 
           <Button
-            icon={
-              <CloseCircleFilled
-                className={`${dark ? '!text-gray-400' : '!text-[#28156E]'}`}
-              />
-            }
+            icon={<CloseCircleFilled className='!text-blue-500' />}
             type='link'
             size='large'
             onClick={() => {
               form.resetFields();
-              closePsm();
+              closeCtM();
             }}
           />
         </Flex>
@@ -145,7 +118,7 @@ const PsRegisModal: React.FC<IPsRegisModal> = (props) => {
         form={form}
         layout='vertical'
         className='!px-5 !pb-5'
-        onFinish={hdlRegisSend}
+        onFinish={hdlCtSend}
       >
         <Flex vertical>
           <Form.Item
@@ -205,15 +178,18 @@ const PsRegisModal: React.FC<IPsRegisModal> = (props) => {
             <Input placeholder='Please enter your email' />
           </Form.Item>
           <Form.Item
-            name='regisLocation'
-            label='Enrollment Area'
+            name='ctLocation'
+            label='Consultation Area'
             rules={[
-              { required: true, message: 'Please select your enrollment area' },
+              {
+                required: true,
+                message: 'Please select your consultation area',
+              },
             ]}
             className='!w-full'
           >
             <Select
-              placeholder='Select your enrollment area'
+              placeholder='Select your consultation area'
               options={enrollmentAreaOptions.map((item) => ({
                 ...item,
                 label: item.label,
@@ -221,59 +197,17 @@ const PsRegisModal: React.FC<IPsRegisModal> = (props) => {
             />
           </Form.Item>
           <Form.Item
-            name='major'
-            label='Choose a Major'
+            name='adviceContent'
+            label='What would you like advice on?'
             rules={[
               {
                 required: true,
-                message: 'Please choose a major',
+                message: 'Please enter your consultation topic',
               },
             ]}
             className='w-full'
           >
-            <Input
-              placeholder='Please choose a major ->'
-              readOnly
-              value={
-                psProgType.length > 0
-                  ? `${psProgType.length} major${psProgType.length > 1 ? 's' : ''} selected`
-                  : ''
-              }
-              suffix={
-                psProgType.length > 0 ? (
-                  <Row className='gap-x-3' align={'middle'}>
-                    <CloseCircleFilled
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        form.setFieldsValue({ major: [] });
-                      }}
-                      className='!text-black'
-                    />
-                    <SelectOutlined
-                      className='!text-xl'
-                      style={{ cursor: 'pointer', color: '#28156E' }}
-                      onClick={() => setPsProgTopen(true)}
-                    />
-                  </Row>
-                ) : (
-                  <SelectOutlined
-                    className='!text-xl'
-                    style={{ cursor: 'pointer', color: '#28156E' }}
-                    onClick={() => setPsProgTopen(true)}
-                  />
-                )
-              }
-            />
-            <ProgTypeModal
-              visible={psProgTopen}
-              onClose={() => setPsProgTopen(false)}
-              selectedProgs={psProgType}
-              selectProg={hdlSelectPsProg}
-              deselectProg={hdlDeselectPsProg}
-              options={partnershipProgOptions}
-              bgC='!bg-[#6472cf]'
-              clearAll={() => form.setFieldsValue({ major: [] })}
-            />
+            <Input placeholder='Please enter your consultation topic' />
           </Form.Item>
         </Flex>
 
@@ -286,7 +220,7 @@ const PsRegisModal: React.FC<IPsRegisModal> = (props) => {
             block
             icon={<SendOutlined />}
             loading={isLoad}
-            className='!bg-[#28156E]'
+            className='!bg-blue-500'
           >
             Send
           </Button>
@@ -296,13 +230,13 @@ const PsRegisModal: React.FC<IPsRegisModal> = (props) => {
   );
 };
 
-export default PsRegisModal;
+export default IesCtModal;
 
-export interface PsRegisFormVra {
+export interface IesCtFormVra {
   name: string;
   countryCode: string;
   phoneNum: string;
   email: string;
-  regisLocation: LocationRegis;
-  major: Array<PartnershipProgEnum>;
+  ctLocation: LocationRegis;
+  adviceContent: string;
 }

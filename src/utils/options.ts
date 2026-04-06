@@ -2,7 +2,7 @@ import {
   CapacityRoleEnum,
   InterestProgramEnum,
   PartnershipProgEnum,
-  PsLocationRegis,
+  LocationRegis,
   ShortTermTraingEnum,
 } from './enum';
 
@@ -51,23 +51,23 @@ const capacityRoleEnumsObj: EnumObjBase<typeof CapacityRoleEnum> = {
     value: CapacityRoleEnum.Parent,
   },
 };
-const enrollmentAreaEnumsObj: EnumObjBase<typeof PsLocationRegis> = {
+const enrollmentAreaEnumsObj: EnumObjBase<typeof LocationRegis> = {
   HN: {
     label: 'Ha Noi city',
-    value: PsLocationRegis.HN,
+    value: LocationRegis.HN,
   },
   HCM: {
     label: 'Ho Chi Minh city',
-    value: PsLocationRegis.HCM,
+    value: LocationRegis.HCM,
   },
   Other: {
     label: 'Other',
-    value: PsLocationRegis.Other,
+    value: LocationRegis.Other,
   },
 };
 
-const enrollmentAreaOptions = eNumEntities<typeof PsLocationRegis>(
-  PsLocationRegis,
+const enrollmentAreaOptions = eNumEntities<typeof LocationRegis>(
+  LocationRegis,
 ).keys.map((enumKey) => {
   const { label, value } = enrollmentAreaEnumsObj[enumKey];
   return { label, value };
