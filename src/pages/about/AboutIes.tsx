@@ -10,6 +10,7 @@ import { useMediaQuery } from 'react-responsive';
 import { useSearchParams } from 'react-router-dom';
 import ContactKey from '../home/components/ContactKey';
 import styles from './iesAbout.module.scss';
+import VAMMB from '@/assets/imgs/v_ad_m_mb_banner.png';
 import VAM from '@/assets/imgs/vision_and_mission_bn_page.png';
 import { Text, Title } from '@/components';
 import { PrefetchLink } from '@/components/PrefetchLink';
@@ -131,7 +132,7 @@ const AboutIes: React.FC = () => {
       <div
         className='!w-full !h-full pb-150 mb-10'
         style={{
-          backgroundImage: `url(${VAM})`,
+          backgroundImage: isDark ? `url(${VAMMB})` : `url(${VAM})`,
           backgroundSize: 'cover',
           backgroundPosition: 'center',
           backgroundRepeat: 'no-repeat',

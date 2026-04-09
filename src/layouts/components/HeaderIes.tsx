@@ -2,6 +2,8 @@ import { Flex, Image, Layout } from 'antd';
 import MediaQuery, { useMediaQuery } from 'react-responsive';
 import MegaMbDrawer from './MegaMbDrawer';
 import NavLst from './NavLst';
+import IES_DARK_LOGO_URL from '@/assets/imgs/ies_logo_dark.png';
+import IES_HOZI_DARK_LOGO_URL from '@/assets/imgs/ies_logo_horizo_dark.png';
 import IES_LOGO_MB from '@/assets/imgs/ies_logo_hoziro.png';
 import IES_LOGO_URL from '@/assets/imgs/ies_logo_text.png';
 import { ThemeSwitcher } from '@/components';
@@ -20,6 +22,14 @@ const HeaderIes: React.FC<IHeaderIes> = (props) => {
   const { setDrawerKey } = props;
   const isMb = useMediaQuery({ maxWidth: 1180 });
   const { isDark } = useUserStore();
+
+  const getIesLogo = () => {
+    if (isMb && isDark) return IES_HOZI_DARK_LOGO_URL;
+    if (isMb) return IES_LOGO_MB;
+    if (isDark) return IES_DARK_LOGO_URL;
+    return IES_LOGO_URL;
+  };
+
   return (
     <>
       <MediaQuery minWidth={1025}>
@@ -67,8 +77,8 @@ const HeaderIes: React.FC<IHeaderIes> = (props) => {
           className='!block !flex !items-center'
         >
           <Image
-            className={`${!isMb ? '!w-42 !h-25' : '!w-auto !h-15 !mt-1.5 pr-12 !pt-2 !pl-3'} ${isDark ? 'bg-gray-300 !rounded-xl' : ''}`}
-            src={isMb ? IES_LOGO_MB : IES_LOGO_URL}
+            className={`${!isMb ? '!w-42 !h-25' : '!w-65 !h-full !mt-2'}`}
+            src={getIesLogo()}
             alt='ies_logo'
             preview={false}
           />

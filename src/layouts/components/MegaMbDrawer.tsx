@@ -12,6 +12,7 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useMegaNavData } from '../hooks';
 import styles from '../styles/iesDrawerMb.module.scss';
+import IES_HOZI_DARK_LOGO_URL from '@/assets/imgs/ies_logo_horizo_dark.png';
 import IES_LOGO_MB from '@/assets/imgs/ies_logo_hoziro.png';
 import MNL from '@/assets/imgs/ies_logo_notext.png';
 import { ThemeSwitcher, Title } from '@/components';
@@ -138,7 +139,11 @@ const MegaMbDrawer: React.FC = () => {
               onClick={() => setMbDrawerOpen(false)}
               className='!block !flex !items-center !pr-28'
             >
-              <Image src={IES_LOGO_MB} alt='ies_logo' preview={false} />
+              <Image
+                src={!isDark ? IES_LOGO_MB : IES_HOZI_DARK_LOGO_URL}
+                alt='ies_logo'
+                preview={false}
+              />
             </PrefetchLink>
 
             <Button
