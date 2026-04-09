@@ -12,6 +12,7 @@ import {
   type InputRef,
 } from 'antd';
 import { useRef } from 'react';
+import { useTranslation } from 'react-i18next';
 import { useIesCt } from '@/api';
 import IES from '@/assets/imgs/ies_logo_notext.png';
 import { Title } from '@/components';
@@ -29,6 +30,7 @@ interface IIesCtModal {
 
 const IesCtModal: React.FC<IIesCtModal> = (props) => {
   const { closeCtM, openCtM } = props;
+  const { t } = useTranslation('iesCtModal');
   const [form] = Form.useForm();
   const phoneRef = useRef<InputRef>(null);
   const { pushBSQ, pushBEQ } = useNotifyStore();
@@ -38,8 +40,8 @@ const IesCtModal: React.FC<IIesCtModal> = (props) => {
     onSuccess: () => {
       pushBSQ([
         {
-          title: 'IES College Notify',
-          des: 'Register Send Succesfully',
+          title: t('iesNoti'),
+          des: t('ctSuc'),
         },
       ]);
       form.resetFields();
@@ -48,8 +50,8 @@ const IesCtModal: React.FC<IIesCtModal> = (props) => {
     onError: () => {
       pushBEQ([
         {
-          title: 'IES College Error',
-          des: 'Send failed',
+          title: t('iesErr'),
+          des: t('fail'),
         },
       ]);
     },
@@ -65,9 +67,7 @@ const IesCtModal: React.FC<IIesCtModal> = (props) => {
   const handleBlur = () => {
     const value = phoneRef.current?.input?.value || '';
     if (value.length !== 9) {
-      form.setFields([
-        { name: 'phoneNum', errors: ['Incorrect phone number format!'] },
-      ]);
+      form.setFields([{ name: 'phoneNum', errors: [t('incrNumPhoneFormat')] }]);
     } else {
       form.setFields([{ name: 'phoneNum', errors: [] }]);
       form.setFieldsValue({ phoneNum: value });
@@ -98,7 +98,7 @@ const IesCtModal: React.FC<IIesCtModal> = (props) => {
           <Row align={'middle'} className='gap-x-1.5'>
             <Image src={IES} preview={false} className='!w-15 !h-10' />
             <Title className='!m-0 !text-blue-500' level={3}>
-              Ask IES for Advice
+              {t('ctAd')}
             </Title>
           </Row>
 
@@ -123,20 +123,20 @@ const IesCtModal: React.FC<IIesCtModal> = (props) => {
         <Flex vertical>
           <Form.Item
             name='name'
-            label='Name'
-            rules={[{ required: true, message: 'Please enter your name' }]}
+            label={t('name')}
+            rules={[{ required: true, message: t('enterName') }]}
             className='w-full'
           >
-            <Input placeholder='Please enter your name' />
+            <Input placeholder={t('enterName')} />
           </Form.Item>
-          <Form.Item label='Phone Number' className='w-full'>
+          <Form.Item label={t('phoneNum')} className='w-full'>
             <Space.Compact>
               {/* Country code */}
               <Form.Item
                 name='countryCode'
                 noStyle
                 initialValue='+84'
-                rules={[{ required: true, message: 'Select country code' }]}
+                rules={[{ required: true, message: t('ctryCode') }]}
               >
                 <Select style={{ width: 100 }}>
                   <Select.Option value='+84'>+84</Select.Option>
@@ -148,16 +148,16 @@ const IesCtModal: React.FC<IIesCtModal> = (props) => {
                 name='phoneNum'
                 noStyle
                 rules={[
-                  { required: true, message: 'Please enter your phone number' },
+                  { required: true, message: t('enterPhone') },
                   {
                     pattern: /^[0-9]{9}$/,
-                    message: 'Incorrect phone number format!',
+                    message: t('incrNumPhoneFormat'),
                   },
                 ]}
               >
                 <Input
                   ref={phoneRef}
-                  placeholder='Enter phone number'
+                  placeholder={t('enterPhone')}
                   maxLength={9}
                   onKeyPress={handleKeyPress}
                   onBlur={handleBlur}
@@ -170,26 +170,26 @@ const IesCtModal: React.FC<IIesCtModal> = (props) => {
             name='email'
             label='Email'
             rules={[
-              { required: true, message: 'Please enter your email' },
-              { type: 'email', message: 'Please enter a valid email format' },
+              { required: true, message: t('enterMail') },
+              { type: 'email', message: t('enterVmail') },
             ]}
             className='w-full'
           >
-            <Input placeholder='Please enter your email' />
+            <Input placeholder={t('enterMail')} />
           </Form.Item>
           <Form.Item
             name='ctLocation'
-            label='Consultation Area'
+            label={t('location')}
             rules={[
               {
                 required: true,
-                message: 'Please select your consultation area',
+                message: t('slLoca'),
               },
             ]}
             className='!w-full'
           >
             <Select
-              placeholder='Select your consultation area'
+              placeholder={t('slLoca')}
               options={enrollmentAreaOptions.map((item) => ({
                 ...item,
                 label: item.label,
@@ -198,16 +198,16 @@ const IesCtModal: React.FC<IIesCtModal> = (props) => {
           </Form.Item>
           <Form.Item
             name='adviceContent'
-            label='What would you like advice on?'
+            label={t('adOn')}
             rules={[
               {
                 required: true,
-                message: 'Please enter your consultation topic',
+                message: t('enterAdOn'),
               },
             ]}
             className='w-full'
           >
-            <Input placeholder='Please enter your consultation topic' />
+            <Input placeholder={t('enterAdOn')} />
           </Form.Item>
         </Flex>
 
@@ -222,7 +222,7 @@ const IesCtModal: React.FC<IIesCtModal> = (props) => {
             loading={isLoad}
             className='!bg-blue-500'
           >
-            Send
+            {t('send')}
           </Button>
         </Form.Item>
       </Form>

@@ -1,6 +1,7 @@
 import { HomeFilled, RightOutlined } from '@ant-design/icons';
 import { Breadcrumb, Card, Col, Flex, Image, Pagination } from 'antd';
 import { useEffect, useRef, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { useMediaQuery } from 'react-responsive';
 import { useNavigate } from 'react-router-dom';
 import { useEventLstData } from './hooks';
@@ -12,6 +13,7 @@ import { useUserStore } from '@/store';
 const PAGE_SIZE = 3;
 
 const IesEvents = () => {
+  const { t } = useTranslation('iesEvents');
   const { data } = useEventLstData();
   const mb = useMediaQuery({ maxWidth: 767 });
   const { isDark } = useUserStore();
@@ -58,7 +60,7 @@ const IesEvents = () => {
                 color={isDark ? '#74abf9' : '#545969'}
                 className='!text-[16px] !font-bold'
               >
-                Events
+                {t('events')}
               </Text>
             ),
           },
@@ -66,7 +68,7 @@ const IesEvents = () => {
       />
 
       <Title level={!mb ? 5 : 3} className='!text-center'>
-        Category Archives: Events
+        {t('cta')} {t('events')}
       </Title>
       <Flex vertical className='!space-y-10 !w-full !py-10'>
         {currentData.map((evLst) => (

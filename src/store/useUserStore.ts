@@ -12,23 +12,15 @@ interface IUserStore extends UserStoreInit {
 }
 
 const init: UserStoreInit = {
-  locale: IesClientLangEnum.En_US,
+  locale: (localStorage.getItem('locale') as IesClientLangEnum) || 'en-US',
   isDark: localStorage.getItem('isDark') === 'true' ? true : false,
 };
 const useUserStore = create<IUserStore>((set) => {
-  // locale
-  const locale =
-    typeof window !== 'undefined'
-      ? ((localStorage.getItem('locale') as IesClientLangEnum) ?? init.locale)
-      : init.locale;
-
   //setter
   // locale setter
   const setLocale = (locale: IesClientLangEnum) => {
-    if (typeof window !== 'undefined') {
-      localStorage.setItem('locale', locale);
-    }
     set(() => ({ locale }));
+    localStorage.setItem('locale', locale);
   };
 
   // themes
@@ -40,7 +32,6 @@ const useUserStore = create<IUserStore>((set) => {
 
   return {
     ...init,
-    locale,
     setLocale,
     setIsDark,
   };

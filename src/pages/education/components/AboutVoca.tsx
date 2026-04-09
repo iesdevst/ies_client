@@ -5,78 +5,11 @@ import {
   SketchOutlined,
 } from '@ant-design/icons';
 import { Button, Card, Col, Row } from 'antd';
+import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
 import { Text, Title } from '@/components';
 import { ROUTES } from '@/constants';
 import { ProgTypeEnum } from '@/utils';
-
-const data = [
-  {
-    title: 'IT & Office',
-    items: [
-      {
-        name: 'Applied Informatics',
-        path: `${ROUTES.DEMICS_DETAIL}/${ProgTypeEnum.AppInfo}`,
-        icon: <DesktopOutlined />,
-      },
-      {
-        name: 'Information Technology',
-        path: `${ROUTES.DEMICS_DETAIL}/${ProgTypeEnum.IT}`,
-        icon: <DesktopOutlined />,
-      },
-      {
-        name: 'Industrial & Residential Electrical',
-        path: `${ROUTES.DEMICS_DETAIL}/${ProgTypeEnum.Indus}`,
-        icon: <DesktopOutlined />,
-      },
-    ],
-  },
-  {
-    title: 'Hospitality & Services',
-    items: [
-      {
-        name: 'Hospitality Management',
-        path: `${ROUTES.DEMICS_DETAIL}/${ProgTypeEnum.Hospi}`,
-        icon: <ShopOutlined />,
-      },
-      {
-        name: 'Office Administration',
-        path: `${ROUTES.DEMICS_DETAIL}/${ProgTypeEnum.Office}`,
-        icon: <ShopOutlined />,
-      },
-    ],
-  },
-  {
-    title: 'Business & Management',
-    items: [
-      {
-        name: 'Business Administration',
-        path: `${ROUTES.DEMICS_DETAIL}/${ProgTypeEnum.Business}`,
-        icon: <BankOutlined />,
-      },
-      {
-        name: 'Marketing',
-        path: `${ROUTES.DEMICS_DETAIL}/${ProgTypeEnum.Mkt}`,
-        icon: <BankOutlined />,
-      },
-      {
-        name: 'Accounting',
-        path: `${ROUTES.DEMICS_DETAIL}/${ProgTypeEnum.Accounting}`,
-        icon: <BankOutlined />,
-      },
-    ],
-  },
-  {
-    title: 'Design & Creativity',
-    items: [
-      {
-        name: 'Computer-Aided Design',
-        path: `${ROUTES.DEMICS_DETAIL}/${ProgTypeEnum.CompuDs}`,
-        icon: <SketchOutlined />,
-      },
-    ],
-  },
-];
 
 interface IAboutVoca {
   tl: boolean;
@@ -86,7 +19,76 @@ interface IAboutVoca {
 
 const AboutVoca: React.FC<IAboutVoca> = (props) => {
   const { mb, tl, dark } = props;
+  const { t } = useTranslation('aboutVoca');
   const navigate = useNavigate();
+
+  const data = [
+    {
+      title: t('titIt'),
+      items: [
+        {
+          name: t('appInf'),
+          path: `${ROUTES.DEMICS_DETAIL}/${ProgTypeEnum.AppInfo}`,
+          icon: <DesktopOutlined />,
+        },
+        {
+          name: t('it'),
+          path: `${ROUTES.DEMICS_DETAIL}/${ProgTypeEnum.IT}`,
+          icon: <DesktopOutlined />,
+        },
+        {
+          name: t('indus'),
+          path: `${ROUTES.DEMICS_DETAIL}/${ProgTypeEnum.Indus}`,
+          icon: <DesktopOutlined />,
+        },
+      ],
+    },
+    {
+      title: t('titHos'),
+      items: [
+        {
+          name: t('hosMn'),
+          path: `${ROUTES.DEMICS_DETAIL}/${ProgTypeEnum.Hospi}`,
+          icon: <ShopOutlined />,
+        },
+        {
+          name: t('offAd'),
+          path: `${ROUTES.DEMICS_DETAIL}/${ProgTypeEnum.Office}`,
+          icon: <ShopOutlined />,
+        },
+      ],
+    },
+    {
+      title: t('titBusi'),
+      items: [
+        {
+          name: t('busiAd'),
+          path: `${ROUTES.DEMICS_DETAIL}/${ProgTypeEnum.Business}`,
+          icon: <BankOutlined />,
+        },
+        {
+          name: t('mkt'),
+          path: `${ROUTES.DEMICS_DETAIL}/${ProgTypeEnum.Mkt}`,
+          icon: <BankOutlined />,
+        },
+        {
+          name: t('accounting'),
+          path: `${ROUTES.DEMICS_DETAIL}/${ProgTypeEnum.Accounting}`,
+          icon: <BankOutlined />,
+        },
+      ],
+    },
+    {
+      title: t('titDesi'),
+      items: [
+        {
+          name: t('compuAi'),
+          path: `${ROUTES.DEMICS_DETAIL}/${ProgTypeEnum.CompuDs}`,
+          icon: <SketchOutlined />,
+        },
+      ],
+    },
+  ];
 
   return (
     <div className='py-15 px-5 md:!px-10 lg:!px-30'>
@@ -94,7 +96,7 @@ const AboutVoca: React.FC<IAboutVoca> = (props) => {
         level={mb || tl ? 3 : 1}
         className={`${dark ? '!text-[#9393f1]' : ' !text-gray-500'} !text-center !mb-8`}
       >
-        Intermediate Vocational Programs
+        {t('ivProg')}
       </Title>
 
       <Row gutter={[0, 10]}>
@@ -138,7 +140,7 @@ const AboutVoca: React.FC<IAboutVoca> = (props) => {
                       className='!block !text-black !font-bold hover:!text-white'
                       onClick={() => navigate(item.path)}
                     >
-                      View More
+                      {t('viewMore')}
                     </Button>
                   </Row>
                 ))}

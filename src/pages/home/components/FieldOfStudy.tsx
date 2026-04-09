@@ -1,6 +1,7 @@
 import { RightOutlined } from '@ant-design/icons';
 import { Button, Col, Image, List, Row } from 'antd';
 
+import { useTranslation } from 'react-i18next';
 import { useMediaQuery } from 'react-responsive';
 import { useNavigate } from 'react-router-dom';
 import DVKS from '@/assets/imgs/dv_ks.svg';
@@ -16,56 +17,57 @@ const FieldOfStudy: React.FC = () => {
   const mb = useMediaQuery({ maxWidth: 1024 });
   const navigate = useNavigate();
   const { isDark } = useUserStore();
+  const { t } = useTranslation('fieldOfStudy');
   const fieldProDt = [
     {
       icon: THVP,
-      tit: 'IT & Office',
+      tit: t('itOffice'),
       fieldLst: [
         {
           key: 1,
-          fie: 'Applied Informatics',
+          fie: t('appliedInfo'),
         },
         {
           key: 2,
-          fie: 'Office Administration',
+          fie: t('officeAdmin'),
         },
       ],
     },
     {
       icon: DVKS,
-      tit: 'Hospitality & Services',
+      tit: t('hospServ'),
       fieldLst: [
         {
           key: 1,
-          fie: 'Hotel Management & Business',
+          fie: t('hotelMng'),
         },
       ],
     },
     {
       icon: TKST,
-      tit: 'Design & Creativity',
+      tit: t('designCreat'),
       fieldLst: [
         {
           key: 1,
-          fie: 'Fine Arts Design',
+          fie: t('fineArts'),
         },
       ],
     },
     {
       icon: KDQL,
-      tit: 'Business & Management',
+      tit: t('busiMng'),
       fieldLst: [
         {
           key: 1,
-          fie: 'Business Administration',
+          fie: t('busiAdmin'),
         },
         {
           key: 2,
-          fie: 'Marketing',
+          fie: t('marketing'),
         },
         {
           key: 3,
-          fie: 'Accounting',
+          fie: t('accounting'),
         },
       ],
     },
@@ -82,16 +84,9 @@ const FieldOfStudy: React.FC = () => {
           <Col className='!flex !flex-col col-span-6 md:col-span-2 lg:col-span-2 !gap-y-10'>
             <div className={`${!mb ? 'pl-20' : 'px-5'}`}>
               <Title className={`${isDark ? '!text-white' : ''}`}>
-                Field of study & Academic track
+                {t('sectionTitle')}
               </Title>
-              <Text color={isDark ? 'white' : ''}>
-                IES currently offers 4 training fields with 7 academic programs,
-                focusing on areas that meet the workforce demands of society.
-                The training programs are designed with a practical orientation
-                and are linked with partner universities, providing students
-                with opportunities to continue their studies at higher levels
-                after graduation.
-              </Text>
+              <Text color={isDark ? 'white' : ''}>{t('sectionDesc')}</Text>
               <div>
                 <Button
                   className='!bg-transparent !p-0 mt-3'
@@ -102,7 +97,7 @@ const FieldOfStudy: React.FC = () => {
                     className={`!m-0 ${isDark ? '!text-white' : '!text-black'}`}
                     level={4}
                   >
-                    Explore all Majors
+                    {t('exploreBtn')}
                   </Title>
                   <div className='w-full h-full !bg-[#FBBF24] rounded-r-full flex items-center justify-center px-3'>
                     <RightOutlined className='!text-red-500 !font-semibold ' />

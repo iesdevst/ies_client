@@ -1,6 +1,7 @@
 import { HomeFilled, RightOutlined } from '@ant-design/icons';
 import { Breadcrumb, Card, Col, Flex, Image, Pagination } from 'antd';
 import { useEffect, useRef, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { useMediaQuery } from 'react-responsive';
 import { useNavigate } from 'react-router-dom';
 import { useNewsLstData } from './hooks';
@@ -13,6 +14,7 @@ const PAGE_SIZE = 3;
 
 const IesNews = () => {
   const mb = useMediaQuery({ maxWidth: 767 });
+  const { t } = useTranslation('iesNews');
   const { isDark } = useUserStore();
   const { data } = useNewsLstData();
   const sectionRef = useRef<HTMLDivElement | null>(null);
@@ -58,7 +60,7 @@ const IesNews = () => {
                 color={isDark ? '#74abf9' : '#545969'}
                 className='!text-[16px] !font-bold'
               >
-                News
+                {t('news')}
               </Text>
             ),
           },
@@ -66,7 +68,7 @@ const IesNews = () => {
       />
 
       <Title level={!mb ? 5 : 3} className='!text-center'>
-        Category Archives: News
+        {t('cta')} {t('news')}
       </Title>
       <Flex vertical className='!space-y-10 !w-full !py-10'>
         {currentData.map((newsLst) => (

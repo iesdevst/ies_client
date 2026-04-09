@@ -1,4 +1,9 @@
-import { CloseOutlined, MenuOutlined, RightOutlined } from '@ant-design/icons';
+import {
+  ArrowUpOutlined,
+  CloseOutlined,
+  MenuOutlined,
+  RightOutlined,
+} from '@ant-design/icons';
 import {
   Button,
   Collapse,
@@ -9,6 +14,7 @@ import {
   type CollapseProps,
 } from 'antd';
 import { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
 import { useMegaNavData } from '../hooks';
 import styles from '../styles/iesDrawerMb.module.scss';
@@ -24,6 +30,7 @@ import { useUserStore } from '@/store';
 const MegaMbDrawer: React.FC = () => {
   const { data } = useMegaNavData();
   const { isDark } = useUserStore();
+  const { t } = useTranslation('megaMbDrawer');
   const navigate = useNavigate();
   const [mbDrawerOpen, setMbDrawerOpen] = useState(false);
   const [actClKey, setActClKey] = useState<RoutePath | Array<RoutePath>>();
@@ -63,7 +70,7 @@ const MegaMbDrawer: React.FC = () => {
               className={`${isDark ? '!text-white' : '!text-black'} !m-0 !mr-2`}
               level={5}
             >
-              Overview
+              {t('ovw')}
             </Title>
             <div className='w-full h-full !bg-blue-500 rounded-r-full flex items-center justify-center px-2'>
               <RightOutlined className='!text-white !font-semibold !text-xs' />
@@ -163,26 +170,30 @@ const MegaMbDrawer: React.FC = () => {
           </Row>
         </div>
 
-        <Flex vertical className='!bg-[#354694]'>
+        <Flex vertical className='!bg-[#354694] !pb-3'>
           <Title
             level={5}
             className='!text-center !m-0 !my-3 !text-white !font-bold'
           >
-            IES College
+            {t('iesCl')}
           </Title>
-          <PrefetchLink
-            to={ROUTES.ROOT}
-            className='!text-white !bg-blue-500 pl-5 py-1.5 !text-lg'
-          >
-            IES
-          </PrefetchLink>
+          <Button type='text' className='!block !text-start' disabled>
+            <PrefetchLink
+              to={ROUTES.ROOT}
+              className='!text-white py-1.5 !text-lg '
+            >
+              {t('iesStu')} <ArrowUpOutlined className='rotate-45' />
+            </PrefetchLink>
+          </Button>
 
-          <PrefetchLink
-            to={ROUTES.ROOT}
-            className='!text-white !text-lg pl-5 py-1.5'
-          >
-            IES Staff
-          </PrefetchLink>
+          <Button type='text' className='!block !text-start' disabled>
+            <PrefetchLink
+              to={ROUTES.ROOT}
+              className='!text-white !text-lg py-1.5'
+            >
+              {t('iesStaff')} <ArrowUpOutlined className='rotate-45' />
+            </PrefetchLink>
+          </Button>
         </Flex>
 
         <Collapse

@@ -1,6 +1,7 @@
 import { CloseOutlined, RightOutlined } from '@ant-design/icons';
 import { Button, Drawer, Flex, Image, Row } from 'antd';
 import { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
 import { useMegaNavData } from '../hooks';
 import MNL from '@/assets/imgs/ies_logo_notext.png';
@@ -20,7 +21,7 @@ const MegaDrawer: React.FC<IMegaDrawer> = (props) => {
   const { data } = useMegaNavData();
   const navigate = useNavigate();
   const { isDark } = useUserStore();
-
+  const { t } = useTranslation('megaDrawer');
   const activeMenu = data.find((item) => item.key === activeKey);
 
   const drawerCloseHd = () => {
@@ -102,7 +103,6 @@ const MegaDrawer: React.FC<IMegaDrawer> = (props) => {
               >
                 <Title
                   className={`!font-semibold !m-0 !text-5xl ${isDark ? '!text-white' : '!text-black'}`}
-                  level={1}
                 >
                   {activeMenu.label}
                 </Title>
@@ -132,7 +132,7 @@ const MegaDrawer: React.FC<IMegaDrawer> = (props) => {
                       className={`!m-0 !mr-2 uppercase ${isDark ? '!text-white' : '!text-black'}`}
                       level={4}
                     >
-                      Overview
+                      {t('ovw')}
                     </Title>
                     <div className='w-full h-full !bg-blue-500 rounded-r-full flex items-center justify-center px-3'>
                       <RightOutlined className='!text-white !font-semibold ' />

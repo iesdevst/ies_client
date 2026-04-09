@@ -6,6 +6,7 @@ import {
 } from '@ant-design/icons';
 import { Button, Collapse, Row } from 'antd';
 import { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { useMediaQuery } from 'react-responsive';
 import IesCtModal from './IesCtModal';
 import { IesClSection, Text, Title } from '@/components';
@@ -16,6 +17,7 @@ const ContactKey: React.FC = () => {
   const mnSc = useMediaQuery({ minWidth: 1024, maxWidth: 1279 });
   const { isDark } = useUserStore();
   const [ctOpen, setCtOpen] = useState(false);
+  const { t } = useTranslation('contactKey');
 
   const contacts = [
     {
@@ -25,7 +27,7 @@ const ContactKey: React.FC = () => {
           className={`!m-0 ${isDark ? '!text-white' : '!text-black'}`}
           level={5}
         >
-          ACADEMIC AFFAIRS
+          {t('phc')}
         </Title>
       ),
       children: (
@@ -35,11 +37,10 @@ const ContactKey: React.FC = () => {
               level={5}
               className={`!m-0 ${isDark ? '!text-white' : '!text-black'}`}
             >
-              Office:
+              {t('office')}
             </Title>
             <Text className='mt-0.5' color={isDark ? 'white' : ''}>
-              98 Pham Van Chieu Street, Thong Tay Hoi Ward, Ho Chi Minh City,
-              Vietnam
+              {t('location')}
             </Text>
           </Row>
 
@@ -47,14 +48,14 @@ const ContactKey: React.FC = () => {
             <PhoneFilled
               className={`${isDark ? '!text-white' : '!text-black'}`}
             />
-            <Text color={isDark ? 'white' : ''}>0901.309.866 - EXT: 6969</Text>
+            <Text color={isDark ? 'white' : ''}>0901.309.866</Text>
           </Row>
 
           <Row justify={'start'} align={'middle'} className='gap-x-2'>
             <MailFilled
               className={`${isDark ? '!text-white' : '!text-black'}`}
             />
-            <Text color={isDark ? 'white' : ''}>tuyensinh@cnktdn.edu.vn</Text>
+            <Text color={isDark ? 'white' : ''}>info@iescollege.edu.vn</Text>
           </Row>
         </>
       ),
@@ -66,7 +67,7 @@ const ContactKey: React.FC = () => {
           className={`!m-0 ${isDark ? '!text-white' : '!text-black'}`}
           level={5}
         >
-          DEPARTMENT OF STUDENT AFFAIRS
+          {t('ctsv')}
         </Title>
       ),
       children: (
@@ -76,11 +77,10 @@ const ContactKey: React.FC = () => {
               level={5}
               className={`!m-0 ${isDark ? '!text-white' : '!text-black'}`}
             >
-              Office:
+              {t('office')}
             </Title>
             <Text className='mt-0.5' color={isDark ? 'white' : ''}>
-              98 Pham Van Chieu Street, Thong Tay Hoi Ward, Ho Chi Minh City,
-              Vietnam
+              {t('location')}
             </Text>
           </Row>
 
@@ -88,18 +88,19 @@ const ContactKey: React.FC = () => {
             <PhoneFilled
               className={`${isDark ? '!text-white' : '!text-black'}`}
             />
-            <Text color={isDark ? 'white' : ''}>0901.309.866 - EXT: 6969</Text>
+            <Text color={isDark ? 'white' : ''}>0912.584.800</Text>
           </Row>
 
           <Row justify={'start'} align={'middle'} className='gap-x-2'>
             <MailFilled
               className={`${isDark ? '!text-white' : '!text-black'}`}
             />
-            <Text color={isDark ? 'white' : ''}>tuyensinh@cnktdn.edu.vn</Text>
+            <Text color={isDark ? 'white' : ''}>info@iescollege.edu.vn</Text>
           </Row>
         </>
       ),
     },
+
     {
       key: '3',
       label: (
@@ -107,7 +108,7 @@ const ContactKey: React.FC = () => {
           className={`!m-0 ${isDark ? '!text-white' : '!text-black'}`}
           level={5}
         >
-          INDUSTRY RELATIONS ACADEMIC, CAREER DEVELOPMENT CENTER
+          {t('ts')}
         </Title>
       ),
       children: (
@@ -117,11 +118,10 @@ const ContactKey: React.FC = () => {
               level={5}
               className={`!m-0 ${isDark ? '!text-white' : '!text-black'}`}
             >
-              Office:
+              {t('office')}
             </Title>
             <Text className='mt-0.5' color={isDark ? 'white' : ''}>
-              98 Pham Van Chieu Street, Thong Tay Hoi Ward, Ho Chi Minh City,
-              Vietnam
+              {t('location')}
             </Text>
           </Row>
 
@@ -129,96 +129,14 @@ const ContactKey: React.FC = () => {
             <PhoneFilled
               className={`${isDark ? '!text-white' : '!text-black'}`}
             />
-            <Text color={isDark ? 'white' : ''}>0901.309.866 - EXT: 6969</Text>
+            <Text color={isDark ? 'white' : ''}>0901.309.866</Text>
           </Row>
 
           <Row justify={'start'} align={'middle'} className='gap-x-2'>
             <MailFilled
               className={`${isDark ? '!text-white' : '!text-black'}`}
             />
-            <Text color={isDark ? 'white' : ''}>tuyensinh@cnktdn.edu.vn</Text>
-          </Row>
-        </>
-      ),
-    },
-    {
-      key: '4',
-      label: (
-        <Title
-          className={`!m-0 ${isDark ? '!text-white' : '!text-black'}`}
-          level={5}
-        >
-          DEPARTMENT OF ADMISSION & COMMUNICATION
-        </Title>
-      ),
-      children: (
-        <>
-          <Row justify={'start'} align={'middle'} className='gap-x-1'>
-            <Title
-              level={5}
-              className={`!m-0 ${isDark ? '!text-white' : '!text-black'}`}
-            >
-              Office:
-            </Title>
-            <Text className='mt-0.5' color={isDark ? 'white' : ''}>
-              98 Pham Van Chieu Street, Thong Tay Hoi Ward, Ho Chi Minh City,
-              Vietnam
-            </Text>
-          </Row>
-
-          <Row justify={'start'} align={'middle'} className='gap-x-2 my-1'>
-            <PhoneFilled
-              className={`${isDark ? '!text-white' : '!text-black'}`}
-            />
-            <Text color={isDark ? 'white' : ''}>0901.309.866 - EXT: 6969</Text>
-          </Row>
-
-          <Row justify={'start'} align={'middle'} className='gap-x-2'>
-            <MailFilled
-              className={`${isDark ? '!text-white' : '!text-black'}`}
-            />
-            <Text color={isDark ? 'white' : ''}>tuyensinh@cnktdn.edu.vn</Text>
-          </Row>
-        </>
-      ),
-    },
-    {
-      key: '5',
-      label: (
-        <Title
-          className={`!m-0 ${isDark ? '!text-white' : '!text-black'}`}
-          level={5}
-        >
-          CENTER FOR INFORMATION TECHNOLOGY
-        </Title>
-      ),
-      children: (
-        <>
-          <Row justify={'start'} align={'middle'} className='gap-x-1'>
-            <Title
-              level={5}
-              className={`!m-0 ${isDark ? '!text-white' : '!text-black'}`}
-            >
-              Office:
-            </Title>
-            <Text className='mt-0.5' color={isDark ? 'white' : ''}>
-              98 Pham Van Chieu Street, Thong Tay Hoi Ward, Ho Chi Minh City,
-              Vietnam
-            </Text>
-          </Row>
-
-          <Row justify={'start'} align={'middle'} className='gap-x-2 my-1'>
-            <PhoneFilled
-              className={`${isDark ? '!text-white' : '!text-black'}`}
-            />
-            <Text color={isDark ? 'white' : ''}>0901.309.866 - EXT: 6969</Text>
-          </Row>
-
-          <Row justify={'start'} align={'middle'} className='gap-x-2'>
-            <MailFilled
-              className={`${isDark ? '!text-white' : '!text-black'}`}
-            />
-            <Text color={isDark ? 'white' : ''}>tuyensinh@cnktdn.edu.vn</Text>
+            <Text color={isDark ? 'white' : ''}>info@iescollege.edu.vn</Text>
           </Row>
         </>
       ),
@@ -238,7 +156,7 @@ const ContactKey: React.FC = () => {
             <Title
               className={`${isDark ? '!text-white' : ''} ${!mb ? '' : '!text-center'}`}
             >
-              Key Contact
+              {t('ctKey')}
             </Title>
 
             <div
@@ -265,7 +183,7 @@ const ContactKey: React.FC = () => {
                   className={`!m-0 ${isDark ? '!text-white' : '!text-black'}`}
                   level={4}
                 >
-                  Get Advice
+                  {t('getAdviceBtn')}
                 </Title>
                 <div className='w-full h-full !bg-blue-500 rounded-r-full flex items-center justify-center px-3'>
                   <RightOutlined className='!text-white !font-semibold' />
@@ -275,7 +193,7 @@ const ContactKey: React.FC = () => {
           </div>
         }
         className={`${isDark ? 'bg-gray-700' : 'bg-[#f2f5ff] mt-20'}`}
-        height={mb ? '40vh' : mnSc ? '95vh' : '74vh'}
+        height={mb ? '40vh' : mnSc ? '95vh' : ''}
       />
       <IesCtModal openCtM={ctOpen} closeCtM={() => setCtOpen(false)} />
     </>

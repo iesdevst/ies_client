@@ -24,7 +24,7 @@ type IIesLangProps = Omit<IDropdownAlphaProps, 'items'> & {
 const IesClientLang: React.FunctionComponent<IIesLangProps> = (props) => {
   const { colorT, ...dropdownProps } = props || {};
   const dropRef = useRef<DropdownAlphaRef>(null);
-  const { i18n } = useTranslation();
+  const { i18n } = useTranslation('iesClientLang');
   const { language, changeLanguage } = i18n;
 
   const allLocaleDefinition: AllLocaleDefinition = useMemo(() => {

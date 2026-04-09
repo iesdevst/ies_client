@@ -1,16 +1,9 @@
 import { EyeFilled, FileTextFilled } from '@ant-design/icons';
 import { Button, Col, Flex, List, Row } from 'antd';
+import { useTranslation } from 'react-i18next';
 import { useMediaQuery } from 'react-responsive';
 import AB_VS_CR from '@/assets/imgs/about_vision_crs.png';
 import { Text, Title } from '@/components';
-
-const mission = [
-  'Provide students with a strong academic foundation through quality teaching and learning.',
-  'Create opportunities for students to gain practical experience through internships and real-world projects in collaboration with industry partners.',
-  'Support students in developing professional competencies and practical skills to prepare them for future careers.',
-  'Strengthen the connection between education and industry through cooperative training programs.',
-  'Contribute to the development of education and workforce training that aligns with the evolving needs of the modern labor market.',
-];
 
 interface IAbVision {
   dark: boolean;
@@ -18,8 +11,12 @@ interface IAbVision {
 
 const AbVision: React.FC<IAbVision> = (props) => {
   const { dark } = props;
+  const { t } = useTranslation('abVision');
   const mb = useMediaQuery({ maxWidth: 767 });
   const tablet = useMediaQuery({ minWidth: 768, maxWidth: 1024 });
+
+  const mission = [t('miss1'), t('miss2'), t('miss3'), t('miss4'), t('miss5')];
+
   return (
     <div>
       <div className='!w-full !h-full'>
@@ -42,18 +39,18 @@ const AbVision: React.FC<IAbVision> = (props) => {
               align={'middle'}
             >
               <Title className={`${dark ? '!text-white' : '!text-black'} !m-0`}>
-                Shaping{' '}
+                {t('heading1')}
               </Title>
-              <Title className='!m-0 !text-[#199BB2]'>the Future </Title>
+              <Title className='!m-0 !text-[#199BB2]'> {t('heading2')}</Title>
             </Row>
             <Row justify={'center'} align={'middle'}>
               <Text
                 color={dark ? 'white' : ''}
                 className={`${mb ? 'my-2' : tablet ? '!text-2xl my-5' : '!text-2xl !font-semibold !w-5/6 ml-5 mt-5'}`}
               >
-                The guiding principles that shape IES College’s education
+                {t('subDesc')}
                 <br />
-                and future workforce development.
+                {t('subDesc2')}
               </Text>
             </Row>
           </Col>
@@ -64,7 +61,7 @@ const AbVision: React.FC<IAbVision> = (props) => {
               type='default'
               className={`!border-none !bg-[#5EA61F] !rounded-3xl !px-7 !py-6 !font-semibold !text-lg hover:!bg-[#b1e087] hover:!text-black ${mb || tablet ? '!w-full' : ''}`}
             >
-              Contact Now
+              {t('contactBtn')}
             </Button>
           </div>
         </Flex>
@@ -93,18 +90,14 @@ const AbVision: React.FC<IAbVision> = (props) => {
                 >
                   <EyeFilled className='!text-2xl !text-white !bg-[#5EA61F] px-1 py-1 rounded-md' />
                   <Title level={3} className='!text-white !m-0'>
-                    IES Vision
+                    {t('visionTitle')}
                   </Title>
                 </Row>
 
                 <Text
                   className={`!text-white !w-full italic ${!mb ? '!text-xl !leading-9' : ''}`}
                 >
-                  To become a reputable educational institution that develops a
-                  highly capable workforce equipped with strong academic
-                  knowledge and practical skills, empowering graduates to
-                  confidently participate and compete in the era of global
-                  integration.
+                  {t('visionDesc')}
                 </Text>
               </Col>
 
@@ -123,7 +116,7 @@ const AbVision: React.FC<IAbVision> = (props) => {
                 >
                   <FileTextFilled className='!text-2xl !text-[#5EA61F] rounded-md' />
                   <Title level={3} className='!text-white !m-0'>
-                    Our Mission
+                    {t('missionTitle')}
                   </Title>
                 </Row>
 

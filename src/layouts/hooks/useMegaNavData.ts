@@ -1,16 +1,18 @@
+import { useTranslation } from 'react-i18next';
 import { ROUTES, type RoutePath } from '@/constants';
 
 export const useMegaNavData = (): { data: Array<MegaNavItem> } => {
+  const { t } = useTranslation('useMegaNavData');
   const data: Array<MegaNavItem> = [
     {
       key: ROUTES.ABOUT,
-      label: 'About',
+      label: t('about'),
       overW: true,
       sections: [
         {
           links: [
-            { label: 'Vision & Mission', route: ROUTES.ABOUT_VISION },
-            { label: 'Core Values', route: ROUTES.ABOUT_COREVALUES },
+            { label: t('vAm'), route: ROUTES.ABOUT_VISION },
+            { label: t('values'), route: ROUTES.ABOUT_COREVALUES },
           ],
         },
       ],
@@ -18,57 +20,55 @@ export const useMegaNavData = (): { data: Array<MegaNavItem> } => {
 
     {
       key: ROUTES.ADMISSIONS,
-      label: 'Admissions',
+      label: t('admiss'),
       overW: false,
       sections: [
         {
-          title: 'Short-term Training Programs',
+          title: t('shortTt'),
           links: [
             {
-              label: 'Short-term Training Page',
+              label: t('shortTl'),
               route: ROUTES.ADMISSIONS_SC_MIX_OVW,
             },
           ],
         },
         {
-          title: 'Intermediate Vocational Training Programs',
+          title: t('ivTit'),
           links: [
-            { label: 'All Courses', route: ROUTES.ADMISSIONSVOCA_ALL },
-            { label: 'IT & Office', route: ROUTES.ADMISSIONSVOCA_IT },
+            { label: t('allc'), route: ROUTES.ADMISSIONSVOCA_ALL },
+            { label: t('it'), route: ROUTES.ADMISSIONSVOCA_IT },
             {
-              label: 'Hospitality & Services',
+              label: t('hos'),
               route: ROUTES.ADMISSIONSVOCA_HOSPI,
             },
             {
-              label: 'Design & Creativity',
+              label: t('ds'),
               route: ROUTES.ADMISSIONSVOCA_DESIGN,
             },
             {
-              label: 'Business & Management',
+              label: t('busi'),
               route: ROUTES.ADMISSIONSVOCA_BUSI,
             },
           ],
         },
         {
-          title: 'Partnership Training',
-          links: [
-            { label: 'Ha Noi Open University', route: ROUTES.PARTNERSHIP },
-          ],
+          title: t('partTr'),
+          links: [{ label: t('hnLabel'), route: ROUTES.PARTNERSHIP }],
         },
       ],
     },
 
     {
       key: ROUTES.ACADEMICS,
-      label: 'Academics',
+      label: t('acade'),
       overW: false,
       sections: [
         {
-          title: 'IES Academics',
+          title: t('iesAca'),
           links: [
-            { label: 'Academics Page', route: ROUTES.ACADEMICS },
+            { label: t('acadeL'), route: ROUTES.ACADEMICS },
 
-            { label: 'Digital Library', route: ROUTES.DGTLIB },
+            { label: t('digiLib'), route: ROUTES.DGTLIB },
           ],
         },
       ],
@@ -90,16 +90,16 @@ export const useMegaNavData = (): { data: Array<MegaNavItem> } => {
 
     {
       key: ROUTES.NEWS,
-      label: 'News & Events',
+      label: t('newAe'),
       overW: false,
       sections: [
         {
-          title: 'IES news',
-          links: [{ label: 'Latest News', route: ROUTES.NEWS }],
+          title: t('iesNs'),
+          links: [{ label: t('ltNs'), route: ROUTES.NEWS }],
         },
         {
-          title: 'IES events',
-          links: [{ label: 'Events', route: ROUTES.EVENTS }],
+          title: t('iesEv'),
+          links: [{ label: t('evs'), route: ROUTES.EVENTS }],
         },
       ],
     },

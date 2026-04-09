@@ -1,3 +1,4 @@
+import { useTranslation } from 'react-i18next';
 import { useMediaQuery } from 'react-responsive';
 import DHHCMTS from '@/assets/imgs/dhhcmts_avt.avif';
 import VAM from '@/assets/imgs/ies_vam.png';
@@ -11,18 +12,16 @@ import { useUserStore } from '@/store';
 const VaM: React.FC = () => {
   const mb = useMediaQuery({ maxWidth: 1024 });
   const { isDark } = useUserStore();
+  const { t } = useTranslation('vaM');
   const topicDt = [
     {
-      tit: 'Vision & Mission',
-      des: `Our vision is to provide society with skilled professionals who combine strong 
-      knowledge with practical abilities. We prepare students through solid education and
-    real-world experience to contribute positively to society.`,
+      tit: t('sectionTitle'),
+      des: t('topic1Desc'),
       bgColor: 'bg-[#1f2251]',
     },
     {
-      tit: 'Educational philosophy',
-      des: `Our educational philosophy is built on passion, responsibility, creativity, perseverance,
-    and unity. IESCOLLEGE is committed to quality education while encouraging innovation and collaboration to contribute value to society.`,
+      tit: t('topic2Title'),
+      des: t('topic2Desc'),
       bgColor: 'bg-[#d72134]',
     },
   ];
@@ -30,17 +29,17 @@ const VaM: React.FC = () => {
   const methodPr = [
     {
       thodAv: TSLM,
-      meTit: 'Short-term Training Admissions',
+      meTit: t('method1'),
       methodGo: ROUTES.ADMISSIONS_SC_MIX_OVW,
     },
     {
       thodAv: TSTC,
-      meTit: 'Intermediate Vocational Admissions',
+      meTit: t('method2'),
       methodGo: ROUTES.ADMISSIONSVOCA_ALL,
     },
     {
       thodAv: DHHCMTS,
-      meTit: 'Hanoi Open University Admissions',
+      meTit: t('method3'),
       methodGo: ROUTES.PARTNERSHIP,
     },
   ];
@@ -51,16 +50,16 @@ const VaM: React.FC = () => {
       mb={mb}
       dark={isDark}
       topImaTit={TPI}
-      topTitBut='Discover Now'
+      topTitBut={t('topImageBtn')}
       topicCt={topicDt}
-      botTit='Admissions Methods & Our Academics'
+      botTit={t('bottomTitle')}
       lstBut='Explore More'
-      botBut='Know more about academics'
+      botBut={t('listBtn')}
       methodLst={methodPr}
       navigateGo={ROUTES.ACADEMICS}
       aboutTogo={ROUTES.ABOUT_OVERVIEW}
       topicI={VAM}
-      className={`py-15 ${isDark ? '!bg-[#253933]' : '!bg-[#f2f5ff]'} ${!mb ? 'px-20 mt-20' : 'px-5'}`}
+      className={`py-15 ${isDark ? '!bg-[#253933]' : '!bg-[#f2f5ff]'} ${!mb ? 'px-20 mt-20' : 'px-5 mt-10'}`}
     />
   );
 };

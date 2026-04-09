@@ -6,6 +6,7 @@ import {
 } from '@ant-design/icons';
 import { Breadcrumb, Tabs, Tooltip, type TabsProps } from 'antd';
 import { lazy, useCallback, useMemo } from 'react';
+import { useTranslation } from 'react-i18next';
 import { useMediaQuery } from 'react-responsive';
 import { useSearchParams } from 'react-router-dom';
 import ContactKey from '../home/components/ContactKey';
@@ -25,6 +26,7 @@ const AboutIes: React.FC = () => {
   const [abtSearchParams, setAbtSearchParams] = useSearchParams();
   const abtActiveKey = abtSearchParams.get('tab') || AboutTab.Aboverview;
   const { isDark } = useUserStore();
+  const { t } = useTranslation('aboutIes');
   const mb = useMediaQuery({ maxWidth: 767 });
   const tablet = useMediaQuery({ minWidth: 768, maxWidth: 1024 });
 
@@ -37,10 +39,10 @@ const AboutIes: React.FC = () => {
             level={4}
             className={`${abtActiveKey === AboutTab.Aboverview ? '!text-white' : '!text-black'} !m-0`}
           >
-            Overview
+            {t('ovw')}
           </Title>
         ) : (
-          <Tooltip title='Overview'>
+          <Tooltip title={t('ovw')}>
             <ProfileOutlined
               className={`${abtActiveKey === AboutTab.Aboverview ? '!text-white' : '!text-black'} !text-lg`}
             />
@@ -55,10 +57,10 @@ const AboutIes: React.FC = () => {
             level={4}
             className={`${abtActiveKey === AboutTab.Vision ? '!text-white' : '!text-black'} !m-0`}
           >
-            Vision
+            {t('vs')}
           </Title>
         ) : (
-          <Tooltip title='Vision'>
+          <Tooltip title={t('vs')}>
             <EyeOutlined
               className={`${abtActiveKey === AboutTab.Vision ? '!text-white' : '!text-black'} !text-lg`}
             />
@@ -73,10 +75,10 @@ const AboutIes: React.FC = () => {
             level={4}
             className={`${abtActiveKey === AboutTab.Corevalues ? '!text-white' : '!text-black'} !m-0`}
           >
-            Core Values
+            {t('vl')}
           </Title>
         ) : (
-          <Tooltip title='Core Values'>
+          <Tooltip title={t('vl')}>
             <HeartOutlined
               className={`${abtActiveKey === AboutTab.Corevalues ? '!text-white' : '!text-black'} !text-lg`}
             />
@@ -115,14 +117,14 @@ const AboutIes: React.FC = () => {
                   fontSize: '15px',
                 }}
               >
-                Dasboard
+                {t('dashB')}
               </PrefetchLink>
             ),
           },
           {
             title: (
               <Text color='#199b9f' className='!text-[16px] !font-semibold'>
-                About IES
+                {t('abIes')}
               </Text>
             ),
           },

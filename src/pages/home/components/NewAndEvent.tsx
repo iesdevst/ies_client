@@ -1,4 +1,5 @@
 import { Col, Image, Typography } from 'antd';
+import { useTranslation } from 'react-i18next';
 import { useMediaQuery } from 'react-responsive';
 import EVAI from '@/assets/imgs/events_ai.png';
 import KTDT from '@/assets/imgs/ktdt_nfc.jpg';
@@ -17,47 +18,48 @@ const { Paragraph } = Typography;
 const NewAndEvent: React.FC = () => {
   const mb = useMediaQuery({ maxWidth: 1024 });
   const { isDark } = useUserStore();
+  const { t } = useTranslation('newAndEvent');
   const topSn = [
     {
       sti: EVAI,
-      tit: 'Build a Web Dashboard with Claude Code....',
-      specTit: 'IES workshop\n Claude Code - AI agent',
+      tit: t('workshop'),
+      specTit: t('workshopTit'),
     },
     {
       sti: HTDHM,
-      tit: "EHOU organizes a specialized class: 'Understanding Business Law and Economic Contracts' for students",
-      specTit: 'Educational Cooperation',
+      tit: t('eduCoop1'),
+      specTit: t('eduCoopTit'),
     },
     {
       sti: LTS,
-      tit: 'Admissions for Law Program – Hanoi Open University 2022',
-      specTit: 'Admissions',
+      tit: t('admissions'),
+      specTit: t('admissTit'),
     },
     {
       sti: MISA,
-      tit: 'Event on the signing of the software transfer agreement to support training between MISA Joint Stock Company and Sai Gon Information Technology and Economics College (IESCOLLEGE).',
-      specTit: 'Educational Cooperation',
+      tit: t('eduCoop2'),
+      specTit: t('eduCoopTit'),
     },
   ];
 
   const featCdt = [
     {
       imgC: KTDT,
-      tit: 'Electronics Engineering',
+      tit: t('elecEng'),
       butCard: '20-03-2026',
-      des: 'Electrical and Electronics Engineering Technology: The Appeal of a Key Industrial Sector',
+      des: t('elecDesc'),
     },
     {
       imgC: KTO,
-      tit: 'Automotive Engineering',
+      tit: t('autoEng'),
       butCard: '01-03-2026',
-      des: 'Automotive Engineering Technology: A “High-Value” Career with a Promising Future',
+      des: t('autoDesc'),
     },
     {
       imgC: TKDH,
-      tit: 'Graphic Design',
+      tit: t('graphicD'),
       butCard: '09-02-2026',
-      des: 'Graphic Design: A Promising Field of Study',
+      des: t('graphicDesc'),
     },
   ];
 
@@ -65,13 +67,13 @@ const NewAndEvent: React.FC = () => {
     <IesClSection
       id='newAe'
       layout='newsFeature'
-      title='Featured News & Events'
+      title={t('featNews')}
       feature={true}
       mb={mb}
       navigateGo={ROUTES.NEWS}
       className={`mt-15 ${!mb ? 'px-10' : 'px-2'}`}
       featCard={featCdt}
-      butTit='View all News & Events'
+      butTit={t('viewAll')}
       children={
         <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8 mb-3.5'>
           <div>
@@ -79,14 +81,13 @@ const NewAndEvent: React.FC = () => {
               <Image src={TSN} preview={false} />
               <div className={`${!mb ? 'w-4/5' : ''}`}>
                 <Title className='!text-blue-500' level={5}>
-                  ACADEMICS & QUALITY ASSURANCE
+                  {t('acadQA')}
                 </Title>
                 <Text
                   className='!text-xl !font-bold'
                   color={isDark ? 'white' : ''}
                 >
-                  Prof. Ngô Bảo Châu: “A university degree isn’t necessarily
-                  required.”
+                  {t('profQuote')}
                 </Text>
               </div>
             </Col>

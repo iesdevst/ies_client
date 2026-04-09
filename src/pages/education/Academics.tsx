@@ -1,5 +1,6 @@
 import { HomeFilled, RightOutlined } from '@ant-design/icons';
 import { Breadcrumb, Flex, Image } from 'antd';
+import { useTranslation } from 'react-i18next';
 import { useMediaQuery } from 'react-responsive';
 import ContactKey from '../home/components/ContactKey';
 import AboutPartnership from './components/AboutPartnership';
@@ -14,6 +15,7 @@ import { ROUTES } from '@/constants';
 import { useUserStore } from '@/store';
 
 const Academics: React.FC = () => {
+  const { t } = useTranslation('academics');
   const mb = useMediaQuery({ maxWidth: 767 });
   const tl = useMediaQuery({ minWidth: 768, maxWidth: 1024 });
   const { isDark } = useUserStore();
@@ -49,25 +51,25 @@ const Academics: React.FC = () => {
             level={mb || tl ? 5 : 1}
             className='!m-0 !text-gray-500 italic'
           >
-            Holistic Development
+            {t('heroTitle1')}
           </Title>
 
           <Title
             level={mb || tl ? 5 : 1}
             className={`${mb || tl ? '!m-0 !mb-1' : '!m-0 !mb-4 '} !text-gray-500 italic`}
           >
-            Through Programs
+            {t('heroTitle2')}
           </Title>
           <div className='ml-5'>
             <Title
-              className={`${mb || tl ? '!text-xl' : '!text-5xl !mb-3'} !m-0 !font-bold`}
+              className={`${mb || tl ? '!text-xl' : '!text-5xl !mb-3'} !m-0 !font-bold !text-blue-500`}
             >
-              DISTINCTIVE
+              {t('heroHeading1')}
             </Title>
             <Title
-              className={`!m-0 ${mb || tl ? '!text-xl' : '!text-5xl'} !font-bold`}
+              className={`!m-0 ${mb || tl ? '!text-xl' : '!text-5xl'} !font-bold !text-blue-500`}
             >
-              EDUCATION
+              {t('heroHeading2')}
             </Title>
           </div>
         </div>
@@ -101,7 +103,7 @@ const Academics: React.FC = () => {
                 color={isDark ? '#9393f1' : '#545969'}
                 className='!text-[16px] !font-bold'
               >
-                Academics Page
+                {t('pageTitle')}
               </Text>
             ),
           },
@@ -116,7 +118,7 @@ const Academics: React.FC = () => {
           <Title
             className={`${isDark ? '!text-[#9393f1]' : '!text-gray-500'} !text-center mx-5`}
           >
-            Our Programs
+            {t('sectionTitle')}
           </Title>
 
           <div
@@ -127,19 +129,7 @@ const Academics: React.FC = () => {
           color={isDark ? 'white' : ''}
           className={`!block ${!mb ? '!text-lg' : '!leading-6'}`}
         >
-          Saigon College of Information Technology and Economics (IES College)
-          offers a flexible and diverse curriculum designed to develop practical
-          skills and adaptability to market demands. With three main training
-          pathways – advanced intermediate programs, short-term courses, and
-          joint enrollment with Hanoi Open University – IES College provides
-          students with multiple learning options tailored to their career
-          goals. The modern e-learning format allows learners to manage their
-          time effectively, combining online study with practical experience,
-          while enhancing technological and economic management skills in the
-          digital environment. IES College’s programs not only equip students
-          with specialized knowledge but also foster creative thinking,
-          adaptability, and entrepreneurial spirit, opening up broad career
-          opportunities in a globally connected world.
+          {t('sectionDesc')}
         </Text>
         <Flex justify='center' align='center' className='!mt-6'>
           <Image src={ACDA} preview={false} className='rounded-3xl' />

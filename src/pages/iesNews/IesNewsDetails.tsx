@@ -1,6 +1,7 @@
 import { RightOutlined } from '@ant-design/icons';
 import { Breadcrumb, Flex, Image } from 'antd';
 import { useMemo } from 'react';
+import { useTranslation } from 'react-i18next';
 import { useMediaQuery } from 'react-responsive';
 import { useParams } from 'react-router-dom';
 import ContactKey from '../home/components/ContactKey';
@@ -11,6 +12,7 @@ import { ROUTES } from '@/constants';
 
 const IesNewsDetails = () => {
   const { id } = useParams();
+  const { t } = useTranslation('iesNewsDetails');
   const { data } = useNewsData();
   const mb = useMediaQuery({ maxWidth: 767 });
   const tl = useMediaQuery({ minWidth: 768, maxWidth: 1024 });
@@ -36,14 +38,14 @@ const IesNewsDetails = () => {
                     fontSize: '15px',
                   }}
                 >
-                  News Page
+                  {t('newsP')}
                 </PrefetchLink>
               ),
             },
             {
               title: (
                 <Text color='#545969' className='!text-[16px] !font-bold'>
-                  News Details
+                  {t('newsD')}
                 </Text>
               ),
             },
@@ -53,7 +55,7 @@ const IesNewsDetails = () => {
           level={mb || tl ? 3 : 5}
           className='!text-center italic !text-black'
         >
-          News
+          {t('news')}
         </Title>
         {detailDt && (
           <section>

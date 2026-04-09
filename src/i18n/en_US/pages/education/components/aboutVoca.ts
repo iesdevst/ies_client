@@ -1,0 +1,17 @@
+export default {
+  titIt: 'IT & Office',
+  appInf: 'Applied Informatics',
+  it: 'Information Technology',
+  indus: 'Industrial & Residential Electrical',
+  titHos: 'Hospitality & Services',
+  hosMn: 'Hospitality Management',
+  offAd: 'Office Administration',
+  titBusi: 'Business & Management',
+  busiAd: 'Business Administration',
+  mkt: 'Marketing',
+  accounting: 'Accounting',
+  titDesi: 'Design & Creativity',
+  compuAi: 'Computer-Aided Design',
+  ivProg: 'Intermediate Vocational Programs',
+  viewMore: 'View More',
+};

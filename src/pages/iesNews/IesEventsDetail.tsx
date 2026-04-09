@@ -1,6 +1,7 @@
 import { RightOutlined } from '@ant-design/icons';
 import { Breadcrumb, Flex, Image } from 'antd';
 import { useMemo } from 'react';
+import { useTranslation } from 'react-i18next';
 import { useMediaQuery } from 'react-responsive';
 import { useParams } from 'react-router-dom';
 import ContactKey from '../home/components/ContactKey';
@@ -10,6 +11,7 @@ import { PrefetchLink } from '@/components/PrefetchLink';
 import { ROUTES } from '@/constants';
 
 const IesEventsDetails = () => {
+  const { t } = useTranslation('iesEventsDetail');
   const { id } = useParams();
   const { data } = useEventsData();
   const mb = useMediaQuery({ maxWidth: 767 });
@@ -36,14 +38,14 @@ const IesEventsDetails = () => {
                     fontSize: '15px',
                   }}
                 >
-                  Events Page
+                  {t('eventP')}
                 </PrefetchLink>
               ),
             },
             {
               title: (
                 <Text color='#545969' className='!text-[16px] !font-bold'>
-                  Event Details
+                  {t('eventD')}
                 </Text>
               ),
             },
@@ -53,7 +55,7 @@ const IesEventsDetails = () => {
           level={mb || tl ? 3 : 5}
           className='!text-center italic !text-black'
         >
-          Event
+          {t('events')}
         </Title>
         {detailDt && (
           <section>

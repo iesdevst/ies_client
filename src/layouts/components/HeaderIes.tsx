@@ -1,4 +1,5 @@
 import { Flex, Image, Layout } from 'antd';
+import { useTranslation } from 'react-i18next';
 import MediaQuery, { useMediaQuery } from 'react-responsive';
 import MegaMbDrawer from './MegaMbDrawer';
 import NavLst from './NavLst';
@@ -22,6 +23,7 @@ const HeaderIes: React.FC<IHeaderIes> = (props) => {
   const { setDrawerKey } = props;
   const isMb = useMediaQuery({ maxWidth: 1180 });
   const { isDark } = useUserStore();
+  const { t } = useTranslation('headerIes');
 
   const getIesLogo = () => {
     if (isMb && isDark) return IES_HOZI_DARK_LOGO_URL;
@@ -51,14 +53,14 @@ const HeaderIes: React.FC<IHeaderIes> = (props) => {
               to={ROUTES.ROOT}
               className='!text-white !bg-blue-500 px-3 py-0.5 rounded-sm !text-lg'
             >
-              IES College
+              {t('iesCl')}
             </PrefetchLink>
             <PrefetchLink to={ROUTES.ROOT} className='!text-white !text-lg'>
-              IES Student
+              {t('iesStu')}
             </PrefetchLink>
 
             <PrefetchLink to={ROUTES.ROOT} className='!text-white !text-lg'>
-              IES College Staff
+              {t('iesStaff')}
             </PrefetchLink>
             <IesClientLang colorT='!text-white' />
             <ThemeSwitcher />

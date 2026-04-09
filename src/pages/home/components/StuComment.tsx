@@ -1,4 +1,5 @@
 import { Col, Flex, Image } from 'antd';
+import { useTranslation } from 'react-i18next';
 import { useMediaQuery } from 'react-responsive';
 import STUC from '@/assets/imgs/stu_cm.jpg';
 import STBG from '@/assets/imgs/stu_cmt_bg.png';
@@ -6,6 +7,7 @@ import { IesClSection } from '@/components';
 
 const StuComment = () => {
   const mb = useMediaQuery({ maxWidth: 1024 });
+  const { t } = useTranslation('stuComment');
   return (
     <IesClSection
       id='stuCm'
@@ -13,7 +15,7 @@ const StuComment = () => {
       divider={false}
       children={
         <div className='relative w-full h-full'>
-          <div className='absolute inset-0 bg-[#090a20]/90'></div>
+          <div className='absolute w-full h-full inset-0 bg-[#090a20]/90'></div>
           <Flex
             vertical={mb}
             justify='space-between'
@@ -38,23 +40,11 @@ const StuComment = () => {
                 <p
                   className={`!text-[#e0e1e2]  ${!mb ? 'pr-7 !text-[24px]' : '!text-sm'}`}
                 >
-                  After returning from the United States, I decided to study
-                  Events Management at Van Lang University, specifically the
-                  International Education Institute. We have many opportunities
-                  to practice - apply to practice in a very professional
-                  learning environment. Moreover, my teachers eagerly support me
-                  not only in terms of professional knowledge but also in terms
-                  of life knowledge in order to help me grow every day. I also
-                  had the chance to participate in extracurricular activities,
-                  workshops, and other fun activities with my friends. I came
-                  here and made true friends; we learned together, grew
-                  together, and faced challenges together. In my youth, I am
-                  proud to say the International Education Institute was the
-                  right choice.
+                  {t('stuVoid')}
                 </p>
                 <div className='space-y-1'>
-                  <p className='!text-white !font-bold text-xl'>Le Duyen</p>
-                  <p className='text-[#a5a7b9] text-lg'>Student</p>
+                  <p className='!text-white !font-bold text-xl'>{t('name')}</p>
+                  <p className='text-[#a5a7b9] text-lg'>{t('stu')}</p>
                 </div>
               </Col>
             </div>
