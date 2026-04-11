@@ -1,5 +1,5 @@
 export default {
-  iesCl: 'IES của tôi',
-  iesStu: 'IES trang học sinh',
-  iesStaff: 'IES trang nhân viên',
+  iesCl: 'Trang Chủ',
+  iesStu: 'Học Sinh',
+  iesStaff: 'Nhân Viên',
 };

@@ -1,5 +1,6 @@
 import { RightOutlined } from '@ant-design/icons';
 import { Breadcrumb } from 'antd';
+import { useTranslation } from 'react-i18next';
 import { useMediaQuery } from 'react-responsive';
 import ContactKey from '../home/components/ContactKey';
 import VocaTrainIntro from './components/VocaTrainIntro';
@@ -12,6 +13,7 @@ import { useUserStore } from '@/store';
 
 const IesVocaTraining = () => {
   const mb = useMediaQuery({ maxWidth: 767 });
+  const { t } = useTranslation('iesVocaTraining');
   const tablet = useMediaQuery({ minWidth: 768, maxWidth: 1024 });
   const { isDark } = useUserStore();
   return (
@@ -35,14 +37,14 @@ const IesVocaTraining = () => {
                   fontSize: '15px',
                 }}
               >
-                Dasboard
+                {t('dashB')}
               </PrefetchLink>
             ),
           },
           {
             title: (
               <Text color='#3984ed' className='!text-[16px] !font-semibold'>
-                Intermediate Vocational
+                {t('iv')}
               </Text>
             ),
           },

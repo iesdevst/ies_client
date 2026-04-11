@@ -1,4 +1,5 @@
 import { Col, Image, Row } from 'antd';
+import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
 import AISAB from '@/assets/imgs/ai_short_ab.jpg';
 import BSAB from '@/assets/imgs/baking_short_ab.jpeg';
@@ -6,13 +7,6 @@ import CSAB from '@/assets/imgs/cook_short_ab.jpeg';
 import MSAB from '@/assets/imgs/mix_short_ab.jpeg';
 import { Text, Title } from '@/components';
 import { ROUTES } from '@/constants';
-
-const abShortDt = [
-  { tit: 'Beverage Preparation', img: MSAB, path: ROUTES.ADMISSIONS_SC_MIX },
-  { tit: 'Professional Cooking', img: CSAB, path: ROUTES.ADMISSIONS_SC_COOK },
-  { tit: 'Baking', img: BSAB, path: ROUTES.ADMISSIONS_SC_BAKING },
-  { tit: 'AI Applications', img: AISAB, path: ROUTES.ADMISSIONS_SC_UAI },
-];
 
 interface IAboutShortTerm {
   mb: boolean;
@@ -22,12 +16,20 @@ interface IAboutShortTerm {
 
 const AboutShortTerm: React.FC<IAboutShortTerm> = (props) => {
   const { mb, tl, dark } = props;
+  const { t } = useTranslation('aboutShortTerm');
   const navigate = useNavigate();
+
+  const abShortDt = [
+    { tit: t('bever'), img: MSAB, path: ROUTES.ADMISSIONS_SC_MIX },
+    { tit: t('proCook'), img: CSAB, path: ROUTES.ADMISSIONS_SC_COOK },
+    { tit: t('baking'), img: BSAB, path: ROUTES.ADMISSIONS_SC_BAKING },
+    { tit: t('aiApp'), img: AISAB, path: ROUTES.ADMISSIONS_SC_UAI },
+  ];
 
   return (
     <div className={`${dark ? '!bg-gray-800' : 'bg-[#E3E5E7]'} py-20`}>
       <div className='text-center'>
-        <Title className='!m-0 !text-6xl'>Our</Title>
+        <Title className='!m-0 !text-6xl'>{t('our')}</Title>
         <Title
           className={`${!mb ? '!text-6xl' : '!text-5xl'} !text-[#C2C8D0] !m-0`}
           style={{
@@ -35,7 +37,7 @@ const AboutShortTerm: React.FC<IAboutShortTerm> = (props) => {
             WebkitTextFillColor: '#C2C8D0',
           }}
         >
-          Training Journey
+          {t('trainJ')}
         </Title>
 
         <div className={`${!mb ? '!mt-4' : '!mt-8'}`}>
@@ -43,13 +45,13 @@ const AboutShortTerm: React.FC<IAboutShortTerm> = (props) => {
             color={dark ? 'white' : ''}
             className={`!block !font-bold ${!mb ? '!text-lg' : '!text-sm'}`}
           >
-            Embark on a learning journey with us – grow your skills,
+            {t('embarText')}
           </Text>
           <Text
             color={dark ? 'white' : ''}
             className={`!block !font-bold ${!mb ? '!text-lg' : '!text-sm'}`}
           >
-            achieve success, and see results quickly
+            {t('embarText2')}
           </Text>
         </div>
       </div>

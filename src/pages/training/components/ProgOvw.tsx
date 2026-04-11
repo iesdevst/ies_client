@@ -1,4 +1,5 @@
 import { Col } from 'antd';
+import { useTranslation } from 'react-i18next';
 import { useMediaQuery } from 'react-responsive';
 import type { OvwDetail, OvwScDetail } from '../hooks';
 import { Text, Title } from '@/components';
@@ -11,7 +12,7 @@ interface IProgOvwProps {
 
 const ProgOvw: React.FC<IProgOvwProps> = (props) => {
   const isMb = useMediaQuery({ maxWidth: 1024 });
-
+  const { t } = useTranslation('progOvw');
   const { ovwDt, ovwScDt, dark } = props;
 
   return (
@@ -26,7 +27,7 @@ const ProgOvw: React.FC<IProgOvwProps> = (props) => {
                 className={`!m-0 ${dark ? '!text-[#ca78ca]' : ' !text-[#BE3691]'}`}
                 level={3}
               >
-                I. Introduction
+                I. {t('intro')}
               </Title>
               <Text
                 color={dark ? 'white' : ''}
@@ -43,7 +44,7 @@ const ProgOvw: React.FC<IProgOvwProps> = (props) => {
                 className={`!m-0 ${dark ? '!text-[#ca78ca]' : ' !text-[#BE3691]'}`}
                 level={3}
               >
-                II. Training Objectives
+                II. {t('trainObj')}
               </Title>
               <Text
                 color={dark ? 'white' : ''}
@@ -60,8 +61,7 @@ const ProgOvw: React.FC<IProgOvwProps> = (props) => {
                 className={`!m-0 ${dark ? '!text-[#ca78ca]' : ' !text-[#BE3691]'}`}
                 level={3}
               >
-                {' '}
-                III. Training Content
+                III. {t('trainObj')}
               </Title>
               <Text
                 color={dark ? 'white' : ''}
@@ -78,7 +78,7 @@ const ProgOvw: React.FC<IProgOvwProps> = (props) => {
                 className={`!m-0 ${dark ? '!text-[#ca78ca]' : ' !text-[#BE3691]'}`}
                 level={3}
               >
-                IV. Career Opportunities
+                IV. {t('career')}
               </Title>
               <Text
                 color={dark ? 'white' : ''}
@@ -104,7 +104,7 @@ const ProgOvw: React.FC<IProgOvwProps> = (props) => {
                 className={`!m-0 ${dark ? '!text-[#98c3ff]' : ' !text-[#6472cf]'}`}
                 level={3}
               >
-                I. Introduction
+                I. {t('intro')}
               </Title>
               <Text
                 color={dark ? 'white' : ''}
@@ -121,7 +121,7 @@ const ProgOvw: React.FC<IProgOvwProps> = (props) => {
                 className={`!m-0 ${dark ? '!text-[#98c3ff]' : ' !text-[#6472cf]'}`}
                 level={3}
               >
-                II. Training Objectives
+                II. {t('trainObj')}
               </Title>
               <Text
                 color={dark ? 'white' : ''}
@@ -138,7 +138,7 @@ const ProgOvw: React.FC<IProgOvwProps> = (props) => {
                 className={`!m-0 ${dark ? '!text-[#98c3ff]' : ' !text-[#6472cf]'}`}
                 level={3}
               >
-                III. Training Content
+                III. {t('trainCt')}
               </Title>
               <Text
                 color={dark ? 'white' : ''}
@@ -155,7 +155,7 @@ const ProgOvw: React.FC<IProgOvwProps> = (props) => {
                 className={`!m-0 ${dark ? '!text-[#98c3ff]' : ' !text-[#6472cf]'}`}
                 level={3}
               >
-                IV. Career Opportunities
+                IV. {t('career')}
               </Title>
               <Text
                 color={dark ? 'white' : ''}

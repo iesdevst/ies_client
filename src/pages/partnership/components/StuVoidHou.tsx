@@ -1,4 +1,5 @@
 import { Col, Flex, Image, Row } from 'antd';
+import { useTranslation } from 'react-i18next';
 import { useMediaQuery } from 'react-responsive';
 import HTDSV from '@/assets/imgs/htd_stu_void.jpg';
 import LDVSV from '@/assets/imgs/ldv_stu_void.jpg';
@@ -6,30 +7,31 @@ import NMHSV from '@/assets/imgs/nmh_stu_void.jpg';
 import HOUAVT from '@/assets/imgs/open_uni_partnership.png';
 import { IesClSection, Text, Title } from '@/components';
 
-const stuVoidDt = [
-  {
-    img: HTDSV,
-    decs: 'The distance learning program at the university has saved me time and money because I don’t need to go to campus. I can watch lecture videos and learn on my own, anytime and anywhere I want.',
-    author: 'Hoang Trung Dung',
-    role: 'Bachelor of Information Technology',
-  },
-  {
-    img: LDVSV,
-    decs: 'The training program has given me a wealth of useful knowledge. I can review the material whenever I need, thanks to the rich textbooks and resources, as well as the flexible learning schedule.',
-    author: 'Le Diep Vy',
-    role: 'Bachelor of Accounting',
-  },
-  {
-    img: NMHSV,
-    decs: 'Thanks to online learning, I’ve had the chance to earn two bachelor’s degrees. Holding a degree from Hanoi Open University has made finding a job much easier and more straightforward.',
-    author: 'Nguyen Minh Huyen',
-    role: 'Bachelor of Business Administration',
-  },
-];
-
 const StuVoidHou: React.FC = () => {
+  const { t } = useTranslation('stuVoidHou');
   const mb = useMediaQuery({ maxWidth: 767 });
   const isTablet = useMediaQuery({ minWidth: 768, maxWidth: 1024 });
+
+  const stuVoidDt = [
+    {
+      img: HTDSV,
+      decs: t('s1d'),
+      author: t('s1a'),
+      role: t('s1r'),
+    },
+    {
+      img: LDVSV,
+      decs: t('s2d'),
+      author: t('s2a'),
+      role: t('s2r'),
+    },
+    {
+      img: NMHSV,
+      decs: t('s3d'),
+      author: t('s3a'),
+      role: t('s3r'),
+    },
+  ];
 
   return (
     <IesClSection
@@ -48,10 +50,10 @@ const StuVoidHou: React.FC = () => {
             />
             <div className='text-center'>
               <Title level={!mb ? 1 : 5} className='!m-0 !text-white'>
-                Student Voices on E-Learning
+                {t('t')}
               </Title>
               <Title level={!mb ? 3 : 4} className='!m-0 italic !text-white'>
-                Hanoi Open University
+                {t('sub')}
               </Title>
             </div>
           </Flex>
@@ -60,7 +62,7 @@ const StuVoidHou: React.FC = () => {
               level={4}
               className='!font-black !text-white rounded-4xl bg-gray-500 p-2'
             >
-              Listen to Their Voices
+              {t('listen')}
             </Title>
           </div>
 

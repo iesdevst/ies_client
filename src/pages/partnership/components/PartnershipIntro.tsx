@@ -1,6 +1,7 @@
 import { ArrowUpOutlined, LinkOutlined } from '@ant-design/icons';
 import { Button, Col, Flex, Image, Row } from 'antd';
 import { useCallback } from 'react';
+import { useTranslation } from 'react-i18next';
 import { useMediaQuery } from 'react-responsive';
 import {
   Link,
@@ -23,45 +24,6 @@ const ManualLink: React.FC<LinkProps> = (props) => {
   return <Link {...linkProps} />;
 };
 
-const srcollData = [
-  {
-    label: 'Why Educore',
-    img: WSB,
-    to: `${ROUTES.PARTNERSHIP}#why-choose-hou`,
-    idTo: 'why-choose-hou',
-  },
-  {
-    label: 'Policy Note',
-    img: PNSB,
-    to: `${ROUTES.PARTNERSHIP}#policyNote`,
-    idTo: 'policyNote',
-  },
-  {
-    label: 'Skip Exam',
-    img: SESB,
-    to: `${ROUTES.PARTNERSHIP}#skip-exam`,
-    idTo: 'skip-exam',
-  },
-  {
-    label: 'Student Void',
-    img: SVSB,
-    to: `${ROUTES.PARTNERSHIP}#stu-void`,
-    idTo: 'stu-void',
-  },
-  {
-    label: 'Us Stat',
-    img: SSB,
-    to: `${ROUTES.PARTNERSHIP}#partnership-prog`,
-    idTo: 'partnership-prog',
-  },
-  {
-    label: 'Consult With Us',
-    img: CUSB,
-    to: `${ROUTES.PARTNERSHIP}#partnership-regis`,
-    idTo: 'partnership-regis',
-  },
-];
-
 interface IPartnershipIntro {
   openRegisInSec: () => void;
   dark: boolean;
@@ -70,6 +32,7 @@ interface IPartnershipIntro {
 const PartnershipIntro: React.FC<IPartnershipIntro> = (props) => {
   const { openRegisInSec, dark } = props;
   const mb = useMediaQuery({ maxWidth: 767 });
+  const { t } = useTranslation('partnershipIntro');
   const isTablet = useMediaQuery({ minWidth: 768, maxWidth: 1024 });
 
   const navigate = useNavigate();
@@ -86,6 +49,46 @@ const PartnershipIntro: React.FC<IPartnershipIntro> = (props) => {
     },
     [location.pathname, navigate],
   );
+
+  const srcollData = [
+    {
+      label: t('why'),
+      img: WSB,
+      to: `${ROUTES.PARTNERSHIP}#why-choose-hou`,
+      idTo: 'why-choose-hou',
+    },
+    {
+      label: t('policy'),
+      img: PNSB,
+      to: `${ROUTES.PARTNERSHIP}#policyNote`,
+      idTo: 'policyNote',
+    },
+    {
+      label: t('skip'),
+      img: SESB,
+      to: `${ROUTES.PARTNERSHIP}#skip-exam`,
+      idTo: 'skip-exam',
+    },
+    {
+      label: t('stu'),
+      img: SVSB,
+      to: `${ROUTES.PARTNERSHIP}#stu-void`,
+      idTo: 'stu-void',
+    },
+    {
+      label: t('stat'),
+      img: SSB,
+      to: `${ROUTES.PARTNERSHIP}#partnership-prog`,
+      idTo: 'partnership-prog',
+    },
+    {
+      label: t('consult'),
+      img: CUSB,
+      to: `${ROUTES.PARTNERSHIP}#partnership-regis`,
+      idTo: 'partnership-regis',
+    },
+  ];
+
   return (
     <IesClSection
       id='partnership-intro'
@@ -94,7 +97,7 @@ const PartnershipIntro: React.FC<IPartnershipIntro> = (props) => {
       children={
         <section>
           <div
-            className={`grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 ${!mb ? ' !py-15 !px-20' : '!pt-6'}`}
+            className={`grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 ${mb ? '!pt-6' : isTablet ? 'p-7' : '!py-15 !px-20'}`}
           >
             <Flex
               vertical
@@ -106,15 +109,12 @@ const PartnershipIntro: React.FC<IPartnershipIntro> = (props) => {
               <Row justify={'center'} align={'middle'} className='gap-x-2'>
                 <LinkOutlined className='!text-[#1667d9]' />
                 <Title className='!m-0 !text-[#1667d9]' level={5}>
-                  Admissions Partnership
+                  {t('adm')}
                 </Title>
               </Row>
               <div>
                 <Title className={`!m-0 ${!mb ? '!text-5xl' : '!text-2xl'}`}>
-                  HANOI OPEN UNIVERSITY
-                </Title>
-                <Title className={`!m-0 ${!mb ? '!text-5xl' : '!text-2xl'}`}>
-                  E-LEARNING TRAINING CENTER
+                  {t('uni')}
                 </Title>
               </div>
               <Col>
@@ -122,14 +122,14 @@ const PartnershipIntro: React.FC<IPartnershipIntro> = (props) => {
                   color={dark ? 'white' : ''}
                   className={`!block ${!mb ? '!text-lg' : '!text-md'}`}
                 >
-                  No need to go to campus — still get a university degree
+                  {t('noCampus')}
                 </Text>
 
                 <Text
                   color={dark ? 'white' : ''}
                   className={`!block ${!mb ? '!text-lg' : '!text-md'}`}
                 >
-                  Is a university degree holding back your dreams?
+                  {t('qDream')}
                 </Text>
               </Col>
               <Row
@@ -140,15 +140,15 @@ const PartnershipIntro: React.FC<IPartnershipIntro> = (props) => {
                 <Image
                   src={OUP}
                   preview={false}
-                  className={`${dark ? 'bg-white p-1 !rounded-xl' : ''} ${!mb ? '!w-20 !h-20' : '!w-12 !h-12'}`}
+                  className={`${dark ? 'bg-white p-1 !rounded-xl' : ''} ${mb ? '!w-12 !h-12' : isTablet ? '!w-15  !h-15' : '!w-20 !h-20'}`}
                 />
                 <Button
                   type='default'
-                  className={`!border-[#1667d9] !text-[#1667d9] !font-bold !bg-white !rounded-full ${!mb ? '!py-6 !px-20' : '!px-8 !py-4'}`}
+                  className={`!border-[#1667d9] !text-[#1667d9] !font-bold !bg-white !rounded-full ${mb ? '!px-8 !py-4' : isTablet ? '!px-15 !py-4' : '!py-6 !px-20'}`}
                   size={!mb ? 'large' : 'small'}
                   onClick={openRegisInSec}
                 >
-                  Register Now
+                  {t('reg')}
                 </Button>
               </Row>
             </Flex>

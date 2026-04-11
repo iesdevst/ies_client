@@ -1,4 +1,5 @@
 import { Col } from 'antd';
+import { useTranslation } from 'react-i18next';
 import { useMediaQuery } from 'react-responsive';
 import type { AdmissInfo, AdmissScInfo } from '../hooks';
 import { Text, Title } from '@/components';
@@ -11,6 +12,7 @@ interface IAdmissInfoProps {
 
 const AdmissInfo: React.FC<IAdmissInfoProps> = (props) => {
   const { admisInfoDt, admisScInfoDt, dark } = props;
+  const { t } = useTranslation('admissInfo');
   const isMb = useMediaQuery({ maxWidth: 1024 });
 
   return (
@@ -25,7 +27,7 @@ const AdmissInfo: React.FC<IAdmissInfoProps> = (props) => {
                 className={`!m-0 ${dark ? '!text-[#ca78ca]' : ' !text-[#BE3691]'}`}
                 level={3}
               >
-                I. Admission Requirements
+                I. {t('admissRe')}
               </Title>
               <Text
                 color={dark ? 'white' : ''}
@@ -42,7 +44,7 @@ const AdmissInfo: React.FC<IAdmissInfoProps> = (props) => {
                 className={`!m-0 ${dark ? '!text-[#ca78ca]' : ' !text-[#BE3691]'}`}
                 level={3}
               >
-                II. Admission Method
+                II. {t('admissMt')}
               </Title>
               <Text
                 color={dark ? 'white' : ''}
@@ -68,7 +70,7 @@ const AdmissInfo: React.FC<IAdmissInfoProps> = (props) => {
                 className={`!m-0 ${dark ? '!text-[#98c3ff]' : ' !text-[#6472cf]'}`}
                 level={3}
               >
-                I. Admission Requirements
+                I. {t('admissRe')}
               </Title>
               <Text
                 color={dark ? 'white' : ''}
@@ -85,7 +87,7 @@ const AdmissInfo: React.FC<IAdmissInfoProps> = (props) => {
                 className={`!m-0 ${dark ? '!text-[#98c3ff]' : ' !text-[#6472cf]'}`}
                 level={3}
               >
-                II. Admission Method
+                II. {t('admissMt')}
               </Title>
               <Text
                 color={dark ? 'white' : ''}

@@ -1,5 +1,6 @@
 import { MessageOutlined } from '@ant-design/icons';
 import { Col, Flex, Row } from 'antd';
+import { useTranslation } from 'react-i18next';
 import { useMediaQuery } from 'react-responsive';
 import { useLearnTfData } from '../hooks';
 import { Text, Title } from '@/components';
@@ -10,24 +11,26 @@ interface ILearningTranform {
 
 const LearningTranform: React.FC<ILearningTranform> = (props) => {
   const { dark } = props;
+  const { t } = useTranslation('learningTranform');
   const { data } = useLearnTfData();
   const mb = useMediaQuery({ maxWidth: 1023 });
   return (
     <section className='px-5 mt-15 md:mt-0 lg:mt-0 md:px-15 lg:px-15'>
       <Title level={4} className='!font-bold !text-center !text-[#7680c4]'>
-        Shared Experiences
+        {t('share')}
       </Title>
       <Flex vertical={mb} justify='space-between' align='center'>
         <div className={`${!mb ? '!text-start' : '!text-center mb-5'}`}>
-          <Title className='!m-0 !uppercase'>What Our</Title>
-          <Title className='!m-0 !uppercase'>Students Say</Title>
+          <Title className='!m-0 !uppercase'> {t('what')}</Title>
+          <Title className='!m-0 !uppercase'> {t('stuS')}</Title>
         </div>
         <Text
           color={dark ? 'white' : ''}
           className='!inline-block !font-bold md:!text-lg lg:!text-lg !ml-6'
         >
-          Discover real experiences and feedback from our learners <br />
-          as they progress through our short-term training programs.
+          {t('learnTxt1')}
+          <br />
+          {t('learnTxt2')}
         </Text>
       </Flex>
 

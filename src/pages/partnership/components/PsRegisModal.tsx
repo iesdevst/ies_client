@@ -16,6 +16,8 @@ import {
   type InputRef,
 } from 'antd';
 import { useRef, useState } from 'react';
+import { useTranslation } from 'react-i18next';
+import { useMediaQuery } from 'react-responsive';
 import { usePsRegisSend } from '@/api';
 import OUP from '@/assets/imgs/open_uni_partnership.png';
 import { Title } from '@/components';
@@ -37,6 +39,9 @@ interface IPsRegisModal {
 
 const PsRegisModal: React.FC<IPsRegisModal> = (props) => {
   const { closePsm, openPsM, dark } = props;
+  const mb = useMediaQuery({ maxWidth: 767 });
+  const { t } = useTranslation('psRegisModal');
+  const { t: optionsT } = useTranslation('options');
   const [form] = Form.useForm();
   const [psProgTopen, setPsProgTopen] = useState(false);
   const psProgType = Form.useWatch('major', form) || [];
@@ -48,8 +53,8 @@ const PsRegisModal: React.FC<IPsRegisModal> = (props) => {
     onSuccess: () => {
       pushBSQ([
         {
-          title: 'IES College Notify',
-          des: 'Register Send Succesfully',
+          title: t('notiTit'),
+          des: t('ns'),
         },
       ]);
       form.resetFields();
@@ -58,8 +63,8 @@ const PsRegisModal: React.FC<IPsRegisModal> = (props) => {
     onError: () => {
       pushBEQ([
         {
-          title: 'IES College Error',
-          des: 'Send failed',
+          title: t('errTit'),
+          des: t('ne'),
         },
       ]);
     },
@@ -75,9 +80,7 @@ const PsRegisModal: React.FC<IPsRegisModal> = (props) => {
   const handleBlur = () => {
     const value = phoneRef.current?.input?.value || '';
     if (value.length !== 9) {
-      form.setFields([
-        { name: 'phoneNum', errors: ['Incorrect phone number format!'] },
-      ]);
+      form.setFields([{ name: 'phoneNum', errors: [t('fpf')] }]);
     } else {
       form.setFields([{ name: 'phoneNum', errors: [] }]);
       form.setFieldsValue({ phoneNum: value });
@@ -121,7 +124,7 @@ const PsRegisModal: React.FC<IPsRegisModal> = (props) => {
           >
             <Image src={OUP} preview={false} className='!w-7 !h-7' />
             <Title className='!m-0 !text-[#28156E]' level={3}>
-              Talk to Our Advisor
+              {t('mt')}
             </Title>
           </Row>
 
@@ -148,95 +151,100 @@ const PsRegisModal: React.FC<IPsRegisModal> = (props) => {
         onFinish={hdlRegisSend}
       >
         <Flex vertical>
-          <Form.Item
-            name='name'
-            label='Name'
-            rules={[{ required: true, message: 'Please enter your name' }]}
-            className='w-full'
+          <Flex
+            vertical={mb}
+            justify='space-between'
+            align='center'
+            gap={mb ? 0 : 15}
           >
-            <Input placeholder='Please enter your name' />
-          </Form.Item>
-          <Form.Item label='Phone Number' className='w-full'>
-            <Space.Compact>
-              {/* Country code */}
-              <Form.Item
-                name='countryCode'
-                noStyle
-                initialValue='+84'
-                rules={[{ required: true, message: 'Select country code' }]}
-              >
-                <Select style={{ width: 100 }}>
-                  <Select.Option value='+84'>+84</Select.Option>
-                </Select>
-              </Form.Item>
+            <Form.Item
+              name='name'
+              label={t('fn')}
+              rules={[{ required: true, message: t('fnp') }]}
+              className={mb ? '!w-full' : '!w-5/6'}
+            >
+              <Input placeholder={t('fnp')} />
+            </Form.Item>
+            <Form.Item label={t('fp')} className='w-full'>
+              <Space.Compact className='!w-full'>
+                {/* Country code */}
+                <Form.Item
+                  name='countryCode'
+                  noStyle
+                  initialValue='+84'
+                  rules={[{ required: true, message: t('fpc') }]}
+                >
+                  <Select style={{ width: 100 }}>
+                    <Select.Option value='+84'>+84</Select.Option>
+                  </Select>
+                </Form.Item>
 
-              {/* Phone number */}
-              <Form.Item
-                name='phoneNum'
-                noStyle
-                rules={[
-                  { required: true, message: 'Please enter your phone number' },
-                  {
-                    pattern: /^[0-9]{9}$/,
-                    message: 'Incorrect phone number format!',
-                  },
-                ]}
-              >
-                <Input
-                  ref={phoneRef}
-                  placeholder='Enter phone number'
-                  maxLength={9}
-                  onKeyPress={handleKeyPress}
-                  onBlur={handleBlur}
-                  style={{ width: 'calc(100% - 100px)' }}
-                />
-              </Form.Item>
-            </Space.Compact>
-          </Form.Item>
+                {/* Phone number */}
+                <Form.Item
+                  name='phoneNum'
+                  noStyle
+                  rules={[
+                    { required: true, message: t('fpe') },
+                    {
+                      pattern: /^[0-9]{9}$/,
+                      message: t('fpf'),
+                    },
+                  ]}
+                >
+                  <Input
+                    ref={phoneRef}
+                    placeholder={t('fpp')}
+                    maxLength={9}
+                    onKeyPress={handleKeyPress}
+                    onBlur={handleBlur}
+                    style={{ width: 'calc(100% - 100px)' }}
+                  />
+                </Form.Item>
+              </Space.Compact>
+            </Form.Item>
+          </Flex>
           <Form.Item
             name='email'
             label='Email'
             rules={[
-              { required: true, message: 'Please enter your email' },
-              { type: 'email', message: 'Please enter a valid email format' },
+              { required: true, message: t('fep') },
+              { type: 'email', message: t('fef') },
             ]}
             className='w-full'
           >
-            <Input placeholder='Please enter your email' />
+            <Input placeholder={t('fep')} />
           </Form.Item>
           <Form.Item
             name='regisLocation'
-            label='Enrollment Area'
-            rules={[
-              { required: true, message: 'Please select your enrollment area' },
-            ]}
+            label={t('fl')}
+            rules={[{ required: true, message: t('fle') }]}
             className='!w-full'
           >
             <Select
-              placeholder='Select your enrollment area'
+              placeholder={t('flp')}
               options={enrollmentAreaOptions.map((item) => ({
                 ...item,
-                label: item.label,
+                label: optionsT(item.label),
               }))}
             />
           </Form.Item>
           <Form.Item
             name='major'
-            label='Choose a Major'
+            label={t('fm')}
             rules={[
               {
                 required: true,
-                message: 'Please choose a major',
+                message: t('fme'),
               },
             ]}
             className='w-full'
           >
             <Input
-              placeholder='Please choose a major ->'
+              placeholder={t('fme')}
               readOnly
               value={
                 psProgType.length > 0
-                  ? `${psProgType.length} major${psProgType.length > 1 ? 's' : ''} selected`
+                  ? `${psProgType.length} ${t('fms')}${psProgType.length > 1 ? t('fms2') : ''} ${t('fms3')}`
                   : ''
               }
               suffix={
@@ -247,18 +255,24 @@ const PsRegisModal: React.FC<IPsRegisModal> = (props) => {
                         e.stopPropagation();
                         form.setFieldsValue({ major: [] });
                       }}
-                      className='!text-black'
+                      className={`${dark ? '!text-white' : '!text-black'}`}
                     />
                     <SelectOutlined
                       className='!text-xl'
-                      style={{ cursor: 'pointer', color: '#28156E' }}
+                      style={{
+                        cursor: 'pointer',
+                        color: !dark ? '#28156E' : '#3677d2',
+                      }}
                       onClick={() => setPsProgTopen(true)}
                     />
                   </Row>
                 ) : (
                   <SelectOutlined
                     className='!text-xl'
-                    style={{ cursor: 'pointer', color: '#28156E' }}
+                    style={{
+                      cursor: 'pointer',
+                      color: !dark ? '#28156E' : '#3677d2',
+                    }}
                     onClick={() => setPsProgTopen(true)}
                   />
                 )
@@ -278,7 +292,7 @@ const PsRegisModal: React.FC<IPsRegisModal> = (props) => {
         </Flex>
 
         {/* 送出  */}
-        <Form.Item className='!mb-0'>
+        <Form.Item className='!mb-0 !mt-2'>
           <Button
             type='default'
             htmlType='submit'
@@ -288,7 +302,7 @@ const PsRegisModal: React.FC<IPsRegisModal> = (props) => {
             loading={isLoad}
             className='!bg-[#28156E]'
           >
-            Send
+            {t('bs')}
           </Button>
         </Form.Item>
       </Form>

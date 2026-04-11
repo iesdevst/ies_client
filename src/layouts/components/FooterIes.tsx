@@ -3,7 +3,7 @@ import { useTranslation } from 'react-i18next';
 import MediaQuery from 'react-responsive';
 
 import fb from '@/assets/imgs/fb_logo.png';
-import LogoFooter from '@/assets/imgs/ies_logo_text.png';
+import LogoFooter from '@/assets/imgs/ies_logo_dark.png';
 import zalo from '@/assets/imgs/zl_logo.png';
 import { Text, Title } from '@/components';
 

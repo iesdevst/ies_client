@@ -6,46 +6,10 @@ import {
   QuestionCircleFilled,
 } from '@ant-design/icons';
 import { Button, Col, Flex, Image, List, Row } from 'antd';
+import { useTranslation } from 'react-i18next';
 import { useMediaQuery } from 'react-responsive';
 import PI from '@/assets/imgs/partnership_info_sec.jpeg';
 import { IesClSection, Text, Title } from '@/components';
-
-const questIf = [
-  {
-    key: 1,
-    label:
-      'Struggling to find good jobs, low pay,\n limited growth opportunities?',
-  },
-  {
-    key: 2,
-    label: 'Low confidence, avoiding study, too old?',
-  },
-  {
-    key: 3,
-    label: 'Too busy for school, facing high tuition\n and living costs?',
-  },
-];
-
-const titpoint = [
-  {
-    key: 1,
-    icon: <FileTextFilled />,
-    tit: 'Learn Online Anywhere',
-    desc: 'Study anytime, anywhere with multimedia lessons including slides, videos, and audio. Participate in interactive online classes without the need to commute, making learning flexible and convenient for your schedule.',
-  },
-  {
-    key: 2,
-    icon: <ClockCircleFilled />,
-    tit: 'Save Time & Money',
-    desc: 'Cut down on travel and living expenses while still completing your courses. Take online tests and assignments from home, and only visit campus when absolutely necessary, saving both time and costs.',
-  },
-  {
-    key: 3,
-    icon: <BookFilled />,
-    tit: 'Get a Valuable Degree',
-    desc: 'Earn an accredited degree equivalent to traditional programs, giving you the same recognition and career opportunities. No entrance exams are required, allowing you to advance your education and career with ease.',
-  },
-];
 
 interface IPartnershipInfo {
   openRegisInSec: () => void;
@@ -55,7 +19,44 @@ interface IPartnershipInfo {
 const PartnershipInfo: React.FC<IPartnershipInfo> = (props) => {
   const { openRegisInSec, dark } = props;
   const mb = useMediaQuery({ maxWidth: 768 });
+  const { t } = useTranslation('partnershipInfo');
   const isTablet = useMediaQuery({ minWidth: 768, maxWidth: 1024 });
+
+  const questIf = [
+    {
+      key: 1,
+      label: t('q1'),
+    },
+    {
+      key: 2,
+      label: t('q2'),
+    },
+    {
+      key: 3,
+      label: t('q3'),
+    },
+  ];
+
+  const titpoint = [
+    {
+      key: 1,
+      icon: <FileTextFilled />,
+      tit: t('p1t'),
+      desc: t('p1d'),
+    },
+    {
+      key: 2,
+      icon: <ClockCircleFilled />,
+      tit: t('p2t'),
+      desc: t('p2d'),
+    },
+    {
+      key: 3,
+      icon: <BookFilled />,
+      tit: t('p3t'),
+      desc: t('p3d'),
+    },
+  ];
 
   return (
     <IesClSection
@@ -74,17 +75,17 @@ const PartnershipInfo: React.FC<IPartnershipInfo> = (props) => {
               className='!h-full !pt-10'
               gap={!mb ? 50 : 20}
             >
-              <Title level={mb || isTablet ? 2 : 1} className='!m-0'>
-                Does not having a <br />
-                degree hold you back <br />
-                or push you forward?
+              <Title level={mb || isTablet ? 2 : 3} className='!m-0'>
+                {t('tit1')} <br />
+                {t('tit2')} <br />
+                {t('tit3')}
               </Title>
               <Button
                 type='default'
                 className='!w-4/5 !rounded-lg !py-4.5 !text-lg !bg-[#1667d9]'
                 onClick={openRegisInSec}
               >
-                Enroll now <ArrowRightOutlined />
+                {t('enroll')} <ArrowRightOutlined />
               </Button>
 
               <List
@@ -98,7 +99,7 @@ const PartnershipInfo: React.FC<IPartnershipInfo> = (props) => {
                         style={{
                           whiteSpace: 'pre-line',
                         }}
-                        className='font-bold'
+                        className='font-bold !text-lg'
                       >
                         {item.label}
                       </Text>
@@ -129,7 +130,7 @@ const PartnershipInfo: React.FC<IPartnershipInfo> = (props) => {
                   </Title>
                   <Text
                     color={dark ? 'white' : '#6d6969'}
-                    className='!block !text-[14.5px]'
+                    className='!block !text-lg'
                     style={{
                       whiteSpace: 'pre-line',
                     }}

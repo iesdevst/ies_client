@@ -1,4 +1,5 @@
 import { Row, Col, Image, Flex } from 'antd';
+import { useTranslation } from 'react-i18next';
 import { useMediaQuery } from 'react-responsive';
 import IRL from '@/assets/imgs/ies_logo_notext.png';
 import SRSL from '@/assets/imgs/short_term_left_slide.jpeg';
@@ -7,6 +8,7 @@ import { Title } from '@/components';
 
 const ShortCrsIntro = () => {
   const mb = useMediaQuery({ maxWidth: 767 });
+  const { t } = useTranslation('shortCrsIntro');
   return (
     <section>
       {!mb ? (
@@ -34,22 +36,22 @@ const ShortCrsIntro = () => {
 
               <div>
                 <Title level={5} className='!uppercase !font-bold'>
-                  IES College
+                  {t('shortTitleTop')}
                 </Title>
                 <Title level={2} className='!m-0 !uppercase !font-bold '>
-                  Short-term
+                  {t('shortTitleMain1')}
                 </Title>
                 <Title level={2} className='!m-0 !uppercase  !font-bold'>
-                  Training Programs
+                  {t('shortTitleMain2')}
                 </Title>
               </div>
 
               <div>
                 <Title level={5} className='!m-0 !uppercase !font-bold'>
-                  IES College builds skills
+                  {t('shortDesc1')}
                 </Title>
                 <Title level={5} className='!m-0 !uppercase !font-bold'>
-                  through short-term training
+                  {t('shortDesc2')}
                 </Title>
               </div>
             </Flex>
@@ -75,23 +77,23 @@ const ShortCrsIntro = () => {
                     level={5}
                     className='!uppercase !font-bold !m-0 !italic !text-white'
                   >
-                    IES College
+                    {t('shortTitleTop')}
                   </Title>
                 </Row>
                 <Title level={3} className='!m-0 !uppercase !font-bold '>
-                  Short-term
+                  {t('shortTitleMain1')}
                 </Title>
                 <Title level={3} className='!m-0 !mb-3 !uppercase  !font-bold'>
-                  Training Programs
+                  {t('shortTitleMain2')}
                 </Title>
               </div>
 
               <div>
                 <Title level={5} className='!m-0 !uppercase !font-bold'>
-                  IES College builds skills
+                  {t('shortDesc1')}
                 </Title>
                 <Title level={5} className='!m-0 !uppercase !font-bold'>
-                  through short-term training
+                  {t('shortDesc2')}
                 </Title>
               </div>
             </Flex>

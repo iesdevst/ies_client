@@ -1,22 +1,10 @@
 import { Button, Col, Flex, Image, Row } from 'antd';
+import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
 import IES from '@/assets/imgs/ies_logo_notext.png';
 import HOU from '@/assets/imgs/open_uni_partnership.png';
 import { Text, Title } from '@/components';
 import { ROUTES } from '@/constants';
-
-const abPartnershipDt = [
-  {
-    tit: 'E-Learning Program',
-    decs: 'Learn anytime, anywhere with our interactive online courses. Gain new skills, practical knowledge, and real results at your own pace. IES College proudly introduces and develops this modern learning approach.',
-    img: IES,
-  },
-  {
-    tit: 'Partnership for Innovation',
-    decs: 'In collaboration with Hanoi Open University, IES College is developing e-learning programs that combine academic excellence with practical training, offering flexible and high-quality learning opportunities.',
-    img: HOU,
-  },
-];
 
 interface IAboutPartnership {
   mb: boolean;
@@ -26,7 +14,21 @@ interface IAboutPartnership {
 
 const AboutPartnership: React.FC<IAboutPartnership> = (props) => {
   const { mb, tl, dark } = props;
+  const { t } = useTranslation('aboutPartnership');
   const navigate = useNavigate();
+
+  const abPartnershipDt = [
+    {
+      tit: t('eLearn'),
+      decs: t('eLdesc'),
+      img: IES,
+    },
+    {
+      tit: t('ps'),
+      decs: t('psDesc'),
+      img: HOU,
+    },
+  ];
   return (
     <div>
       <Row
@@ -66,7 +68,7 @@ const AboutPartnership: React.FC<IAboutPartnership> = (props) => {
                   navigate(ROUTES.PARTNERSHIP);
                 }}
               >
-                Learn More
+                {t('more')}
               </Button>
             </Flex>
           </Col>

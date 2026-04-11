@@ -16,6 +16,7 @@ import {
   type TabsProps,
 } from 'antd';
 import { lazy, useCallback, useMemo } from 'react';
+import { useTranslation } from 'react-i18next';
 import { useMediaQuery } from 'react-responsive';
 import { useParams, useSearchParams } from 'react-router-dom';
 import { useTrainDetailData } from './hooks';
@@ -37,6 +38,7 @@ const VocaTrainDetail: React.FC = () => {
   const isMb = useMediaQuery({ maxWidth: 768 });
   const isTl = useMediaQuery({ minWidth: 769, maxWidth: 1024 });
   const { isDark } = useUserStore();
+  const { t } = useTranslation('vocaTrainDetail');
   const [trainDtSearchPrs, setTrainDtSearchPrs] = useSearchParams();
   const trainDtActKey = trainDtSearchPrs.get('tab') || TrainDetailTab.Overview;
   const { data } = useTrainDetailData();
@@ -56,10 +58,10 @@ const VocaTrainDetail: React.FC = () => {
             level={4}
             className={`${trainDtActKey === TrainDetailTab.Overview ? '!text-white' : '!text-black'} !m-0`}
           >
-            Program Overview
+            {t('progOvw')}
           </Title>
         ) : (
-          <Tooltip title='Program Overview'>
+          <Tooltip title={t('progOvw')}>
             <ProfileOutlined
               className={`${trainDtActKey === TrainDetailTab.Overview ? '!text-white' : '!text-black'} !text-lg`}
             />
@@ -74,10 +76,10 @@ const VocaTrainDetail: React.FC = () => {
             level={4}
             className={`${trainDtActKey === TrainDetailTab.Admission ? '!text-white' : '!text-black'} !m-0`}
           >
-            Admissions Info
+            {t('admissIf')}
           </Title>
         ) : (
-          <Tooltip title='Admissions Info'>
+          <Tooltip title={t('admissIf')}>
             <InfoCircleOutlined
               className={`${trainDtActKey === TrainDetailTab.Admission ? '!text-white' : '!text-black'} !text-lg`}
             />
@@ -94,10 +96,10 @@ const VocaTrainDetail: React.FC = () => {
             level={4}
             className={`${trainDtActKey === TrainDetailTab.Apply ? '!text-white' : '!text-black'} !m-0`}
           >
-            Tuition & Apply
+            {t('tui')}
           </Title>
         ) : (
-          <Tooltip title='Tuition & Apply'>
+          <Tooltip title={t('tui')}>
             <WalletOutlined
               className={`${trainDtActKey === TrainDetailTab.Apply ? '!text-white' : '!text-black'} !text-lg`}
             />
@@ -112,10 +114,10 @@ const VocaTrainDetail: React.FC = () => {
             level={4}
             className={`${trainDtActKey === TrainDetailTab.Register ? '!text-white' : '!text-black'} !m-0`}
           >
-            Register Form
+            {t('form')}
           </Title>
         ) : (
-          <Tooltip title='Register Form'>
+          <Tooltip title={t('form')}>
             <FormOutlined
               className={`${trainDtActKey === TrainDetailTab.Register ? '!text-white' : '!text-black'} !text-lg`}
             />
@@ -124,7 +126,7 @@ const VocaTrainDetail: React.FC = () => {
         children: <IvRegisterForm dark={isDark} />,
       },
     ],
-    [detailTrainDt, trainDtActKey, isMb, isDark],
+    [detailTrainDt, trainDtActKey, isMb, isDark, t],
   );
 
   const hdlChangeTab = useCallback(
@@ -135,7 +137,7 @@ const VocaTrainDetail: React.FC = () => {
   );
 
   return (
-    <section className={`${isMb || isTl ? 'pt-10 py-20' : 'px-15 py-20'}`}>
+    <section className={`${isMb || isTl ? 'pt-10 py-20' : 'px-10 py-20'}`}>
       <Breadcrumb
         className={`${isDark ? '!bg-gray-800 !border-gray-600' : '!bg-[#eaeaea] !border-[#dac7da]'} !rounded-t-xl !border-t !border-x ${isMb ? 'w-2/3 !py-1.5 !ml-5' : isTl ? 'w-2/3 !py-1.5 !ml-5' : 'w-1/3 !ml-5.5 !py-3'}  ${styles.breadCrumbCus}`}
         separator={
@@ -155,7 +157,7 @@ const VocaTrainDetail: React.FC = () => {
                 }}
               >
                 {!isMb ? (
-                  'Intermediate Vocational'
+                  <Text color={isDark ? 'white' : 'black'}> {t('iv')}</Text>
                 ) : (
                   <ApartmentOutlined className='!text-xl' />
                 )}
@@ -165,7 +167,7 @@ const VocaTrainDetail: React.FC = () => {
           {
             title: (
               <Text color='#C92CC9' className='!text-[16px] !font-semibold'>
-                Program Details
+                {t('progDt')}
               </Text>
             ),
           },
@@ -180,7 +182,7 @@ const VocaTrainDetail: React.FC = () => {
             align='middle'
             className={`${isMb || isTl ? 'gap-y-12' : 'gap-x-30'}`}
           >
-            <Col xs={24} md={12} className='!text-center'>
+            <Col xs={24} md={10} className='!text-center'>
               <Title className='!m-0 !font-normal' level={5}>
                 {detailTrainDt.program}
               </Title>
@@ -195,7 +197,7 @@ const VocaTrainDetail: React.FC = () => {
               <Image src={DTP} preview={false} />
             </Col>
 
-            <Col xs={24} md={12} className='!text-center'>
+            <Col xs={24} md={10} className='!text-center'>
               <Image
                 src={detailTrainDt.imgDetail}
                 preview={false}

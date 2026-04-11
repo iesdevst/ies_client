@@ -84,7 +84,7 @@ const ProgLstCard: React.FC<IProgLstCard> = (props) => {
                 style={{
                   overflow: 'hidden',
                   display: '-webkit-box',
-                  WebkitLineClamp: expandedMap[key] ? 'unset' : 4,
+                  WebkitLineClamp: expandedMap[key] ? 'unset' : 2,
                   WebkitBoxOrient: 'vertical',
                 }}
               >

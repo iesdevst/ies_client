@@ -9,52 +9,9 @@ import {
   BookOutlined,
 } from '@ant-design/icons';
 import { Col, Flex, List, Row } from 'antd';
+import { useTranslation } from 'react-i18next';
 import { useMediaQuery } from 'react-responsive';
 import { IesClSection, Text, Title } from '@/components';
-
-const houStat = [
-  { num: '20.000+', decs: 'Students Enrolled' },
-  { num: '169+', decs: 'Courses Launched' },
-  { num: '98%', decs: 'Student Satisfaction' },
-  { num: '96%', decs: 'Employment Rate' },
-];
-
-const majors = [
-  {
-    group: 'Business & Economics',
-    items: [
-      { label: 'E-commerce', icon: <ShopOutlined /> },
-      { label: 'Business Administration', icon: <TeamOutlined /> },
-      { label: 'Accounting', icon: <CalculatorOutlined /> },
-      { label: 'Finance & Banking', icon: <DollarOutlined /> },
-    ],
-  },
-  {
-    group: 'Technology & Engineering',
-    items: [{ label: 'Information Technology', icon: <LaptopOutlined /> }],
-  },
-  {
-    group: 'Law & Legal',
-    items: [
-      { label: 'Law', icon: <BankOutlined /> },
-      { label: 'Economic Law', icon: <BookOutlined /> },
-    ],
-  },
-  {
-    group: 'Languages',
-    items: [
-      { label: 'English Language', icon: <GlobalOutlined /> },
-      { label: 'Chinese Language', icon: <GlobalOutlined /> },
-    ],
-  },
-  {
-    group: 'Tourism & Hospitality',
-    items: [
-      { label: 'Tourism & Travel Management', icon: <GlobalOutlined /> },
-      { label: 'Hotel Management', icon: <ShopOutlined /> },
-    ],
-  },
-];
 
 interface IPartnershipProg {
   dark: boolean;
@@ -62,9 +19,54 @@ interface IPartnershipProg {
 
 const PartnershipProg: React.FC<IPartnershipProg> = (props) => {
   const { dark } = props;
+  const { t } = useTranslation('partnershipProg');
   const mb = useMediaQuery({ maxWidth: 767 });
   const isTablet = useMediaQuery({ minWidth: 768, maxWidth: 1024 });
   const miniScreen = useMediaQuery({ minWidth: 1024, maxWidth: 1279 });
+
+  const houStat = [
+    { num: '20.000+', decs: t('s1d') },
+    { num: '169+', decs: t('s2d') },
+    { num: '98%', decs: t('s3d') },
+    { num: '96%', decs: t('s4d') },
+  ];
+
+  const majors = [
+    {
+      group: t('g1'),
+      items: [
+        { label: t('g1i1'), icon: <ShopOutlined /> },
+        { label: t('g1i2'), icon: <TeamOutlined /> },
+        { label: t('g1i3'), icon: <CalculatorOutlined /> },
+        { label: t('g1i4'), icon: <DollarOutlined /> },
+      ],
+    },
+    {
+      group: t('g2'),
+      items: [{ label: t('g2i1'), icon: <LaptopOutlined /> }],
+    },
+    {
+      group: t('g3'),
+      items: [
+        { label: t('g3i1'), icon: <BankOutlined /> },
+        { label: t('g3i2'), icon: <BookOutlined /> },
+      ],
+    },
+    {
+      group: t('g4'),
+      items: [
+        { label: t('g4i1'), icon: <GlobalOutlined /> },
+        { label: t('g4i2'), icon: <GlobalOutlined /> },
+      ],
+    },
+    {
+      group: t('g5'),
+      items: [
+        { label: t('g5i1'), icon: <GlobalOutlined /> },
+        { label: t('g5i2'), icon: <ShopOutlined /> },
+      ],
+    },
+  ];
 
   return (
     <IesClSection
@@ -80,7 +82,7 @@ const PartnershipProg: React.FC<IPartnershipProg> = (props) => {
           >
             <Col className={`${mb || isTablet ? '!w-full' : 'flex-1'}`}>
               <Title level={mb ? 4 : 3} className='!mb-10 !text-center'>
-                HOU-Always Striving for Excellence
+                {t('st')}
               </Title>
               <Row
                 gutter={!isTablet ? [0, 20] : [0, 20]}
@@ -112,7 +114,7 @@ const PartnershipProg: React.FC<IPartnershipProg> = (props) => {
                 level={3}
                 className={`!text-center ${mb || isTablet ? '!mt-10' : '!mb-10'}`}
               >
-                Programs Open for Enrollment
+                {t('pt')}
               </Title>
               <Row
                 gutter={isTablet || mb ? [0, 20] : [120, 50]}

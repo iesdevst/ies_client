@@ -1,4 +1,5 @@
 import { Col } from 'antd';
+import { useTranslation } from 'react-i18next';
 import { useMediaQuery } from 'react-responsive';
 import type { ScTuiApply, TuiApply } from '../hooks';
 import { Text, Title } from '@/components';
@@ -12,6 +13,7 @@ interface ITuiApplyProps {
 const TuiApply: React.FC<ITuiApplyProps> = (props) => {
   const { tuiApplyDt, tuiApplyScDt, dark } = props;
   const isMb = useMediaQuery({ maxWidth: 1024 });
+  const { t } = useTranslation('tuiApply');
 
   return (
     <section>
@@ -25,7 +27,7 @@ const TuiApply: React.FC<ITuiApplyProps> = (props) => {
                 className={`!m-0 ${dark ? '!text-[#ca78ca]' : ' !text-[#BE3691]'}`}
                 level={3}
               >
-                I. Admission Requirements
+                I. {t('admissRe')}
               </Title>
               <Text
                 color={dark ? 'white' : ''}
@@ -42,7 +44,7 @@ const TuiApply: React.FC<ITuiApplyProps> = (props) => {
                 className={`!m-0 ${dark ? '!text-[#ca78ca]' : ' !text-[#BE3691]'}`}
                 level={3}
               >
-                II. Application Documents
+                II. {t('applyD')}
               </Title>
               <Text
                 color={dark ? 'white' : ''}
@@ -59,7 +61,7 @@ const TuiApply: React.FC<ITuiApplyProps> = (props) => {
                 className={`!m-0 ${dark ? '!text-[#ca78ca]' : ' !text-[#BE3691]'}`}
                 level={3}
               >
-                III. Location and Working Hours
+                III. {t('loca')}
               </Title>
               <Text
                 color={dark ? 'white' : ''}
@@ -85,7 +87,7 @@ const TuiApply: React.FC<ITuiApplyProps> = (props) => {
                 className={`!m-0 ${dark ? '!text-[#98c3ff]' : ' !text-[#6472cf]'}`}
                 level={3}
               >
-                I. Admission Requirements
+                I. {t('admissRe')}
               </Title>
               <Text
                 color={dark ? 'white' : ''}
@@ -102,7 +104,7 @@ const TuiApply: React.FC<ITuiApplyProps> = (props) => {
                 className={`!m-0 ${dark ? '!text-[#98c3ff]' : ' !text-[#6472cf]'}`}
                 level={3}
               >
-                II. Application Documents
+                II. {t('applyD')}
               </Title>
               <Text
                 color={dark ? 'white' : ''}
@@ -119,7 +121,7 @@ const TuiApply: React.FC<ITuiApplyProps> = (props) => {
                 className={`!m-0 ${dark ? '!text-[#98c3ff]' : ' !text-[#6472cf]'}`}
                 level={3}
               >
-                III. Location and Working Hours
+                III. {t('loca')}
               </Title>
               <Text
                 color={dark ? 'white' : ''}

@@ -7,51 +7,46 @@ import {
   TagsOutlined,
 } from '@ant-design/icons';
 import { Col, Flex, Row } from 'antd';
+import { useTranslation } from 'react-i18next';
 import { useMediaQuery } from 'react-responsive';
 import WCHB from '@/assets/imgs/why_choose_hou_bg.jpeg';
 import { IesClSection, Text, Title } from '@/components';
 
-const whyChooseDt = [
-  {
-    title: 'Valuable Degree',
-    description:
-      "Students will receive a Bachelor's degree from Hanoi Open University, recognized nationwide by the Ministry of Education and Training. This degree opens opportunities for further studies, civil service exams, and career advancement.",
-    icon: <SafetyCertificateOutlined />,
-  },
-  {
-    title: 'No Distinction of Training Form',
-    description:
-      'According to Circular 27/2019/TT-BGDĐT, the diploma no longer specifies the training form. It ensures fair recognition for all students while keeping the same educational content and validity across the nation.',
-    icon: <TagsOutlined />,
-  },
-  {
-    title: 'What They Say',
-    description:
-      'From March 1st, 2020, university diplomas no longer distinguish the training type. This reform guarantees transparent and equal recognition of academic achievements for all graduates.',
-    icon: <MessageOutlined />,
-  },
-  {
-    title: 'Flexible Learning',
-    description:
-      'The program offers flexible learning options, allowing students to balance work and study efficiently while completing their degree at their own pace and schedule.',
-    icon: <ClockCircleOutlined />,
-  },
-  {
-    title: 'Career Opportunities',
-    description:
-      'A recognized degree provides access to diverse career opportunities, helping graduates secure competitive positions and advance professionally in a variety of industries.',
-    icon: <RocketOutlined />,
-  },
-  {
-    title: 'Lifelong Skills',
-    description:
-      'Studying at Hanoi Open University develops essential skills such as critical thinking, problem-solving, and communication, which can be applied throughout life and any professional context.',
-    icon: <KeyOutlined />,
-  },
-];
-
 const WhyChooseHou: React.FC = () => {
   const mb = useMediaQuery({ maxWidth: 1024 });
+  const { t } = useTranslation('whyChooseHou');
+  const whyChooseDt = [
+    {
+      title: t('i1t'),
+      description: t('i1d'),
+      icon: <SafetyCertificateOutlined />,
+    },
+    {
+      title: t('i2t'),
+      description: t('i2d'),
+      icon: <TagsOutlined />,
+    },
+    {
+      title: t('i3t'),
+      description: t('i3d'),
+      icon: <MessageOutlined />,
+    },
+    {
+      title: t('i4t'),
+      description: t('i4d'),
+      icon: <ClockCircleOutlined />,
+    },
+    {
+      title: t('i5t'),
+      description: t('i5d'),
+      icon: <RocketOutlined />,
+    },
+    {
+      title: t('i6t'),
+      description: t('i6d'),
+      icon: <KeyOutlined />,
+    },
+  ];
   return (
     <IesClSection
       id='why-choose-hou'
@@ -80,19 +75,19 @@ const WhyChooseHou: React.FC = () => {
                 className='!inline-block !bg-[#5e41e4] !pt-3 !pb-2 !px-5 rounded-2xl !text-lg !font-bold'
                 color='white'
               >
-                Why Educore?
+                {t('tag')}
               </Text>
               <Title
                 level={!mb ? 1 : 2}
                 className='!m-0 !text-white !uppercase'
               >
-                Equivalent to a formal
+                {t('t1')}
               </Title>
               <Title
                 level={!mb ? 1 : 2}
                 className='!m-0 !text-white !uppercase'
               >
-                full-time degree
+                {t('t2')}
               </Title>
             </div>
             <Row gutter={!mb ? [24, 24] : [0, 0]} className='!gap-y-10'>
