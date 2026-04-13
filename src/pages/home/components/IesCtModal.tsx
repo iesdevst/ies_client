@@ -13,6 +13,7 @@ import {
 } from 'antd';
 import { useRef } from 'react';
 import { useTranslation } from 'react-i18next';
+import { useMediaQuery } from 'react-responsive';
 import { useIesCt } from '@/api';
 import IES from '@/assets/imgs/ies_logo_notext.png';
 import { Title } from '@/components';
@@ -31,6 +32,8 @@ interface IIesCtModal {
 const IesCtModal: React.FC<IIesCtModal> = (props) => {
   const { closeCtM, openCtM } = props;
   const { t } = useTranslation('iesCtModal');
+  const { t: optionT } = useTranslation('options');
+  const mb = useMediaQuery({ maxWidth: 767 });
   const [form] = Form.useForm();
   const phoneRef = useRef<InputRef>(null);
   const { pushBSQ, pushBEQ } = useNotifyStore();
@@ -121,51 +124,59 @@ const IesCtModal: React.FC<IIesCtModal> = (props) => {
         onFinish={hdlCtSend}
       >
         <Flex vertical>
-          <Form.Item
-            name='name'
-            label={t('name')}
-            rules={[{ required: true, message: t('enterName') }]}
-            className='w-full'
+          <Flex
+            vertical={mb}
+            justify='space-between'
+            align='center'
+            gap={mb ? 0 : 15}
           >
-            <Input placeholder={t('enterName')} />
-          </Form.Item>
-          <Form.Item label={t('phoneNum')} className='w-full'>
-            <Space.Compact>
-              {/* Country code */}
-              <Form.Item
-                name='countryCode'
-                noStyle
-                initialValue='+84'
-                rules={[{ required: true, message: t('ctryCode') }]}
-              >
-                <Select style={{ width: 100 }}>
-                  <Select.Option value='+84'>+84</Select.Option>
-                </Select>
-              </Form.Item>
+            <Form.Item
+              name='name'
+              label={t('name')}
+              rules={[{ required: true, message: t('enterName') }]}
+              className={mb ? '!w-full' : '!w-5/6'}
+            >
+              <Input placeholder={t('enterName')} />
+            </Form.Item>
+            <Form.Item label={t('phoneNum')} className='w-full'>
+              <Space.Compact className='!w-full'>
+                {/* Country code */}
+                <Form.Item
+                  name='countryCode'
+                  noStyle
+                  initialValue='+84'
+                  rules={[{ required: true, message: t('ctryCode') }]}
+                >
+                  <Select style={{ width: 100 }}>
+                    <Select.Option value='+84'>+84</Select.Option>
+                  </Select>
+                </Form.Item>
 
-              {/* Phone number */}
-              <Form.Item
-                name='phoneNum'
-                noStyle
-                rules={[
-                  { required: true, message: t('enterPhone') },
-                  {
-                    pattern: /^[0-9]{9}$/,
-                    message: t('incrNumPhoneFormat'),
-                  },
-                ]}
-              >
-                <Input
-                  ref={phoneRef}
-                  placeholder={t('enterPhone')}
-                  maxLength={9}
-                  onKeyPress={handleKeyPress}
-                  onBlur={handleBlur}
-                  style={{ width: 'calc(100% - 100px)' }}
-                />
-              </Form.Item>
-            </Space.Compact>
-          </Form.Item>
+                {/* Phone number */}
+                <Form.Item
+                  name='phoneNum'
+                  noStyle
+                  rules={[
+                    { required: true, message: t('enterPhone') },
+                    {
+                      pattern: /^[0-9]{9}$/,
+                      message: t('incrNumPhoneFormat'),
+                    },
+                  ]}
+                >
+                  <Input
+                    ref={phoneRef}
+                    placeholder={t('phoneNum')}
+                    maxLength={9}
+                    onKeyPress={handleKeyPress}
+                    onBlur={handleBlur}
+                    style={{ width: 'calc(100% - 100px)' }}
+                  />
+                </Form.Item>
+              </Space.Compact>
+            </Form.Item>
+          </Flex>
+
           <Form.Item
             name='email'
             label='Email'
@@ -192,7 +203,7 @@ const IesCtModal: React.FC<IIesCtModal> = (props) => {
               placeholder={t('slLoca')}
               options={enrollmentAreaOptions.map((item) => ({
                 ...item,
-                label: item.label,
+                label: optionT(item.label),
               }))}
             />
           </Form.Item>

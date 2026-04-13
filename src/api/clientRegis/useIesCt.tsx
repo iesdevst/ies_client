@@ -3,7 +3,7 @@ import formspreeApi from '@/lib/formspree-api';
 import type { MutationConfig, MutationFn, QueryError } from '@/lib/react-query';
 import type { LocationRegis, RegisterTrainingTypeEnum } from '@/utils';
 
-const epformspree = import.meta.env.VITE_FORMSPREE_ENDPOINT;
+const adviseformspree = import.meta.env.VITE_ADVISE_ENDPOINT;
 
 export interface IesCtSendVar {
   contactType: RegisterTrainingTypeEnum;
@@ -20,7 +20,7 @@ export const fetchIesCtSet: MutationFn<IesCtSendRes, IesCtSendVar> = async (
   props,
 ) => {
   const request = await formspreeApi.post<IesCtSendVar, IesCtSendRes>(
-    epformspree,
+    adviseformspree,
     props,
   );
   return request;

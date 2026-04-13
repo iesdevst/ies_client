@@ -64,7 +64,7 @@ const IesClientLang: React.FunctionComponent<IIesLangProps> = (props) => {
               dropRef.current?.setIsOpen(false);
             }}
           >
-            <Title level={5} className='!m-0 !leading-none'>
+            <Title level={5} className='!m-0 !leading-none !text-white'>
               {label}
             </Title>
           </Button>

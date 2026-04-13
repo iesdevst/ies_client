@@ -3,10 +3,8 @@ import { useTranslation } from 'react-i18next';
 import MediaQuery, { useMediaQuery } from 'react-responsive';
 import MegaMbDrawer from './MegaMbDrawer';
 import NavLst from './NavLst';
-import IES_DARK_LOGO_URL from '@/assets/imgs/ies_logo_dark.png';
 import IES_HOZI_DARK_LOGO_URL from '@/assets/imgs/ies_logo_horizo_dark.png';
 import IES_LOGO_MB from '@/assets/imgs/ies_logo_hoziro.png';
-import IES_LOGO_URL from '@/assets/imgs/ies_logo_text.png';
 import { ThemeSwitcher } from '@/components';
 import IesClientLang from '@/components/Buttons/IesClientLang';
 import { PrefetchLink } from '@/components/PrefetchLink';
@@ -27,9 +25,8 @@ const HeaderIes: React.FC<IHeaderIes> = (props) => {
 
   const getIesLogo = () => {
     if (isMb && isDark) return IES_HOZI_DARK_LOGO_URL;
-    if (isMb) return IES_LOGO_MB;
-    if (isDark) return IES_DARK_LOGO_URL;
-    return IES_LOGO_URL;
+    if (isDark) return IES_HOZI_DARK_LOGO_URL;
+    return IES_LOGO_MB;
   };
 
   return (
@@ -51,15 +48,15 @@ const HeaderIes: React.FC<IHeaderIes> = (props) => {
           >
             <PrefetchLink
               to={ROUTES.ROOT}
-              className='!text-white !bg-blue-500 px-3 py-0.5 rounded-sm !text-lg'
+              className='!text-white !bg-blue-500 px-3 py-0.5 rounded-sm !text-xs'
             >
               {t('iesCl')}
             </PrefetchLink>
-            <PrefetchLink to={ROUTES.ROOT} className='!text-white !text-lg'>
+            <PrefetchLink to={ROUTES.ROOT} className='!text-white !text-xs'>
               {t('iesStu')}
             </PrefetchLink>
 
-            <PrefetchLink to={ROUTES.ROOT} className='!text-white !text-lg'>
+            <PrefetchLink to={ROUTES.ROOT} className='!text-white !text-xs'>
               {t('iesStaff')}
             </PrefetchLink>
             <IesClientLang colorT='!text-white' />
@@ -79,7 +76,7 @@ const HeaderIes: React.FC<IHeaderIes> = (props) => {
           className='!block !flex !items-center'
         >
           <Image
-            className={`${!isMb ? '!w-42 !h-25' : '!w-65 !h-full !mt-2'}`}
+            className={`${isMb ? '!w-65 !h-full !mt-2' : isDark ? '!w-100 !h-30 !mt-3' : '!w-auto !h-15'}`}
             src={getIesLogo()}
             alt='ies_logo'
             preview={false}

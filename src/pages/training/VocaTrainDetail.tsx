@@ -213,6 +213,7 @@ const VocaTrainDetail: React.FC = () => {
             onChange={hdlChangeTab}
             className={styles.iesTrainDtTabs}
             centered={isMb}
+            destroyOnHidden
           />
         </div>
       </div>

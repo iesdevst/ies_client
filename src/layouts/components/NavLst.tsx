@@ -1,6 +1,7 @@
 import { CaretDownFilled } from '@ant-design/icons';
 import { Button, Row, Space } from 'antd';
 import { useMegaNavData } from '../hooks';
+import { Text } from '@/components';
 import type { RoutePath } from '@/constants';
 import { useUserStore } from '@/store';
 
@@ -24,7 +25,7 @@ const NavLst: React.FC<INavLst> = (props) => {
               <Button
                 key={item.key}
                 type='text'
-                className={`${isDark ? '!text-white' : '!text-[#404040]'} !text-lg !p-0 mr-1 cursor-pointer`}
+                className='!p-0 mr-1 cursor-pointer'
                 onClick={() => setDrawerKey(item.key)}
                 style={{ fontWeight: 500 }}
               >
@@ -33,8 +34,15 @@ const NavLst: React.FC<INavLst> = (props) => {
                   align={'middle'}
                   className='gap-x-1'
                 >
-                  <p>{item.label}</p>
-                  <CaretDownFilled className='!text-[10px] mt-0.5' />
+                  <Text
+                    color={isDark ? 'white' : '#404040'}
+                    className='!uppercase !text-lg'
+                  >
+                    {item.label}
+                  </Text>
+                  <CaretDownFilled
+                    className={`${isDark ? '!text-white' : '!text-[#404040]'} !text-[10px] mt-0.5`}
+                  />
                 </Row>
               </Button>
             </div>

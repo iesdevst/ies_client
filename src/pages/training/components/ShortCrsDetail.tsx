@@ -119,7 +119,7 @@ const ShortCrsDetail: React.FC<IShortCrsDetailProps> = (props) => {
         children: <StRegisForm dark={isDark} />,
       },
     ],
-    [stActKey, isMb, shortCrsDt, isDark],
+    [stActKey, isMb, shortCrsDt, isDark, t],
   );
 
   const hdlChangeTab = useCallback(
@@ -173,6 +173,7 @@ const ShortCrsDetail: React.FC<IShortCrsDetailProps> = (props) => {
             className={styles.iesShortSrcnDtTabs}
             type='card'
             centered={isMb}
+            destroyOnHidden
           />
         </div>
       </div>

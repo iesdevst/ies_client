@@ -162,9 +162,10 @@ const MegaMbDrawer: React.FC = () => {
               <CloseOutlined />
             </Button>
           </Flex>
-          <Row justify={'space-between'} align={'middle'} className='mt-2'>
+          <Row justify={'space-between'} align={'middle'} className='mt-2 mx-5'>
             <IesClientLang
               buttonProps={{ className: '!p-0 !border-none !bg-transparent' }}
+              colorT={isDark ? '!text-white' : ''}
             />
             <ThemeSwitcher classN={`${!isDark ? '!text-[#212223]' : ''}`} />
           </Row>
@@ -180,7 +181,7 @@ const MegaMbDrawer: React.FC = () => {
           <Button type='text' className='!block !text-start' disabled>
             <PrefetchLink
               to={ROUTES.ROOT}
-              className='!text-white py-1.5 !text-lg '
+              className='!text-white py-1.5 !text-sm '
             >
               {t('iesStu')} <ArrowUpOutlined className='rotate-45' />
             </PrefetchLink>
@@ -189,7 +190,7 @@ const MegaMbDrawer: React.FC = () => {
           <Button type='text' className='!block !text-start' disabled>
             <PrefetchLink
               to={ROUTES.ROOT}
-              className='!text-white !text-lg py-1.5'
+              className='!text-white !text-sm py-1.5'
             >
               {t('iesStaff')} <ArrowUpOutlined className='rotate-45' />
             </PrefetchLink>

@@ -7,7 +7,7 @@ import type {
   RegisterTrainingTypeEnum,
 } from '@/utils';
 
-const epformspree = import.meta.env.VITE_FORMSPREE_ENDPOINT;
+const psadformspree = import.meta.env.VITE_PSAD_ENDPOINT;
 
 export interface PsRegisSendVar {
   trainRegisType: RegisterTrainingTypeEnum;
@@ -25,7 +25,7 @@ export const fetchPsRegisSet: MutationFn<
   PsRegisSendVar
 > = async (props) => {
   const request = await formspreeApi.post<PsRegisSendVar, PsRegisSendRes>(
-    epformspree,
+    psadformspree,
     props,
   );
   return request;

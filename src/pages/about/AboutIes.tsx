@@ -87,7 +87,7 @@ const AboutIes: React.FC = () => {
         children: <AbCoreValue />,
       },
     ],
-    [abtActiveKey, mb, isDark],
+    [abtActiveKey, mb, isDark, t],
   );
 
   const handleChangeTab = useCallback(
@@ -132,9 +132,9 @@ const AboutIes: React.FC = () => {
       />
 
       <div
-        className='!w-full !h-full pb-150 mb-10'
+        className={`${mb ? 'mb-2' : tablet ? 'mb-5' : 'mb-10'} !w-full !h-full pb-150`}
         style={{
-          backgroundImage: isDark ? `url(${VAMMB})` : `url(${VAM})`,
+          backgroundImage: mb ? `url(${VAMMB})` : `url(${VAM})`,
           backgroundSize: 'cover',
           backgroundPosition: 'center',
           backgroundRepeat: 'no-repeat',
@@ -145,7 +145,7 @@ const AboutIes: React.FC = () => {
         items={tabs}
         onChange={handleChangeTab}
         type='card'
-        className={`${styles.customTabs} !mt-3`}
+        className={`${styles.customTabs} ${mb || tablet ? '' : '!mt-3'}`}
         centered={mb}
       />
 

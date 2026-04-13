@@ -137,7 +137,7 @@ const IvRegisterForm: React.FC<IIvRegisterForm> = (props) => {
           </Form.Item>
 
           <Form.Item label={t('phoneLabel')} className='w-full'>
-            <Space.Compact>
+            <Space.Compact className='!w-full'>
               {/* Country code */}
               <Form.Item
                 name='countryCode'

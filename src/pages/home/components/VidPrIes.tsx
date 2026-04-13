@@ -24,7 +24,7 @@ const VidPrIes: React.FC = () => {
       bottomTit={t('knowM')}
       desVid={t('atIes')}
       titVid={t('alaunching')}
-      vidLink='https://www.youtube.com/embed/8G1vC-hJjjc?si=Q_cV53WSlXUtmrA7'
+      vidLink='https://www.youtube.com/embed/w4dqZNtCFWk?si=ubeW06pj8Bf6-x8U'
       mb={isMb}
       navigateGo={ROUTES.ABOUT_OVERVIEW}
       height={getScH()}

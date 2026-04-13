@@ -7,7 +7,7 @@ import type {
   ShortTermTraingEnum,
 } from '@/utils';
 
-const epformspree = import.meta.env.VITE_FORMSPREE_ENDPOINT;
+const stadformspree = import.meta.env.VITE_STAD_ENDPOINT;
 
 export interface StRegisSendVar {
   trainRegisType: RegisterTrainingTypeEnum;
@@ -28,7 +28,7 @@ export const fetchStRegisSet: MutationFn<
   StRegisSendVar
 > = async (props) => {
   const request = await formspreeApi.post<StRegisSendVar, StRegisSendRes>(
-    epformspree,
+    stadformspree,
     { ...props, shortTermTrain: props.shortTermTrain.join(', ') },
   );
   return request;
