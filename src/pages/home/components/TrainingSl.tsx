@@ -1,3 +1,4 @@
+import { useTranslation } from 'react-i18next';
 import { useMediaQuery } from 'react-responsive';
 import CNTT from '@/assets/imgs/cntt.jpg';
 import DNC from '@/assets/imgs/dcn.jpg';
@@ -9,64 +10,61 @@ import THUD from '@/assets/imgs/thud.png';
 import TKVP from '@/assets/imgs/tkvp.png';
 import VMT from '@/assets/imgs/vmt.png';
 import { IesClSection } from '@/components';
+import { ROUTES } from '@/constants';
 
 const TrainingSl: React.FC = () => {
   const mb = useMediaQuery({ maxWidth: 1024 });
+  const { t } = useTranslation('trainingSl');
   const data = [
     {
-      title: 'Office Admin',
+      title: t('offA'),
       icon: TKVP,
     },
     {
-      title: 'Hotel Management',
+      title: t('hotel'),
       icon: QLKS,
     },
     {
-      title: 'Applied Informatics',
+      title: t('appInfo'),
       icon: THUD,
     },
     {
-      title: 'Business Accounting',
+      title: t('busiA'),
       icon: KTDN,
     },
     {
-      title: 'Marketing',
+      title: t('mkt'),
       icon: MKT,
     },
     {
-      title: 'CAD Design',
+      title: t('cad'),
       icon: VMT,
     },
     {
-      title: 'Business Management',
+      title: t('busiM'),
       icon: QLDN,
     },
     {
-      title: 'Information Technology',
+      title: t('it'),
       icon: CNTT,
     },
     {
-      title: 'Electrical Tech',
+      title: t('electric'),
       icon: DNC,
     },
   ];
   const staticDt = [
     {
-      num: '156.000+',
-      des: `students from our
-         diversity majors system`,
+      num: '1500+',
+      des: t('desNum1'),
     },
     {
-      num: '60',
-      des: `majors that help student 
-        can freely to discover`,
+      num: '14',
+      des: t('desNum2'),
     },
     {
-      num: '2500+',
-      des: `publications & many 
-        research projects that we
-         focus to create impacts
-         on social.`,
+      num: '250+',
+      des: t('desNum3'),
     },
   ];
 
@@ -74,13 +72,14 @@ const TrainingSl: React.FC = () => {
     <IesClSection
       id='trainSl'
       layout='traningSl'
-      trainDes='30 years of our journey to inspire sum up in various milestones.'
-      trainTit='IES at a glance'
+      trainDes={t('years30')}
+      trainTit={t('iesAt')}
       trainImgSl={data}
-      statisTit='Explore our milestones'
+      statisTit={t('explore')}
       statistics={staticDt}
       className='!h-full !mt-5 !bg-[#3e72b2] pt-18'
       mb={mb}
+      navigateGo={ROUTES.ADMISSIONSVOCA_ALL}
     />
   );
 };

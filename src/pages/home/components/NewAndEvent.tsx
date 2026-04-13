@@ -1,5 +1,7 @@
 import { Col, Image, Typography } from 'antd';
+import { useTranslation } from 'react-i18next';
 import { useMediaQuery } from 'react-responsive';
+import EVAI from '@/assets/imgs/events_ai.png';
 import KTDT from '@/assets/imgs/ktdt_nfc.jpg';
 import KTO from '@/assets/imgs/kto_nfc.jpg';
 import TKDH from '@/assets/imgs/tkdh_nfc.jpg';
@@ -7,55 +9,57 @@ import HTDHM from '@/assets/imgs/top_str_htdhm.jpg';
 import LTS from '@/assets/imgs/top_str_lts.jpg';
 import MISA from '@/assets/imgs/top_str_misa.jpg';
 import TSN from '@/assets/imgs/top_str_news.jpg';
-import THTN from '@/assets/imgs/top_str_thtn.jpg';
 import { IesClSection, Text, Title } from '@/components';
+import { ROUTES } from '@/constants';
+import { useUserStore } from '@/store';
 
 const { Paragraph } = Typography;
 
 const NewAndEvent: React.FC = () => {
   const mb = useMediaQuery({ maxWidth: 1024 });
-
+  const { isDark } = useUserStore();
+  const { t } = useTranslation('newAndEvent');
   const topSn = [
     {
-      sti: THTN,
-      tit: "IESCollege students are attracted to the 'Practical Learning – Practical Work' model.",
-      specTit: 'Sustainable Development',
+      sti: EVAI,
+      tit: t('workshop'),
+      specTit: t('workshopTit'),
     },
     {
       sti: HTDHM,
-      tit: "EHOU organizes a specialized class: 'Understanding Business Law and Economic Contracts' for students",
-      specTit: 'Educational Cooperation',
+      tit: t('eduCoop1'),
+      specTit: t('eduCoopTit'),
     },
     {
       sti: LTS,
-      tit: 'Admissions for Law Program – Hanoi Open University 2022',
-      specTit: 'Admissions',
+      tit: t('admissions'),
+      specTit: t('admissTit'),
     },
     {
       sti: MISA,
-      tit: 'Event on the signing of the software transfer agreement to support training between MISA Joint Stock Company and Sai Gon Information Technology and Economics College (IESCOLLEGE).',
-      specTit: 'Educational Cooperation',
+      tit: t('eduCoop2'),
+      specTit: t('eduCoopTit'),
     },
   ];
 
   const featCdt = [
     {
       imgC: KTDT,
-      tit: 'Electronics Engineering',
-      butCard: '22-01-26',
-      des: 'Electrical and Electronics Engineering Technology: The Appeal of a Key Industrial Sector',
+      tit: t('elecEng'),
+      butCard: '20-03-2026',
+      des: t('elecDesc'),
     },
     {
       imgC: KTO,
-      tit: 'Automotive Engineering',
-      butCard: '29-10-22',
-      des: 'Automotive Engineering Technology: A “High-Value” Career with a Promising Future',
+      tit: t('autoEng'),
+      butCard: '01-03-2026',
+      des: t('autoDesc'),
     },
     {
       imgC: TKDH,
-      tit: 'Graphic Design',
-      butCard: '25-10-25',
-      des: 'Graphic Design: A Promising Field of Study',
+      tit: t('graphicD'),
+      butCard: '09-02-2026',
+      des: t('graphicDesc'),
     },
   ];
 
@@ -63,12 +67,13 @@ const NewAndEvent: React.FC = () => {
     <IesClSection
       id='newAe'
       layout='newsFeature'
-      title='Featured News & Events'
+      title={t('featNews')}
       feature={true}
       mb={mb}
+      navigateGo={ROUTES.NEWS}
       className={`mt-15 ${!mb ? 'px-10' : 'px-2'}`}
       featCard={featCdt}
-      butTit='View all News & Events'
+      butTit={t('viewAll')}
       children={
         <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8 mb-3.5'>
           <div>
@@ -76,11 +81,13 @@ const NewAndEvent: React.FC = () => {
               <Image src={TSN} preview={false} />
               <div className={`${!mb ? 'w-4/5' : ''}`}>
                 <Title className='!text-blue-500' level={5}>
-                  ACADEMICS & QUALITY ASSURANCE
+                  {t('acadQA')}
                 </Title>
-                <Text className='!text-xl !font-bold'>
-                  Prof. Ngô Bảo Châu: “A university degree isn’t necessarily
-                  required.”
+                <Text
+                  className='!text-xl !font-bold'
+                  color={isDark ? 'white' : ''}
+                >
+                  {t('profQuote')}
                 </Text>
               </div>
             </Col>
@@ -106,7 +113,7 @@ const NewAndEvent: React.FC = () => {
                       </Title>
                     )}
                     <Paragraph
-                      className='!font-bold !text-md'
+                      className={`${isDark ? '!text-white' : ''} !font-bold !text-md`}
                       ellipsis={{ rows: 2 }}
                     >
                       {item.tit}
@@ -118,6 +125,7 @@ const NewAndEvent: React.FC = () => {
           </div>
         </div>
       }
+      dark={isDark}
     />
   );
 };

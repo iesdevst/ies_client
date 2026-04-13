@@ -1,12 +1,14 @@
 import { CloseOutlined, RightOutlined } from '@ant-design/icons';
 import { Button, Drawer, Flex, Image, Row } from 'antd';
 import { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
 import { useMegaNavData } from '../hooks';
 import MNL from '@/assets/imgs/ies_logo_notext.png';
 import { Title } from '@/components';
 import { PrefetchLink } from '@/components/PrefetchLink';
 import type { RoutePath } from '@/constants';
+import { useUserStore } from '@/store';
 
 interface IMegaDrawer {
   activeKey: RoutePath | null;
@@ -18,13 +20,42 @@ const MegaDrawer: React.FC<IMegaDrawer> = (props) => {
   const [drClose, setDrClose] = useState(false);
   const { data } = useMegaNavData();
   const navigate = useNavigate();
-
+  const { isDark } = useUserStore();
+  const { t } = useTranslation('megaDrawer');
   const activeMenu = data.find((item) => item.key === activeKey);
 
   const drawerCloseHd = () => {
     setDrClose(false);
     onClose();
   };
+
+  const bgGradient = isDark
+    ? `
+    linear-gradient(
+      to right,
+      rgba(33,34,35,0) 0%,
+      rgba(33,34,35,0) 20%,
+      rgba(33,34,35,0.1) 35%,
+      rgba(33,34,35,0.25) 50%,
+      rgba(33,34,35,0.5) 65%,
+      rgba(33,34,35,0.8) 80%,
+      rgba(33,34,35,0.95) 92%,
+      #212223 100%
+    )
+  `
+    : `
+    linear-gradient(
+      to right,
+      rgba(255,255,255,0) 0%,
+      rgba(255,255,255,0) 20%,
+      rgba(255,255,255,0.1) 35%,
+      rgba(255,255,255,0.25) 50%,
+      rgba(255,255,255,0.5) 65%,
+      rgba(255,255,255,0.8) 80%,
+      rgba(255,255,255,0.95) 92%,
+      white 100%
+    )
+  `;
 
   return (
     <Drawer
@@ -52,19 +83,7 @@ const MegaDrawer: React.FC<IMegaDrawer> = (props) => {
           style={{
             backdropFilter: 'blur(4px)',
             // WebkitBackdropFilter: 'blur(2px)',
-            background: `
-      linear-gradient(
-        to right,
-        rgba(255,255,255,0) 0%,
-        rgba(255,255,255,0) 20%,
-        rgba(255,255,255,0.1) 35%,
-        rgba(255,255,255,0.25) 50%,
-        rgba(255,255,255,0.5) 65%,
-        rgba(255,255,255,0.8) 80%,
-        rgba(255,255,255,0.95) 92%,
-        white 100%
-      )
-    `,
+            background: bgGradient,
           }}
         ></div>
 
@@ -72,7 +91,7 @@ const MegaDrawer: React.FC<IMegaDrawer> = (props) => {
         <div
           className='!w-3/5 px-10 pt-4 overflow-y-auto'
           style={{
-            background: '#ffffff',
+            background: isDark ? '#212223' : '#ffffff',
           }}
         >
           {activeMenu && (
@@ -82,7 +101,9 @@ const MegaDrawer: React.FC<IMegaDrawer> = (props) => {
                 align='center'
                 className={`${!activeMenu.overW ? 'border-b !pb-8 border-[#e2e4e9]' : ''}`}
               >
-                <Title className='!font-semibold !m-0 !text-5xl' level={1}>
+                <Title
+                  className={`!font-semibold !m-0 !text-5xl ${isDark ? '!text-white' : '!text-black'}`}
+                >
                   {activeMenu.label}
                 </Title>
 
@@ -108,10 +129,10 @@ const MegaDrawer: React.FC<IMegaDrawer> = (props) => {
                     }}
                   >
                     <Title
-                      className='!m-0 !text-black !mr-2 uppercase'
+                      className={`!m-0 !mr-2 uppercase ${isDark ? '!text-white' : '!text-black'}`}
                       level={4}
                     >
-                      Overview
+                      {t('ovw')}
                     </Title>
                     <div className='w-full h-full !bg-blue-500 rounded-r-full flex items-center justify-center px-3'>
                       <RightOutlined className='!text-white !font-semibold ' />
@@ -136,7 +157,7 @@ const MegaDrawer: React.FC<IMegaDrawer> = (props) => {
                         />
                         <Title
                           level={3}
-                          className='uppercase !text-[#797a97] !m-0'
+                          className={`${isDark ? '!text-blue-500' : '!text-[#797a97]'} uppercase !m-0`}
                         >
                           {section.title}
                         </Title>
@@ -149,7 +170,7 @@ const MegaDrawer: React.FC<IMegaDrawer> = (props) => {
                           key={link.route}
                           to={link.route}
                           onClick={drawerCloseHd}
-                          className='!text-black hover:!underline'
+                          className={`hover:!underline ${isDark ? '!text-white' : '!text-black'}`}
                           style={{
                             fontWeight: 550,
                             fontSize: '1.1rem',

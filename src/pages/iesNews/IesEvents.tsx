@@ -1,18 +1,22 @@
 import { HomeFilled, RightOutlined } from '@ant-design/icons';
 import { Breadcrumb, Card, Col, Flex, Image, Pagination } from 'antd';
 import { useEffect, useRef, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { useMediaQuery } from 'react-responsive';
 import { useNavigate } from 'react-router-dom';
 import { useEventLstData } from './hooks';
 import { Text, Title } from '@/components';
 import { PrefetchLink } from '@/components/PrefetchLink';
 import { ROUTES } from '@/constants';
+import { useUserStore } from '@/store';
 
 const PAGE_SIZE = 3;
 
 const IesEvents = () => {
+  const { t } = useTranslation('iesEvents');
   const { data } = useEventLstData();
   const mb = useMediaQuery({ maxWidth: 767 });
+  const { isDark } = useUserStore();
   const sectionRef = useRef<HTMLDivElement | null>(null);
   const navigate = useNavigate();
   const [currentPage, setCurrentPage] = useState(1);
@@ -27,17 +31,21 @@ const IesEvents = () => {
     });
   }, [currentPage]);
   return (
-    <section ref={sectionRef} className='!bg-white'>
+    <section ref={sectionRef}>
       <Breadcrumb
         className={`${!mb ? '!ml-25 !py-15 ' : '!ml-5 !py-6'}`}
-        separator={<RightOutlined className='!text-black px-6' />}
+        separator={
+          <RightOutlined
+            className={`${isDark ? '!text-white' : '!text-black'} px-6`}
+          />
+        }
         items={[
           {
             title: (
               <PrefetchLink
                 to={ROUTES.DASHBOARD}
                 style={{
-                  color: 'black',
+                  color: isDark ? 'white' : 'black',
                   fontWeight: 700,
                   fontSize: '15px',
                 }}
@@ -48,8 +56,11 @@ const IesEvents = () => {
           },
           {
             title: (
-              <Text color='#545969' className='!text-[16px] !font-bold'>
-                Events
+              <Text
+                color={isDark ? '#74abf9' : '#545969'}
+                className='!text-[16px] !font-bold'
+              >
+                {t('events')}
               </Text>
             ),
           },
@@ -57,7 +68,7 @@ const IesEvents = () => {
       />
 
       <Title level={!mb ? 5 : 3} className='!text-center'>
-        Category Archives: Events
+        {t('cta')} {t('events')}
       </Title>
       <Flex vertical className='!space-y-10 !w-full !py-10'>
         {currentData.map((evLst) => (

@@ -20,6 +20,7 @@
     .ant-tabs-tab:hover {
       color: #fff;
       opacity: 0.85;
+      cursor: pointer;
     }
 
     .ant-tabs-tab-active {
@@ -102,6 +103,7 @@
       color: #fff;
       opacity: 0.85;
       background-color: #c44bc4;
+      cursor: pointer;
     }
 
     .ant-tabs-tab-active {
@@ -109,12 +111,22 @@
     }
 
     .ant-tabs-tab-active .ant-tabs-tab-btn {
-      color: white !important;
       font-weight: 600;
     }
 
     .ant-tabs-ink-bar {
       display: none;
+    }
+
+    /* ==================== DARK MODE ==================== */
+    :global(.dark) & {
+      .ant-tabs-tab {
+        background: gray !important;
+      }
+
+      .ant-tabs-tab-active {
+        background: #c92cc9 !important;
+      }
     }
   }
 
@@ -219,6 +231,7 @@
     .ant-tabs-nav::before {
       border-bottom: none !important;
     }
+
     .ant-tabs-nav-wrap {
       background: transparent !important;
       padding: 0 !important;
@@ -230,9 +243,10 @@
       font-weight: 700;
       padding: 6px 18px;
       transition: all 0.3s ease !important;
-      background: white !important;
+      background: white !important; /* Light mode */
       border-radius: 10px 10px 0 0;
       margin: 0 0 0 10px !important;
+      color: #333; /* Thêm màu chữ light */
     }
 
     .ant-tabs-tab:hover {
@@ -247,17 +261,30 @@
 
     .ant-tabs-tab-active .ant-tabs-tab-btn {
       font-weight: 600;
+      color: white !important; /* Đảm bảo chữ active trắng */
     }
 
     .ant-tabs-ink-bar {
       display: none;
     }
 
+    /* ==================== DARK MODE ==================== */
+    :global(.dark) & {
+      .ant-tabs-tab {
+        background: gray !important;
+      }
+
+      .ant-tabs-tab-active {
+        background: #4c5ab8 !important;
+      }
+    }
+
+    /* Responsive */
     @media (max-width: 768px) {
-      :global(.ant-tabs-nav-wrap) {
+      .ant-tabs-nav-wrap {
         margin: 0 !important;
       }
-      :global(.ant-tabs-tab) {
+      .ant-tabs-tab {
         padding: 5px 20px !important;
         margin-right: 5px !important;
       }

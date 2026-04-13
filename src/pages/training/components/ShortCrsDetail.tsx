@@ -6,6 +6,7 @@ import {
 } from '@ant-design/icons';
 import { Col, Image, Row, Tabs, Tooltip, type TabsProps } from 'antd';
 import { lazy, useCallback, useMemo } from 'react';
+import { useTranslation } from 'react-i18next';
 import { useMediaQuery } from 'react-responsive';
 import { useSearchParams } from 'react-router-dom';
 import { useShortCrsData } from '../hooks';
@@ -13,6 +14,7 @@ import styles from '../iesTraining.module.scss';
 import DTP from '@/assets/imgs/short_course_paint.png';
 import { Title } from '@/components';
 import { TrainDetailTab } from '@/constants';
+import { useUserStore } from '@/store';
 import type { ShortCrsTypeEnum } from '@/utils';
 
 const ProgOvw = lazy(() => import('@/pages/training/components/ProgOvw'));
@@ -28,6 +30,8 @@ interface IShortCrsDetailProps {
 
 const ShortCrsDetail: React.FC<IShortCrsDetailProps> = (props) => {
   const { scType } = props;
+  const { isDark } = useUserStore();
+  const { t } = useTranslation('shortCrsDetail');
   const isMb = useMediaQuery({ maxWidth: 768 });
   const isTl = useMediaQuery({ minWidth: 769, maxWidth: 1024 });
   const [stSearchPrs, setStSearchPrs] = useSearchParams();
@@ -49,16 +53,16 @@ const ShortCrsDetail: React.FC<IShortCrsDetailProps> = (props) => {
             level={4}
             className={`${stActKey === TrainDetailTab.Overview ? '!text-white' : '!text-black'} !m-0`}
           >
-            Program Overview
+            {t('progOvw')}
           </Title>
         ) : (
-          <Tooltip title='Program Overview'>
+          <Tooltip title={t('progOvw')}>
             <ProfileOutlined
               className={`${stActKey === TrainDetailTab.Overview ? '!text-white' : '!text-black'} !text-lg`}
             />
           </Tooltip>
         ),
-        children: <ProgOvw ovwScDt={shortCrsDt?.overview} />,
+        children: <ProgOvw ovwScDt={shortCrsDt?.overview} dark={isDark} />,
       },
       {
         key: TrainDetailTab.Admission,
@@ -67,16 +71,16 @@ const ShortCrsDetail: React.FC<IShortCrsDetailProps> = (props) => {
             level={4}
             className={`${stActKey === TrainDetailTab.Admission ? '!text-white' : '!text-black'} !m-0`}
           >
-            Admissions Info
+            {t('admissIf')}
           </Title>
         ) : (
-          <Tooltip title='Admissions Info'>
+          <Tooltip title={t('admissIf')}>
             <InfoCircleOutlined
               className={`${stActKey === TrainDetailTab.Admission ? '!text-white' : '!text-black'} !text-lg`}
             />
           </Tooltip>
         ),
-        children: <AdmissInfo admisScInfoDt={shortCrsDt?.info} />,
+        children: <AdmissInfo admisScInfoDt={shortCrsDt?.info} dark={isDark} />,
       },
       {
         key: TrainDetailTab.Apply,
@@ -85,16 +89,16 @@ const ShortCrsDetail: React.FC<IShortCrsDetailProps> = (props) => {
             level={4}
             className={`${stActKey === TrainDetailTab.Apply ? '!text-white' : '!text-black'} !m-0`}
           >
-            Tuition & Apply
+            {t('tui')}
           </Title>
         ) : (
-          <Tooltip title='Tuition & Apply'>
+          <Tooltip title={t('tui')}>
             <WalletOutlined
               className={`${stActKey === TrainDetailTab.Apply ? '!text-white' : '!text-black'} !text-lg`}
             />
           </Tooltip>
         ),
-        children: <TuiApply tuiApplyScDt={shortCrsDt?.apply} />,
+        children: <TuiApply tuiApplyScDt={shortCrsDt?.apply} dark={isDark} />,
       },
       {
         key: TrainDetailTab.Register,
@@ -103,19 +107,19 @@ const ShortCrsDetail: React.FC<IShortCrsDetailProps> = (props) => {
             level={4}
             className={`${stActKey === TrainDetailTab.Register ? '!text-white' : '!text-black'} !m-0`}
           >
-            Register Form
+            {t('form')}
           </Title>
         ) : (
-          <Tooltip title='Register Form'>
+          <Tooltip title={t('form')}>
             <FormOutlined
               className={`${stActKey === TrainDetailTab.Register ? '!text-white' : '!text-black'} !text-lg`}
             />
           </Tooltip>
         ),
-        children: <StRegisForm />,
+        children: <StRegisForm dark={isDark} />,
       },
     ],
-    [stActKey, isMb, shortCrsDt],
+    [stActKey, isMb, shortCrsDt, isDark, t],
   );
 
   const hdlChangeTab = useCallback(
@@ -132,7 +136,7 @@ const ShortCrsDetail: React.FC<IShortCrsDetailProps> = (props) => {
   return (
     <section className={`${isMb || isTl ? 'pt-10 py-20' : 'px-15 py-20 '}`}>
       <div
-        className={`!bg-[#eaeaea] !rounded-3xl !border !border-[#dac7da] ${isMb || isTl ? 'px-2 pt-10 py-20' : 'p-20'}`}
+        className={`${isDark ? '!bg-gray-800' : '!bg-[#eaeaea]'} !rounded-3xl !border !border-[#dac7da] ${isMb || isTl ? 'px-2 pt-10 py-20' : 'p-20'}`}
       >
         {shortCrsDt && (
           <Row
@@ -142,7 +146,7 @@ const ShortCrsDetail: React.FC<IShortCrsDetailProps> = (props) => {
           >
             <Col xs={24} md={10} className='!text-center'>
               <Title className='!m-0 !font-normal' level={5}>
-                Short-term Training
+                {t('shortT')}
               </Title>
 
               <Title className='!m-0 !text-[#6472cf] !mt-0.5 !mb-5'>
@@ -169,6 +173,7 @@ const ShortCrsDetail: React.FC<IShortCrsDetailProps> = (props) => {
             className={styles.iesShortSrcnDtTabs}
             type='card'
             centered={isMb}
+            destroyOnHidden
           />
         </div>
       </div>

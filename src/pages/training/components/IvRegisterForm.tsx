@@ -14,6 +14,7 @@ import {
   type InputRef,
 } from 'antd';
 import React, { useRef, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { useMediaQuery } from 'react-responsive';
 import { useIvRegisSend } from '@/api';
 import { Title } from '@/components';
@@ -27,7 +28,14 @@ import {
   RegisterTrainingTypeEnum,
 } from '@/utils';
 
-const IvRegisterForm: React.FC = () => {
+interface IIvRegisterForm {
+  dark: boolean;
+}
+
+const IvRegisterForm: React.FC<IIvRegisterForm> = (props) => {
+  const { dark } = props;
+  const { t } = useTranslation('ivRegisterForm');
+  const { t: optionT } = useTranslation('options');
   const [form] = Form.useForm();
   const { pushBSQ, pushBEQ } = useNotifyStore();
   const mb = useMediaQuery({ maxWidth: 1024 });
@@ -112,30 +120,30 @@ const IvRegisterForm: React.FC = () => {
 
   return (
     <section
-      className={`bg-white rounded-2xl ${!mb ? 'py-10 px-17' : 'pb-10 pt-5 px-3.5'}`}
+      className={`${dark ? 'bg-gray-600' : 'bg-white'} rounded-2xl ${!mb ? 'py-10 px-17' : 'pb-10 pt-5 px-3.5'}`}
     >
       <Title className='!text-center !mb-12 italic !text-[#ca78ca] !font-bold'>
-        Join Our Program
+        {t('title')}
       </Title>
       <Form form={form} layout='vertical' onFinish={handleRegisSend}>
         <Flex gap={!mb ? 50 : 0} vertical={mb}>
           <Form.Item
             name='name'
-            label='Name'
-            rules={[{ required: true, message: 'Please enter your name' }]}
+            label={t('nameLabel')}
+            rules={[{ required: true, message: t('nameError') }]}
             className='w-full'
           >
-            <Input className='' placeholder='Please enter your name' />
+            <Input className='' placeholder={t('nameError')} />
           </Form.Item>
 
-          <Form.Item label='Phone Number' className='w-full'>
-            <Space.Compact>
+          <Form.Item label={t('phoneLabel')} className='w-full'>
+            <Space.Compact className='!w-full'>
               {/* Country code */}
               <Form.Item
                 name='countryCode'
                 noStyle
                 initialValue='+84'
-                rules={[{ required: true, message: 'Select country code' }]}
+                rules={[{ required: true, message: t('countryCodeError') }]}
               >
                 <Select style={{ width: 100 }}>
                   <Select.Option value='+84'>+84</Select.Option>
@@ -147,16 +155,16 @@ const IvRegisterForm: React.FC = () => {
                 name='phoneNum'
                 noStyle
                 rules={[
-                  { required: true, message: 'Please enter your phone number' },
+                  { required: true, message: t('phoneError') },
                   {
                     pattern: /^[0-9]{9}$/,
-                    message: 'Incorrect phone number format!',
+                    message: t('phoneFormatError'),
                   },
                 ]}
               >
                 <Input
                   ref={phoneRef}
-                  placeholder='Enter phone number'
+                  placeholder={t('phoneError')}
                   maxLength={9}
                   onKeyPress={handleKeyPress}
                   onBlur={handleBlur}
@@ -172,27 +180,25 @@ const IvRegisterForm: React.FC = () => {
             name='email'
             label='Email'
             rules={[
-              { required: true, message: 'Please enter your email' },
-              { type: 'email', message: 'Please enter a valid email format' },
+              { required: true, message: t('emailError') },
+              { type: 'email', message: t('emailInvalid') },
             ]}
             className='w-full'
           >
-            <Input placeholder='Please enter your email' />
+            <Input placeholder={t('emailError')} />
           </Form.Item>
 
           <Form.Item
             name='capacityRole'
-            label='Capacity Role'
-            rules={[
-              { required: true, message: 'Please select your capacity role' },
-            ]}
+            label={t('roleLabel')}
+            rules={[{ required: true, message: t('roleError') }]}
             className='!w-full'
           >
             <Select
-              placeholder='Select Your Capacity Role'
+              placeholder={t('rolePlaceholder')}
               options={capacityRoleOptions.map((item) => ({
                 ...item,
-                label: item.label,
+                label: optionT(item.label),
               }))}
             />
           </Form.Item>
@@ -201,50 +207,51 @@ const IvRegisterForm: React.FC = () => {
         <Flex gap={!mb ? 50 : 0} vertical={mb}>
           <Form.Item
             name='age'
-            label='Student Age'
-            rules={[{ required: true, message: 'Please enter student age' }]}
-            className='w-full'
-          >
-            <Input
-              ref={ageRef}
-              placeholder='Enter student age'
-              maxLength={2}
-              onKeyPress={(e) => {
-                if (!/[0-9]/.test(e.key)) e.preventDefault();
-              }}
-              onBlur={() => {
-                const valueStr = ageRef.current?.input?.value || '';
-                const value = Number(valueStr);
-
-                if (!valueStr || value < 16 || value > 99) {
-                  form.setFields([
-                    { name: 'age', errors: ['Age must be 16 or older'] },
-                  ]);
-                } else {
-                  form.setFields([{ name: 'age', errors: [] }]);
-                  form.setFieldsValue({ age: valueStr });
-                  console.log({ value });
-                }
-              }}
-            />
-          </Form.Item>
-          <Form.Item
-            name='progType'
-            label='Interset Program'
+            label={t('ageLabel')}
             rules={[
+              { required: true, message: t('agePlaceholder') },
               {
-                required: true,
-                message: 'Please select your interest program',
+                validator: (_, value) => {
+                  if (!value) return Promise.resolve();
+
+                  const num = Number(value);
+
+                  if (num < 16 || num > 99) {
+                    return Promise.reject(t('ageError'));
+                  }
+
+                  return Promise.resolve();
+                },
               },
             ]}
             className='w-full'
           >
             <Input
-              placeholder='Please select your interest programs ->'
+              ref={ageRef}
+              placeholder={t('agePlaceholder')}
+              maxLength={2}
+              onKeyPress={(e) => {
+                if (!/[0-9]/.test(e.key)) e.preventDefault();
+              }}
+            />
+          </Form.Item>
+          <Form.Item
+            name='progType'
+            label={t('programLabel')}
+            rules={[
+              {
+                required: true,
+                message: t('programError'),
+              },
+            ]}
+            className='w-full'
+          >
+            <Input
+              placeholder={t('programError')}
               readOnly
               value={
                 progType.length > 0
-                  ? `${progType.length} program${progType.length > 1 ? 's' : ''} selected`
+                  ? `${progType.length} ${t('progSlPlu')}${progType.length > 1 ? t('progSlPlu2') : ''} ${t('progSlPlu3')}`
                   : ''
               }
               suffix={
@@ -255,7 +262,7 @@ const IvRegisterForm: React.FC = () => {
                         e.stopPropagation();
                         form.setFieldsValue({ progType: [] });
                       }}
-                      className='!text-black'
+                      className={!dark ? '!text-black' : '!text-white'}
                     />
                     <SelectOutlined
                       className='!text-xl'
@@ -280,6 +287,7 @@ const IvRegisterForm: React.FC = () => {
               deselectProg={handleDeselectProg}
               options={interestProgramOptions}
               clearAll={() => form.setFieldsValue({ progType: [] })}
+              lstBgCus={dark ? 'bg-[#a76d8d]' : ''}
             />
           </Form.Item>
         </Flex>
@@ -287,20 +295,18 @@ const IvRegisterForm: React.FC = () => {
         <Flex vertical>
           <Form.Item
             name='location'
-            label='Current Address'
-            rules={[
-              { required: true, message: 'Please enter your current address' },
-            ]}
+            label={t('addressLabel')}
+            rules={[{ required: true, message: t('addressError') }]}
             className='w-full'
           >
-            <Input placeholder='Please enter your current address' />
+            <Input placeholder={t('addressError')} />
           </Form.Item>
           <Form.Item
             name='question'
-            label='Question (Optional)'
+            label={t('questionLabel')}
             className='w-full'
           >
-            <Input className='!py-2' placeholder='Enter your question' />
+            <Input className='!py-2' placeholder={t('questionPlaceholder')} />
           </Form.Item>
         </Flex>
 
@@ -315,7 +321,7 @@ const IvRegisterForm: React.FC = () => {
             loading={isLoad}
             className='!bg-[#ca78ca] !border-none'
           >
-            Send
+            {t('submit')}
           </Button>
         </Form.Item>
       </Form>

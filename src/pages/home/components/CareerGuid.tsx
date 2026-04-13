@@ -1,4 +1,5 @@
 import { Carousel, Flex } from 'antd';
+import { useTranslation } from 'react-i18next';
 import { useMediaQuery } from 'react-responsive';
 import CNTT from '@/assets/imgs/cntt_hn.png';
 import CC from '@/assets/imgs/ctm_hn_card.jpg';
@@ -11,30 +12,32 @@ import { default as TC, default as THDU } from '@/assets/imgs/thud_hn.png';
 import TKVP from '@/assets/imgs/tkvp_hn.png';
 import VTK from '@/assets/imgs/vtk_hn.png';
 import { IesClSection, Text, Title } from '@/components';
+import { useUserStore } from '@/store';
 
 const CareerGuid: React.FC = () => {
   const mb = useMediaQuery({ maxWidth: 1024 });
-
+  const { isDark } = useUserStore();
+  const { t } = useTranslation('careerGuid');
   const cgSlide = [
-    { cTit: 'Applied Information Technology', cImg: THDU },
-    { cTit: 'Information Technology', cImg: CNTT },
-    { cTit: 'Office Secretary', cImg: TKVP },
-    { cTit: 'Hospitality Management', cImg: QLKS },
-    { cTit: 'Marketing', cImg: MKT },
-    { cTit: 'Business Management', cImg: QLDN },
-    { cTit: 'Computer-Aided Graphic Design', cImg: VTK },
-    { cTit: 'Business Accounting', cImg: KTDN },
+    { cTit: t('slide1'), cImg: THDU },
+    { cTit: t('slide2'), cImg: CNTT },
+    { cTit: t('slide3'), cImg: TKVP },
+    { cTit: t('slide4'), cImg: QLKS },
+    { cTit: t('slide5'), cImg: MKT },
+    { cTit: t('slide6'), cImg: QLDN },
+    { cTit: t('slide7'), cImg: VTK },
+    { cTit: t('slide8'), cImg: KTDN },
   ];
 
   const cgCard = [
     {
       imgC: MC,
-      des: 'Marketing – A Safe Career Choice for Gen Z: Explore and Discover',
+      des: t('card1'),
     },
-    { imgC: CC, des: 'Exploring Mechanical Manufacturing Technology' },
+    { imgC: CC, des: t('card2') },
     {
       imgC: TC,
-      des: 'Applied Information Technology and Career Opportunities for Gen Z',
+      des: t('card3'),
     },
   ];
 
@@ -43,6 +46,7 @@ const CareerGuid: React.FC = () => {
       id='carerrGuid'
       layout='newsFeature'
       feature={true}
+      dark={isDark}
       mb={mb}
       children={
         <div className='mt-15 !space-y-10 mb-15'>
@@ -53,13 +57,17 @@ const CareerGuid: React.FC = () => {
             className={`!w-full ${!mb ? '!px-20' : '!px-6'}`}
             gap={!mb ? 0 : 20}
           >
-            <Title className='flex-1 !font-bold !m-0'>Career guidance</Title>
+            <Title
+              className={`flex-1 !font-bold !m-0 ${isDark ? '!text-white' : '!text-black'}`}
+            >
+              {t('sectionTitle')}
+            </Title>
             <div className='flex-1'>
-              <Text className='!text-lg font-semibold'>
-                Career Guidance helps students discover their strengths and
-                interests to choose suitable career paths. It supports them in
-                exploring opportunities and pursuing goals, helping them achieve
-                their careers and contribute to society.
+              <Text
+                className='!text-lg font-semibold'
+                color={isDark ? 'white' : ''}
+              >
+                {t('sectionDesc')}
               </Text>
             </div>
           </Flex>
@@ -99,8 +107,8 @@ const CareerGuid: React.FC = () => {
           </div>
         </div>
       }
-      bonusTit='Career Exploration Project'
-      moreBut='Explore all Projects'
+      bonusTit={t('bonusTitle')}
+      moreBut={t('moreBtn')}
       featCard={cgCard}
       moreClass={!mb ? 'px-20' : 'px-5'}
     />

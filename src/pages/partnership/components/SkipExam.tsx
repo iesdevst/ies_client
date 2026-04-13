@@ -1,4 +1,5 @@
 import { Col, Image, Row } from 'antd';
+import { useTranslation } from 'react-i18next';
 import { useMediaQuery } from 'react-responsive';
 import HS from '@/assets/imgs/high_sc_skip_ex.jpeg';
 import IL from '@/assets/imgs/intermediate_lv_skip_ex.jpeg';
@@ -6,31 +7,32 @@ import OFC from '@/assets/imgs/officer_skip_ex.jpeg';
 import US from '@/assets/imgs/uni_stu_skip_ex.jpeg';
 import { IesClSection, Text, Title } from '@/components';
 
-const skipExamDt = [
-  {
-    tit: 'No Entrance Exam Requirement for Working Professionals',
-    decs: 'Learners who are government officials, civil servants, or individuals currently working in agencies, organizations, state-owned or private enterprises, or the armed forces, and who have already obtained a high school diploma or higher (vocational secondary, college, university, etc.)',
-    img: OFC,
-  },
-  {
-    tit: 'No Entrance Exam Requirement for Current College/University Students',
-    decs: 'Students currently studying at colleges or universities',
-    img: US,
-  },
-  {
-    tit: 'No Entrance Exam Requirement for Recent High School Graduates',
-    decs: 'Students who have just graduated from high school',
-    img: HS,
-  },
-  {
-    tit: 'No Entrance Exam Requirement for Intermediate-Level Graduates',
-    decs: 'Graduates of intermediate-level (vocational secondary) programs',
-    img: IL,
-  },
-];
-
 const SkipExam: React.FC = () => {
   const mb = useMediaQuery({ maxWidth: 1024 });
+  const { t } = useTranslation('skipExam');
+
+  const skipExamDt = [
+    {
+      tit: t('i1t'),
+      decs: t('i1d'),
+      img: OFC,
+    },
+    {
+      tit: t('i2t'),
+      decs: t('i2d'),
+      img: US,
+    },
+    {
+      tit: t('i3t'),
+      decs: t('i3d'),
+      img: HS,
+    },
+    {
+      tit: t('i4t'),
+      decs: t('i4d'),
+      img: IL,
+    },
+  ];
   return (
     <IesClSection
       id='skip-exam'
@@ -43,7 +45,7 @@ const SkipExam: React.FC = () => {
               level={4}
               className={`!text-white ${!mb ? '' : '!text-center'}`}
             >
-              No entrance exam
+              {t('t')}
             </Title>
 
             <Row gutter={[16, 30]}>

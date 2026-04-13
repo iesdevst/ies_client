@@ -14,6 +14,7 @@ import {
   type InputRef,
 } from 'antd';
 import React, { useRef, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { useMediaQuery } from 'react-responsive';
 import { useStRegisSend } from '@/api';
 import { Title } from '@/components';
@@ -27,8 +28,16 @@ import {
   shortTermTrainOptions,
 } from '@/utils';
 
-const StRegisterForm: React.FC = () => {
+interface IStRegisterForm {
+  dark: boolean;
+}
+
+const StRegisterForm: React.FC<IStRegisterForm> = (props) => {
+  const { dark } = props;
+  const { t } = useTranslation('stRegisForm');
+  const { t: optionT } = useTranslation('options');
   const [form] = Form.useForm();
+
   const { pushBSQ, pushBEQ } = useNotifyStore();
   const mb = useMediaQuery({ maxWidth: 1024 });
   const [stTopen, setStTopen] = useState(false);
@@ -40,8 +49,8 @@ const StRegisterForm: React.FC = () => {
     onSuccess: () => {
       pushBSQ([
         {
-          title: 'IES College Notify',
-          des: 'Register Send Succesfully',
+          title: t('iesNoti'),
+          des: t('des'),
         },
       ]);
       form.resetFields();
@@ -49,8 +58,8 @@ const StRegisterForm: React.FC = () => {
     onError: () => {
       pushBEQ([
         {
-          title: 'IES College Error',
-          des: 'Send failed',
+          title: t('iesErr'),
+          des: t('err'),
         },
       ]);
     },
@@ -66,9 +75,7 @@ const StRegisterForm: React.FC = () => {
   const handleBlur = () => {
     const value = phoneRef.current?.input?.value || '';
     if (value.length !== 9) {
-      form.setFields([
-        { name: 'phoneNum', errors: ['Incorrect phone number format!'] },
-      ]);
+      form.setFields([{ name: 'phoneNum', errors: [t('phoneFormatError')] }]);
     } else {
       form.setFields([{ name: 'phoneNum', errors: [] }]);
       form.setFieldsValue({ phoneNum: value });
@@ -102,29 +109,31 @@ const StRegisterForm: React.FC = () => {
 
   return (
     <section
-      className={`bg-white rounded-2xl ${!mb ? 'py-10 px-17' : 'pb-10 pt-5 px-3.5'}`}
+      className={`${dark ? '!bg-gray-600' : 'bg-white'} rounded-2xl ${!mb ? 'py-10 px-17' : 'pb-10 pt-5 px-3.5'}`}
     >
-      <Title className='!text-center !mb-12 italic !text-[#6472cf] !font-bold'>
-        Join Our Program
+      <Title
+        className={`!text-center !mb-12 italic !font-bold ${dark ? '!text-[#98c3ff]' : ' !text-[#6472cf]'}`}
+      >
+        {t('title')}
       </Title>
       <Form form={form} layout='vertical' onFinish={handleRegisSend}>
         <Flex gap={!mb ? 50 : 0} vertical={mb}>
           <Form.Item
             name='name'
-            label='Name'
-            rules={[{ required: true, message: 'Please enter your name' }]}
+            label={t('nameLabel')}
+            rules={[{ required: true, message: t('nameError') }]}
             className='w-full'
           >
-            <Input className='' placeholder='Please enter your name' />
+            <Input className='' placeholder={t('nameError')} />
           </Form.Item>
 
-          <Form.Item label='Phone Number' className='!w-full'>
-            <Space.Compact>
+          <Form.Item label={t('phoneLabel')} className='!w-full'>
+            <Space.Compact className='!w-full'>
               <Form.Item
                 name='countryCode'
                 noStyle
                 initialValue='+84'
-                rules={[{ required: true, message: 'Select country code' }]}
+                rules={[{ required: true, message: t('countryCodeError') }]}
               >
                 <Select style={{ width: 100 }}>
                   <Select.Option value='+84'>+84</Select.Option>
@@ -135,16 +144,16 @@ const StRegisterForm: React.FC = () => {
                 name='phoneNum'
                 noStyle
                 rules={[
-                  { required: true, message: 'Please enter your phone number' },
+                  { required: true, message: t('phoneError') },
                   {
                     pattern: /^[0-9]{9}$/,
-                    message: 'Incorrect phone number format!',
+                    message: t('phoneFormatError'),
                   },
                 ]}
               >
                 <Input
                   ref={phoneRef}
-                  placeholder='Enter phone number'
+                  placeholder={t('phoneError')}
                   maxLength={9}
                   onKeyPress={handleKeyPress}
                   onBlur={handleBlur}
@@ -160,27 +169,25 @@ const StRegisterForm: React.FC = () => {
             name='email'
             label='Email'
             rules={[
-              { required: true, message: 'Please enter your email' },
-              { type: 'email', message: 'Please enter a valid email format' },
+              { required: true, message: t('emailError') },
+              { type: 'email', message: t('emailInvalid') },
             ]}
             className='w-full'
           >
-            <Input placeholder='Please enter your email' />
+            <Input placeholder={t('emailError')} />
           </Form.Item>
 
           <Form.Item
             name='capacityRole'
-            label='Capacity Role'
-            rules={[
-              { required: true, message: 'Please select your capacity role' },
-            ]}
+            label={t('roleLabel')}
+            rules={[{ required: true, message: t('roleError') }]}
             className='!w-full'
           >
             <Select
-              placeholder='Select Your Capacity Role'
+              placeholder={t('rolePlaceholder')}
               options={capacityRoleOptions.map((item) => ({
                 ...item,
-                label: item.label,
+                label: optionT(item.label),
               }))}
             />
           </Form.Item>
@@ -189,50 +196,51 @@ const StRegisterForm: React.FC = () => {
         <Flex gap={!mb ? 50 : 0} vertical={mb}>
           <Form.Item
             name='age'
-            label='Student Age'
-            rules={[{ required: true, message: 'Please enter student age' }]}
-            className='w-full'
-          >
-            <Input
-              ref={ageRef}
-              placeholder='Enter student age'
-              maxLength={2}
-              onKeyPress={(e) => {
-                if (!/[0-9]/.test(e.key)) e.preventDefault();
-              }}
-              onBlur={() => {
-                const valueStr = ageRef.current?.input?.value || '';
-                const value = Number(valueStr);
-
-                if (!valueStr || value < 16 || value > 99) {
-                  form.setFields([
-                    { name: 'age', errors: ['Age must be 16 or older'] },
-                  ]);
-                } else {
-                  form.setFields([{ name: 'age', errors: [] }]);
-                  form.setFieldsValue({ age: valueStr });
-                  console.log({ value });
-                }
-              }}
-            />
-          </Form.Item>
-          <Form.Item
-            name='shortTermType'
-            label='Short-Term Programs'
+            label={t('ageLabel')}
             rules={[
+              { required: true, message: t('agePlaceholder') },
               {
-                required: true,
-                message: 'Please select your short-term program',
+                validator: (_, value) => {
+                  if (!value) return Promise.resolve();
+
+                  const num = Number(value);
+
+                  if (num < 16 || num > 99) {
+                    return Promise.reject(t('ageError'));
+                  }
+
+                  return Promise.resolve();
+                },
               },
             ]}
             className='w-full'
           >
             <Input
-              placeholder='Please select your short-term program ->'
+              ref={ageRef}
+              placeholder={t('agePlaceholder')}
+              maxLength={2}
+              onKeyPress={(e) => {
+                if (!/[0-9]/.test(e.key)) e.preventDefault();
+              }}
+            />
+          </Form.Item>
+          <Form.Item
+            name='shortTermType'
+            label={t('programLabel')}
+            rules={[
+              {
+                required: true,
+                message: t('programError'),
+              },
+            ]}
+            className='w-full'
+          >
+            <Input
+              placeholder={t('programError')}
               readOnly
               value={
                 stType.length > 0
-                  ? `${stType.length} short-term program${stType.length > 1 ? 's' : ''} selected`
+                  ? `${stType.length} ${t('progSlPlu')}${stType.length > 1 ? t('progSlPlu2') : ''} ${t('progSlPlu3')}`
                   : ''
               }
               suffix={
@@ -243,18 +251,24 @@ const StRegisterForm: React.FC = () => {
                         e.stopPropagation();
                         form.setFieldsValue({ shortTermType: [] });
                       }}
-                      className='!text-black'
+                      className={dark ? '!text-white' : '"!text-black"'}
                     />
                     <SelectOutlined
                       className='!text-xl'
-                      style={{ cursor: 'pointer', color: '#6472cf' }}
+                      style={{
+                        cursor: 'pointer',
+                        color: !dark ? '#6472cf' : '#3677d2',
+                      }}
                       onClick={() => setStTopen(true)}
                     />
                   </Row>
                 ) : (
                   <SelectOutlined
                     className='!text-xl'
-                    style={{ cursor: 'pointer', color: '#6472cf' }}
+                    style={{
+                      cursor: 'pointer',
+                      color: !dark ? '#6472cf' : '#3677d2',
+                    }}
                     onClick={() => setStTopen(true)}
                   />
                 )
@@ -269,6 +283,7 @@ const StRegisterForm: React.FC = () => {
               options={shortTermTrainOptions}
               bgC='!bg-[#6472cf]'
               clearAll={() => form.setFieldsValue({ shortTermType: [] })}
+              lstBgCus={dark ? 'bg-[#708db5]' : ''}
             />
           </Form.Item>
         </Flex>
@@ -276,20 +291,18 @@ const StRegisterForm: React.FC = () => {
         <Flex vertical>
           <Form.Item
             name='location'
-            label='Current Address'
-            rules={[
-              { required: true, message: 'Please enter your current address' },
-            ]}
+            label={t('addressLabel')}
+            rules={[{ required: true, message: t('addressError') }]}
             className='w-full'
           >
-            <Input placeholder='Please enter your current address' />
+            <Input placeholder={t('addressError')} />
           </Form.Item>
           <Form.Item
             name='question'
-            label='Question (Optional)'
+            label={t('questionLabel')}
             className='w-full'
           >
-            <Input className='!py-2' placeholder='Enter your question' />
+            <Input className='!py-2' placeholder={t('questionPlaceholder')} />
           </Form.Item>
         </Flex>
 
@@ -304,7 +317,7 @@ const StRegisterForm: React.FC = () => {
             loading={isLoad}
             className='!bg-[#6472cf]'
           >
-            Send
+            {t('submit')}
           </Button>
         </Form.Item>
       </Form>

@@ -6,6 +6,7 @@ import {
 } from '@ant-design/icons';
 import { Tabs, Tooltip, type TabsProps } from 'antd';
 import { lazy, useCallback, useMemo } from 'react';
+import { useTranslation } from 'react-i18next';
 import { useMediaQuery } from 'react-responsive';
 import { useSearchParams } from 'react-router-dom';
 import styles from '../iesTraining.module.scss';
@@ -17,7 +18,13 @@ const ShortCrsDetail = lazy(
   () => import('@/pages/training/components/ShortCrsDetail'),
 );
 
-const ShortCrsTabLst: React.FC = () => {
+interface IShortCrsTabLst {
+  dark: boolean;
+}
+
+const ShortCrsTabLst: React.FC<IShortCrsTabLst> = (props) => {
+  const { dark } = props;
+  const { t } = useTranslation('shortCrsTabLst');
   const mb = useMediaQuery({ maxWidth: 767 });
   const [shortCrsSearchPrs, setshortCrsSearchPrs] = useSearchParams();
 
@@ -32,10 +39,10 @@ const ShortCrsTabLst: React.FC = () => {
             level={4}
             className={`${shortCrsActKey === ShortCrsTab.Mixology ? '!text-[#8990bc]' : '!text-white'} !m-0`}
           >
-            Beverage Preparation
+            {t('mixology')}
           </Title>
         ) : (
-          <Tooltip title='Beverage Preparation'>
+          <Tooltip title={t('mixology')}>
             <CoffeeOutlined
               className={`${shortCrsActKey === ShortCrsTab.Mixology ? '!text-[#8990bc]' : '!text-white'} !text-2xl`}
             />
@@ -50,10 +57,10 @@ const ShortCrsTabLst: React.FC = () => {
             level={4}
             className={`${shortCrsActKey === ShortCrsTab.Cooking ? '!text-[#8990bc]' : '!text-white'} !m-0`}
           >
-            Professional Cooking
+            {t('proCook')}
           </Title>
         ) : (
-          <Tooltip title='Professional Cooking'>
+          <Tooltip title={t('proCook')}>
             <FireOutlined
               className={`${shortCrsActKey === ShortCrsTab.Cooking ? '!text-[#8990bc]' : '!text-white'} !text-2xl`}
             />
@@ -68,10 +75,10 @@ const ShortCrsTabLst: React.FC = () => {
             level={4}
             className={`${shortCrsActKey === ShortCrsTab.Baking ? '!text-[#8990bc]' : '!text-white'} !m-0`}
           >
-            Baking
+            {t('baking')}
           </Title>
         ) : (
-          <Tooltip title='Baking'>
+          <Tooltip title={t('baking')}>
             <PieChartOutlined
               className={`${shortCrsActKey === ShortCrsTab.Baking ? '!text-[#8990bc]' : '!text-white'} !text-2xl`}
             />
@@ -86,10 +93,10 @@ const ShortCrsTabLst: React.FC = () => {
             level={4}
             className={`${shortCrsActKey === ShortCrsTab.UsingAi ? '!text-[#8990bc]' : '!text-white'} !m-0`}
           >
-            AI Applications
+            {t('aiApp')}
           </Title>
         ) : (
-          <Tooltip title='AI Applications'>
+          <Tooltip title={t('aiApp')}>
             <RobotOutlined
               className={`${shortCrsActKey === ShortCrsTab.UsingAi ? '!text-[#8990bc]' : '!text-white'} !text-2xl`}
             />
@@ -98,7 +105,7 @@ const ShortCrsTabLst: React.FC = () => {
         children: <ShortCrsDetail scType={ShortCrsTypeEnum.UsingAi} />,
       },
     ],
-    [shortCrsActKey, mb],
+    [shortCrsActKey, mb, t],
   );
 
   const hdlChangeTab = useCallback(
@@ -121,10 +128,10 @@ const ShortCrsTabLst: React.FC = () => {
 
   return (
     <section className='pt-15'>
-      <div className='!bg-[#FFFCF2] pt-10'>
+      <div className={`${dark ? 'bg-gray-700' : '!bg-[#FFFCF2]'} pt-10`}>
         <div className='text-center mb-6'>
           <Title level={!mb ? 1 : 3} className='!text-[#6472cf]'>
-            Short-term Training Programs
+            {t('shortT')}
           </Title>
         </div>
 

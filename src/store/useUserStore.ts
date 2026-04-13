@@ -9,39 +9,31 @@ type UserStoreInit = {
 interface IUserStore extends UserStoreInit {
   setLocale: (locale: UserStoreInit['locale']) => void;
   setIsDark: (isDark: boolean) => void;
-  reset: () => void;
 }
 
 const init: UserStoreInit = {
-  locale: IesClientLangEnum.En_US,
-  isDark: false,
+  locale: (localStorage.getItem('locale') as IesClientLangEnum) || 'en-US',
+  isDark: localStorage.getItem('isDark') === 'true' ? true : false,
 };
 const useUserStore = create<IUserStore>((set) => {
-  // locale
-  const locale =
-    typeof window !== 'undefined'
-      ? ((localStorage.getItem('locale') as IesClientLangEnum) ?? init.locale)
-      : init.locale;
-
   //setter
   // locale setter
   const setLocale = (locale: IesClientLangEnum) => {
-    if (typeof window !== 'undefined') {
-      localStorage.setItem('locale', locale);
-    }
     set(() => ({ locale }));
+    localStorage.setItem('locale', locale);
   };
 
-  // reset setter
-  const reset = () => {
-    set((origin) => ({ ...init, locale: origin.locale }));
+  // themes
+  const setIsDark = (isDark: boolean) => {
+    set(() => ({ isDark }));
+    localStorage.setItem('isDark', String(isDark));
+    document.documentElement.classList.toggle('dark', isDark);
   };
+
   return {
     ...init,
-    locale,
     setLocale,
-    setIsDark: (isDark: boolean) => set(() => ({ isDark })),
-    reset,
+    setIsDark,
   };
 });
 

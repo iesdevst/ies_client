@@ -1,11 +1,8 @@
 import { Col, Image, Layout, List, Row, Space } from 'antd';
+import { useTranslation } from 'react-i18next';
 import MediaQuery from 'react-responsive';
-
 import fb from '@/assets/imgs/fb_logo.png';
-import LogoFooter from '@/assets/imgs/ies_logo_text.png';
-import ins from '@/assets/imgs/ins_logo.jpg';
-import tiktok from '@/assets/imgs/titk_logo.webp';
-import ytb from '@/assets/imgs/ytb_logo.png';
+import LogoFooter from '@/assets/imgs/ies_logo_horizo_dark.png';
 import zalo from '@/assets/imgs/zl_logo.png';
 import { Text, Title } from '@/components';
 
@@ -13,45 +10,43 @@ const { Footer } = Layout;
 
 const FooterIes: React.FC = () => {
   const iconSize = 45;
-
+  const { t } = useTranslation('footerIes');
   const aboutLst = [
     {
       key: 1,
-      label: 'Effort & Perseverance',
+      label: t('effort'),
     },
     {
       key: 2,
-      label: 'Creativity',
+      label: t('creativity'),
     },
-    { key: 3, label: 'Responsibility' },
+    { key: 3, label: t('responsibility') },
     {
       key: 4,
-      label:
-        '98 Pham Van Chieu Street, Thong Tay Hoi Ward, Ho Chi Minh City, Vietnam',
+      label: t('address'),
     },
     {
       key: 5,
-      label: 'Monday – Saturday: 8:00 AM – 12:00 PM, 1:00 PM – 5:00 PM',
+      label: t('workingTime'),
     },
   ];
 
   const socialLinks = [
-    { key: 1, href: 'https://zalo.me/0948987536', img: zalo, label: 'Zalo' },
-    { key: 2, href: 'https://www.instagram.com', img: ins, label: 'Instagram' },
-
-    { key: 3, href: 'https://facebook.com', img: fb, label: 'Facebook' },
-
-    { key: 4, href: 'https://tiktok.com', img: tiktok, label: 'Tiktok' },
-
-    { key: 5, href: 'https://youtube.com', img: ytb, label: 'Youtube' },
+    { key: 1, href: 'https://zalo.me/0901309866', img: zalo, label: 'Zalo' },
+    {
+      key: 2,
+      href: 'https://www.facebook.com/iescollege.edu.vn',
+      img: fb,
+      label: 'Facebook',
+    },
   ];
 
   const sAndF = [
-    { key: 1, label: 'Hanoi Open University' },
-    { key: 2, label: 'Applied Informatics' },
-    { key: 3, label: 'Information Technology' },
-    { key: 4, label: 'Office Administration' },
-    { key: 5, label: 'Marketing' },
+    { key: 1, label: t('hnou') },
+    { key: 2, label: t('appliedInfo') },
+    { key: 3, label: t('it') },
+    { key: 4, label: t('officeAdmin') },
+    { key: 5, label: t('marketing') },
   ];
 
   return (
@@ -79,7 +74,7 @@ const FooterIes: React.FC = () => {
                   Email
                 </Title>
                 <Text color='white' className='!text-lg'>
-                  tuyensinh@cnktdn.edu.vn
+                  info@iescollege.edu.vn
                 </Text>
               </Col>
               <Col>
@@ -94,18 +89,18 @@ const FooterIes: React.FC = () => {
             <Row justify={'space-between'} className='gap-x-40'>
               <Col className='!text-start'>
                 <Title className='m-0 !text-[#797a97] text-start' level={4}>
-                  Intermediate diploma
+                  {t('studentAffairs')}
                 </Title>
                 <Text color='white' className='!text-lg'>
-                  0901.309.866
+                  0912.584.800
                 </Text>
               </Col>
               <Col className='!text-start'>
                 <Title className='m-0 !text-[#797a97] text-start' level={4}>
-                  University bridging program
+                  {t('admissions')}
                 </Title>
                 <Text color='white' className='!text-lg'>
-                  0822.655.259 / 0969.249.588
+                  0901.309.866
                 </Text>
               </Col>
             </Row>
@@ -113,7 +108,7 @@ const FooterIes: React.FC = () => {
           <div className='!flex justify-between !items-start w-[90%] mx-auto mt-10'>
             <Col>
               <Title level={4} className='!m-0 !text-white text-start'>
-                About IES
+                {t('about')}
               </Title>
               <List
                 dataSource={aboutLst}
@@ -131,7 +126,7 @@ const FooterIes: React.FC = () => {
 
             <Col className='mr-25'>
               <Title level={4} className='!m-0 !text-white text-start'>
-                Schools & Faculties
+                {t('schools')}
               </Title>
               <List
                 dataSource={sAndF}
@@ -149,7 +144,7 @@ const FooterIes: React.FC = () => {
 
             <Col className='mr-15'>
               <Title level={4} className='!m-0 !text-white text-start'>
-                Social
+                {t('social')}
               </Title>
               <List
                 dataSource={socialLinks}
@@ -193,7 +188,7 @@ const FooterIes: React.FC = () => {
             {/* Contact */}
             <div className='mt-3'>
               <Text color='white' className='block text-sm'>
-                Email: tuyensinh@cnktdn.edu.vn
+                Email: info@iescollege.edu.vn
               </Text>
               <Text color='white' className='block text-sm'>
                 Hotline: 0901.309.866
@@ -226,7 +221,7 @@ const FooterIes: React.FC = () => {
             {/* About */}
             <div className='mt-6 text-left'>
               <Title level={5} className='!text-white'>
-                About IES
+                {t('about')}
               </Title>
               {aboutLst.map((item) => (
                 <Text key={item.key} className='block !text-[#797a97] text-sm'>
@@ -238,7 +233,7 @@ const FooterIes: React.FC = () => {
             {/* Schools */}
             <div className='mt-6 text-left'>
               <Title level={5} className='!text-white'>
-                Schools & Faculties
+                {t('schools')}
               </Title>
               {sAndF.map((item) => (
                 <Text key={item.key} className='block !text-[#797a97] text-sm'>

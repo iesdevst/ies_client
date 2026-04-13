@@ -2,7 +2,7 @@ import {
   CapacityRoleEnum,
   InterestProgramEnum,
   PartnershipProgEnum,
-  PsLocationRegis,
+  LocationRegis,
   ShortTermTraingEnum,
 } from './enum';
 
@@ -43,31 +43,31 @@ const eNumEntities = <T extends Record<string, string | number>>(
 
 const capacityRoleEnumsObj: EnumObjBase<typeof CapacityRoleEnum> = {
   Student: {
-    label: 'Student',
+    label: 'stu',
     value: CapacityRoleEnum.Student,
   },
   Parent: {
-    label: 'Parent',
+    label: 'parent',
     value: CapacityRoleEnum.Parent,
   },
 };
-const enrollmentAreaEnumsObj: EnumObjBase<typeof PsLocationRegis> = {
+const enrollmentAreaEnumsObj: EnumObjBase<typeof LocationRegis> = {
   HN: {
-    label: 'Ha Noi city',
-    value: PsLocationRegis.HN,
+    label: 'hn',
+    value: LocationRegis.HN,
   },
   HCM: {
-    label: 'Ho Chi Minh city',
-    value: PsLocationRegis.HCM,
+    label: 'hcm',
+    value: LocationRegis.HCM,
   },
   Other: {
-    label: 'Other',
-    value: PsLocationRegis.Other,
+    label: 'other',
+    value: LocationRegis.Other,
   },
 };
 
-const enrollmentAreaOptions = eNumEntities<typeof PsLocationRegis>(
-  PsLocationRegis,
+const enrollmentAreaOptions = eNumEntities<typeof LocationRegis>(
+  LocationRegis,
 ).keys.map((enumKey) => {
   const { label, value } = enrollmentAreaEnumsObj[enumKey];
   return { label, value };
@@ -85,39 +85,39 @@ const interestProgramEnumsObj: EnumObjBase<
   { group?: string }
 > = {
   OfficeIT: {
-    label: 'Office IT',
+    label: 'offIt',
     value: InterestProgramEnum.OfficeIT,
   },
   InformationTechnology: {
-    label: 'Information Technology',
+    label: 'ivIt',
     value: InterestProgramEnum.InformationTechnology,
   },
   IndustrialElectrical: {
-    label: 'Industrial & Residential Electrical',
+    label: 'indus',
     value: InterestProgramEnum.IndustrialElectrical,
   },
   OfficeAdministration: {
-    label: 'Office Administration',
+    label: 'offAd',
     value: InterestProgramEnum.OfficeAdministration,
   },
   HotelManagement: {
-    label: 'Hotel Management',
+    label: 'ivHotel',
     value: InterestProgramEnum.HotelManagement,
   },
   Marketing: {
-    label: 'Marketing',
+    label: 'mkt',
     value: InterestProgramEnum.Marketing,
   },
   BusinessAdministration: {
-    label: 'Business Administration',
+    label: 'busiAdmin',
     value: InterestProgramEnum.BusinessAdministration,
   },
   GraphicDesign: {
-    label: 'Graphic Design',
+    label: 'ds',
     value: InterestProgramEnum.GraphicDesign,
   },
   Accounting: {
-    label: 'Accounting',
+    label: 'ivAccounting',
     value: InterestProgramEnum.Accounting,
   },
 };
@@ -134,19 +134,19 @@ const shortTermTrainEnumsObj: EnumObjBase<
   { group?: string }
 > = {
   BeveragePre: {
-    label: 'Beverage Preparation',
+    label: 'mixology',
     value: ShortTermTraingEnum.BeveragePre,
   },
   Cooking: {
-    label: 'Professional Cooking',
+    label: 'proCook',
     value: ShortTermTraingEnum.Cooking,
   },
   Baking: {
-    label: 'Baking',
+    label: 'baking',
     value: ShortTermTraingEnum.Baking,
   },
   AiApp: {
-    label: 'AI Applications',
+    label: 'aiApp',
     value: ShortTermTraingEnum.AiApp,
   },
 };
@@ -163,47 +163,47 @@ const partnershipProgEnumsObj: EnumObjBase<
   { group?: string }
 > = {
   ECom: {
-    label: 'E-commerce',
+    label: 'eco',
     value: PartnershipProgEnum.ECom,
   },
   BusiAd: {
-    label: 'Business Administration',
+    label: 'busiAd',
     value: PartnershipProgEnum.BusiAd,
   },
   Accounting: {
-    label: 'Accounting',
+    label: 'accounting',
     value: PartnershipProgEnum.Accounting,
   },
   FinBank: {
-    label: 'Finance & Bankingn',
+    label: 'finBank',
     value: PartnershipProgEnum.FinBank,
   },
   IT: {
-    label: 'Information Technology',
+    label: 'it',
     value: PartnershipProgEnum.IT,
   },
   Law: {
-    label: 'Law',
+    label: 'law',
     value: PartnershipProgEnum.Law,
   },
   EcoLaw: {
-    label: 'Economic Law',
+    label: 'ecoLaw',
     value: PartnershipProgEnum.EcoLaw,
   },
   EngLang: {
-    label: 'English Language',
+    label: 'englang',
     value: PartnershipProgEnum.EngLang,
   },
   ChinaLang: {
-    label: 'Chinese Language',
+    label: 'cnLang',
     value: PartnershipProgEnum.ChinaLang,
   },
   TouTraMana: {
-    label: 'Tourism & Travel Management',
+    label: 'touris',
     value: PartnershipProgEnum.TouTraMana,
   },
   HotelMana: {
-    label: 'Hotel Management',
+    label: 'hotel',
     value: PartnershipProgEnum.HotelMana,
   },
 };

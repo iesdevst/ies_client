@@ -1,6 +1,7 @@
 import { ArrowUpOutlined } from '@ant-design/icons';
 import { Button, Col, Flex, Image, Modal, Row } from 'antd';
 import { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { useMediaQuery } from 'react-responsive';
 import DLIB from '@/assets/imgs/dgt_lib.jpeg';
 import DGTR from '@/assets/imgs/dgt_lib_right.jpg';
@@ -8,6 +9,7 @@ import { IesClSection, Text, Title } from '@/components';
 
 const EduLibrary = () => {
   const [openCsModal, setOpenCsModal] = useState(false);
+  const { t } = useTranslation('eduLibrary');
   const mb = useMediaQuery({ maxWidth: 767 });
   const tl = useMediaQuery({ minWidth: 768, maxWidth: 1024 });
 
@@ -17,8 +19,8 @@ const EduLibrary = () => {
       layout='simple'
       divider={false}
       children={
-        <section className={`bg-white ${mb ? 'px-2' : tl ? '' : ''}`}>
-          <Title className='!text-center !pt-15'>IES Digital Library</Title>
+        <section className={`${mb ? 'px-2' : tl ? '' : ''}`}>
+          <Title className='!text-center !pt-15'>{t('title')}</Title>
           <div
             style={{
               backgroundImage: `url(${DLIB})`,
@@ -47,21 +49,19 @@ const EduLibrary = () => {
                       level={tl ? 3 : 1}
                       className={`${!tl ? '' : '!text-center !bg-[#275597] !rounded-full p-3 px-6 opacity-80'} !text-white !font-bold !m-0`}
                     >
-                      Discover Knowledge at Your Fingertips
+                      {t('heading')}
                     </Title>
                     <Text
                       className={`!block !font-bold ${!tl ? '!text-lg' : ''}`}
                       color='white'
                     >
-                      Access our digital library anytime, anywhere. Explore
-                      books, articles, and learning resources to support your
-                      studies and curiosity.
+                      {t('desc')}
                     </Text>
                     <Button
                       className='!bg-white !text-black !rounded-2xl !font-bold !w-2/3 !block'
                       onClick={() => setOpenCsModal(true)}
                     >
-                      Start Exploring
+                      {t('startBtn')}
                     </Button>
                   </Flex>
                 </Col>
@@ -83,16 +83,14 @@ const EduLibrary = () => {
                         className={`!block !mb-2 ${!tl ? '!text-lg' : ''}`}
                         color='#464646'
                       >
-                        Find trusted resources and materials to support your
-                        learning anytime, anywhere. Our digital library makes
-                        studying easier and faster.
+                        {t('cardDesc')}
                       </Text>
                       <Button
                         type='text'
                         className='hover:!underline !font-bold !text-black !text-lg'
                         onClick={() => setOpenCsModal(true)}
                       >
-                        Start Exploring{' '}
+                        {t('startBtn')}
                         <ArrowUpOutlined className='!rotate-45' />
                       </Button>
                     </Col>
@@ -119,16 +117,15 @@ const EduLibrary = () => {
                   />
                   <Col className='px-6'>
                     <Text className='!block mb-1.5' color='#464646'>
-                      Find trusted resources and materials to support your
-                      learning anytime, anywhere. Our digital library makes
-                      studying easier and faster.
+                      {t('cardDesc')}
                     </Text>
                     <Button
                       type='text'
                       className='hover:!underline !font-bold !text-black !text-lg'
                       onClick={() => setOpenCsModal(true)}
                     >
-                      Start Exploring <ArrowUpOutlined className='!rotate-45' />
+                      {t('startBtn')}
+                      <ArrowUpOutlined className='!rotate-45' />
                     </Button>
                   </Col>
                 </Col>
@@ -139,21 +136,20 @@ const EduLibrary = () => {
                       level={4}
                       className='!text-white !font-bold !m-0 !text-center'
                     >
-                      Discover Knowledge <br /> at Your Fingertips
+                      {t('headingBr1')}
+                      <br /> {t('headingBr2')}
                     </Title>
                     <Text
                       className='!block !font-bold !text-sm !bg-[#275597] !rounded-full p-3 px-6 opacity-80'
                       color='white'
                     >
-                      Access our digital library anytime, anywhere. Explore
-                      books, articles, and learning resources to support your
-                      studies and curiosity.
+                      {t('desc')}
                     </Text>
                     <Button
                       className='!bg-white !text-black !rounded-2xl !font-bold !w-2/3 !block'
                       onClick={() => setOpenCsModal(true)}
                     >
-                      Start Exploring
+                      {t('startBtn')}
                     </Button>
                   </Flex>
                 </Col>
@@ -161,14 +157,14 @@ const EduLibrary = () => {
             )}
 
             <Modal
-              title='Coming Soon'
+              title={t('comingSoonTitle')}
               open={openCsModal}
               onOk={() => setOpenCsModal(false)}
               onCancel={() => setOpenCsModal(false)}
               okText='OK'
-              cancelText='Cancel'
+              cancelText={t('cancel')}
             >
-              <p>Digital library features are on the way. Stay tuned!</p>
+              <p>{t('comingSoonDesc')}</p>
             </Modal>
           </div>
         </section>

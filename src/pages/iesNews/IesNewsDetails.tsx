@@ -1,6 +1,7 @@
 import { RightOutlined } from '@ant-design/icons';
 import { Breadcrumb, Flex, Image } from 'antd';
 import { useMemo } from 'react';
+import { useTranslation } from 'react-i18next';
 import { useMediaQuery } from 'react-responsive';
 import { useParams } from 'react-router-dom';
 import ContactKey from '../home/components/ContactKey';
@@ -11,6 +12,7 @@ import { ROUTES } from '@/constants';
 
 const IesNewsDetails = () => {
   const { id } = useParams();
+  const { t } = useTranslation('iesNewsDetails');
   const { data } = useNewsData();
   const mb = useMediaQuery({ maxWidth: 767 });
   const tl = useMediaQuery({ minWidth: 768, maxWidth: 1024 });
@@ -20,7 +22,7 @@ const IesNewsDetails = () => {
     return data.find((item) => String(item.id) === String(id));
   }, [data, id]);
   return (
-    <section className='bg-white'>
+    <section>
       <div className='!rounded-4xl !bg-[#dfe0e2] pt-10 py-20 mx-5'>
         <Breadcrumb
           className={`${mb ? '!ml-5 !mb-10' : tl ? '!ml-10 !mb-15' : '!ml-25 !py-15'}`}
@@ -36,21 +38,24 @@ const IesNewsDetails = () => {
                     fontSize: '15px',
                   }}
                 >
-                  News Page
+                  {t('newsP')}
                 </PrefetchLink>
               ),
             },
             {
               title: (
                 <Text color='#545969' className='!text-[16px] !font-bold'>
-                  News Details
+                  {t('newsD')}
                 </Text>
               ),
             },
           ]}
         />
-        <Title level={mb || tl ? 3 : 5} className='!text-center italic'>
-          News
+        <Title
+          level={mb || tl ? 3 : 5}
+          className='!text-center italic !text-black'
+        >
+          {t('news')}
         </Title>
         {detailDt && (
           <section>
@@ -63,7 +68,7 @@ const IesNewsDetails = () => {
             >
               <Title
                 level={mb || tl ? 3 : 1}
-                className={`${mb || tl ? '!text-center' : ''}`}
+                className={`${mb || tl ? '!text-center' : ''} !text-black`}
               >
                 {detailDt.newsTit}
               </Title>

@@ -1,16 +1,9 @@
 import { CheckCircleFilled } from '@ant-design/icons';
 import { Button, Col, Flex, Image, List } from 'antd';
+import { useTranslation } from 'react-i18next';
 import { useMediaQuery } from 'react-responsive';
 import PC from '@/assets/imgs/partnership_contact.jpeg';
 import { IesClSection, Text, Title } from '@/components';
-
-const steps = [
-  'Register for a consultation',
-  'Complete the registration form',
-  'Discuss your program with a counselor',
-  'Choose the appropriate major',
-  'Participate in distance learning and earn your degree',
-];
 
 interface IPartnershipRegis {
   openRegisInSec: () => void;
@@ -18,7 +11,9 @@ interface IPartnershipRegis {
 
 const PartnershipRegis: React.FC<IPartnershipRegis> = (props) => {
   const { openRegisInSec } = props;
+  const { t } = useTranslation('partnershipRegis');
   const mb = useMediaQuery({ maxWidth: 1024 });
+  const steps = [t('rs1'), t('rs2'), t('rs3'), t('rs4'), t('rs5')];
   return (
     <IesClSection
       id='partnership-regis'
@@ -37,10 +32,10 @@ const PartnershipRegis: React.FC<IPartnershipRegis> = (props) => {
             >
               <div>
                 <Title level={!mb ? 2 : 3} className='!m-0 !text-white'>
-                  Simple Admission in 5 Steps
+                  {t('rt1')}
                 </Title>
                 <Title level={2} className='!m-0 !text-white'>
-                  Get Your Degree Easily
+                  {t('rt2')}
                 </Title>
               </div>
               <List
@@ -58,8 +53,7 @@ const PartnershipRegis: React.FC<IPartnershipRegis> = (props) => {
                 )}
               />
               <Title level={!mb ? 1 : 4} className='!text-white'>
-                Over 30,000 students have earned their bachelor’s degrees
-                through Hanoi Open University’s E-Learning program.
+                {t('rst')}
               </Title>
             </Col>
             <Col
@@ -69,7 +63,7 @@ const PartnershipRegis: React.FC<IPartnershipRegis> = (props) => {
                 level={2}
                 className={`!text-white !m-0 ${!mb ? '' : '!text-center'}`}
               >
-                Get Advice
+                {t('ra')}
               </Title>
 
               <Image
@@ -82,7 +76,7 @@ const PartnershipRegis: React.FC<IPartnershipRegis> = (props) => {
                 className={`!w-full !bg-gray-500 !border-none !rounded-2xl !font-bold !text-lg hover:!text-[#16265a] ${!mb ? '' : '!py-6'}`}
                 onClick={openRegisInSec}
               >
-                Consult with Us
+                {t('rc')}
               </Button>
             </Col>
           </Flex>

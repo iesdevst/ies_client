@@ -6,14 +6,17 @@ import {
 } from '@ant-design/icons';
 import { Breadcrumb, Tabs, Tooltip, type TabsProps } from 'antd';
 import { lazy, useCallback, useMemo } from 'react';
+import { useTranslation } from 'react-i18next';
 import { useMediaQuery } from 'react-responsive';
 import { useSearchParams } from 'react-router-dom';
 import ContactKey from '../home/components/ContactKey';
 import styles from './iesAbout.module.scss';
+import VAMMB from '@/assets/imgs/v_ad_m_mb_banner.png';
 import VAM from '@/assets/imgs/vision_and_mission_bn_page.png';
 import { Text, Title } from '@/components';
 import { PrefetchLink } from '@/components/PrefetchLink';
 import { AboutTab, ROUTES } from '@/constants';
+import { useUserStore } from '@/store';
 
 const AbOverview = lazy(() => import('@/pages/about/components/AbOverview'));
 const AbVision = lazy(() => import('@/pages/about/components/AbVision'));
@@ -22,7 +25,8 @@ const AbCoreValue = lazy(() => import('@/pages/about/components/AbCoreValue'));
 const AboutIes: React.FC = () => {
   const [abtSearchParams, setAbtSearchParams] = useSearchParams();
   const abtActiveKey = abtSearchParams.get('tab') || AboutTab.Aboverview;
-
+  const { isDark } = useUserStore();
+  const { t } = useTranslation('aboutIes');
   const mb = useMediaQuery({ maxWidth: 767 });
   const tablet = useMediaQuery({ minWidth: 768, maxWidth: 1024 });
 
@@ -35,16 +39,16 @@ const AboutIes: React.FC = () => {
             level={4}
             className={`${abtActiveKey === AboutTab.Aboverview ? '!text-white' : '!text-black'} !m-0`}
           >
-            Overview
+            {t('ovw')}
           </Title>
         ) : (
-          <Tooltip title='Overview'>
+          <Tooltip title={t('ovw')}>
             <ProfileOutlined
               className={`${abtActiveKey === AboutTab.Aboverview ? '!text-white' : '!text-black'} !text-lg`}
             />
           </Tooltip>
         ),
-        children: <AbOverview />,
+        children: <AbOverview dark={isDark} />,
       },
       {
         key: AboutTab.Vision,
@@ -53,16 +57,16 @@ const AboutIes: React.FC = () => {
             level={4}
             className={`${abtActiveKey === AboutTab.Vision ? '!text-white' : '!text-black'} !m-0`}
           >
-            Vision
+            {t('vs')}
           </Title>
         ) : (
-          <Tooltip title='Vision'>
+          <Tooltip title={t('vs')}>
             <EyeOutlined
               className={`${abtActiveKey === AboutTab.Vision ? '!text-white' : '!text-black'} !text-lg`}
             />
           </Tooltip>
         ),
-        children: <AbVision />,
+        children: <AbVision dark={isDark} />,
       },
       {
         key: AboutTab.Corevalues,
@@ -71,10 +75,10 @@ const AboutIes: React.FC = () => {
             level={4}
             className={`${abtActiveKey === AboutTab.Corevalues ? '!text-white' : '!text-black'} !m-0`}
           >
-            Core Values
+            {t('vl')}
           </Title>
         ) : (
-          <Tooltip title='Core Values'>
+          <Tooltip title={t('vl')}>
             <HeartOutlined
               className={`${abtActiveKey === AboutTab.Corevalues ? '!text-white' : '!text-black'} !text-lg`}
             />
@@ -83,7 +87,7 @@ const AboutIes: React.FC = () => {
         children: <AbCoreValue />,
       },
     ],
-    [abtActiveKey, mb],
+    [abtActiveKey, mb, isDark, t],
   );
 
   const handleChangeTab = useCallback(
@@ -94,7 +98,7 @@ const AboutIes: React.FC = () => {
   );
 
   return (
-    <section className='!bg-white pt-5'>
+    <section className='pt-5'>
       <Breadcrumb
         className={`!bg-[#eaeaea] !rounded-t-3xl ${mb ? '!w-2/3 !py-1.5' : tablet ? 'w-1/3 !py-1.5' : '!w-1/5 !ml-15 !py-3'} ${styles.breadCrumbCusAb}`}
         separator={
@@ -113,14 +117,14 @@ const AboutIes: React.FC = () => {
                   fontSize: '15px',
                 }}
               >
-                Dasboard
+                {t('dashB')}
               </PrefetchLink>
             ),
           },
           {
             title: (
               <Text color='#199b9f' className='!text-[16px] !font-semibold'>
-                About IES
+                {t('abIes')}
               </Text>
             ),
           },
@@ -128,9 +132,9 @@ const AboutIes: React.FC = () => {
       />
 
       <div
-        className='!w-full !h-full pb-150 mb-10'
+        className={`${mb ? 'mb-2' : tablet ? 'mb-5' : 'mb-10'} !w-full !h-full pb-150`}
         style={{
-          backgroundImage: `url(${VAM})`,
+          backgroundImage: mb ? `url(${VAMMB})` : `url(${VAM})`,
           backgroundSize: 'cover',
           backgroundPosition: 'center',
           backgroundRepeat: 'no-repeat',
@@ -141,7 +145,7 @@ const AboutIes: React.FC = () => {
         items={tabs}
         onChange={handleChangeTab}
         type='card'
-        className={`${styles.customTabs} !mt-3`}
+        className={`${styles.customTabs} ${mb || tablet ? '' : '!mt-3'}`}
         centered={mb}
       />
 

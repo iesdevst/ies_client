@@ -1,0 +1,17 @@
+export default {
+  titIt: 'CNTT & Văn phòng',
+  appInf: 'Tin học ứng dụng',
+  it: 'Công nghệ thông tin',
+  indus: 'Điện công nghiệp & dân dụng',
+  titHos: 'Khách sạn & Dịch vụ',
+  hosMn: 'Quản trị khách sạn',
+  offAd: 'Quản trị văn phòng',
+  titBusi: 'Kinh doanh & Quản lý',
+  busiAd: 'Quản trị kinh doanh',
+  mkt: 'Marketing',
+  accounting: 'Kế toán',
+  titDesi: 'Thiết kế & Sáng tạo',
+  compuAi: 'Thiết kế hỗ trợ máy tính',
+  ivProg: 'Chương Trình Nghề Trung Cấp',
+  viewMore: 'Xem Thêm',
+};

@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
-import { Logo, Txt } from './components';
+import { Logo, Title, Txt } from './components';
+import { useUserStore } from './store';
 
 interface FallbackLoadingProps {
   className?: string;
@@ -10,6 +11,7 @@ const FallbackLoading: React.FC<FallbackLoadingProps> = (props) => {
   // const { height } = useWindowSize();
   const { className, showLogo = true } = props || {};
   const [dots, setDots] = useState('');
+  const { isDark } = useUserStore();
 
   // Animated dots effect
   useEffect(() => {
@@ -40,17 +42,21 @@ const FallbackLoading: React.FC<FallbackLoadingProps> = (props) => {
         <div
           className='relative p-5 rounded-3xl backdrop-blur-xl shadow-2xl w-full '
           style={{
-            background: 'rgba(255, 255, 255, 0.6)',
+            background: isDark ? '#618fd1' : 'rgba(255, 255, 255, 0.6)',
           }}
         >
           <div className='relative text-center'>
             {/* Logo */}
             {showLogo && <Logo size='md' />}
 
+            <Title
+              className={`${isDark ? '!text-white' : '!text-blue-400'} !m-0 !mt-3 italic`}
+              level={3}
+            >
+              IES Loading....
+            </Title>
             <div>
-              <Txt style={{ color: 'rgba(134, 34, 255, 1)', fontSize: '70px' }}>
-                {dots}
-              </Txt>
+              <Txt style={{ color: '#005cdf', fontSize: '70px' }}>{dots}</Txt>
             </div>
           </div>
         </div>

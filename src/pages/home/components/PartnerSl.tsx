@@ -1,5 +1,6 @@
 import { Carousel, Col, Flex, Image } from 'antd';
 
+import { useTranslation } from 'react-i18next';
 import { useMediaQuery } from 'react-responsive';
 import CNPH from '@/assets/imgs/cnph_tt.svg';
 import DO from '@/assets/imgs/div_oost_tt.webp';
@@ -12,10 +13,13 @@ import WW from '@/assets/imgs/work_wise_tt.webp';
 import { IesClSection, Text, Title } from '@/components';
 
 import styles from '@/components/SPS/iesCl.module.scss';
+import { useUserStore } from '@/store';
 
 const PartnerSl: React.FC = () => {
   const mb = useMediaQuery({ maxWidth: 1024 });
   const isTablet = useMediaQuery({ minWidth: 768, maxWidth: 1024 });
+  const { isDark } = useUserStore();
+  const { t } = useTranslation('partnerSl');
   const data = [GTTT, CNPH, LH, HS, RA, WW, FS, DO];
 
   return (
@@ -32,21 +36,23 @@ const PartnerSl: React.FC = () => {
             className={`!w-full ${!mb ? '!px-45' : ''}`}
           >
             <Col className='flex-1'>
-              <Title className=' !font-bold !m-0'>Internship Partner</Title>
-              <Title className={`!font-bold !m-0 ${!mb ? '' : 'text-center'}`}>
-                Institution
+              <Title
+                className={`!m-0 !font-bold ${isDark ? '!text-white' : '!text-black'}`}
+              >
+                {t('intershipP')}
+              </Title>
+              <Title
+                className={`!font-bold !m-0 ${isDark ? '!text-white' : ''} ${!mb ? '' : 'text-center'}`}
+              >
+                {t('ins')}
               </Title>
             </Col>
 
             <Text
               className={`!block flex-1 px-5 mt-2 ${!isTablet ? '' : 'px-15 mt-5 !text-2xl'}`}
+              color={isDark ? 'white' : ''}
             >
-              An institution that collaborates with businesses to develop and
-              coordinate internship programs, creating opportunities for
-              students to participate in real-world projects and apply knowledge
-              in practical situations. Through these partnerships, students gain
-              hands-on experience and develop professional skills in real
-              working environments, preparing them for future careers.
+              {t('descAn')}
             </Text>
           </Flex>
 

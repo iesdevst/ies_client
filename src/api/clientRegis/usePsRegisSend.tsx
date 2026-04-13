@@ -2,19 +2,19 @@ import { useMutation } from '@tanstack/react-query';
 import formspreeApi from '@/lib/formspree-api';
 import type { MutationConfig, MutationFn, QueryError } from '@/lib/react-query';
 import type {
+  LocationRegis,
   PartnershipProgEnum,
-  PsLocationRegis,
   RegisterTrainingTypeEnum,
 } from '@/utils';
 
-const epformspree = import.meta.env.VITE_FORMSPREE_ENDPOINT;
+const psadformspree = import.meta.env.VITE_PSAD_ENDPOINT;
 
 export interface PsRegisSendVar {
   trainRegisType: RegisterTrainingTypeEnum;
   name: string;
   phone: string;
   email: string;
-  locationRegis: PsLocationRegis;
+  locationRegis: LocationRegis;
   psProgTrain: Array<PartnershipProgEnum>;
 }
 
@@ -25,7 +25,7 @@ export const fetchPsRegisSet: MutationFn<
   PsRegisSendVar
 > = async (props) => {
   const request = await formspreeApi.post<PsRegisSendVar, PsRegisSendRes>(
-    epformspree,
+    psadformspree,
     props,
   );
   return request;

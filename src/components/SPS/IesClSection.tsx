@@ -1,6 +1,11 @@
-import { ArrowRightOutlined, RightOutlined } from '@ant-design/icons';
+import {
+  ArrowRightOutlined,
+  ArrowUpOutlined,
+  RightOutlined,
+} from '@ant-design/icons';
 import { Button, Card, Carousel, Col, Divider, Flex, Image, Row } from 'antd';
 import type { CSSProperties, ReactNode } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Text, Title } from '../AntTypography';
 import styles from './iesCl.module.scss';
 export type SubSecLayout =
@@ -23,6 +28,7 @@ interface BasePageIesSecProps {
   simpleFeat?: boolean;
   title?: string;
   mb?: boolean;
+  navigateGo?: string;
 }
 
 interface SCSLayoutProps extends BasePageIesSecProps {
@@ -68,8 +74,9 @@ interface TopicLayoutProps extends BasePageIesSecProps {
   botTit?: string;
   lstBut: string;
   topicI: string;
+  aboutTogo: string;
   topicCt: Array<{ tit: string; des: string; bgColor: string }>;
-  methodLst: Array<{ thodAv: string; meTit: string }>;
+  methodLst: Array<{ thodAv: string; meTit: string; methodGo: string }>;
 }
 
 interface NewsFeatureLayoutProps extends BasePageIesSecProps {
@@ -81,6 +88,7 @@ interface NewsFeatureLayoutProps extends BasePageIesSecProps {
     tit?: string;
     butCard?: string;
     des?: string;
+    navigo?: string;
   }>;
   bonusTit?: string;
   moreBut?: string;
@@ -110,6 +118,8 @@ export const IesClSection: React.FC<SubSectionProps> = (props) => {
     simpleFeat = false,
     className,
   } = props || {};
+
+  const navigate = useNavigate();
 
   const renderSlideCusLayout = (props: SlideCusLayoutProps) => {
     const { images } = props;
@@ -180,6 +190,9 @@ export const IesClSection: React.FC<SubSectionProps> = (props) => {
       botTit,
       lstBut,
       methodLst,
+      dark,
+      navigateGo,
+      aboutTogo,
     } = props;
 
     return (
@@ -187,22 +200,26 @@ export const IesClSection: React.FC<SubSectionProps> = (props) => {
         <Flex
           vertical={mb}
           justify='space-between'
-          align={!mb ? 'start' : 'center'}
+          align={!mb ? 'end' : 'center'}
           gap={!mb ? 0 : 20}
         >
           <Image
             src={topImaTit}
-            className={`${!mb ? '!w-150' : ''}`}
+            className={`${!mb ? '!w-150' : ''} ${dark ? 'rounded-xl' : ''}`}
             preview={false}
           />
 
-          {topTitBut && (
+          {topTitBut && aboutTogo && (
             <div>
               <Button
                 className={`!bg-transparent ${!mb ? '!pl-20' : ''}`}
                 type='text'
+                onClick={() => navigate(aboutTogo)}
               >
-                <Title className='!m-0 !text-black' level={4}>
+                <Title
+                  className={`!m-0 ${dark ? '!text-white' : '!text-black'}`}
+                  level={4}
+                >
                   {topTitBut}
                 </Title>
                 <div className='w-full h-full !bg-[#FBBF24] rounded-r-full flex items-center justify-center px-3'>
@@ -244,14 +261,24 @@ export const IesClSection: React.FC<SubSectionProps> = (props) => {
         </Flex>
         <div className='mt-15 !space-y-10'>
           <Flex vertical={mb} justify='space-between' align='center'>
-            <Title level={!mb ? 1 : 2} className={`${!mb ? '!m-0' : ''}`}>
+            <Title
+              level={!mb ? 1 : 2}
+              className={`${!mb ? '!m-0' : ''} ${dark ? '!text-white' : ''}`}
+            >
               {botTit}
             </Title>
 
-            {botBut && (
+            {botBut && navigateGo && (
               <div>
-                <Button className='!bg-transparent !p-0' type='text'>
-                  <Title className='!m-0 !text-black' level={4}>
+                <Button
+                  className='!bg-transparent !p-0'
+                  type='text'
+                  onClick={() => navigate(navigateGo)}
+                >
+                  <Title
+                    className={`!m-0 ${dark ? '!text-white' : '!text-black'}`}
+                    level={4}
+                  >
                     {botBut}
                   </Title>
                   <div className='w-full h-full !bg-[#FBBF24] rounded-r-full flex items-center justify-center px-3'>
@@ -279,13 +306,14 @@ export const IesClSection: React.FC<SubSectionProps> = (props) => {
                 <Col>
                   <Title
                     level={!mb ? 4 : 5}
-                    className={`${!mb ? '!m-0 !mb-2.5' : '!m-0'}`}
+                    className={`${dark ? '!text-white' : ''} ${!mb ? '!m-0 !mb-2.5' : '!m-0'}`}
                   >
                     {item.meTit}
                   </Title>
                   <Button
                     type='text'
                     className='!text-blue-500 !font-bold !text-lg !p-0'
+                    onClick={() => navigate(item.methodGo)}
                   >
                     {lstBut}
                   </Button>
@@ -299,7 +327,16 @@ export const IesClSection: React.FC<SubSectionProps> = (props) => {
   };
 
   const renderVidPrLayout = (props: VidPrLayoutProps) => {
-    const { desVid, titVid, bottomTit, vidLink, tabletVid, miniSc } = props;
+    const {
+      desVid,
+      titVid,
+      bottomTit,
+      vidLink,
+      tabletVid,
+      miniSc,
+      dark,
+      navigateGo,
+    } = props;
 
     const getPositionClass = () => {
       if (mb) return 'left-8 bottom-0 w-full';
@@ -367,20 +404,30 @@ export const IesClSection: React.FC<SubSectionProps> = (props) => {
             <div className='px-5'>
               <Text
                 className={`!mb-8 !text-start !block ${getTxtHdl()}`}
-                color='#2d334d'
+                color={dark ? 'white' : '#2d334d'}
               >
                 {desVid}
               </Text>
             </div>
 
-            <Row justify={'center'} align={'middle'}>
-              <Button shape='circle' type='text' className='flex items-center'>
-                <Title level={4} className='!m-0'>
-                  {bottomTit}
-                </Title>
-                <ArrowRightOutlined className='!bg-red-600 !border-none !text-white !rounded-full p-2' />
-              </Button>
-            </Row>
+            {bottomTit && navigateGo && (
+              <Row justify={'center'} align={'middle'}>
+                <Button
+                  shape='circle'
+                  type='text'
+                  className='flex items-center hover:!bg-transparent'
+                  onClick={() => navigate(navigateGo)}
+                >
+                  <Title
+                    level={4}
+                    className={`${dark ? '!text-white' : ''} !m-0`}
+                  >
+                    {bottomTit}
+                  </Title>
+                  <ArrowRightOutlined className='!bg-red-600 !border-none !text-white !rounded-full p-2' />
+                </Button>
+              </Row>
+            )}
           </Col>
         </div>
       </Flex>
@@ -388,7 +435,14 @@ export const IesClSection: React.FC<SubSectionProps> = (props) => {
   };
 
   const renderTrainSlLayout = (props: TrainingSlProps) => {
-    const { trainDes, trainImgSl, trainTit, statistics, statisTit } = props;
+    const {
+      trainDes,
+      trainImgSl,
+      trainTit,
+      statistics,
+      statisTit,
+      navigateGo,
+    } = props;
     return (
       <div className='!w-full !h-full'>
         <div
@@ -419,14 +473,20 @@ export const IesClSection: React.FC<SubSectionProps> = (props) => {
 
             {mb && (
               <div className='!text-start'>
-                <Button className='!bg-transparent !p-0' type='text'>
-                  <Title className='!m-0 !text-white' level={4}>
-                    {statisTit}
-                  </Title>
-                  <div className='w-full h-full !bg-[#FBBF24] rounded-r-full flex items-center justify-center px-3'>
-                    <RightOutlined className='!text-red-500 !font-semibold ' />
-                  </div>
-                </Button>
+                {navigateGo && (
+                  <Button
+                    className='!bg-transparent !p-0'
+                    type='text'
+                    onClick={() => navigate(navigateGo)}
+                  >
+                    <Title className='!m-0 !text-white' level={4}>
+                      {statisTit}
+                    </Title>
+                    <div className='w-full h-full !bg-[#FBBF24] rounded-r-full flex items-center justify-center px-3'>
+                      <RightOutlined className='!text-red-500 !font-semibold ' />
+                    </div>
+                  </Button>
+                )}
               </div>
             )}
           </Flex>
@@ -474,14 +534,20 @@ export const IesClSection: React.FC<SubSectionProps> = (props) => {
           >
             {!mb && (
               <div className='flex-[3] !text-start '>
-                <Button className='!bg-transparent !pl-20' type='text'>
-                  <Title className='!m-0 !text-white' level={4}>
-                    {statisTit}
-                  </Title>
-                  <div className='w-full h-full !bg-[#FBBF24] rounded-r-full flex items-center justify-center px-3'>
-                    <RightOutlined className='!text-red-500 !font-semibold ' />
-                  </div>
-                </Button>
+                {navigateGo && (
+                  <Button
+                    className='!bg-transparent !pl-20'
+                    type='text'
+                    onClick={() => navigate(navigateGo)}
+                  >
+                    <Title className='!m-0 !text-white' level={4}>
+                      {statisTit}
+                    </Title>
+                    <div className='w-full h-full !bg-[#FBBF24] rounded-r-full flex items-center justify-center px-3'>
+                      <RightOutlined className='!text-red-500 !font-semibold ' />
+                    </div>
+                  </Button>
+                )}
               </div>
             )}
 
@@ -511,20 +577,6 @@ export const IesClSection: React.FC<SubSectionProps> = (props) => {
     );
   };
 
-  const renderSimpleLayout = (props: SimpleLayoutProps) => {
-    const { divider } = props;
-    return (
-      <div className={`${className}  mx-auto `}>
-        {children}
-        {divider && (
-          <div>
-            <Divider />
-          </div>
-        )}
-      </div>
-    );
-  };
-
   const renderNewsFeatLayout = (props: NewsFeatureLayoutProps) => {
     const {
       feature = true,
@@ -533,6 +585,8 @@ export const IesClSection: React.FC<SubSectionProps> = (props) => {
       bonusTit,
       moreBut,
       moreClass,
+      dark,
+      navigateGo,
     } = props;
 
     return (
@@ -543,15 +597,19 @@ export const IesClSection: React.FC<SubSectionProps> = (props) => {
           align='center'
           className={`${!feature ? '!mb-3.5' : ''}`}
         >
-          <Title>{title}</Title>
+          <Title className={`${dark ? '!text-white' : ''}`}>{title}</Title>
 
-          {butTit && (
+          {butTit && navigateGo && (
             <div>
               <Button
                 className={`!bg-transparent ${!mb ? '!pl-20' : ''}`}
                 type='text'
+                onClick={() => navigate(navigateGo)}
               >
-                <Title className='!m-0 !text-black' level={4}>
+                <Title
+                  className={`${dark ? '!text-white' : '!text-black'} !m-0`}
+                  level={4}
+                >
                   {butTit}
                 </Title>
                 <div className='w-full h-full !bg-[#FBBF24] rounded-r-full flex items-center justify-center px-3'>
@@ -570,22 +628,12 @@ export const IesClSection: React.FC<SubSectionProps> = (props) => {
               align='center'
               className='!mb-10'
             >
-              <Title className='!m-0 !font-bold' level={3}>
+              <Title
+                className={`!m-0 !font-bold ${dark ? '!text-white' : ''}`}
+                level={3}
+              >
                 {bonusTit}
               </Title>
-              <div>
-                <Button
-                  className={`!bg-transparent ${!mb ? '!pl-20' : 'mt-5'}`}
-                  type='text'
-                >
-                  <Title className='!m-0 !text-black' level={4}>
-                    {moreBut}
-                  </Title>
-                  <div className='w-full h-full !bg-[#FBBF24] rounded-r-full flex items-center justify-center px-3'>
-                    <RightOutlined className='!text-red-500 !font-semibold ' />
-                  </div>
-                </Button>
-              </div>
             </Flex>
           )}
           <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8'>
@@ -595,7 +643,7 @@ export const IesClSection: React.FC<SubSectionProps> = (props) => {
                   <Card
                     key={index}
                     hoverable
-                    className='rounded-2xl overflow-hidden shadow-lg !border-none !bg-white'
+                    className={`${dark ? '!bg-gray-700' : '!bg-white'} rounded-2xl overflow-hidden shadow-lg !border-none !cursor-default`}
                     cover={
                       <img
                         src={item.imgC}
@@ -605,27 +653,35 @@ export const IesClSection: React.FC<SubSectionProps> = (props) => {
                     }
                   >
                     <div className='!px-5 !py-3'>
-                      {item.tit ||
-                        (item.butCard && (
-                          <Flex
-                            justify='space-between'
-                            align='center'
-                            className='!py-2'
-                          >
-                            <Title level={5} className='!text-blue-500 !m-0'>
-                              {item.tit}
-                            </Title>
+                      {item.tit && (
+                        <Flex
+                          justify='space-between'
+                          align='center'
+                          className='!py-2'
+                        >
+                          <Title level={5} className='!text-blue-500 !m-0'>
+                            {item.tit}
+                          </Title>
 
+                          {item.butCard && (
                             <div className='relative'>
-                              <div className='bg-blue-600 text-white px-5 py-1 font-semibold text-sm'>
+                              <div
+                                className={`${dark ? '!text-white' : '!text-black'} !bg-blue-600 px-5 py-1 font-semibold text-sm`}
+                              >
                                 {item.butCard}
                               </div>
-                              <div className='absolute right-[-8px] top-1/2 -translate-y-1/2 w-3 h-3 bg-white rotate-45'></div>
+                              <div
+                                className={`${dark ? 'bg-gray-700' : 'bg-white'} absolute right-[-8px] top-1/2 -translate-y-1/2 w-3 h-3 rotate-45`}
+                              ></div>
                             </div>
-                          </Flex>
-                        ))}
+                          )}
+                        </Flex>
+                      )}
 
-                      <Text className='font-semibold mb-6 !text-lg !block'>
+                      <Text
+                        className='font-semibold mb-6 !text-lg !block'
+                        color={dark ? 'white' : ''}
+                      >
                         {item.des}
                       </Text>
                     </div>
@@ -640,22 +696,47 @@ export const IesClSection: React.FC<SubSectionProps> = (props) => {
                       src={item.imgC}
                       className='!h-65 w-full mb-3.5 rounded-lg'
                     />
-                    <Title level={4}>{item.tit}</Title>
-                    <p className={`mb-2 ${!mb ? '!text-lg' : '!text-sm'}`}>
+                    <Title
+                      level={4}
+                      className={`${dark ? '!text-white' : '!text-black'}`}
+                    >
+                      {item.tit}
+                    </Title>
+                    <p
+                      className={`mb-2 ${dark ? 'text-white' : ''} ${!mb ? '!text-lg' : '!text-sm'}`}
+                    >
                       {item.des}
                     </p>
-                    <Button
-                      type='text'
-                      className='!text-blue-600 !p-0 !font-bold !text-md'
-                    >
-                      {item.butCard}
-                    </Button>
+                    {item.navigo && (
+                      <Button
+                        type='text'
+                        className='!text-blue-600 !p-0 !font-bold !text-md !underline'
+                        onClick={() => navigate(item.navigo!)}
+                      >
+                        {item.butCard}{' '}
+                        <ArrowUpOutlined className='!rotate-45' />
+                      </Button>
+                    )}
                   </Col>
                 ))}
               </>
             )}
           </div>
         </div>
+      </div>
+    );
+  };
+
+  const renderSimpleLayout = (props: SimpleLayoutProps) => {
+    const { divider } = props;
+    return (
+      <div className={`${className}  mx-auto `}>
+        {children}
+        {divider && (
+          <div>
+            <Divider />
+          </div>
+        )}
       </div>
     );
   };

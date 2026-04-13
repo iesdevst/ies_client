@@ -1,16 +1,18 @@
 import { CloseCircleFilled } from '@ant-design/icons';
 import { Button, Checkbox, Flex, List, Modal } from 'antd';
+import { useTranslation } from 'react-i18next';
 import { Title } from '@/components';
 
 interface IProgTypeModalProps<T> {
-  selectedProgs: Array<T>; // Danh sách ngành đã chọn
-  selectProg: (prog: T) => void; // Chọn thêm 1 ngành
-  deselectProg: (prog: T) => void; // Bỏ chọn 1 ngành (nếu muốn)
+  selectedProgs: Array<T>;
+  selectProg: (prog: T) => void;
+  deselectProg: (prog: T) => void;
   visible: boolean;
   onClose: () => void;
   options: Array<{ label: string; value: T; group?: string }>;
   bgC?: string;
   clearAll: () => void;
+  lstBgCus?: string;
 }
 
 const ProgTypeModal = <T,>(props: IProgTypeModalProps<T>) => {
@@ -22,9 +24,11 @@ const ProgTypeModal = <T,>(props: IProgTypeModalProps<T>) => {
     onClose,
     options,
     bgC,
+    lstBgCus,
     clearAll,
   } = props;
 
+  const { t: optionsT } = useTranslation('options');
   const isSelected = (prog: T) => selectedProgs.includes(prog);
   const toggleProg = (prog: T) => {
     if (isSelected(prog)) deselectProg(prog);
@@ -83,7 +87,7 @@ const ProgTypeModal = <T,>(props: IProgTypeModalProps<T>) => {
       }
     >
       <List
-        className={`!px-5 ${!bgC ? '!bg-[#ede2ec]' : '!bg-white'}`}
+        className={`!px-5 ${!lstBgCus ? '!bg-[#ede2ec]' : lstBgCus}`}
         itemLayout='horizontal'
         dataSource={options}
         renderItem={(item) => {
@@ -91,7 +95,7 @@ const ProgTypeModal = <T,>(props: IProgTypeModalProps<T>) => {
           return (
             <List.Item
               key={String(item.value)}
-              style={{ cursor: 'pointer', marginBottom: 4 }}
+              style={{ cursor: 'pointer' }}
               onClick={() => toggleProg(item.value)}
             >
               <List.Item.Meta
@@ -105,7 +109,7 @@ const ProgTypeModal = <T,>(props: IProgTypeModalProps<T>) => {
                       }}
                     />
                     <Title level={5} className='!m-0'>
-                      {item.label}
+                      {optionsT(item.label)}
                     </Title>
                   </Flex>
                 }
