@@ -13,8 +13,8 @@ const storedLocale = localStorage.getItem('locale');
 
 export const initI18n = i18n.use(initReactI18next).init({
   resources,
-  lng: storedLocale ?? IesClientLangEnum.En_US,
-  fallbackLng: 'en-US',
+  lng: storedLocale ?? IesClientLangEnum.Vi_VN,
+  fallbackLng: 'vi-VN',
   debug: false,
   interpolation: {
     escapeValue: false,

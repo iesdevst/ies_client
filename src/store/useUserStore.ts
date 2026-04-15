@@ -12,7 +12,7 @@ interface IUserStore extends UserStoreInit {
 }
 
 const init: UserStoreInit = {
-  locale: (localStorage.getItem('locale') as IesClientLangEnum) || 'en-US',
+  locale: (localStorage.getItem('locale') as IesClientLangEnum) || 'vi-VN',
   isDark: localStorage.getItem('isDark') === 'true' ? true : false,
 };
 const useUserStore = create<IUserStore>((set) => {

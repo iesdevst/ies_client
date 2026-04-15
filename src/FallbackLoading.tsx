@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { Logo, Title, Txt } from './components';
 import { useUserStore } from './store';
 
@@ -12,6 +13,7 @@ const FallbackLoading: React.FC<FallbackLoadingProps> = (props) => {
   const { className, showLogo = true } = props || {};
   const [dots, setDots] = useState('');
   const { isDark } = useUserStore();
+  const { t } = useTranslation('fallbackLoading');
 
   // Animated dots effect
   useEffect(() => {
@@ -53,7 +55,7 @@ const FallbackLoading: React.FC<FallbackLoadingProps> = (props) => {
               className={`${isDark ? '!text-white' : '!text-blue-400'} !m-0 !mt-3 italic`}
               level={3}
             >
-              IES Loading....
+              {t('load')}
             </Title>
             <div>
               <Txt style={{ color: '#005cdf', fontSize: '70px' }}>{dots}</Txt>
