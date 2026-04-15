@@ -1,11 +1,11 @@
-import { Flex, Image, Layout } from 'antd';
+import { Button, Flex, Image, Layout } from 'antd';
 import { useTranslation } from 'react-i18next';
 import MediaQuery, { useMediaQuery } from 'react-responsive';
 import MegaMbDrawer from './MegaMbDrawer';
 import NavLst from './NavLst';
 import IES_HOZI_DARK_LOGO_URL from '@/assets/imgs/ies_logo_horizo_dark.png';
 import IES_LOGO_MB from '@/assets/imgs/ies_logo_hoziro.png';
-import { ThemeSwitcher } from '@/components';
+import { ThemeSwitcher, Title } from '@/components';
 import IesClientLang from '@/components/Buttons/IesClientLang';
 import { PrefetchLink } from '@/components/PrefetchLink';
 import { ROUTES, type RoutePath } from '@/constants';
@@ -48,17 +48,26 @@ const HeaderIes: React.FC<IHeaderIes> = (props) => {
           >
             <PrefetchLink
               to={ROUTES.ROOT}
-              className='!text-white !bg-blue-500 px-3 py-0.5 rounded-sm !text-xs'
+              className=' !bg-blue-500 px-3 py-0.5 rounded-sm '
             >
-              {t('iesCl')}
+              <Title level={5} className='!text-white !m-0 !uppercase'>
+                {t('iesCl')}
+              </Title>
             </PrefetchLink>
-            <PrefetchLink to={ROUTES.ROOT} className='!text-white !text-xs'>
-              {t('iesStu')}
-            </PrefetchLink>
-
-            <PrefetchLink to={ROUTES.ROOT} className='!text-white !text-xs'>
-              {t('iesStaff')}
-            </PrefetchLink>
+            <Button type='text' disabled className='!p-0 !m-0'>
+              <PrefetchLink to={ROUTES.ROOT}>
+                <Title level={5} className='!text-white !m-0 !uppercase'>
+                  {t('iesStu')}
+                </Title>
+              </PrefetchLink>
+            </Button>
+            <Button type='text' disabled className='!p-0 !m-0'>
+              <PrefetchLink to={ROUTES.ROOT}>
+                <Title level={5} className='!text-white !m-0 !uppercase'>
+                  {t('iesStaff')}
+                </Title>
+              </PrefetchLink>
+            </Button>
             <IesClientLang colorT='!text-white' />
             <ThemeSwitcher />
           </Flex>
@@ -69,7 +78,7 @@ const HeaderIes: React.FC<IHeaderIes> = (props) => {
           padding: isMb ? '0 40px 0 40px' : '55px 40px',
           height: !isMb ? 60 : 80,
         }}
-        className={`!flex !items-center  ${!isMb ? 'gap-x-60 !justify-center' : '!gap-x-13 !justify-between'} ${isDark ? '!bg-gray-700' : '!bg-white'}`}
+        className={`!flex !items-center  ${!isMb ? 'gap-x-45 !justify-center' : '!gap-x-13 !justify-between'} ${isDark ? '!bg-gray-700' : '!bg-white'}`}
       >
         <PrefetchLink
           to={ROUTES.DASHBOARD}

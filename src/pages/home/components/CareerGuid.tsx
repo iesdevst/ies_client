@@ -87,7 +87,7 @@ const CareerGuid: React.FC = () => {
                       src={item.cImg}
                       style={{
                         width: '100%',
-                        height: '10vh',
+                        height: '20vh',
                         objectFit: 'cover',
                       }}
                       className='!rounded-xl '

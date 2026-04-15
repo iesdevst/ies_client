@@ -61,47 +61,51 @@ const FooterIes: React.FC = () => {
     >
       <div className='bg-[#010433] py-3'>
         <MediaQuery minWidth={1025}>
-          <div className='!flex justify-between !items-center w-[90%] mx-auto border-b border-[#797a97ad]'>
-            <Row justify={'space-evenly'} align={'middle'} className='gap-x-15'>
+          <div className='w-[90%] mx-auto border-b border-[#797a97ad] py-6'>
+            <Row justify={'space-around'} align={'middle'}>
               <Image
                 src={LogoFooter}
                 alt=''
                 preview={false}
-                className='!w-60 !h-35'
+                className='!w-auto !h-35'
               />
               <Col>
-                <Title className='m-0 !text-[#797a97] text-start' level={4}>
-                  Email
-                </Title>
-                <Text color='white' className='!text-lg'>
-                  info@iescollege.edu.vn
-                </Text>
-              </Col>
-              <Col>
-                <Title className='m-0 !text-[#797a97] text-start' level={4}>
-                  Hotline
-                </Title>
-                <Text color='white' className='!text-lg'>
-                  0901.309.866
-                </Text>
-              </Col>
-            </Row>
-            <Row justify={'space-between'} className='gap-x-40'>
-              <Col className='!text-start'>
-                <Title className='m-0 !text-[#797a97] text-start' level={4}>
-                  {t('studentAffairs')}
-                </Title>
-                <Text color='white' className='!text-lg'>
-                  0912.584.800
-                </Text>
-              </Col>
-              <Col className='!text-start'>
-                <Title className='m-0 !text-[#797a97] text-start' level={4}>
-                  {t('admissions')}
-                </Title>
-                <Text color='white' className='!text-lg'>
-                  0901.309.866
-                </Text>
+                <Row justify={'space-between'} className='gap-x-40 !mb-7'>
+                  <Col>
+                    <Title className='m-0 !text-[#797a97] text-start' level={4}>
+                      Email
+                    </Title>
+                    <Text color='white' className='!text-lg'>
+                      info@iescollege.edu.vn
+                    </Text>
+                  </Col>
+                  <Col>
+                    <Title className='m-0 !text-[#797a97] text-start' level={4}>
+                      Hotline
+                    </Title>
+                    <Text color='white' className='!text-lg'>
+                      0901.309.866
+                    </Text>
+                  </Col>
+                </Row>
+                <Row justify={'space-between'} className='gap-x-40'>
+                  <Col className='!text-start'>
+                    <Title className='m-0 !text-[#797a97] text-start' level={4}>
+                      {t('studentAffairs')}
+                    </Title>
+                    <Text color='white' className='!text-lg'>
+                      0912.584.800
+                    </Text>
+                  </Col>
+                  <Col className='!text-start'>
+                    <Title className='m-0 !text-[#797a97] text-start' level={4}>
+                      {t('admissions')}
+                    </Title>
+                    <Text color='white' className='!text-lg'>
+                      0901.309.866
+                    </Text>
+                  </Col>
+                </Row>
               </Col>
             </Row>
           </div>

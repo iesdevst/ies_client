@@ -59,7 +59,7 @@ const TrainingSl: React.FC = () => {
       des: t('desNum1'),
     },
     {
-      num: '14',
+      num: '9',
       des: t('desNum2'),
     },
     {

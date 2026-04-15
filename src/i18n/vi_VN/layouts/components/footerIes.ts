@@ -1,6 +1,6 @@
 export default {
-  studentAffairs: 'Phòng Công tác Sinh viên',
-  admissions: 'Tuyển sinh',
+  studentAffairs: 'Phòng Công Tác Sinh viên',
+  admissions: 'Tuyển Sinh',
 
   about: 'Về IES',
   effort: 'Nỗ lực & Kiên trì',

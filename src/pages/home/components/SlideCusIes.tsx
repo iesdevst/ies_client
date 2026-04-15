@@ -5,11 +5,10 @@ import PSMBSL from '@/assets/imgs/ps_hou_mb_sl.png';
 import PSHSL from '@/assets/imgs/ps_hou_sl.png';
 import TPMBSL from '@/assets/imgs/training_prog_mb_sl.png';
 import TPSL from '@/assets/imgs/training_prog_sl.png';
-import VSSL from '@/assets/imgs/v_ad_s_slide.png';
 import { IesClSection } from '@/components';
 
 const SlideCusIes: React.FC = () => {
-  const images = [TPSL, VSSL, PSHSL, AMSL];
+  const images = [TPSL, PSHSL, AMSL];
   const imagesMb = [AMMBSL, TPMBSL, PSMBSL];
   const isMb = useMediaQuery({ maxWidth: 1024 });
   return (

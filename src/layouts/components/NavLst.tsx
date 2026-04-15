@@ -1,7 +1,7 @@
 import { CaretDownFilled } from '@ant-design/icons';
 import { Button, Row, Space } from 'antd';
 import { useMegaNavData } from '../hooks';
-import { Text } from '@/components';
+import { Title } from '@/components';
 import type { RoutePath } from '@/constants';
 import { useUserStore } from '@/store';
 
@@ -34,12 +34,12 @@ const NavLst: React.FC<INavLst> = (props) => {
                   align={'middle'}
                   className='gap-x-1'
                 >
-                  <Text
-                    color={isDark ? 'white' : '#404040'}
-                    className='!uppercase !text-lg'
+                  <Title
+                    level={5}
+                    className={`${isDark ? 'white' : '#404040'} !m-0 !uppercase`}
                   >
                     {item.label}
-                  </Text>
+                  </Title>
                   <CaretDownFilled
                     className={`${isDark ? '!text-white' : '!text-[#404040]'} !text-[10px] mt-0.5`}
                   />

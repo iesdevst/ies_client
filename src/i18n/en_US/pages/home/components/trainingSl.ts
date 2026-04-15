@@ -8,10 +8,10 @@ export default {
   busiM: 'Business Management',
   it: 'Information Technology',
   electric: 'Electrical Tech',
-  desNum1: 'Students from our diversity majors system',
-  desNum2: 'Majors that help student can freely to discover',
+  desNum1: 'Students from \nour diversity majors\n system',
+  desNum2: 'Majors that help \nstudent can freely\n to discover',
   desNum3:
-    'Publications & many research projects that we focus to create impacts on social.',
+    'Publications & many research \nprojects that we focus to \ncreate impacts on social.',
   years30: '24 years of our journey to inspire sum up in various milestones.',
   iesAt: 'IES at a glance',
   explore: 'Explore our milestones',

@@ -1,6 +1,6 @@
 export default {
   ovw: 'Overview',
-  vs: 'Vision',
+  vs: 'Vision & Mission',
   vl: 'Core Values',
   dashB: 'Dasboard',
   abIes: 'About IES',

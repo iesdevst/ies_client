@@ -338,84 +338,84 @@ export const IesClSection: React.FC<SubSectionProps> = (props) => {
       navigateGo,
     } = props;
 
-    const getPositionClass = () => {
-      if (mb) return 'left-8 bottom-0 w-full';
-      if (tabletVid) return 'left-76 bottom-0 w-[60%]';
-      if (miniSc) return 'left-175 top-6';
-      return 'left-220 top-10';
+    const getPxClass = () => {
+      if (mb || miniSc) return '';
+      if (tabletVid) return '!px-10';
+      return '!px-4';
     };
-    const getImgH = () => {
-      if (mb) return 'h-15';
-      if (tabletVid) return 'h-20';
-      if (miniSc) return 'h-20';
-      return 'h-25';
+    const szImg = () => {
+      if (mb) return '!w-14 !h-14';
+      if (tabletVid) return '!w-18 !h-18';
+      if (miniSc) return '!w-13 !h-13';
+      return '!w-15 !h-15';
     };
     const getTxtHdl = () => {
-      if (mb) return '!mt-8';
-      if (tabletVid) return '!mt-10 !text-2xl px-20';
-      if (miniSc) return '!mt-10';
-      return '!mt-20 !text-lg';
+      if (mb) return '!mt-8 pl-2';
+      if (tabletVid) return '!mt-10 !text-2xl !px-2';
+      return '!mt-10 !text-lg px-2';
     };
 
     return (
       <Flex
         vertical={mb || tabletVid}
         className='!w-full items-stretch'
-        align={'center'}
+        align={'flex-start'}
         justify='space-between'
       >
         {/* LEFT - VIDEO */}
         {vidLink && (
           <div
-            className={`relative ${mb || tabletVid ? '' : '!flex-[2] !pl-20'}`}
+            className={`${mb || tabletVid ? '!w-full px-7' : '!flex-[2] !pl-20'}`}
           >
             <div className='!w-full aspect-video !pb-7'>
               <iframe
-                className={`!h-full ${!tabletVid ? '!w-full' : '!w-[750px]'} rounded-xl shadow-lg !block`}
+                className='!h-full !w-full rounded-xl shadow-lg !block'
                 src={vidLink}
                 title='YouTube video'
                 allowFullScreen
               />
             </div>
-
-            <div className={`absolute z-20 w-2/3 ${getPositionClass()}`}>
-              <div
-                className={`relative bg-[#2b2f6b] flex items-center justify-start ${!mb ? 'px-6 py-4' : 'py-1.5 px-2'}`}
-              >
-                <Title
-                  level={mb || tabletVid ? 5 : miniSc ? 5 : 2}
-                  className='!m-0 !text-[#ffd58a] whitespace-pre-line'
-                >
-                  {titVid}
-                </Title>
-
-                <img
-                  src='https://www.vlu.edu.vn/images/section-1-pattern.svg'
-                  alt='pattern'
-                  className={`absolute right-2 ${getImgH()}`}
-                />
-              </div>
-            </div>
           </div>
         )}
 
-        <div className='flex-[1.5]'>
-          <Col>
-            <div className='px-5'>
-              <Text
-                className={`!mb-8 !text-start !block ${getTxtHdl()}`}
-                color={dark ? 'white' : '#2d334d'}
+        <div className='flex-[1.5] !mt-5'>
+          <Col className='px-5'>
+            <Row
+              className={`!bg-[#2b2f6b] !py-3 !rounded-xl ${getPxClass()}`}
+              justify={mb || miniSc ? 'space-around' : 'space-between'}
+              align='middle'
+            >
+              <Title
+                level={mb || miniSc ? 5 : 4}
+                className={`!m-0 !text-[#ffd58a] ${mb || miniSc ? '!whitespace-pre-line' : ''}`}
               >
-                {desVid}
-              </Text>
-            </div>
+                {titVid}
+              </Title>
+
+              <Image
+                src='https://www.vlu.edu.vn/images/section-1-pattern.svg'
+                alt='pattern'
+                preview={false}
+                className={szImg()}
+              />
+            </Row>
+
+            <Text
+              className={`!mb-8 !text-start !block ${getTxtHdl()}`}
+              color={dark ? 'white' : '#2d334d'}
+            >
+              {desVid}
+            </Text>
 
             {bottomTit && navigateGo && (
-              <Row justify={'center'} align={'middle'}>
+              <Row
+                justify={mb || tabletVid ? 'center' : 'start'}
+                align={'middle'}
+              >
                 <Button
                   shape='circle'
                   type='text'
-                  className='flex items-center hover:!bg-transparent'
+                  className={`flex items-center hover:!bg-transparent ${mb || tabletVid ? '' : '!pl-2'}`}
                   onClick={() => navigate(navigateGo)}
                 >
                   <Title
@@ -554,15 +554,16 @@ export const IesClSection: React.FC<SubSectionProps> = (props) => {
             <div className='flex-[4] !py-20 bg-gradient-to-r from-blue-900 to-blue-800'>
               <Flex
                 vertical={mb}
-                className={`${!mb ? '!gap-x-15 !pl-20' : '!px-5 gap-y-5'}`}
+                className={`${mb ? '!px-5 gap-y-8' : '!gap-x-30 !pl-20'}`}
+                align={mb ? 'center' : ''}
               >
                 {statistics.map((item, index) => (
-                  <Col key={index}>
-                    <Title className='!m-0 !mb-3 !font-bold !text-5xl !text-[#FBBF24]'>
+                  <Col key={index} className={mb ? '!text-center' : ''}>
+                    <Title className='!m-0 !mb-5 !font-bold !text-5xl !text-[#FBBF24]'>
                       {item.num}
                     </Title>
                     <Text
-                      className={`${!mb ? 'whitespace-pre-line' : ''} !text-lg `}
+                      className={`${!mb ? 'whitespace-pre-line !text-lg' : '!text-2xl'} `}
                       color='white'
                     >
                       {item.des}

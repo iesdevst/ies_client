@@ -6,8 +6,8 @@ import { useUserStore } from '@/store';
 
 const VidPrIes: React.FC = () => {
   const isMb = useMediaQuery({ maxWidth: 767 });
-  const isTablet = useMediaQuery({ minWidth: 768, maxWidth: 1024 });
-  const miniScreen = useMediaQuery({ minWidth: 1024, maxWidth: 1279 });
+  const isTablet = useMediaQuery({ minWidth: 768, maxWidth: 1025 });
+  const miniScreen = useMediaQuery({ minWidth: 1026, maxWidth: 1279 });
   const { isDark } = useUserStore();
   const { t } = useTranslation('vidPrIes');
   const getScH = () => {

@@ -86,7 +86,9 @@ const FieldOfStudy: React.FC = () => {
               <Title className={`${isDark ? '!text-white' : ''}`}>
                 {t('sectionTitle')}
               </Title>
-              <Text color={isDark ? 'white' : ''}>{t('sectionDesc')}</Text>
+              <Text color={isDark ? 'white' : ''} className='!text-lg'>
+                {t('sectionDesc')}
+              </Text>
               <div>
                 <Button
                   className='!bg-transparent !p-0 mt-3'
