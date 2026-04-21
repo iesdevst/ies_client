@@ -10,7 +10,8 @@ import { IesClSection } from '@/components';
 const SlideCusIes: React.FC = () => {
   const images = [TPSL, PSHSL, AMSL];
   const imagesMb = [AMMBSL, TPMBSL, PSMBSL];
-  const isMb = useMediaQuery({ maxWidth: 1024 });
+  const isMb = useMediaQuery({ maxWidth: 767 });
+  // const isTl = useMediaQuery({ minWidth: 768, maxWidth: 1024 });
   return (
     <IesClSection
       id='ies_slide'

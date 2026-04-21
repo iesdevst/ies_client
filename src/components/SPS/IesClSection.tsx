@@ -139,7 +139,7 @@ export const IesClSection: React.FC<SubSectionProps> = (props) => {
               <img
                 src={img}
                 style={{
-                  objectFit: !mb ? 'fill' : 'revert-layer',
+                  objectFit: !mb ? 'cover' : 'revert-layer',
                   zIndex: -1,
                 }}
                 className='relative !w-full !h-[87.7vh]'
