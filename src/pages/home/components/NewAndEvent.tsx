@@ -1,13 +1,13 @@
 import { Col, Image, Typography } from 'antd';
 import { useTranslation } from 'react-i18next';
 import { useMediaQuery } from 'react-responsive';
+import BRSTUN from '@/assets/imgs/cnhs_news.jpg';
 import EVAI from '@/assets/imgs/events_ai.png';
+import HDHN2204 from '@/assets/imgs/hdhn_n2204_event.jpg';
 import KTDT from '@/assets/imgs/ktdt_nfc.jpg';
 import KTO from '@/assets/imgs/kto_nfc.jpg';
 import TKDH from '@/assets/imgs/tkdh_nfc.jpg';
-import HTDHM from '@/assets/imgs/top_str_htdhm.jpg';
 import LTS from '@/assets/imgs/top_str_lts.jpg';
-import MISA from '@/assets/imgs/top_str_misa.jpg';
 import TSN from '@/assets/imgs/top_str_news.jpg';
 import { IesClSection, Text, Title } from '@/components';
 import { ROUTES } from '@/constants';
@@ -26,7 +26,7 @@ const NewAndEvent: React.FC = () => {
       specTit: t('workshopTit'),
     },
     {
-      sti: HTDHM,
+      sti: BRSTUN,
       tit: t('eduCoop1'),
       specTit: t('eduCoopTit'),
     },
@@ -36,7 +36,7 @@ const NewAndEvent: React.FC = () => {
       specTit: t('admissTit'),
     },
     {
-      sti: MISA,
+      sti: HDHN2204,
       tit: t('eduCoop2'),
       specTit: t('eduCoopTit'),
     },

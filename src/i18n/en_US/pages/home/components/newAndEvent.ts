@@ -6,11 +6,10 @@ export default {
     'Prof. Ngô Bảo Châu: “A university degree isn’t necessarily required.”',
   workshopTit: 'IES workshop Claude Code - AI agent',
   workshop: 'Build a Web Dashboard with Claude Code....',
-  eduCoop1:
-    "EHOU organizes a specialized class: 'Understanding Business Law and Economic Contracts' for students",
+  eduCoop1: 'A link between students, training institutions, and the workforce',
   eduCoop2:
-    'Event on the signing of the software transfer agreement to support training between MISA Joint Stock Company and Sai Gon Information Technology and Economics College (IESCOLLEGE).',
-  eduCoopTit: 'Educational Cooperation',
+    'On April 22, 2026, Saigon School of Informatics and Economics was honored to…',
+  eduCoopTit: 'Connecting students',
   admissions: 'Admissions for Law Program – Hanoi Open University 2022',
   admissTit: 'Admissions',
   elecEng: 'Electronics Engineering',

@@ -5,11 +5,10 @@ export default {
   profQuote: 'GS. Ngô Bảo Châu: “Không nhất thiết phải có bằng đại học.”',
   workshop: 'Hội thảo IES Claude Code - tác nhân AI',
   workshopTit: 'Xây dựng Dashboard Web với Claude Code....',
-  eduCoop1:
-    "EHOU tổ chức lớp chuyên đề: 'Hiểu Luật Kinh doanh và Hợp đồng Kinh tế' cho sinh viên",
+  eduCoop1: 'Cầu nối học sinh với cơ sở đào tạo và thị trường lao động',
   eduCoop2:
-    'Sự kiện ký hợp đồng chuyển giao phần mềm hỗ trợ đào tạo giữa Công ty Cổ phần MISA và Trường Cao đẳng Tin học và Kinh tế Sài Gòn (IESCOLLEGE).',
-  eduCoopTit: 'Hợp tác giáo dục',
+    'Ngày 22/04/2026, Trường Trung cấp Tin học Kinh tế Sài Gòn đã vinh dự được .........',
+  eduCoopTit: 'Cầu nối học sinh',
   admissions: 'Tuyển sinh Chương trình Luật – Đại học Mở Hà Nội 2022',
   admissTit: 'Tuyển sinh',
   elecEng: 'Kỹ thuật Điện tử',
