@@ -7,7 +7,7 @@ export const useEventsData = (): { data: Array<EventsData> } => {
   const data: Array<EventsData> = [
     {
       id: '1',
-      eventTit: 'IES Workshop\nClaude Code - AI Agent',
+      eventTit: 'HOẠT ĐỘNG HƯỚNG NGHIỆP - Kết nối học sinh',
       desc: `📌 HOẠT ĐỘNG HƯỚNG NGHIỆP NGÀY 22/04/2026\n
 Ngày 22/04/2026, Trường Trung cấp Tin học Kinh tế Sài Gòn đã vinh dự được Trường THCS Trần Quang Khải tạo điều kiện tổ chức buổi gặp mặt và hướng nghiệp dành cho 15 lớp học sinh khối 9.\n\
 Địa điểm: Số 641 đường Trần Thị Năm, KP 43, P. Trung Mỹ Tây, TP. HCM\n
