@@ -1,4 +1,5 @@
 import EVAI from '@/assets/imgs/events_ai.png';
+import HDHN2204 from '@/assets/imgs/hdhn_n2204_event.jpg';
 import MISA from '@/assets/imgs/top_str_misa.jpg';
 import THTN from '@/assets/imgs/top_str_thtn.jpg';
 
@@ -6,6 +7,27 @@ export const useEventsData = (): { data: Array<EventsData> } => {
   const data: Array<EventsData> = [
     {
       id: '1',
+      eventTit: 'IES Workshop\nClaude Code - AI Agent',
+      desc: `📌 HOẠT ĐỘNG HƯỚNG NGHIỆP NGÀY 22/04/2026\n
+Ngày 22/04/2026, Trường Trung cấp Tin học Kinh tế Sài Gòn đã vinh dự được Trường THCS Trần Quang Khải tạo điều kiện tổ chức buổi gặp mặt và hướng nghiệp dành cho 15 lớp học sinh khối 9.\n\
+Địa điểm: Số 641 đường Trần Thị Năm, KP 43, P. Trung Mỹ Tây, TP. HCM\n
+Tại buổi sinh hoạt, các em học sinh đã được:\n
+- Tìm hiểu về định hướng nghề nghiệp sau khi tốt nghiệp THCS\n
+- Giới thiệu chương trình học song bằng – vừa học văn hóa vừa học nghề\n
+- Đặc biệt, cơ hội học nghề miễn phí 100% theo Nghị định 238 của Nhà nước\n\n
+
+Không chỉ cung cấp thông tin bổ ích, chương trình còn mang đến không khí sôi nổi với phần mini game giao lưu, nơi các em học sinh hào hứng tham gia và nhận được nhiều phần quà hấp dẫn 🎁\n
+✨ Buổi gặp mặt đã diễn ra thành công tốt đẹp, góp phần giúp các em học sinh có thêm định hướng rõ ràng cho tương lai của mình.\n
+Xin chân thành cảm ơn sự hỗ trợ và phối hợp từ Trường THCS Trần Quang Khải!\n
+==========================================\n\n
+🏫  Trường Trung Cấp Tin Học Kinh Tế Sài Gòn\n
+👉 Địa chỉ: Số 98 Phạm Văn Chiêu, phường Thông Tây Hội, Thành phố Hồ Chí Minh\n
+`,
+      img: HDHN2204,
+      linkTo: 'https://www.facebook.com/share/p/1G2274y9JM/',
+    },
+    {
+      id: '2',
       eventTit: 'IES Workshop\nClaude Code - AI Agent',
       desc: `🎯 **Giới thiệu Workshop**\n
 IES Workshop đặc biệt do anh Phạm Ngọc Hội chủ trì sẽ mang đến cho học sinh một cơ hội hiếm có để khám phá thế giới lập trình ứng dụng hiện đại bằng Claude Code – AI agent tiên tiến hỗ trợ lập trình thông minh.\n
@@ -35,7 +57,7 @@ Workshop mở ra cánh cửa khám phá công nghệ hiện đại, nâng cao kh
       img: EVAI,
     },
     {
-      id: '2',
+      id: '3',
       eventTit:
         'Sinh viên IESCollege hấp dẫn với mô hình “Thực học – Thực nghiệp”',
       desc: `Sinh viên IESCollege hấp dẫn với mô hình “Thực học – Thực nghiệp”\n
@@ -49,7 +71,7 @@ Trường Trung cấp Tin học Kinh tế Sài Gòn`,
       img: THTN,
     },
     {
-      id: '3',
+      id: '4',
       eventTit:
         'Hợp tác đào tạo giữa công ty CP MISA và trường Trung cấp Tin học - Kinh tế Sài Gòn',
       desc: `Hợp tác đào tạo giữa công ty CP MISA và trường trung cấp Tin học-Kinh tế Sài Gòn\n
@@ -76,4 +98,5 @@ export type EventsData = {
   eventTit: string;
   desc: string;
   img: string;
+  linkTo?: string;
 };

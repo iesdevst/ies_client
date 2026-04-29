@@ -81,6 +81,18 @@ const IesNewsDetails = () => {
               >
                 {detailDt.desc}
               </Text>
+
+              {detailDt.linkTo && (
+                <a
+                  href={detailDt.linkTo}
+                  target='_blank'
+                  rel='noopener noreferrer'
+                >
+                  <Text color='blue' className='!underline !text-lg'>
+                    {t('readOri')}
+                  </Text>
+                </a>
+              )}
             </Flex>
           </section>
         )}
