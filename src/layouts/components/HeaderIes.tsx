@@ -1,7 +1,7 @@
 import { Button, Flex, Image, Layout } from 'antd';
+import { lazy } from 'react';
 import { useTranslation } from 'react-i18next';
 import MediaQuery, { useMediaQuery } from 'react-responsive';
-import MegaMbDrawer from './MegaMbDrawer';
 import NavLst from './NavLst';
 import IES_HOZI_DARK_LOGO_URL from '@/assets/imgs/ies_logo_horizo_dark.png';
 import IES_LOGO_MB from '@/assets/imgs/ies_logo_hoziro.png';
@@ -10,6 +10,8 @@ import IesClientLang from '@/components/Buttons/IesClientLang';
 import { PrefetchLink } from '@/components/PrefetchLink';
 import { ROUTES, type RoutePath } from '@/constants';
 import { useUserStore } from '@/store';
+
+const MegaMbDrawer = lazy(() => import('@/layouts/components/MegaMbDrawer'));
 
 const { Header } = Layout;
 

@@ -1,4 +1,23 @@
 @import "tailwindcss";
+@font-face {
+  font-family: "Roboto";
+  src: url("/fonts/roboto-400.woff2") format("woff2");
+  font-weight: 400;
+  font-display: swap;
+  ascent-override: 90%;
+  descent-override: 22%;
+  line-gap-override: 0%;
+}
+
+@font-face {
+  font-family: "Roboto";
+  src: url("/fonts/roboto-700.woff2") format("woff2");
+  font-weight: 700;
+  font-display: swap;
+  ascent-override: 90%;
+  descent-override: 22%;
+  line-gap-override: 0%;
+}
 
 .test-border {
   border: 1px solid red;
@@ -7,6 +26,11 @@
 body,
 html {
   margin: 0;
+  font-family:
+    "Roboto",
+    system-ui,
+    -apple-system,
+    sans-serif;
 }
 
 html.dark,

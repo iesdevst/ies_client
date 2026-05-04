@@ -1,13 +1,14 @@
 import { VerticalAlignTopOutlined } from '@ant-design/icons';
 import { BackTop, Layout } from 'antd';
-import React, { useEffect, useRef, useState } from 'react';
+import React, { lazy, useEffect, useRef, useState } from 'react';
 import { Outlet, useLocation } from 'react-router-dom';
 import FooterIes from './components/FooterIes';
 import HeaderIes from './components/HeaderIes';
-import MegaDrawer from './components/MegaDrawer';
 import styles from './styles/iesClLayout.module.scss';
 import { ROUTES, type RoutePath } from '@/constants';
 import { useUserStore } from '@/store';
+
+const MegaDrawer = lazy(() => import('@/layouts/components/MegaDrawer'));
 
 const { Content } = Layout;
 
