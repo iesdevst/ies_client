@@ -87,7 +87,12 @@ const MegaMbDrawer: React.FC = () => {
                     align='middle'
                     className='gap-x-3 !mb-2.5'
                   >
-                    <Image src={MNL} preview={false} className='!w-8 !h-8' />
+                    <Image
+                      src={MNL}
+                      preview={false}
+                      className='!w-8 !h-8'
+                      loading='lazy'
+                    />
 
                     <Title
                       level={5}
@@ -150,6 +155,7 @@ const MegaMbDrawer: React.FC = () => {
                 src={!isDark ? IES_LOGO_MB : IES_HOZI_DARK_LOGO_URL}
                 alt='ies_logo'
                 preview={false}
+                loading='lazy'
               />
             </PrefetchLink>
 

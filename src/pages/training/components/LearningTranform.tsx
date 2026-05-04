@@ -51,6 +51,7 @@ const LearningTranform: React.FC<ILearningTranform> = (props) => {
                   src={item.img}
                   alt=''
                   className='w-full h-[400px] object-cover'
+                  loading='lazy'
                 />
               ) : (
                 <Flex

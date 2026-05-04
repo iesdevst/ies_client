@@ -77,6 +77,7 @@ const AboutShortTerm: React.FC<IAboutShortTerm> = (props) => {
                     objectFit: 'cover',
                     borderRadius: '50%',
                   }}
+                  loading='lazy'
                 />
                 <Title className='!text-center !m-0 !mt-5'>{abs.tit}</Title>
               </div>

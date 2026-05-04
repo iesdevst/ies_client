@@ -1,4 +1,5 @@
 import { Col, Image, Row } from 'antd';
+import { useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useMediaQuery } from 'react-responsive';
 import HS from '@/assets/imgs/high_sc_skip_ex.jpeg';
@@ -11,28 +12,31 @@ const SkipExam: React.FC = () => {
   const mb = useMediaQuery({ maxWidth: 1024 });
   const { t } = useTranslation('skipExam');
 
-  const skipExamDt = [
-    {
-      tit: t('i1t'),
-      decs: t('i1d'),
-      img: OFC,
-    },
-    {
-      tit: t('i2t'),
-      decs: t('i2d'),
-      img: US,
-    },
-    {
-      tit: t('i3t'),
-      decs: t('i3d'),
-      img: HS,
-    },
-    {
-      tit: t('i4t'),
-      decs: t('i4d'),
-      img: IL,
-    },
-  ];
+  const skipExamDt = useMemo(
+    () => [
+      {
+        tit: t('i1t'),
+        decs: t('i1d'),
+        img: OFC,
+      },
+      {
+        tit: t('i2t'),
+        decs: t('i2d'),
+        img: US,
+      },
+      {
+        tit: t('i3t'),
+        decs: t('i3d'),
+        img: HS,
+      },
+      {
+        tit: t('i4t'),
+        decs: t('i4d'),
+        img: IL,
+      },
+    ],
+    [t],
+  );
   return (
     <IesClSection
       id='skip-exam'
@@ -73,6 +77,7 @@ const SkipExam: React.FC = () => {
                         src={skip.img}
                         preview={false}
                         className='!rounded-lg !w-full'
+                        loading='lazy'
                       />
                     </Col>
                   </Row>

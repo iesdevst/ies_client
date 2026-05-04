@@ -87,6 +87,7 @@ const IesEvents = () => {
                 src={evLst.img}
                 preview={false}
                 className='!w-100 !h-60 !rounded-xl'
+                loading='lazy'
               />
               <Col>
                 <Title

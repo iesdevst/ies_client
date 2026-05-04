@@ -132,7 +132,12 @@ const Academics: React.FC = () => {
           {t('sectionDesc')}
         </Text>
         <Flex justify='center' align='center' className='!mt-6'>
-          <Image src={ACDA} preview={false} className='rounded-3xl' />
+          <Image
+            src={ACDA}
+            preview={false}
+            className='rounded-3xl'
+            loading='lazy'
+          />
         </Flex>
       </div>
 

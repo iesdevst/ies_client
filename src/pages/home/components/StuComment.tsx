@@ -31,6 +31,7 @@ const StuComment = () => {
                 style={{
                   clipPath: 'ellipse(75% 60% at 50% 40%)',
                 }}
+                loading='lazy'
               />
             </div>
             <div className='flex-2'>

@@ -1,4 +1,5 @@
 import { Col, Flex, Image, Row } from 'antd';
+import { useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useMediaQuery } from 'react-responsive';
 import HTDSV from '@/assets/imgs/htd_stu_void.jpg';
@@ -12,26 +13,29 @@ const StuVoidHou: React.FC = () => {
   const mb = useMediaQuery({ maxWidth: 767 });
   const isTablet = useMediaQuery({ minWidth: 768, maxWidth: 1024 });
 
-  const stuVoidDt = [
-    {
-      img: HTDSV,
-      decs: t('s1d'),
-      author: t('s1a'),
-      role: t('s1r'),
-    },
-    {
-      img: LDVSV,
-      decs: t('s2d'),
-      author: t('s2a'),
-      role: t('s2r'),
-    },
-    {
-      img: NMHSV,
-      decs: t('s3d'),
-      author: t('s3a'),
-      role: t('s3r'),
-    },
-  ];
+  const stuVoidDt = useMemo(
+    () => [
+      {
+        img: HTDSV,
+        decs: t('s1d'),
+        author: t('s1a'),
+        role: t('s1r'),
+      },
+      {
+        img: LDVSV,
+        decs: t('s2d'),
+        author: t('s2a'),
+        role: t('s2r'),
+      },
+      {
+        img: NMHSV,
+        decs: t('s3d'),
+        author: t('s3a'),
+        role: t('s3r'),
+      },
+    ],
+    [t],
+  );
 
   return (
     <IesClSection
@@ -47,6 +51,7 @@ const StuVoidHou: React.FC = () => {
               src={HOUAVT}
               preview={false}
               className={`!bg-white !rounded-2xl !py-0.5 ${mb || isTablet ? '!w-20 !h-20' : '!w-45 !h-45 '}`}
+              loading='lazy'
             />
             <div className='text-center'>
               <Title level={!mb ? 1 : 5} className='!m-0 !text-white'>
@@ -81,6 +86,7 @@ const StuVoidHou: React.FC = () => {
                     src={stuV.img}
                     preview={false}
                     className='!rounded-sm !h-20 !w-20'
+                    loading='lazy'
                   />
                   <Text color='white' className='!block !font-bold px-1.5 '>
                     {stuV.decs}

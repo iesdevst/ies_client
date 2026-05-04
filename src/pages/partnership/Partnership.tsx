@@ -1,16 +1,19 @@
-import { useEffect, useState } from 'react';
+import { lazy, useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import PartnershipInfo from './components/PartnershipInfo';
 import PartnershipIntro from './components/PartnershipIntro';
 import PartnershipProg from './components/PartnershipProg';
 import PartnershipRegis from './components/PartnershipRegis';
 import PolicyNote from './components/PolicyNote';
-import PsRegisModal from './components/PsRegisModal';
 import SkipExam from './components/SkipExam';
 import StuVoidHou from './components/StuVoidHou';
 import WhyChooseHou from './components/WhyChooseHou';
 import { PageContainer } from '@/components';
 import { useUserStore } from '@/store';
+
+const PsRegisModal = lazy(
+  () => import('@/pages/partnership/components/PsRegisModal'),
+);
 
 const Partnership: React.FC = () => {
   const location = useLocation();

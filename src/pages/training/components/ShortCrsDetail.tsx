@@ -153,7 +153,12 @@ const ShortCrsDetail: React.FC<IShortCrsDetailProps> = (props) => {
                 {shortCrsDt.shortCrsTit}
               </Title>
 
-              <Image src={DTP} preview={false} className='!h-20 !w-80' />
+              <Image
+                src={DTP}
+                preview={false}
+                className='!h-20 !w-80'
+                loading='lazy'
+              />
             </Col>
 
             <Col xs={24} md={10} className='!text-center'>
@@ -161,6 +166,7 @@ const ShortCrsDetail: React.FC<IShortCrsDetailProps> = (props) => {
                 src={shortCrsDt.imgDetail}
                 preview={false}
                 className='!h-[30vh] !w-[600px] rounded-xl shadow-2xl'
+                loading='lazy'
               />
             </Col>
           </Row>

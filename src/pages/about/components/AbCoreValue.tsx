@@ -1,10 +1,11 @@
 import { ArrowUpOutlined, CheckCircleOutlined } from '@ant-design/icons';
 import { Button, Flex, List } from 'antd';
-import { useState } from 'react';
+import { lazy, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useMediaQuery } from 'react-responsive';
 import { Text, Title } from '@/components';
-import IesCtModal from '@/pages/home/components/IesCtModal';
+
+const IesCtModal = lazy(() => import('@/pages/home/components/IesCtModal'));
 
 const AbCoreValue: React.FC = () => {
   const mb = useMediaQuery({ maxWidth: 1024 });

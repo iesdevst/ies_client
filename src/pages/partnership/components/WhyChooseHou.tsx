@@ -7,6 +7,7 @@ import {
   TagsOutlined,
 } from '@ant-design/icons';
 import { Col, Flex, Row } from 'antd';
+import { useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useMediaQuery } from 'react-responsive';
 import WCHB from '@/assets/imgs/why_choose_hou_bg.jpeg';
@@ -15,38 +16,41 @@ import { IesClSection, Text, Title } from '@/components';
 const WhyChooseHou: React.FC = () => {
   const mb = useMediaQuery({ maxWidth: 1024 });
   const { t } = useTranslation('whyChooseHou');
-  const whyChooseDt = [
-    {
-      title: t('i1t'),
-      description: t('i1d'),
-      icon: <SafetyCertificateOutlined />,
-    },
-    {
-      title: t('i2t'),
-      description: t('i2d'),
-      icon: <TagsOutlined />,
-    },
-    {
-      title: t('i3t'),
-      description: t('i3d'),
-      icon: <MessageOutlined />,
-    },
-    {
-      title: t('i4t'),
-      description: t('i4d'),
-      icon: <ClockCircleOutlined />,
-    },
-    {
-      title: t('i5t'),
-      description: t('i5d'),
-      icon: <RocketOutlined />,
-    },
-    {
-      title: t('i6t'),
-      description: t('i6d'),
-      icon: <KeyOutlined />,
-    },
-  ];
+  const whyChooseDt = useMemo(
+    () => [
+      {
+        title: t('i1t'),
+        description: t('i1d'),
+        icon: <SafetyCertificateOutlined />,
+      },
+      {
+        title: t('i2t'),
+        description: t('i2d'),
+        icon: <TagsOutlined />,
+      },
+      {
+        title: t('i3t'),
+        description: t('i3d'),
+        icon: <MessageOutlined />,
+      },
+      {
+        title: t('i4t'),
+        description: t('i4d'),
+        icon: <ClockCircleOutlined />,
+      },
+      {
+        title: t('i5t'),
+        description: t('i5d'),
+        icon: <RocketOutlined />,
+      },
+      {
+        title: t('i6t'),
+        description: t('i6d'),
+        icon: <KeyOutlined />,
+      },
+    ],
+    [t],
+  );
   return (
     <IesClSection
       id='why-choose-hou'

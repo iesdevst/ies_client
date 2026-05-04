@@ -6,6 +6,7 @@ import {
   QuestionCircleFilled,
 } from '@ant-design/icons';
 import { Button, Col, Flex, Image, List, Row } from 'antd';
+import { useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useMediaQuery } from 'react-responsive';
 import PI from '@/assets/imgs/partnership_info_sec.jpeg';
@@ -22,41 +23,47 @@ const PartnershipInfo: React.FC<IPartnershipInfo> = (props) => {
   const { t } = useTranslation('partnershipInfo');
   const isTablet = useMediaQuery({ minWidth: 768, maxWidth: 1024 });
 
-  const questIf = [
-    {
-      key: 1,
-      label: t('q1'),
-    },
-    {
-      key: 2,
-      label: t('q2'),
-    },
-    {
-      key: 3,
-      label: t('q3'),
-    },
-  ];
+  const questIf = useMemo(
+    () => [
+      {
+        key: 1,
+        label: t('q1'),
+      },
+      {
+        key: 2,
+        label: t('q2'),
+      },
+      {
+        key: 3,
+        label: t('q3'),
+      },
+    ],
+    [t],
+  );
 
-  const titpoint = [
-    {
-      key: 1,
-      icon: <FileTextFilled />,
-      tit: t('p1t'),
-      desc: t('p1d'),
-    },
-    {
-      key: 2,
-      icon: <ClockCircleFilled />,
-      tit: t('p2t'),
-      desc: t('p2d'),
-    },
-    {
-      key: 3,
-      icon: <BookFilled />,
-      tit: t('p3t'),
-      desc: t('p3d'),
-    },
-  ];
+  const titpoint = useMemo(
+    () => [
+      {
+        key: 1,
+        icon: <FileTextFilled />,
+        tit: t('p1t'),
+        desc: t('p1d'),
+      },
+      {
+        key: 2,
+        icon: <ClockCircleFilled />,
+        tit: t('p2t'),
+        desc: t('p2d'),
+      },
+      {
+        key: 3,
+        icon: <BookFilled />,
+        tit: t('p3t'),
+        desc: t('p3d'),
+      },
+    ],
+    [t],
+  );
 
   return (
     <IesClSection
@@ -112,6 +119,7 @@ const PartnershipInfo: React.FC<IPartnershipInfo> = (props) => {
               src={PI}
               preview={false}
               className={`!rounded-2xl ${!mb ? '!w-5/6' : ''}`}
+              loading='lazy'
             />
             <Flex
               vertical

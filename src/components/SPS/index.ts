@@ -1,2 +1,2 @@
 export { PageContainer } from './PageContainer';
-export { IesClSection } from './IesClSection';
+export { default as IesClSection } from './IesClSection';

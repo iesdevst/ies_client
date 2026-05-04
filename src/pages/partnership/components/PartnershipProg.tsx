@@ -9,6 +9,7 @@ import {
   BookOutlined,
 } from '@ant-design/icons';
 import { Col, Flex, List, Row } from 'antd';
+import { useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useMediaQuery } from 'react-responsive';
 import { IesClSection, Text, Title } from '@/components';
@@ -24,49 +25,55 @@ const PartnershipProg: React.FC<IPartnershipProg> = (props) => {
   const isTablet = useMediaQuery({ minWidth: 768, maxWidth: 1024 });
   const miniScreen = useMediaQuery({ minWidth: 1024, maxWidth: 1279 });
 
-  const houStat = [
-    { num: '20.000+', decs: t('s1d') },
-    { num: '169+', decs: t('s2d') },
-    { num: '98%', decs: t('s3d') },
-    { num: '96%', decs: t('s4d') },
-  ];
+  const houStat = useMemo(
+    () => [
+      { num: '20.000+', decs: t('s1d') },
+      { num: '169+', decs: t('s2d') },
+      { num: '98%', decs: t('s3d') },
+      { num: '96%', decs: t('s4d') },
+    ],
+    [t],
+  );
 
-  const majors = [
-    {
-      group: t('g1'),
-      items: [
-        { label: t('g1i1'), icon: <ShopOutlined /> },
-        { label: t('g1i2'), icon: <TeamOutlined /> },
-        { label: t('g1i3'), icon: <CalculatorOutlined /> },
-        { label: t('g1i4'), icon: <DollarOutlined /> },
-      ],
-    },
-    {
-      group: t('g2'),
-      items: [{ label: t('g2i1'), icon: <LaptopOutlined /> }],
-    },
-    {
-      group: t('g3'),
-      items: [
-        { label: t('g3i1'), icon: <BankOutlined /> },
-        { label: t('g3i2'), icon: <BookOutlined /> },
-      ],
-    },
-    {
-      group: t('g4'),
-      items: [
-        { label: t('g4i1'), icon: <GlobalOutlined /> },
-        { label: t('g4i2'), icon: <GlobalOutlined /> },
-      ],
-    },
-    {
-      group: t('g5'),
-      items: [
-        { label: t('g5i1'), icon: <GlobalOutlined /> },
-        { label: t('g5i2'), icon: <ShopOutlined /> },
-      ],
-    },
-  ];
+  const majors = useMemo(
+    () => [
+      {
+        group: t('g1'),
+        items: [
+          { label: t('g1i1'), icon: <ShopOutlined /> },
+          { label: t('g1i2'), icon: <TeamOutlined /> },
+          { label: t('g1i3'), icon: <CalculatorOutlined /> },
+          { label: t('g1i4'), icon: <DollarOutlined /> },
+        ],
+      },
+      {
+        group: t('g2'),
+        items: [{ label: t('g2i1'), icon: <LaptopOutlined /> }],
+      },
+      {
+        group: t('g3'),
+        items: [
+          { label: t('g3i1'), icon: <BankOutlined /> },
+          { label: t('g3i2'), icon: <BookOutlined /> },
+        ],
+      },
+      {
+        group: t('g4'),
+        items: [
+          { label: t('g4i1'), icon: <GlobalOutlined /> },
+          { label: t('g4i2'), icon: <GlobalOutlined /> },
+        ],
+      },
+      {
+        group: t('g5'),
+        items: [
+          { label: t('g5i1'), icon: <GlobalOutlined /> },
+          { label: t('g5i2'), icon: <ShopOutlined /> },
+        ],
+      },
+    ],
+    [t],
+  );
 
   return (
     <IesClSection

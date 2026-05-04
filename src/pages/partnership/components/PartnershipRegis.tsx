@@ -1,5 +1,6 @@
 import { CheckCircleFilled } from '@ant-design/icons';
 import { Button, Col, Flex, Image, List } from 'antd';
+import { useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useMediaQuery } from 'react-responsive';
 import PC from '@/assets/imgs/partnership_contact.jpeg';
@@ -13,7 +14,10 @@ const PartnershipRegis: React.FC<IPartnershipRegis> = (props) => {
   const { openRegisInSec } = props;
   const { t } = useTranslation('partnershipRegis');
   const mb = useMediaQuery({ maxWidth: 1024 });
-  const steps = [t('rs1'), t('rs2'), t('rs3'), t('rs4'), t('rs5')];
+  const steps = useMemo(
+    () => [t('rs1'), t('rs2'), t('rs3'), t('rs4'), t('rs5')],
+    [t],
+  );
   return (
     <IesClSection
       id='partnership-regis'
@@ -70,6 +74,7 @@ const PartnershipRegis: React.FC<IPartnershipRegis> = (props) => {
                 src={PC}
                 preview={false}
                 className={`!mt-2 !mb-1 !rounded-4xl ${!mb ? '' : 'p-5'}`}
+                loading='lazy'
               />
               <Button
                 type='default'

@@ -32,6 +32,7 @@ const ShortCrsIntro = () => {
                 src={IRL}
                 preview={false}
                 className='!w-20 !h-15 !bg-white rounded-xl opacity-80'
+                loading='lazy'
               />
 
               <div>
@@ -72,7 +73,12 @@ const ShortCrsIntro = () => {
                   align={'middle'}
                   className='mr-6 gap-x-2 mb-2'
                 >
-                  <Image src={IRL} preview={false} className='!w-7 !h-7' />
+                  <Image
+                    src={IRL}
+                    preview={false}
+                    className='!w-7 !h-7'
+                    loading='lazy'
+                  />
                   <Title
                     level={5}
                     className='!uppercase !font-bold !m-0 !italic !text-white'

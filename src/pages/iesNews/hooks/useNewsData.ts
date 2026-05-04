@@ -1,3 +1,4 @@
+import { useMemo } from 'react';
 import BTHMSN from '@/assets/imgs/bt_hms_news.webp';
 import BRSTUN from '@/assets/imgs/cnhs_news.jpg';
 import HNCNDN from '@/assets/imgs/hn_cnd_news.webp';
@@ -15,58 +16,59 @@ import LTS from '@/assets/imgs/top_str_lts.jpg';
 import NBCN from '@/assets/imgs/top_str_news.jpg';
 
 export const useNewsData = (): { data: Array<NewsData> } => {
-  const data: Array<NewsData> = [
-    {
-      id: '1',
-      newsTit:
-        'Bộ trưởng Bộ GD-ĐT Hoàng Minh Sơn: "Đừng chỉ học để cầm tấm bằng đi tìm việc"',
-      desc: ` VOV.VN - Bộ trưởng Hoàng Minh Sơn nhắn nhủ học sinh, sinh viên hãy thay đổi định vị bản thân, đừng chỉ học để cầm tấm bằng đi tìm việc. Hãy học để có năng lực làm chủ, năng lực nhận diện cơ hội và bản lĩnh để khởi nghiệp. Đừng sợ thất bại.\n
+  const data = useMemo<Array<NewsData>>(
+    () => [
+      {
+        id: '1',
+        newsTit:
+          'Bộ trưởng Bộ GD-ĐT Hoàng Minh Sơn: "Đừng chỉ học để cầm tấm bằng đi tìm việc"',
+        desc: ` VOV.VN - Bộ trưởng Hoàng Minh Sơn nhắn nhủ học sinh, sinh viên hãy thay đổi định vị bản thân, đừng chỉ học để cầm tấm bằng đi tìm việc. Hãy học để có năng lực làm chủ, năng lực nhận diện cơ hội và bản lĩnh để khởi nghiệp. Đừng sợ thất bại.\n
 Sáng nay (18/4), tại Học viện Ngân hàng, diễn ra lễ khai mạc Ngày hội Khởi nghiệp Quốc gia của học sinh, sinh viên lần thứ VIII.\n
 Phát biểu tại ngày hội, Bộ trưởng Bộ GD-ĐT Hoàng Minh Sơn cho biết, đất nước đang bước vào một giai đoạn phát triển mới với yêu cầu ngày càng cao về chất lượng tăng trưởng, năng suất lao động, năng lực cạnh tranh quốc gia và khả năng thích ứng trước những biến động nhanh chóng của thế giới.\n
 Ngày nay, sự khác biệt giữa các quốc gia không còn nằm ở tài nguyên thiên nhiên hay chi phí lao động, mà ở năng lực tạo ra tri thức mới và chuyển hóa tri thức đó thành giá trị kinh tế.`,
-      img: BTHMSN,
-      linkTo:
-        'https://vov.vn/xa-hoi/bo-truong-bo-gd-dt-hoang-minh-son-dung-chi-hoc-de-cam-tam-bang-di-tim-viec-post1284973.vov?gidzl=4wVq2TX87ZmKiFK7s54RFnIpy0l1NHuq2xoWMv4BIs9JxlDRdLqOCmIxzGUTNnPjLB7wK3dxrjeCsKKTDm&gidzl=xg06PEGTc1hal0PYuGIT6EAx1s_-39mJ_RHNFwvQoKMbvWG_eWoQ5FAp0cEY3fHAehaDD3aoZwzFw1gQ60',
-    },
-    {
-      id: '2',
-      newsTit: 'Cầu nối học sinh với cơ sở đào tạo và thị trường lao động',
-      desc: `Được tổ chức thường niên từ năm 2019, Ngày hội tiếp tục khẳng định vai trò là cầu nối quan trọng giữa người học với nhà trường và thị trường lao động.
+        img: BTHMSN,
+        linkTo:
+          'https://vov.vn/xa-hoi/bo-truong-bo-gd-dt-hoang-minh-son-dung-chi-hoc-de-cam-tam-bang-di-tim-viec-post1284973.vov?gidzl=4wVq2TX87ZmKiFK7s54RFnIpy0l1NHuq2xoWMv4BIs9JxlDRdLqOCmIxzGUTNnPjLB7wK3dxrjeCsKKTDm&gidzl=xg06PEGTc1hal0PYuGIT6EAx1s_-39mJ_RHNFwvQoKMbvWG_eWoQ5FAp0cEY3fHAehaDD3aoZwzFw1gQ60',
+      },
+      {
+        id: '2',
+        newsTit: 'Cầu nối học sinh với cơ sở đào tạo và thị trường lao động',
+        desc: `Được tổ chức thường niên từ năm 2019, Ngày hội tiếp tục khẳng định vai trò là cầu nối quan trọng giữa người học với nhà trường và thị trường lao động.
 Ngày 19-4, Sở Giáo dục và Đào tạo Hà Nội tổ chức Ngày hội gắn kết giáo dục nghề nghiệp Thủ đô với thị trường lao động năm 2026, thu hút đông đảo học sinh, cơ sở đào tạo và doanh nghiệp tham gia.`,
-      img: BRSTUN,
-      linkTo:
-        'https://baovephapluat.vn/van-hoa-xa-hoi/giao-duc/cau-noi-hoc-sinh-voi-co-so-dao-tao-va-thi-truong-lao-dong-197361.html',
-    },
-    {
-      id: '3',
-      newsTit: 'Học nghề - một lựa chọn cho học sinh sau trung học cơ sở',
-      desc: `Thời điểm này, hàng chục nghìn học sinh đứng trước lựa chọn quan trọng: Tiếp tục học trung học phổ thông, thi đại học hay chọn con đường học nghề.`,
-      img: HNTN,
-      linkTo:
-        'https://hanoimoi.vn/hoc-nghe-mot-lua-chon-cho-hoc-sinh-sau-trung-hoc-co-so-742221.html?gidzl=NlAmTC8M-&gidzl=Q-qgCcs7O2vXyIeqQ9vbB6VqBZ1tb64kUFj-O2V2D7WWgIrWAvHdANVyApmhbcbt9_OaQpa-M7ijOO1YB0',
-    },
-    {
-      id: '4',
-      newsTit: 'Con đường mới: Trung học nghề',
-      desc: `Trung học nghề được cho là lựa chọn thiết thực cho những học sinh có định hướng học nghề sớm, ưu tiên thực hành để tham gia thị trường lao động từ năm 2026
+        img: BRSTUN,
+        linkTo:
+          'https://baovephapluat.vn/van-hoa-xa-hoi/giao-duc/cau-noi-hoc-sinh-voi-co-so-dao-tao-va-thi-truong-lao-dong-197361.html',
+      },
+      {
+        id: '3',
+        newsTit: 'Học nghề - một lựa chọn cho học sinh sau trung học cơ sở',
+        desc: `Thời điểm này, hàng chục nghìn học sinh đứng trước lựa chọn quan trọng: Tiếp tục học trung học phổ thông, thi đại học hay chọn con đường học nghề.`,
+        img: HNTN,
+        linkTo:
+          'https://hanoimoi.vn/hoc-nghe-mot-lua-chon-cho-hoc-sinh-sau-trung-hoc-co-so-742221.html?gidzl=NlAmTC8M-&gidzl=Q-qgCcs7O2vXyIeqQ9vbB6VqBZ1tb64kUFj-O2V2D7WWgIrWAvHdANVyApmhbcbt9_OaQpa-M7ijOO1YB0',
+      },
+      {
+        id: '4',
+        newsTit: 'Con đường mới: Trung học nghề',
+        desc: `Trung học nghề được cho là lựa chọn thiết thực cho những học sinh có định hướng học nghề sớm, ưu tiên thực hành để tham gia thị trường lao động từ năm 2026
 Từ mùa tuyển sinh 2026, học sinh tốt nghiệp THCS sẽ có thêm lựa chọn học tập bên cạnh THPT, đó là trung học nghề - bậc học mới được xác định ngang cấp với THPT.`,
-      img: HNCNDN,
-      linkTo:
-        'https://nld.com.vn/con-duong-moi-trung-hoc-nghe-196260103213739217.htm?gidzl=ca1tQHlydncTLtPd6-MQ6f9JSMODxfqSZLmXDbsuo4hL3d8sKUwR6u9RT6fHx9L5qb5xFJcnXTX96l6S4W&gidzl=S4I299BMOabwM88YbyzdItnTWY28nMTFOrBISDYJCXax085mrCLXI6nLXopKnsyMF5-8UpdQeD5Sdj5WIm',
-    },
-    {
-      id: '5',
-      newsTit: 'Phân luồng sau THCS: Trung học nghề thành lựa chọn mới',
-      desc: `VHO - Từ năm 2026, học sinh sau khi hoàn thành bậc THCS không chỉ có lựa chọn tiếp tục học THPT như trước đây mà còn có thêm một hướng đi mới là theo học trung học nghề. Quy định này được xác lập trong Luật Giáo dục nghề nghiệp vừa được Quốc hội ban hành và có hiệu lực từ ngày 1.1.2026, mở ra một bước thay đổi đáng chú ý trong hệ thống giáo dục trung học.`,
-      img: PLN,
-      linkTo:
-        'https://baovanhoa.vn/doi-song/phan-luong-sau-thcs-trung-hoc-nghe-thanh-lua-chon-moi-212187.html?gidzl=9sIS9CYW938WSvqgoBaXCIztaItUiYqnC7Z1VOxaU6TeAf9zWh8hDZz_b262i2LeRtMRTZdV_OWloQqdEG&gidzl=_MU2AhasrMFtUu8il2_GOV5-ZokZ9TrWxd7VU_DpY3Qs8unx_oNRP-5sYYV_9zKviNo5S3byOsPujJ7NOG',
-    },
+        img: HNCNDN,
+        linkTo:
+          'https://nld.com.vn/con-duong-moi-trung-hoc-nghe-196260103213739217.htm?gidzl=ca1tQHlydncTLtPd6-MQ6f9JSMODxfqSZLmXDbsuo4hL3d8sKUwR6u9RT6fHx9L5qb5xFJcnXTX96l6S4W&gidzl=S4I299BMOabwM88YbyzdItnTWY28nMTFOrBISDYJCXax085mrCLXI6nLXopKnsyMF5-8UpdQeD5Sdj5WIm',
+      },
+      {
+        id: '5',
+        newsTit: 'Phân luồng sau THCS: Trung học nghề thành lựa chọn mới',
+        desc: `VHO - Từ năm 2026, học sinh sau khi hoàn thành bậc THCS không chỉ có lựa chọn tiếp tục học THPT như trước đây mà còn có thêm một hướng đi mới là theo học trung học nghề. Quy định này được xác lập trong Luật Giáo dục nghề nghiệp vừa được Quốc hội ban hành và có hiệu lực từ ngày 1.1.2026, mở ra một bước thay đổi đáng chú ý trong hệ thống giáo dục trung học.`,
+        img: PLN,
+        linkTo:
+          'https://baovanhoa.vn/doi-song/phan-luong-sau-thcs-trung-hoc-nghe-thanh-lua-chon-moi-212187.html?gidzl=9sIS9CYW938WSvqgoBaXCIztaItUiYqnC7Z1VOxaU6TeAf9zWh8hDZz_b262i2LeRtMRTZdV_OWloQqdEG&gidzl=_MU2AhasrMFtUu8il2_GOV5-ZokZ9TrWxd7VU_DpY3Qs8unx_oNRP-5sYYV_9zKviNo5S3byOsPujJ7NOG',
+      },
 
-    {
-      id: '6',
-      newsTit: 'GS Ngô Bảo Châu: “Không nhất thiết phải có bằng Đại học”',
-      desc: `GS Ngô Bảo Châu quan niệm giá trị của một con người không thể đánh giá dựa trên tiêu chí giỏi điều gì đó, mà còn căn cứ vào rất nhiều phẩm chất khác nhau.\n
+      {
+        id: '6',
+        newsTit: 'GS Ngô Bảo Châu: “Không nhất thiết phải có bằng Đại học”',
+        desc: `GS Ngô Bảo Châu quan niệm giá trị của một con người không thể đánh giá dựa trên tiêu chí giỏi điều gì đó, mà còn căn cứ vào rất nhiều phẩm chất khác nhau.\n
 GS Cédric Villani và GS Ngô Bảo Châu trả lời câu hỏi của báo chí về quan điểm đối với kỳ thi THPT quốc gia, về việc phát triển những năng khiếu toán học.\n
 Là người thành công, GS Ngô Bảo Châu khuyên gì với những thí sinh trượt đại học năm nay?\n
 – GS Ngô Bảo Châu: Mỗi người sinh ra mỗi khác, có những mối quan tâm, có khả năng khác nhau.\n
@@ -98,13 +100,13 @@ Và bên cạnh đó là niềm đam mê của giáo viên – người truyền
 Vì vậy, trường lớp chuyên giúp chúng ta nuôi dưỡng sự đam mê rất tốt.\n
 Còn khía cạnh khác phải nói tới đó là tính trừu tượng của ácc bộ môn như toán lý thuyết.\n
 Tôi nghĩ rằng tất nhiên nếu học sinh học cái gì cụ thể hay thực tiễn thì cũng tốt thôi, có thể khuyến khích. Trong những lớp chuyên chúng ta hoàn toàn cho học sinh học tốt về cả lý thuyết và thực hành. Chúng ta cần có sự trộn lẫn hài hoà giữa lý thuyết và thực hành. Và điều này có thể áp dụng tốt ở lớp chuyên.\n`,
-      img: NBCN,
-    },
-    {
-      id: '7',
-      newsTit:
-        'Công nghệ kỹ thuật điện, điện tử: Sức hút từ ngành công nghiệp mũi nhọn',
-      desc: `Công nghệ kỹ thuật điện, điện tử: Sức hút từ ngành công nghiệp mũi nhọn\n
+        img: NBCN,
+      },
+      {
+        id: '7',
+        newsTit:
+          'Công nghệ kỹ thuật điện, điện tử: Sức hút từ ngành công nghiệp mũi nhọn',
+        desc: `Công nghệ kỹ thuật điện, điện tử: Sức hút từ ngành công nghiệp mũi nhọn\n
 Hiện nay tất cả thiết bị sản xuất, gia dụng phục vụ cho các hoạt động trong đời sống hàng ngày đều sử dụng nguồn điện. Chứng tỏ nguồn năng lượng điện vẫn chiếm một vai trò hết sức quan trọng và cần thiết đối với đời sống con người. Vì vậy, ngành Công nghệ kỹ thuật điện – điện tử chưa bao giờ là ngành học cũ và nguồn nhân lực cho việc vận hành, quản lý đối với nhóm ngành này cũng không hề nhỏ.\n
 Công nghệ kỹ thuật điện, điện tử là gì?\n
 Công nghệ kỹ thuật điện, điện tử là một lĩnh vực kỹ thuật nghiên cứu và áp dụng liên quan đến điện, điện tử và điện từ. Lĩnh vực này lần đầu tiên trở nên quan trọng và hình thành nghề nghiệp liên quan đến nó là vào cuối thế kỷ 19 sau khi điện báo và cung cấp năng lượng điện đi vào thương mại hóa. Ngày nay, ngành này có nhiều ngành con như năng lượng, điện tử học, hệ thống điều khiển, xử lý tín hiệu và viễn thông. Người học ngành Điện, Điện tử cần có sức khỏe tốt, đam mê công việc, kiên trì, nẫn nại, luôn tìm tòi và học hỏi, có kỹ năng làm việc nhóm…\n
@@ -121,12 +123,12 @@ Các kỹ sư Công nghệ kỹ thuật Điện – Điện tử có thể làm 
 Ngoài ra, kỹ sư điện – điện tử có thể làm việc cho ngành bưu chính viễn thông, Tổng cục Điện tử VN và các công ty trực thuộc…\n
 Học Công nghệ kỹ thuật điện, điện tử ở đâu?\n
 Ngành Kỹ thuật điện, điện tử được đào tạo ở nhiều trường đại học kỹ thuật và công nghệ như: ĐH Sư phạm Kỹ thuật TP.HCM, ĐH Bách khoa TP.HCM, ĐH Giao thông Vận tải TP.HCM, ĐH Công nghệ TP.HCM, …`,
-      img: KTDT,
-    },
-    {
-      id: '8',
-      newsTit: 'Công nghệ kĩ thuật ô tô: Ngành nghề có tương lai “đắt giá”',
-      desc: `Công nghệ kĩ thuật ô tô: Ngành nghề có tương lai “đắt giá”\n
+        img: KTDT,
+      },
+      {
+        id: '8',
+        newsTit: 'Công nghệ kĩ thuật ô tô: Ngành nghề có tương lai “đắt giá”',
+        desc: `Công nghệ kĩ thuật ô tô: Ngành nghề có tương lai “đắt giá”\n
 Trong xu hướng phát triển của xã hội hiện đại, Việt Nam coi công nghiệp ô tô là ngành quan trọng, cần ưu tiên phát triển để góp phần công nghiệp hóa đất nước. Hơn thế nữa, việc đầu tư của các hãng ô tô nước ngoài vào Việt Nam đang phát triển khá nhanh, do đó liên tục nhiều năm qua ngành Công nghệ kỹ thuật Ô tô được đưa vào danh mục các ngành “nóng” về nhu cầu lao động, và nhanh chống trở thành xu thế lựạ chọn cho các bạn trẻ.\n
 Ngành nghề trọng điểm, tương lai “đắt giá”\n
 Tại Việt Nam, vận tải ô tô luôn đóng vai trò chủ đạo trong vận tải quốc nội. Trong chiến lược công nghiệp hóa và xu hướng hội nhập, Công nghệ kỹ thuật ô tô là ngành công nghiệp mũi nhọn được chính phủ ưu tiên phát triển. Hơn nữa, việc đào tạo đội ngũ kỹ sư ô tô tại Việt Nam đang trở nên cấp bách trước thực tế ngày càng có nhiều doanh nghiệp tham gia sản xuất, lắp ráp ô tô và lượng tiêu thụ ô tô trên thị trường tăng nhanh đáng kể.\n
@@ -140,12 +142,12 @@ Công nghệ kỹ thuật ô tô là ngành chuyên về khai thác, sử dụng
 Học ngành công nghệ kỹ thuật ô tô, sinh viên được trang bị kiến thức và kỹ năng chuyên sâu về cơ khí ô tô – máy động lực, hệ thống truyền động – truyền lực, cơ cấu khí, hệ thống điều khiển,… để có khả năng áp dụng những nguyên lý kỹ thuật cơ bản, kỹ năng thực hành cao và các kỹ năng liên quan đến ô tô.\n
 Các môn học chuyên ngành tiêu biểu và đặc trưng của ngành công nghệ kỹ thuật ô tô mà sinh viên được học như: Động cơ đốt trong, tính toán ô tô, hệ thống điện – điện tử ô tô, hệ thống điều khiển tự động trên ô tô, Công nghê chẩn đoán, sửa chữa và kiểm định ô tô, Hệ thống an toàn và tiện nghi trên ô tô, Quản lý dịch vụ ô tô,…\n
 Ngoài ra, những trường đại học đào tạo ngành công nghệ kỹ thuật ô tô có uy tín như Đại học Bách khoa – ĐHQG TP.HCM, Đại học Sư phạm Kỹ thuật TP.HCM, Đại học Công nghiệp TP.HCM (IUH), những trường có truyền thống lâu năm về đào tạo các ngành thuộc nhóm ngành kỹ thuật, công nghệ,… sinh viên còn được chú trọng cung cấp các kỹ năng chuyên môn như khai thác, sử dụng và dịch vụ kỹ thuật ô tô cũng như hoạt động điều khiển và lắp ráp, góp phần cải tiến, nâng cao hiệu quả sử dụng phương tiện và phương thức kinh doanh ô tô trên thị trường. Đây là những kỹ năng hết sức cần thiết cho một kỹ sư ngành Công nghệ Kỹ thuật ô tô trong tương lai.`,
-      img: KTO,
-    },
-    {
-      id: '9',
-      newsTit: 'Thiết kế đồ họa: Ngành học tiềm năng',
-      desc: `Thiết kế đồ họa: Ngành học tiềm năng\n
+        img: KTO,
+      },
+      {
+        id: '9',
+        newsTit: 'Thiết kế đồ họa: Ngành học tiềm năng',
+        desc: `Thiết kế đồ họa: Ngành học tiềm năng\n
 Posted on 02/02/2017 by Nguyen Tien Dat\n
 02\n
 Th2\n
@@ -165,12 +167,12 @@ Nghề “design” thuộc vào nhóm nghề kỹ năng, điều đó có nghĩ
 Khi chọn khóa học, bạn cũng nên tham khảo kỹ nội dung giảng dạy, để chọn lựa phù hợp với định hướng công việc muốn làm trong tương lai. Một số nơi giảng dạy trên máy Macintosh (là loại máy mạnh về đồ họa, được giới designer ưa chuộng) cũng là yếu tố lợi thế để học viên quen dùng. Tuy nhiên, học sử dụng phần mềm trên máy PC hay Mac đều đáp ứng được. Một yếu tố “đầu vào” quan trọng là bạn phải yêu thích (hoặc có khiếu càng tốt) về mỹ thuật, về đồ họạ\n
 Nghiên cứu tài liệu là kỹ năng nhằm “lên tay” dân thiết kế\n
 Nếu bạn thật sự đã xác định hướng đi về ngành này, có thể mạnh dạn theo hẳn một khóa dài hạn 1-2 năm. Còn nếu đang lưỡng lự chưa biết mình có phù hợp hay không, hãy đăng ký một khóa “nhập môn” để tìm hiểu. Có thể nói nghề “design” có rất nhiều tiềm năng trong thời gian sắp tới. Nếu say mê, bạn đừng để chậm chân trong con đường nghề nghiệp thú vị này.`,
-      img: TKDH,
-    },
-    {
-      id: '10',
-      newsTit: 'Tuyển sinh đào tạo - năm học 2026-2027',
-      desc: `Trường Trung cấp Tin học Kinh tế Sài Gòn thông báo tuyển sinh đào tạo năm học 2026 - 2027 như sau:\n
+        img: TKDH,
+      },
+      {
+        id: '10',
+        newsTit: 'Tuyển sinh đào tạo - năm học 2026-2027',
+        desc: `Trường Trung cấp Tin học Kinh tế Sài Gòn thông báo tuyển sinh đào tạo năm học 2026 - 2027 như sau:\n
 I. NGÀNH, NGHỀ, CHỈ TIÊU\n
 STT\tCơ sở đào tạo/ngành, nghề tuyển sinh\tMã ngành, nghề\tChỉ tiêu tuyển sinh\tGhi chú\n
 1\tVẽ thiết kế mỹ thuật có trợ giúp bằng máy tính\t5480212\t110\n
@@ -238,12 +240,12 @@ VII. QUYỀN LỢI CỦA HỌC SINH\n
 - Đủ điều kiện dự thi cao đẳng, đại học trong nước và quốc tế;\n
 - Được dự thi liên thông lên cao đẳng, đại học theo quy định của Bộ Giáo dục và Đào tạo; được liên thông thẳng lên đại học: Đại học Mở, Viện Smartech,…\n
 Thông tin chi tiết, cụ thể về tuyển sinh đào tạo học sinh, quý phụ huynh liên hệ trực tiếp theo số điện thoại 0901.309.866; Web: ies.edu.vn; Email: info@iescollege.edu.vn\n`,
-      img: TSN,
-    },
-    {
-      id: '11',
-      newsTit: 'Kế hoạch tuyển sinh - năm học 2026-2027',
-      desc: `Thực hiện Quyết định số /QĐ-THKTSG ngày / /2026 của Chủ tịch Hội đồng Quản trị Nhà trường về việc Ban hành Kế hoạch chỉ tiêu tuyển sinh đào tạo trình độ trung cấp - năm học 2026-2027;\n
+        img: TSN,
+      },
+      {
+        id: '11',
+        newsTit: 'Kế hoạch tuyển sinh - năm học 2026-2027',
+        desc: `Thực hiện Quyết định số /QĐ-THKTSG ngày / /2026 của Chủ tịch Hội đồng Quản trị Nhà trường về việc Ban hành Kế hoạch chỉ tiêu tuyển sinh đào tạo trình độ trung cấp - năm học 2026-2027;\n
 Trường Trung cấp Tin học Kinh tế Sài Gòn ban hành Kế hoạch tuyển sinh đào tạo năm học 2026 - 2027 như sau:\n
 I. MỤC ĐÍCH – YÊU CẦU\n
 1. Mục đích\n
@@ -332,12 +334,12 @@ Tháng 11+12: Xét tuyển đợt 2, nhập học.\n
 - Phòng HS-SV: Tiếp nhận hồ sơ.\n
 - Phòng Hành chính: Cơ sở vật chất.\n
 Trên đây là Kế hoạch tuyển sinh năm học 2026 - 2027 của Trường Trung cấp Tin học Kinh tế Sài Gòn.\n`,
-      img: KHN,
-    },
-    {
-      id: '12',
-      newsTit: 'Những lý do bạn nên theo học ngành Tin học ứng dụng',
-      desc: `Xã hội ngày càng phát triển đi cùng với đó là sự tiến bộ của khoa học kỹ thuật. Tin học đang phát triển ngày càng nhanh và trở thành nhân tố cần thiết trong mọi lĩnh vực của đời sống xã hội. Tin học luôn chứng minh được tầm quan trọng của nó.\n
+        img: KHN,
+      },
+      {
+        id: '12',
+        newsTit: 'Những lý do bạn nên theo học ngành Tin học ứng dụng',
+        desc: `Xã hội ngày càng phát triển đi cùng với đó là sự tiến bộ của khoa học kỹ thuật. Tin học đang phát triển ngày càng nhanh và trở thành nhân tố cần thiết trong mọi lĩnh vực của đời sống xã hội. Tin học luôn chứng minh được tầm quan trọng của nó.\n
 Ảnh minh họa\n
 Tin học ứng dụng là một tên gọi khác của chuyên ngành công nghệ thông tin. Tin học ứng dụng là việc sử dụng các tin học máy tính để phục vụ tốt cho đời sống con người với các lĩnh vực khác nhau. Ngày nay, để phát triển và hỗ trợ hữu ích nhất cho con người thì bạn cần phải có các ứng dụng tin học vào các lĩnh vực tạo ra hiệu quả tốt nhất cho con người.\n
 KHI HỌC NGÀNH TIN HỌC ỨNG DỤNG BẠN SẼ ĐƯỢC TRANG BỊ NHỮNG KIẾN THỨC GÌ?\n
@@ -357,21 +359,21 @@ NHIỀU CƠ HỘI ĐỂ THÀNH ĐẠT\n
 Các bạn đã nghe nhiều câu chuyện lập nghiệp của các danh nhân ngành Công nghệ thông tin? Những câu chuyện ấy đã trở thành những huyền thoại mới về trí tuệ, sức sáng tạo vô biên và cả sự quả cảm của con người.\n
 Chàng trai trẻ Bill Gates bỏ học đại học giữa chừng, từ khởi đầu mong manh lập nên “đế chế” thống trị toàn cầu mang tên Windows. Michael Dell, người được tạp chí Fortune xếp vào danh sách 10 người đàn ông có quyền lực nhất trong kinh doanh năm 2003, chỉ 19 năm trước đó thôi, đã bắt đầu công ty máy tính Dell với số vốn ít ỏi cho bất cứ ai: 1000 USD.\n
 CƠ HỘI HỌC TẬP NGÀNH TIN HỌC ỨNG DỤNG TẠI TRƯỜNG TRUNG CẤP TIN HỌC KINH TẾ SÀI GÒN!\n`,
-      img: LDTHN,
-    },
-    {
-      id: '13',
-      newsTit: 'Đủ điểm đậu đại học vẫn lựa chọn học Trung cấp nghề',
-      desc: `Học cao đẳng, trung cấp nghề không còn là đường vòng mà là đường tắt đón đầu xu thế tuyển dụng của nhiều doanh nghiệp hiện nay trên thị trường lao động.\n
+        img: LDTHN,
+      },
+      {
+        id: '13',
+        newsTit: 'Đủ điểm đậu đại học vẫn lựa chọn học Trung cấp nghề',
+        desc: `Học cao đẳng, trung cấp nghề không còn là đường vòng mà là đường tắt đón đầu xu thế tuyển dụng của nhiều doanh nghiệp hiện nay trên thị trường lao động.\n
 Phải nhận thấy rằng thực tế “thừa thầy, thiếu thợ” ngày nay rất phổ biến. Rất nhiều doanh nghiệp phản ánh sinh viên khi ra trường không đáp ứng được yêu cầu của doanh nghiệp. Số sinh viên tốt nghiệp đại học, cao đẳng ra trường ngày càng nhiều (72.000 cử nhân rơi vào tình trạng thất nghiệp), trong khi công nhân có tay nghề, đáp ứng được yêu cầu lao động thì luôn thiếu.\n
 Trước tình trạng đó, xu thế lựa chọn cho con em mình học trường trung cấp nghề không còn quá xa lạ với nhiều gia đình hiện nay. Đó là xu hướng tích cực vì một thực tế có thể nhận thấy rằng học nghề rất hợp lí và có thể tạo thu nhập tốt cho các em sau khi ra trường. Chỉ mất khoảng 1 năm đến 1 năm rưỡi là các em có tay nghề ổn định sau đó tùy thuộc vào nhu cầu cá nhân để học lên đại học.\n
 Trong tổng số 900.152 thí sinh đăng kí dự thi tốt nghiệp THPT năm 2019, có 643.122 em đăng ký xét tuyển đại học, cao đẳng, chiếm 71,45%, giảm 9.878 thí sinh so với năm 2019. Số liệu trên được Cục quản lý chất lượng, Bộ GD&ĐT công bố. Có thể thấy rằng xu hướng chọn ngay trường nghề để học sau khi tốt nghiệp THPT là mảng màu sáng của tuyển sinh năm 2020. Như vậy, học sinh và các bậc phụ huynh đã dần thay đổi tư duy đặt hướng đi và nhìn nhận thực sự mình thích cái gì chứ không còn chạy theo tiếng tăm nữa.\n`,
-      img: LDHNN,
-    },
-    {
-      id: '14',
-      newsTit: 'Hợp tác đào tạo - Tuyển sinh ngành Luật – ĐH Mở Hà Nội 2026',
-      desc: `Hợp tác đào tạo\n
+        img: LDHNN,
+      },
+      {
+        id: '14',
+        newsTit: 'Hợp tác đào tạo - Tuyển sinh ngành Luật – ĐH Mở Hà Nội 2026',
+        desc: `Hợp tác đào tạo\n
 Tuyển sinh ngành Luật – ĐH Mở Hà Nội 2022\n
 Trung tâm đào tạo từ xa Đại học Mở Hà Nội kết hợp với Trạm Trường Trung cấp Công nghệ và Kinh tế đối ngoại tuyển sinh ngành Kế toán – Hệ từ xa trực tuyến Khóa 18C năm 2022, khóa khai giảng ngày 04/12/2022, nhận hồ sơ bổ sung đến hết ngày 27/12/2022.\n
 Ngành Luật là gì?\n
@@ -416,13 +418,13 @@ Hồ sơ gồm:\n
 – 02 bản sao công chứng CMTND hoặc thẻ căn cước công dân\n
 Lệ phí xét tuyển: 100.000đ/hồ sơ/ngành học\n
 Địa điểm nộp hồ sơ: IES-College, 98 Phạm văn Chiêu, Phường Thông Tây Hội, thành phố Hồ Chí Minh`,
-      img: LTS,
-    },
-    {
-      id: '15',
-      newsTit:
-        'EHOU tổ chức lớp học chuyên đề: “Tìm hiểu Luật doanh nghiệp và các hợp đồng kinh tế”',
-      desc: `EHOU tổ chức lớp học chuyên đề: “Tìm hiểu Luật doanh nghiệp và các hợp đồng kinh tế” cho sinh viên\n
+        img: LTS,
+      },
+      {
+        id: '15',
+        newsTit:
+          'EHOU tổ chức lớp học chuyên đề: “Tìm hiểu Luật doanh nghiệp và các hợp đồng kinh tế”',
+        desc: `EHOU tổ chức lớp học chuyên đề: “Tìm hiểu Luật doanh nghiệp và các hợp đồng kinh tế” cho sinh viên\n
 Đại học mở Hà Nội \n
 Vào cuối tháng 2 năm 2026, Trung tâm đào tạo Elearning đã mời các diễn giả có nhiều kinh nghiệm tới tham gia giao lưu với các bạn sinh viên EHOU chuyên đề về Luật doanh nghiệp và hợp đồng kinh tế. \n
 Pháp luật về doanh nghiệp bao gồm những nội dung về nhận thức chung về doanh nghiệp (DN) và pháp luật DN; các loại hình DN theo pháp luật Việt Nam; tổ chức, quản lý nội bộ DN; các quyền và nghĩa vụ của DN; thành lập, đăng kí kinh doanh, tổ chức lại và giải thể DN. Để hiểu được những đặc trưng pháp lý của các loại hình doanh nghiệp, rất đông các anh chị sinh viên EHOU tham dự.\n
@@ -434,9 +436,11 @@ Hoặc anh Nguyễn Văn Tiến – lớp BHN55 thắc mắc: “Tôi có cơ s�
 Những vấn đề của sinh viên nêu ra đã được các diễn giả tư vấn và giải đáp đầy đủ. Có lẽ ai cũng mong muốn buổi giao lưu kéo dài hơn nữa, để sinh viên có cơ hội được gỡ rối cũng như học cách giải quyết các tình huống thực tế xảy ra của diễn giả cũng như các bạn học.\n
 Theo nhận xét của Anh Trần Xuân Hùng – lớp AHN14: “Buổi giao lưu chuyên đề về ngành Luật kinh tế (Luật doanh nghiệp và các hợp đồng kinh tế) rất hữu ích, tôi đã cập nhật được nhiều thông tin mới tại đây. Tuy nhiên 2 lĩnh vực này rộng và có nhiều vấn đề, thời gian 1 buổi sáng là chưa thể đủ. Rất mong thời gian tới, Trung tâm đào tạo Elearning sẽ tổ chức nhiều hơn nữa các chuyên đề sinh viên EHOU có thêm 1 kênh thông tin, học tập thực tế, giúp quá trình học đạt kết quả cao”.\n
 Giao lưu chuyên đề tháng 2 đã mang lại cho sinh viên nhiều kiến thức hữu ích. Sinh viên có thể tiếp tục đặt các câu hỏi cho diễn giả hoặc cho các giảng viên doanh nghiệp của mình trên diễn đàn lớp học. Niềm vui của sinh viên trong một giao lưu bổ ích, chị Đào Thị Huyền – Lớp EHCT54 chia sẻ cảm xúc “Tôi rất cảm ơn Trung tâm đã tổ chức buổi giao lưu thật hữu ích cho sinh viên EHOU. Tôi đang học ngành Luật kinh tế, rất mong được tham dự nhiều buổi giao lưu chuyên ngành luật như vậy để nâng cao kiến thức hơn”.`,
-      img: HTDHM,
-    },
-  ];
+        img: HTDHM,
+      },
+    ],
+    [],
+  );
   return { data };
 };
 

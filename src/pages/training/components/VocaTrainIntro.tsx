@@ -32,7 +32,12 @@ const VocaTrainIntro: React.FC<IVocaTrainIntro> = (props) => {
         justify='center'
         align={mb || tl ? 'center' : 'end'}
       >
-        <Image src={TLCR} preview={false} className='!rounded-2xl' />
+        <Image
+          src={TLCR}
+          preview={false}
+          className='!rounded-2xl'
+          loading='lazy'
+        />
 
         <Col
           className={`${mb || tl ? 'mt-7 space-y-10' : 'pl-10 space-y-25 mt-10'}`}
@@ -54,21 +59,36 @@ const VocaTrainIntro: React.FC<IVocaTrainIntro> = (props) => {
             }}
           >
             <Col>
-              <Image preview={false} src={CPI} className='!w-15 !h-15' />
+              <Image
+                preview={false}
+                src={CPI}
+                className='!w-15 !h-15'
+                loading='lazy'
+              />
               <Title className='!m-0 !text-white' level={5}>
                 {t('titIcon1')}
               </Title>
               <Text color='white'>{t('descIcon1')}</Text>
             </Col>
             <Col>
-              <Image preview={false} src={AVI} className='!w-15 !h-15' />
+              <Image
+                preview={false}
+                src={AVI}
+                className='!w-15 !h-15'
+                loading='lazy'
+              />
               <Title className='!m-0 !text-white' level={5}>
                 {t('titIcon2')}
               </Title>
               <Text color='white'>{t('descIcon2')}</Text>
             </Col>
             <Col>
-              <Image preview={false} src={LI} className='!w-15 !h-15' />
+              <Image
+                preview={false}
+                src={LI}
+                className='!w-15 !h-15'
+                loading='lazy'
+              />
               <Title className='!m-0 !text-white' level={5}>
                 {t('titIcon3')}
               </Title>

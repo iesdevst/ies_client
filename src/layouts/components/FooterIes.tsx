@@ -68,6 +68,7 @@ const FooterIes: React.FC = () => {
                 alt=''
                 preview={false}
                 className='!w-auto !h-35'
+                loading='lazy'
               />
               <Col>
                 <Row justify={'space-between'} className='gap-x-40 !mb-7'>
@@ -172,6 +173,7 @@ const FooterIes: React.FC = () => {
                           height={iconSize}
                           className='p-[4px] rounded-full'
                           preview={false}
+                          loading='lazy'
                         />
                         <Title level={5} className='m-0 !text-[#797a97]'>
                           {item.label}
@@ -187,7 +189,13 @@ const FooterIes: React.FC = () => {
         <MediaQuery maxWidth={1024}>
           <div className='px-4 py-4 text-center'>
             {/* Logo */}
-            <Image src={LogoFooter} alt='' preview={false} width={140} />
+            <Image
+              src={LogoFooter}
+              alt=''
+              preview={false}
+              width={140}
+              loading='lazy'
+            />
 
             {/* Contact */}
             <div className='mt-3'>
@@ -216,6 +224,7 @@ const FooterIes: React.FC = () => {
                       height={32}
                       className='rounded-full'
                       preview={false}
+                      loading='lazy'
                     />
                   </a>
                 ))}

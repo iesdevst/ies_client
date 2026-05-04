@@ -25,6 +25,7 @@ const Logo = (props: LogoProps) => {
     <Image
       src={LogoLoad}
       alt='logo'
+      loading='lazy'
       className={getWidthFromSize}
       {...restProps}
     />

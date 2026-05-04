@@ -89,6 +89,7 @@ const HeaderIes: React.FC<IHeaderIes> = (props) => {
             src={getIesLogo()}
             alt='ies_logo'
             preview={false}
+            loading='lazy'
           />
         </PrefetchLink>
         <MediaQuery minWidth={1025}>

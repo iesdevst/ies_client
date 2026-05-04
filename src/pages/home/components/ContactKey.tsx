@@ -5,12 +5,13 @@ import {
   RightOutlined,
 } from '@ant-design/icons';
 import { Button, Collapse, Row } from 'antd';
-import { useState } from 'react';
+import { lazy, useMemo, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useMediaQuery } from 'react-responsive';
-import IesCtModal from './IesCtModal';
 import { IesClSection, Text, Title } from '@/components';
 import { useUserStore } from '@/store';
+
+const IesCtModal = lazy(() => import('@/pages/home/components/IesCtModal'));
 
 const ContactKey: React.FC = () => {
   const mb = useMediaQuery({ maxWidth: 1024 });
@@ -19,129 +20,107 @@ const ContactKey: React.FC = () => {
   const [ctOpen, setCtOpen] = useState(false);
   const { t } = useTranslation('contactKey');
 
-  const contacts = [
-    {
-      key: '1',
-      label: (
-        <Title
-          className={`!m-0 ${isDark ? '!text-white' : '!text-black'}`}
-          level={5}
-        >
-          {t('phc')}
-        </Title>
-      ),
-      children: (
-        <>
-          <Row justify={'start'} align={'middle'} className='gap-x-1'>
-            <Title
-              level={5}
-              className={`!m-0 ${isDark ? '!text-white' : '!text-black'}`}
-            >
-              {t('office')}
-            </Title>
-            <Text className='mt-0.5' color={isDark ? 'white' : ''}>
-              {t('location')}
-            </Text>
-          </Row>
+  const textColor = useMemo(
+    () => (isDark ? '!text-white' : '!text-black'),
+    [isDark],
+  );
 
-          <Row justify={'start'} align={'middle'} className='gap-x-2 my-1'>
-            <PhoneFilled
-              className={`${isDark ? '!text-white' : '!text-black'}`}
-            />
-            <Text color={isDark ? 'white' : ''}>0901.309.866</Text>
-          </Row>
+  const contacts = useMemo(
+    () => [
+      {
+        key: '1',
+        label: (
+          <Title className={`!m-0 ${textColor}`} level={5}>
+            {t('phc')}
+          </Title>
+        ),
+        children: (
+          <>
+            <Row justify={'start'} align={'middle'} className='gap-x-1'>
+              <Title level={5} className={`!m-0 ${textColor}`}>
+                {t('office')}
+              </Title>
+              <Text className='mt-0.5' color={isDark ? 'white' : ''}>
+                {t('location')}
+              </Text>
+            </Row>
 
-          <Row justify={'start'} align={'middle'} className='gap-x-2'>
-            <MailFilled
-              className={`${isDark ? '!text-white' : '!text-black'}`}
-            />
-            <Text color={isDark ? 'white' : ''}>info@iescollege.edu.vn</Text>
-          </Row>
-        </>
-      ),
-    },
-    {
-      key: '2',
-      label: (
-        <Title
-          className={`!m-0 ${isDark ? '!text-white' : '!text-black'}`}
-          level={5}
-        >
-          {t('ctsv')}
-        </Title>
-      ),
-      children: (
-        <>
-          <Row justify={'start'} align={'middle'} className='gap-x-1'>
-            <Title
-              level={5}
-              className={`!m-0 ${isDark ? '!text-white' : '!text-black'}`}
-            >
-              {t('office')}
-            </Title>
-            <Text className='mt-0.5' color={isDark ? 'white' : ''}>
-              {t('location')}
-            </Text>
-          </Row>
+            <Row justify={'start'} align={'middle'} className='gap-x-2 my-1'>
+              <PhoneFilled className={`${textColor}`} />
+              <Text color={isDark ? 'white' : ''}>0901.309.866</Text>
+            </Row>
 
-          <Row justify={'start'} align={'middle'} className='gap-x-2 my-1'>
-            <PhoneFilled
-              className={`${isDark ? '!text-white' : '!text-black'}`}
-            />
-            <Text color={isDark ? 'white' : ''}>0912.584.800</Text>
-          </Row>
+            <Row justify={'start'} align={'middle'} className='gap-x-2'>
+              <MailFilled className={`${textColor}`} />
+              <Text color={isDark ? 'white' : ''}>info@iescollege.edu.vn</Text>
+            </Row>
+          </>
+        ),
+      },
+      {
+        key: '2',
+        label: (
+          <Title className={`!m-0 ${textColor}`} level={5}>
+            {t('ctsv')}
+          </Title>
+        ),
+        children: (
+          <>
+            <Row justify={'start'} align={'middle'} className='gap-x-1'>
+              <Title level={5} className={`!m-0 ${textColor}`}>
+                {t('office')}
+              </Title>
+              <Text className='mt-0.5' color={isDark ? 'white' : ''}>
+                {t('location')}
+              </Text>
+            </Row>
 
-          <Row justify={'start'} align={'middle'} className='gap-x-2'>
-            <MailFilled
-              className={`${isDark ? '!text-white' : '!text-black'}`}
-            />
-            <Text color={isDark ? 'white' : ''}>info@iescollege.edu.vn</Text>
-          </Row>
-        </>
-      ),
-    },
+            <Row justify={'start'} align={'middle'} className='gap-x-2 my-1'>
+              <PhoneFilled className={`${textColor}`} />
+              <Text color={isDark ? 'white' : ''}>0912.584.800</Text>
+            </Row>
 
-    {
-      key: '3',
-      label: (
-        <Title
-          className={`!m-0 ${isDark ? '!text-white' : '!text-black'}`}
-          level={5}
-        >
-          {t('ts')}
-        </Title>
-      ),
-      children: (
-        <>
-          <Row justify={'start'} align={'middle'} className='gap-x-1'>
-            <Title
-              level={5}
-              className={`!m-0 ${isDark ? '!text-white' : '!text-black'}`}
-            >
-              {t('office')}
-            </Title>
-            <Text className='mt-0.5' color={isDark ? 'white' : ''}>
-              {t('location')}
-            </Text>
-          </Row>
+            <Row justify={'start'} align={'middle'} className='gap-x-2'>
+              <MailFilled className={`${textColor}`} />
+              <Text color={isDark ? 'white' : ''}>info@iescollege.edu.vn</Text>
+            </Row>
+          </>
+        ),
+      },
 
-          <Row justify={'start'} align={'middle'} className='gap-x-2 my-1'>
-            <PhoneFilled
-              className={`${isDark ? '!text-white' : '!text-black'}`}
-            />
-            <Text color={isDark ? 'white' : ''}>0901.309.866</Text>
-          </Row>
+      {
+        key: '3',
+        label: (
+          <Title className={`!m-0 ${textColor}`} level={5}>
+            {t('ts')}
+          </Title>
+        ),
+        children: (
+          <>
+            <Row justify={'start'} align={'middle'} className='gap-x-1'>
+              <Title level={5} className={`!m-0 ${textColor}`}>
+                {t('office')}
+              </Title>
+              <Text className='mt-0.5' color={isDark ? 'white' : ''}>
+                {t('location')}
+              </Text>
+            </Row>
 
-          <Row justify={'start'} align={'middle'} className='gap-x-2'>
-            <MailFilled
-              className={`${isDark ? '!text-white' : '!text-black'}`}
-            />
-            <Text color={isDark ? 'white' : ''}>info@iescollege.edu.vn</Text>
-          </Row>
-        </>
-      ),
-    },
-  ];
+            <Row justify={'start'} align={'middle'} className='gap-x-2 my-1'>
+              <PhoneFilled className={`${textColor}`} />
+              <Text color={isDark ? 'white' : ''}>0901.309.866</Text>
+            </Row>
+
+            <Row justify={'start'} align={'middle'} className='gap-x-2'>
+              <MailFilled className={`${textColor}`} />
+              <Text color={isDark ? 'white' : ''}>info@iescollege.edu.vn</Text>
+            </Row>
+          </>
+        ),
+      },
+    ],
+    [t, textColor, isDark],
+  );
 
   return (
     <>
@@ -153,9 +132,7 @@ const ContactKey: React.FC = () => {
           <div
             className={`mt-20 h-full flex flex-col ${!mb ? 'pl-20 pt-20' : ' pt-10 pb-20'}`}
           >
-            <Title
-              className={`${isDark ? '!text-white' : ''} ${!mb ? '' : '!text-center'}`}
-            >
+            <Title className={`${textColor} ${!mb ? '' : '!text-center'}`}>
               {t('ctKey')}
             </Title>
 
@@ -179,10 +156,7 @@ const ContactKey: React.FC = () => {
 
             <div className={`mt-7 ${!mb ? '' : ' text-end'}`}>
               <Button type='text' onClick={() => setCtOpen(true)}>
-                <Title
-                  className={`!m-0 ${isDark ? '!text-white' : '!text-black'}`}
-                  level={4}
-                >
+                <Title className={`!m-0 ${textColor}`} level={4}>
                   {t('getAdviceBtn')}
                 </Title>
                 <div className='w-full h-full !bg-blue-500 rounded-r-full flex items-center justify-center px-3'>

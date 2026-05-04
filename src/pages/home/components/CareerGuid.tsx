@@ -1,16 +1,8 @@
 import { Carousel, Flex } from 'antd';
 import { useTranslation } from 'react-i18next';
 import { useMediaQuery } from 'react-responsive';
-import CNTT from '@/assets/imgs/cntt_hn.png';
-import CC from '@/assets/imgs/ctm_hn_card.jpg';
-import KTDN from '@/assets/imgs/ktdn_hn.png';
-import MKT from '@/assets/imgs/mkt_hn.png';
-import MC from '@/assets/imgs/mtk_hn_card.webp';
-import QLDN from '@/assets/imgs/qldn_hn.png';
-import QLKS from '@/assets/imgs/qlks_hn.jpg';
-import { default as TC, default as THDU } from '@/assets/imgs/thud_hn.png';
-import TKVP from '@/assets/imgs/tkvp_hn.png';
-import VTK from '@/assets/imgs/vtk_hn.png';
+
+import { useCgCardData, useCgSlideData } from './hooks';
 import { IesClSection, Text, Title } from '@/components';
 import { useUserStore } from '@/store';
 
@@ -18,28 +10,9 @@ const CareerGuid: React.FC = () => {
   const mb = useMediaQuery({ maxWidth: 1024 });
   const { isDark } = useUserStore();
   const { t } = useTranslation('careerGuid');
-  const cgSlide = [
-    { cTit: t('slide1'), cImg: THDU },
-    { cTit: t('slide2'), cImg: CNTT },
-    { cTit: t('slide3'), cImg: TKVP },
-    { cTit: t('slide4'), cImg: QLKS },
-    { cTit: t('slide5'), cImg: MKT },
-    { cTit: t('slide6'), cImg: QLDN },
-    { cTit: t('slide7'), cImg: VTK },
-    { cTit: t('slide8'), cImg: KTDN },
-  ];
 
-  const cgCard = [
-    {
-      imgC: MC,
-      des: t('card1'),
-    },
-    { imgC: CC, des: t('card2') },
-    {
-      imgC: TC,
-      des: t('card3'),
-    },
-  ];
+  const { data: cgSlide } = useCgSlideData();
+  const { data: cgCard } = useCgCardData();
 
   return (
     <IesClSection
@@ -90,7 +63,8 @@ const CareerGuid: React.FC = () => {
                         height: '20vh',
                         objectFit: 'cover',
                       }}
-                      className='!rounded-xl '
+                      className='!rounded-xl'
+                      loading='lazy'
                     />
                     <div className='absolute bottom-0 left-0 pl-2 pb-1'>
                       <Text

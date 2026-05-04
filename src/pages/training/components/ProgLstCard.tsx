@@ -63,6 +63,7 @@ const ProgLstCard: React.FC<IProgLstCard> = (props) => {
                     src={train.trainPic}
                     preview={false}
                     className={`rounded-lg ${mb || tablet ? '!w-full !h-26' : '!w-18 !h-18'}`}
+                    loading='lazy'
                   />
                 </div>
                 <Col>

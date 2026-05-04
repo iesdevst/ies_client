@@ -72,7 +72,11 @@ const IesEventsDetails = () => {
               >
                 {detailDt.eventTit}
               </Title>
-              <Image src={detailDt.img} className='!rounded-2xl !w-full' />
+              <Image
+                src={detailDt.img}
+                className='!rounded-2xl !w-full'
+                loading='lazy'
+              />
               <Text
                 className='!block !text-lg'
                 style={{

@@ -194,7 +194,7 @@ const VocaTrainDetail: React.FC = () => {
                 {detailTrainDt.progTitle}
               </Title>
 
-              <Image src={DTP} preview={false} />
+              <Image src={DTP} preview={false} loading='lazy' />
             </Col>
 
             <Col xs={24} md={10} className='!text-center'>
@@ -202,6 +202,7 @@ const VocaTrainDetail: React.FC = () => {
                 src={detailTrainDt.imgDetail}
                 preview={false}
                 className={`${isMb ? '!h-[20vh] !w-[600px]' : isTl ? '!h-[20vh] !w-[350px]' : '!h-[30vh] !w-[600px]'} rounded-xl shadow-2xl`}
+                loading='lazy'
               />
             </Col>
           </Row>

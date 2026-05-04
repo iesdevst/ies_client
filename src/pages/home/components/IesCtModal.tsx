@@ -99,7 +99,12 @@ const IesCtModal: React.FC<IIesCtModal> = (props) => {
       title={
         <Flex justify='space-between' align='center' className='!px-5 !py-3'>
           <Row align={'middle'} className='gap-x-1.5'>
-            <Image src={IES} preview={false} className='!w-15 !h-10' />
+            <Image
+              src={IES}
+              preview={false}
+              className='!w-15 !h-10'
+              loading='lazy'
+            />
             <Title className='!m-0 !text-blue-500' level={3}>
               {t('ctAd')}
             </Title>

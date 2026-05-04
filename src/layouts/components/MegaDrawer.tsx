@@ -154,6 +154,7 @@ const MegaDrawer: React.FC<IMegaDrawer> = (props) => {
                           src={MNL}
                           preview={false}
                           className='!w-10 !h-10'
+                          loading='lazy'
                         />
                         <Title
                           level={3}

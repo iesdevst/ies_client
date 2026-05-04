@@ -1,6 +1,6 @@
 import { ArrowUpOutlined, LinkOutlined } from '@ant-design/icons';
 import { Button, Col, Flex, Image, Row } from 'antd';
-import { useCallback } from 'react';
+import { useCallback, useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useMediaQuery } from 'react-responsive';
 import {
@@ -50,44 +50,47 @@ const PartnershipIntro: React.FC<IPartnershipIntro> = (props) => {
     [location.pathname, navigate],
   );
 
-  const srcollData = [
-    {
-      label: t('why'),
-      img: WSB,
-      to: `${ROUTES.PARTNERSHIP}#why-choose-hou`,
-      idTo: 'why-choose-hou',
-    },
-    {
-      label: t('policy'),
-      img: PNSB,
-      to: `${ROUTES.PARTNERSHIP}#policyNote`,
-      idTo: 'policyNote',
-    },
-    {
-      label: t('skip'),
-      img: SESB,
-      to: `${ROUTES.PARTNERSHIP}#skip-exam`,
-      idTo: 'skip-exam',
-    },
-    {
-      label: t('stu'),
-      img: SVSB,
-      to: `${ROUTES.PARTNERSHIP}#stu-void`,
-      idTo: 'stu-void',
-    },
-    {
-      label: t('stat'),
-      img: SSB,
-      to: `${ROUTES.PARTNERSHIP}#partnership-prog`,
-      idTo: 'partnership-prog',
-    },
-    {
-      label: t('consult'),
-      img: CUSB,
-      to: `${ROUTES.PARTNERSHIP}#partnership-regis`,
-      idTo: 'partnership-regis',
-    },
-  ];
+  const scrollData = useMemo(
+    () => [
+      {
+        label: t('why'),
+        img: WSB,
+        to: `${ROUTES.PARTNERSHIP}#why-choose-hou`,
+        idTo: 'why-choose-hou',
+      },
+      {
+        label: t('policy'),
+        img: PNSB,
+        to: `${ROUTES.PARTNERSHIP}#policyNote`,
+        idTo: 'policyNote',
+      },
+      {
+        label: t('skip'),
+        img: SESB,
+        to: `${ROUTES.PARTNERSHIP}#skip-exam`,
+        idTo: 'skip-exam',
+      },
+      {
+        label: t('stu'),
+        img: SVSB,
+        to: `${ROUTES.PARTNERSHIP}#stu-void`,
+        idTo: 'stu-void',
+      },
+      {
+        label: t('stat'),
+        img: SSB,
+        to: `${ROUTES.PARTNERSHIP}#partnership-prog`,
+        idTo: 'partnership-prog',
+      },
+      {
+        label: t('consult'),
+        img: CUSB,
+        to: `${ROUTES.PARTNERSHIP}#partnership-regis`,
+        idTo: 'partnership-regis',
+      },
+    ],
+    [t],
+  ); // useMemo will recompute when 't' changes
 
   return (
     <IesClSection
@@ -141,6 +144,7 @@ const PartnershipIntro: React.FC<IPartnershipIntro> = (props) => {
                   src={OUP}
                   preview={false}
                   className={`${dark ? 'bg-white p-1 !rounded-xl' : ''} ${mb ? '!w-12 !h-12' : isTablet ? '!w-15  !h-15' : '!w-20 !h-20'}`}
+                  loading='lazy'
                 />
                 <Button
                   type='default'
@@ -153,7 +157,7 @@ const PartnershipIntro: React.FC<IPartnershipIntro> = (props) => {
               </Row>
             </Flex>
             <Row gutter={!mb ? [16, 20] : [0, 25]}>
-              {srcollData.map((scroll) => (
+              {scrollData.map((scroll) => (
                 <Col
                   key={scroll.idTo}
                   xs={12}

@@ -61,6 +61,7 @@ const AboutPartnership: React.FC<IAboutPartnership> = (props) => {
                 src={pt.img}
                 preview={false}
                 className={`${dark ? '!bg-gray-400 p-3 !rounded-xl' : ''} !w-full !h-40`}
+                loading='lazy'
               />
               <Button
                 className='!block w-5/6 !rounded-xl !text-black !font-bold hover:!text-white'

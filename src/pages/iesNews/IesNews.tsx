@@ -87,6 +87,7 @@ const IesNews = () => {
                 src={newsLst.img}
                 preview={false}
                 className='!w-100 !h-60 !rounded-xl'
+                loading='lazy'
               />
               <Col>
                 <Title

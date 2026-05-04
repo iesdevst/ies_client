@@ -77,6 +77,7 @@ const EduLibrary = () => {
                       src={DGTR}
                       preview={false}
                       className='!rounded-2xl'
+                      loading='lazy'
                     />
                     <Col>
                       <Text
@@ -114,6 +115,7 @@ const EduLibrary = () => {
                     src={DGTR}
                     preview={false}
                     className='!rounded-2xl !w-2/3 ml-15'
+                    loading='lazy'
                   />
                   <Col className='px-6'>
                     <Text className='!block mb-1.5' color='#464646'>

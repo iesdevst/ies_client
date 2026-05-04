@@ -122,7 +122,12 @@ const PsRegisModal: React.FC<IPsRegisModal> = (props) => {
             align={'middle'}
             className={`${dark ? 'bg-gray-500 py-1 px-3 !rounded-xl' : ''} gap-x-1.5`}
           >
-            <Image src={OUP} preview={false} className='!w-7 !h-7' />
+            <Image
+              src={OUP}
+              preview={false}
+              className='!w-7 !h-7'
+              loading='lazy'
+            />
             <Title className='!m-0 !text-[#28156E]' level={3}>
               {t('mt')}
             </Title>
