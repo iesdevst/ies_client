@@ -1,12 +1,15 @@
-import { Col, Image, Layout, List, Row, Space } from 'antd';
+import Col from 'antd/es/col';
+import Image from 'antd/es/image';
+import { Footer } from 'antd/es/layout/layout';
+import List from 'antd/es/list';
+import Row from 'antd/es/row';
+import Space from 'antd/es/space';
 import { useTranslation } from 'react-i18next';
 import MediaQuery from 'react-responsive';
 import fb from '@/assets/imgs/fb_logo.png';
 import LogoFooter from '@/assets/imgs/ies_logo_horizo_dark.png';
 import zalo from '@/assets/imgs/zl_logo.png';
 import { Text, Title } from '@/components';
-
-const { Footer } = Layout;
 
 const FooterIes: React.FC = () => {
   const iconSize = 45;

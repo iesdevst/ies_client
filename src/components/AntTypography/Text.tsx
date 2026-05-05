@@ -1,5 +1,6 @@
-import { Typography } from 'antd';
-import { type TextProps } from 'antd/es/typography/Text';
+import TextAntd from 'antd/es/typography/Text';
+import 'antd/es/typography/style';
+import type { TextProps } from 'antd/es/typography/Text';
 import { type CSSProperties, useImperativeHandle, useRef } from 'react';
 
 export interface TextRef {
@@ -21,14 +22,12 @@ const Text: React.FC<TextComponentProps> = ({
 }) => {
   const internalRef = useRef<HTMLSpanElement>(null);
 
-  // 統一樣式，僅處理字體大小
   const textStyles: CSSProperties = {
     fontSize: defaultFontSize,
-    color: color ? color : 'black',
+    color: color ?? 'black',
     ...style,
   };
 
-  // 處理 editable 配置
   const editableConfig =
     editable === true || typeof editable === 'object'
       ? {
@@ -37,7 +36,6 @@ const Text: React.FC<TextComponentProps> = ({
         }
       : undefined;
 
-  // 暴露 ref 方法
   useImperativeHandle(ref, () => ({
     focus: () => {
       if (internalRef.current && editable) {
@@ -47,7 +45,7 @@ const Text: React.FC<TextComponentProps> = ({
   }));
 
   return (
-    <Typography.Text
+    <TextAntd
       ref={internalRef}
       style={textStyles}
       editable={editableConfig}

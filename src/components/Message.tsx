@@ -1,4 +1,4 @@
-import { message } from 'antd';
+import message from 'antd/es/message';
 import { type FC, useEffect } from 'react';
 import { MESSAGE_EVENT_NAME } from '../utils';
 import { type ICustomerMessageProps } from '@/utils/message';

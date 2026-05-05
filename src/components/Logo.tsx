@@ -1,7 +1,5 @@
-import { Image } from 'antd';
 import { useMemo } from 'react';
 import LogoLoad from '@/assets/imgs/ies_logo_notext.png';
-
 interface LogoProps {
   size?: 'sm' | 'md' | 'lg';
 }
@@ -22,7 +20,7 @@ const Logo = (props: LogoProps) => {
   }, [size]);
 
   return (
-    <Image
+    <img
       src={LogoLoad}
       alt='logo'
       loading='lazy'

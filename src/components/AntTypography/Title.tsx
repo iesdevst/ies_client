@@ -1,5 +1,6 @@
-import { Typography } from 'antd';
+import TitleAntd from 'antd/es/typography/Title';
 import type { TitleProps } from 'antd/es/typography/Title';
+import 'antd/es/typography/style';
 import { type CSSProperties, useImperativeHandle, useRef } from 'react';
 
 export interface ITitleRef {
@@ -17,23 +18,20 @@ const Title: React.FC<ITitleComponentProps> = ({
   style,
   ...restProps
 }) => {
-  const internalRef = useRef<HTMLSpanElement>(null);
+  const internalRef = useRef<HTMLHeadingElement>(null);
 
   const textStyles: CSSProperties = {
     fontSize: defaultFontSize,
     ...style,
   };
 
-  // 暴露 ref 方法
   useImperativeHandle(ref, () => ({
     focus: () => {
       internalRef.current?.focus?.();
     },
   }));
 
-  return (
-    <Typography.Title ref={internalRef} style={textStyles} {...restProps} />
-  );
+  return <TitleAntd ref={internalRef} style={textStyles} {...restProps} />;
 };
 
 export default Title;

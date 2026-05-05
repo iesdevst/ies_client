@@ -1,3 +1,4 @@
+import { RightOutlined } from '@ant-design/icons';
 import { Button, type ButtonProps } from 'antd';
 import {
   forwardRef,
@@ -8,7 +9,6 @@ import {
   type CSSProperties,
   type HtmlHTMLAttributes,
 } from 'react';
-import { FaHandPointRight } from 'react-icons/fa';
 import styles from './dropdownAlpha.module.scss';
 
 type DropdownAlphaRef = {
@@ -42,7 +42,7 @@ const DropdownAlpha = forwardRef<DropdownAlphaRef, IDropdownAlphaProps>(
     const layoutRef = useRef<HTMLSpanElement>(null);
     // DOM
     // prettier-ignore
-    const { withoutIcon, isTestKeepOpen, pannelMaxHeight, buttonProps, children, icon = <FaHandPointRight />, items, onOpenChange, itemHeight, ...otherProps } = props || {};
+    const { withoutIcon, isTestKeepOpen, pannelMaxHeight, buttonProps, children, icon = <RightOutlined />, items, onOpenChange, itemHeight, ...otherProps } = props || {};
     const {
       onGetRect,
       noUnderLink,

@@ -1,5 +1,6 @@
 import { DownOutlined } from '@ant-design/icons';
-import { Button } from 'antd';
+import Button from 'antd/es/button';
+import 'antd/es/button/style';
 import { useMemo, useRef } from 'react';
 import Flag from 'react-flagkit';
 import { useTranslation } from 'react-i18next';

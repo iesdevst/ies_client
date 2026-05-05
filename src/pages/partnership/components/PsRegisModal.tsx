@@ -1,20 +1,16 @@
-import {
-  CloseCircleFilled,
-  SelectOutlined,
-  SendOutlined,
-} from '@ant-design/icons';
-import {
-  Button,
-  Flex,
-  Form,
-  Image,
-  Input,
-  Modal,
-  Row,
-  Select,
-  Space,
-  type InputRef,
-} from 'antd';
+import CloseCircleFilled from '@ant-design/icons/CloseCircleFilled';
+import SelectOutlined from '@ant-design/icons/SelectOutlined';
+import SendOutlined from '@ant-design/icons/SendOutlined';
+import { type InputRef } from 'antd';
+import Button from 'antd/es/button';
+import Flex from 'antd/es/flex';
+import Form from 'antd/es/form';
+import Image from 'antd/es/image';
+import Input from 'antd/es/input';
+import Modal from 'antd/es/modal';
+import Row from 'antd/es/row';
+import Select from 'antd/es/select';
+import Space from 'antd/es/space';
 import { useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useMediaQuery } from 'react-responsive';

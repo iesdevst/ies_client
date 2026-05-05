@@ -7,9 +7,6 @@ export * from './Message';
 export { default as AppSpin } from './AppSpin';
 export * from './AppSpin';
 
-export { default as AntCard } from './AntCard';
-export * from './AntCard';
-
 export { default as AntdModal } from './AntdModal';
 export * from './AntdModal';
 

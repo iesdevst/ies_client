@@ -1,5 +1,9 @@
-import { CloseCircleFilled } from '@ant-design/icons';
-import { Button, Checkbox, Flex, List, Modal } from 'antd';
+import CloseCircleFilled from '@ant-design/icons/CloseCircleFilled';
+import Button from 'antd/es/button';
+import Checkbox from 'antd/es/checkbox';
+import Flex from 'antd/es/flex';
+import List from 'antd/es/list';
+import Modal from 'antd/es/modal';
 import { useTranslation } from 'react-i18next';
 import { Title } from '@/components';
 

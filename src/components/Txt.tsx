@@ -1,4 +1,4 @@
-import { Typography } from 'antd';
+import Text from 'antd/es/typography/Text';
 import type { TextProps } from 'antd/es/typography/Text';
 import type { ReactNode } from 'react';
 
@@ -9,7 +9,7 @@ interface TxtProps extends TextProps {
 const Txt = (props: TxtProps) => {
   const { children, ...restProps } = props || {};
 
-  return <Typography.Text {...restProps}>{children}</Typography.Text>;
+  return <Text {...restProps}>{children}</Text>;
 };
 
 export default Txt;

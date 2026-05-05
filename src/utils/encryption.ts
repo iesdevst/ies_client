@@ -1,4 +1,5 @@
-import CryptoJS from 'crypto-js';
+import Utf8 from 'crypto-js/enc-utf8';
+import RC4 from 'crypto-js/rc4';
 import logger from './logger'; // Import the logger
 
 const ENCRYPTION_KEY = '_encryption_key_';
@@ -18,7 +19,7 @@ const encryptData = <Data = unknown>(data: unknown): Data => {
     }
 
     if (typeof data === 'string') {
-      const encrypted = CryptoJS.RC4.encrypt(data, ENCRYPTION_KEY).toString();
+      const encrypted = RC4.encrypt(data, ENCRYPTION_KEY).toString();
       logger.debug({ Title: 'Data encrypted', data, encrypted });
       return encrypted as Data;
     }
@@ -45,8 +46,8 @@ const decryptData = <Data = unknown>(encryptedData: unknown): Data => {
     }
 
     if (typeof encryptedData === 'string') {
-      const bytes = CryptoJS.RC4.decrypt(encryptedData, ENCRYPTION_KEY);
-      const decrypted = bytes.toString(CryptoJS.enc.Utf8);
+      const bytes = RC4.decrypt(encryptedData, ENCRYPTION_KEY);
+      const decrypted = bytes.toString(Utf8);
       logger.debug({ Title: 'Data decrypted', encryptedData, decrypted });
       return decrypted as Data;
     }
