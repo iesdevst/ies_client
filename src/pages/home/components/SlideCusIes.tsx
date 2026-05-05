@@ -2,7 +2,7 @@ import { useMemo } from 'react';
 import { useMediaQuery } from 'react-responsive';
 import ADDKSC from '@/assets/imgs/addmis_dk_screen.webp';
 
-import TSMBSC from '@/assets/imgs/ts_mb_screen.png';
+import TSMBSC from '@/assets/imgs/ts_mb_screen.webp';
 import { IesClSection } from '@/components';
 
 const SlideCusIes: React.FC = () => {

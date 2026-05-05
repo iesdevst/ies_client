@@ -1,4 +1,4 @@
-import { RightOutlined } from '@ant-design/icons';
+import RightOutlined from '@ant-design/icons/RightOutlined';
 import Breadcrumb from 'antd/es/breadcrumb';
 import Flex from 'antd/es/flex';
 import Image from 'antd/es/image';
@@ -96,6 +96,7 @@ const IesNewsDetails = () => {
               className='!rounded-2xl !w-full'
               loading='lazy'
               preview={false}
+              alt='iewdtn'
             />
 
             <Text

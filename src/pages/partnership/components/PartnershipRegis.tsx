@@ -1,9 +1,14 @@
-import { CheckCircleFilled } from '@ant-design/icons';
-import { Button, Col, Flex, Image, List } from 'antd';
+import CheckCircleFilled from '@ant-design/icons/CheckCircleFilled';
+
+import Button from 'antd/es/button';
+import Col from 'antd/es/col';
+import Flex from 'antd/es/flex';
+import Image from 'antd/es/image';
+import List from 'antd/es/list';
 import { useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useMediaQuery } from 'react-responsive';
-import PC from '@/assets/imgs/partnership_contact.jpeg';
+import PC from '@/assets/imgs/partnership_contact.webp';
 import { IesClSection, Text, Title } from '@/components';
 
 interface IPartnershipRegis {
@@ -75,6 +80,7 @@ const PartnershipRegis: React.FC<IPartnershipRegis> = (props) => {
                 preview={false}
                 className={`!mt-2 !mb-1 !rounded-4xl ${!mb ? '' : 'p-5'}`}
                 loading='lazy'
+                alt='psrs'
               />
               <Button
                 type='default'

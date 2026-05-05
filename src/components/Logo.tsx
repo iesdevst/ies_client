@@ -1,5 +1,5 @@
 import { useMemo } from 'react';
-import LogoLoad from '@/assets/imgs/ies_logo_notext.png';
+import LogoLoad from '@/assets/imgs/ies_logo_notext.webp';
 interface LogoProps {
   size?: 'sm' | 'md' | 'lg';
 }

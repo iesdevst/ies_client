@@ -15,7 +15,7 @@ import { useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useMediaQuery } from 'react-responsive';
 import { usePsRegisSend } from '@/api';
-import OUP from '@/assets/imgs/open_uni_partnership.png';
+import OUP from '@/assets/imgs/open_uni_partnership.webp';
 import { Title } from '@/components';
 import ProgTypeModal from '@/components/AntdModal';
 import { useNotifyStore } from '@/store';
@@ -123,6 +123,7 @@ const PsRegisModal: React.FC<IPsRegisModal> = (props) => {
               preview={false}
               className='!w-7 !h-7'
               loading='lazy'
+              alt='psrm'
             />
             <Title className='!m-0 !text-[#28156E]' level={3}>
               {t('mt')}

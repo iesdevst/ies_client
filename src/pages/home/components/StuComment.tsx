@@ -3,8 +3,8 @@ import Image from 'antd/es/image';
 import { useTranslation } from 'react-i18next';
 import { useMediaQuery } from 'react-responsive';
 
-import STUC from '@/assets/imgs/stu_cm.jpg';
-import STBG from '@/assets/imgs/stu_cmt_bg.png';
+import STUC from '@/assets/imgs/stu_cm.webp';
+import STBG from '@/assets/imgs/stu_cmt_bg.webp';
 import { IesClSection } from '@/components';
 
 const StuComment: React.FC = () => {
@@ -47,6 +47,7 @@ const StuComment: React.FC = () => {
                 clipPath: 'ellipse(75% 60% at 50% 40%)',
               }}
               loading='lazy'
+              alt='stuc'
             />
           </div>
 

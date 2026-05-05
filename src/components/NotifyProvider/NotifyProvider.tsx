@@ -1,10 +1,10 @@
-import { CheckOutlined, CloseOutlined } from '@ant-design/icons';
-import { Typography, type MessageArgsProps } from 'antd';
+import CheckOutlined from '@ant-design/icons/CheckOutlined';
+import CloseOutlined from '@ant-design/icons/CloseOutlined';
+import { type MessageArgsProps } from 'antd';
 import useMessage from 'antd/es/message/useMessage';
 import React, { useEffect, useRef } from 'react';
 import { CiSquareInfo } from 'react-icons/ci';
-
-const { Text, Title } = Typography;
+import { Text, Title } from '../AntTypography';
 
 type NotifyBaseOptions = {
   title: string;
@@ -91,4 +91,4 @@ const NotifyProvider: React.FunctionComponent<INotifyProviderProps> = (
 };
 
 export default NotifyProvider;
-export type { NotifyBaseOptions, INotifyProviderProps };
+export type { INotifyProviderProps, NotifyBaseOptions };

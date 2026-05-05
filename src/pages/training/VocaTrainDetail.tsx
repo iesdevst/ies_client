@@ -1,27 +1,24 @@
-import {
-  ApartmentOutlined,
-  FormOutlined,
-  InfoCircleOutlined,
-  ProfileOutlined,
-  RightOutlined,
-  WalletOutlined,
-} from '@ant-design/icons';
-import {
-  Breadcrumb,
-  Col,
-  Image,
-  Row,
-  Tabs,
-  Tooltip,
-  type TabsProps,
-} from 'antd';
+import ApartmentOutlined from '@ant-design/icons/ApartmentOutlined';
+import FormOutlined from '@ant-design/icons/FormOutlined';
+import InfoCircleOutlined from '@ant-design/icons/InfoCircleOutlined';
+import ProfileOutlined from '@ant-design/icons/ProfileOutlined';
+import RightOutlined from '@ant-design/icons/RightOutlined';
+import WalletOutlined from '@ant-design/icons/WalletOutlined';
+
+import Breadcrumb from 'antd/es/breadcrumb';
+import Col from 'antd/es/col';
+import Image from 'antd/es/image';
+import Row from 'antd/es/row';
+import Tabs from 'antd/es/tabs';
+import type { TabsProps } from 'antd/es/tabs';
+import Tooltip from 'antd/es/tooltip';
 import { lazy, useCallback, useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useMediaQuery } from 'react-responsive';
 import { useParams, useSearchParams } from 'react-router-dom';
 import { useTrainDetailData } from './hooks';
 import styles from './iesTraining.module.scss';
-import DTP from '@/assets/imgs/detail__train_paint.png';
+import DTP from '@/assets/imgs/detail__train_paint.webp';
 import { Text, Title } from '@/components';
 import { PrefetchLink } from '@/components/PrefetchLink';
 import { ROUTES, TrainDetailTab } from '@/constants';
@@ -203,6 +200,7 @@ const VocaTrainDetail: React.FC = () => {
                 preview={false}
                 className={`${isMb ? '!h-[20vh] !w-[600px]' : isTl ? '!h-[20vh] !w-[350px]' : '!h-[30vh] !w-[600px]'} rounded-xl shadow-2xl`}
                 loading='lazy'
+                alt='vocatrain'
               />
             </Col>
           </Row>

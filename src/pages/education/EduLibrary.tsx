@@ -1,10 +1,15 @@
 import { ArrowUpOutlined } from '@ant-design/icons';
-import { Button, Col, Flex, Image, Modal, Row } from 'antd';
+import Button from 'antd/es/button';
+import Col from 'antd/es/col';
+import Flex from 'antd/es/flex';
+import Image from 'antd/es/image';
+import Modal from 'antd/es/modal';
+import Row from 'antd/es/row';
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useMediaQuery } from 'react-responsive';
-import DLIB from '@/assets/imgs/dgt_lib.jpeg';
-import DGTR from '@/assets/imgs/dgt_lib_right.jpg';
+import DLIB from '@/assets/imgs/dgt_lib.webp';
+import DGTR from '@/assets/imgs/dgt_lib_right.webp';
 import { IesClSection, Text, Title } from '@/components';
 
 const EduLibrary = () => {
@@ -78,6 +83,7 @@ const EduLibrary = () => {
                       preview={false}
                       className='!rounded-2xl'
                       loading='lazy'
+                      alt='edulib'
                     />
                     <Col>
                       <Text
@@ -116,6 +122,7 @@ const EduLibrary = () => {
                     preview={false}
                     className='!rounded-2xl !w-2/3 ml-15'
                     loading='lazy'
+                    alt='edulib2'
                   />
                   <Col className='px-6'>
                     <Text className='!block mb-1.5' color='#464646'>

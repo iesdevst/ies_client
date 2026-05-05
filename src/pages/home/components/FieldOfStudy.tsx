@@ -76,6 +76,7 @@ const FieldOfStudy: React.FC = () => {
                 preview={false}
                 loading='lazy'
                 className='!rotate-[90deg] !w-60 !h-60'
+                alt='fieldzx'
               />
             )}
           </Col>
@@ -89,7 +90,12 @@ const FieldOfStudy: React.FC = () => {
                 justify='start'
                 className={`gap-x-3 ${!mb ? 'mb-22' : '!ml-2.5 mb-5'}`}
               >
-                <Image src={item.icon} preview={false} loading='lazy' />
+                <Image
+                  src={item.icon}
+                  preview={false}
+                  loading='lazy'
+                  alt='fieldzz'
+                />
 
                 <Col>
                   <Title

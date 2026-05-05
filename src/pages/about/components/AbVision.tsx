@@ -1,10 +1,15 @@
-import { EyeFilled, FileTextFilled } from '@ant-design/icons';
-import { Button, Col, Flex, List, Row } from 'antd';
+import EyeFilled from '@ant-design/icons/EyeFilled';
+import FileTextFilled from '@ant-design/icons/FileTextFilled';
+import Button from 'antd/es/button';
+import Col from 'antd/es/col';
+import Flex from 'antd/es/flex';
+import List from 'antd/es/list';
+import Row from 'antd/es/row';
 import { lazy, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useMediaQuery } from 'react-responsive';
-import AB_VS_CR from '@/assets/imgs/about_vision_crs.png';
-import AB_VS_MB_CR from '@/assets/imgs/about_vision_mb_crs.png';
+import AB_VS_CR from '@/assets/imgs/about_vision_crs.webp';
+import AB_VS_MB_CR from '@/assets/imgs/about_vision_mb_crs.webp';
 import { Text, Title } from '@/components';
 
 const IesCtModal = lazy(() => import('@/pages/home/components/IesCtModal'));
@@ -34,6 +39,7 @@ const AbVision: React.FC<IAbVision> = (props) => {
               height: '65vh',
             }}
             loading='lazy'
+            alt='abvs'
           />
         </div>
 

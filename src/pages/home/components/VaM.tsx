@@ -1,8 +1,8 @@
 import { useTranslation } from 'react-i18next';
 import { useMediaQuery } from 'react-responsive';
 import { useMethodPrData, useTopicData } from './hooks';
-import VAM from '@/assets/imgs/ies_vam.png';
-import TPI from '@/assets/imgs/topic_img.png';
+import VAM from '@/assets/imgs/ies_vam.webp';
+import TPI from '@/assets/imgs/topic_img.webp';
 import { IesClSection } from '@/components';
 import { ROUTES } from '@/constants';
 import { useUserStore } from '@/store';

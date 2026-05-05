@@ -6,9 +6,9 @@ import Row from 'antd/es/row';
 import Space from 'antd/es/space';
 import { useTranslation } from 'react-i18next';
 import MediaQuery from 'react-responsive';
-import fb from '@/assets/imgs/fb_logo.png';
-import LogoFooter from '@/assets/imgs/ies_logo_horizo_dark.png';
-import zalo from '@/assets/imgs/zl_logo.png';
+import fb from '@/assets/imgs/fb_logo.webp';
+import LogoFooter from '@/assets/imgs/ies_logo_horizo_dark.webp';
+import zalo from '@/assets/imgs/zl_logo.webp';
 import { Text, Title } from '@/components';
 
 const FooterIes: React.FC = () => {
@@ -222,7 +222,7 @@ const FooterIes: React.FC = () => {
                   >
                     <Image
                       src={img}
-                      alt=''
+                      alt='fties'
                       width={32}
                       height={32}
                       className='rounded-full'

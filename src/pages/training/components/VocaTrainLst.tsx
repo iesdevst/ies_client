@@ -1,11 +1,12 @@
-import {
-  AppstoreOutlined,
-  HighlightOutlined,
-  HomeOutlined,
-  LaptopOutlined,
-  PieChartOutlined,
-} from '@ant-design/icons';
-import { Tabs, Tooltip, type TabsProps } from 'antd';
+import AppstoreOutlined from '@ant-design/icons/AppstoreOutlined';
+import HighlightOutlined from '@ant-design/icons/HighlightOutlined';
+import HomeOutlined from '@ant-design/icons/HomeOutlined';
+import LaptopOutlined from '@ant-design/icons/LaptopOutlined';
+import PieChartOutlined from '@ant-design/icons/PieChartOutlined';
+
+import Tabs from 'antd/es/tabs';
+import type { TabsProps } from 'antd/es/tabs';
+import Tooltip from 'antd/es/tooltip';
 import { lazy, useCallback, useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useSearchParams } from 'react-router-dom';

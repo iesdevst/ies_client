@@ -1,14 +1,14 @@
 import { useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
-import CNTT from '@/assets/imgs/cntt.jpg';
-import DNC from '@/assets/imgs/dcn.jpg';
-import KTDN from '@/assets/imgs/ktdn.png';
-import MKT from '@/assets/imgs/mkt.png';
-import QLDN from '@/assets/imgs/qldn.jpg';
-import QLKS from '@/assets/imgs/qlks.png';
-import THUD from '@/assets/imgs/thud.png';
-import TKVP from '@/assets/imgs/tkvp.png';
-import VMT from '@/assets/imgs/vmt.png';
+import CNTT from '@/assets/imgs/cntt.webp';
+import DNC from '@/assets/imgs/dcn.webp';
+import KTDN from '@/assets/imgs/ktdn.webp';
+import MKT from '@/assets/imgs/mkt.webp';
+import QLDN from '@/assets/imgs/qldn.webp';
+import QLKS from '@/assets/imgs/qlks.webp';
+import THUD from '@/assets/imgs/thud.webp';
+import TKVP from '@/assets/imgs/tkvp.webp';
+import VMT from '@/assets/imgs/vmt.webp';
 
 export const useTrainImgDt = (): { data: Array<TrainImg> } => {
   const { t } = useTranslation('trainingSl');

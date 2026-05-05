@@ -14,7 +14,7 @@ import { memo, useRef } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useMediaQuery } from 'react-responsive';
 import { useIesCt } from '@/api';
-import IES from '@/assets/imgs/ies_logo_notext.png';
+import IES from '@/assets/imgs/ies_logo_notext.webp';
 import { Title } from '@/components';
 import { useNotifyStore } from '@/store';
 import {
@@ -103,6 +103,7 @@ const IesCtModal: React.FC<IIesCtModal> = (props) => {
               preview={false}
               className='!w-15 !h-10'
               loading='lazy'
+              alt='iesct'
             />
             <Title className='!m-0 !text-blue-500' level={3}>
               {t('ctAd')}

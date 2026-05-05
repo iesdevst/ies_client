@@ -1,11 +1,15 @@
-import {
-  ClockCircleOutlined,
-  DownOutlined,
-  SafetyCertificateOutlined,
-  UpOutlined,
-  UserOutlined,
-} from '@ant-design/icons';
-import { Button, Card, Col, Flex, Image, Row } from 'antd';
+import ClockCircleOutlined from '@ant-design/icons/ClockCircleOutlined';
+import DownOutlined from '@ant-design/icons/DownOutlined';
+import SafetyCertificateOutlined from '@ant-design/icons/SafetyCertificateOutlined';
+import UpOutlined from '@ant-design/icons/UpOutlined';
+import UserOutlined from '@ant-design/icons/UserOutlined';
+
+import Button from 'antd/es/button';
+import Card from 'antd/es/card';
+import Col from 'antd/es/col';
+import Flex from 'antd/es/flex';
+import Image from 'antd/es/image';
+import Row from 'antd/es/row';
 import { useMemo, useState } from 'react';
 import { useMediaQuery } from 'react-responsive';
 import { useNavigate } from 'react-router-dom';
@@ -64,6 +68,7 @@ const ProgLstCard: React.FC<IProgLstCard> = (props) => {
                     preview={false}
                     className={`rounded-lg ${mb || tablet ? '!w-full !h-26' : '!w-18 !h-18'}`}
                     loading='lazy'
+                    alt='proglst'
                   />
                 </div>
                 <Col>

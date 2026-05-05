@@ -2,7 +2,7 @@ import Button from 'antd/es/button';
 import 'antd/es/button/style';
 import React, { Component, type ReactNode } from 'react';
 import { Title } from '../AntTypography';
-import logo from '@/assets/imgs/ies_logo_text.png';
+import logo from '@/assets/imgs/ies_logo_text.webp';
 
 interface ErrorBoundaryProps {
   children: ReactNode;

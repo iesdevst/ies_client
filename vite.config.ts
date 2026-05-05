@@ -4,6 +4,7 @@ import react from "@vitejs/plugin-react-swc";
 import path from "path";
 import tailwindcss from "@tailwindcss/vite";
 
+
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
@@ -17,8 +18,18 @@ Object.defineProperty(globalThis, "__dirname", {
 export default defineConfig({
   plugins: [react(), tailwindcss()],
   build: {
-    target: "esnext",
+  target: "esnext",
+  rollupOptions: {
+    output: {
+      manualChunks: {
+        react: ["react", "react-dom"],
+        router: ["react-router-dom"],
+        antd: ["antd"],
+        query: ["@tanstack/react-query"],
+      },
+    },
   },
+},
   server: {
     port: 3089,
     proxy: {

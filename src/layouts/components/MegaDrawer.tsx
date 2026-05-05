@@ -1,10 +1,14 @@
-import { CloseOutlined, RightOutlined } from '@ant-design/icons';
-import { Button, Drawer, Flex, Row } from 'antd';
+import CloseOutlined from '@ant-design/icons/CloseOutlined';
+import RightOutlined from '@ant-design/icons/RightOutlined';
+import Button from 'antd/es/button';
+import Drawer from 'antd/es/drawer';
+import Flex from 'antd/es/flex';
+import Row from 'antd/es/row';
 import React, { memo, useCallback, useMemo, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
 import { useMegaNavData } from '../hooks';
-import MNL from '@/assets/imgs/ies_logo_notext.png';
+import MNL from '@/assets/imgs/ies_logo_notext.webp';
 import { Title } from '@/components';
 import { PrefetchLink } from '@/components/PrefetchLink';
 import type { RoutePath } from '@/constants';

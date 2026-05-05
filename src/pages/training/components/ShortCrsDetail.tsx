@@ -1,17 +1,21 @@
-import {
-  FormOutlined,
-  InfoCircleOutlined,
-  ProfileOutlined,
-  WalletOutlined,
-} from '@ant-design/icons';
-import { Col, Image, Row, Tabs, Tooltip, type TabsProps } from 'antd';
+import FormOutlined from '@ant-design/icons/FormOutlined';
+import InfoCircleOutlined from '@ant-design/icons/InfoCircleOutlined';
+import ProfileOutlined from '@ant-design/icons/ProfileOutlined';
+import WalletOutlined from '@ant-design/icons/WalletOutlined';
+
+import Col from 'antd/es/col';
+import Image from 'antd/es/image';
+import Row from 'antd/es/row';
+import Tabs from 'antd/es/tabs';
+import type { TabsProps } from 'antd/es/tabs';
+import Tooltip from 'antd/es/tooltip';
 import { lazy, useCallback, useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useMediaQuery } from 'react-responsive';
 import { useSearchParams } from 'react-router-dom';
 import { useShortCrsData } from '../hooks';
 import styles from '../iesTraining.module.scss';
-import DTP from '@/assets/imgs/short_course_paint.png';
+import DTP from '@/assets/imgs/short_course_paint.avif';
 import { Title } from '@/components';
 import { TrainDetailTab } from '@/constants';
 import { useUserStore } from '@/store';
@@ -158,6 +162,7 @@ const ShortCrsDetail: React.FC<IShortCrsDetailProps> = (props) => {
                 preview={false}
                 className='!h-20 !w-80'
                 loading='lazy'
+                alt='shortkg'
               />
             </Col>
 
@@ -167,6 +172,7 @@ const ShortCrsDetail: React.FC<IShortCrsDetailProps> = (props) => {
                 preview={false}
                 className='!h-[30vh] !w-[600px] rounded-xl shadow-2xl'
                 loading='lazy'
+                alt='shortdt'
               />
             </Col>
           </Row>

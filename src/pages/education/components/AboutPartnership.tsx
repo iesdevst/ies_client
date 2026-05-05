@@ -1,8 +1,8 @@
 import { Button, Col, Flex, Image, Row } from 'antd';
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
-import IES from '@/assets/imgs/ies_logo_notext.png';
-import HOU from '@/assets/imgs/open_uni_partnership.png';
+import IES from '@/assets/imgs/ies_logo_notext.webp';
+import HOU from '@/assets/imgs/open_uni_partnership.webp';
 import { Text, Title } from '@/components';
 import { ROUTES } from '@/constants';
 
@@ -62,6 +62,7 @@ const AboutPartnership: React.FC<IAboutPartnership> = (props) => {
                 preview={false}
                 className={`${dark ? '!bg-gray-400 p-3 !rounded-xl' : ''} !w-full !h-40`}
                 loading='lazy'
+                alt='abps'
               />
               <Button
                 className='!block w-5/6 !rounded-xl !text-black !font-bold hover:!text-white'

@@ -1,4 +1,4 @@
-import { ArrowRightOutlined } from '@ant-design/icons';
+import ArrowRightOutlined from '@ant-design/icons/ArrowRightOutlined';
 import React, { memo, useCallback, useMemo, useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import type { VidPrLayoutProps } from '../types';
@@ -57,6 +57,7 @@ const VidPr: React.FC<VidPrLayoutProps> = (props) => {
                 src={`https://img.youtube.com/vi/yJCZCz-b_yQ/maxresdefault.jpg`}
                 className='w-full h-full object-cover rounded-xl cursor-pointer'
                 onClick={() => setPlay(true)}
+                alt='vidpr'
               />
             ) : (
               <iframe
@@ -88,7 +89,7 @@ const VidPr: React.FC<VidPrLayoutProps> = (props) => {
               src='https://www.vlu.edu.vn/images/section-1-pattern.svg'
               className={imgSize}
               loading='lazy'
-              alt=''
+              alt='vidprzz'
             />
           </div>
 

@@ -2,7 +2,7 @@ import { Col, Image } from 'antd';
 import { useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useMediaQuery } from 'react-responsive';
-import PNC from '@/assets/imgs/policy_note_sec.png';
+import PNC from '@/assets/imgs/policy_note_sec.webp';
 import { IesClSection, Text, Title } from '@/components';
 
 const PolicyNote: React.FC = () => {
@@ -48,6 +48,7 @@ const PolicyNote: React.FC = () => {
               preview={false}
               className='!rounded-xl'
               loading='lazy'
+              alt='pcn'
             />
             <Col>
               <Title level={4} className=' !font-bold'>

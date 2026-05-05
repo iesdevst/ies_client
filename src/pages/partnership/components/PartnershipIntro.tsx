@@ -1,4 +1,5 @@
-import { ArrowUpOutlined, LinkOutlined } from '@ant-design/icons';
+import ArrowUpOutlined from '@ant-design/icons/ArrowUpOutlined';
+import LinkOutlined from '@ant-design/icons/LinkOutlined';
 import { useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useMediaQuery } from 'react-responsive';
@@ -9,13 +10,13 @@ import {
   type LinkProps,
 } from 'react-router-dom';
 
-import CUSB from '@/assets/imgs/contact_us_sc_but.jpeg';
-import OUP from '@/assets/imgs/open_uni_partnership.png';
-import PNSB from '@/assets/imgs/policy_note_sc_but.jpeg';
-import SESB from '@/assets/imgs/skip_exam_sc_but.jpeg';
-import SSB from '@/assets/imgs/stat_sc_but.jpeg';
-import SVSB from '@/assets/imgs/stu_void_sc_but.jpg';
-import WSB from '@/assets/imgs/why_choose_sc_but.jpg';
+import CUSB from '@/assets/imgs/contact_us_sc_but.webp';
+import OUP from '@/assets/imgs/open_uni_partnership.webp';
+import PNSB from '@/assets/imgs/policy_note_sc_but.webp';
+import SESB from '@/assets/imgs/skip_exam_sc_but.webp';
+import SSB from '@/assets/imgs/stat_sc_but.webp';
+import SVSB from '@/assets/imgs/stu_void_sc_but.webp';
+import WSB from '@/assets/imgs/why_choose_sc_but.webp';
 
 import { IesClSection, Text, Title } from '@/components';
 import { ROUTES } from '@/constants';
@@ -106,6 +107,7 @@ const PartnershipIntro: React.FC<Props> = ({ openRegisInSec, dark }) => {
                   className={`${
                     dark ? 'bg-white p-1 rounded-xl' : ''
                   } ${mb ? 'w-12 h-12' : tablet ? 'w-15 h-15' : 'w-20 h-20'}`}
+                  alt='psintro'
                 />
 
                 <button

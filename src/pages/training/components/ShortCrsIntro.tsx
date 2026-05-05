@@ -1,9 +1,9 @@
 import { Row, Col, Image, Flex } from 'antd';
 import { useTranslation } from 'react-i18next';
 import { useMediaQuery } from 'react-responsive';
-import IRL from '@/assets/imgs/ies_logo_notext.png';
-import SRSL from '@/assets/imgs/short_term_left_slide.jpeg';
-import SRSLMB from '@/assets/imgs/short_term_left_slide_mb.jpeg';
+import IRL from '@/assets/imgs/ies_logo_notext.webp';
+import SRSL from '@/assets/imgs/short_term_left_slide.webp';
+import SRSLMB from '@/assets/imgs/short_term_left_slide_mb.webp';
 import { Title } from '@/components';
 
 const ShortCrsIntro = () => {
@@ -18,6 +18,7 @@ const ShortCrsIntro = () => {
               <img
                 src={SRSL}
                 className='w-full object-cover blur-[2px] !h-3/4'
+                alt='shortcrs'
               />
             </div>
           </Col>
@@ -33,6 +34,7 @@ const ShortCrsIntro = () => {
                 preview={false}
                 className='!w-20 !h-15 !bg-white rounded-xl opacity-80'
                 loading='lazy'
+                alt='shortcrs2'
               />
 
               <div>
@@ -78,6 +80,7 @@ const ShortCrsIntro = () => {
                     preview={false}
                     className='!w-7 !h-7'
                     loading='lazy'
+                    alt='shortcrs3'
                   />
                   <Title
                     level={5}
@@ -107,7 +110,11 @@ const ShortCrsIntro = () => {
 
           <Col xs={24} md={12}>
             <div>
-              <img src={SRSLMB} className='w-full object-cover blur-[2px]' />
+              <img
+                src={SRSLMB}
+                className='w-full object-cover blur-[2px]'
+                alt='shortcrsz'
+              />
             </div>
           </Col>
         </Row>

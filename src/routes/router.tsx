@@ -2,7 +2,6 @@ import { lazy } from 'react';
 import { createBrowserRouter, Navigate } from 'react-router-dom';
 import { RouteErrorBoundary } from './RouteErrorBoundary';
 import { ROUTES } from '@/constants';
-import IesClientLayout from '@/layouts/IesClientLayout';
 
 const Dashboard = lazy(() => import('@/pages/home/Dashboard'));
 const About = lazy(() => import('@/pages/about/AboutIes'));
@@ -16,6 +15,7 @@ const IesNews = lazy(() => import('@/pages/iesNews/IesNews'));
 const IesNewsDetails = lazy(() => import('@/pages/iesNews/IesNewsDetails'));
 const IesEvents = lazy(() => import('@/pages/iesNews/IesEvents'));
 const IesEventsDetails = lazy(() => import('@/pages/iesNews/IesEventsDetail'));
+const IesClientLayout = lazy(() => import('@/layouts/IesClientLayout'));
 
 export const router = createBrowserRouter([
   {

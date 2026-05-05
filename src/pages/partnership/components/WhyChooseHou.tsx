@@ -1,16 +1,17 @@
-import {
-  ClockCircleOutlined,
-  KeyOutlined,
-  MessageOutlined,
-  RocketOutlined,
-  SafetyCertificateOutlined,
-  TagsOutlined,
-} from '@ant-design/icons';
-import { Col, Flex, Row } from 'antd';
+import ClockCircleOutlined from '@ant-design/icons/ClockCircleOutlined';
+import KeyOutlined from '@ant-design/icons/KeyOutlined';
+import MessageOutlined from '@ant-design/icons/MessageOutlined';
+import RocketOutlined from '@ant-design/icons/RocketOutlined';
+import SafetyCertificateOutlined from '@ant-design/icons/SafetyCertificateOutlined';
+import TagsOutlined from '@ant-design/icons/TagsOutlined';
+
+import Col from 'antd/es/col';
+import Flex from 'antd/es/flex';
+import Row from 'antd/es/row';
 import { useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useMediaQuery } from 'react-responsive';
-import WCHB from '@/assets/imgs/why_choose_hou_bg.jpeg';
+import WCHB from '@/assets/imgs/why_choose_hou_bg.webp';
 import { IesClSection, Text, Title } from '@/components';
 
 const WhyChooseHou: React.FC = () => {

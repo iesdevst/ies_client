@@ -89,6 +89,7 @@ const NewsFeat: React.FC<NewsFeatureLayoutProps> = (props) => {
           src={item.imgC}
           className='!h-65 w-full mb-3.5 rounded-lg'
           loading='lazy'
+          alt='cardf'
         />
         <Title level={4} className={`${dark ? '!text-white' : '!text-black'}`}>
           {item.tit}

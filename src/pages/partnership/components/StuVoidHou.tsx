@@ -2,10 +2,10 @@ import { Col, Flex, Image, Row } from 'antd';
 import { useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useMediaQuery } from 'react-responsive';
-import HTDSV from '@/assets/imgs/htd_stu_void.jpg';
-import LDVSV from '@/assets/imgs/ldv_stu_void.jpg';
-import NMHSV from '@/assets/imgs/nmh_stu_void.jpg';
-import HOUAVT from '@/assets/imgs/open_uni_partnership.png';
+import HTDSV from '@/assets/imgs/htd_stu_void.webp';
+import LDVSV from '@/assets/imgs/ldv_stu_void.webp';
+import NMHSV from '@/assets/imgs/nmh_stu_void.webp';
+import HOUAVT from '@/assets/imgs/open_uni_partnership.webp';
 import { IesClSection, Text, Title } from '@/components';
 
 const StuVoidHou: React.FC = () => {
@@ -52,6 +52,7 @@ const StuVoidHou: React.FC = () => {
               preview={false}
               className={`!bg-white !rounded-2xl !py-0.5 ${mb || isTablet ? '!w-20 !h-20' : '!w-45 !h-45 '}`}
               loading='lazy'
+              alt='stuvoid'
             />
             <div className='text-center'>
               <Title level={!mb ? 1 : 5} className='!m-0 !text-white'>
@@ -87,6 +88,7 @@ const StuVoidHou: React.FC = () => {
                     preview={false}
                     className='!rounded-sm !h-20 !w-20'
                     loading='lazy'
+                    alt='stv2'
                   />
                   <Text color='white' className='!block !font-bold px-1.5 '>
                     {stuV.decs}

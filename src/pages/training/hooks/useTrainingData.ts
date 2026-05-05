@@ -1,13 +1,13 @@
 import { useTranslation } from 'react-i18next';
 import ACCOUNTING from '@/assets/imgs/accouting_cardi.png';
-import APIINFO from '@/assets/imgs/apiinfo_cardi.png';
-import BUSIAD from '@/assets/imgs/busiad_cardi.png';
-import DESIGN from '@/assets/imgs/design_cardi.png';
-import HOSIM from '@/assets/imgs/hosim_cardi.png';
-import HTM from '@/assets/imgs/htm_cardi.png';
-import INDUS from '@/assets/imgs/induss_cardi.png';
-import IT from '@/assets/imgs/it_cardi.png';
-import MKT from '@/assets/imgs/mtk_cardi.png';
+import APIINFO from '@/assets/imgs/apiinfo_cardi.webp';
+import BUSIAD from '@/assets/imgs/busiad_cardi.webp';
+import DESIGN from '@/assets/imgs/design_cardi.webp';
+import HOSIM from '@/assets/imgs/hosim_cardi.webp';
+import HTM from '@/assets/imgs/htm_cardi.webp';
+import INDUS from '@/assets/imgs/induss_cardi.webp';
+import IT from '@/assets/imgs/it_cardi.webp';
+import MKT from '@/assets/imgs/mtk_cardi.webp';
 import { ProgramSlugEnum, ProgTypeEnum } from '@/utils';
 
 export const useTrainingData = (): { data: Array<Program> } => {

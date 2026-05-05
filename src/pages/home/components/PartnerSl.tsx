@@ -8,11 +8,11 @@ import { useMediaQuery } from 'react-responsive';
 
 import CNPH from '@/assets/imgs/cnph_tt.svg';
 import DO from '@/assets/imgs/div_oost_tt.webp';
-import FS from '@/assets/imgs/form_square_tt.jpg';
-import GTTT from '@/assets/imgs/gt_tt.jpg';
+import FS from '@/assets/imgs/form_square_tt.webp';
+import GTTT from '@/assets/imgs/gt_tt.webp';
 import HS from '@/assets/imgs/hansa_tt.webp';
 import LH from '@/assets/imgs/luxel_home.webp';
-import RA from '@/assets/imgs/radian_tt.jpg';
+import RA from '@/assets/imgs/radian_tt.webp';
 import WW from '@/assets/imgs/work_wise_tt.webp';
 
 import { IesClSection, Text, Title } from '@/components';
@@ -88,6 +88,7 @@ const PartnerSl: React.FC = () => {
                     preview={false}
                     loading='lazy'
                     className={`object-cover ${mb ? 'w-[90%]' : 'w-full'} h-[15vh]`}
+                    alt='ptsl'
                   />
                 </div>
               ))}
