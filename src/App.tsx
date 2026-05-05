@@ -1,6 +1,7 @@
 import { QueryClientProvider } from '@tanstack/react-query';
-import { ConfigProvider, theme } from 'antd';
+import { theme as antdTheme } from 'antd/es';
 import ErrorBoundary from 'antd/es/alert/ErrorBoundary';
+import ConfigProvider from 'antd/es/config-provider';
 import { Suspense, useEffect } from 'react';
 
 import FallbackLoading from './FallbackLoading';
@@ -25,7 +26,9 @@ function App() {
           colorPrimary: '#474669',
           colorText: isDark ? 'white' : 'black',
         },
-        algorithm: isDark ? theme.darkAlgorithm : theme.defaultAlgorithm,
+        algorithm: isDark
+          ? antdTheme.darkAlgorithm
+          : antdTheme.defaultAlgorithm,
         components: {
           Layout: { headerBg: 'transparent' },
           Button: {

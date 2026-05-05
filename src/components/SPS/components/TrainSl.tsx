@@ -1,5 +1,8 @@
-import { RightOutlined } from '@ant-design/icons';
-import { Button, Carousel, Col, Flex } from 'antd';
+import RightOutlined from '@ant-design/icons/es/icons/RightOutlined';
+import Button from 'antd/es/button';
+import Carousel from 'antd/es/carousel';
+import Col from 'antd/es/col';
+import Flex from 'antd/es/flex';
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import styles from '../iesCl.module.scss';

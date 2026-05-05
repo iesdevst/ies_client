@@ -1,5 +1,8 @@
-import { RightOutlined } from '@ant-design/icons';
-import { Button, Col, Flex, Image, Row } from 'antd';
+import RightOutlined from '@ant-design/icons/es/icons/RightOutlined';
+import Button from 'antd/es/button';
+import Col from 'antd/es/col';
+import Flex from 'antd/es/flex';
+import Row from 'antd/es/row';
 import React, { memo, useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
 import type { TopicLayoutProps } from '../types';
@@ -33,10 +36,9 @@ const Topic: React.FC<TopicLayoutProps> = (props) => {
         align={!mb ? 'end' : 'center'}
         gap={!mb ? 0 : 20}
       >
-        <Image
+        <img
           src={topImaTit}
           className={`${!mb ? '!w-150' : ''} ${dark ? 'rounded-xl' : ''}`}
-          preview={false}
           loading='lazy'
         />
 
@@ -62,9 +64,8 @@ const Topic: React.FC<TopicLayoutProps> = (props) => {
       </Flex>
       <Flex vertical={mb} align='center'>
         <div className='flex-2 flex justify-end mr-2.5'>
-          <Image
+          <img
             src={topicI}
-            preview={false}
             className={`${!mb ? '!h-130 !w-130' : ''}`}
             loading='lazy'
           />
@@ -129,9 +130,8 @@ const Topic: React.FC<TopicLayoutProps> = (props) => {
               className='gap-x-5'
             >
               <div>
-                <Image
+                <img
                   src={item.thodAv}
-                  preview={false}
                   className={`${!mb ? '!w-15 !h-17' : '!w-8 !h-8'}`}
                   loading='lazy'
                 />

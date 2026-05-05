@@ -1,5 +1,9 @@
-import { ArrowUpOutlined, RightOutlined } from '@ant-design/icons';
-import { Button, Card, Col, Flex } from 'antd';
+import ArrowUpOutlined from '@ant-design/icons/es/icons/ArrowUpOutlined';
+import RightOutlined from '@ant-design/icons/es/icons/RightOutlined';
+import Button from 'antd/es/button';
+import Card from 'antd/es/card';
+import Col from 'antd/es/col';
+import Flex from 'antd/es/flex';
 import React, { memo, useCallback, useMemo } from 'react';
 import { useNavigate } from 'react-router-dom';
 import type { NewsFeatureLayoutProps } from '../types';

@@ -1,5 +1,6 @@
-import { VerticalAlignTopOutlined } from '@ant-design/icons';
-import { BackTop, Layout } from 'antd';
+import VerticalAlignTopOutlined from '@ant-design/icons/es/icons/VerticalAlignTopOutlined';
+import BackTop from 'antd/es/back-top';
+import Layout from 'antd/es/layout';
 import React, { lazy, useEffect, useRef, useState } from 'react';
 import { Outlet, useLocation } from 'react-router-dom';
 import FooterIes from './components/FooterIes';
@@ -65,7 +66,9 @@ const IesClientLayout: React.FC = () => {
           </BackTop>
         )}
       </Layout>
-      <MegaDrawer activeKey={drawerKey} onClose={() => setDrawerKey(null)} />
+      {drawerKey && (
+        <MegaDrawer activeKey={drawerKey} onClose={() => setDrawerKey(null)} />
+      )}
     </>
   );
 };

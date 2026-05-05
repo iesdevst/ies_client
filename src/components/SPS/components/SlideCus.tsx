@@ -1,4 +1,4 @@
-import { Carousel } from 'antd';
+import Carousel from 'antd/es/carousel';
 import React, { memo, useMemo } from 'react';
 import styles from '../iesCl.module.scss';
 import type { SlideCusLayoutProps } from '../types';

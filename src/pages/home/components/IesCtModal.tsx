@@ -11,7 +11,7 @@ import {
   Space,
   type InputRef,
 } from 'antd';
-import { useRef } from 'react';
+import { memo, useRef } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useMediaQuery } from 'react-responsive';
 import { useIesCt } from '@/api';
@@ -246,7 +246,7 @@ const IesCtModal: React.FC<IIesCtModal> = (props) => {
   );
 };
 
-export default IesCtModal;
+export default memo(IesCtModal);
 
 export interface IesCtFormVra {
   name: string;

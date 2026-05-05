@@ -4,24 +4,21 @@ import {
   PlusOutlined,
   RightOutlined,
 } from '@ant-design/icons';
-import { Button, Collapse, Row } from 'antd';
 import { lazy, useMemo, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useMediaQuery } from 'react-responsive';
-import { IesClSection, Text, Title } from '@/components';
 import { useUserStore } from '@/store';
 
 const IesCtModal = lazy(() => import('@/pages/home/components/IesCtModal'));
 
 const ContactKey: React.FC = () => {
   const mb = useMediaQuery({ maxWidth: 1024 });
-  const mnSc = useMediaQuery({ minWidth: 1024, maxWidth: 1279 });
   const { isDark } = useUserStore();
   const [ctOpen, setCtOpen] = useState(false);
   const { t } = useTranslation('contactKey');
 
   const textColor = useMemo(
-    () => (isDark ? '!text-white' : '!text-black'),
+    () => (isDark ? 'text-white' : 'text-black'),
     [isDark],
   );
 
@@ -29,147 +26,113 @@ const ContactKey: React.FC = () => {
     () => [
       {
         key: '1',
-        label: (
-          <Title className={`!m-0 ${textColor}`} level={5}>
-            {t('phc')}
-          </Title>
-        ),
-        children: (
-          <>
-            <Row justify={'start'} align={'middle'} className='gap-x-1'>
-              <Title level={5} className={`!m-0 ${textColor}`}>
-                {t('office')}
-              </Title>
-              <Text className='mt-0.5' color={isDark ? 'white' : ''}>
-                {t('location')}
-              </Text>
-            </Row>
-
-            <Row justify={'start'} align={'middle'} className='gap-x-2 my-1'>
-              <PhoneFilled className={`${textColor}`} />
-              <Text color={isDark ? 'white' : ''}>0901.309.866</Text>
-            </Row>
-
-            <Row justify={'start'} align={'middle'} className='gap-x-2'>
-              <MailFilled className={`${textColor}`} />
-              <Text color={isDark ? 'white' : ''}>info@iescollege.edu.vn</Text>
-            </Row>
-          </>
-        ),
+        title: t('phc'),
+        phone: '0901.309.866',
+        mail: 'info@iescollege.edu.vn',
       },
       {
         key: '2',
-        label: (
-          <Title className={`!m-0 ${textColor}`} level={5}>
-            {t('ctsv')}
-          </Title>
-        ),
-        children: (
-          <>
-            <Row justify={'start'} align={'middle'} className='gap-x-1'>
-              <Title level={5} className={`!m-0 ${textColor}`}>
-                {t('office')}
-              </Title>
-              <Text className='mt-0.5' color={isDark ? 'white' : ''}>
-                {t('location')}
-              </Text>
-            </Row>
-
-            <Row justify={'start'} align={'middle'} className='gap-x-2 my-1'>
-              <PhoneFilled className={`${textColor}`} />
-              <Text color={isDark ? 'white' : ''}>0912.584.800</Text>
-            </Row>
-
-            <Row justify={'start'} align={'middle'} className='gap-x-2'>
-              <MailFilled className={`${textColor}`} />
-              <Text color={isDark ? 'white' : ''}>info@iescollege.edu.vn</Text>
-            </Row>
-          </>
-        ),
+        title: t('ctsv'),
+        phone: '0912.584.800',
+        mail: 'info@iescollege.edu.vn',
       },
-
       {
         key: '3',
-        label: (
-          <Title className={`!m-0 ${textColor}`} level={5}>
-            {t('ts')}
-          </Title>
-        ),
-        children: (
-          <>
-            <Row justify={'start'} align={'middle'} className='gap-x-1'>
-              <Title level={5} className={`!m-0 ${textColor}`}>
-                {t('office')}
-              </Title>
-              <Text className='mt-0.5' color={isDark ? 'white' : ''}>
-                {t('location')}
-              </Text>
-            </Row>
-
-            <Row justify={'start'} align={'middle'} className='gap-x-2 my-1'>
-              <PhoneFilled className={`${textColor}`} />
-              <Text color={isDark ? 'white' : ''}>0901.309.866</Text>
-            </Row>
-
-            <Row justify={'start'} align={'middle'} className='gap-x-2'>
-              <MailFilled className={`${textColor}`} />
-              <Text color={isDark ? 'white' : ''}>info@iescollege.edu.vn</Text>
-            </Row>
-          </>
-        ),
+        title: t('ts'),
+        phone: '0901.309.866',
+        mail: 'info@iescollege.edu.vn',
       },
     ],
-    [t, textColor, isDark],
+    [t],
   );
+
+  const [active, setActive] = useState<string | null>(null);
 
   return (
     <>
-      <IesClSection
-        id='keyContact'
-        layout='simple'
-        divider={false}
-        children={
-          <div
-            className={`mt-20 h-full flex flex-col ${!mb ? 'pl-20 pt-20' : ' pt-10 pb-20'}`}
-          >
-            <Title className={`${textColor} ${!mb ? '' : '!text-center'}`}>
-              {t('ctKey')}
-            </Title>
+      <div
+        className={`mt-20 flex flex-col ${
+          !mb ? 'pl-20 pt-20' : 'pt-10 pb-20 px-5'
+        }`}
+      >
+        {/* TITLE */}
+        <h2 className={`${textColor} ${mb ? 'text-center' : ''}`}>
+          {t('ctKey')}
+        </h2>
 
-            <div
-              className={`border-b border-[#cfd2d8] ${!mb ? 'w-1/2' : '!mx-5'}`}
-            >
-              <Collapse
-                accordion
-                items={contacts}
-                expandIconPosition='end'
-                expandIcon={({ isActive }) => (
+        {/* ACCORDION (custom instead of antd Collapse) */}
+        <div className='border-b border-gray-300 w-full md:w-1/2'>
+          {contacts.map((item) => {
+            const isOpen = active === item.key;
+
+            return (
+              <div key={item.key} className='border-b border-gray-200'>
+                {/* HEADER */}
+                <button
+                  onClick={() => setActive(isOpen ? null : item.key)}
+                  className='w-full flex items-center justify-between py-4'
+                >
+                  <span className={`${textColor} font-semibold`}>
+                    {item.title}
+                  </span>
+
                   <PlusOutlined
-                    className={`${isDark ? '!text-[#00cf91]' : '!text-blue-600'} !font-bold transition-transform !text-lg ${
-                      isActive ? 'rotate-45 !text-red-500' : ''
-                    }`}
+                    className={`transition-transform ${
+                      isOpen ? 'rotate-45 text-red-500' : ''
+                    } ${isDark ? 'text-green-400' : 'text-blue-600'}`}
                   />
-                )}
-                className='!border-none contact-collapse'
-              />
-            </div>
+                </button>
 
-            <div className={`mt-7 ${!mb ? '' : ' text-end'}`}>
-              <Button type='text' onClick={() => setCtOpen(true)}>
-                <Title className={`!m-0 ${textColor}`} level={4}>
-                  {t('getAdviceBtn')}
-                </Title>
-                <div className='w-full h-full !bg-blue-500 rounded-r-full flex items-center justify-center px-3'>
-                  <RightOutlined className='!text-white !font-semibold' />
-                </div>
-              </Button>
-            </div>
-          </div>
-        }
-        className={`${isDark ? 'bg-gray-700' : 'bg-[#f2f5ff] mt-20'}`}
-        height={mb ? '40vh' : mnSc ? '95vh' : ''}
-      />
-      <IesCtModal openCtM={ctOpen} closeCtM={() => setCtOpen(false)} />
+                {/* BODY */}
+                {isOpen && (
+                  <div className='pb-4 space-y-2'>
+                    <div className='flex items-center gap-2'>
+                      <span className={textColor}>{t('office')}</span>
+                      <span className={isDark ? 'text-white' : ''}>
+                        {t('location')}
+                      </span>
+                    </div>
+
+                    <div className='flex items-center gap-2'>
+                      <PhoneFilled className={textColor} />
+                      <span className={isDark ? 'text-white' : ''}>
+                        {item.phone}
+                      </span>
+                    </div>
+
+                    <div className='flex items-center gap-2'>
+                      <MailFilled className={textColor} />
+                      <span className={isDark ? 'text-white' : ''}>
+                        {item.mail}
+                      </span>
+                    </div>
+                  </div>
+                )}
+              </div>
+            );
+          })}
+        </div>
+
+        {/* BUTTON */}
+        <div className={`mt-7 ${mb ? 'text-right' : ''}`}>
+          <button
+            onClick={() => setCtOpen(true)}
+            className='flex items-center bg-transparent border-none cursor-pointer'
+          >
+            <span className={`font-medium ${textColor}`}>
+              {t('getAdviceBtn')}
+            </span>
+
+            <span className='bg-blue-500 px-3 rounded-r-full flex items-center'>
+              <RightOutlined className='text-white' />
+            </span>
+          </button>
+        </div>
+      </div>
+
+      {ctOpen && (
+        <IesCtModal openCtM={ctOpen} closeCtM={() => setCtOpen(false)} />
+      )}
     </>
   );
 };

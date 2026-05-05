@@ -1,16 +1,31 @@
 import { lazy, useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
-import PartnershipInfo from './components/PartnershipInfo';
-import PartnershipIntro from './components/PartnershipIntro';
-import PartnershipProg from './components/PartnershipProg';
-import PartnershipRegis from './components/PartnershipRegis';
-import PolicyNote from './components/PolicyNote';
-import SkipExam from './components/SkipExam';
-import StuVoidHou from './components/StuVoidHou';
-import WhyChooseHou from './components/WhyChooseHou';
+
 import { PageContainer } from '@/components';
 import { useUserStore } from '@/store';
 
+const PartnershipInfo = lazy(
+  () => import('@/pages/partnership/components/PartnershipInfo'),
+);
+const PartnershipIntro = lazy(
+  () => import('@/pages/partnership/components/PartnershipIntro'),
+);
+const PartnershipProg = lazy(
+  () => import('@/pages/partnership/components/PartnershipProg'),
+);
+const PartnershipRegis = lazy(
+  () => import('@/pages/partnership/components/PartnershipRegis'),
+);
+const PolicyNote = lazy(
+  () => import('@/pages/partnership/components/PolicyNote'),
+);
+const SkipExam = lazy(() => import('@/pages/partnership/components/SkipExam'));
+const StuVoidHou = lazy(
+  () => import('@/pages/partnership/components/StuVoidHou'),
+);
+const WhyChooseHou = lazy(
+  () => import('@/pages/partnership/components/WhyChooseHou'),
+);
 const PsRegisModal = lazy(
   () => import('@/pages/partnership/components/PsRegisModal'),
 );

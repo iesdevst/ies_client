@@ -1,7 +1,6 @@
 import { useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useMediaQuery } from 'react-responsive';
-
 import { useStaticDt, useTrainImgDt } from './hooks';
 import { IesClSection } from '@/components';
 import type { TrainingSlProps } from '@/components/SPS/types';

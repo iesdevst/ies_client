@@ -65,6 +65,7 @@ const CareerGuid: React.FC = () => {
                       }}
                       className='!rounded-xl'
                       loading='lazy'
+                      alt='partner_sl'
                     />
                     <div className='absolute bottom-0 left-0 pl-2 pb-1'>
                       <Text
