@@ -7,6 +7,7 @@ export type SubSecLayout =
   | 'trainingSl'
   | 'vidPr'
   | 'newsFeature'
+  | 'nailPage'
   | 'simple';
 
 export interface BasePageIesSecProps {
@@ -95,6 +96,23 @@ export interface NewsFeatureLayoutProps extends BasePageIesSecProps {
   moreClass?: string;
 }
 
+/* ===== Event & News Pagwe ===== */
+
+export interface NaiPageLayoutProps extends BasePageIesSecProps {
+  layout: 'naiPage';
+  tl: boolean;
+  newsTit: string;
+  decs: string;
+  img: string;
+  linkTo?: string;
+  art?: string;
+  img2?: string;
+  nOe: string;
+  readOri: string;
+  paddingClass: string;
+  titleLv: 1 | 2 | 3 | 4 | 5 | undefined;
+}
+
 export type SubSectionProps =
   | SCSLayoutProps
   | SlideCusLayoutProps
@@ -102,4 +120,5 @@ export type SubSectionProps =
   | TrainingSlProps
   | TopicLayoutProps
   | NewsFeatureLayoutProps
+  | NaiPageLayoutProps
   | SimpleLayoutProps;

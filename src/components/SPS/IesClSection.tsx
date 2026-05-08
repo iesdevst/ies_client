@@ -8,6 +8,7 @@ const TrainSl = lazy(() => import('@/components/SPS/components/TrainSl'));
 const Topic = lazy(() => import('@/components/SPS/components/Topic'));
 const NewsFeat = lazy(() => import('@/components/SPS/components/NewsFeat'));
 const Simple = lazy(() => import('@/components/SPS/components/Simple'));
+const NaiPage = lazy(() => import('@/components/SPS/components/NaiPage'));
 
 const layoutMap = {
   slideCus: SlideCus,
@@ -16,6 +17,7 @@ const layoutMap = {
   vidPr: VidPr,
   trainingSl: TrainSl,
   newsFeature: NewsFeat,
+  naiPage: NaiPage,
   simple: Simple,
 } as const;
 
