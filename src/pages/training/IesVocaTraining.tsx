@@ -1,4 +1,4 @@
-import { RightOutlined } from '@ant-design/icons';
+import RightOutlined from '@ant-design/icons/RightOutlined';
 import { Breadcrumb } from 'antd';
 import { useTranslation } from 'react-i18next';
 import { useMediaQuery } from 'react-responsive';

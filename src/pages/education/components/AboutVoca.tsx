@@ -4,7 +4,10 @@ import {
   ShopOutlined,
   SketchOutlined,
 } from '@ant-design/icons';
-import { Button, Card, Col, Row } from 'antd';
+import Button from 'antd/es/button';
+import Card from 'antd/es/card';
+import Col from 'antd/es/col';
+import Row from 'antd/es/row';
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
 import { Text, Title } from '@/components';

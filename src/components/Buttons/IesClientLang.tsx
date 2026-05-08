@@ -1,4 +1,4 @@
-import { DownOutlined } from '@ant-design/icons';
+import DownOutlined from '@ant-design/icons/DownOutlined';
 import Button from 'antd/es/button';
 import 'antd/es/button/style';
 import { useMemo, useRef } from 'react';

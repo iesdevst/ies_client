@@ -2,10 +2,10 @@ import { Col, Image, Row } from 'antd';
 import { useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useMediaQuery } from 'react-responsive';
-import HS from '@/assets/imgs/high_sc_skip_ex.jpeg';
-import IL from '@/assets/imgs/intermediate_lv_skip_ex.jpeg';
-import OFC from '@/assets/imgs/officer_skip_ex.jpeg';
-import US from '@/assets/imgs/uni_stu_skip_ex.jpeg';
+import HS from '@/assets/imgs/high_sc_skip_ex.webp';
+import IL from '@/assets/imgs/intermediate_lv_skip_ex.webp';
+import OFC from '@/assets/imgs/officer_skip_ex.webp';
+import US from '@/assets/imgs/uni_stu_skip_ex.webp';
 import { IesClSection, Text, Title } from '@/components';
 
 const SkipExam: React.FC = () => {
@@ -78,6 +78,7 @@ const SkipExam: React.FC = () => {
                         preview={false}
                         className='!rounded-lg !w-full'
                         loading='lazy'
+                        alt='skipex'
                       />
                     </Col>
                   </Row>

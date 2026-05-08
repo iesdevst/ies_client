@@ -1,10 +1,11 @@
-import {
-  CoffeeOutlined,
-  FireOutlined,
-  PieChartOutlined,
-  RobotOutlined,
-} from '@ant-design/icons';
-import { Tabs, Tooltip, type TabsProps } from 'antd';
+import CoffeeOutlined from '@ant-design/icons/CoffeeOutlined';
+import FireOutlined from '@ant-design/icons/FireOutlined';
+import PieChartOutlined from '@ant-design/icons/PieChartOutlined';
+import RobotOutlined from '@ant-design/icons/RobotOutlined';
+
+import Tabs from 'antd/es/tabs';
+import type { TabsProps } from 'antd/es/tabs';
+import Tooltip from 'antd/es/tooltip';
 import { lazy, useCallback, useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useMediaQuery } from 'react-responsive';

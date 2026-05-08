@@ -1,10 +1,8 @@
-import {
-  ArrowRightOutlined,
-  BookFilled,
-  ClockCircleFilled,
-  FileTextFilled,
-  QuestionCircleFilled,
-} from '@ant-design/icons';
+import ArrowRightOutlined from '@ant-design/icons/ArrowRightOutlined';
+import BookFilled from '@ant-design/icons/BookFilled';
+import ClockCircleFilled from '@ant-design/icons/ClockCircleFilled';
+import FileTextFilled from '@ant-design/icons/FileTextFilled';
+import QuestionCircleFilled from '@ant-design/icons/QuestionCircleFilled';
 
 import Button from 'antd/es/button';
 import Col from 'antd/es/col';
@@ -16,7 +14,7 @@ import { useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useMediaQuery } from 'react-responsive';
 
-import PI from '@/assets/imgs/partnership_info_sec.jpeg';
+import PI from '@/assets/imgs/partnership_info_sec.webp';
 import { IesClSection, Text, Title } from '@/components';
 
 interface IPartnershipInfo {
@@ -115,6 +113,7 @@ const PartnershipInfo: React.FC<IPartnershipInfo> = ({
               src={PI}
               loading='lazy'
               className={`!rounded-2xl ${!mb ? '!w-5/6' : ''}`}
+              alt='psif'
             />
 
             {/* RIGHT */}

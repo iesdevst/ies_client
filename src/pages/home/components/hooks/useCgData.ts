@@ -1,15 +1,15 @@
 import { useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
-import CNTT from '@/assets/imgs/cntt_hn.png';
-import CC from '@/assets/imgs/ctm_hn_card.jpg';
-import KTDN from '@/assets/imgs/ktdn_hn.png';
-import MKT from '@/assets/imgs/mkt_hn.png';
+import CNTT from '@/assets/imgs/cntt_hn.webp';
+import CC from '@/assets/imgs/ctm_hn_card.webp';
+import KTDN from '@/assets/imgs/ktdn_hn.webp';
+import MKT from '@/assets/imgs/mkt_hn.webp';
 import MC from '@/assets/imgs/mtk_hn_card.webp';
-import QLDN from '@/assets/imgs/qldn_hn.png';
-import QLKS from '@/assets/imgs/qlks_hn.jpg';
-import { default as TC, default as THDU } from '@/assets/imgs/thud_hn.png';
-import TKVP from '@/assets/imgs/tkvp_hn.png';
-import VTK from '@/assets/imgs/vtk_hn.png';
+import QLDN from '@/assets/imgs/qldn_hn.webp';
+import QLKS from '@/assets/imgs/qlks_hn.webp';
+import { default as TC, default as THDU } from '@/assets/imgs/thud_hn.webp';
+import TKVP from '@/assets/imgs/tkvp_hn.webp';
+import VTK from '@/assets/imgs/vtk_hn.webp';
 
 export const useCgSlideData = (): { data: Array<CgSlide> } => {
   const { t } = useTranslation('careerGuid');

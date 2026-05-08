@@ -116,6 +116,7 @@ const IesNews: React.FC = () => {
                 preview={false}
                 className='w-[400px] h-[240px] rounded-xl object-cover'
                 loading='lazy'
+                alt='iesnew'
               />
 
               <Col>

@@ -2,8 +2,8 @@ import { Button, Col, Flex, Image, Row } from 'antd';
 import { lazy, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useMediaQuery } from 'react-responsive';
-import OVW_LIB from '@/assets/imgs/ovw_lib.png';
-import OVW_STU from '@/assets/imgs/ovw_stu.png';
+import OVW_LIB from '@/assets/imgs/ovw_lib.webp';
+import OVW_STU from '@/assets/imgs/ovw_stu.webp';
 import { Title } from '@/components';
 
 const IesCtModal = lazy(() => import('@/pages/home/components/IesCtModal'));
@@ -65,6 +65,7 @@ const AbOverview: React.FC<IAbOverview> = (props) => {
                 preview={false}
                 className='!w-full !rounded-lg'
                 loading='lazy'
+                alt='abov'
               />
               <p className={`text-lg font-semibold ${!mb ? 'px-21' : ''}`}>
                 {t('libDesc1')}
@@ -78,6 +79,7 @@ const AbOverview: React.FC<IAbOverview> = (props) => {
                 preview={false}
                 className='!w-full !rounded-lg'
                 loading='lazy'
+                alt='abov2'
               />
               <p className={`text-lg font-semibold ${!mb ? 'px-21' : ''}`}>
                 {t('libDesc2')}

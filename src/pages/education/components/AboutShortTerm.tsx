@@ -1,10 +1,10 @@
 import { Col, Image, Row } from 'antd';
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
-import AISAB from '@/assets/imgs/ai_short_ab.jpg';
-import BSAB from '@/assets/imgs/baking_short_ab.jpeg';
-import CSAB from '@/assets/imgs/cook_short_ab.jpeg';
-import MSAB from '@/assets/imgs/mix_short_ab.jpeg';
+import AISAB from '@/assets/imgs/ai_short_ab.webp';
+import BSAB from '@/assets/imgs/baking_short_ab.webp';
+import CSAB from '@/assets/imgs/cook_short_ab.webp';
+import MSAB from '@/assets/imgs/mix_short_ab.webp';
 import { Text, Title } from '@/components';
 import { ROUTES } from '@/constants';
 
@@ -78,6 +78,7 @@ const AboutShortTerm: React.FC<IAboutShortTerm> = (props) => {
                     borderRadius: '50%',
                   }}
                   loading='lazy'
+                  alt='abs'
                 />
                 <Title className='!text-center !m-0 !mt-5'>{abs.tit}</Title>
               </div>

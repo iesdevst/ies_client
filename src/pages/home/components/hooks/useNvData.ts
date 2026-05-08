@@ -1,12 +1,12 @@
 import { useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
-import BRSTUN from '@/assets/imgs/cnhs_news.jpg';
-import EVAI from '@/assets/imgs/events_ai.png';
-import HDHN2204 from '@/assets/imgs/hdhn_n2204_event.jpg';
-import KTDT from '@/assets/imgs/ktdt_nfc.jpg';
-import KTO from '@/assets/imgs/kto_nfc.jpg';
-import TKDH from '@/assets/imgs/tkdh_nfc.jpg';
-import LTS from '@/assets/imgs/top_str_lts.jpg';
+import BRSTUN from '@/assets/imgs/cnhs_news.webp';
+import EVAI from '@/assets/imgs/events_ai.webp';
+import HDHN2204 from '@/assets/imgs/hdhn_n2204_event.webp';
+import KTDT from '@/assets/imgs/ktdt_nfc.webp';
+import KTO from '@/assets/imgs/kto_nfc.webp';
+import TKDH from '@/assets/imgs/tkdh_nfc.webp';
+import LTS from '@/assets/imgs/top_str_lts.webp';
 
 export const useTopSn = (): { data: Array<TopSn> } => {
   const { t } = useTranslation('newAndEvent');

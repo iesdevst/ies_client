@@ -1,4 +1,5 @@
-import { SunOutlined, MoonOutlined } from '@ant-design/icons';
+import MoonOutlined from '@ant-design/icons/MoonOutlined';
+import SunOutlined from '@ant-design/icons/SunOutlined';
 import { IesButton } from '@/components';
 import { useUserStore } from '@/store';
 

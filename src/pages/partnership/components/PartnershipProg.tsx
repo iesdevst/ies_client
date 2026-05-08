@@ -1,13 +1,11 @@
-import {
-  BankOutlined,
-  BookOutlined,
-  CalculatorOutlined,
-  DollarOutlined,
-  GlobalOutlined,
-  LaptopOutlined,
-  ShopOutlined,
-  TeamOutlined,
-} from '@ant-design/icons';
+import BankOutlined from '@ant-design/icons/BankOutlined';
+import BookOutlined from '@ant-design/icons/BookOutlined';
+import CalculatorOutlined from '@ant-design/icons/CalculatorOutlined';
+import DollarOutlined from '@ant-design/icons/DollarOutlined';
+import GlobalOutlined from '@ant-design/icons/GlobalOutlined';
+import LaptopOutlined from '@ant-design/icons/LaptopOutlined';
+import ShopOutlined from '@ant-design/icons/ShopOutlined';
+import TeamOutlined from '@ant-design/icons/TeamOutlined';
 
 import { useTranslation } from 'react-i18next';
 import { useMediaQuery } from 'react-responsive';

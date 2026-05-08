@@ -40,6 +40,7 @@ const Topic: React.FC<TopicLayoutProps> = (props) => {
           src={topImaTit}
           className={`${!mb ? '!w-150' : ''} ${dark ? 'rounded-xl' : ''}`}
           loading='lazy'
+          alt='topima'
         />
 
         {topTitBut && aboutTogo && (
@@ -68,6 +69,7 @@ const Topic: React.FC<TopicLayoutProps> = (props) => {
             src={topicI}
             className={`${!mb ? '!h-130 !w-130' : ''}`}
             loading='lazy'
+            alt='topici'
           />
         </div>
 
@@ -134,6 +136,7 @@ const Topic: React.FC<TopicLayoutProps> = (props) => {
                   src={item.thodAv}
                   className={`${!mb ? '!w-15 !h-17' : '!w-8 !h-8'}`}
                   loading='lazy'
+                  alt='thodad'
                 />
               </div>
               <Col>

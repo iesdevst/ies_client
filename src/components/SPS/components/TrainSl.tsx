@@ -88,6 +88,7 @@ const TrainSl: React.FC<TrainingSlProps> = (props) => {
                   }}
                   className='!rounded-xl '
                   loading='lazy'
+                  alt='trainsl'
                 />
                 <div className='absolute bottom-0 left-0 pl-6 pb-2'>
                   <Title

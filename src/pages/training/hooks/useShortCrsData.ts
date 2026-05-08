@@ -1,8 +1,8 @@
 import { useTranslation } from 'react-i18next';
-import ASC from '@/assets/imgs/ai_app_sc.png';
-import BSC from '@/assets/imgs/baking_sc.png';
-import CSC from '@/assets/imgs/cooking_pro_sc.png';
-import MSC from '@/assets/imgs/mixology_sc.png';
+import ASC from '@/assets/imgs/ai_app_sc.webp';
+import BSC from '@/assets/imgs/baking_sc.webp';
+import CSC from '@/assets/imgs/cooking_pro_sc.webp';
+import MSC from '@/assets/imgs/mixology_sc.webp';
 import { ShortCrsTypeEnum } from '@/utils';
 
 export const useShortCrsData = (): { data: Array<DetailShortCrs> } => {

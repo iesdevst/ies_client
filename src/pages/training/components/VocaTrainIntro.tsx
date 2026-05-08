@@ -37,6 +37,7 @@ const VocaTrainIntro: React.FC<IVocaTrainIntro> = (props) => {
           preview={false}
           className='!rounded-2xl'
           loading='lazy'
+          alt='vocatraini'
         />
 
         <Col
@@ -64,6 +65,7 @@ const VocaTrainIntro: React.FC<IVocaTrainIntro> = (props) => {
                 src={CPI}
                 className='!w-15 !h-15'
                 loading='lazy'
+                alt='voca1'
               />
               <Title className='!m-0 !text-white' level={5}>
                 {t('titIcon1')}
@@ -76,6 +78,7 @@ const VocaTrainIntro: React.FC<IVocaTrainIntro> = (props) => {
                 src={AVI}
                 className='!w-15 !h-15'
                 loading='lazy'
+                alt='vocaTrain3'
               />
               <Title className='!m-0 !text-white' level={5}>
                 {t('titIcon2')}
@@ -88,6 +91,7 @@ const VocaTrainIntro: React.FC<IVocaTrainIntro> = (props) => {
                 src={LI}
                 className='!w-15 !h-15'
                 loading='lazy'
+                alt='vocaTrain'
               />
               <Title className='!m-0 !text-white' level={5}>
                 {t('titIcon3')}

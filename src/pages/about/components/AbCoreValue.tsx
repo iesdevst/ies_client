@@ -1,5 +1,8 @@
-import { ArrowUpOutlined, CheckCircleOutlined } from '@ant-design/icons';
-import { Button, Flex, List } from 'antd';
+import ArrowUpOutlined from '@ant-design/icons/ArrowUpOutlined';
+import CheckCircleOutlined from '@ant-design/icons/CheckCircleOutlined';
+import Button from 'antd/es/button';
+import Flex from 'antd/es/flex';
+import List from 'antd/es/list';
 import { lazy, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useMediaQuery } from 'react-responsive';

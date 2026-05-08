@@ -1,9 +1,7 @@
-import {
-  EyeOutlined,
-  HeartOutlined,
-  ProfileOutlined,
-  RightOutlined,
-} from '@ant-design/icons';
+import EyeOutlined from '@ant-design/icons/EyeOutlined';
+import HeartOutlined from '@ant-design/icons/HeartOutlined';
+import ProfileOutlined from '@ant-design/icons/ProfileOutlined';
+import RightOutlined from '@ant-design/icons/RightOutlined';
 import { Breadcrumb, Tabs, Tooltip, type TabsProps } from 'antd';
 import { lazy, useCallback, useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
@@ -11,8 +9,8 @@ import { useMediaQuery } from 'react-responsive';
 import { useSearchParams } from 'react-router-dom';
 import ContactKey from '../home/components/ContactKey';
 import styles from './iesAbout.module.scss';
-import VAMMB from '@/assets/imgs/v_ad_m_mb_banner.png';
-import VAM from '@/assets/imgs/vision_and_mission_bn_page.png';
+import VAMMB from '@/assets/imgs/v_ad_m_mb_banner.webp';
+import VAM from '@/assets/imgs/vision_and_mission_bn_page.webp';
 import { Text, Title } from '@/components';
 import { PrefetchLink } from '@/components/PrefetchLink';
 import { AboutTab, ROUTES } from '@/constants';

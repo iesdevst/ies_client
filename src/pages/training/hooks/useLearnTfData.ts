@@ -1,8 +1,8 @@
 import { useTranslation } from 'react-i18next';
-import ALT from '@/assets/imgs/ai_app_learn_transform.jpeg';
-import BLT from '@/assets/imgs/baking_learn_transform.jpeg';
-import CLT from '@/assets/imgs/cooking_learn_transform.jpeg';
-import MLT from '@/assets/imgs/mixology_learn_transform.jpeg';
+import ALT from '@/assets/imgs/ai_app_learn_transform.webp';
+import BLT from '@/assets/imgs/baking_learn_transform.webp';
+import CLT from '@/assets/imgs/cooking_learn_transform.webp';
+import MLT from '@/assets/imgs/mixology_learn_transform.webp';
 
 export const useLearnTfData = (): { data: Array<LearnTf> } => {
   const { t } = useTranslation('useLearnTfData');

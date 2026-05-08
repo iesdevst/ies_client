@@ -67,6 +67,7 @@ const FieldOfStudy: React.FC = () => {
                 src={FBL}
                 preview={false}
                 className='!rotate-[90deg] !w-60 !h-60'
+                alt='fieldzx'
               />
             )}
           </Col>

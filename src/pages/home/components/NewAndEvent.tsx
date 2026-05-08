@@ -7,7 +7,7 @@ import { useTranslation } from 'react-i18next';
 import { useMediaQuery } from 'react-responsive';
 
 import { useFeatCdt, useTopSn } from './hooks';
-import TSN from '@/assets/imgs/top_str_news.jpg';
+import TSN from '@/assets/imgs/top_str_news.webp';
 import { IesClSection, Text, Title } from '@/components';
 import { ROUTES } from '@/constants';
 import { useUserStore } from '@/store';
@@ -25,7 +25,7 @@ const NewAndEvent: React.FC = () => {
   const leftBlock = useMemo(() => {
     return (
       <Col className={`${!mb ? 'pt-6 pb-16' : 'mt-6'}`}>
-        <Image src={TSN} preview={false} loading='lazy' />
+        <Image src={TSN} preview={false} loading='lazy' alt='newaaev' />
 
         <div className={!mb ? 'w-4/5' : ''}>
           <Title className='!text-blue-500' level={5}>
@@ -55,6 +55,7 @@ const NewAndEvent: React.FC = () => {
           className={`col-span-1 rounded-lg ${
             !mb ? '!w-46 !h-25' : '!w-full !h-full'
           }`}
+          alt='nav'
         />
 
         <div className='col-span-3 pl-5 pt-2.5'>

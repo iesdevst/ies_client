@@ -1,4 +1,4 @@
-import { CaretDownFilled } from '@ant-design/icons';
+import CaretDownFilled from '@ant-design/icons/CaretDownFilled';
 import { Button, Row, Space } from 'antd';
 import { useMegaNavData } from '../hooks';
 import { Title } from '@/components';

@@ -1,26 +1,22 @@
-import {
-  ArrowUpOutlined,
-  CloseOutlined,
-  MenuOutlined,
-  RightOutlined,
-} from '@ant-design/icons';
-import {
-  Button,
-  Collapse,
-  Drawer,
-  Flex,
-  Image,
-  Row,
-  type CollapseProps,
-} from 'antd';
+import ArrowUpOutlined from '@ant-design/icons/ArrowUpOutlined';
+import CloseOutlined from '@ant-design/icons/CloseOutlined';
+import MenuOutlined from '@ant-design/icons/MenuOutlined';
+import RightOutlined from '@ant-design/icons/RightOutlined';
+import Button from 'antd/es/button';
+import Collapse from 'antd/es/collapse';
+import type { CollapseProps } from 'antd/es/collapse';
+import Drawer from 'antd/es/drawer';
+import Flex from 'antd/es/flex';
+import Image from 'antd/es/image';
+import Row from 'antd/es/row';
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
 import { useMegaNavData } from '../hooks';
 import styles from '../styles/iesDrawerMb.module.scss';
-import IES_HOZI_DARK_LOGO_URL from '@/assets/imgs/ies_logo_horizo_dark.png';
-import IES_LOGO_MB from '@/assets/imgs/ies_logo_hoziro.png';
-import MNL from '@/assets/imgs/ies_logo_notext.png';
+import IES_HOZI_DARK_LOGO_URL from '@/assets/imgs/ies_logo_horizo_dark.webp';
+import IES_LOGO_MB from '@/assets/imgs/ies_logo_hoziro.webp';
+import MNL from '@/assets/imgs/ies_logo_notext.webp';
 import { ThemeSwitcher, Title } from '@/components';
 import IesClientLang from '@/components/Buttons/IesClientLang';
 import { PrefetchLink } from '@/components/PrefetchLink';
@@ -92,6 +88,7 @@ const MegaMbDrawer: React.FC = () => {
                       preview={false}
                       className='!w-8 !h-8'
                       loading='lazy'
+                      alt='megedraw'
                     />
 
                     <Title

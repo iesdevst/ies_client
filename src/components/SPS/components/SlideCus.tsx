@@ -17,6 +17,7 @@ const SlideCus: React.FC<SlideCusLayoutProps> = (props) => {
           className='!w-full !h-full'
           style={{ objectFit }}
           decoding='async'
+          alt='imgobj'
         />
       </div>
     ));

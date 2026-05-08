@@ -1,13 +1,13 @@
 import { useTranslation } from 'react-i18next';
-import ACCTD from '@/assets/imgs/accounting_detail.png';
-import APPIFD from '@/assets/imgs/applied_info_detail.png';
-import ADSD from '@/assets/imgs/art_ds_detail.png';
-import BUSID from '@/assets/imgs/busi_admin_detail.png';
-import HOSD from '@/assets/imgs/hospi_manage_detail.png';
-import INDUSD from '@/assets/imgs/industrial_detail.png';
-import ITD from '@/assets/imgs/it_detail.png';
-import MTKD from '@/assets/imgs/mtk_details.png';
-import OFAD from '@/assets/imgs/office_admin_detail.png';
+import ACCTD from '@/assets/imgs/accounting_detail.webp';
+import APPIFD from '@/assets/imgs/applied_info_detail.webp';
+import ADSD from '@/assets/imgs/art_ds_detail.webp';
+import BUSID from '@/assets/imgs/busi_admin_detail.webp';
+import HOSD from '@/assets/imgs/hospi_manage_detail.webp';
+import INDUSD from '@/assets/imgs/industrial_detail.webp';
+import ITD from '@/assets/imgs/it_detail.webp';
+import MTKD from '@/assets/imgs/mtk_details.webp';
+import OFAD from '@/assets/imgs/office_admin_detail.webp';
 import { ProgTypeEnum } from '@/utils';
 
 export const useTrainDetailData = (): { data: Array<DetailTrain> } => {

@@ -1,19 +1,19 @@
 import { useMemo } from 'react';
 import BTHMSN from '@/assets/imgs/bt_hms_news.webp';
-import BRSTUN from '@/assets/imgs/cnhs_news.jpg';
+import BRSTUN from '@/assets/imgs/cnhs_news.webp';
 import HNCNDN from '@/assets/imgs/hn_cnd_news.webp';
-import HNTN from '@/assets/imgs/hn_lct_news.jpg';
-import KHN from '@/assets/imgs/khts_news_page.jpg';
-import KTDT from '@/assets/imgs/ktdt_nfc.jpg';
-import KTO from '@/assets/imgs/kto_nfc.jpg';
-import LDHNN from '@/assets/imgs/ld_hn_news_page.jpg';
-import LDTHN from '@/assets/imgs/ld_thud_news_page.jpg';
-import PLN from '@/assets/imgs/pl_thcs_news.png';
-import TSN from '@/assets/imgs/tbts_news_page.jpg';
-import TKDH from '@/assets/imgs/tkdh_nfc.jpg';
-import HTDHM from '@/assets/imgs/top_str_htdhm.jpg';
-import LTS from '@/assets/imgs/top_str_lts.jpg';
-import NBCN from '@/assets/imgs/top_str_news.jpg';
+import HNTN from '@/assets/imgs/hn_lct_news.webp';
+import KHN from '@/assets/imgs/khts_news_page.webp';
+import KTDT from '@/assets/imgs/ktdt_nfc.webp';
+import KTO from '@/assets/imgs/kto_nfc.webp';
+import LDHNN from '@/assets/imgs/ld_hn_news_page.webp';
+import LDTHN from '@/assets/imgs/ld_thud_news_page.webp';
+import PLN from '@/assets/imgs/pl_thcs_news.webp';
+import TSN from '@/assets/imgs/tbts_news_page.webp';
+import TKDH from '@/assets/imgs/tkdh_nfc.webp';
+import HTDHM from '@/assets/imgs/top_str_htdhm.webp';
+import LTS from '@/assets/imgs/top_str_lts.webp';
+import NBCN from '@/assets/imgs/top_str_news.webp';
 
 export const useNewsData = (): { data: Array<NewsData> } => {
   const data = useMemo<Array<NewsData>>(

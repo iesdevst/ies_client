@@ -1,5 +1,8 @@
-import { MessageOutlined } from '@ant-design/icons';
-import { Col, Flex, Row } from 'antd';
+import MessageOutlined from '@ant-design/icons/MessageOutlined';
+
+import Col from 'antd/es/col';
+import Flex from 'antd/es/flex';
+import Row from 'antd/es/row';
 import { useTranslation } from 'react-i18next';
 import { useMediaQuery } from 'react-responsive';
 import { useLearnTfData } from '../hooks';
@@ -49,7 +52,7 @@ const LearningTranform: React.FC<ILearningTranform> = (props) => {
               {item.type === 'image' ? (
                 <img
                   src={item.img}
-                  alt=''
+                  alt='lt'
                   className='w-full h-[400px] object-cover'
                   loading='lazy'
                 />

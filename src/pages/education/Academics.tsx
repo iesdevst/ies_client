@@ -1,5 +1,8 @@
-import { HomeFilled, RightOutlined } from '@ant-design/icons';
-import { Breadcrumb, Flex, Image } from 'antd';
+import HomeFilled from '@ant-design/icons/HomeFilled';
+import RightOutlined from '@ant-design/icons/RightOutlined';
+import Breadcrumb from 'antd/es/breadcrumb';
+import Flex from 'antd/es/flex';
+import Image from 'antd/es/image';
 import { useTranslation } from 'react-i18next';
 import { useMediaQuery } from 'react-responsive';
 import ContactKey from '../home/components/ContactKey';
@@ -7,8 +10,8 @@ import AboutPartnership from './components/AboutPartnership';
 import AboutShortTerm from './components/AboutShortTerm';
 import AboutVoca from './components/AboutVoca';
 import styles from './education.module.scss';
-import ACDA from '@/assets/imgs/academic_about.png';
-import ACDB from '@/assets/imgs/academics_banner.png';
+import ACDA from '@/assets/imgs/academic_about.webp';
+import ACDB from '@/assets/imgs/academics_banner.webp';
 import { Text, Title } from '@/components';
 import { PrefetchLink } from '@/components/PrefetchLink';
 import { ROUTES } from '@/constants';
@@ -137,6 +140,7 @@ const Academics: React.FC = () => {
             preview={false}
             className='rounded-3xl'
             loading='lazy'
+            alt='academic'
           />
         </Flex>
       </div>

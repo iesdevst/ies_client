@@ -1,5 +1,7 @@
 import { RightOutlined } from '@ant-design/icons';
-import { Breadcrumb, Flex, Image } from 'antd';
+import Breadcrumb from 'antd/es/breadcrumb';
+import Flex from 'antd/es/flex';
+import Image from 'antd/es/image';
 import { useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useMediaQuery } from 'react-responsive';
@@ -76,6 +78,7 @@ const IesEventsDetails = () => {
                 src={detailDt.img}
                 className='!rounded-2xl !w-full'
                 loading='lazy'
+                alt='iesevd'
               />
               <Text
                 className='!block !text-lg'

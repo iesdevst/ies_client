@@ -3,7 +3,7 @@ import { useCallback, useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useMediaQuery } from 'react-responsive';
 import { useNavigate } from 'react-router-dom';
-import ICL from '@/assets/imgs/intern_cl.png';
+import ICL from '@/assets/imgs/intern_cl.webp';
 import { IesClSection, Title } from '@/components';
 import { ROUTES } from '@/constants';
 
@@ -46,7 +46,13 @@ const InternCollab: React.FC = () => {
         </Col>
       }
       splitFeat={
-        <Image src={ICL} preview={false} className='!h-100' loading='lazy' />
+        <Image
+          src={ICL}
+          preview={false}
+          className='!h-100'
+          loading='lazy'
+          alt='icl'
+        />
       }
       className='bg-[#febd25] mb-40 mt-15'
       height={!mb ? '20vh' : '29vh'}
