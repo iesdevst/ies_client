@@ -1,4 +1,11 @@
 import type { CSSProperties, ReactNode } from 'react';
+import type {
+  MethodPr,
+  Static,
+  Topic,
+  TrainImg,
+} from '@/pages/home/components/hooks';
+import type { EventLstData, NewsLstData } from '@/pages/iesNews/hooks';
 
 export type SubSecLayout =
   | 'systemCardSplit'
@@ -34,7 +41,7 @@ export interface SCSLayoutProps extends BasePageIesSecProps {
 /* ===== Slide ===== */
 export interface SlideCusLayoutProps extends BasePageIesSecProps {
   layout: 'slideCus';
-  images: string[];
+  images: Array<string>;
 }
 
 /* ===== Simple ===== */
@@ -59,9 +66,9 @@ export interface TrainingSlProps extends BasePageIesSecProps {
   layout: 'trainingSl';
   trainTit: string;
   trainDes: string;
-  trainImgSl: { icon: string; title: string }[];
+  trainImgSl: Array<TrainImg>;
   statisTit: string;
-  statistics: { num: string; des: string }[];
+  statistics: Array<Static>;
 }
 
 /* ===== Topic ===== */
@@ -74,8 +81,8 @@ export interface TopicLayoutProps extends BasePageIesSecProps {
   lstBut: string;
   topicI: string;
   aboutTogo: string;
-  topicCt: { id: string; tit: string; des: string; bgColor: string }[];
-  methodLst: { id: string; thodAv: string; meTit: string; methodGo: string }[];
+  topicCt: Array<Topic>;
+  methodLst: Array<MethodPr>;
 }
 
 /* ===== News ===== */
@@ -83,14 +90,14 @@ export interface NewsFeatureLayoutProps extends BasePageIesSecProps {
   layout: 'newsFeature';
   feature: boolean;
   butTit?: string;
-  featCard: {
+  featCard: Array<{
     id: string;
     imgC: string;
     tit?: string;
     butCard?: string;
     des?: string;
     navigo?: string;
-  }[];
+  }>;
   bonusTit?: string;
   moreBut?: string;
   moreClass?: string;
@@ -106,11 +113,14 @@ export interface NaiPageLayoutProps extends BasePageIesSecProps {
   img: string;
   linkTo?: string;
   art?: string;
-  img2?: string;
+  decs2?: string;
+  imgBonus?: Array<string>;
   nOe: string;
   readOri: string;
   paddingClass: string;
   titleLv: 1 | 2 | 3 | 4 | 5 | undefined;
+  recentNews: Array<NewsLstData>;
+  recentEv: Array<EventLstData>;
 }
 
 export type SubSectionProps =

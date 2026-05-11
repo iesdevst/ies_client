@@ -12,12 +12,14 @@ export const useEventLstData = (): { data: Array<EventLstData> } => {
         eventTit: '📌 HOẠT ĐỘNG HƯỚNG NGHIỆP NGÀY 22/04/2026',
         desc: 'Ngày 22/04/2026, Trường Trung cấp Tin học Kinh tế Sài Gòn đã vinh dự được .........',
         img: HDHN2204,
+        evDate: '2026-04-22',
       },
       {
         id: '2',
         eventTit: 'IES workshop\n Claude Code - AI agent',
         desc: 'Xây dựng Web Dashboard với Claude Code.........',
         img: EVAI,
+        evDate: '2026-04-01',
       },
       {
         id: '3',
@@ -25,6 +27,7 @@ export const useEventLstData = (): { data: Array<EventLstData> } => {
           'Sinh viên IESCollege hấp dẫn với mô hình “Thực học – Thực nghiệp”',
         desc: 'Sinh viên IESCollege hấp dẫn với mô hình “Thực học – Thực nghiệp”\n',
         img: THTN,
+        evDate: '2025-12-29',
       },
       {
         id: '4',
@@ -32,6 +35,7 @@ export const useEventLstData = (): { data: Array<EventLstData> } => {
           'Hợp tác đào tạo giữa công ty CP MISA và trường Trung cấp Tin học - Kinh tế Sài Gòn',
         desc: 'Hợp tác đào tạo giữa công ty CP MISA và trường trung cấp Tin học-Kinh tế Sài Gòn\n',
         img: MISA,
+        evDate: '2025-11-27',
       },
     ],
     [],
@@ -44,4 +48,5 @@ export type EventLstData = {
   eventTit: string;
   desc: string;
   img: string;
+  evDate: string;
 };

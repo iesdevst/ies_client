@@ -1,4 +1,5 @@
 import { lazy, Suspense } from 'react';
+import styles from './iesCl.module.scss';
 import type { SubSectionProps } from './types';
 
 const SlideCus = lazy(() => import('@/components/SPS/components/SlideCus'));
@@ -22,13 +23,39 @@ const layoutMap = {
 } as const;
 
 const IesClSection: React.FC<SubSectionProps> = (props) => {
-  const { layout } = props;
+  const { id, layout, style, height, bgImg, simpleFeat, className } = props;
 
   const Component = layoutMap[layout];
 
   return (
     <Suspense fallback={<div>Loading .....</div>}>
-      {Component ? <Component {...(props as any)} /> : null}
+      {Component ? (
+        <section
+          id={id}
+          className={
+            !simpleFeat
+              ? `${styles.pageSection} ${styles[`${layout}Layout`]} ${className}`
+              : undefined
+          }
+          style={{
+            backgroundImage: bgImg
+              ? `url(${
+                  typeof bgImg === 'string'
+                    ? bgImg
+                    : (bgImg as any).src || (bgImg as any).default
+                })`
+              : 'transparent',
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+            backgroundRepeat: 'no-repeat',
+            width: '100%',
+            minHeight: !height ? '65vh' : height,
+            ...style,
+          }}
+        >
+          <Component {...(props as any)} />
+        </section>
+      ) : null}
     </Suspense>
   );
 };

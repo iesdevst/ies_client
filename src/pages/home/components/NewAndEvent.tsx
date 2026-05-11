@@ -19,8 +19,8 @@ const NewAndEvent: React.FC = () => {
   const { isDark } = useUserStore();
   const { t } = useTranslation('newAndEvent');
 
-  const { data: topSn = [] } = useTopSn();
-  const { data: featCdt = [] } = useFeatCdt();
+  const { data: topSn } = useTopSn();
+  const { data: featCdt } = useFeatCdt();
 
   const leftBlock = useMemo(() => {
     return (

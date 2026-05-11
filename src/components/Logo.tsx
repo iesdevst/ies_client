@@ -1,5 +1,7 @@
+import Image from 'antd/es/image';
 import { useMemo } from 'react';
 import LogoLoad from '@/assets/imgs/ies_logo_notext.webp';
+
 interface LogoProps {
   size?: 'sm' | 'md' | 'lg';
 }
@@ -20,10 +22,9 @@ const Logo = (props: LogoProps) => {
   }, [size]);
 
   return (
-    <img
+    <Image
       src={LogoLoad}
       alt='logo'
-      loading='lazy'
       className={getWidthFromSize}
       {...restProps}
     />

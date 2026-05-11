@@ -47,7 +47,7 @@ const FallbackLoading: React.FC<FallbackLoadingProps> = (props) => {
             background: isDark ? '#618fd1' : 'rgba(255, 255, 255, 0.6)',
           }}
         >
-          <div className='relative text-center'>
+          <div className='relative !text-center'>
             {/* Logo */}
             {showLogo && <Logo size='md' />}
 

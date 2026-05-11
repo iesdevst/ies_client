@@ -1,5 +1,6 @@
 import Carousel from 'antd/es/carousel';
 import Col from 'antd/es/col';
+import Flex from 'antd/es/flex';
 import Image from 'antd/es/image';
 
 import { useMemo } from 'react';
@@ -30,72 +31,72 @@ const PartnerSl: React.FC = () => {
 
   return (
     <IesClSection
-      id='partnerSl'
+      id='partenSl'
       layout='simple'
       divider={false}
-      height={!mb ? '' : '45vh'}
       children={
         <div className='mt-15'>
-          {/* HEADER */}
-          <div
-            className={`w-full ${!mb ? 'px-45' : ''} flex flex-col ${
-              !mb ? 'flex-row justify-between' : 'items-center'
-            }`}
+          <Flex
+            vertical={mb}
+            justify='space-between'
+            align={!mb ? 'start' : 'center'}
+            className={`!w-full ${!mb ? '!px-45' : ''}`}
           >
             <Col className='flex-1'>
               <Title
-                className={`!m-0 !font-bold ${isDark ? '!text-white' : ''}`}
+                className={`!m-0 !font-bold ${isDark ? '!text-white' : '!text-black'}`}
               >
                 {t('intershipP')}
               </Title>
-
               <Title
-                className={`!m-0 !font-bold ${
-                  isDark ? '!text-white' : ''
-                } ${mb ? 'text-center' : ''}`}
+                className={`!font-bold !m-0 ${isDark ? '!text-white' : ''} ${!mb ? '' : 'text-center'}`}
               >
                 {t('ins')}
               </Title>
             </Col>
 
             <Text
-              className={`flex-1 mt-2 px-5 ${
-                isTablet ? 'px-15 mt-5 !text-2xl' : ''
-              }`}
+              className={`!block flex-1 px-5 mt-2 ${!isTablet ? '!text-lg' : 'px-15 mt-5 !text-2xl'}`}
               color={isDark ? 'white' : ''}
             >
               {t('descAn')}
             </Text>
-          </div>
+          </Flex>
 
-          {/* CAROUSEL */}
           <div className='w-full'>
             <Carousel
               autoplay
               pauseOnHover={false}
-              dots={!mb}
+              dots={!mb ? true : false}
               arrows={false}
               effect={!mb ? 'fade' : 'scrollx'}
-              slidesPerRow={mb ? 2 : 4}
-              className={`${styles.dotTrainCustom} dot-train my-15 ${
-                isTablet ? 'pr-20' : ''
-              }`}
+              slidesPerRow={!mb ? 4 : 2}
+              className={`${styles.dotTrainCustom} dot-train my-15 ${!isTablet ? '' : 'pr-20'}`}
             >
-              {images.map((item) => (
-                <div key={item} className='flex justify-center'>
-                  <Image
-                    src={item}
-                    preview={false}
-                    loading='lazy'
-                    className={`object-cover ${mb ? 'w-[90%]' : 'w-full'} h-[15vh]`}
-                    alt='ptsl'
-                  />
+              {images.map((item, index) => (
+                <div key={index}>
+                  <Flex
+                    justify={!mb ? 'space-between' : 'center'}
+                    align='start'
+                  >
+                    <Image
+                      src={item}
+                      style={{
+                        width: isTablet || mb ? '90%' : '100%',
+                        height: '15vh',
+                        objectFit: 'cover',
+                      }}
+                      className={`${!mb ? 'px-15 mb-5' : ''}`}
+                      preview={false}
+                    />
+                  </Flex>
                 </div>
               ))}
             </Carousel>
           </div>
         </div>
       }
+      height={!mb ? '' : '45vh'}
     />
   );
 };

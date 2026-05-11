@@ -15,10 +15,6 @@ const InternCollab: React.FC = () => {
     return !mb ? 'pl-25' : 'px-26 pt-10';
   }, [mb]);
 
-  const titleText = useMemo(() => {
-    return `${t('secTit1')} <br /> ${t('secTit2')}`;
-  }, [t]);
-
   const handleNavigate = useCallback(() => {
     navigate(ROUTES.PARTNERSHIP);
   }, [navigate]);
@@ -27,9 +23,9 @@ const InternCollab: React.FC = () => {
       id='internColl'
       layout='systemCardSplit'
       children={
-        <Col className={`${computedClass}`}>
+        <Col className={computedClass}>
           <Title level={2} className='!font-bold  !mb-9'>
-            {titleText}
+            {t('secTit1')} <br /> {t('secTit2')}
           </Title>
 
           <p className={`${!mb ? '!w-5/6' : ''}`}>{t('sectionDesc')}</p>
@@ -41,20 +37,12 @@ const InternCollab: React.FC = () => {
             <div className='bg-blue-600 text-white px-5 py-2 font-semibold text-sm !text-center'>
               {t('exploreBtn')}
             </div>
-            <div className='absolute right-[-6px] top-1/2 -translate-y-1/2 w-3 h-3 bg-[#febd25] rotate-45'></div>
+            <div className='absolute right-[-6px] top-1/2 -translate-y-1/2 w-3 h-3 !bg-[#febd25] rotate-45'></div>
           </div>
         </Col>
       }
-      splitFeat={
-        <Image
-          src={ICL}
-          preview={false}
-          className='!h-100'
-          loading='lazy'
-          alt='icl'
-        />
-      }
-      className='bg-[#febd25] mb-40 mt-15'
+      splitFeat={<Image src={ICL} preview={false} className='!h-100' />}
+      className='!bg-[#febd25] mb-40 mt-15'
       height={!mb ? '20vh' : '29vh'}
     />
   );

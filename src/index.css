@@ -128,18 +128,6 @@ body.dark {
   border-radius: 50% !important;
 }
 
-/* Contact collapse  */
-.contact-collapse .ant-collapse-content {
-  background: transparent !important;
-}
-.contact-collapse .ant-collapse-content-box {
-  background: transparent !important;
-}
-
-.contact-collapse .ant-collapse-item {
-  border-bottom: 1px solid #cfd2d8;
-}
-
 .ant-modal .ant-modal-header {
   margin: 0 !important;
 }
