@@ -13,6 +13,8 @@ export const useEventLstData = (): { data: Array<EventLstData> } => {
         desc: 'Ngày 22/04/2026, Trường Trung cấp Tin học Kinh tế Sài Gòn đã vinh dự được .........',
         img: HDHN2204,
         evDate: '2026-04-22',
+        categories: 'admissions',
+        authors: 'admiss',
       },
       {
         id: '2',
@@ -20,6 +22,8 @@ export const useEventLstData = (): { data: Array<EventLstData> } => {
         desc: 'Xây dựng Web Dashboard với Claude Code.........',
         img: EVAI,
         evDate: '2026-04-01',
+        categories: 'workshop',
+        authors: 'admisstr',
       },
       {
         id: '3',
@@ -28,6 +32,8 @@ export const useEventLstData = (): { data: Array<EventLstData> } => {
         desc: 'Sinh viên IESCollege hấp dẫn với mô hình “Thực học – Thực nghiệp”\n',
         img: THTN,
         evDate: '2025-12-29',
+        categories: 'career',
+        authors: 'offTrain',
       },
       {
         id: '4',
@@ -36,6 +42,8 @@ export const useEventLstData = (): { data: Array<EventLstData> } => {
         desc: 'Hợp tác đào tạo giữa công ty CP MISA và trường trung cấp Tin học-Kinh tế Sài Gòn\n',
         img: MISA,
         evDate: '2025-11-27',
+        categories: 'partnership',
+        authors: 'admisstr',
       },
     ],
     [],
@@ -49,4 +57,10 @@ export type EventLstData = {
   desc: string;
   img: string;
   evDate: string;
+  categories: EvsCategory;
+  authors: AuthorEvsType;
 };
+
+export type EvsCategory = 'career' | 'workshop' | 'partnership' | 'admissions';
+export type AuthorEvsType = 'admiss' | 'admisstr' | 'individual' | 'offTrain';
+// export type FieldType = 'tech' | 'office';

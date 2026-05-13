@@ -6,7 +6,7 @@ import DHM2 from '@/assets/imgs/dh_mo_ts2.webp';
 import HNCNDN from '@/assets/imgs/hn_cnd_news.webp';
 import HNTN from '@/assets/imgs/hn_lct_news.webp';
 // import KHN from '@/assets/imgs/khts_news_page.webp';
-import KHTS from '@/assets/imgs/khts_p1.webp';
+import KHTS from '@/assets/imgs/khts.webp';
 import KHTS2 from '@/assets/imgs/khts_p2.webp';
 import KTD2 from '@/assets/imgs/ktd_p2.webp';
 import KTDT from '@/assets/imgs/ktdt_nfc.webp';
@@ -24,8 +24,9 @@ import TKDH from '@/assets/imgs/tkdh_nfc.webp';
 import HTDHM from '@/assets/imgs/top_str_htdhm.webp';
 import LTS from '@/assets/imgs/top_str_lts.webp';
 import NBCN from '@/assets/imgs/top_str_news.webp';
-import TSDT2 from '@/assets/imgs/tsdt_2.webp';
 import TSDT from '@/assets/imgs/tsdt_p1.webp';
+import TSDT2 from '@/assets/imgs/tsdt_p2.webp';
+import TSDT3 from '@/assets/imgs/tsdt_p3.webp';
 
 export const useNewsData = (): { data: Array<NewsData> } => {
   const data = useMemo<Array<NewsData>>(
@@ -42,6 +43,7 @@ Ngày nay, sự khác biệt giữa các quốc gia không còn nằm ở tài n
         linkTo:
           'https://vov.vn/xa-hoi/bo-truong-bo-gd-dt-hoang-minh-son-dung-chi-hoc-de-cam-tam-bang-di-tim-viec-post1284973.vov?gidzl=4wVq2TX87ZmKiFK7s54RFnIpy0l1NHuq2xoWMv4BIs9JxlDRdLqOCmIxzGUTNnPjLB7wK3dxrjeCsKKTDm&gidzl=xg06PEGTc1hal0PYuGIT6EAx1s_-39mJ_RHNFwvQoKMbvWG_eWoQ5FAp0cEY3fHAehaDD3aoZwzFw1gQ60',
       },
+
       {
         id: '2',
         newsTit: 'Cầu nối học sinh với cơ sở đào tạo và thị trường lao động',
@@ -181,7 +183,7 @@ Nghiên cứu tài liệu là kỹ năng nhằm “lên tay” dân thiết kế
 Nếu bạn thật sự đã xác định hướng đi về ngành này, có thể mạnh dạn theo hẳn một khóa dài hạn 1-2 năm. Còn nếu đang lưỡng lự chưa biết mình có phù hợp hay không, hãy đăng ký một khóa “nhập môn” để tìm hiểu. Có thể nói nghề “design” có rất nhiều tiềm năng trong thời gian sắp tới. Nếu say mê, bạn đừng để chậm chân trong con đường nghề nghiệp thú vị này.`,
         imgBonus: [TKDH],
       },
-      //fixing
+
       {
         id: '10',
         newsTit: 'Tuyển sinh đào tạo - năm học 2026-2027',
@@ -247,9 +249,8 @@ VI. QUYỀN LỢI CỦA HỌC SINH\n
 - Được dự thi liên thông lên cao đẳng, đại học theo quy định của Bộ Giáo dục và Đào tạo; được liên thông thẳng lên đại học: Đại học Mở, Viện Smartech,…\n
 Thông tin chi tiết, cụ thể về tuyển sinh đào tạo học sinh, quý phụ huynh liên hệ trực tiếp theo số điện thoại 0901.309.866; Web: ies.edu.vn; Email: info@iescollege.edu.vn\n`,
         img: TSDT,
-        imgBonus: [TSDT2],
+        imgBonus: [TSDT2, TSDT3],
       },
-      //fixing
       {
         id: '11',
         newsTit: 'Kế hoạch tuyển sinh - năm học 2026-2027',

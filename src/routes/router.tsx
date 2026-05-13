@@ -11,9 +11,9 @@ const ShortCourse = lazy(() => import('@/pages/training/ShortCourse'));
 const Partnership = lazy(() => import('@/pages/partnership/Partnership'));
 const Academics = lazy(() => import('@/pages/education/Academics'));
 const EduLibrary = lazy(() => import('@/pages/education/EduLibrary'));
-const IesNews = lazy(() => import('@/pages/iesNews/IesNews'));
+const NewsPage = lazy(() => import('@/pages/iesNews/NewsPage'));
 const IesNewsDetails = lazy(() => import('@/pages/iesNews/IesNewsDetails'));
-const IesEvents = lazy(() => import('@/pages/iesNews/IesEvents'));
+const EvsPage = lazy(() => import('@/pages/iesNews/EvsPage'));
 const IesEventsDetails = lazy(() => import('@/pages/iesNews/IesEventsDetail'));
 const IesClientLayout = lazy(() => import('@/layouts/IesClientLayout'));
 
@@ -53,7 +53,7 @@ export const router = createBrowserRouter([
           },
           {
             path: `${ROUTES.NEWS}`,
-            element: <IesNews />,
+            element: <NewsPage />,
           },
           {
             path: `${ROUTES.NEWS_DETAILS}/:id`,
@@ -61,7 +61,7 @@ export const router = createBrowserRouter([
           },
           {
             path: `${ROUTES.EVENTS}`,
-            element: <IesEvents />,
+            element: <EvsPage />,
           },
           {
             path: `${ROUTES.EVENTS_DETAILS}/:id`,

@@ -3,7 +3,7 @@ import type { NaiPageLayoutProps } from '../types';
 import fb from '@/assets/imgs/fb_logo.webp';
 import NAITIT from '@/assets/imgs/nai_tit.png';
 import zalo from '@/assets/imgs/zl_logo.webp';
-import { Text, Title } from '@/components/AntTypography';
+import { Text, Title } from '@/components';
 
 const NaiPage: React.FC<NaiPageLayoutProps> = (props) => {
   const {
