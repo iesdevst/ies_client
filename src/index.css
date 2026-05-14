@@ -151,3 +151,12 @@ body.dark {
 .ant-modal-content {
   padding: 0 !important;
 }
+
+/* tắt outline + shadow khi focus RangePicker */
+.ant-picker-focused {
+  box-shadow: none !important;
+  border-color: #d9d9d9 !important;
+}
+/* .ant-picker-active-bar {
+  background: red !important;
+} */

@@ -3,7 +3,7 @@ import Breadcrumb from 'antd/es/breadcrumb';
 import { useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useMediaQuery } from 'react-responsive';
-import { useParams } from 'react-router-dom';
+import { useParams, useSearchParams } from 'react-router-dom';
 
 import ContactKey from '../home/components/ContactKey';
 import DetailsBonus from './components/DetailsBonus';
@@ -14,6 +14,9 @@ import { ROUTES } from '@/constants';
 
 const IesNewsDetails = () => {
   const { id } = useParams<{ id: string }>();
+  const [searchParams] = useSearchParams();
+  const authorN = searchParams.get('authorN');
+  const newsDate = searchParams.get('newsDate');
   const { t } = useTranslation('iesNewsDetails');
   const { data } = useNewsData();
   const { data: newsLst } = useNewsLstData();
@@ -95,6 +98,8 @@ const IesNewsDetails = () => {
           tl={tl}
           id='newsec'
           newsTit={detailDt.newsTit}
+          ato={authorN ? authorN : ''}
+          date={newsDate ? newsDate : ''}
           decs={detailDt.desc}
           decs2={detailDt.decs2 ? detailDt.decs2 : ''}
           img={detailDt.img}

@@ -1,5 +1,6 @@
 import HomeFilled from '@ant-design/icons/HomeFilled';
 import RightOutlined from '@ant-design/icons/RightOutlined';
+import { Row } from 'antd';
 import Breadcrumb from 'antd/es/breadcrumb';
 import Card from 'antd/es/card';
 import Col from 'antd/es/col';
@@ -16,10 +17,11 @@ import { useUserStore } from '@/store';
 
 interface IEvsLst {
   evLstData: Array<EventLstData>;
+  totalItem: number;
 }
 
 const EvsLst: React.FC<IEvsLst> = (props) => {
-  const { evLstData } = props;
+  const { evLstData, totalItem } = props;
   const { t } = useTranslation('iesEvents');
 
   const mb = useMediaQuery({ maxWidth: 767 });
@@ -30,7 +32,7 @@ const EvsLst: React.FC<IEvsLst> = (props) => {
     navigate(`${ROUTES.EVENTS_DETAILS}/${id}`);
   };
 
-  if (!evLstData) return;
+  if (!evLstData || !totalItem) return;
 
   return (
     <section>
@@ -69,9 +71,11 @@ const EvsLst: React.FC<IEvsLst> = (props) => {
         ]}
       />
 
-      <Title level={!mb ? 5 : 3} className='!text-center'>
-        Hiển thị {evLstData.length} kết quả tìm kiếm
-      </Title>
+      {totalItem > 0 && (
+        <Title level={!mb ? 5 : 3} className='!text-center'>
+          Hiển thị {totalItem} kết quả tìm kiếm
+        </Title>
+      )}
       <Flex vertical className='!space-y-10 !w-full !pt-3'>
         {evLstData.map((evLst) => (
           <Card
@@ -81,14 +85,14 @@ const EvsLst: React.FC<IEvsLst> = (props) => {
           >
             <Flex
               justify='flex-start'
-              align='center'
+              align='flex-start'
               gap={!mb ? 100 : 30}
               vertical={mb}
             >
               <Image
                 src={evLst.img}
                 preview={false}
-                className='!w-100 !h-60 !rounded-xl'
+                className='!w-100 !h-45 !rounded-xl'
                 loading='lazy'
                 alt='iesev'
               />
@@ -109,6 +113,10 @@ const EvsLst: React.FC<IEvsLst> = (props) => {
                 >
                   {evLst.desc}
                 </Text>
+                <Row justify='space-between' align='middle'>
+                  <Title level={5}>{evLst.authorN}</Title>
+                  <Title level={5}>{evLst.evDate}</Title>
+                </Row>
               </Col>
             </Flex>
           </Card>

@@ -10,7 +10,7 @@ const EvsPage = () => {
 
   const {
     filters,
-    setFilters,
+    updateFilters,
     paginatedData,
     currentPage,
     setCurrentPage,
@@ -23,11 +23,11 @@ const EvsPage = () => {
       filters={
         <EvsFilters
           filters={filters}
-          setFilters={setFilters}
+          updateFilters={updateFilters}
           resetFilters={resetFilters}
         />
       }
-      content={<EvsLst evLstData={paginatedData} />}
+      content={<EvsLst evLstData={paginatedData} totalItem={totalItems} />}
       pagination={
         <Pagination
           current={currentPage}

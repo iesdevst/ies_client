@@ -8,6 +8,8 @@ import { Text, Title } from '@/components';
 const NaiPage: React.FC<NaiPageLayoutProps> = (props) => {
   const {
     newsTit,
+    ato,
+    date,
     decs,
     decs2,
     imgBonus,
@@ -85,8 +87,8 @@ const NaiPage: React.FC<NaiPageLayoutProps> = (props) => {
               </Col>
 
               <Col>
-                <Text className='!block'>art</Text>
-                <Text className='!block'>10/05/2026</Text>
+                <Text className='!block'>{ato}</Text>
+                <Text className='!block'>{date}</Text>
               </Col>
             </Row>
             <Col className={mb ? '' : '!mr-30'}>

@@ -9,7 +9,7 @@ const NewsPage = () => {
 
   const {
     filters,
-    setFilters,
+    updateFilters,
     paginatedData,
     currentPage,
     setCurrentPage,
@@ -21,11 +21,11 @@ const NewsPage = () => {
       filters={
         <NewsFilters
           filters={filters}
-          setFilters={setFilters}
+          updateFilters={updateFilters}
           resetFilters={resetFilters}
         />
       }
-      content={<NewsLst newsLstdata={paginatedData} />}
+      content={<NewsLst newsLstdata={paginatedData} totalItem={totalItems} />}
       pagination={
         <Pagination
           current={currentPage}

@@ -1,6 +1,6 @@
 import { useMemo } from 'react';
 import EVAI from '@/assets/imgs/events_ai.webp';
-import HDHN2204 from '@/assets/imgs/hdhn_n2204_event.webp';
+import EVTS1 from '@/assets/imgs/evts_p1.webp';
 import MISA from '@/assets/imgs/top_str_misa.webp';
 import THTN from '@/assets/imgs/top_str_thtn.webp';
 
@@ -9,12 +9,13 @@ export const useEventLstData = (): { data: Array<EventLstData> } => {
     () => [
       {
         id: '1',
-        eventTit: '📌 HOẠT ĐỘNG HƯỚNG NGHIỆP NGÀY 22/04/2026',
+        eventTit: '📌 HOẠT ĐỘNG TUYỂN SINH & HƯỚNG NGHIỆP NGÀY 22/04/2026',
         desc: 'Ngày 22/04/2026, Trường Trung cấp Tin học Kinh tế Sài Gòn đã vinh dự được .........',
-        img: HDHN2204,
+        img: EVTS1,
         evDate: '2026-04-22',
         categories: 'admissions',
         authors: 'admiss',
+        authorN: 'Phòng tuyển sinh',
       },
       {
         id: '2',
@@ -24,6 +25,7 @@ export const useEventLstData = (): { data: Array<EventLstData> } => {
         evDate: '2026-04-01',
         categories: 'workshop',
         authors: 'admisstr',
+        authorN: 'Phòng hành chính',
       },
       {
         id: '3',
@@ -33,7 +35,8 @@ export const useEventLstData = (): { data: Array<EventLstData> } => {
         img: THTN,
         evDate: '2025-12-29',
         categories: 'career',
-        authors: 'offTrain',
+        authors: 'admisstr',
+        authorN: 'Phòng hành chính',
       },
       {
         id: '4',
@@ -43,7 +46,8 @@ export const useEventLstData = (): { data: Array<EventLstData> } => {
         img: MISA,
         evDate: '2025-11-27',
         categories: 'partnership',
-        authors: 'admisstr',
+        authors: 'offTrain',
+        authorN: 'Phòng đào tạo',
       },
     ],
     [],
@@ -54,6 +58,7 @@ export const useEventLstData = (): { data: Array<EventLstData> } => {
 export type EventLstData = {
   id: string;
   eventTit: string;
+  authorN: string;
   desc: string;
   img: string;
   evDate: string;
@@ -62,5 +67,4 @@ export type EventLstData = {
 };
 
 export type EvsCategory = 'career' | 'workshop' | 'partnership' | 'admissions';
-export type AuthorEvsType = 'admiss' | 'admisstr' | 'individual' | 'offTrain';
-// export type FieldType = 'tech' | 'office';
+export type AuthorEvsType = 'admiss' | 'admisstr' | 'offTrain';

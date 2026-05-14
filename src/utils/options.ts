@@ -5,6 +5,13 @@ import {
   LocationRegis,
   ShortTermTraingEnum,
 } from './enum';
+import type {
+  AuthorEvsType,
+  AuthorNewsType,
+  EvsCategory,
+  FieldType,
+  NewsCategory,
+} from '@/pages/iesNews/hooks';
 
 type AppOption<O = object, V = string | number> = {
   label: string;
@@ -215,6 +222,42 @@ const partnershipProgOptions = eNumEntities<typeof PartnershipProgEnum>(
   return { label, value, group };
 });
 
+// News Filters opts
+
+const categoryNewsOpts: AppOption<object, NewsCategory>[] = [
+  { label: 'Hướng nghiệp', value: 'career' },
+  { label: 'Tuyển sinh', value: 'admissions' },
+  { label: 'Hợp tác đào tạo', value: 'partnership' },
+  { label: 'Đào tạo', value: 'training' },
+];
+
+const authorNewsOpts: AppOption<object, AuthorNewsType>[] = [
+  { label: 'Phòng tuyển sinh', value: 'admiss' },
+  { label: 'Phòng hành chính', value: 'admisstr' },
+  { label: 'Phòng đào tạo', value: 'offTrain' },
+  { label: 'Cá nhân', value: 'individual' },
+];
+
+const fieldNewsOpts: AppOption<object, FieldType>[] = [
+  { label: 'Công nghệ', value: 'tech' },
+  { label: 'Văn phòng', value: 'office' },
+];
+
+// Events Filter opts
+
+const categoryEvsOpts: AppOption<object, EvsCategory>[] = [
+  { label: 'Hướng nghiệp', value: 'career' },
+  { label: 'Tuyển sinh', value: 'admissions' },
+  { label: 'Hợp tác đào tạo', value: 'partnership' },
+  { label: 'Workshop', value: 'workshop' },
+];
+
+const authorEvsOpts: AppOption<object, AuthorEvsType>[] = [
+  { label: 'Phòng tuyển sinh', value: 'admiss' },
+  { label: 'Phòng hành chính', value: 'admisstr' },
+  { label: 'Phòng đào tạo', value: 'offTrain' },
+];
+
 export {
   capacityRoleEnumsObj,
   capacityRoleOptions,
@@ -226,5 +269,10 @@ export {
   partnershipProgOptions,
   enrollmentAreaEnumsObj,
   enrollmentAreaOptions,
+  categoryNewsOpts,
+  authorNewsOpts,
+  fieldNewsOpts,
+  categoryEvsOpts,
+  authorEvsOpts,
 };
 export type { AppOption };

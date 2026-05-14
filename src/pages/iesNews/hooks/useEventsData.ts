@@ -1,7 +1,6 @@
 import { useMemo } from 'react';
 import EVAI2 from '@/assets/imgs/ev_claude.webp';
 import EVAI from '@/assets/imgs/events_ai.webp';
-// import HDHN2204 from '@/assets/imgs/hdhn_n2204_event.webp';
 import EVTS1 from '@/assets/imgs/evts_p1.webp';
 import EVTS2 from '@/assets/imgs/evts_p1.webp';
 import EVTS3 from '@/assets/imgs/evts_p1.webp';
@@ -14,8 +13,8 @@ export const useEventsData = (): { data: Array<EventsData> } => {
     () => [
       {
         id: '1',
-        eventTit: 'HOẠT ĐỘNG HƯỚNG NGHIỆP - Kết nối học sinh',
-        desc: `📌 HOẠT ĐỘNG HƯỚNG NGHIỆP NGÀY 22/04/2026
+        eventTit: 'HOẠT ĐỘNG TUYỂN SINH & HƯỚNG NGHIỆP - Kết nối học sinh',
+        desc: `📌 HOẠT ĐỘNG TUYỂN SINH & HƯỚNG NGHIỆP NGÀY 22/04/2026
 Ngày 22/04/2026, Trường Trung cấp Tin học Kinh tế Sài Gòn đã vinh dự được Trường THCS Trần Quang Khải tạo điều kiện tổ chức buổi gặp mặt và hướng nghiệp dành cho 15 lớp học sinh khối 9.
 Địa điểm: Số 641 đường Trần Thị Năm, KP 43, P. Trung Mỹ Tây, TP. HCM
 Tại buổi sinh hoạt, các em học sinh đã được:

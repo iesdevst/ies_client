@@ -112,7 +112,8 @@ export interface NaiPageLayoutProps extends BasePageIesSecProps {
   decs: string;
   img: string;
   linkTo?: string;
-  art?: string;
+  ato: string;
+  date: string;
   decs2?: string;
   imgBonus?: Array<string>;
   nOe: string;

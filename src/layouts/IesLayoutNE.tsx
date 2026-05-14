@@ -14,14 +14,14 @@ const IesLayoutNE: React.FC<INaiPlusPage> = (props) => {
   return (
     <Layout>
       <Content>
-        <Row gutter={24} justify='space-between' className='py-10 px-20'>
+        <Row gutter={24} justify='space-between' className='py-10 pl-20 pr-10'>
           {/* LEFT SIDEBAR */}
-          <Col xs={24} sm={24} md={7} lg={7}>
+          <Col xs={24} sm={24} md={8} lg={8}>
             <div>{filters}</div>
           </Col>
 
           {/* MAIN CONTENT */}
-          <Col xs={24} sm={24} md={17} lg={17} className='!pl-15'>
+          <Col xs={24} sm={24} md={16} lg={16} className='!pl-10'>
             <div>
               {content}
 

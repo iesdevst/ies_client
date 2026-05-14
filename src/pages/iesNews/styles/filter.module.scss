@@ -1,0 +1,27 @@
+.filterCol {
+  :global {
+    .ant-collapse-item {
+      border-bottom: 1px solid #cfd2d8;
+      padding: 10px 0 13px 0;
+
+      .ant-collapse-header {
+        padding: 5px 10px 5px 0 !important;
+      }
+    }
+
+    .ant-collapse-header {
+      border: none !important;
+    }
+
+    .ant-collapse-content {
+      background: transparent !important;
+      border-top: none !important;
+
+      .ant-collapse-content-box {
+        background: transparent !important;
+        padding: 100px 0  !important;
+        padding-block: 0 !important;
+      }
+    }
+  }
+}

@@ -2,7 +2,7 @@ import { useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
 import BRSTUN from '@/assets/imgs/cnhs_news.webp';
 import EVAI from '@/assets/imgs/events_ai.webp';
-import HDHN2204 from '@/assets/imgs/hdhn_n2204_event.webp';
+import EVTS1 from '@/assets/imgs/evts_p1.webp';
 import KTDT from '@/assets/imgs/ktdt_nfc.webp';
 import KTO from '@/assets/imgs/kto_nfc.webp';
 import TKDH from '@/assets/imgs/tkdh_nfc.webp';
@@ -32,7 +32,7 @@ export const useTopSn = (): { data: Array<TopSn> } => {
       },
       {
         id: '4',
-        sti: HDHN2204,
+        sti: EVTS1,
         tit: t('eduCoop2'),
         specTit: t('eduCoopTit'),
       },

@@ -3,17 +3,17 @@ import BTHMSN from '@/assets/imgs/bt_hms_news.webp';
 import BRSTUN from '@/assets/imgs/cnhs_news.webp';
 import HNCNDN from '@/assets/imgs/hn_cnd_news.webp';
 import HNTN from '@/assets/imgs/hn_lct_news.webp';
-import KHN from '@/assets/imgs/khts_news_page.webp';
+import KHTS from '@/assets/imgs/khts.webp';
 import KTDT from '@/assets/imgs/ktdt_nfc.webp';
 import KTO from '@/assets/imgs/kto_nfc.webp';
 import LDHNN from '@/assets/imgs/ld_hn_news_page.webp';
 import LDTHN from '@/assets/imgs/ld_thud_news_page.webp';
 import PLN from '@/assets/imgs/pl_thcs_news.webp';
-import TSN from '@/assets/imgs/tbts_news_page.webp';
 import TKDH from '@/assets/imgs/tkdh_nfc.webp';
 import HTDHM from '@/assets/imgs/top_str_htdhm.webp';
 import LTS from '@/assets/imgs/top_str_lts.webp';
 import NBCN from '@/assets/imgs/top_str_news.webp';
+import TSDT from '@/assets/imgs/tsdt_p1.webp';
 
 export const useNewsLstData = (): { data: Array<NewsLstData> } => {
   const data = useMemo<Array<NewsLstData>>(
@@ -26,7 +26,8 @@ export const useNewsLstData = (): { data: Array<NewsLstData> } => {
         img: BTHMSN,
         newsDate: '2026-05-07',
         categories: 'career',
-        authors: 'admisstr',
+        authors: 'individual',
+        authorN: 'Nguyễn Trang/VOV.VN',
       },
 
       {
@@ -36,7 +37,8 @@ export const useNewsLstData = (): { data: Array<NewsLstData> } => {
         img: BRSTUN,
         newsDate: '2026-05-01',
         categories: 'career',
-        authors: 'admisstr',
+        authors: 'individual',
+        authorN: 'PV',
       },
 
       {
@@ -46,7 +48,8 @@ export const useNewsLstData = (): { data: Array<NewsLstData> } => {
         img: HNTN,
         newsDate: '2026-05-04',
         categories: 'career',
-        authors: 'admisstr',
+        authors: 'individual',
+        authorN: 'Thống Nhất ',
       },
 
       {
@@ -57,6 +60,7 @@ export const useNewsLstData = (): { data: Array<NewsLstData> } => {
         newsDate: '2026-05-10',
         categories: 'career',
         authors: 'admisstr',
+        authorN: 'YẾN ANH',
       },
 
       {
@@ -66,7 +70,8 @@ export const useNewsLstData = (): { data: Array<NewsLstData> } => {
         img: PLN,
         newsDate: '2026-02-16',
         categories: 'career',
-        authors: 'admisstr',
+        authors: 'individual',
+        authorN: 'NHƯ BÌNH',
       },
 
       {
@@ -76,7 +81,8 @@ export const useNewsLstData = (): { data: Array<NewsLstData> } => {
         img: NBCN,
         newsDate: '2026-04-30',
         categories: 'career',
-        authors: 'admisstr',
+        authors: 'individual',
+        authorN: 'Ngân Anh',
       },
 
       {
@@ -86,9 +92,10 @@ export const useNewsLstData = (): { data: Array<NewsLstData> } => {
         desc: 'Công nghệ kỹ thuật điện, điện tử: Sức hút từ ngành công nghiệp mũi nhọn\n',
         img: KTDT,
         newsDate: '2025-11-28',
-        categories: 'career',
+        categories: 'training',
         authors: 'admisstr',
         fields: 'tech',
+        authorN: 'Phòng tổ chức hành chính',
       },
 
       {
@@ -97,9 +104,10 @@ export const useNewsLstData = (): { data: Array<NewsLstData> } => {
         desc: 'Công nghệ kĩ thuật ô tô: Ngành nghề có tương lai “đắt giá”\n',
         img: KTO,
         newsDate: '2025-12-20',
-        categories: 'career',
+        categories: 'training',
         authors: 'admisstr',
         fields: 'tech',
+        authorN: 'Phòng tổ chức hành chính',
       },
 
       {
@@ -108,31 +116,34 @@ export const useNewsLstData = (): { data: Array<NewsLstData> } => {
         desc: 'Thiết kế đồ họa: Ngành học tiềm năng\n',
         img: TKDH,
         newsDate: '2026-04-25',
-        categories: 'career',
+        categories: 'training',
         authors: 'admisstr',
         fields: 'office',
+        authorN: 'Phòng tổ chức hành chính',
       },
 
       {
         id: '10',
         newsTit: 'Tuyển sinh đào tạo - năm học 2026-2027',
         desc: 'Trường Trung cấp Tin học Kinh tế Sài Gòn thông báo tuyển sinh đào tạo\n năm học 2026 - 2027....',
-        img: TSN,
-        newsDate: '2026-05-11',
+        img: TSDT,
+        newsDate: '2026-05-12',
         typeTit: 'Tuyển sinh',
         categories: 'admissions',
         authors: 'admiss',
+        authorN: 'Phòng tuyển sinh',
       },
 
       {
         id: '11',
         newsTit: 'Kế hoạch tuyển sinh - năm học 2026-2027',
         desc: 'Trường Trung cấp Tin học Kinh tế Sài Gòn ban hành Kế hoạch tuyển sinh\n đào tạo năm học 2026 - 2027....',
-        img: KHN,
-        newsDate: '2026-03-25',
+        img: KHTS,
+        newsDate: '2026-05-11',
         typeTit: 'Tuyển sinh',
         categories: 'admissions',
         authors: 'admiss',
+        authorN: 'Phòng tuyển sinh',
       },
 
       {
@@ -144,6 +155,7 @@ export const useNewsLstData = (): { data: Array<NewsLstData> } => {
         categories: 'career',
         authors: 'admisstr',
         fields: 'office',
+        authorN: 'Phòng tổ chức hành chính',
       },
 
       {
@@ -154,6 +166,7 @@ export const useNewsLstData = (): { data: Array<NewsLstData> } => {
         newsDate: '2026-01-03',
         categories: 'career',
         authors: 'admisstr',
+        authorN: 'Phòng tổ chức hành chính',
       },
 
       {
@@ -164,6 +177,7 @@ export const useNewsLstData = (): { data: Array<NewsLstData> } => {
         newsDate: '2026-02-02',
         categories: 'partnership',
         authors: 'offTrain',
+        authorN: 'Phòng đào tạo',
       },
 
       {
@@ -175,6 +189,7 @@ export const useNewsLstData = (): { data: Array<NewsLstData> } => {
         newsDate: '2026-01-05',
         categories: 'partnership',
         authors: 'offTrain',
+        authorN: 'Phòng đào tạo',
       },
     ],
     [],
@@ -189,6 +204,7 @@ export type NewsLstData = {
   img: string;
   newsDate: string;
   typeTit?: string;
+  authorN: string;
   categories: NewsCategory;
   authors: AuthorNewsType;
   fields?: FieldType;
