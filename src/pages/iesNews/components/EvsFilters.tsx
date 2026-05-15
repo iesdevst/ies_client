@@ -1,7 +1,16 @@
 import { DownOutlined, ReloadOutlined, RightOutlined } from '@ant-design/icons';
-import { Button, Checkbox, Collapse, DatePicker, Flex, Input } from 'antd';
+import {
+  AutoComplete,
+  Button,
+  Checkbox,
+  Collapse,
+  DatePicker,
+  Flex,
+  Input,
+} from 'antd';
 import dayjs from 'dayjs';
 import { useState } from 'react';
+import type { EventLstData } from '../hooks';
 import type { EvsFiltersState } from '../hooks/useEvsFilters';
 import styles from '../styles/filter.module.scss';
 import { Title } from '@/components';
@@ -15,12 +24,14 @@ interface IEvsFilters {
   filters: EvsFiltersState;
   updateFilters: (patch: Partial<EvsFiltersState>) => void;
   resetFilters: () => void;
+  evsSreachDt: Array<EventLstData>;
 }
 
 const EvsFilters: React.FC<IEvsFilters> = (props) => {
-  const { filters, updateFilters, resetFilters } = props;
+  const { filters, updateFilters, resetFilters, evsSreachDt } = props;
   const [activeKeys, setActiveKeys] = useState<Array<EvsCollfilter>>([]);
-
+  const [searchValue, setSearchValue] = useState('');
+  const [evsOpts, setEvsOpts] = useState<Array<{ value: string }>>([]);
   const isCollAct = (key: EvsCollfilter) => activeKeys.includes(key);
   const collLabel = (key: EvsCollfilter, tit: string) => (
     <Title
@@ -110,12 +121,18 @@ const EvsFilters: React.FC<IEvsFilters> = (props) => {
     },
   ];
 
+  const handleRs = () => {
+    setSearchValue('');
+    setEvsOpts([]);
+    resetFilters();
+  };
+
   return (
     <Flex vertical gap={10} className='!mr-10'>
       <Title className='!text-6xl'>Khám phá tất cả Sự Kiện IES</Title>
       <Button
         type='link'
-        onClick={resetFilters}
+        onClick={handleRs}
         className='!p-0 !text-start !flex !justify-start'
       >
         <Title level={4} color='black' className='!m-0 !mb-1'>
@@ -123,15 +140,65 @@ const EvsFilters: React.FC<IEvsFilters> = (props) => {
         </Title>
         <ReloadOutlined className='!text-blue-500 !text-xl -scale-x-100' />
       </Button>
-      <Input
-        placeholder='Tìm kiếm tin tức'
-        value={filters.keyword}
-        onChange={(e) =>
+      <AutoComplete
+        className='!w-full'
+        options={evsOpts}
+        value={searchValue}
+        onSearch={(value) => {
+          setSearchValue(value);
+
+          if (!value.trim()) {
+            setEvsOpts([]);
+            return;
+          }
+
+          const filtered = evsSreachDt
+            .filter(
+              (item) =>
+                item.eventTit.toLowerCase().includes(value.toLowerCase()) ||
+                item.desc.toLowerCase().includes(value.toLowerCase()),
+            )
+            .map((item) => ({
+              value: item.eventTit,
+            }));
+
+          const unique = Array.from(
+            new Map(filtered.map((item) => [item.value, item])).values(),
+          );
+
+          setEvsOpts(unique.slice(0, 5));
+        }}
+        onSelect={(value) => {
           updateFilters({
-            keyword: e.target.value,
-          })
-        }
-      />
+            keyword: value,
+          });
+          setSearchValue(value);
+        }}
+      >
+        <Input.Search
+          placeholder='Tìm kiếm tin tức'
+          allowClear
+          onSearch={(value) => {
+            updateFilters({
+              keyword: value,
+            });
+          }}
+          onChange={(e) => {
+            const value = e.target.value;
+
+            setSearchValue(value);
+
+            if (!value) {
+              updateFilters({
+                keyword: '',
+              });
+
+              setEvsOpts([]);
+            }
+          }}
+          className={styles.inputSre}
+        />
+      </AutoComplete>
 
       <div className='!border-b !border-[#cfd2d8]'>
         <Collapse

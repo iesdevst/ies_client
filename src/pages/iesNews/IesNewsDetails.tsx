@@ -11,13 +11,16 @@ import { useEventLstData, useNewsData, useNewsLstData } from './hooks';
 import { IesClSection, Text } from '@/components';
 import { PrefetchLink } from '@/components/PrefetchLink';
 import { ROUTES } from '@/constants';
+import { useUserStore } from '@/store';
 
 const IesNewsDetails = () => {
   const { id } = useParams<{ id: string }>();
   const [searchParams] = useSearchParams();
   const authorN = searchParams.get('authorN');
   const newsDate = searchParams.get('newsDate');
+  const currUrl = window.location.href;
   const { t } = useTranslation('iesNewsDetails');
+  const { isDark } = useUserStore();
   const { data } = useNewsData();
   const { data: newsLst } = useNewsLstData();
   const { data: evLst } = useEventLstData();
@@ -55,7 +58,7 @@ const IesNewsDetails = () => {
           <PrefetchLink
             to={ROUTES.NEWS}
             style={{
-              color: 'black',
+              color: isDark ? 'white' : 'black',
               fontWeight: 700,
               fontSize: 15,
             }}
@@ -66,13 +69,16 @@ const IesNewsDetails = () => {
       },
       {
         title: (
-          <Text color='#545969' className='!text-[16px] !font-bold'>
+          <Text
+            color={isDark ? '#74abf9' : '#545969'}
+            className='!text-[16px] !font-bold'
+          >
             {t('newsD')}
           </Text>
         ),
       },
     ],
-    [t],
+    [t, isDark],
   );
 
   const paddingClass = mb || tl ? '' : '';
@@ -88,7 +94,11 @@ const IesNewsDetails = () => {
         className={`${
           mb ? '!ml-5 !mb-10' : tl ? '!ml-10 !mb-15' : '!ml-25 !py-15'
         }`}
-        separator={<RightOutlined className='!text-black mx-6' />}
+        separator={
+          <RightOutlined
+            className={`${isDark ? '!text-white' : '!text-black'} px-6`}
+          />
+        }
         items={breadcrumbItems}
       />
       {detailDt && latestNews && latestEv && (
@@ -105,13 +115,15 @@ const IesNewsDetails = () => {
           img={detailDt.img}
           imgBonus={detailDt.imgBonus ? detailDt.imgBonus : []}
           linkTo={detailDt.desc ? detailDt.linkTo : ''}
+          urlForShare={currUrl}
           paddingClass={paddingClass}
           titleLv={titleLv}
           nOe={t('news')}
           readOri={t('readOri')}
           recentNews={latestNews}
           recentEv={latestEv}
-          children={<DetailsBonus />}
+          dark={isDark}
+          children={<DetailsBonus dark={isDark} />}
         />
       )}
       <ContactKey />

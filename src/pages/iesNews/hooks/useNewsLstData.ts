@@ -1,4 +1,5 @@
 import { useMemo } from 'react';
+import NOEX from '@/assets/imgs/17k_noexam.webp';
 import BTHMSN from '@/assets/imgs/bt_hms_news.webp';
 import BRSTUN from '@/assets/imgs/cnhs_news.webp';
 import HNCNDN from '@/assets/imgs/hn_cnd_news.webp';
@@ -190,6 +191,16 @@ export const useNewsLstData = (): { data: Array<NewsLstData> } => {
         categories: 'partnership',
         authors: 'offTrain',
         authorN: 'Phòng đào tạo',
+      },
+      {
+        id: '16',
+        newsTit: 'Hơn 17.000 học sinh TP.HCM bỏ thi lớp 10',
+        desc: '(PLO)- Qua thống kê, có 17.826 học sinh lớp 9 tại TP.HCM bỏ tham dự kỳ thi lớp 10 năm học 2026-2027.',
+        img: NOEX,
+        newsDate: '2026-05-11',
+        categories: 'career',
+        authorN: 'NGUYỄN QUYÊN',
+        authors: 'individual',
       },
     ],
     [],

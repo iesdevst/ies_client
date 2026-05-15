@@ -25,6 +25,7 @@ const EvsPage = () => {
           filters={filters}
           updateFilters={updateFilters}
           resetFilters={resetFilters}
+          evsSreachDt={data}
         />
       }
       content={<EvsLst evLstData={paginatedData} totalItem={totalItems} />}

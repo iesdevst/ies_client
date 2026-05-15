@@ -16,6 +16,7 @@ const NewsPage = () => {
     totalItems,
     resetFilters,
   } = useNewsFilters(data);
+
   return (
     <IesLayoutNE
       filters={
@@ -23,6 +24,7 @@ const NewsPage = () => {
           filters={filters}
           updateFilters={updateFilters}
           resetFilters={resetFilters}
+          newsSreachDt={data}
         />
       }
       content={<NewsLst newsLstdata={paginatedData} totalItem={totalItems} />}

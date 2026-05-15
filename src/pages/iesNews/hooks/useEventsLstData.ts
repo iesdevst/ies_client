@@ -1,4 +1,5 @@
 import { useMemo } from 'react';
+import EVTSTS from '@/assets/imgs/ev_thcsts.webp';
 import EVAI from '@/assets/imgs/events_ai.webp';
 import EVTS1 from '@/assets/imgs/evts_p1.webp';
 import MISA from '@/assets/imgs/top_str_misa.webp';
@@ -9,7 +10,7 @@ export const useEventLstData = (): { data: Array<EventLstData> } => {
     () => [
       {
         id: '1',
-        eventTit: '📌 HOẠT ĐỘNG TUYỂN SINH & HƯỚNG NGHIỆP NGÀY 22/04/2026',
+        eventTit: 'HOẠT ĐỘNG TUYỂN SINH & HƯỚNG NGHIỆP NGÀY 22/04/2026',
         desc: 'Ngày 22/04/2026, Trường Trung cấp Tin học Kinh tế Sài Gòn đã vinh dự được .........',
         img: EVTS1,
         evDate: '2026-04-22',
@@ -22,7 +23,7 @@ export const useEventLstData = (): { data: Array<EventLstData> } => {
         eventTit: 'IES workshop\n Claude Code - AI agent',
         desc: 'Xây dựng Web Dashboard với Claude Code.........',
         img: EVAI,
-        evDate: '2026-04-01',
+        evDate: '2026-04-14',
         categories: 'workshop',
         authors: 'admisstr',
         authorN: 'Phòng hành chính',
@@ -48,6 +49,17 @@ export const useEventLstData = (): { data: Array<EventLstData> } => {
         categories: 'partnership',
         authors: 'offTrain',
         authorN: 'Phòng đào tạo',
+      },
+      {
+        id: '5',
+        eventTit:
+          'TĂNG CƯỜNG HƯỚNG NGHIỆP cho học sinh lớp 9 tại trường THCS Tân Sơn',
+        desc: 'Vừa qua, Trường Trung cấp Tin học Kinh tế Sài Gòn đã phối hợp tổ chức chương trình tư vấn .....',
+        img: EVTSTS,
+        evDate: '2026-05-06',
+        categories: 'admissions',
+        authors: 'admiss',
+        authorN: 'Phòng tuyển sinh',
       },
     ],
     [],

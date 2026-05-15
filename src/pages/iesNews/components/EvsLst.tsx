@@ -5,7 +5,6 @@ import Breadcrumb from 'antd/es/breadcrumb';
 import Card from 'antd/es/card';
 import Col from 'antd/es/col';
 import Flex from 'antd/es/flex';
-import Image from 'antd/es/image';
 import { useTranslation } from 'react-i18next';
 import { useMediaQuery } from 'react-responsive';
 import { useNavigate } from 'react-router-dom';
@@ -20,16 +19,25 @@ interface IEvsLst {
   totalItem: number;
 }
 
+export type EvsNavi = {
+  id: string;
+  authorN: string;
+  evsDate: string;
+};
+
 const EvsLst: React.FC<IEvsLst> = (props) => {
   const { evLstData, totalItem } = props;
   const { t } = useTranslation('iesEvents');
-
   const mb = useMediaQuery({ maxWidth: 767 });
   const { isDark } = useUserStore();
   const navigate = useNavigate();
 
-  const handleNavigate = (id: string) => {
-    navigate(`${ROUTES.EVENTS_DETAILS}/${id}`);
+  const handleNavigate = (navi: EvsNavi) => {
+    const searchParams = new URLSearchParams({
+      authorN: navi.authorN,
+      evsDate: navi.evsDate,
+    });
+    navigate(`${ROUTES.EVENTS_DETAILS}/${navi.id}?${searchParams.toString()}`);
   };
 
   if (!evLstData || !totalItem) return;
@@ -80,8 +88,14 @@ const EvsLst: React.FC<IEvsLst> = (props) => {
         {evLstData.map((evLst) => (
           <Card
             key={evLst.id}
-            className={`${!mb ? '!py-5 !px-10' : '!p-5 !mx-3'} !bg-gray-400 cursor-pointer`}
-            onClick={() => handleNavigate(evLst.id)}
+            className={`${!mb ? '!py-5 !px-10' : '!p-5 !mx-3'} ${isDark ? '!bg-[#191f23]' : '!bg-gray-400'} cursor-pointer`}
+            onClick={() =>
+              handleNavigate({
+                id: evLst.id,
+                authorN: evLst.authorN,
+                evsDate: evLst.evDate,
+              })
+            }
           >
             <Flex
               justify='flex-start'
@@ -89,12 +103,11 @@ const EvsLst: React.FC<IEvsLst> = (props) => {
               gap={!mb ? 100 : 30}
               vertical={mb}
             >
-              <Image
+              <img
                 src={evLst.img}
-                preview={false}
-                className='!w-100 !h-45 !rounded-xl'
-                loading='lazy'
                 alt='iesev'
+                loading='lazy'
+                className='!w-[310px] !h-[200px] object-cover rounded-xl shrink-0'
               />
               <Col>
                 <Title
@@ -110,6 +123,7 @@ const EvsLst: React.FC<IEvsLst> = (props) => {
                   style={{
                     whiteSpace: 'pre-line',
                   }}
+                  color={isDark ? 'white' : 'black'}
                 >
                   {evLst.desc}
                 </Text>

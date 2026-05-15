@@ -1,4 +1,5 @@
 import { useMemo } from 'react';
+import NOEX from '@/assets/imgs/17k_noexam.webp';
 import BTHMSN from '@/assets/imgs/bt_hms_news.webp';
 import CNOT2 from '@/assets/imgs/cn_oto2.webp';
 import BRSTUN from '@/assets/imgs/cnhs_news.webp';
@@ -33,10 +34,8 @@ export const useNewsData = (): { data: Array<NewsData> } => {
         id: '1',
         newsTit:
           'Bộ trưởng Bộ GD-ĐT Hoàng Minh Sơn: "Đừng chỉ học để cầm tấm bằng đi tìm việc"',
-        desc: ` VOV.VN - Bộ trưởng Hoàng Minh Sơn nhắn nhủ học sinh, sinh viên hãy thay đổi định vị bản thân, đừng chỉ học để cầm tấm bằng đi tìm việc. Hãy học để có năng lực làm chủ, năng lực nhận diện cơ hội và bản lĩnh để khởi nghiệp. Đừng sợ thất bại.\n
-Sáng nay (18/4), tại Học viện Ngân hàng, diễn ra lễ khai mạc Ngày hội Khởi nghiệp Quốc gia của học sinh, sinh viên lần thứ VIII.\n
-Phát biểu tại ngày hội, Bộ trưởng Bộ GD-ĐT Hoàng Minh Sơn cho biết, đất nước đang bước vào một giai đoạn phát triển mới với yêu cầu ngày càng cao về chất lượng tăng trưởng, năng suất lao động, năng lực cạnh tranh quốc gia và khả năng thích ứng trước những biến động nhanh chóng của thế giới.\n
-Ngày nay, sự khác biệt giữa các quốc gia không còn nằm ở tài nguyên thiên nhiên hay chi phí lao động, mà ở năng lực tạo ra tri thức mới và chuyển hóa tri thức đó thành giá trị kinh tế.`,
+        desc: `Theo bài viết đăng tải trên VOV, PGS.TS Hoàng Minh Sơn nhấn mạnh rằng giáo dục hiện nay cần hướng đến năng lực thực tế thay vì chỉ chạy theo bằng cấp. Người học cần được định hướng nghề nghiệp sớm để lựa chọn con đường phù hợp với khả năng và nhu cầu xã hội.
+Bài báo cũng cho thấy xu hướng nhiều học sinh sau THCS lựa chọn học nghề nhằm rút ngắn thời gian học tập, giảm áp lực chi phí và sớm có việc làm ổn định. Trong bối cảnh thị trường lao động ngày càng chú trọng kỹ năng thực hành, mô hình đào tạo nghề và chương trình song bằng đang trở thành lựa chọn phù hợp cho nhiều học sinh và phụ huynh hiện nay.`,
         img: BTHMSN,
         linkTo:
           'https://vov.vn/xa-hoi/bo-truong-bo-gd-dt-hoang-minh-son-dung-chi-hoc-de-cam-tam-bang-di-tim-viec-post1284973.vov?gidzl=4wVq2TX87ZmKiFK7s54RFnIpy0l1NHuq2xoWMv4BIs9JxlDRdLqOCmIxzGUTNnPjLB7wK3dxrjeCsKKTDm&gidzl=xg06PEGTc1hal0PYuGIT6EAx1s_-39mJ_RHNFwvQoKMbvWG_eWoQ5FAp0cEY3fHAehaDD3aoZwzFw1gQ60',
@@ -45,8 +44,9 @@ Ngày nay, sự khác biệt giữa các quốc gia không còn nằm ở tài n
       {
         id: '2',
         newsTit: 'Cầu nối học sinh với cơ sở đào tạo và thị trường lao động',
-        desc: `Được tổ chức thường niên từ năm 2019, Ngày hội tiếp tục khẳng định vai trò là cầu nối quan trọng giữa người học với nhà trường và thị trường lao động.
-Ngày 19-4, Sở Giáo dục và Đào tạo Hà Nội tổ chức Ngày hội gắn kết giáo dục nghề nghiệp Thủ đô với thị trường lao động năm 2026, thu hút đông đảo học sinh, cơ sở đào tạo và doanh nghiệp tham gia.`,
+        desc: `Theo bài báo đăng trên Báo Bảo vệ Pháp luật, giáo dục nghề nghiệp hiện nay đang đóng vai trò quan trọng trong việc kết nối học sinh với doanh nghiệp và nhu cầu tuyển dụng thực tế. Việc định hướng nghề nghiệp sớm giúp học sinh hiểu rõ năng lực bản thân, lựa chọn ngành học phù hợp và nâng cao cơ hội việc làm sau khi tốt nghiệp.
+Bài viết cho rằng các cơ sở đào tạo cần tăng cường liên kết với doanh nghiệp để xây dựng chương trình học sát thực tế, chú trọng kỹ năng thực hành và tạo điều kiện cho học sinh tiếp cận môi trường làm việc ngay trong quá trình học tập.
+Ngoài ra, công tác tư vấn hướng nghiệp được xem là cầu nối quan trọng giúp học sinh tiếp cận thông tin ngành nghề, xu hướng việc làm và có định hướng tương lai phù hợp với nhu cầu của thị trường lao động hiện nay.`,
         img: BRSTUN,
         linkTo:
           'https://baovephapluat.vn/van-hoa-xa-hoi/giao-duc/cau-noi-hoc-sinh-voi-co-so-dao-tao-va-thi-truong-lao-dong-197361.html',
@@ -54,7 +54,9 @@ Ngày 19-4, Sở Giáo dục và Đào tạo Hà Nội tổ chức Ngày hội g
       {
         id: '3',
         newsTit: 'Học nghề - một lựa chọn cho học sinh sau trung học cơ sở',
-        desc: `Thời điểm này, hàng chục nghìn học sinh đứng trước lựa chọn quan trọng: Tiếp tục học trung học phổ thông, thi đại học hay chọn con đường học nghề.`,
+        desc: `Theo bài báo đăng trên báo Hà Nội Mới, học nghề đang trở thành lựa chọn phù hợp cho nhiều học sinh sau khi tốt nghiệp THCS. Trong bối cảnh áp lực thi vào lớp 10 ngày càng cao, việc lựa chọn học nghề kết hợp học văn hóa giúp học sinh có thêm hướng đi phù hợp với năng lực và điều kiện của bản thân.
+Bài viết cho biết nhiều cơ sở giáo dục nghề nghiệp hiện nay triển khai chương trình song bằng, cho phép học sinh vừa học văn hóa vừa học nghề. Sau khi tốt nghiệp, học sinh có thể tham gia thị trường lao động sớm hoặc tiếp tục học liên thông lên các bậc học cao hơn.
+Ngoài ra, các chương trình đào tạo nghề hiện nay chú trọng thực hành, tăng cường kỹ năng nghề nghiệp và liên kết với doanh nghiệp nhằm đáp ứng nhu cầu nhân lực thực tế. Đây được xem là hướng đi giúp học sinh tiết kiệm thời gian, chi phí học tập và nâng cao cơ hội việc làm trong tương lai.`,
         img: HNTN,
         linkTo:
           'https://hanoimoi.vn/hoc-nghe-mot-lua-chon-cho-hoc-sinh-sau-trung-hoc-co-so-742221.html?gidzl=NlAmTC8M-&gidzl=Q-qgCcs7O2vXyIeqQ9vbB6VqBZ1tb64kUFj-O2V2D7WWgIrWAvHdANVyApmhbcbt9_OaQpa-M7ijOO1YB0',
@@ -68,10 +70,13 @@ Từ mùa tuyển sinh 2026, học sinh tốt nghiệp THCS sẽ có thêm lựa
         linkTo:
           'https://nld.com.vn/con-duong-moi-trung-hoc-nghe-196260103213739217.htm?gidzl=ca1tQHlydncTLtPd6-MQ6f9JSMODxfqSZLmXDbsuo4hL3d8sKUwR6u9RT6fHx9L5qb5xFJcnXTX96l6S4W&gidzl=S4I299BMOabwM88YbyzdItnTWY28nMTFOrBISDYJCXax085mrCLXI6nLXopKnsyMF5-8UpdQeD5Sdj5WIm',
       },
+
       {
         id: '5',
         newsTit: 'Phân luồng sau THCS: Trung học nghề thành lựa chọn mới',
-        desc: `VHO - Từ năm 2026, học sinh sau khi hoàn thành bậc THCS không chỉ có lựa chọn tiếp tục học THPT như trước đây mà còn có thêm một hướng đi mới là theo học trung học nghề. Quy định này được xác lập trong Luật Giáo dục nghề nghiệp vừa được Quốc hội ban hành và có hiệu lực từ ngày 1.1.2026, mở ra một bước thay đổi đáng chú ý trong hệ thống giáo dục trung học.`,
+        desc: `Theo bài báo đăng trên Báo Văn Hóa, từ năm 2026, mô hình trung học nghề sẽ trở thành một hướng đi mới dành cho học sinh sau khi tốt nghiệp THCS. Chương trình được xây dựng theo hướng kết hợp giữa học văn hóa và đào tạo nghề, giúp học sinh vừa có kiến thức phổ thông vừa được trang bị kỹ năng nghề nghiệp thực tế.
+Bài viết cho biết chương trình trung học nghề kéo dài khoảng 3 năm, tạo điều kiện cho học sinh sớm tiếp cận nghề nghiệp và có thêm nhiều cơ hội việc làm sau tốt nghiệp. Đồng thời, học sinh vẫn có thể học liên thông lên các bậc học cao hơn nếu có nhu cầu.
+Ngoài ra, các chuyên gia nhận định mô hình này sẽ góp phần giảm áp lực tuyển sinh vào lớp 10, nâng cao hiệu quả phân luồng sau THCS và đáp ứng nhu cầu nguồn nhân lực kỹ thuật của thị trường lao động hiện nay.`,
         img: PLN,
         linkTo:
           'https://baovanhoa.vn/doi-song/phan-luong-sau-thcs-trung-hoc-nghe-thanh-lua-chon-moi-212187.html?gidzl=9sIS9CYW938WSvqgoBaXCIztaItUiYqnC7Z1VOxaU6TeAf9zWh8hDZz_b262i2LeRtMRTZdV_OWloQqdEG&gidzl=_MU2AhasrMFtUu8il2_GOV5-ZokZ9TrWxd7VU_DpY3Qs8unx_oNRP-5sYYV_9zKviNo5S3byOsPujJ7NOG',
@@ -115,6 +120,8 @@ Vì vậy, trường lớp chuyên giúp chúng ta nuôi dưỡng sự đam mê 
 Còn khía cạnh khác phải nói tới đó là tính trừu tượng của các bộ môn như toán lý thuyết.\n
 Tôi nghĩ rằng tất nhiên nếu học sinh học cái gì cụ thể hay thực tiễn thì cũng tốt thôi, có thể khuyến khích. Trong những lớp chuyên chúng ta hoàn toàn cho học sinh học tốt về cả lý thuyết và thực hành. Chúng ta cần có sự trộn lẫn hài hoà giữa lý thuyết và thực hành. Và điều này có thể áp dụng tốt ở lớp chuyên.\n`,
         imgBonus: [NBCV2],
+        linkTo:
+          'https://vietnamnet.vn/gs-ngo-bao-chau-khong-nhat-thiet-phai-co-bang-dai-hoc-258414.html',
       },
 
       {
@@ -186,120 +193,118 @@ Nếu bạn thật sự đã xác định hướng đi về ngành này, có th�
         id: '10',
         newsTit: 'Tuyển sinh đào tạo - năm học 2026-2027',
         desc: `Trường Trung cấp Tin học Kinh tế Sài Gòn thông báo tuyển sinh đào tạo năm học 2026 - 2027 như sau:\n
-I. NGÀNH, NGHỀ, CHỈ TIÊU\n
-STT\tCơ sở đào tạo/ngành, nghề tuyển sinh\tMã ngành, nghề\tChỉ tiêu tuyển sinh\tGhi chú\n
-1\tVẽ thiết kế mỹ thuật có trợ giúp bằng máy tính\t5480212\t110\n
-2\tQuản lý doanh nghiệp\t5340420\t160\n
-3\tMarketing\t5340116\t130\n
-4\tQuản lý kinh doanh khách sạn\t5340422\t185\n
-5\tKế toán doanh nghiệp\t5340302\t190\n
-6\tThư ký văn phòng\t5320306\t110\n
-7\tTin học ứng dụng\t5480205\t145\n
+I. NGÀNH, NGHỀ, CHỈ TIÊU
+STT\tCơ sở đào tạo/ngành, nghề tuyển sinh\tMã ngành, nghề\tChỉ tiêu tuyển sinh\tGhi chú
+1\tVẽ thiết kế mỹ thuật có trợ giúp bằng máy tính\t5480212\t110
+2\tQuản lý doanh nghiệp\t5340420\t160
+3\tMarketing\t5340116\t130
+4\tQuản lý kinh doanh khách sạn\t5340422\t185
+5\tKế toán doanh nghiệp\t5340302\t190
+6\tThư ký văn phòng\t5320306\t110
+7\tTin học ứng dụng\t5480205\t145
 \tTổng cộng:\t\t1.030\n`,
-        decs2: `II. ĐỐI TƯỢNG, HỒ SƠ TUYỂN SINH\n
-1. Đối tượng tuyển sinh: Học sinh tốt nghiệp THCS.\n
-2. Hồ sơ tuyển sinh\n
-01 Bộ hồ sơ theo mẫu của Nhà trường - đựng trong 01 túi, gồm:\n
-- 01 Phiếu đăng kí xét tuyển trình độ trung cấp;\n
-- 01 Bản sơ yếu lí lịch (có xác nhận của chính quyền địa phương);\n
-- 01 Bản photo công chứng còn thời hạn: Bằng tốt nghiệp Trung học cơ sở (THCS) hoặc giấy chứng nhận tốt nghiệp tạm thời; học bạ THCS. Đối với học sinh xét tuyển đào tạo tại Nhà trường thì nộp bản gốc: Bằng tốt nghiệp THCS hoặc giấy chứng nhận tốt nghiệp tạm thời và học bạ THCS.\n
-- 01 Bản sao trích lục hoặc photo công chứng còn thời hạn của Giấy khai sinh;\n
-- 01 Bản photo công chứng còn thời hạn của Căn cước công dân;\n
-- 04 Ảnh cỡ 3 x 4 loại mới chụp trong vòng 6 tháng gần đây (ghi họ tên, ngày sinh sau mỗi tấm ảnh);\n
-- 01 Bản gốc giấy khám sức khỏe, cấp trong vòng 6 tháng, có xác nhận của cơ sở y tế.\n
-3. Hình thức nộp hồ sơ và lệ phí\n
-3.1. Tuyển sinh đào tạo tại Trường\n
-- Học sinh nộp trực tiếp tại trường hoặc gửi hồ sơ quan đường bưu điện đến Phòng Công tác HS-SV và tuyển sinh Nhà trường.\n
-- Lệ phí xét tuyển: 120.000 đồng/hồ sơ; học sinh nộp trực tiếp khi trường tiếp nhận hồ sơ hoặc chuyển khoản vào số tài khoản Nhà trường.\n
-3.2. Tuyển sinh đào tạo tại các Trung tâm GDNN-GDTX trên địa bàn Thành phố Hồ Chí Minh liên kết đào tạo với Nhà trường\n
+        decs2: `II. ĐỐI TƯỢNG, HỒ SƠ TUYỂN SINH
+1. Đối tượng tuyển sinh: Học sinh tốt nghiệp THCS.
+2. Hồ sơ tuyển sinh
+01 Bộ hồ sơ theo mẫu của Nhà trường - đựng trong 01 túi, gồm:
+- 01 Phiếu đăng kí xét tuyển trình độ trung cấp;
+- 01 Bản sơ yếu lí lịch (có xác nhận của chính quyền địa phương);
+- 01 Bản photo công chứng còn thời hạn: Bằng tốt nghiệp Trung học cơ sở (THCS) hoặc giấy chứng nhận tốt nghiệp tạm thời; học bạ THCS. Đối với học sinh xét tuyển đào tạo tại Nhà trường thì nộp bản gốc: Bằng tốt nghiệp THCS hoặc giấy chứng nhận tốt nghiệp tạm thời và học bạ THCS.
+- 01 Bản sao trích lục hoặc photo công chứng còn thời hạn của Giấy khai sinh;
+- 01 Bản photo công chứng còn thời hạn của Căn cước công dân;
+- 04 Ảnh cỡ 3 x 4 loại mới chụp trong vòng 6 tháng gần đây (ghi họ tên, ngày sinh sau mỗi tấm ảnh);
+- 01 Bản gốc giấy khám sức khỏe, cấp trong vòng 6 tháng, có xác nhận của cơ sở y tế.
+3. Hình thức nộp hồ sơ và lệ phí
+3.1. Tuyển sinh đào tạo tại Trường
+- Học sinh nộp trực tiếp tại trường hoặc gửi hồ sơ quan đường bưu điện đến Phòng Công tác HS-SV và tuyển sinh Nhà trường.
+- Lệ phí xét tuyển: 120.000 đồng/hồ sơ; học sinh nộp trực tiếp khi trường tiếp nhận hồ sơ hoặc chuyển khoản vào số tài khoản Nhà trường.
+3.2. Tuyển sinh đào tạo tại các Trung tâm GDNN-GDTX trên địa bàn Thành phố Hồ Chí Minh liên kết đào tạo với Nhà trường
 Học sinh xem thông báo tuyển sinh của các Trung tâm GDNN-GDTX trên địa bàn Thành phố Hồ Chí Minh liên kết đào tạo với Nhà trường để được tư vấn, nộp hồ sơ tuyển sinh tại trung tâm tổng hợp, gửi về Nhà trường xét tuyển.\n
-III. THỜI GIAN, ĐỊA ĐIỂM NHẬN HỒ SƠ\n
-1. Tuyển sinh đào tạo tại Nhà trường\n
-- Trường tuyển sinh liên tục trong năm 2026 từ ngày 01/02 đến khi đủ chỉ tiêu.\n
-- Thời gian: Từ thứ Hai đến thứ Bảy hằng tuần:\n
-+ Buổi sáng từ 08h00 đến 12h00;\n
-+ Buổi chiều từ 13h30 đến 16h30.\n
-- Địa điểm nhận hồ sơ: Phòng Công tác HS-SV và tuyển sinh, Trường Trung cấp Tin học Kinh tế Sài Gòn:\n
-+ Số 12-14-16-18 Nguyễn An Ninh, phường Bình Thạnh, Thành phố Hồ Chí Minh;\n
-+ Số 98, Phạm Văn Chiêu, phường Thông Tây Hội, Thành phố Hồ Chí Minh.\n
-2. Tuyển sinh đào tạo tại các Trung tâm GDNN-GDTX trên địa bàn Thành phố Hồ Chí Minh liên kết đào tạo với Nhà trường\n
-- Thời gian: Từ ngày 01/3 đến khi đủ chỉ tiêu (dự kiến 18/11/2026).\n
+III. THỜI GIAN, ĐỊA ĐIỂM NHẬN HỒ SƠ
+1. Tuyển sinh đào tạo tại Nhà trường
+- Trường tuyển sinh liên tục trong năm 2026 từ ngày 01/02 đến khi đủ chỉ tiêu.
+- Thời gian: Từ thứ Hai đến thứ Bảy hằng tuần:
++ Buổi sáng từ 08h00 đến 12h00;
++ Buổi chiều từ 13h30 đến 16h30.
+- Địa điểm nhận hồ sơ: Phòng Công tác HS-SV và tuyển sinh, Trường Trung cấp Tin học Kinh tế Sài Gòn:
++ Số 12-14-16-18 Nguyễn An Ninh, phường Bình Thạnh, Thành phố Hồ Chí Minh;
++ Số 98, Phạm Văn Chiêu, phường Thông Tây Hội, Thành phố Hồ Chí Minh.
+2. Tuyển sinh đào tạo tại các Trung tâm GDNN-GDTX trên địa bàn Thành phố Hồ Chí Minh liên kết đào tạo với Nhà trường
+- Thời gian: Từ ngày 01/3 đến khi đủ chỉ tiêu (dự kiến 18/11/2026).
 - Địa điểm nhận hồ sơ: Trung tâm GDNN-GDTX trên địa bàn Thành phố Hồ Chí Minh liên kết đào tạo với Trường Trung cấp Tin học Kinh tế Sài Gòn.\n
-IV. PHƯƠNG THỨC TUYỂN SINH\n
-Nhà trường thực hiện phương thức xét học bạ THCS.\n
-1. Tổ chức xét tuyển\n
-Trên cơ sở số lượng học sinh đăng kí/chỉ tiêu và quy định biên chế lớp học của ngành, nghề đào tạo; Nhà trường sẽ tổ chức xét tuyển theo từng đợt trong năm.\n
-2. Công bố trúng tuyển và triệu tập nhập học\n
+IV. PHƯƠNG THỨC TUYỂN SINH
+Nhà trường thực hiện phương thức xét học bạ THCS.
+1. Tổ chức xét tuyển
+Trên cơ sở số lượng học sinh đăng kí/chỉ tiêu và quy định biên chế lớp học của ngành, nghề đào tạo; Nhà trường sẽ tổ chức xét tuyển theo từng đợt trong năm.
+2. Công bố trúng tuyển và triệu tập nhập học
 Thời gian công bố học sinh trúng tuyển, phát hành giấy báo và tổ chức nhập học đào tạo cho học sinh trúng tuyển là sau 15 ngày kể từ ngày công bố trúng tuyển.\n
-V. CHƯƠNG TRÌNH ĐÀO TẠO\n
-Học sinh trúng tuyển được học song song hai chương trình đào tạo:\n
-1. Đào tạo văn hóa hệ GDTX cấp THPT (lớp 10, 11, 12)\n
-Sau 03 năm học THPT, học sinh đủ điều kiện sẽ được tham dự kỳ thi tốt nghiệp THPT quốc gia; bằng tốt nghiệp THPT theo quy định của Bộ Giáo dục và Đào tạo.\n
-2. Đào tạo nghề\n
-- Trung cấp chính quy theo ngành/nghề học sinh đăng ký xét tuyển;\n
+V. CHƯƠNG TRÌNH ĐÀO TẠO
+Học sinh trúng tuyển được học song song hai chương trình đào tạo:
+1. Đào tạo văn hóa hệ GDTX cấp THPT (lớp 10, 11, 12)
+Sau 03 năm học THPT, học sinh đủ điều kiện sẽ được tham dự kỳ thi tốt nghiệp THPT quốc gia; bằng tốt nghiệp THPT theo quy định của Bộ Giáo dục và Đào tạo.
+2. Đào tạo nghề
+- Trung cấp chính quy theo ngành/nghề học sinh đăng ký xét tuyển;
 - Thời gian đào tạo: 20 tháng, học sinh đủ điều kiện sẽ được Nhà trường cấp bằng tốt nghiệp trung cấp chính quy theo quy định của Bộ Giáo dục và Đào tạo.\n
-VI. QUYỀN LỢI CỦA HỌC SINH\n
-1. Học sinh tốt nghiệp được cấp 02 văn bằng\n
-- Bằng tốt nghiệp THPT;\n
-- Bằng tốt nghiệp Trung cấp chính quy theo ngành/nghề đã đăng kí khi nhập học.\n
-2. Học sinh tốt nghiệp THPT và trung cấp\n
-- Đủ điều kiện dự thi cao đẳng, đại học trong nước và quốc tế;\n
-- Được dự thi liên thông lên cao đẳng, đại học theo quy định của Bộ Giáo dục và Đào tạo; được liên thông thẳng lên đại học: Đại học Mở, Viện Smartech,…\n
-Thông tin chi tiết, cụ thể về tuyển sinh đào tạo học sinh, quý phụ huynh liên hệ trực tiếp theo số điện thoại 0901.309.866; Web: ies.edu.vn; Email: info@iescollege.edu.vn\n`,
+VI. QUYỀN LỢI CỦA HỌC SINH
+1. Học sinh tốt nghiệp được cấp 02 văn bằng
+- Bằng tốt nghiệp THPT;
+- Bằng tốt nghiệp Trung cấp chính quy theo ngành/nghề đã đăng kí khi nhập học.
+2. Học sinh tốt nghiệp THPT và trung cấp
+- Đủ điều kiện dự thi cao đẳng, đại học trong nước và quốc tế;
+- Được dự thi liên thông lên cao đẳng, đại học theo quy định của Bộ Giáo dục và Đào tạo; được liên thông thẳng lên đại học: Đại học Mở, Viện Smartech,…`,
         img: TSDT,
         imgBonus: [TSDT2, TSDT3],
       },
+
       {
         id: '11',
         newsTit: 'Kế hoạch tuyển sinh - năm học 2026-2027',
         desc: `Thực hiện Quyết định số /QĐ-THKTSG ngày / /2026 của Chủ tịch Hội đồng Quản trị Nhà trường về việc Ban hành Kế hoạch chỉ tiêu tuyển sinh đào tạo trình độ trung cấp - năm học 2026-2027;
         Trường Trung cấp Tin học Kinh tế Sài Gòn ban hành Kế hoạch tuyển sinh đào tạo năm học 2026 - 2027 như sau:
         I. MỤC ĐÍCH – YÊU CẦU
-        1. Mục đích\n
+        1. Mục đích
 - Hoàn thành chỉ tiêu tuyển sinh năm 2026 của Nhà tường;
 - Định hướng, xác định các nội dung, huy động các nguồn lực trong và ngoài nhà trường hoàn thành công tác tuyển sinh năm 2026 đạt được kết quả cao nhất;
 - Làm cơ sở hoạt động đào tạo của nhà trường trong năm học 2026 - 2027.
 2. Yêu cầu
 - Tổ chức thực hiện tuyển sinh đúng, chính xác, nghiêm túc theo quy chế, quy định tuyển sinh của Bộ Lao động – Thương binh và Xã hội, Bộ Giáo dục và Đào tạo và của Nhà trường.
-- Phân công rõ ràng trách nhiệm và nhiệm vụ của từng cá nhân thực hiện các nội dung tuyển sinh.
+- Phân công rõ ràng trách nhiệm và nhiệm vụ của từng cá nhân thực hiện các nội dung tuyển sinh.\n
 II. NỘI DUNG TUYỂN SINH
 1. Chỉ tiêu, ngành, nghề tuyển sinh
-STT\tTrình độ/ngành, nghề tuyển sinh\tMã ngành, nghề\tChỉ tiêu tuyển sinh\tGhi chú\n
-1.\tVẽ thiết kế mỹ thuật có trợ giúp bằng máy tính\t5480212\t110\n
-2.\tQuản lý doanh nghiệp\t5340420\t160\n
-3.\tMarketing\t5340116\t130\n
-4.\tQuản lý kinh doanh khách sạn\t5340422\t185\n
-5.\tKế toán doanh nghiệp\t5340302\t190\n
-6.\tThư ký văn phòng\t5320306\t110\n
-7.\tTin học ứng dụng\t5480205\t145\n
-\tTổng cộng:\t\t1.030\n
+STT\tTrình độ/ngành, nghề tuyển sinh\tMã ngành, nghề\tChỉ tiêu tuyển sinh\tGhi chú
+1.\tVẽ thiết kế mỹ thuật có trợ giúp bằng máy tính\t5480212\t110
+2.\tQuản lý doanh nghiệp\t5340420\t160
+3.\tMarketing\t5340116\t130
+4.\tQuản lý kinh doanh khách sạn\t5340422\t185
+5.\tKế toán doanh nghiệp\t5340302\t190
+6.\tThư ký văn phòng\t5320306\t110
+7.\tTin học ứng dụng\t5480205\t145
+\tTổng cộng:\t\t1.030
 2. Hình thức tuyển sinh, hồ sơ tuyển sinh, lệ phí và phương thức nộp hồ sơ
-2.1. Hình thức tuyển sinh\n
-Hình thức: Xét tuyển\n
-2.2. Hồ sơ tuyển sinh\n
-01 Bộ hồ sơ theo mẫu của Nhà trường - đựng trong 01 túi, gồm:\n
-- 01 Phiếu đăng kí xét tuyển trình độ trung cấp;\n
-- 01 Bản sơ yếu lí lịch (có xác nhận của chính quyền địa phương);\n
-- 01 Bản photo công chứng còn thời hạn: Bằng tốt nghiệp Trung học cơ sở (THCS) hoặc giấy chứng nhận tốt nghiệp tạm thời; học bạ THCS. Đối với học sinh xét tuyển đào tạo tại Nhà trường thì nộp bản gốc: Bằng tốt nghiệp THCS hoặc giấy chứng nhận tốt nghiệp tạm thời và học bạ THCS.\n
-- 01 Bản sao trích lục hoặc photo công chứng còn thời hạn của Giấy khai sinh;\n
-- 01 Bản photo công chứng còn thời hạn của Căn cước công dân;\n
-- 04 Ảnh cỡ 3 x 4 loại mới chụp trong vòng 6 tháng gần đây (ghi họ tên, ngày sinh sau mỗi tấm ảnh);\n
-- 01 Bản gốc giấy khám sức khỏe, cấp trong vòng 6 tháng, có xác nhận của cơ sở y tế.\n
-2.3. Phương thức nộp hồ sơ tuyển sinh\n
-- Nộp trực tiếp tại Nhà trường;\n
-- Nộp tại các cơ sở Nhà trường liên kết đào tạo;\n
-- Học sinh gửi hồ sơ qua đường bưu điện, địa chỉ nhận: Phòng Công tác HS-SV và tuyển sinh, Trường Trung cấp Tin học Kinh tế Sài Gòn:\n
-+ Cơ sở số 98, Phạm Văn Chiêu, phường Thông Tây Hội, Tp Hồ Chí Minh\n
-+ Cơ sở số 12-14-16-18 Nguyễn An Ninh, phường Bình Thạnh, Tp Hồ Chí Minh;\n
-2.4. Lệ phí xét tuyển\n
-- Lệ phí: 120.000 đồng/hồ sơ.\n
-- Học sinh nộp trực tiếp khi nộp hồ sơ tại Trường hoặc chuyển khoản vào số tài khoản Nhà trường.\n
-3. Đối tượng tuyển sinh: Học sinh đã tốt nghiệp THCS để đào tạo trình độ trung cấp với đào tạo văn hóa hệ giáo dục thường xuyên cấp THPT.\n
+2.1. Hình thức tuyển sinh
+Hình thức: Xét tuyển
+2.2. Hồ sơ tuyển sinh
+01 Bộ hồ sơ theo mẫu của Nhà trường - đựng trong 01 túi, gồm:
+- 01 Phiếu đăng kí xét tuyển trình độ trung cấp;
+- 01 Bản sơ yếu lí lịch (có xác nhận của chính quyền địa phương);
+- 01 Bản photo công chứng còn thời hạn: Bằng tốt nghiệp Trung học cơ sở (THCS) hoặc giấy chứng nhận tốt nghiệp tạm thời; học bạ THCS. Đối với học sinh xét tuyển đào tạo tại Nhà trường thì nộp bản gốc: Bằng tốt nghiệp THCS hoặc giấy chứng nhận tốt nghiệp tạm thời và học bạ THCS.
+- 01 Bản sao trích lục hoặc photo công chứng còn thời hạn của Giấy khai sinh;
+- 01 Bản photo công chứng còn thời hạn của Căn cước công dân;
+- 04 Ảnh cỡ 3 x 4 loại mới chụp trong vòng 6 tháng gần đây (ghi họ tên, ngày sinh sau mỗi tấm ảnh);
+- 01 Bản gốc giấy khám sức khỏe, cấp trong vòng 6 tháng, có xác nhận của cơ sở y tế.
+2.3. Phương thức nộp hồ sơ tuyển sinh
+- Nộp trực tiếp tại Nhà trường;
+- Nộp tại các cơ sở Nhà trường liên kết đào tạo;
+- Học sinh gửi hồ sơ qua đường bưu điện, địa chỉ nhận: Phòng Công tác HS-SV và tuyển sinh, Trường Trung cấp Tin học Kinh tế Sài Gòn:
++ Cơ sở số 98, Phạm Văn Chiêu, phường Thông Tây Hội, Tp Hồ Chí Minh
+2.4. Lệ phí xét tuyển
+Liên hệ phòng tuyển sinh để nắm thông tin chi tiết
+3. Đối tượng tuyển sinh: Học sinh đã tốt nghiệp THCS để đào tạo trình độ trung cấp với đào tạo văn hóa hệ giáo dục thường xuyên cấp THPT.
 4. Thời gian tuyển sinh, xét tuyển, công bố trúng tuyển
-4.1. Đăng kí tuyển sinh\n
+4.1. Đăng kí tuyển sinh
 Nhà trường tuyển sinh liên tục trong năm 2026, từ ngày 01/02/2026 cho đến khi đủ chỉ tiêu tuyển sinh.
 4.2. Tổ chức xét tuyển
-Trên cơ sở số lượng học sinh đăng kí/chỉ tiêu và quy định về biên chế lớp học của ngành, nghề đào tạo; Nhà trường sẽ tổ chức xét tuyển theo từng đợt trong năm.\n
+Trên cơ sở số lượng học sinh đăng kí/chỉ tiêu và quy định về biên chế lớp học của ngành, nghề đào tạo; Nhà trường sẽ tổ chức xét tuyển theo từng đợt trong năm.
 4.3. Công bố trúng tuyển và triệu tập nhập học
 Thời gian công bố học sinh trúng tuyển, phát hành giấy báo và tổ chức nhập học cho học sinh trúng tuyển là sau 15 ngày kể từ ngày công bố trúng tuyển.\n`,
         decs2: `III. THỜI GIAN THỰC HIỆN VÀ PHÂN CÔNG NHIỆM VỤ
@@ -428,6 +433,14 @@ Theo nhận xét của Anh Trần Xuân Hùng – lớp AHN14: “Buổi giao l�
 Giao lưu chuyên đề tháng 2 đã mang lại cho sinh viên nhiều kiến thức hữu ích. Sinh viên có thể tiếp tục đặt các câu hỏi cho diễn giả hoặc cho các giảng viên doanh nghiệp của mình trên diễn đàn lớp học. Niềm vui của sinh viên trong một giao lưu bổ ích, chị Đào Thị Huyền – Lớp EHCT54 chia sẻ cảm xúc “Tôi rất cảm ơn Trung tâm đã tổ chức buổi giao lưu thật hữu ích cho sinh viên EHOU. Tôi đang học ngành Luật kinh tế, rất mong được tham dự nhiều buổi giao lưu chuyên ngành luật như vậy để nâng cao kiến thức hơn”.`,
         img: DHM2,
         imgBonus: [HTDHM],
+      },
+      {
+        id: '16',
+        newsTit: 'Hơn 17.000 học sinh TP.HCM bỏ thi lớp 10',
+        desc: 'Theo bài viết đăng trên trang thông tin của Trường Đại học Sư phạm Kỹ thuật TP.HCM, trong kỳ tuyển sinh lớp 10 tại TP.HCM có hơn 17.000 học sinh không đăng ký dự thi vào các trường THPT công lập. Thực tế này cho thấy xu hướng phân luồng sau THCS đang ngày càng rõ nét khi nhiều học sinh lựa chọn các hướng đi khác phù hợp hơn với năng lực và định hướng nghề nghiệp của bản thân. Bài viết cho biết bên cạnh hệ THPT công lập, học sinh hiện có nhiều lựa chọn như trung cấp nghề, giáo dục thường xuyên, học nghề kết hợp học văn hóa hoặc các chương trình đào tạo kỹ',
+        img: NOEX,
+        linkTo:
+          'https://lex.hcmute.edu.vn/tin-tuc/hon-17000-hoc-sinh-tphcm-bo-thi-lop-10-108211.html',
       },
     ],
     [],

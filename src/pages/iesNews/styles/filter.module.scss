@@ -25,3 +25,10 @@
     }
   }
 }
+
+.inputSre :global(.ant-input-outlined:focus),
+.inputSre :global(.ant-input-outlined:focus-within) {
+  box-shadow: 0 0 0 2px rgba(19, 108, 163, 0.38) !important;
+  border: none !important;
+  border-radius: 6px;
+}

@@ -1,8 +1,16 @@
 import { DownOutlined, ReloadOutlined, RightOutlined } from '@ant-design/icons';
-import { Button, Checkbox, Collapse, DatePicker, Flex, Input } from 'antd';
+import {
+  AutoComplete,
+  Button,
+  Checkbox,
+  Collapse,
+  DatePicker,
+  Flex,
+  Input,
+} from 'antd';
 import dayjs from 'dayjs';
 import { useState } from 'react';
-import type { NewsFiltersState } from '../hooks';
+import type { NewsFiltersState, NewsLstData } from '../hooks';
 import styles from '../styles/filter.module.scss';
 import { Title } from '@/components';
 import { authorNewsOpts, categoryNewsOpts, fieldNewsOpts } from '@/utils';
@@ -13,14 +21,16 @@ interface INewsFilters {
   filters: NewsFiltersState;
   updateFilters: (patch: Partial<NewsFiltersState>) => void;
   resetFilters: () => void;
+  newsSreachDt: Array<NewsLstData>;
 }
 
 type NewsCollfilter = 'date' | 'category' | 'author' | 'field';
 
 const NewsFilters: React.FC<INewsFilters> = (props) => {
-  const { filters, updateFilters, resetFilters } = props;
+  const { filters, updateFilters, resetFilters, newsSreachDt } = props;
   const [activeKeys, setActiveKeys] = useState<Array<NewsCollfilter>>([]);
-
+  const [searchValue, setSearchValue] = useState('');
+  const [newsOpts, setNewsOpts] = useState<Array<{ value: string }>>([]);
   const isCollAct = (key: NewsCollfilter) => activeKeys.includes(key);
   const collLabel = (key: NewsCollfilter, tit: string) => (
     <Title
@@ -133,12 +143,18 @@ const NewsFilters: React.FC<INewsFilters> = (props) => {
     },
   ];
 
+  const handleRs = () => {
+    setSearchValue('');
+    setNewsOpts([]);
+    resetFilters();
+  };
+
   return (
     <Flex vertical gap={10} className='!mr-10'>
       <Title className='!text-6xl'>Khám phá tất cả Tin Tức IES</Title>
       <Button
         type='link'
-        onClick={resetFilters}
+        onClick={handleRs}
         className='!p-0 !text-start !flex !justify-start'
       >
         <Title level={4} color='black' className='!m-0 !mb-1'>
@@ -146,15 +162,65 @@ const NewsFilters: React.FC<INewsFilters> = (props) => {
         </Title>
         <ReloadOutlined className='!text-blue-500 !text-xl -scale-x-100' />
       </Button>
-      <Input
-        placeholder='Tìm kiếm tin tức'
-        value={filters.keyword}
-        onChange={(e) =>
+      <AutoComplete
+        className='!w-full'
+        options={newsOpts}
+        value={searchValue}
+        onSearch={(value) => {
+          setSearchValue(value);
+
+          if (!value.trim()) {
+            setNewsOpts([]);
+            return;
+          }
+
+          const filtered = newsSreachDt
+            .filter(
+              (item) =>
+                item.newsTit.toLowerCase().includes(value.toLowerCase()) ||
+                item.desc.toLowerCase().includes(value.toLowerCase()),
+            )
+            .map((item) => ({
+              value: item.newsTit,
+            }));
+
+          const unique = Array.from(
+            new Map(filtered.map((item) => [item.value, item])).values(),
+          );
+
+          setNewsOpts(unique.slice(0, 5));
+        }}
+        onSelect={(value) => {
           updateFilters({
-            keyword: e.target.value,
-          })
-        }
-      />
+            keyword: value,
+          });
+          setSearchValue(value);
+        }}
+      >
+        <Input.Search
+          placeholder='Tìm kiếm tin tức'
+          allowClear
+          onSearch={(value) => {
+            updateFilters({
+              keyword: value,
+            });
+          }}
+          onChange={(e) => {
+            const value = e.target.value;
+
+            setSearchValue(value);
+
+            if (!value) {
+              updateFilters({
+                keyword: '',
+              });
+
+              setNewsOpts([]);
+            }
+          }}
+          className={styles.inputSre}
+        />
+      </AutoComplete>
 
       <div className='!border-b !border-[#cfd2d8]'>
         <Collapse

@@ -6,9 +6,8 @@ import Row from 'antd/es/row';
 import Space from 'antd/es/space';
 import { useTranslation } from 'react-i18next';
 import MediaQuery from 'react-responsive';
-import fb from '@/assets/imgs/fb_logo.webp';
+import { socialLinks } from '../hooks';
 import LogoFooter from '@/assets/imgs/ies_logo_horizo_dark.webp';
-import zalo from '@/assets/imgs/zl_logo.webp';
 import { Text, Title } from '@/components';
 
 const FooterIes: React.FC = () => {
@@ -31,16 +30,6 @@ const FooterIes: React.FC = () => {
     {
       key: 5,
       label: t('workingTime'),
-    },
-  ];
-
-  const socialLinks = [
-    { key: 1, href: 'https://zalo.me/0901309866', img: zalo, label: 'Zalo' },
-    {
-      key: 2,
-      href: 'https://www.facebook.com/iescollege.edu.vn',
-      img: fb,
-      label: 'Facebook',
     },
   ];
 

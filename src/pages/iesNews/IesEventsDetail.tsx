@@ -3,17 +3,23 @@ import Breadcrumb from 'antd/es/breadcrumb';
 import { useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useMediaQuery } from 'react-responsive';
-import { useParams } from 'react-router-dom';
+import { useParams, useSearchParams } from 'react-router-dom';
 import ContactKey from '../home/components/ContactKey';
 import DetailsBonus from './components/DetailsBonus';
 import { useEventLstData, useEventsData, useNewsLstData } from './hooks';
 import { IesClSection, Text } from '@/components';
 import { PrefetchLink } from '@/components/PrefetchLink';
 import { ROUTES } from '@/constants';
+import { useUserStore } from '@/store';
 
 const IesEventsDetails = () => {
   const { t } = useTranslation('iesEventsDetail');
+  const { isDark } = useUserStore();
   const { id } = useParams();
+  const [searchParams] = useSearchParams();
+  const authorN = searchParams.get('authorN');
+  const evsDate = searchParams.get('evsDate');
+  const currUrl = window.location.href;
   const { data } = useEventsData();
 
   const { data: newsLst } = useNewsLstData();
@@ -52,7 +58,7 @@ const IesEventsDetails = () => {
           <PrefetchLink
             to={ROUTES.EVENTS}
             style={{
-              color: 'black',
+              color: isDark ? 'white' : 'black',
               fontWeight: 700,
               fontSize: '15px',
             }}
@@ -63,13 +69,16 @@ const IesEventsDetails = () => {
       },
       {
         title: (
-          <Text color='#545969' className='!text-[16px] !font-bold'>
+          <Text
+            color={isDark ? '#74abf9' : '#545969'}
+            className='!text-[16px] !font-bold'
+          >
             {t('eventD')}
           </Text>
         ),
       },
     ],
-    [t],
+    [t, isDark],
   );
 
   const paddingClass = mb || tl ? '' : '';
@@ -85,7 +94,11 @@ const IesEventsDetails = () => {
         className={`${
           mb ? '!ml-5 !mb-10' : tl ? '!ml-10 !mb-15' : '!ml-25 !py-15'
         }`}
-        separator={<RightOutlined className='!text-black mx-6' />}
+        separator={
+          <RightOutlined
+            className={`${isDark ? '!text-white' : '!text-black'} px-6`}
+          />
+        }
         items={breadcrumbItems}
       />
       {detailDt && latestNews && latestEv && (
@@ -99,14 +112,18 @@ const IesEventsDetails = () => {
           decs2={detailDt.decs2 ? detailDt.decs2 : ''}
           img={detailDt.img}
           imgBonus={detailDt.imgBonus ? detailDt.imgBonus : []}
+          ato={authorN ? authorN : ''}
+          date={evsDate ? evsDate : ''}
           linkTo={detailDt.desc ? detailDt.linkTo : ''}
+          urlForShare={currUrl}
           paddingClass={paddingClass}
           titleLv={titleLv}
           nOe={t('events')}
           readOri={t('readOri')}
           recentNews={latestNews}
           recentEv={latestEv}
-          children={<DetailsBonus />}
+          dark={isDark}
+          children={<DetailsBonus dark={isDark} />}
         />
       )}
       <ContactKey />

@@ -19,7 +19,7 @@ interface INewsLst {
   totalItem: number;
 }
 
-type NewsNavi = {
+export type NewsNavi = {
   id: string;
   authorN: string;
   newsDate: string;
@@ -89,7 +89,7 @@ const NewsLst: React.FC<INewsLst> = (props) => {
         {newsLstdata.map((newsLst) => (
           <Card
             key={newsLst.id}
-            className={`${!mb ? '!py-5 !px-10' : '!p-5 !mx-3'} !bg-gray-400 cursor-pointer`}
+            className={`${!mb ? '!py-5 !px-10' : '!p-5 !mx-3'} ${isDark ? '!bg-[#191f23]' : '!bg-gray-400'} cursor-pointer`}
             onClick={() =>
               handleNavigate({
                 id: newsLst.id,
@@ -133,6 +133,7 @@ const NewsLst: React.FC<INewsLst> = (props) => {
                   style={{
                     whiteSpace: 'pre-line',
                   }}
+                  color={isDark ? 'white' : 'black'}
                 >
                   {newsLst.desc}
                 </Text>

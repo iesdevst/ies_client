@@ -1,9 +1,23 @@
-import { Col, Divider, Flex, Image, List, Row } from 'antd';
+import { RightOutlined } from '@ant-design/icons';
+import { Button, Col, Divider, Flex, Image, List, Row } from 'antd';
+import { useNavigate } from 'react-router-dom';
 import type { NaiPageLayoutProps } from '../types';
-import fb from '@/assets/imgs/fb_logo.webp';
+import FB from '@/assets/imgs/fb_logo.webp';
+import LINKEDIN from '@/assets/imgs/linkedin_logo.webp';
 import NAITIT from '@/assets/imgs/nai_tit.png';
-import zalo from '@/assets/imgs/zl_logo.webp';
+import X from '@/assets/imgs/x_logo.webp';
 import { Text, Title } from '@/components';
+import { ROUTES } from '@/constants';
+import type { EvsNavi } from '@/pages/iesNews/components/EvsLst';
+import type { NewsNavi } from '@/pages/iesNews/components/NewsLst';
+
+type SocialPlat = 'facebook' | 'linkedin' | 'x';
+
+type SocialShareType = {
+  key: SocialPlat;
+  icon: string;
+  alt: string;
+};
 
 const NaiPage: React.FC<NaiPageLayoutProps> = (props) => {
   const {
@@ -15,6 +29,7 @@ const NaiPage: React.FC<NaiPageLayoutProps> = (props) => {
     imgBonus,
     img,
     linkTo,
+    urlForShare,
     mb,
     nOe,
     readOri,
@@ -24,12 +39,68 @@ const NaiPage: React.FC<NaiPageLayoutProps> = (props) => {
     recentNews,
     recentEv,
     children,
+    dark,
   } = props;
+
+  const navigate = useNavigate();
+
+  const socialShare: Array<SocialShareType> = [
+    {
+      key: 'facebook',
+      icon: FB,
+      alt: 'facebook-share',
+    },
+    {
+      key: 'x',
+      icon: X,
+      alt: 'x-share',
+    },
+    {
+      key: 'linkedin',
+      icon: LINKEDIN,
+      alt: 'linkin-share',
+    },
+  ] as const;
+
+  const handleShare = async (platform: SocialPlat) => {
+    const shareUrls = {
+      facebook: `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(urlForShare)}`,
+      x: `https://twitter.com/intent/tweet?url=${encodeURIComponent(urlForShare)}&text=${encodeURIComponent(newsTit || '')}`,
+      linkedin: `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(urlForShare)}`,
+    };
+
+    // mobile native share first
+    if (mb && tl && navigator.share) {
+      await navigator.share({
+        title: newsTit,
+        url: urlForShare,
+      });
+      return;
+    }
+
+    window.open(shareUrls[platform], '_blank');
+  };
+
+  const hdlNaviEvs = (navi: EvsNavi) => {
+    const searchParams = new URLSearchParams({
+      authorN: navi.authorN,
+      evsDate: navi.evsDate,
+    });
+    navigate(`${ROUTES.EVENTS_DETAILS}/${navi.id}?${searchParams.toString()}`);
+  };
+
+  const hdlNaviNews = (navi: NewsNavi) => {
+    const searchParams = new URLSearchParams({
+      authorN: navi.authorN,
+      newsDate: navi.newsDate,
+    });
+    navigate(`${ROUTES.NEWS_DETAILS}/${navi.id}?${searchParams.toString()}`);
+  };
 
   return (
     <section>
       <div
-        className={`${mb ? 'pt-3 !px-3.5' : tl ? 'pt-5 !px-7' : 'mx-5 px-12 pt-10'} !rounded-4xl !bg-[#bfcce6] pb-20`}
+        className={`${mb ? 'pt-3 !px-3.5' : tl ? 'pt-5 !px-7' : 'mx-5 px-12 pt-10'} ${dark ? '!bg-[#324e65]' : '!bg-[#bfcce6]'} !rounded-4xl pb-20`}
       >
         <div
           className={`${mb ? '!space-y-3 !py-3' : tl ? '!space-y-5 !pb-10 !pt-5' : '!space-y-7 !pb-12 !pt-5'}`}
@@ -42,7 +113,7 @@ const NaiPage: React.FC<NaiPageLayoutProps> = (props) => {
               >
                 <Title
                   level={mb || tl ? 3 : 5}
-                  className={`${mb ? '' : '!w-1/2'} !text-center italic !text-black`}
+                  className={`${mb ? '' : '!w-1/2'} !text-center italic`}
                 >
                   {nOe}
                 </Title>
@@ -57,7 +128,7 @@ const NaiPage: React.FC<NaiPageLayoutProps> = (props) => {
               </Row>
               <Title
                 level={titleLv}
-                className={`${mb ? '' : '!w-3/4'} !text-start !text-black !m-0 `}
+                className={`${mb ? '' : '!w-3/4'} !text-start !m-0 `}
               >
                 {newsTit}
               </Title>
@@ -87,33 +158,38 @@ const NaiPage: React.FC<NaiPageLayoutProps> = (props) => {
               </Col>
 
               <Col>
-                <Text className='!block'>{ato}</Text>
-                <Text className='!block'>{date}</Text>
+                <Text className='!block' color={dark ? 'white' : 'black'}>
+                  {ato}
+                </Text>
+                <Text className='!block' color={dark ? 'white' : 'black'}>
+                  {date}
+                </Text>
               </Col>
             </Row>
             <Col className={mb ? '' : '!mr-30'}>
-              <Title level={5} className='!m-0'>
+              <Title level={5} className='!m-0 !mb-1.5'>
                 Share to
               </Title>
-              <Row>
-                <Image
-                  src={fb}
-                  alt=''
-                  width={35}
-                  height={35}
-                  className='p-[4px] rounded-full'
-                  preview={false}
-                  loading='lazy'
-                />
-                <Image
-                  src={zalo}
-                  alt=''
-                  width={35}
-                  height={35}
-                  className='p-[4px] rounded-full'
-                  preview={false}
-                  loading='lazy'
-                />
+              <Row gutter={12}>
+                {socialShare.map((item) => (
+                  <Col key={item.key}>
+                    <Button
+                      type='text'
+                      onClick={() => handleShare(item.key)}
+                      className='cursor-pointer !p-0'
+                    >
+                      <Image
+                        src={item.icon}
+                        alt={item.alt}
+                        width={38}
+                        height={38}
+                        className='p-0.5 rounded-full hover:scale-105 transition-all'
+                        preview={false}
+                        loading='lazy'
+                      />
+                    </Button>
+                  </Col>
+                ))}
               </Row>
             </Col>
           </Flex>
@@ -134,14 +210,14 @@ const NaiPage: React.FC<NaiPageLayoutProps> = (props) => {
             <Col xs={24} lg={16}>
               <Flex
                 vertical
-                justify='center'
-                align='center'
+                align='flex-start'
                 className={paddingClass}
                 gap={40}
               >
                 <Text
                   className='!block !text-lg'
                   style={{ whiteSpace: 'pre-line' }}
+                  color={dark ? 'white' : 'black'}
                 >
                   {decs}
                 </Text>
@@ -160,6 +236,7 @@ const NaiPage: React.FC<NaiPageLayoutProps> = (props) => {
                   <Text
                     className='!block !text-lg'
                     style={{ whiteSpace: 'pre-line' }}
+                    color={dark ? 'white' : 'black'}
                   >
                     {decs2}
                   </Text>
@@ -167,7 +244,10 @@ const NaiPage: React.FC<NaiPageLayoutProps> = (props) => {
 
                 {linkTo && (
                   <a href={linkTo} target='blank' rel='noopener noreferrer'>
-                    <Text color='blue' className='!underline !text-lg'>
+                    <Text
+                      color={dark ? '#b1e0f7' : 'blue'}
+                      className='!underline !text-lg'
+                    >
                       {readOri}
                     </Text>
                   </a>
@@ -185,7 +265,16 @@ const NaiPage: React.FC<NaiPageLayoutProps> = (props) => {
                     itemLayout='horizontal'
                     dataSource={recentNews}
                     renderItem={(item) => (
-                      <List.Item>
+                      <List.Item
+                        className='cursor-pointer'
+                        onClick={() =>
+                          hdlNaviNews({
+                            id: item.id,
+                            authorN: item.authorN,
+                            newsDate: item.newsDate,
+                          })
+                        }
+                      >
                         <List.Item.Meta
                           avatar={
                             <Image
@@ -212,6 +301,18 @@ const NaiPage: React.FC<NaiPageLayoutProps> = (props) => {
                       </List.Item>
                     )}
                   />
+
+                  <Button type='text' onClick={() => navigate(ROUTES.NEWS)}>
+                    <Title
+                      className={`!m-0 ${dark ? '!text-white' : '!text-black'}`}
+                      level={4}
+                    >
+                      Khám phá tất cả tin tức
+                    </Title>
+                    <div className='w-full h-full !bg-blue-500 rounded-r-full flex items-center justify-center px-3'>
+                      <RightOutlined className='!text-white !font-semibold' />
+                    </div>
+                  </Button>
                 </div>
 
                 <Divider />
@@ -224,7 +325,16 @@ const NaiPage: React.FC<NaiPageLayoutProps> = (props) => {
                     itemLayout='horizontal'
                     dataSource={recentEv}
                     renderItem={(item) => (
-                      <List.Item>
+                      <List.Item
+                        className='cursor-pointer'
+                        onClick={() =>
+                          hdlNaviEvs({
+                            id: item.id,
+                            authorN: item.authorN,
+                            evsDate: item.evDate,
+                          })
+                        }
+                      >
                         <List.Item.Meta
                           avatar={
                             <Image
@@ -237,11 +347,26 @@ const NaiPage: React.FC<NaiPageLayoutProps> = (props) => {
                             />
                           }
                           title={<Title level={5}>{item.eventTit}</Title>}
-                          description={<Text>{item.evDate}</Text>}
+                          description={
+                            <Text color={dark ? 'white' : 'black'}>
+                              {item.evDate}
+                            </Text>
+                          }
                         />
                       </List.Item>
                     )}
                   />
+                  <Button type='text' onClick={() => navigate(ROUTES.EVENTS)}>
+                    <Title
+                      className={`!m-0 ${dark ? '!text-white' : '!text-black'}`}
+                      level={4}
+                    >
+                      Khám phá tất cả sự kiện
+                    </Title>
+                    <div className='w-full h-full !bg-blue-500 rounded-r-full flex items-center justify-center px-3'>
+                      <RightOutlined className='!text-white !font-semibold' />
+                    </div>
+                  </Button>
                 </div>
               </Flex>
             </Col>

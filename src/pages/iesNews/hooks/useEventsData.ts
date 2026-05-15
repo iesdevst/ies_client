@@ -1,5 +1,7 @@
 import { useMemo } from 'react';
 import EVAI2 from '@/assets/imgs/ev_claude.webp';
+import EVTSTS from '@/assets/imgs/ev_thcsts.webp';
+import EVTSTS2 from '@/assets/imgs/ev_thcsts_p2.webp';
 import EVAI from '@/assets/imgs/events_ai.webp';
 import EVTS1 from '@/assets/imgs/evts_p1.webp';
 import EVTS2 from '@/assets/imgs/evts_p1.webp';
@@ -13,18 +15,18 @@ export const useEventsData = (): { data: Array<EventsData> } => {
     () => [
       {
         id: '1',
-        eventTit: 'HOẠT ĐỘNG TUYỂN SINH & HƯỚNG NGHIỆP - Kết nối học sinh',
-        desc: `📌 HOẠT ĐỘNG TUYỂN SINH & HƯỚNG NGHIỆP NGÀY 22/04/2026
-Ngày 22/04/2026, Trường Trung cấp Tin học Kinh tế Sài Gòn đã vinh dự được Trường THCS Trần Quang Khải tạo điều kiện tổ chức buổi gặp mặt và hướng nghiệp dành cho 15 lớp học sinh khối 9.
-Địa điểm: Số 641 đường Trần Thị Năm, KP 43, P. Trung Mỹ Tây, TP. HCM
-Tại buổi sinh hoạt, các em học sinh đã được:
-- Tìm hiểu về định hướng nghề nghiệp sau khi tốt nghiệp THCS
-- Giới thiệu chương trình học song bằng – vừa học văn hóa vừa học nghề
-- Đặc biệt, cơ hội học nghề miễn phí 100% theo Nghị định 238 của Nhà nước`,
+        eventTit:
+          'HOẠT ĐỘNG TUYỂN SINH & HƯỚNG NGHIỆP - Kết nối học sinh Trần Quang Khải',
+        desc: `Ngày 22/04/2026, Trường Trung cấp Tin học Kinh tế Sài Gòn đã phối hợp với Trường THCS Trần Quang Khải tổ chức chương trình tư vấn, hướng nghiệp dành cho học sinh khối 9. Sự kiện thu hút sự tham gia của 15 lớp học sinh, diễn ra tại số 641 đường Trần Thị Năm, khu phố 43, phường Trung Mỹ Tây, TP. Hồ Chí Minh.
+Trong bối cảnh học sinh đứng trước nhiều lựa chọn sau khi hoàn thành chương trình THCS, hoạt động hướng nghiệp được xem là giải pháp thiết thực nhằm giúp các em có định hướng phù hợp với năng lực, sở thích cũng như điều kiện thực tế của bản thân.
+Tại chương trình, đại diện Trường Trung cấp Tin học Kinh tế Sài Gòn đã giới thiệu tổng quan về các ngành đào tạo, đồng thời phân tích xu hướng nghề nghiệp và nhu cầu nhân lực trên thị trường hiện nay. Bên cạnh đó, lộ trình học tập sau THCS cũng được tư vấn cụ thể, giúp học sinh có cái nhìn rõ ràng hơn về các hướng đi trong tương lai.
+Một trong những nội dung nhận được sự quan tâm đặc biệt là chương trình học song bằng – mô hình kết hợp giữa học văn hóa và học nghề. Chương trình này giúp học sinh vừa hoàn thành kiến thức phổ thông, vừa trang bị kỹ năng nghề nghiệp cần thiết, từ đó nâng cao cơ hội việc làm sau khi tốt nghiệp.`,
         img: EVTS1,
-        decs2: `Không chỉ cung cấp thông tin bổ ích, chương trình còn mang đến không khí sôi nổi với phần mini game giao lưu, nơi các em học sinh hào hứng tham gia và nhận được nhiều phần quà hấp dẫn 🎁
-✨ Buổi gặp mặt đã diễn ra thành công tốt đẹp, góp phần giúp các em học sinh có thêm định hướng rõ ràng cho tương lai của mình.
-Xin chân thành cảm ơn sự hỗ trợ và phối hợp từ Trường THCS Trần Quang Khải!
+        decs2: `Ngoài ra, thông tin về chính sách hỗ trợ của Nhà nước với việc miễn học phí học nghề 100% cũng được giới thiệu chi tiết. Chính sách này mở ra cơ hội tiếp cận giáo dục nghề nghiệp cho nhiều học sinh, đặc biệt là những em có hoàn cảnh khó khăn.
+Không khí buổi hướng nghiệp trở nên sôi nổi hơn với các hoạt động giao lưu, mini game có thưởng. Nhiều học sinh hào hứng tham gia, qua đó tạo sự gắn kết và tăng tính tương tác trong suốt chương trình.
+Theo đại diện ban tổ chức, việc đẩy mạnh công tác hướng nghiệp tại các trường THCS đóng vai trò quan trọng trong việc giúp học sinh nhận diện đúng năng lực bản thân, tránh lựa chọn ngành nghề mang tính cảm tính, đồng thời góp phần nâng cao hiệu quả phân luồng trong giáo dục.
+Chương trình đã diễn ra thành công tốt đẹp, mang lại nhiều thông tin hữu ích và góp phần giúp học sinh Trường THCS Trần Quang Khải có thêm cơ sở để định hướng tương lai.
+Nhân dịp này, Trường Trung cấp Tin học Kinh tế Sài Gòn gửi lời cảm ơn đến Ban Giám hiệu Trường THCS Trần Quang Khải đã tạo điều kiện và phối hợp tổ chức chương trình.
 ==========================================
 🏫  Trường Trung Cấp Tin Học Kinh Tế Sài Gòn
 👉 Địa chỉ: Số 98 Phạm Văn Chiêu, phường Thông Tây Hội, Thành phố Hồ Chí Minh\n`,
@@ -91,6 +93,16 @@ Hiện tại, với sản phẩm MISA SME.NET 2015 đã và đang thực hiện 
 Như vậy, thông qua hoạt động hợp tác đào tạo, MISA đã chính thức kết nối và trở thành người bạn thân thiết của các thầy cô và sinh viên của trường Trung cấp Tin học-Kinh tế Sài Gòn IESCollege.
 Với hệ thống giáo trình được MISA biên soạn công phu, phần mềm tiện ích và phổ biến cùng các kênh hướng dẫn, hỗ trợ tận tình, các phần mềm của MISA đã được thầy cô IESCollege đón nhận và đồng hành cùng các bạn tân sinh viên trong thời gian sắp tới.`,
         img: MISA,
+      },
+      {
+        id: '5',
+        eventTit:
+          'TĂNG CƯỜNG HƯỚNG NGHIỆP cho học sinh lớp 9 tại trường THCS Tân Sơn',
+        desc: 'Vừa qua, Trường Trung cấp Tin học Kinh tế Sài Gòn đã phối hợp tổ chức chương trình tư vấn, hướng nghiệp cho học sinh khối 9 tại Trường THCS Tân Sơn (địa chỉ: 62/27 Nguyễn Duy Cung, Phường An Hội Tây, TP. Hồ Chí Minh). Chương trình nhằm cung cấp thông tin và định hướng kịp thời cho học sinh trước khi bước vào giai đoạn lựa chọn con đường học tập sau khi tốt nghiệp THCS. Tại buổi tư vấn, đại diện Trường Trung cấp Tin học Kinh tế Sài Gòn đã giới thiệu đến học sinh các ngành đào tạo đang có nhu cầu cao trên thị trường lao động, đồng thời phân tích lộ trình học tập phù hợp với từng đối tượng. Đặc biệt, chính sách hỗ trợ của Nhà nước về việc miễn học phí học nghề 100% cho học sinh tốt nghiệp THCS tiếp tục là nội dung nhận được nhiều sự quan tâm. Bên cạnh đó, chương trình học song bằng – kết hợp giữa học nghề và học văn hóa – cũng được giới thiệu như một giải pháp linh hoạt, giúp học sinh vừa hoàn thiện trình độ học vấn vừa có tay nghề vững chắc.',
+        decs2:
+          'Trong khuôn khổ chương trình, học sinh đã trực tiếp trao đổi với đội ngũ tư vấn về các vấn đề liên quan đến lựa chọn ngành nghề, cơ hội việc làm sau tốt nghiệp cũng như môi trường học tập thực tiễn tại nhà trường. Nhiều câu hỏi thực tế đã được giải đáp, góp phần giúp học sinh có cái nhìn cụ thể và rõ ràng hơn về định hướng tương lai. Theo đánh giá của ban tổ chức, hoạt động hướng nghiệp tại các trường THCS đóng vai trò quan trọng trong việc giúp học sinh nhận diện năng lực, sở thích và điều kiện của bản thân, từ đó lựa chọn hướng đi phù hợp, tránh tình trạng lựa chọn ngành nghề theo cảm tính.Dự kiến trong thời gian tới, Trường Trung cấp Tin học Kinh tế Sài Gòn sẽ tiếp tục đẩy mạnh công tác tư vấn hướng nghiệp tại nhiều trường THCS trên địa bàn TP. Hồ Chí Minh, góp phần nâng cao nhận thức về giáo dục nghề nghiệp và mở rộng cơ hội học tập cho học sinh sau THCS.',
+        img: EVTSTS,
+        imgBonus: [EVTSTS2],
       },
     ],
     [],
