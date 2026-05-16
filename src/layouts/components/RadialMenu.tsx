@@ -1,6 +1,7 @@
 import { motion, AnimatePresence } from 'framer-motion';
 import { useEffect, useRef, useState } from 'react';
 import { socialCn } from '../hooks';
+import { Text } from '@/components';
 
 const RadialMenu = () => {
   const [open, setOpen] = useState(false);
@@ -46,7 +47,7 @@ const RadialMenu = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: 20 }}
-          className='fixed bottom-60 right-50 z-50'
+          className={`${open ? 'bottom-32 right-36' : 'bottom-12 right-12'} fixed z-50`}
         >
           {/* 🔥 CENTER WRAPPER (QUAN TRỌNG NHẤT) */}
           <div className='relative w-0 h-0'>
@@ -74,8 +75,14 @@ const RadialMenu = () => {
                     <motion.a
                       key={item.key}
                       href={item.href}
-                      target='_blank'
-                      rel='noopener noreferrer'
+                      target={
+                        item.href.startsWith('http') ? '_blank' : undefined
+                      }
+                      rel={
+                        item.href.startsWith('http')
+                          ? 'noopener noreferrer'
+                          : undefined
+                      }
                       initial={{ scale: 0, opacity: 0 }}
                       animate={{ scale: 1, opacity: 1, x, y }}
                       exit={{ scale: 0, opacity: 0, x: 0, y: 0 }}
@@ -84,23 +91,25 @@ const RadialMenu = () => {
                         stiffness: 280,
                         damping: 18,
                       }}
-                      className='absolute left-0 top-0 flex items-center gap-2'
+                      className='absolute left-0 top-0 flex flex-col-reverse items-center gap-2'
                       style={{
                         x,
                         y,
-                        translateX: '-70%',
-                        translateY: '-50%',
+                        translateX: '-60%',
+                        translateY: '-70%',
                       }}
                     >
-                      {/* label */}
-                      <span className='text-xs bg-black text-white px-2 py-1 rounded-md whitespace-nowrap'>
-                        {item.label}
-                      </span>
-
                       {/* icon */}
                       <div className='w-12 h-12 bg-white rounded-full shadow-lg flex items-center justify-center hover:scale-110 transition'>
-                        <img src={item.icon} className='w-6 h-6' />
+                        <img src={item.icon} className='w-8 h-8' />
                       </div>
+                      {/* label */}
+                      <Text
+                        color='white'
+                        className='text-xs bg-black px-2 py-1 !rounded-2xl whitespace-nowrap'
+                      >
+                        {item.label}
+                      </Text>
                     </motion.a>
                   );
                 })}

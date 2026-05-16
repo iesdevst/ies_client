@@ -7,15 +7,15 @@ import {
 import { Button, Row } from 'antd';
 import { lazy, useMemo, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { useMediaQuery } from 'react-responsive';
 import { IesClSection, Text, Title } from '@/components';
+import { useDevice } from '@/hooks';
 import { useUserStore } from '@/store';
 
 const IesCtModal = lazy(() => import('@/pages/home/components/IesCtModal'));
 
 const ContactKey: React.FC = () => {
-  const mb = useMediaQuery({ maxWidth: 1024 });
   const { isDark } = useUserStore();
+  const { device } = useDevice();
   const [ctOpen, setCtOpen] = useState(false);
   const { t } = useTranslation('contactKey');
 
@@ -50,6 +50,20 @@ const ContactKey: React.FC = () => {
 
   const [active, setActive] = useState<string | null>(null);
 
+  const hMap = {
+    mobile: '45vh',
+    tablet: '30vh',
+    tabletPro: '30vh',
+    desktop: '',
+  };
+
+  const classsMap = {
+    mobile: 'pt-10 pb-20 px-5',
+    tablet: 'pl-8',
+    tabletPro: 'pl-8',
+    desktop: 'pl-20 pt-20',
+  };
+
   return (
     <>
       <IesClSection
@@ -57,14 +71,10 @@ const ContactKey: React.FC = () => {
         layout='simple'
         divider={false}
         children={
-          <div
-            className={`mt-20 flex flex-col ${
-              !mb ? 'pl-20 pt-20' : 'pt-10 pb-20 px-5'
-            }`}
-          >
+          <div className={`mt-10 flex flex-col ${classsMap[device]}`}>
             {/* TITLE */}
             <Title
-              className={`${isDark ? '!text-white' : ''} ${!mb ? '' : '!text-center'}`}
+              className={`${isDark ? '!text-white' : ''} ${device === 'mobile' ? '!text-center' : ''}`}
             >
               {t('ctKey')}
             </Title>
@@ -150,7 +160,7 @@ const ContactKey: React.FC = () => {
             </div>
 
             {/* BUTTON */}
-            <div className={`mt-7 ${!mb ? '' : ' text-end'}`}>
+            <div className={`mt-7 ${device === 'mobile' ? 'text-end' : ''}`}>
               <Button type='text' onClick={() => setCtOpen(true)}>
                 <Title
                   className={`!m-0 ${isDark ? '!text-white' : '!text-black'}`}
@@ -165,6 +175,7 @@ const ContactKey: React.FC = () => {
             </div>
           </div>
         }
+        height={hMap[device]}
       />
 
       {ctOpen && (

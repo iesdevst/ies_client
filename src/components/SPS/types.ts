@@ -92,11 +92,14 @@ export interface NewsFeatureLayoutProps extends BasePageIesSecProps {
   butTit?: string;
   featCard: Array<{
     id: string;
-    imgC: string;
+    img: string;
     tit?: string;
     butCard?: string;
     des?: string;
     navigo?: string;
+    eventTit?: string;
+    evDate?: string;
+    highlight?: string;
   }>;
   bonusTit?: string;
   moreBut?: string;
@@ -119,6 +122,13 @@ export interface NaiPageLayoutProps extends BasePageIesSecProps {
   urlForShare: string;
   nOe: string;
   readOri: string;
+  aut: string;
+  time: string;
+  share: string;
+  lstNews: string;
+  lstEvs: string;
+  seeNews: string;
+  seeEvs: string;
   paddingClass: string;
   titleLv: 1 | 2 | 3 | 4 | 5 | undefined;
   recentNews: Array<NewsLstData>;

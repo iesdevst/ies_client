@@ -17,6 +17,7 @@ export const useEventLstData = (): { data: Array<EventLstData> } => {
         categories: 'admissions',
         authors: 'admiss',
         authorN: 'Phòng tuyển sinh',
+        highlight: 'Hoạt động tuyển sinh & hướng nghiệp',
       },
       {
         id: '2',
@@ -27,6 +28,7 @@ export const useEventLstData = (): { data: Array<EventLstData> } => {
         categories: 'workshop',
         authors: 'admisstr',
         authorN: 'Phòng hành chính',
+        highlight: 'IES workshop\n Claude Code - AI agent',
       },
       {
         id: '3',
@@ -38,6 +40,7 @@ export const useEventLstData = (): { data: Array<EventLstData> } => {
         categories: 'career',
         authors: 'admisstr',
         authorN: 'Phòng hành chính',
+        highlight: '“Thực học – Thực nghiệp”, mô hình nổi bật',
       },
       {
         id: '4',
@@ -49,6 +52,7 @@ export const useEventLstData = (): { data: Array<EventLstData> } => {
         categories: 'partnership',
         authors: 'offTrain',
         authorN: 'Phòng đào tạo',
+        highlight: 'Hợp tác đào tạo giữa công ty CP MISA',
       },
       {
         id: '5',
@@ -60,6 +64,7 @@ export const useEventLstData = (): { data: Array<EventLstData> } => {
         categories: 'admissions',
         authors: 'admiss',
         authorN: 'Phòng tuyển sinh',
+        highlight: 'TĂNG CƯỜNG HƯỚNG NGHIỆP',
       },
     ],
     [],
@@ -74,6 +79,7 @@ export type EventLstData = {
   desc: string;
   img: string;
   evDate: string;
+  highlight: string;
   categories: EvsCategory;
   authors: AuthorEvsType;
 };

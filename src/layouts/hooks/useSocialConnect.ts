@@ -14,18 +14,23 @@ export const socialLinks = [
   },
 ];
 export const socialCn = [
-  { key: 'phone', label: 'Call', href: 'tel:0901309866', icon: phone },
+  { key: 'phone', label: 'Telephone', href: 'tel:0901309866', icon: phone },
   {
     key: 'mail',
     label: 'Email',
-    href: 'mailto:info@iescollege.edu.vn',
+    href: 'https://mail.google.com/mail/?view=cm&fs=1&to=info@iescollege.edu.vn',
     icon: mail,
   },
-  { key: 'map', label: 'Map', href: 'https://www.google.com/maps', icon: map },
+  {
+    key: 'map',
+    label: 'Map',
+    href: 'https://maps.app.goo.gl/bS4J3f5PFwqpncFE9',
+    icon: map,
+  },
   {
     key: 'facebook',
     label: 'Facebook',
-    href: 'https://facebook.com',
+    href: 'https://www.facebook.com/iescollege.edu.vn',
     icon: fb,
   },
   {

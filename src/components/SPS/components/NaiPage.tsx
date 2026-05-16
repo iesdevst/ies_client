@@ -33,6 +33,13 @@ const NaiPage: React.FC<NaiPageLayoutProps> = (props) => {
     mb,
     nOe,
     readOri,
+    aut,
+    time,
+    share,
+    lstNews,
+    lstEvs,
+    seeNews,
+    seeEvs,
     paddingClass,
     titleLv,
     tl,
@@ -149,11 +156,11 @@ const NaiPage: React.FC<NaiPageLayoutProps> = (props) => {
               className='space-x-10'
             >
               <Col>
-                <Title level={5} className='!m-0'>
-                  Tac gia
+                <Title level={5} className='!m-0 !uppercase'>
+                  {aut}
                 </Title>
-                <Title level={5} className='!m-0'>
-                  Date
+                <Title level={5} className='!m-0 !uppercase'>
+                  {time}
                 </Title>
               </Col>
 
@@ -167,8 +174,8 @@ const NaiPage: React.FC<NaiPageLayoutProps> = (props) => {
               </Col>
             </Row>
             <Col className={mb ? '' : '!mr-30'}>
-              <Title level={5} className='!m-0 !mb-1.5'>
-                Share to
+              <Title level={5} className='!m-0 !mb-1.5 !uppercase'>
+                {share}
               </Title>
               <Row gutter={12}>
                 {socialShare.map((item) => (
@@ -259,7 +266,7 @@ const NaiPage: React.FC<NaiPageLayoutProps> = (props) => {
               <Flex vertical gap={32}>
                 {/* RECENT NEWS */}
                 <div>
-                  <Title level={4}>Tin tức gần đây</Title>
+                  <Title level={4}>{lstNews}</Title>
 
                   <List
                     itemLayout='horizontal'
@@ -307,7 +314,7 @@ const NaiPage: React.FC<NaiPageLayoutProps> = (props) => {
                       className={`!m-0 ${dark ? '!text-white' : '!text-black'}`}
                       level={4}
                     >
-                      Khám phá tất cả tin tức
+                      {seeNews}
                     </Title>
                     <div className='w-full h-full !bg-blue-500 rounded-r-full flex items-center justify-center px-3'>
                       <RightOutlined className='!text-white !font-semibold' />
@@ -319,7 +326,7 @@ const NaiPage: React.FC<NaiPageLayoutProps> = (props) => {
 
                 {/* RECENT EVENTS */}
                 <div>
-                  <Title level={4}>Sự kiện gần đây</Title>
+                  <Title level={4}>{lstEvs}</Title>
 
                   <List
                     itemLayout='horizontal'
@@ -361,7 +368,7 @@ const NaiPage: React.FC<NaiPageLayoutProps> = (props) => {
                       className={`!m-0 ${dark ? '!text-white' : '!text-black'}`}
                       level={4}
                     >
-                      Khám phá tất cả sự kiện
+                      {seeEvs}
                     </Title>
                     <div className='w-full h-full !bg-blue-500 rounded-r-full flex items-center justify-center px-3'>
                       <RightOutlined className='!text-white !font-semibold' />

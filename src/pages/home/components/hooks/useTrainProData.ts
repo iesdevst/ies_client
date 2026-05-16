@@ -11,7 +11,7 @@ export const useTrainProData = (): { data: Array<NoFeatCdt> } => {
     () => [
       {
         id: '1',
-        imgC: CTTC,
+        img: CTTC,
         tit: t('intermediate'),
         butCard: t('intermediateBtn'),
         des: t('intermediateDesc'),
@@ -19,7 +19,7 @@ export const useTrainProData = (): { data: Array<NoFeatCdt> } => {
       },
       {
         id: '2',
-        imgC: CTTT,
+        img: CTTT,
         tit: t('shortTerm'),
         butCard: t('shortTermBtn'),
         des: t('shortTermDesc'),
@@ -27,7 +27,7 @@ export const useTrainProData = (): { data: Array<NoFeatCdt> } => {
       },
       {
         id: '3',
-        imgC: CTLK,
+        img: CTLK,
         tit: t('partnership'),
         butCard: t('partnershipBtn'),
         des: t('partnershipDesc'),
@@ -41,7 +41,7 @@ export const useTrainProData = (): { data: Array<NoFeatCdt> } => {
 
 export type NoFeatCdt = {
   id: string;
-  imgC: string;
+  img: string;
   tit: string;
   butCard: string;
   des: string;

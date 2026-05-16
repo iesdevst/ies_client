@@ -1,4 +1,5 @@
-import { Row, Col, Layout } from 'antd';
+import { Col, Flex, Layout } from 'antd';
+import { useDevice } from '@/hooks';
 
 interface INaiPlusPage {
   filters: React.ReactNode;
@@ -10,18 +11,56 @@ const { Content } = Layout;
 
 const IesLayoutNE: React.FC<INaiPlusPage> = (props) => {
   const { filters, content, pagination } = props;
+  const { device } = useDevice();
+
+  const rowoutMap = {
+    mobile: '',
+    tablet: '!px-5',
+    tabletPro: '!px-6',
+    desktop: '!pl-20 !pr-10',
+  };
+
+  const sidebarMap = {
+    mobile: 'px-4',
+    tablet: '',
+    tabletPro: '',
+    desktop: '',
+  };
+  const contentMap = {
+    mobile: '',
+    tablet: '!pl-10',
+    tabletPro: '!pl-10',
+    desktop: '!pl-10',
+  };
 
   return (
     <Layout>
       <Content>
-        <Row gutter={24} justify='space-between' className='py-10 pl-20 pr-10'>
+        <Flex
+          vertical={device === 'mobile'}
+          justify='center'
+          align='top'
+          className={`${rowoutMap[device]} !py-10`}
+        >
           {/* LEFT SIDEBAR */}
-          <Col xs={24} sm={24} md={8} lg={8}>
-            <div>{filters}</div>
+          <Col
+            xs={24}
+            sm={24}
+            md={8}
+            lg={8}
+            className={`${sidebarMap[device]}`}
+          >
+            <div className='sticky top-7'>{filters}</div>
           </Col>
 
           {/* MAIN CONTENT */}
-          <Col xs={24} sm={24} md={16} lg={16} className='!pl-10'>
+          <Col
+            xs={24}
+            sm={24}
+            md={16}
+            lg={16}
+            className={`${contentMap[device]}`}
+          >
             <div>
               {content}
 
@@ -38,7 +77,7 @@ const IesLayoutNE: React.FC<INaiPlusPage> = (props) => {
               )}
             </div>
           </Col>
-        </Row>
+        </Flex>
       </Content>
     </Layout>
   );

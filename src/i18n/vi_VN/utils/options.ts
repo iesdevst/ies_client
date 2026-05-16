@@ -37,4 +37,20 @@ export default {
   hn: 'Thành phố Hà Nội',
   hcm: 'Thành phố Hồ Chí Minh',
   other: 'Khác',
+
+  // news & events filter opts
+  career: 'Hướng nghiệp',
+  admissions: 'Tuyển sinh',
+  partnership: 'Hợp tác đào tạo',
+  training: 'Đào tạo',
+
+  workshop: 'Workshop',
+
+  admiss: 'Phòng tuyển sinh',
+  admisstr: 'Phòng hành chính',
+  offTrain: 'Phòng đào tạo',
+  individual: 'Cá nhân',
+
+  tech: 'Công nghệ',
+  office: 'Văn phòng',
 };

@@ -10,14 +10,17 @@ import {
 } from 'antd';
 import dayjs from 'dayjs';
 import { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import type { NewsFiltersState, NewsLstData } from '../hooks';
 import styles from '../styles/filter.module.scss';
 import { Title } from '@/components';
+import type { DeviceType } from '@/hooks';
 import { authorNewsOpts, categoryNewsOpts, fieldNewsOpts } from '@/utils';
 
 const { RangePicker } = DatePicker;
 
 interface INewsFilters {
+  device: DeviceType;
   filters: NewsFiltersState;
   updateFilters: (patch: Partial<NewsFiltersState>) => void;
   resetFilters: () => void;
@@ -27,7 +30,9 @@ interface INewsFilters {
 type NewsCollfilter = 'date' | 'category' | 'author' | 'field';
 
 const NewsFilters: React.FC<INewsFilters> = (props) => {
-  const { filters, updateFilters, resetFilters, newsSreachDt } = props;
+  const { device, filters, updateFilters, resetFilters, newsSreachDt } = props;
+  const { t } = useTranslation('newsFilters');
+  const { t: optionsT } = useTranslation('options');
   const [activeKeys, setActiveKeys] = useState<Array<NewsCollfilter>>([]);
   const [searchValue, setSearchValue] = useState('');
   const [newsOpts, setNewsOpts] = useState<Array<{ value: string }>>([]);
@@ -47,7 +52,7 @@ const NewsFilters: React.FC<INewsFilters> = (props) => {
   const collapseItems = [
     {
       key: 'date',
-      label: collLabel('date', 'Theo ngày phát hành'),
+      label: collLabel('date', t('date')),
       children: (
         <RangePicker
           value={
@@ -75,7 +80,7 @@ const NewsFilters: React.FC<INewsFilters> = (props) => {
     },
     {
       key: 'category',
-      label: collLabel('category', 'Theo loại tin tức'),
+      label: collLabel('category', t('category')),
       children: (
         <Checkbox.Group
           value={filters.category}
@@ -88,7 +93,7 @@ const NewsFilters: React.FC<INewsFilters> = (props) => {
           <Flex vertical gap={10}>
             {categoryNewsOpts.map((item) => (
               <Checkbox key={item.value} value={item.value}>
-                {item.label}
+                {optionsT(item.label)}
               </Checkbox>
             ))}
           </Flex>
@@ -98,7 +103,7 @@ const NewsFilters: React.FC<INewsFilters> = (props) => {
 
     {
       key: 'author',
-      label: collLabel('author', 'Theo đơn vị phát hành'),
+      label: collLabel('author', t('author')),
       children: (
         <Checkbox.Group
           value={filters.author}
@@ -111,7 +116,7 @@ const NewsFilters: React.FC<INewsFilters> = (props) => {
           <Flex vertical gap={10}>
             {authorNewsOpts.map((item) => (
               <Checkbox key={item.value} value={item.value}>
-                {item.label}
+                {optionsT(item.label)}
               </Checkbox>
             ))}
           </Flex>
@@ -121,7 +126,7 @@ const NewsFilters: React.FC<INewsFilters> = (props) => {
 
     {
       key: 'field',
-      label: collLabel('field', 'Theo lĩnh vực'),
+      label: collLabel('field', t('field')),
       children: (
         <Checkbox.Group
           value={filters.field}
@@ -134,7 +139,7 @@ const NewsFilters: React.FC<INewsFilters> = (props) => {
           <Flex vertical gap={10}>
             {fieldNewsOpts.map((item) => (
               <Checkbox key={item.value} value={item.value}>
-                {item.label}
+                {optionsT(item.label)}
               </Checkbox>
             ))}
           </Flex>
@@ -149,16 +154,23 @@ const NewsFilters: React.FC<INewsFilters> = (props) => {
     resetFilters();
   };
 
+  const titLvMap = {
+    mobile: '!text-3xl',
+    tablet: '!text-3xl',
+    tabletPro: '!text-4xl',
+    desktop: '!text-6xl',
+  };
+
   return (
-    <Flex vertical gap={10} className='!mr-10'>
-      <Title className='!text-6xl'>Khám phá tất cả Tin Tức IES</Title>
+    <Flex vertical gap={10} className=''>
+      <Title className={`${titLvMap[device]}`}>{t('seeAllnews')}</Title>
       <Button
         type='link'
         onClick={handleRs}
         className='!p-0 !text-start !flex !justify-start'
       >
         <Title level={4} color='black' className='!m-0 !mb-1'>
-          Reset filters
+          {t('reset')}
         </Title>
         <ReloadOutlined className='!text-blue-500 !text-xl -scale-x-100' />
       </Button>
@@ -198,7 +210,7 @@ const NewsFilters: React.FC<INewsFilters> = (props) => {
         }}
       >
         <Input.Search
-          placeholder='Tìm kiếm tin tức'
+          placeholder={t('searchNews')}
           allowClear
           onSearch={(value) => {
             updateFilters({

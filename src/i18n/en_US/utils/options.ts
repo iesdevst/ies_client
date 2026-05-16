@@ -37,4 +37,21 @@ export default {
   hn: 'Ha Noi city',
   hcm: 'Ho Chi Minh city',
   other: 'Other',
+
+  // news & events filter opts
+
+  career: 'Career orientation',
+  admissions: 'Admissions',
+  partnership: 'Training partnerships',
+  training: 'Training',
+
+  workshop: 'Workshop',
+
+  admiss: 'Admissions office',
+  admisstr: 'Administrative office',
+  offTrain: 'Training department',
+  individual: 'Individual',
+
+  tech: 'Technology',
+  office: 'Office',
 };

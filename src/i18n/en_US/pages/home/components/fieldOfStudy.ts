@@ -5,7 +5,7 @@ export default {
   exploreBtn: 'Explore all Majors',
   itOffice: 'IT & Office',
   appliedInfo: 'Applied Informatics',
-  officeAdmin: 'Office Administration',
+  it: 'Information Technology',
   hospServ: 'Hospitality & Services',
   hotelMng: 'Hotel Management & Business',
   designCreat: 'Design & Creativity',

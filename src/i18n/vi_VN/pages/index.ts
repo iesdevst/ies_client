@@ -23,9 +23,11 @@ export { default as trainingSl } from './home/components/trainingSl';
 export { default as vaM } from './home/components/vaM';
 export { default as vidPrIes } from './home/components/vidPrIes';
 
-export { default as iesEvents } from './iesNews/iesEvents';
+export { default as evsLst } from './iesNews/components/evsLst';
+export { default as evsFilters } from './iesNews/components/evsFilters';
 export { default as iesEventsDetail } from './iesNews/iesEventsDetail';
-export { default as iesNews } from './iesNews/iesNews';
+export { default as newsLst } from './iesNews/components/newsLst';
+export { default as newsFilters } from './iesNews/components/newsFilters';
 export { default as iesNewsDetails } from './iesNews/iesNewsDetails';
 
 export { default as partnershipInfo } from './partnership/components/partnershipInfo';

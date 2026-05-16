@@ -6,15 +6,16 @@ import Card from 'antd/es/card';
 import Col from 'antd/es/col';
 import Flex from 'antd/es/flex';
 import { useTranslation } from 'react-i18next';
-import { useMediaQuery } from 'react-responsive';
 import { useNavigate } from 'react-router-dom';
 import type { NewsLstData } from '../hooks';
 import { Text, Title } from '@/components';
 import { PrefetchLink } from '@/components/PrefetchLink';
 import { ROUTES } from '@/constants';
+import type { DeviceType } from '@/hooks';
 import { useUserStore } from '@/store';
 
 interface INewsLst {
+  device: DeviceType;
   newsLstdata: Array<NewsLstData>;
   totalItem: number;
 }
@@ -26,9 +27,8 @@ export type NewsNavi = {
 };
 
 const NewsLst: React.FC<INewsLst> = (props) => {
-  const { newsLstdata, totalItem } = props;
-  const mb = useMediaQuery({ maxWidth: 767 });
-  const { t } = useTranslation('iesNews');
+  const { device, newsLstdata, totalItem } = props;
+  const { t } = useTranslation('newsLst');
   const { isDark } = useUserStore();
 
   const navigate = useNavigate();
@@ -41,7 +41,27 @@ const NewsLst: React.FC<INewsLst> = (props) => {
     navigate(`${ROUTES.NEWS_DETAILS}/${navi.id}?${searchParams.toString()}`);
   };
 
-  const breadcrumbClass = mb ? '!ml-5 !py-6' : '';
+  const breadcrumbClass = device === 'mobile' ? '!ml-5 !py-6' : '';
+
+  const cardPadMap = {
+    mobile: '!p-5 !mx-3',
+    tablet: '!py-5 !px-4',
+    tabletPro: '!pt-5 !pb-3 !px-4',
+    desktop: '!py-5 !px-10',
+  };
+
+  const flexGap = {
+    mobile: 30,
+    tablet: 20,
+    tabletPro: 35,
+    desktop: 100,
+  };
+  const imgMap = {
+    mobile: '!w-full',
+    tablet: '!w-full !h-60',
+    tabletPro: '!w-[200px] !h-[200px]',
+    desktop: '!w-[310px] !h-[200px]',
+  };
 
   if (!newsLstdata || !totalItem) return;
 
@@ -82,14 +102,15 @@ const NewsLst: React.FC<INewsLst> = (props) => {
         ]}
       />
 
-      <Title level={!mb ? 5 : 3} className='!text-center'>
-        Hiển thị {totalItem} kết quả tìm kiếm
+      <Title level={device === 'mobile' ? 5 : 3} className='!text-center'>
+        {t('show')} {totalItem} {t('result')}
+        {totalItem > 1 && t('s')}
       </Title>
       <Flex vertical className='!space-y-10 !w-full !pb-10 !pt-3'>
         {newsLstdata.map((newsLst) => (
           <Card
             key={newsLst.id}
-            className={`${!mb ? '!py-5 !px-10' : '!p-5 !mx-3'} ${isDark ? '!bg-[#191f23]' : '!bg-gray-400'} cursor-pointer`}
+            className={`${cardPadMap[device]} ${isDark ? '!bg-[#191f23]' : '!bg-gray-400'} cursor-pointer`}
             onClick={() =>
               handleNavigate({
                 id: newsLst.id,
@@ -101,14 +122,14 @@ const NewsLst: React.FC<INewsLst> = (props) => {
             <Flex
               justify='flex-start'
               align='flex-start'
-              gap={!mb ? 100 : 30}
-              vertical={mb}
+              gap={flexGap[device]}
+              vertical={device === 'mobile' || device === 'tablet'}
             >
               <img
                 src={newsLst.img}
                 alt='iesnew'
                 loading='lazy'
-                className='!w-[310px] !h-[200px] object-cover rounded-xl shrink-0'
+                className={`${imgMap[device]} object-cover rounded-xl shrink-0`}
               />
               <Col>
                 {newsLst.typeTit && (
@@ -138,8 +159,12 @@ const NewsLst: React.FC<INewsLst> = (props) => {
                   {newsLst.desc}
                 </Text>
                 <Row justify='space-between' align='middle'>
-                  <Title level={5}>{newsLst.authorN}</Title>
-                  <Title level={5}>{newsLst.newsDate}</Title>
+                  <Title level={5} className='!m-0 !mt-3'>
+                    {newsLst.authorN}
+                  </Title>
+                  <Title level={5} className='!m-0 !mt-3'>
+                    {newsLst.newsDate}
+                  </Title>
                 </Row>
               </Col>
             </Flex>

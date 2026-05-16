@@ -10,10 +10,12 @@ import {
 } from 'antd';
 import dayjs from 'dayjs';
 import { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import type { EventLstData } from '../hooks';
 import type { EvsFiltersState } from '../hooks/useEvsFilters';
 import styles from '../styles/filter.module.scss';
 import { Title } from '@/components';
+import type { DeviceType } from '@/hooks';
 import { authorEvsOpts, categoryEvsOpts } from '@/utils';
 
 const { RangePicker } = DatePicker;
@@ -21,6 +23,7 @@ const { RangePicker } = DatePicker;
 type EvsCollfilter = 'date' | 'category' | 'author';
 
 interface IEvsFilters {
+  device: DeviceType;
   filters: EvsFiltersState;
   updateFilters: (patch: Partial<EvsFiltersState>) => void;
   resetFilters: () => void;
@@ -28,7 +31,9 @@ interface IEvsFilters {
 }
 
 const EvsFilters: React.FC<IEvsFilters> = (props) => {
-  const { filters, updateFilters, resetFilters, evsSreachDt } = props;
+  const { device, filters, updateFilters, resetFilters, evsSreachDt } = props;
+  const { t } = useTranslation('evsFilters');
+  const { t: optionsT } = useTranslation('options');
   const [activeKeys, setActiveKeys] = useState<Array<EvsCollfilter>>([]);
   const [searchValue, setSearchValue] = useState('');
   const [evsOpts, setEvsOpts] = useState<Array<{ value: string }>>([]);
@@ -48,7 +53,7 @@ const EvsFilters: React.FC<IEvsFilters> = (props) => {
   const collapseItems = [
     {
       key: 'date',
-      label: collLabel('date', 'Theo ngày phát hành'),
+      label: collLabel('date', t('date')),
       children: (
         <RangePicker
           value={
@@ -76,7 +81,7 @@ const EvsFilters: React.FC<IEvsFilters> = (props) => {
     },
     {
       key: 'category',
-      label: collLabel('category', 'Theo loại sự kiện'),
+      label: collLabel('category', t('category')),
       children: (
         <Checkbox.Group
           value={filters.category}
@@ -89,7 +94,7 @@ const EvsFilters: React.FC<IEvsFilters> = (props) => {
           <Flex vertical gap={10}>
             {categoryEvsOpts.map((item) => (
               <Checkbox key={item.value} value={item.value}>
-                {item.label}
+                {optionsT(item.label)}
               </Checkbox>
             ))}
           </Flex>
@@ -99,7 +104,7 @@ const EvsFilters: React.FC<IEvsFilters> = (props) => {
 
     {
       key: 'author',
-      label: collLabel('author', 'Theo đơn vị phát hành'),
+      label: collLabel('author', t('author')),
       children: (
         <Checkbox.Group
           value={filters.author}
@@ -112,7 +117,7 @@ const EvsFilters: React.FC<IEvsFilters> = (props) => {
           <Flex vertical gap={10}>
             {authorEvsOpts.map((item) => (
               <Checkbox key={item.value} value={item.value}>
-                {item.label}
+                {optionsT(item.label)}
               </Checkbox>
             ))}
           </Flex>
@@ -127,16 +132,23 @@ const EvsFilters: React.FC<IEvsFilters> = (props) => {
     resetFilters();
   };
 
+  const titLvMap = {
+    mobile: '!text-3xl',
+    tablet: '!text-3xl',
+    tabletPro: '!text-4xl',
+    desktop: '!text-6xl',
+  };
+
   return (
     <Flex vertical gap={10} className='!mr-10'>
-      <Title className='!text-6xl'>Khám phá tất cả Sự Kiện IES</Title>
+      <Title className={`${titLvMap[device]}`}>{t('seeAllevs')}</Title>
       <Button
         type='link'
         onClick={handleRs}
         className='!p-0 !text-start !flex !justify-start'
       >
         <Title level={4} color='black' className='!m-0 !mb-1'>
-          Reset filters
+          {t('reset')}
         </Title>
         <ReloadOutlined className='!text-blue-500 !text-xl -scale-x-100' />
       </Button>
@@ -176,7 +188,7 @@ const EvsFilters: React.FC<IEvsFilters> = (props) => {
         }}
       >
         <Input.Search
-          placeholder='Tìm kiếm tin tức'
+          placeholder={t('searchEvs')}
           allowClear
           onSearch={(value) => {
             updateFilters({

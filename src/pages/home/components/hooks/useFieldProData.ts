@@ -20,7 +20,7 @@ export const useFieldProData = (): { data: Array<FieldPro> } => {
           },
           {
             key: '2',
-            fie: t('officeAdmin'),
+            fie: t('it'),
           },
         ],
       },

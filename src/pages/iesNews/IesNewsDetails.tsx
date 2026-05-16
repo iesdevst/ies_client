@@ -120,6 +120,13 @@ const IesNewsDetails = () => {
           titleLv={titleLv}
           nOe={t('news')}
           readOri={t('readOri')}
+          aut={t('aut')}
+          time={t('time')}
+          share={t('share')}
+          lstNews={t('lstNews')}
+          lstEvs={t('lstEvs')}
+          seeNews={t('seeNews')}
+          seeEvs={t('seeEvs')}
           recentNews={latestNews}
           recentEv={latestEv}
           dark={isDark}

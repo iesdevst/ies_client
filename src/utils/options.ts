@@ -225,37 +225,37 @@ const partnershipProgOptions = eNumEntities<typeof PartnershipProgEnum>(
 // News Filters opts
 
 const categoryNewsOpts: AppOption<object, NewsCategory>[] = [
-  { label: 'Hướng nghiệp', value: 'career' },
-  { label: 'Tuyển sinh', value: 'admissions' },
-  { label: 'Hợp tác đào tạo', value: 'partnership' },
-  { label: 'Đào tạo', value: 'training' },
+  { label: 'career', value: 'career' },
+  { label: 'admissions', value: 'admissions' },
+  { label: 'partnership', value: 'partnership' },
+  { label: 'training', value: 'training' },
 ];
 
 const authorNewsOpts: AppOption<object, AuthorNewsType>[] = [
-  { label: 'Phòng tuyển sinh', value: 'admiss' },
-  { label: 'Phòng hành chính', value: 'admisstr' },
-  { label: 'Phòng đào tạo', value: 'offTrain' },
-  { label: 'Cá nhân', value: 'individual' },
+  { label: 'admiss', value: 'admiss' },
+  { label: 'admisstr', value: 'admisstr' },
+  { label: 'offTrain', value: 'offTrain' },
+  { label: 'individual', value: 'individual' },
 ];
 
 const fieldNewsOpts: AppOption<object, FieldType>[] = [
-  { label: 'Công nghệ', value: 'tech' },
-  { label: 'Văn phòng', value: 'office' },
+  { label: 'tech', value: 'tech' },
+  { label: 'office', value: 'office' },
 ];
 
 // Events Filter opts
 
 const categoryEvsOpts: AppOption<object, EvsCategory>[] = [
-  { label: 'Hướng nghiệp', value: 'career' },
-  { label: 'Tuyển sinh', value: 'admissions' },
-  { label: 'Hợp tác đào tạo', value: 'partnership' },
-  { label: 'Workshop', value: 'workshop' },
+  { label: 'career', value: 'career' },
+  { label: 'admissions', value: 'admissions' },
+  { label: 'partnership', value: 'partnership' },
+  { label: 'workshop', value: 'workshop' },
 ];
 
 const authorEvsOpts: AppOption<object, AuthorEvsType>[] = [
-  { label: 'Phòng tuyển sinh', value: 'admiss' },
-  { label: 'Phòng hành chính', value: 'admisstr' },
-  { label: 'Phòng đào tạo', value: 'offTrain' },
+  { label: 'admiss', value: 'admiss' },
+  { label: 'admisstr', value: 'admisstr' },
+  { label: 'offTrain', value: 'offTrain' },
 ];
 
 export {

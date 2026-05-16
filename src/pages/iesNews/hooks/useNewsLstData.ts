@@ -126,7 +126,7 @@ export const useNewsLstData = (): { data: Array<NewsLstData> } => {
       {
         id: '10',
         newsTit: 'Tuyển sinh đào tạo - năm học 2026-2027',
-        desc: 'Trường Trung cấp Tin học Kinh tế Sài Gòn thông báo tuyển sinh đào tạo\n năm học 2026 - 2027....',
+        desc: 'Trường Trung cấp Tin học Kinh tế Sài Gòn thông báo tuyển sinh đào tạo năm học 2026 - 2027....',
         img: TSDT,
         newsDate: '2026-05-12',
         typeTit: 'Tuyển sinh',
@@ -138,7 +138,7 @@ export const useNewsLstData = (): { data: Array<NewsLstData> } => {
       {
         id: '11',
         newsTit: 'Kế hoạch tuyển sinh - năm học 2026-2027',
-        desc: 'Trường Trung cấp Tin học Kinh tế Sài Gòn ban hành Kế hoạch tuyển sinh\n đào tạo năm học 2026 - 2027....',
+        desc: 'Trường Trung cấp Tin học Kinh tế Sài Gòn ban hành Kế hoạch tuyển sinh đào tạo năm học 2026 - 2027....',
         img: KHTS,
         newsDate: '2026-05-11',
         typeTit: 'Tuyển sinh',
@@ -173,19 +173,20 @@ export const useNewsLstData = (): { data: Array<NewsLstData> } => {
       {
         id: '14',
         newsTit: 'Hợp tác đào tạo - Tuyển sinh ngành Luật – ĐH Mở Hà Nội 2026',
-        desc: 'Hợp tác đào tạo\nTuyển sinh ngành Luật – ĐH Mở Hà Nội 2022\n',
+        desc: 'Tuyển sinh ngành Luật – ĐH Mở Hà Nội 2022',
         img: LTS,
         newsDate: '2026-02-02',
         categories: 'partnership',
         authors: 'offTrain',
         authorN: 'Phòng đào tạo',
+        typeTit: 'HỢP TÁC ĐÀO TẠO',
       },
 
       {
         id: '15',
         newsTit:
           'EHOU tổ chức lớp học chuyên đề: “Tìm hiểu Luật doanh nghiệp và các hợp đồng kinh tế”',
-        desc: 'EHOU tổ chức lớp học chuyên đề:\n “Tìm hiểu Luật doanh nghiệp và các hợp đồng kinh tế” cho sinh viên',
+        desc: 'EHOU tổ chức lớp học chuyên đề:\n “Tìm hiểu Luật doanh nghiệp và các hợp đồng kinh tế”',
         img: HTDHM,
         newsDate: '2026-01-05',
         categories: 'partnership',

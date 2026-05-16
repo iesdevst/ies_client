@@ -5,7 +5,7 @@ export default {
   exploreBtn: 'Khám phá tất cả Ngành học',
   itOffice: 'CNTT & Văn phòng',
   appliedInfo: 'Tin học ứng dụng',
-  officeAdmin: 'Quản trị Văn phòng',
+  it: 'Công nghệ thông tin',
   hospServ: 'Du lịch & Dịch vụ',
   hotelMng: 'Quản trị Khách sạn & Kinh doanh',
   designCreat: 'Thiết kế & Sáng tạo',

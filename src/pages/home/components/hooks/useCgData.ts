@@ -41,13 +41,13 @@ export const useCgCardData = (): { data: Array<CgCard> } => {
     () => [
       {
         id: '1',
-        imgC: MC,
+        img: MC,
         des: t('card1'),
       },
-      { id: '2', imgC: CC, des: t('card2') },
+      { id: '2', img: CC, des: t('card2') },
       {
         id: '3',
-        imgC: TC,
+        img: TC,
         des: t('card3'),
       },
     ],
@@ -58,6 +58,6 @@ export const useCgCardData = (): { data: Array<CgCard> } => {
 
 export type CgCard = {
   id: string;
-  imgC: string;
+  img: string;
   des: string;
 };

@@ -40,7 +40,7 @@ const NewsFeat: React.FC<NewsFeatureLayoutProps> = (props) => {
         className={`${dark ? '!bg-gray-700' : '!bg-white'} rounded-2xl overflow-hidden shadow-lg !border-none !cursor-default`}
         cover={
           <img
-            src={item.imgC}
+            src={item.img}
             alt='Workshop'
             className='h-[200px] w-full object-cover'
             loading='lazy'
@@ -48,18 +48,18 @@ const NewsFeat: React.FC<NewsFeatureLayoutProps> = (props) => {
         }
       >
         <div className='!px-5 !py-3'>
-          {item.tit && (
+          {(item.tit || item.highlight) && (
             <Flex justify='space-between' align='center' className='!py-2'>
-              <Title level={5} className='!text-blue-500 !m-0'>
-                {item.tit}
+              <Title level={5} className='!text-blue-500 !m-0 '>
+                {item.tit || item.highlight}
               </Title>
 
-              {item.butCard && (
-                <div className='relative'>
+              {(item.butCard || item.evDate) && (
+                <div className='relative '>
                   <div
                     className={`${dark ? '!text-white' : '!text-black'} !bg-blue-600 px-5 py-1 font-semibold text-sm`}
                   >
-                    {item.butCard}
+                    {item.butCard || item.evDate}
                   </div>
                   <div
                     className={`${dark ? 'bg-gray-700' : 'bg-white'} absolute right-[-8px] top-1/2 -translate-y-1/2 w-3 h-3 rotate-45`}
@@ -73,7 +73,7 @@ const NewsFeat: React.FC<NewsFeatureLayoutProps> = (props) => {
             className='font-semibold mb-6 !text-lg !block'
             color={dark ? 'white' : ''}
           >
-            {item.des}
+            {item.des || item.eventTit}
           </Text>
         </div>
       </Card>
@@ -86,7 +86,7 @@ const NewsFeat: React.FC<NewsFeatureLayoutProps> = (props) => {
     return featCard.map((item) => (
       <Col key={item.id}>
         <img
-          src={item.imgC}
+          src={item.img}
           className='!h-65 w-full mb-3.5 rounded-lg'
           loading='lazy'
           alt='cardf'
