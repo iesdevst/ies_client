@@ -1,0 +1,117 @@
+/* src/styles/custom.css */
+
+.test-border {
+  border: 1px solid red;
+}
+
+.test-absolute {
+  z-index: 1;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  height: 100px;
+  width: 100px;
+  transform: translate(-50%, -50%);
+  background-color: #4a90e2;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.scroll-section {
+  scroll-snap-align: start;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1rem;
+  background-color: #f0f0f0;
+}
+
+/* antd */
+
+.ant-card-body {
+  padding: 0 !important;
+}
+
+.ant-modal .ant-modal-header {
+  margin: 0 !important;
+}
+
+.ant-modal-footer {
+  margin: 0 !important;
+}
+
+.ant-modal-content {
+  padding: 0 !important;
+}
+
+.ant-picker-focused {
+  box-shadow: none !important;
+  border-color: #d9d9d9 !important;
+}
+
+.ant-back-top {
+  right: 30px;
+  bottom: 60px;
+  height: 40px;
+  width: 40px;
+  line-height: 40px;
+  border-radius: 4px;
+  background: linear-gradient(to bottom right, #1f1b2e, #4f46e5);
+  color: #fff;
+  text-align: center;
+  font-size: 22px;
+}
+
+/* carousel */
+
+.ant-carousel .slick-prev,
+.ant-carousel .slick-next {
+  z-index: 10;
+  width: 40px;
+  height: 40px;
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+  color: rgb(6, 6, 85) !important;
+  margin-top: 4px;
+}
+
+.ant-carousel .slick-prev {
+  left: -47px !important;
+  background: white;
+  border-radius: 50%;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+}
+
+.ant-carousel .slick-prev::after {
+  left: 17px;
+  margin-top: 12px;
+}
+
+.ant-carousel .slick-next {
+  right: -8px !important;
+  background: white;
+  border-radius: 50%;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+}
+
+.ant-carousel .slick-next::after {
+  left: 12px;
+  margin-top: 13px;
+}
+
+.ant-carousel .slick-dots li.slick-active::after {
+  background: #0f5787 !important;
+  width: 30px !important;
+  height: 30px !important;
+  border-radius: 50% !important;
+}
+
+.ant-carousel .dot-train .slick-dots li.slick-active::after {
+  background: rgb(191, 124, 191) !important;
+  width: 16px !important;
+  height: 16px !important;
+  border-radius: 50% !important;
+}

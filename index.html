@@ -2,6 +2,8 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+
+    <!-- preload fonts -->
     <link
       rel="preload"
       href="/fonts/roboto-400.woff2"
@@ -9,16 +11,29 @@
       type="font/woff2"
       crossorigin
     />
+
+    <link
+      rel="preload"
+      href="/fonts/roboto-700.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+
     <link
       rel="icon"
       type="image/svg+xml"
-      href="./src/assets/imgs/ies_logo_notext.webp"
+      href="/icons/ies_logo_notext_mb.webp"
     />
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
     <title>Informatics Economics School</title>
   </head>
+
   <body>
     <div id="root"></div>
+
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>
