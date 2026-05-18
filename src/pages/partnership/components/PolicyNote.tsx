@@ -1,4 +1,5 @@
-import { Col, Image } from 'antd';
+import Col from 'antd/es/col';
+import Image from 'antd/es/image';
 import { useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useMediaQuery } from 'react-responsive';

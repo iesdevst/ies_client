@@ -1,4 +1,8 @@
-import { Button, Col, Flex, Image, Row } from 'antd';
+import Button from 'antd/es/button';
+import Col from 'antd/es/col';
+import Flex from 'antd/es/flex';
+import Image from 'antd/es/image';
+import Row from 'antd/es/row';
 import { lazy, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useMediaQuery } from 'react-responsive';

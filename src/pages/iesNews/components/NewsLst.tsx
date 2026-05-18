@@ -1,10 +1,10 @@
 import HomeFilled from '@ant-design/icons/HomeFilled';
 import RightOutlined from '@ant-design/icons/RightOutlined';
-import { Row } from 'antd';
 import Breadcrumb from 'antd/es/breadcrumb';
 import Card from 'antd/es/card';
 import Col from 'antd/es/col';
 import Flex from 'antd/es/flex';
+import Row from 'antd/es/row';
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
 import type { NewsLstData } from '../hooks';

@@ -1,5 +1,7 @@
 import CaretDownFilled from '@ant-design/icons/CaretDownFilled';
-import { Button, Row, Space } from 'antd';
+import Button from 'antd/es/button';
+import Row from 'antd/es/row';
+import Space from 'antd/es/space';
 import { useMegaNavData } from '../hooks';
 import { Title } from '@/components';
 import type { RoutePath } from '@/constants';

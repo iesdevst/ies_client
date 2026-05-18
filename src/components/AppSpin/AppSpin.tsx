@@ -1,4 +1,5 @@
-import { Spin, type SpinProps } from 'antd';
+import Spin from 'antd/es/spin';
+import type { SpinProps } from 'antd/es/spin';
 import type { FC } from 'react';
 
 interface IAppSpinProps extends SpinProps {

@@ -1,13 +1,13 @@
-import { DownOutlined, ReloadOutlined, RightOutlined } from '@ant-design/icons';
-import {
-  AutoComplete,
-  Button,
-  Checkbox,
-  Collapse,
-  DatePicker,
-  Flex,
-  Input,
-} from 'antd';
+import DownOutlined from '@ant-design/icons/es/icons/DownOutlined';
+import ReloadOutlined from '@ant-design/icons/es/icons/ReloadOutlined';
+import RightOutlined from '@ant-design/icons/es/icons/RightOutlined';
+import AutoComplete from 'antd/es/auto-complete';
+import Button from 'antd/es/button';
+import Checkbox from 'antd/es/checkbox';
+import Collapse from 'antd/es/collapse';
+import DatePicker from 'antd/es/date-picker';
+import Flex from 'antd/es/flex';
+import Input from 'antd/es/input';
 import dayjs from 'dayjs';
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';

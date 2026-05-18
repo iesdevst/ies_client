@@ -1,4 +1,6 @@
-import { Col, Flex, Layout } from 'antd';
+import Col from 'antd/es/col';
+import Flex from 'antd/es/flex';
+import Layout from 'antd/es/layout';
 import { useDevice } from '@/hooks';
 
 interface INaiPlusPage {

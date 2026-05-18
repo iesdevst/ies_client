@@ -1,4 +1,4 @@
-import { Pagination } from 'antd';
+import Pagination from 'antd/es/pagination';
 import { useEffect, useRef } from 'react';
 import NewsFilters from './components/NewsFilters';
 import NewsLst from './components/NewsLst';

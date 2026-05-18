@@ -1,4 +1,8 @@
-import { Button, Col, Flex, Image, Row } from 'antd';
+import Button from 'antd/es/button';
+import Col from 'antd/es/col';
+import Flex from 'antd/es/flex';
+import Image from 'antd/es/image';
+import Row from 'antd/es/row';
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
 import IES from '@/assets/imgs/ies_logo_notext.webp';

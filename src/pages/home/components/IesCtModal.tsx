@@ -1,10 +1,10 @@
 import CloseCircleFilled from '@ant-design/icons/CloseCircleFilled';
 import SendOutlined from '@ant-design/icons/SendOutlined';
-import { type InputRef } from 'antd';
 import Button from 'antd/es/button';
 import Flex from 'antd/es/flex';
 import Form from 'antd/es/form';
 import Image from 'antd/es/image';
+import type { InputRef } from 'antd/es/input';
 import Input from 'antd/es/input';
 import Modal from 'antd/es/modal';
 import Row from 'antd/es/row';

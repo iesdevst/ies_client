@@ -1,4 +1,5 @@
-import { Carousel, Flex } from 'antd';
+import Carousel from 'antd/es/carousel';
+import Flex from 'antd/es/flex';
 import { useTranslation } from 'react-i18next';
 import { useMediaQuery } from 'react-responsive';
 

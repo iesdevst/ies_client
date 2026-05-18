@@ -1,7 +1,7 @@
 import { lazy } from 'react';
+import SlideCusIes from './components/SlideCusIes';
 import { PageContainer } from '@/components';
 
-const SlideCusIes = lazy(() => import('@/pages/home/components/SlideCusIes'));
 const VidPrIes = lazy(() => import('@/pages/home/components/VidPrIes'));
 const TrainingSl = lazy(() => import('@/pages/home/components/TrainingSl'));
 const NewAndEvent = lazy(() => import('@/pages/home/components/NewAndEvent'));

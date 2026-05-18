@@ -81,7 +81,7 @@ const FieldOfStudy: React.FC = () => {
                   justify={'start'}
                   className={`gap-x-3 ${!mb ? 'mb-22 ' : '!ml-2.5 mb-5'}`}
                 >
-                  <Image src={item.icon} preview={false} />
+                  <Image src={item.icon} preview={false} alt='fieldkk' />
                   <Col>
                     <Title
                       level={3}

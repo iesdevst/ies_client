@@ -1,5 +1,6 @@
 import RightOutlined from '@ant-design/icons/RightOutlined';
-import { Button, type ButtonProps } from 'antd';
+import Button from 'antd/es/button';
+import type { ButtonProps } from 'antd/es/button';
 import {
   forwardRef,
   useEffect,

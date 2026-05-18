@@ -1,5 +1,6 @@
-import { CiCircleFilled } from '@ant-design/icons';
-import { Flex, List } from 'antd';
+import CiCircleFilled from '@ant-design/icons/es/icons/CiCircleFilled';
+import Flex from 'antd/es/flex';
+import List from 'antd/es/list';
 import { Text, Title } from '@/components';
 
 interface IDetaisBouns {

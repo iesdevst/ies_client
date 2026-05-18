@@ -88,6 +88,7 @@ const PartnerSl: React.FC = () => {
                       }}
                       className={`${!mb ? 'px-15 mb-5' : ''}`}
                       preview={false}
+                      alt='partsl'
                     />
                   </Flex>
                 </div>

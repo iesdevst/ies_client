@@ -1,4 +1,5 @@
-import { Col, Image } from 'antd';
+import Col from 'antd/es/col';
+import Image from 'antd/es/image';
 import { useCallback, useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useMediaQuery } from 'react-responsive';
@@ -41,7 +42,9 @@ const InternCollab: React.FC = () => {
           </div>
         </Col>
       }
-      splitFeat={<Image src={ICL} preview={false} className='!h-100' />}
+      splitFeat={
+        <Image src={ICL} preview={false} className='!h-100' alt='incoll' />
+      }
       className='!bg-[#febd25] mb-40 mt-15'
       height={!mb ? '20vh' : '29vh'}
     />

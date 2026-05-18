@@ -1,4 +1,5 @@
-import { Button, Result } from 'antd';
+import Button from 'antd/es/button';
+import Result from 'antd/es/result';
 // prettier-ignore
 import { isRouteErrorResponse, useNavigate, useRouteError } from 'react-router-dom';
 import { PrefetchLink } from '@/components/PrefetchLink';

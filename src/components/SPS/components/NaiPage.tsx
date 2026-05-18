@@ -1,5 +1,11 @@
-import { RightOutlined } from '@ant-design/icons';
-import { Button, Col, Divider, Flex, Image, List, Row } from 'antd';
+import RightOutlined from '@ant-design/icons/es/icons/RightOutlined';
+import Button from 'antd/es/button';
+import Col from 'antd/es/col';
+import Divider from 'antd/es/divider';
+import Flex from 'antd/es/flex';
+import Image from 'antd/es/image';
+import List from 'antd/es/list';
+import Row from 'antd/es/row';
 import { useNavigate } from 'react-router-dom';
 import type { NaiPageLayoutProps } from '../types';
 import FB from '@/assets/imgs/fb_logo.webp';

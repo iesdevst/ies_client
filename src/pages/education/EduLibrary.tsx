@@ -1,4 +1,4 @@
-import { ArrowUpOutlined } from '@ant-design/icons';
+import ArrowUpOutlined from '@ant-design/icons/es/icons/ArrowUpOutlined';
 import Button from 'antd/es/button';
 import Col from 'antd/es/col';
 import Flex from 'antd/es/flex';

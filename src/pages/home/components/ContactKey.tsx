@@ -1,10 +1,9 @@
-import {
-  MailFilled,
-  PhoneFilled,
-  PlusOutlined,
-  RightOutlined,
-} from '@ant-design/icons';
-import { Button, Row } from 'antd';
+import MailFilled from '@ant-design/icons/es/icons/MailFilled';
+import PhoneFilled from '@ant-design/icons/es/icons/PhoneFilled';
+import PlusOutlined from '@ant-design/icons/es/icons/PlusOutlined';
+import RightOutlined from '@ant-design/icons/es/icons/RightOutlined';
+import Button from 'antd/es/button';
+import Row from 'antd/es/row';
 import { lazy, useMemo, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { IesClSection, Text, Title } from '@/components';

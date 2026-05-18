@@ -1,4 +1,6 @@
-import { Col, Flex, Image } from 'antd';
+import Col from 'antd/es/col';
+import Flex from 'antd/es/flex';
+import Image from 'antd/es/image';
 import { useTranslation } from 'react-i18next';
 import AVI from '@/assets/imgs/avt_icon_voca_train.png';
 import CPI from '@/assets/imgs/computer_icon_voca_train.png';

@@ -1,22 +1,23 @@
-import { Row } from 'antd';
 import Col from 'antd/es/col';
 import Image from 'antd/es/image';
+import Row from 'antd/es/row';
 import Typography from 'antd/es/typography';
 
 import { useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
-import { useMediaQuery } from 'react-responsive';
 
 import TSN from '@/assets/imgs/top_str_news.webp';
+import TSNMB from '@/assets/imgs/top_str_news_mb.webp';
 import { IesClSection, Text, Title } from '@/components';
 import { ROUTES } from '@/constants';
+import { useDevice } from '@/hooks';
 import { useEventLstData, useNewsLstData } from '@/pages/iesNews/hooks';
 import { useUserStore } from '@/store';
 
 const { Paragraph } = Typography;
 
 const NewAndEvent: React.FC = () => {
-  const mb = useMediaQuery({ maxWidth: 1024 });
+  const { device } = useDevice();
   const { isDark } = useUserStore();
   const { t } = useTranslation('newAndEvent');
 
@@ -42,16 +43,16 @@ const NewAndEvent: React.FC = () => {
 
   const leftBlock = useMemo(() => {
     return (
-      <Col className={`${!mb ? 'pt-6 pb-16' : 'mt-6'}`}>
+      <Col className={`${device === 'mobile' ? 'mt-6' : 'pt-6 pb-16'}`}>
         <Image
-          src={TSN}
+          src={device === 'mobile' ? TSNMB : TSN}
           preview={false}
           loading='lazy'
           alt='newaaev'
           className='!rounded-xl'
         />
 
-        <div className={!mb ? 'w-4/5' : ''}>
+        <div className={device === 'mobile' ? '' : 'w-4/5'}>
           <Title className='!text-blue-500' level={5}>
             {t('acadQA')}
           </Title>
@@ -62,7 +63,7 @@ const NewAndEvent: React.FC = () => {
         </div>
       </Col>
     );
-  }, [mb, isDark, t]);
+  }, [device, isDark, t]);
 
   const rightList = useMemo(() => {
     return latestNews.map((item, index) => (
@@ -76,9 +77,7 @@ const NewAndEvent: React.FC = () => {
           src={item.img}
           preview={false}
           loading='lazy'
-          className={`col-span-1 rounded-lg ${
-            !mb ? '!w-46 !h-25' : '!w-full !h-full'
-          }`}
+          className={`col-span-1 rounded-lg ${device === 'mobile' ? '' : '!w-46 !h-25'}`}
           alt='nav'
         />
 
@@ -109,7 +108,7 @@ const NewAndEvent: React.FC = () => {
         </div>
       </div>
     ));
-  }, [mb, isDark, latestNews]);
+  }, [device, isDark, latestNews]);
 
   return (
     <IesClSection
@@ -117,10 +116,10 @@ const NewAndEvent: React.FC = () => {
       layout='newsFeature'
       title={t('featNews')}
       feature
-      mb={mb}
+      mb={device === 'mobile'}
       dark={isDark}
       navigateGo={ROUTES.NEWS}
-      className={`mt-15 ${!mb ? 'px-10' : 'px-2'}`}
+      className={`mt-15 ${device === 'mobile' ? 'px-2' : 'px-10'}`}
       featCard={latestEv}
       butTit={t('viewAll')}
       children={

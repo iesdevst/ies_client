@@ -1,4 +1,4 @@
-import { Col } from 'antd';
+import Col from 'antd/es/col';
 import { useTranslation } from 'react-i18next';
 import { useMediaQuery } from 'react-responsive';
 import type { OvwDetail, OvwScDetail } from '../hooks';

@@ -1,20 +1,37 @@
 import { useMemo } from 'react';
 import NOEX from '@/assets/imgs/17k_noexam.webp';
+import NOEXST from '@/assets/imgs/17k_noexam_str.webp';
 import BTHMSN from '@/assets/imgs/bt_hms_news.webp';
+import BTHMSNST from '@/assets/imgs/bt_hms_news_str.webp';
 import BRSTUN from '@/assets/imgs/cnhs_news.webp';
+import BRSTUNST from '@/assets/imgs/cnhs_news_str.webp';
 import HNCNDN from '@/assets/imgs/hn_cnd_news.webp';
+import HNCNDNST from '@/assets/imgs/hn_cnd_news_str.webp';
 import HNTN from '@/assets/imgs/hn_lct_news.webp';
+import HNTNST from '@/assets/imgs/hn_lct_news_str.webp';
 import KHTS from '@/assets/imgs/khts.webp';
+import KHTSST from '@/assets/imgs/khts_str.webp';
 import KTDT from '@/assets/imgs/ktdt_nfc.webp';
+import KTDTST from '@/assets/imgs/ktdt_nfc_str.webp';
 import KTO from '@/assets/imgs/kto_nfc.webp';
+import KTOST from '@/assets/imgs/kto_nfc_str.webp';
 import LDHNN from '@/assets/imgs/ld_hn_news_page.webp';
+import LDHNNST from '@/assets/imgs/ld_hn_news_page_str.webp';
 import LDTHN from '@/assets/imgs/ld_thud_news_page.webp';
+import LDTHNST from '@/assets/imgs/ld_thud_news_page_str.webp';
 import PLN from '@/assets/imgs/pl_thcs_news.webp';
+import PLNST from '@/assets/imgs/pl_thcs_news_str.webp';
 import TKDH from '@/assets/imgs/tkdh_nfc.webp';
+import TKDHST from '@/assets/imgs/tkdh_nfc_str.webp';
 import HTDHM from '@/assets/imgs/top_str_htdhm.webp';
+import HTDHMST from '@/assets/imgs/top_str_htdhm_str.webp';
 import LTS from '@/assets/imgs/top_str_lts.webp';
+import LTSST from '@/assets/imgs/top_str_lts_str.webp';
 import NBCN from '@/assets/imgs/top_str_news.webp';
+import NBCNST from '@/assets/imgs/top_str_news_str.webp';
 import TSDT from '@/assets/imgs/tsdt_p1.webp';
+
+import TSDTST from '@/assets/imgs/tsdt_p1_str.webp';
 
 export const useNewsLstData = (): { data: Array<NewsLstData> } => {
   const data = useMemo<Array<NewsLstData>>(
@@ -24,7 +41,8 @@ export const useNewsLstData = (): { data: Array<NewsLstData> } => {
         newsTit:
           'Bộ trưởng Bộ GD-ĐT Hoàng Minh Sơn: "Đừng chỉ học để cầm tấm bằng đi tìm việc"',
         desc: 'VOV.VN - Bộ trưởng Hoàng Minh Sơn nhắn nhủ học sinh  .........',
-        img: BTHMSN,
+        imgUse: BTHMSN,
+        img: BTHMSNST,
         newsDate: '2026-05-07',
         categories: 'career',
         authors: 'individual',
@@ -35,7 +53,8 @@ export const useNewsLstData = (): { data: Array<NewsLstData> } => {
         id: '2',
         newsTit: 'Cầu nối học sinh với cơ sở đào tạo\n và thị trường lao động',
         desc: 'Được tổ chức thường niên từ năm 2019, Ngày hội tiếp tục khẳng định vai trò .........',
-        img: BRSTUN,
+        imgUse: BRSTUN,
+        img: BRSTUNST,
         newsDate: '2026-05-01',
         categories: 'career',
         authors: 'individual',
@@ -46,7 +65,8 @@ export const useNewsLstData = (): { data: Array<NewsLstData> } => {
         id: '3',
         newsTit: 'Học nghề - một lựa chọn\ncho học sinh sau trung học cơ sở',
         desc: 'Thời điểm này, hàng chục nghìn học sinh đứng trước .........',
-        img: HNTN,
+        imgUse: HNTN,
+        img: HNTNST,
         newsDate: '2026-05-04',
         categories: 'career',
         authors: 'individual',
@@ -57,7 +77,8 @@ export const useNewsLstData = (): { data: Array<NewsLstData> } => {
         id: '4',
         newsTit: 'Con đường mới: Trung học nghề',
         desc: 'Trung học nghề được cho là lựa chọn thiết thực cho những học sinh .........',
-        img: HNCNDN,
+        imgUse: HNCNDN,
+        img: HNCNDNST,
         newsDate: '2026-05-10',
         categories: 'career',
         authors: 'admisstr',
@@ -68,7 +89,8 @@ export const useNewsLstData = (): { data: Array<NewsLstData> } => {
         id: '5',
         newsTit: 'Phân luồng sau THCS:\n Trung học nghề thành lựa chọn mới',
         desc: 'VHO - Từ năm 2026, học sinh sau khi hoàn thành bậc THCS không chỉ có .........',
-        img: PLN,
+        imgUse: PLN,
+        img: PLNST,
         newsDate: '2026-02-16',
         categories: 'career',
         authors: 'individual',
@@ -79,7 +101,8 @@ export const useNewsLstData = (): { data: Array<NewsLstData> } => {
         id: '6',
         newsTit: 'GS Ngô Bảo Châu\n “Không nhất thiết phải có bằng Đại học”',
         desc: 'GS Ngô Bảo Châu quan niệm giá trị của một con người không thể  .........',
-        img: NBCN,
+        imgUse: NBCN,
+        img: NBCNST,
         newsDate: '2026-04-30',
         categories: 'career',
         authors: 'individual',
@@ -91,7 +114,8 @@ export const useNewsLstData = (): { data: Array<NewsLstData> } => {
         newsTit:
           'Công nghệ kỹ thuật điện, điện tử: Sức hút từ ngành công nghiệp mũi nhọn',
         desc: 'Công nghệ kỹ thuật điện, điện tử: Sức hút từ ngành công nghiệp mũi nhọn\n',
-        img: KTDT,
+        imgUse: KTDT,
+        img: KTDTST,
         newsDate: '2025-11-28',
         categories: 'training',
         authors: 'admisstr',
@@ -103,7 +127,8 @@ export const useNewsLstData = (): { data: Array<NewsLstData> } => {
         id: '8',
         newsTit: 'Công nghệ kĩ thuật ô tô: Ngành nghề có tương lai “đắt giá”',
         desc: 'Công nghệ kĩ thuật ô tô: Ngành nghề có tương lai “đắt giá”\n',
-        img: KTO,
+        imgUse: KTO,
+        img: KTOST,
         newsDate: '2025-12-20',
         categories: 'training',
         authors: 'admisstr',
@@ -115,7 +140,8 @@ export const useNewsLstData = (): { data: Array<NewsLstData> } => {
         id: '9',
         newsTit: 'Thiết kế đồ họa: Ngành học tiềm năng',
         desc: 'Thiết kế đồ họa: Ngành học tiềm năng\n',
-        img: TKDH,
+        imgUse: TKDH,
+        img: TKDHST,
         newsDate: '2026-04-25',
         categories: 'training',
         authors: 'admisstr',
@@ -127,7 +153,8 @@ export const useNewsLstData = (): { data: Array<NewsLstData> } => {
         id: '10',
         newsTit: 'Tuyển sinh đào tạo - năm học 2026-2027',
         desc: 'Trường Trung cấp Tin học Kinh tế Sài Gòn thông báo tuyển sinh đào tạo năm học 2026 - 2027....',
-        img: TSDT,
+        imgUse: TSDT,
+        img: TSDTST,
         newsDate: '2026-05-12',
         typeTit: 'Tuyển sinh',
         categories: 'admissions',
@@ -139,7 +166,8 @@ export const useNewsLstData = (): { data: Array<NewsLstData> } => {
         id: '11',
         newsTit: 'Kế hoạch tuyển sinh - năm học 2026-2027',
         desc: 'Trường Trung cấp Tin học Kinh tế Sài Gòn ban hành Kế hoạch tuyển sinh đào tạo năm học 2026 - 2027....',
-        img: KHTS,
+        imgUse: KHTS,
+        img: KHTSST,
         newsDate: '2026-05-11',
         typeTit: 'Tuyển sinh',
         categories: 'admissions',
@@ -151,7 +179,8 @@ export const useNewsLstData = (): { data: Array<NewsLstData> } => {
         id: '12',
         newsTit: 'Những lý do bạn nên theo học ngành \nTin học ứng dụng',
         desc: 'Xã hội ngày càng phát triển đi cùng với đó là sự tiến bộ của khoa học.....',
-        img: LDTHN,
+        imgUse: LDTHN,
+        img: LDTHNST,
         newsDate: '2026-02-26',
         categories: 'career',
         authors: 'admisstr',
@@ -163,7 +192,8 @@ export const useNewsLstData = (): { data: Array<NewsLstData> } => {
         id: '13',
         newsTit: 'Đủ điểm đậu đại học vẫn lựa chọn \n học Trung cấp nghề',
         desc: 'Học cao đẳng, trung cấp nghề không còn là đường vòng mà là đường.....',
-        img: LDHNN,
+        imgUse: LDHNN,
+        img: LDHNNST,
         newsDate: '2026-01-03',
         categories: 'career',
         authors: 'admisstr',
@@ -174,7 +204,8 @@ export const useNewsLstData = (): { data: Array<NewsLstData> } => {
         id: '14',
         newsTit: 'Hợp tác đào tạo - Tuyển sinh ngành Luật – ĐH Mở Hà Nội 2026',
         desc: 'Tuyển sinh ngành Luật – ĐH Mở Hà Nội 2022',
-        img: LTS,
+        imgUse: LTS,
+        img: LTSST,
         newsDate: '2026-02-02',
         categories: 'partnership',
         authors: 'offTrain',
@@ -187,7 +218,8 @@ export const useNewsLstData = (): { data: Array<NewsLstData> } => {
         newsTit:
           'EHOU tổ chức lớp học chuyên đề: “Tìm hiểu Luật doanh nghiệp và các hợp đồng kinh tế”',
         desc: 'EHOU tổ chức lớp học chuyên đề:\n “Tìm hiểu Luật doanh nghiệp và các hợp đồng kinh tế”',
-        img: HTDHM,
+        imgUse: HTDHM,
+        img: HTDHMST,
         newsDate: '2026-01-05',
         categories: 'partnership',
         authors: 'offTrain',
@@ -197,7 +229,8 @@ export const useNewsLstData = (): { data: Array<NewsLstData> } => {
         id: '16',
         newsTit: 'Hơn 17.000 học sinh TP.HCM bỏ thi lớp 10',
         desc: '(PLO)- Qua thống kê, có 17.826 học sinh lớp 9 tại TP.HCM bỏ tham dự kỳ thi lớp 10 năm học 2026-2027.',
-        img: NOEX,
+        imgUse: NOEX,
+        img: NOEXST,
         newsDate: '2026-05-11',
         categories: 'career',
         authorN: 'NGUYỄN QUYÊN',
@@ -214,6 +247,7 @@ export type NewsLstData = {
   newsTit: string;
   desc: string;
   img: string;
+  imgUse: string;
   newsDate: string;
   typeTit?: string;
   authorN: string;

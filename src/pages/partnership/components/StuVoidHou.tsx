@@ -1,4 +1,7 @@
-import { Col, Flex, Image, Row } from 'antd';
+import Col from 'antd/es/col';
+import Flex from 'antd/es/flex';
+import Image from 'antd/es/image';
+import Row from 'antd/es/row';
 import { useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useMediaQuery } from 'react-responsive';

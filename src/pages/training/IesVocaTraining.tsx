@@ -1,5 +1,5 @@
-import RightOutlined from '@ant-design/icons/RightOutlined';
-import { Breadcrumb } from 'antd';
+import RightOutlined from '@ant-design/icons/es/icons/RightOutlined';
+import Breadcrumb from 'antd/es/breadcrumb';
 import { useTranslation } from 'react-i18next';
 import { useMediaQuery } from 'react-responsive';
 import ContactKey from '../home/components/ContactKey';

@@ -1,4 +1,6 @@
-import { Col, Image, Row } from 'antd';
+import Col from 'antd/es/col';
+import Image from 'antd/es/image';
+import Row from 'antd/es/row';
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
 import AISAB from '@/assets/imgs/ai_short_ab.webp';

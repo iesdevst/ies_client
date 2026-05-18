@@ -1,9 +1,7 @@
-import {
-  BankOutlined,
-  DesktopOutlined,
-  ShopOutlined,
-  SketchOutlined,
-} from '@ant-design/icons';
+import BankOutlined from '@ant-design/icons/es/icons/BankOutlined';
+import DesktopOutlined from '@ant-design/icons/es/icons/DesktopOutlined';
+import ShopOutlined from '@ant-design/icons/es/icons/ShopOutlined';
+import SketchOutlined from '@ant-design/icons/es/icons/SketchOutlined';
 import Button from 'antd/es/button';
 import Card from 'antd/es/card';
 import Col from 'antd/es/col';

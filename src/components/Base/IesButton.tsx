@@ -1,4 +1,5 @@
-import { Button, type ButtonProps } from 'antd';
+import Button from 'antd/es/button';
+import type { ButtonProps } from 'antd/es/button';
 import { memo } from 'react';
 
 export const IesButton = memo((props: ButtonProps) => {
