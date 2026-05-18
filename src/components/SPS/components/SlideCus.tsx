@@ -1,5 +1,5 @@
 import Carousel from 'antd/es/carousel';
-import React, { memo, useMemo } from 'react';
+import React, { useMemo } from 'react';
 import styles from '../iesCl.module.scss';
 import type { SlideCusLayoutProps } from '../types';
 
@@ -39,4 +39,4 @@ const SlideCus: React.FC<SlideCusLayoutProps> = (props) => {
   );
 };
 
-export default memo(SlideCus);
+export default SlideCus;

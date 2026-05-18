@@ -1,5 +1,5 @@
 import ArrowRightOutlined from '@ant-design/icons/ArrowRightOutlined';
-import React, { useCallback, useMemo, useRef, useState } from 'react';
+import React, { memo, useCallback, useMemo, useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import type { VidPrLayoutProps } from '../types';
 
@@ -129,4 +129,4 @@ const VidPr: React.FC<VidPrLayoutProps> = (props) => {
   );
 };
 
-export default VidPr;
+export default memo(VidPr);
