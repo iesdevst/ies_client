@@ -1,10 +1,10 @@
-import { lazy, useMemo } from 'react';
+import { useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
+import IMGW from '@/assets/imgs/vid_wait.webp';
+import { IesClSection } from '@/components';
 import { ROUTES } from '@/constants';
 import { useDevice } from '@/hooks';
 import { useUserStore } from '@/store';
-
-const IesClSection = lazy(() => import('@/components/SPS/IesClSection'));
 
 const VidPrIes: React.FC = () => {
   const { device } = useDevice();
@@ -28,6 +28,7 @@ const VidPrIes: React.FC = () => {
       desVid={t('atIes')}
       titVid={t('alaunching')}
       vidLink='https://www.youtube.com/embed/yJCZCz-b_yQ?si=vk_80q-TugnhePQJ'
+      imgWait={IMGW}
       mb={device === 'mobile'}
       navigateGo={ROUTES.ABOUT_OVERVIEW}
       height={scHeight}

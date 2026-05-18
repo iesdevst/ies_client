@@ -22,6 +22,7 @@ function App() {
   return (
     <ConfigProvider
       theme={{
+        hashed: false,
         token: {
           colorPrimary: '#474669',
           colorText: isDark ? 'white' : 'black',

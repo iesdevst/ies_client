@@ -59,6 +59,7 @@ export interface VidPrLayoutProps extends BasePageIesSecProps {
   bottomTit: string;
   tabletVid?: boolean;
   miniSc?: boolean;
+  imgWait: string;
 }
 
 /* ===== Training ===== */

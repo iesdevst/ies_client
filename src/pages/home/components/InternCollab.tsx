@@ -45,7 +45,12 @@ const InternCollab: React.FC = () => {
         </Col>
       }
       splitFeat={
-        <Image src={ICL} preview={false} className='!h-100' alt='incoll' />
+        <Image
+          src={ICL}
+          preview={false}
+          className='!w-full !h-100'
+          alt='incoll'
+        />
       }
       className='!bg-[#febd25] mb-40 mt-15'
       height={!mb ? '20vh' : '29vh'}

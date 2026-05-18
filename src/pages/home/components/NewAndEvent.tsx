@@ -51,7 +51,7 @@ const NewAndEvent: React.FC = () => {
           preview={false}
           loading='lazy'
           alt='newaaev'
-          className='!rounded-xl'
+          className='!rounded-xl !w-full !h-full'
         />
 
         <div className={device === 'mobile' ? '' : 'w-4/5'}>

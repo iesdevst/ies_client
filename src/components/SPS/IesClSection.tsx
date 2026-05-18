@@ -1,10 +1,10 @@
 import { lazy, Suspense } from 'react';
+import VidPr from './components/VidPr';
 import styles from './iesCl.module.scss';
 import type { SubSectionProps } from './types';
 
 const SlideCus = lazy(() => import('@/components/SPS/components/SlideCus'));
 const SCS = lazy(() => import('@/components/SPS/components/SCS'));
-const VidPr = lazy(() => import('@/components/SPS/components/VidPr'));
 const TrainSl = lazy(() => import('@/components/SPS/components/TrainSl'));
 const Topic = lazy(() => import('@/components/SPS/components/Topic'));
 const NewsFeat = lazy(() => import('@/components/SPS/components/NewsFeat'));

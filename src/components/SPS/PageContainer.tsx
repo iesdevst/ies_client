@@ -1,4 +1,3 @@
-import ConfigProvider from 'antd/es/config-provider';
 import type { ReactNode } from 'react';
 
 interface PageContainerProps {
@@ -8,26 +7,7 @@ interface PageContainerProps {
 
 export const PageContainer: React.FC<PageContainerProps> = (props) => {
   const { children, className = '' } = props || {};
-  return (
-    <ConfigProvider
-      theme={{
-        token: {},
-        components: {
-          Modal: {
-            paddingContentHorizontalLG: 0,
-            paddingContentHorizontalSM: 0,
-            paddingContentHorizontal: 0,
-            paddingContentVertical: 0,
-            paddingContentVerticalLG: 0,
-            paddingContentVerticalSM: 0,
-            paddingMD: 0,
-          },
-        },
-      }}
-    >
-      <div className={`${className}`}>{children}</div>
-    </ConfigProvider>
-  );
+  return <section className={`${className}`}>{children}</section>;
 };
 
 export default PageContainer;

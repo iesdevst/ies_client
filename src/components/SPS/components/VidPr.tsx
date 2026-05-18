@@ -1,5 +1,5 @@
 import ArrowRightOutlined from '@ant-design/icons/ArrowRightOutlined';
-import React, { memo, useCallback, useMemo, useRef, useState } from 'react';
+import React, { useCallback, useMemo, useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import type { VidPrLayoutProps } from '../types';
 
@@ -14,6 +14,7 @@ const VidPr: React.FC<VidPrLayoutProps> = (props) => {
     dark,
     navigateGo,
     mb,
+    imgWait,
   } = props;
 
   const navigate = useNavigate();
@@ -54,7 +55,7 @@ const VidPr: React.FC<VidPrLayoutProps> = (props) => {
           <div className='relative w-full aspect-video'>
             {!play ? (
               <img
-                src={`https://img.youtube.com/vi/yJCZCz-b_yQ/maxresdefault.jpg`}
+                src={imgWait}
                 className='w-full h-full object-cover rounded-xl cursor-pointer'
                 onClick={() => setPlay(true)}
                 alt='vidpr'
@@ -128,4 +129,4 @@ const VidPr: React.FC<VidPrLayoutProps> = (props) => {
   );
 };
 
-export default memo(VidPr);
+export default VidPr;
