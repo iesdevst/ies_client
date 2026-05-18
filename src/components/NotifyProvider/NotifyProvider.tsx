@@ -1,9 +1,9 @@
 import CheckOutlined from '@ant-design/icons/CheckOutlined';
 import CloseOutlined from '@ant-design/icons/CloseOutlined';
+import ReloadOutlined from '@ant-design/icons/ReloadOutlined';
 import { type MessageArgsProps } from 'antd';
 import useMessage from 'antd/es/message/useMessage';
 import React, { useEffect, useRef } from 'react';
-import { CiSquareInfo } from 'react-icons/ci';
 import { Text, Title } from '../AntTypography';
 
 type NotifyBaseOptions = {
@@ -70,7 +70,7 @@ const NotifyProvider: React.FunctionComponent<INotifyProviderProps> = (
         content: (
           <div style={{ textAlign: 'left' }}>
             <Title className='tight' level={3}>
-              <CiSquareInfo style={{ color: 'orange', marginRight: 5 }} />
+              <ReloadOutlined style={{ color: 'orange', marginRight: 5 }} />
               {currentSnd?.title}
             </Title>
             <hr />

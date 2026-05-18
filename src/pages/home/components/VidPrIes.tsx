@@ -1,9 +1,10 @@
-import { useMemo } from 'react';
+import { lazy, useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
-import { IesClSection } from '@/components';
 import { ROUTES } from '@/constants';
 import { useDevice } from '@/hooks';
 import { useUserStore } from '@/store';
+
+const IesClSection = lazy(() => import('@/components/SPS/IesClSection'));
 
 const VidPrIes: React.FC = () => {
   const { device } = useDevice();

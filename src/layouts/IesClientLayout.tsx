@@ -5,13 +5,13 @@ import React, { lazy, useEffect, useRef, useState } from 'react';
 import { Outlet, useLocation } from 'react-router-dom';
 import FooterIes from './components/FooterIes';
 import HeaderIes from './components/HeaderIes';
-import RadialMenu from './components/RadialMenu';
 import styles from './styles/iesClLayout.module.scss';
 import ScrollToTop from '@/components/ScrollToTop';
 import { ROUTES, type RoutePath } from '@/constants';
 import { useUserStore } from '@/store';
 
 const MegaDrawer = lazy(() => import('@/layouts/components/MegaDrawer'));
+const RadialMenu = lazy(() => import('@/layouts/components/RadialMenu'));
 
 const { Content } = Layout;
 
@@ -20,7 +20,7 @@ const IesClientLayout: React.FC = () => {
   const [drawerKey, setDrawerKey] = useState<RoutePath | null>(null);
   const presentLocation = useLocation();
   const [showBackTop, setShowBackTop] = useState(false);
-  const { isDark } = useUserStore();
+  const isDark = useUserStore((s) => s.isDark);
 
   useEffect(() => {
     const hdlScroll = () => {

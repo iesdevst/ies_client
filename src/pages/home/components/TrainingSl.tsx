@@ -1,10 +1,11 @@
-import { useMemo } from 'react';
+import { lazy, useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useMediaQuery } from 'react-responsive';
 import { useStaticDt, useTrainImgDt } from './hooks';
-import { IesClSection } from '@/components';
 import type { TrainingSlProps } from '@/components/SPS/types';
 import { ROUTES } from '@/constants';
+
+const IesClSection = lazy(() => import('@/components/SPS/IesClSection'));
 
 const TrainingSl: React.FC = () => {
   const mb = useMediaQuery({ maxWidth: 1024 });

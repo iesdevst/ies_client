@@ -1,9 +1,10 @@
-import { useMemo } from 'react';
+import { lazy, useMemo } from 'react';
 import ADDKSC from '@/assets/imgs/addmis_dk_screen.webp';
 
 import TSMBSC from '@/assets/imgs/ts_mb_screen.webp';
-import { IesClSection } from '@/components';
 import { useDevice } from '@/hooks';
+
+const IesClSection = lazy(() => import('@/components/SPS/IesClSection'));
 
 const SlideCusIes: React.FC = () => {
   const { device } = useDevice();

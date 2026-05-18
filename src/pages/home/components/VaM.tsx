@@ -1,11 +1,13 @@
+import { lazy } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useMediaQuery } from 'react-responsive';
 import { useMethodPrData, useTopicData } from './hooks';
 import VAM from '@/assets/imgs/ies_vam.webp';
 import TPI from '@/assets/imgs/topic_img.webp';
-import { IesClSection } from '@/components';
 import { ROUTES } from '@/constants';
 import { useUserStore } from '@/store';
+
+const IesClSection = lazy(() => import('@/components/SPS/IesClSection'));
 
 const VaM: React.FC = () => {
   const mb = useMediaQuery({ maxWidth: 1024 });

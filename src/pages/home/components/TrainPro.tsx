@@ -1,8 +1,10 @@
+import { lazy } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useMediaQuery } from 'react-responsive';
 import { useTrainProData } from './hooks';
-import { IesClSection } from '@/components';
 import { useUserStore } from '@/store';
+
+const IesClSection = lazy(() => import('@/components/SPS/IesClSection'));
 
 const TrainPro: React.FC = () => {
   const mb = useMediaQuery({ maxWidth: 1024 });

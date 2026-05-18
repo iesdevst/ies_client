@@ -6,11 +6,12 @@ import Button from 'antd/es/button';
 import Row from 'antd/es/row';
 import { lazy, useMemo, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { IesClSection, Text, Title } from '@/components';
+import { Text, Title } from '@/components';
 import { useDevice } from '@/hooks';
 import { useUserStore } from '@/store';
 
 const IesCtModal = lazy(() => import('@/pages/home/components/IesCtModal'));
+const IesClSection = lazy(() => import('@/components/SPS/IesClSection'));
 
 const ContactKey: React.FC = () => {
   const { isDark } = useUserStore();

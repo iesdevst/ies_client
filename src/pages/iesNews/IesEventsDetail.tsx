@@ -1,16 +1,18 @@
 import RightOutlined from '@ant-design/icons/es/icons/RightOutlined';
 import Breadcrumb from 'antd/es/breadcrumb';
-import { useMemo } from 'react';
+import { lazy, useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useMediaQuery } from 'react-responsive';
 import { useParams, useSearchParams } from 'react-router-dom';
-import ContactKey from '../home/components/ContactKey';
 import DetailsBonus from './components/DetailsBonus';
 import { useEventLstData, useEventsData, useNewsLstData } from './hooks';
-import { IesClSection, Text } from '@/components';
+import { Text } from '@/components';
 import { PrefetchLink } from '@/components/PrefetchLink';
 import { ROUTES } from '@/constants';
 import { useUserStore } from '@/store';
+
+const ContactKey = lazy(() => import('@/pages/home/components/ContactKey'));
+const IesClSection = lazy(() => import('@/components/SPS/IesClSection'));
 
 const IesEventsDetails = () => {
   const { t } = useTranslation('iesEventsDetail');

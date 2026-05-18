@@ -1,9 +1,17 @@
-import ContactKey from '../home/components/ContactKey';
-import LearningTranform from './components/LearningTranform';
-import ShortCrsIntro from './components/ShortCrsIntro';
-import ShortCrsTabLst from './components/ShortCrsTabLst';
+import { lazy } from 'react';
 import { PageContainer } from '@/components';
 import { useUserStore } from '@/store';
+
+const LearningTranform = lazy(
+  () => import('@/pages/training/components/LearningTranform'),
+);
+const ShortCrsIntro = lazy(
+  () => import('@/pages/training/components/ShortCrsIntro'),
+);
+const ShortCrsTabLst = lazy(
+  () => import('@/pages/training/components/ShortCrsTabLst'),
+);
+const ContactKey = lazy(() => import('@/pages/home/components/ContactKey'));
 
 const ShortCourse = () => {
   const { isDark } = useUserStore();

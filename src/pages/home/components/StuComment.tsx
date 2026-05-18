@@ -1,11 +1,13 @@
 import Col from 'antd/es/col';
 import Flex from 'antd/es/flex';
 import Image from 'antd/es/image';
+import { lazy } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useMediaQuery } from 'react-responsive';
 import STUC from '@/assets/imgs/stu_cm.webp';
 import STBG from '@/assets/imgs/stu_cmt_bg.webp';
-import { IesClSection } from '@/components';
+
+const IesClSection = lazy(() => import('@/components/SPS/IesClSection'));
 
 const StuComment = () => {
   const mb = useMediaQuery({ maxWidth: 1024 });

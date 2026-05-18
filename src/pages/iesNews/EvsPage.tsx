@@ -1,11 +1,12 @@
 import Pagination from 'antd/es/pagination';
-import { useEffect, useRef } from 'react';
-import EvsFilters from './components/EvsFilters';
-import EvsLst from './components/EvsLst';
+import { lazy, useEffect, useRef } from 'react';
 import { useEventLstData } from './hooks';
 import { useEvsFilters } from './hooks/useEvsFilters';
 import { useDevice } from '@/hooks';
 import IesLayoutNE from '@/layouts/IesLayoutNE';
+
+const EvsFilters = lazy(() => import('@/pages/iesNews/components/EvsFilters'));
+const EvsLst = lazy(() => import('@/pages/iesNews/components/EvsLst'));
 
 const EvsPage = () => {
   const { data } = useEventLstData();

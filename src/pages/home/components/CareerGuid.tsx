@@ -1,11 +1,14 @@
 import Carousel from 'antd/es/carousel';
 import Flex from 'antd/es/flex';
+import { lazy } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useMediaQuery } from 'react-responsive';
 
 import { useCgCardData, useCgSlideData } from './hooks';
-import { IesClSection, Text, Title } from '@/components';
+import { Text, Title } from '@/components';
 import { useUserStore } from '@/store';
+
+const IesClSection = lazy(() => import('@/components/SPS/IesClSection'));
 
 const CareerGuid: React.FC = () => {
   const mb = useMediaQuery({ maxWidth: 1024 });

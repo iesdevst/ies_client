@@ -3,7 +3,7 @@ import Col from 'antd/es/col';
 import Flex from 'antd/es/flex';
 import Image from 'antd/es/image';
 
-import { useMemo } from 'react';
+import { lazy, useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useMediaQuery } from 'react-responsive';
 
@@ -16,9 +16,11 @@ import LH from '@/assets/imgs/luxel_home.webp';
 import RA from '@/assets/imgs/radian_tt.webp';
 import WW from '@/assets/imgs/work_wise_tt.webp';
 
-import { IesClSection, Text, Title } from '@/components';
+import { Text, Title } from '@/components';
 import styles from '@/components/SPS/iesCl.module.scss';
 import { useUserStore } from '@/store';
+
+const IesClSection = lazy(() => import('@/components/SPS/IesClSection'));
 
 const PartnerSl: React.FC = () => {
   const mb = useMediaQuery({ maxWidth: 1024 });

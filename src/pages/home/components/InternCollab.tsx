@@ -1,12 +1,14 @@
 import Col from 'antd/es/col';
 import Image from 'antd/es/image';
-import { useCallback, useMemo } from 'react';
+import { lazy, useCallback, useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useMediaQuery } from 'react-responsive';
 import { useNavigate } from 'react-router-dom';
 import ICL from '@/assets/imgs/intern_cl.webp';
-import { IesClSection, Title } from '@/components';
+import { Title } from '@/components';
 import { ROUTES } from '@/constants';
+
+const IesClSection = lazy(() => import('@/components/SPS/IesClSection'));
 
 const InternCollab: React.FC = () => {
   const mb = useMediaQuery({ maxWidth: 1024 });

@@ -4,15 +4,17 @@ import Col from 'antd/es/col';
 import Image from 'antd/es/image';
 import List from 'antd/es/list';
 import Row from 'antd/es/row';
-import { useCallback } from 'react';
+import { lazy, useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useMediaQuery } from 'react-responsive';
 import { useNavigate } from 'react-router-dom';
 import { useFieldProData } from './hooks';
 import FBL from '@/assets/imgs/field_bot_left.avif';
-import { IesClSection, Text, Title } from '@/components';
+import { Text, Title } from '@/components';
 import { ROUTES } from '@/constants';
 import { useUserStore } from '@/store';
+
+const IesClSection = lazy(() => import('@/components/SPS/IesClSection'));
 
 const FieldOfStudy: React.FC = () => {
   const mb = useMediaQuery({ maxWidth: 1024 });

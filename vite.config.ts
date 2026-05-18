@@ -3,7 +3,7 @@ import { fileURLToPath } from "url";
 import react from "@vitejs/plugin-react-swc";
 import path from "path";
 import tailwindcss from "@tailwindcss/vite";
-
+import { visualizer } from "rollup-plugin-visualizer";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -16,20 +16,30 @@ Object.defineProperty(globalThis, "__dirname", {
 });
 
 export default defineConfig({
-  plugins: [react(), tailwindcss()],
+  plugins: [
+    react(),
+    tailwindcss(),
+
+    visualizer({
+      open: true,
+      gzipSize: true,
+      brotliSize: true,
+      filename: "stats.html",
+    }),
+  ],
   build: {
-  target: "esnext",
-  rollupOptions: {
-    output: {
-      manualChunks: {
-        react: ["react", "react-dom"],
-        router: ["react-router-dom"],
-        antd: ["antd"],
-        query: ["@tanstack/react-query"],
+    target: "esnext",
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          react: ["react", "react-dom"],
+          router: ["react-router-dom"],
+          antd: ["antd"],
+          query: ["@tanstack/react-query"],
+        },
       },
     },
   },
-},
   server: {
     port: 3089,
     proxy: {

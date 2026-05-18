@@ -3,16 +3,18 @@ import Image from 'antd/es/image';
 import Row from 'antd/es/row';
 import Typography from 'antd/es/typography';
 
-import { useMemo } from 'react';
+import { lazy, useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import TSN from '@/assets/imgs/top_str_news.webp';
 import TSNMB from '@/assets/imgs/top_str_news_mb.webp';
-import { IesClSection, Text, Title } from '@/components';
+import { Text, Title } from '@/components';
 import { ROUTES } from '@/constants';
 import { useDevice } from '@/hooks';
 import { useEventLstData, useNewsLstData } from '@/pages/iesNews/hooks';
 import { useUserStore } from '@/store';
+
+const IesClSection = lazy(() => import('@/components/SPS/IesClSection'));
 
 const { Paragraph } = Typography;
 

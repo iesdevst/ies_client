@@ -1,15 +1,21 @@
 import RightOutlined from '@ant-design/icons/es/icons/RightOutlined';
 import Breadcrumb from 'antd/es/breadcrumb';
+import { lazy } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useMediaQuery } from 'react-responsive';
-import ContactKey from '../home/components/ContactKey';
-import VocaTrainIntro from './components/VocaTrainIntro';
-import VocaTrainLst from './components/VocaTrainLst';
 import styles from './iesTraining.module.scss';
 import { Text } from '@/components';
 import { PrefetchLink } from '@/components/PrefetchLink';
 import { ROUTES } from '@/constants';
 import { useUserStore } from '@/store';
+
+const ContactKey = lazy(() => import('@/pages/home/components/ContactKey'));
+const VocaTrainIntro = lazy(
+  () => import('@/pages/training/components/VocaTrainIntro'),
+);
+const VocaTrainLst = lazy(
+  () => import('@/pages/training/components/VocaTrainLst'),
+);
 
 const IesVocaTraining = () => {
   const mb = useMediaQuery({ maxWidth: 767 });

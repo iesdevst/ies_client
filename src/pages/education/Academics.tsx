@@ -3,12 +3,9 @@ import RightOutlined from '@ant-design/icons/RightOutlined';
 import Breadcrumb from 'antd/es/breadcrumb';
 import Flex from 'antd/es/flex';
 import Image from 'antd/es/image';
+import { lazy } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useMediaQuery } from 'react-responsive';
-import ContactKey from '../home/components/ContactKey';
-import AboutPartnership from './components/AboutPartnership';
-import AboutShortTerm from './components/AboutShortTerm';
-import AboutVoca from './components/AboutVoca';
 import styles from './education.module.scss';
 import ACDA from '@/assets/imgs/academic_about.webp';
 import ACDB from '@/assets/imgs/academics_banner.webp';
@@ -16,6 +13,15 @@ import { Text, Title } from '@/components';
 import { PrefetchLink } from '@/components/PrefetchLink';
 import { ROUTES } from '@/constants';
 import { useUserStore } from '@/store';
+
+const ContactKey = lazy(() => import('@/pages/home/components/ContactKey'));
+const AboutVoca = lazy(() => import('@/pages/education/components/AboutVoca'));
+const AboutShortTerm = lazy(
+  () => import('@/pages/education/components/AboutShortTerm'),
+);
+const AboutPartnership = lazy(
+  () => import('@/pages/education/components/AboutPartnership'),
+);
 
 const Academics: React.FC = () => {
   const { t } = useTranslation('academics');

@@ -1,10 +1,13 @@
 import Pagination from 'antd/es/pagination';
-import { useEffect, useRef } from 'react';
-import NewsFilters from './components/NewsFilters';
-import NewsLst from './components/NewsLst';
+import { lazy, useEffect, useRef } from 'react';
 import { useNewsFilters, useNewsLstData } from './hooks';
 import { useDevice } from '@/hooks';
 import IesLayoutNE from '@/layouts/IesLayoutNE';
+
+const NewsFilters = lazy(
+  () => import('@/pages/iesNews/components/NewsFilters'),
+);
+const NewsLst = lazy(() => import('@/pages/iesNews/components/NewsLst'));
 
 const NewsPage = () => {
   const sectionRef = useRef<HTMLDivElement | null>(null);
