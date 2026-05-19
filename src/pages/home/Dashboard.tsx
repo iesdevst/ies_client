@@ -1,4 +1,5 @@
-import { lazy } from 'react';
+import { lazy, Suspense } from 'react';
+import LazySec from './components/LazySec';
 import SlideCusIes from './components/SlideCusIes';
 import { PageContainer } from '@/components';
 
@@ -18,17 +19,51 @@ const Dashboard: React.FC = () => {
   return (
     <PageContainer>
       <SlideCusIes />
-      <VidPrIes />
-      <TrainingSl />
-      <NewAndEvent />
-      <FieldOfStudy />
-      <TrainPro />
-      <InternCollab />
-      <PartnerSl />
-      <StuComment />
-      <CareerGuid />
-      <VaM />
-      <ContactKey />
+
+      <Suspense fallback={null}>
+        <VidPrIes />
+      </Suspense>
+
+      {/* BELOW THE FOLD */}
+      <Suspense fallback={null}>
+        <LazySec Component={TrainingSl} />
+      </Suspense>
+
+      <Suspense fallback={null}>
+        <LazySec Component={NewAndEvent} />
+      </Suspense>
+
+      <Suspense fallback={null}>
+        <LazySec Component={FieldOfStudy} />
+      </Suspense>
+
+      <Suspense fallback={null}>
+        <LazySec Component={TrainPro} />
+      </Suspense>
+
+      <Suspense fallback={null}>
+        <LazySec Component={InternCollab} />
+      </Suspense>
+
+      <Suspense fallback={null}>
+        <LazySec Component={PartnerSl} />
+      </Suspense>
+
+      <Suspense fallback={null}>
+        <LazySec Component={StuComment} />
+      </Suspense>
+
+      <Suspense fallback={null}>
+        <LazySec Component={CareerGuid} />
+      </Suspense>
+
+      <Suspense fallback={null}>
+        <LazySec Component={VaM} />
+      </Suspense>
+
+      <Suspense fallback={null}>
+        <LazySec Component={ContactKey} />
+      </Suspense>
     </PageContainer>
   );
 };

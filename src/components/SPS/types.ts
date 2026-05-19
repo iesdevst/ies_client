@@ -1,10 +1,5 @@
 import type { CSSProperties, ReactNode } from 'react';
-import type {
-  MethodPr,
-  Static,
-  Topic,
-  TrainImg,
-} from '@/pages/home/components/hooks';
+import type { MethodPr, Static, Topic, TrainImg } from '@/pages/home/hooks';
 import type { EventLstData, NewsLstData } from '@/pages/iesNews/hooks';
 
 export type SubSecLayout =

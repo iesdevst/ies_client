@@ -4,7 +4,7 @@ import { lazy } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useMediaQuery } from 'react-responsive';
 
-import { useCgCardData, useCgSlideData } from './hooks';
+import { useCgCardData, useCgSlideData } from '../hooks';
 import { Text, Title } from '@/components';
 import { useUserStore } from '@/store';
 

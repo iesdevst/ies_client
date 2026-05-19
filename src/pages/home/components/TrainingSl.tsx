@@ -1,7 +1,7 @@
 import { lazy, useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useMediaQuery } from 'react-responsive';
-import { useStaticDt, useTrainImgDt } from './hooks';
+import { useStaticDt, useTrainImgDt } from '../hooks';
 import type { TrainingSlProps } from '@/components/SPS/types';
 import { ROUTES } from '@/constants';
 

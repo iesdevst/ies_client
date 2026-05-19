@@ -1,7 +1,7 @@
 import { lazy } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useMediaQuery } from 'react-responsive';
-import { useTrainProData } from './hooks';
+import { useTrainProData } from '../hooks';
 import { useUserStore } from '@/store';
 
 const IesClSection = lazy(() => import('@/components/SPS/IesClSection'));

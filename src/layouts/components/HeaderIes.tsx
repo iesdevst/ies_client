@@ -1,6 +1,5 @@
 import Button from 'antd/es/button';
 import Flex from 'antd/es/flex';
-import Image from 'antd/es/image';
 import Layout from 'antd/es/layout';
 import { lazy } from 'react';
 import { useTranslation } from 'react-i18next';
@@ -89,12 +88,18 @@ const HeaderIes: React.FC<IHeaderIes> = (props) => {
           to={ROUTES.DASHBOARD}
           className='!block !flex !items-center'
         >
-          <Image
-            className={`${device === 'mobile' ? '!w-65 !h-full !mt-2' : isDark ? '!w-100 !h-30 !mt-3' : '!w-auto !h-15'}`}
+          <img
+            className={
+              device === 'mobile'
+                ? '!w-65 !h-full !mt-2'
+                : isDark
+                  ? '!w-100 !h-30 !mt-3'
+                  : '!w-auto !h-15'
+            }
             src={getIesLogo()}
             alt='ies_logo'
-            preview={false}
             loading='lazy'
+            decoding='async'
           />
         </PrefetchLink>
         <MediaQuery minWidth={1025}>

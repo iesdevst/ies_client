@@ -101,7 +101,12 @@ const RadialMenu = () => {
                     >
                       {/* icon */}
                       <div className='w-12 h-12 bg-white rounded-full shadow-lg flex items-center justify-center hover:scale-110 transition'>
-                        <img src={item.icon} className='w-8 h-8' />
+                        <img
+                          src={item.icon}
+                          className='w-8 h-8'
+                          loading='lazy'
+                          decoding='async'
+                        />
                       </div>
                       {/* label */}
                       <Text

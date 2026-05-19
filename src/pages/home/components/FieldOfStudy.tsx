@@ -8,7 +8,7 @@ import { lazy, useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useMediaQuery } from 'react-responsive';
 import { useNavigate } from 'react-router-dom';
-import { useFieldProData } from './hooks';
+import { useFieldProData } from '../hooks';
 import FBL from '@/assets/imgs/field_bot_left.avif';
 import { Text, Title } from '@/components';
 import { ROUTES } from '@/constants';
