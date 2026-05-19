@@ -1,9 +1,11 @@
 /* src/styles/custom.css */
 
-.test-border {
+.test-border,
+.test-absolute {
   border: 1px solid red;
 }
 
+/* layout test */
 .test-absolute {
   z-index: 1;
   position: absolute;
@@ -28,7 +30,7 @@
   background-color: #f0f0f0;
 }
 
-/* antd */
+/* Ant Design overrides (GIỮ) */
 
 .ant-card-body {
   padding: 0 !important;
@@ -64,7 +66,7 @@
   font-size: 22px;
 }
 
-/* carousel */
+/* Carousel */
 
 .ant-carousel .slick-prev,
 .ant-carousel .slick-next {
@@ -85,21 +87,11 @@
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
 }
 
-.ant-carousel .slick-prev::after {
-  left: 17px;
-  margin-top: 12px;
-}
-
 .ant-carousel .slick-next {
   right: -8px !important;
   background: white;
   border-radius: 50%;
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
-}
-
-.ant-carousel .slick-next::after {
-  left: 12px;
-  margin-top: 13px;
 }
 
 .ant-carousel .slick-dots li.slick-active::after {

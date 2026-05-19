@@ -1,5 +1,5 @@
 import { QueryClientProvider } from '@tanstack/react-query';
-import { theme as antdTheme } from 'antd/es';
+import { theme } from 'antd';
 import ErrorBoundary from 'antd/es/alert/ErrorBoundary';
 import ConfigProvider from 'antd/es/config-provider';
 import { Suspense, useEffect } from 'react';
@@ -27,9 +27,7 @@ function App() {
           colorPrimary: '#474669',
           colorText: isDark ? 'white' : 'black',
         },
-        algorithm: isDark
-          ? antdTheme.darkAlgorithm
-          : antdTheme.defaultAlgorithm,
+        algorithm: isDark ? theme.darkAlgorithm : theme.defaultAlgorithm,
         components: {
           Layout: { headerBg: 'transparent' },
           Button: {
