@@ -2,6 +2,7 @@ import { lazy, useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 
 import { PageContainer } from '@/components';
+import { LazySec } from '@/hooks';
 import { useUserStore } from '@/store';
 
 const PartnershipInfo = lazy(
@@ -53,18 +54,27 @@ const Partnership: React.FC = () => {
   return (
     <PageContainer>
       <PartnershipIntro openRegisInSec={hdlSecOpenRegis} dark={isDark} />
-      <PartnershipInfo openRegisInSec={hdlSecOpenRegis} dark={isDark} />
-      <WhyChooseHou />
-      <PolicyNote />
-      <SkipExam />
-      <StuVoidHou />
-      <PartnershipProg dark={isDark} />
-      <PartnershipRegis openRegisInSec={hdlSecOpenRegis} />
-      <PsRegisModal
-        openPsM={openRegis}
-        closePsm={() => setOpenRegis(false)}
-        dark={isDark}
+      <LazySec
+        Component={() => (
+          <PartnershipInfo openRegisInSec={hdlSecOpenRegis} dark={isDark} />
+        )}
       />
+      <LazySec Component={() => <WhyChooseHou />} />
+      <LazySec Component={() => <PolicyNote />} />
+      <LazySec Component={() => <SkipExam />} />
+      <LazySec Component={() => <StuVoidHou />} />
+      <LazySec Component={() => <PartnershipProg dark={isDark} />} />
+      <LazySec
+        Component={() => <PartnershipRegis openRegisInSec={hdlSecOpenRegis} />}
+      />
+
+      {openRegis && (
+        <PsRegisModal
+          openPsM={openRegis}
+          closePsm={() => setOpenRegis(false)}
+          dark={isDark}
+        />
+      )}
     </PageContainer>
   );
 };

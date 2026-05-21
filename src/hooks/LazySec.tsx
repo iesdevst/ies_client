@@ -1,10 +1,11 @@
 import { useEffect, useRef, useState } from 'react';
 
 interface ILazySec {
-  Component: React.ComponentType;
+  Component: React.ComponentType<any>;
 }
 
-const LazySec: React.FC<ILazySec> = ({ Component }) => {
+const LazySec: React.FC<ILazySec> = (props) => {
+  const { Component } = props;
   const ref = useRef<HTMLDivElement>(null);
 
   const [visible, setVisible] = useState(false);

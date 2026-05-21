@@ -1,10 +1,9 @@
-import ArrowUpOutlined from '@ant-design/icons/ArrowUpOutlined';
 import CloseOutlined from '@ant-design/icons/CloseOutlined';
 import MenuOutlined from '@ant-design/icons/MenuOutlined';
 import RightOutlined from '@ant-design/icons/RightOutlined';
 import Button from 'antd/es/button';
-import Collapse from 'antd/es/collapse';
 import type { CollapseProps } from 'antd/es/collapse';
+import Collapse from 'antd/es/collapse';
 import Drawer from 'antd/es/drawer';
 import Flex from 'antd/es/flex';
 import Image from 'antd/es/image';
@@ -173,32 +172,6 @@ const MegaMbDrawer: React.FC = () => {
             <ThemeSwitcher classN={`${!isDark ? '!text-[#212223]' : ''}`} />
           </Row>
         </div>
-
-        <Flex vertical className='!bg-[#354694] !pb-3'>
-          <Title
-            level={5}
-            className='!text-center !m-0 !my-3 !text-white !font-bold'
-          >
-            {t('iesCl')}
-          </Title>
-          <Button type='text' className='!block !text-start' disabled>
-            <PrefetchLink
-              to={ROUTES.ROOT}
-              className='!text-white py-1.5 !text-sm '
-            >
-              {t('iesStu')} <ArrowUpOutlined className='rotate-45' />
-            </PrefetchLink>
-          </Button>
-
-          <Button type='text' className='!block !text-start' disabled>
-            <PrefetchLink
-              to={ROUTES.ROOT}
-              className='!text-white !text-sm py-1.5'
-            >
-              {t('iesStaff')} <ArrowUpOutlined className='rotate-45' />
-            </PrefetchLink>
-          </Button>
-        </Flex>
 
         <Collapse
           items={items}

@@ -1,5 +1,5 @@
 import type { CSSProperties, ReactNode } from 'react';
-import type { MethodPr, Static, Topic, TrainImg } from '@/pages/home/hooks';
+import type { MethodPr, Topic } from '@/pages/home/hooks';
 import type { EventLstData, NewsLstData } from '@/pages/iesNews/hooks';
 
 export type SubSecLayout =
@@ -24,6 +24,7 @@ export interface BasePageIesSecProps {
   title?: string;
   mb?: boolean;
   navigateGo?: string;
+  ref?: HTMLDivElement;
 }
 
 /* ===== SystemCardSplit ===== */
@@ -55,16 +56,6 @@ export interface VidPrLayoutProps extends BasePageIesSecProps {
   tabletVid?: boolean;
   miniSc?: boolean;
   imgWait: string;
-}
-
-/* ===== Training ===== */
-export interface TrainingSlProps extends BasePageIesSecProps {
-  layout: 'trainingSl';
-  trainTit: string;
-  trainDes: string;
-  trainImgSl: Array<TrainImg>;
-  statisTit: string;
-  statistics: Array<Static>;
 }
 
 /* ===== Topic ===== */
@@ -135,7 +126,6 @@ export type SubSectionProps =
   | SCSLayoutProps
   | SlideCusLayoutProps
   | VidPrLayoutProps
-  | TrainingSlProps
   | TopicLayoutProps
   | NewsFeatureLayoutProps
   | NaiPageLayoutProps

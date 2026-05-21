@@ -1,12 +1,13 @@
 import { lazy, Suspense } from 'react';
-import LazySec from './components/LazySec';
-import SlideCusIes from './components/SlideCusIes';
+import IesIntro from './components/IesIntro';
+import StatIes from './components/StatIes';
 import { PageContainer } from '@/components';
+import { LazySec } from '@/hooks';
 
 const VidPrIes = lazy(() => import('@/pages/home/components/VidPrIes'));
-const TrainingSl = lazy(() => import('@/pages/home/components/TrainingSl'));
 const NewAndEvent = lazy(() => import('@/pages/home/components/NewAndEvent'));
 const FieldOfStudy = lazy(() => import('@/pages/home/components/FieldOfStudy'));
+const SlideCusIes = lazy(() => import('@/pages/home/components/SlideCusIes'));
 const TrainPro = lazy(() => import('@/pages/home/components/TrainPro'));
 const InternCollab = lazy(() => import('@/pages/home/components/InternCollab'));
 const PartnerSl = lazy(() => import('@/pages/home/components/PartnerSl'));
@@ -18,23 +19,23 @@ const ContactKey = lazy(() => import('@/pages/home/components/ContactKey'));
 const Dashboard: React.FC = () => {
   return (
     <PageContainer>
-      <SlideCusIes />
+      <IesIntro />
 
       <Suspense fallback={null}>
         <VidPrIes />
       </Suspense>
-
-      {/* BELOW THE FOLD */}
       <Suspense fallback={null}>
-        <LazySec Component={TrainingSl} />
+        <LazySec Component={FieldOfStudy} />
       </Suspense>
+
+      <StatIes />
+
+      {/* <Suspense fallback={null}>
+        <LazySec Component={SlideCusIes} />
+      </Suspense> */}
 
       <Suspense fallback={null}>
         <LazySec Component={NewAndEvent} />
-      </Suspense>
-
-      <Suspense fallback={null}>
-        <LazySec Component={FieldOfStudy} />
       </Suspense>
 
       <Suspense fallback={null}>

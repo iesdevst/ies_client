@@ -22,6 +22,7 @@ export { default as trainPro } from './home/components/trainPro';
 export { default as trainingSl } from './home/components/trainingSl';
 export { default as vaM } from './home/components/vaM';
 export { default as vidPrIes } from './home/components/vidPrIes';
+export { default as iesIntro } from './home/components/iesIntro';
 
 export { default as evsLst } from './iesNews/components/evsLst';
 export { default as evsFilters } from './iesNews/components/evsFilters';
