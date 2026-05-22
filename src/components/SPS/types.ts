@@ -38,6 +38,11 @@ export interface SCSLayoutProps extends BasePageIesSecProps {
 export interface SlideCusLayoutProps extends BasePageIesSecProps {
   layout: 'slideCus';
   images: Array<string>;
+  tl?: boolean;
+  tlpr?: boolean;
+  dk?: boolean;
+  textsl?: string;
+  nowtext?: string;
 }
 
 /* ===== Simple ===== */

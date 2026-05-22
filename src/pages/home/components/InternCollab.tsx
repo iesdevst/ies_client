@@ -1,11 +1,12 @@
-import Col from 'antd/es/col';
-import Image from 'antd/es/image';
-import { lazy, useCallback, useMemo } from 'react';
+import ArrowUpOutlined from '@ant-design/icons/es/icons/ArrowUpOutlined';
+import Button from 'antd/es/button';
+import Flex from 'antd/es/flex';
+import { lazy, useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useMediaQuery } from 'react-responsive';
 import { useNavigate } from 'react-router-dom';
-import ICL from '@/assets/imgs/intern_cl.webp';
-import { Title } from '@/components';
+import ICL from '@/assets/imgs/hou_hl.webp';
+import { Text, Title } from '@/components';
 import { ROUTES } from '@/constants';
 
 const IesClSection = lazy(() => import('@/components/SPS/IesClSection'));
@@ -14,9 +15,6 @@ const InternCollab: React.FC = () => {
   const mb = useMediaQuery({ maxWidth: 1024 });
   const navigate = useNavigate();
   const { t } = useTranslation('internCollab');
-  const computedClass = useMemo(() => {
-    return !mb ? 'pl-25' : 'px-26 pt-10';
-  }, [mb]);
 
   const handleNavigate = useCallback(() => {
     navigate(ROUTES.PARTNERSHIP);
@@ -26,33 +24,32 @@ const InternCollab: React.FC = () => {
       id='internColl'
       layout='systemCardSplit'
       children={
-        <Col className={computedClass}>
-          <Title level={2} className='!font-bold  !mb-9'>
-            {t('secTit1')} <br /> {t('secTit2')}
+        <Flex vertical align='start' gap={15} className='max-w-md'>
+          <Title level={1} className='!font-bold !text-black !m-0'>
+            {t('secTit')}
           </Title>
 
-          <p className={`${!mb ? '!w-5/6' : ''}`}>{t('sectionDesc')}</p>
+          <Text color='black' className={`${!mb ? '!w-5/6' : ''} block mb-5`}>
+            {t('sectionDesc')}
+          </Text>
 
-          <div
-            className={`relative mt-10 !cursor-pointer ${!mb ? '!w-2/3' : ''}`}
+          <Button
             onClick={handleNavigate}
+            type='default'
+            className='!bg-black !text-white !border-none'
           >
-            <div className='bg-blue-600 text-white px-5 py-2 font-semibold text-sm !text-center'>
-              {t('exploreBtn')}
-            </div>
-            <div className='absolute right-[-6px] top-1/2 -translate-y-1/2 w-3 h-3 !bg-[#febd25] rotate-45'></div>
-          </div>
-        </Col>
+            {t('moreBtn')} <ArrowUpOutlined className='!rotate-45' />
+          </Button>
+        </Flex>
       }
       splitFeat={
-        <Image
-          src={ICL}
-          preview={false}
-          className='!w-full !h-100'
-          alt='incoll'
-        />
+        <Flex justify='center' align='center'>
+          <div className='py-15'>
+            <img src={ICL} alt='incoll' className='!rounded-2xl' />
+          </div>
+        </Flex>
       }
-      className='!bg-[#febd25] mb-40 mt-15'
+      className='!bg-[#5bd4ce] mb-40 mt-15 px-50'
       height={!mb ? '20vh' : '29vh'}
     />
   );

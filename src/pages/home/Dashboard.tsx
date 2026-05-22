@@ -10,7 +10,6 @@ const FieldOfStudy = lazy(() => import('@/pages/home/components/FieldOfStudy'));
 const SlideCusIes = lazy(() => import('@/pages/home/components/SlideCusIes'));
 const TrainPro = lazy(() => import('@/pages/home/components/TrainPro'));
 const InternCollab = lazy(() => import('@/pages/home/components/InternCollab'));
-const PartnerSl = lazy(() => import('@/pages/home/components/PartnerSl'));
 const StuComment = lazy(() => import('@/pages/home/components/StuComment'));
 const CareerGuid = lazy(() => import('@/pages/home/components/CareerGuid'));
 const VaM = lazy(() => import('@/pages/home/components/VaM'));
@@ -30,9 +29,9 @@ const Dashboard: React.FC = () => {
 
       <StatIes />
 
-      {/* <Suspense fallback={null}>
+      <Suspense fallback={null}>
         <LazySec Component={SlideCusIes} />
-      </Suspense> */}
+      </Suspense>
 
       <Suspense fallback={null}>
         <LazySec Component={NewAndEvent} />
@@ -44,10 +43,6 @@ const Dashboard: React.FC = () => {
 
       <Suspense fallback={null}>
         <LazySec Component={InternCollab} />
-      </Suspense>
-
-      <Suspense fallback={null}>
-        <LazySec Component={PartnerSl} />
       </Suspense>
 
       <Suspense fallback={null}>

@@ -1,92 +1,108 @@
-import gsap from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { useLayoutEffect, useRef } from 'react';
-import { IesClSection } from '@/components';
-gsap.registerPlugin(ScrollTrigger);
-const cards = [
-  { title: '200+', desc: 'Projects delivered' },
-  { title: '40%', desc: 'Efficiency gained' },
-  { title: '15+', desc: 'Years experience' },
-];
+'use client';
+import { motion, type Variants } from 'framer-motion';
+import { useTranslation } from 'react-i18next';
+import { useStatsData } from '../hooks';
+import { IesClSection, Text, Title } from '@/components';
+import { useDevice } from '@/hooks';
+import { useUserStore } from '@/store';
+
 const StatIes = () => {
-  const sectionRef = useRef<HTMLDivElement>(null);
-  useLayoutEffect(() => {
-    const ctx = gsap.context(() => {
-      const cards = gsap.utils.toArray<HTMLElement>('.stat-card');
-      cards.forEach((card, index) => {
-        gsap.fromTo(
-          card,
-          { y: 1700, opacity: 0 },
-          {
-            y: -80 * index,
-            opacity: 1,
-            ease: 'none',
-            scrollTrigger: {
-              trigger: sectionRef.current,
-              start: 'top bottom',
-              end: 'bottom top',
-              scrub: 1.3,
-              pinSpacing: true,
-            },
-          },
-        );
-        gsap.fromTo(
-          '.stats-title',
-          { y: 1700, opacity: 0 },
-          {
-            y: -60,
-            opacity: 1,
-            ease: 'none',
-            scrollTrigger: {
-              trigger: sectionRef.current,
-              start: 'top bottom',
-              end: 'center center',
-              pinSpacing: true,
-              scrub: 1.3,
-            },
-          },
-        );
-      });
-    }, sectionRef);
-    return () => ctx.revert();
-  }, []);
+  const { data: stats } = useStatsData();
+  const { t } = useTranslation('statIes');
+  const { isDark } = useUserStore();
+  const { device } = useDevice();
+
+  const isMobile = device === 'mobile';
+  const isTablet = device === 'tablet';
+
+  const cardVariants: Variants = {
+    hidden: {
+      opacity: 0,
+      y: 120,
+      scale: 0.92,
+      filter: 'blur(12px)',
+    },
+    visible: (custom: number) => ({
+      opacity: 1,
+      y: 0,
+      scale: 1,
+      filter: 'blur(0px)',
+      transition: {
+        duration: 0.9,
+        ease: [0.215, 0.61, 0.355, 1],
+        delay: custom * 0.12,
+      },
+    }),
+  };
+
   return (
     <IesClSection
       id='staties'
       layout='simple'
       divider={false}
-      ref={sectionRef}
-      className='relative'
-      height='h-[220vh]'
+      className='relative pt-20 pb-6 overflow-hidden'
     >
-      {/* sticky area */}
-      <div className='sticky top-0 flex h-screen items-center overflow-hidden'>
-        <div className='mx-auto w-full max-w-6xl px-6'>
-          <div className='mb-40'>
-            <p className='mb-4 text-sm uppercase tracking-[0.2em] text-white/50'>
-              Results
-            </p>
-            <h2 className='max-w-3xl text-5xl font-semibold leading-tight text-white'>
-              Excellent results for our clients
-            </h2>
+      <div className='max-w-7xl mx-auto px-6'>
+        <div className='text-center mb-16'>
+          <div className='flex items-center justify-center gap-2 text-sm tracking-widest text-gray-400 mb-4 uppercase'>
+            <span className='text-amber-400'>✦</span>
+            {t('key')}
           </div>
-          <div className=' stats-grid grid grid-cols-1 gap-6 md:grid-cols-3 '>
-            {cards.map((card, index) => (
-              <div
-                key={index}
-                className=' stat-card rounded-[32px] border border-white/10 bg-white/[0.04] p-10 shadow-[0_0_30px_rgba(255,255,255,0.03)] backdrop-blur-md will-change-transform '
+          <Title className='text-5xl md:text-6xl font-bold'>
+            {t('pracrs')}
+          </Title>
+        </div>
+
+        {/* Cards */}
+        <div
+          className={`grid gap-6 md:gap-8 cursor-grab ${isMobile ? 'grid-cols-1' : isTablet ? 'grid-cols-1' : 'grid-cols-3'}`}
+        >
+          {stats.map((stat, i) => (
+            <motion.div
+              key={i}
+              custom={i}
+              initial='hidden'
+              whileInView='visible'
+              viewport={{ once: true, margin: '-80px' }}
+              variants={cardVariants}
+              whileHover={{
+                y: -12,
+                scale: 1.03,
+                transition: { duration: 0.4, ease: 'easeOut' },
+              }}
+              className={`h-full flex flex-col ${isDark ? 'bg-[#161616] border border-gray-800 hover:border-gray-600' : 'bg-[#1e6bb0]'} group relative rounded-3xl p-8 md:p-10 transition-colors duration-500 overflow-hidden`}
+            >
+              {/* Glow effect */}
+              <div className='absolute inset-0 bg-gradient-to-br from-white/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700' />
+
+              {/* Description */}
+              <Text
+                color={isDark ? '#99a1af' : 'white'}
+                className={`${isTablet ? '' : 'mb-10'} !text-[15px] leading-relaxed relative z-10 block`}
               >
-                <p className='mb-8 text-sm leading-7 text-white/60'>
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                </p>
-                <h3 className='text-6xl font-bold text-white'>{card.title}</h3>
-                <p className='mt-4 text-white/50'>{card.desc}</p>
+                {stat.des}
+              </Text>
+
+              {/* Number + Label */}
+              <div className='mt-auto relative z-10'>
+                <Title
+                  className={`${isMobile ? '!text-6xl' : '!text-7xl'} leading-none !font-bold tracking-tighter mb-2 !text-white`}
+                >
+                  {stat.num}
+                </Title>
+                <Title level={5} className='!text-gray-300 font-medium'>
+                  {stat.label}
+                </Title>
               </div>
-            ))}
-          </div>
+
+              {/* Bottom accent line */}
+              <div className='absolute bottom-0 left-8 right-8 h-px bg-gradient-to-r from-transparent via-white/30 to-transparent scale-x-0 group-hover:scale-x-100 transition-transform duration-700' />
+            </motion.div>
+          ))}
         </div>
       </div>
     </IesClSection>
   );
 };
+
 export default StatIes;
