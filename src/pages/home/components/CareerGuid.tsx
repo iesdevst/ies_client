@@ -1,95 +1,42 @@
-import Carousel from 'antd/es/carousel';
-import Flex from 'antd/es/flex';
 import { lazy } from 'react';
-import { useTranslation } from 'react-i18next';
-import { useMediaQuery } from 'react-responsive';
-
-import { useCgCardData, useCgSlideData } from '../hooks';
-import { Text, Title } from '@/components';
+import { useCrDownData, useCrUpData } from '../hooks';
+import { useDevice } from '@/hooks';
 import { useUserStore } from '@/store';
 
 const IesClSection = lazy(() => import('@/components/SPS/IesClSection'));
 
 const CareerGuid: React.FC = () => {
-  const mb = useMediaQuery({ maxWidth: 1024 });
+  const { device } = useDevice();
   const { isDark } = useUserStore();
-  const { t } = useTranslation('careerGuid');
+  // const { t } = useTranslation('careerGuid');
 
-  const { data: cgSlide } = useCgSlideData();
-  const { data: cgCard } = useCgCardData();
+  const mb = device === 'mobile';
+  const tl = device === 'tablet';
+  const tlpr = device === 'tabletPro';
+  const dk = device === 'desktop';
+
+  const topicCard = [
+    'Cung cấp thông tin học tập và cơ hội phát triển nghề nghiệp.',
+    'Hỗ trợ học viên khám phá kỹ năng và định hướng nghề nghiệp số.',
+    'Tăng lượng học viên, phụ huynh được tư vấn và giảm thời gian chờ 25%.',
+  ];
+
+  const { data: upCard } = useCrUpData();
+  const { data: downCard } = useCrDownData();
 
   return (
     <IesClSection
       id='carerrGuid'
-      layout='newsFeature'
-      feature={true}
+      layout='cardGird'
       dark={isDark}
       mb={mb}
-      children={
-        <div className='mt-15 !space-y-10 mb-15'>
-          <Flex
-            vertical={mb}
-            justify='space-between'
-            align='center'
-            className={`!w-full ${!mb ? '!px-20' : '!px-6'}`}
-            gap={!mb ? 0 : 20}
-          >
-            <Title
-              className={`flex-1 !font-bold !m-0 ${isDark ? '!text-white' : '!text-black'}`}
-            >
-              {t('sectionTitle')}
-            </Title>
-            <div className='flex-1'>
-              <Text
-                className='!text-lg font-semibold'
-                color={isDark ? 'white' : ''}
-              >
-                {t('sectionDesc')}
-              </Text>
-            </div>
-          </Flex>
-
-          <div className={`w-full ${!mb ? 'pr-12 pl-22' : ''}`}>
-            <Carousel
-              autoplay
-              pauseOnHover={false}
-              dots={false}
-              arrows={!mb ? true : false}
-              slidesPerRow={!mb ? 4 : 1}
-            >
-              {cgSlide.map((item, index) => (
-                <div key={index} className={`${!mb ? '!pr-10' : '!px-8'}`}>
-                  <div className='relative rounded-xl overflow-hidden'>
-                    <img
-                      src={item.cImg}
-                      style={{
-                        width: '100%',
-                        height: '20vh',
-                        objectFit: 'cover',
-                      }}
-                      className='!rounded-xl'
-                      loading='lazy'
-                      alt='partner_sl'
-                    />
-                    <div className='absolute bottom-0 left-0 pl-2 pb-1'>
-                      <Text
-                        className='!m-0 !text-white bg-blue-500 rounded-lg px-1.5 !py-0 opacity-[0.9]'
-                        key={index}
-                      >
-                        {item.cTit}
-                      </Text>
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </Carousel>
-          </div>
-        </div>
-      }
-      bonusTit={t('bonusTitle')}
-      moreBut={t('moreBtn')}
-      featCard={cgCard}
-      moreClass={!mb ? 'px-20' : 'px-5'}
+      tl={tl}
+      tlpro={tlpr}
+      dk={dk}
+      upCard={upCard}
+      downCard={downCard}
+      butTxt='Learn More'
+      topicTxt={topicCard}
     />
   );
 };

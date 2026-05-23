@@ -1,11 +1,12 @@
 import type { CSSProperties, ReactNode } from 'react';
-import type { MethodPr, Topic } from '@/pages/home/hooks';
+import type { CardDown, CardUp, MethodPr, Topic } from '@/pages/home/hooks';
 import type { EventLstData, NewsLstData } from '@/pages/iesNews/hooks';
 
 export type SubSecLayout =
   | 'systemCardSplit'
   | 'slideCus'
   | 'topic'
+  | 'cardGird'
   | 'trainingSl'
   | 'vidPr'
   | 'newsFeature'
@@ -61,6 +62,20 @@ export interface VidPrLayoutProps extends BasePageIesSecProps {
   tabletVid?: boolean;
   miniSc?: boolean;
   imgWait: string;
+}
+
+/* ===== Card 2 Grid ===== */
+
+export interface CardGirdProps extends BasePageIesSecProps {
+  layout: 'cardGird';
+  upCard: Array<CardUp>;
+  downCard: Array<CardDown>;
+  topicTxt: Array<string>;
+  routeTo?: string;
+  tl?: boolean;
+  tlpro?: boolean;
+  dk?: boolean;
+  butTxt: string;
 }
 
 /* ===== Topic ===== */
@@ -131,6 +146,7 @@ export type SubSectionProps =
   | SCSLayoutProps
   | SlideCusLayoutProps
   | VidPrLayoutProps
+  | CardGirdProps
   | TopicLayoutProps
   | NewsFeatureLayoutProps
   | NaiPageLayoutProps

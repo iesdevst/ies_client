@@ -19,44 +19,34 @@ const Dashboard: React.FC = () => {
   return (
     <PageContainer>
       <IesIntro />
-
       <Suspense fallback={null}>
         <VidPrIes />
       </Suspense>
       <Suspense fallback={null}>
         <LazySec Component={FieldOfStudy} />
       </Suspense>
-
       <StatIes />
-
       <Suspense fallback={null}>
         <LazySec Component={SlideCusIes} />
       </Suspense>
-
       <Suspense fallback={null}>
         <LazySec Component={NewAndEvent} />
       </Suspense>
-
-      <Suspense fallback={null}>
-        <LazySec Component={TrainPro} />
-      </Suspense>
-
       <Suspense fallback={null}>
         <LazySec Component={InternCollab} />
       </Suspense>
-
+      <Suspense fallback={null}>
+        <LazySec Component={TrainPro} />
+      </Suspense>
       <Suspense fallback={null}>
         <LazySec Component={StuComment} />
       </Suspense>
-
       <Suspense fallback={null}>
         <LazySec Component={CareerGuid} />
       </Suspense>
-
       <Suspense fallback={null}>
         <LazySec Component={VaM} />
       </Suspense>
-
       <Suspense fallback={null}>
         <LazySec Component={ContactKey} />
       </Suspense>

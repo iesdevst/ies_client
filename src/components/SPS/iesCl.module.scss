@@ -21,74 +21,30 @@
   }
 }
 
-.dotCustom {
-  :global(.slick-dots.slick-dots-bottom) {
-    display: flex;
-    justify-content: flex-start;
-    gap: 19px;
-    margin: 0 0 100px 100px;
-  }
+.cardHover {
+  position: relative;
+  overflow: hidden;
 
-  :global(.slick-dots li button::before) {
-    display: none !important;
-  }
+  &:hover {
+    .cardImg {
+      transform: translateY(0) scale(1.03);
+      opacity: 1;
+    }
 
-  :global(.slick-dots li) {
-    width: 30px !important;
-    height: 30px !important;
-    padding: 0 !important;
-  }
-
-  :global(.slick-dots li button) {
-    width: 30px !important;
-    height: 30px !important;
-    border-radius: 50% !important;
-    background: rgb(218, 216, 216) !important;
-    padding: 0 !important;
-    clip-path: inset(0 0 0 50%);
-    transition: all 0.3s ease;
-    opacity: 0.9 !important;
+    .cardBtn {
+      transform: translateY(-6px);
+    }
   }
 }
 
-.dotTrainCustom {
-  :global(.slick-slider) {
-    height: 100%;
-  }
+.cardImg {
+  transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  transform: translateY(20px);
+  opacity: 0; // ❌ hidden image
+}
 
-  :global(.slick-list) {
-    height: 100%;
-  }
-
-  :global(.slick-dots) {
-    position: relative !important;
-    bottom: 0 !important;
-  }
-  :global(.slick-dots.slick-dots-bottom) {
-    display: flex;
-    justify-content: center;
-    margin-top: 30px;
-    gap: 14px;
-  }
-
-  :global(.slick-dots li button::before) {
-    display: none !important;
-  }
-
-  :global(.slick-dots li) {
-    width: 16px !important;
-    height: 16px !important;
-    padding: 0 !important;
-  }
-
-  :global(.slick-dots li button) {
-    width: 16px !important;
-    height: 16px !important;
-    border-radius: 50% !important;
-    background: rgb(218, 216, 216) !important;
-    padding: 0 !important;
-    clip-path: inset(0 0 0 50%);
-    transition: all 0.3s ease;
-    opacity: 0.9 !important;
-  }
+.cardBtn {
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  transform: translateY(0);
+  opacity: 1; // ✅ luôn thấy button
 }

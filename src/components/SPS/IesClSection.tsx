@@ -9,6 +9,7 @@ const Topic = lazy(() => import('@/components/SPS/components/Topic'));
 const NewsFeat = lazy(() => import('@/components/SPS/components/NewsFeat'));
 const Simple = lazy(() => import('@/components/SPS/components/Simple'));
 const NaiPage = lazy(() => import('@/components/SPS/components/NaiPage'));
+const CardGird = lazy(() => import('@/components/SPS/components/CardGird'));
 
 const layoutMap = {
   slideCus: SlideCus,
@@ -18,6 +19,7 @@ const layoutMap = {
   newsFeature: NewsFeat,
   naiPage: NaiPage,
   simple: Simple,
+  cardGird: CardGird,
 } as const;
 
 const IesClSection: React.FC<SubSectionProps> = (props) => {
