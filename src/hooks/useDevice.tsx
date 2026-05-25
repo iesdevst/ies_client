@@ -12,7 +12,7 @@ export const useDevice = () => {
 
   const tabletPro = useMediaQuery({
     minWidth: 1024,
-    maxWidth: 1365,
+    maxWidth: 1254,
   });
 
   const device: DeviceType = mobile

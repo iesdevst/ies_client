@@ -1,43 +1,36 @@
 import { useMemo } from 'react';
-// import CNTT from '@/assets/imgs/cntt_hn.webp';
-// import CC from '@/assets/imgs/ctm_hn_card.webp';
-// import KTDN from '@/assets/imgs/ktdn_hn.webp';
-// import MKT from '@/assets/imgs/mkt_hn.webp';
-// import MC from '@/assets/imgs/mtk_hn_card.webp';
-// import QLDN from '@/assets/imgs/qldn_hn.webp';
-// import QLKS from '@/assets/imgs/qlks_hn.webp';
-// import { default as TC, default as THDU } from '@/assets/imgs/thud_hn.webp';
-// import TKVP from '@/assets/imgs/tkvp_hn.webp';
-// import VTK from '@/assets/imgs/vtk_hn.webp';
 
-import HOU from '@/assets/imgs/hou_hl.webp';
+import { useTranslation } from 'react-i18next';
+import APC from '@/assets/imgs/ap_career.webp';
+import CT from '@/assets/imgs/career_topic.webp';
+import DSC from '@/assets/imgs/ds_career.webp';
+import ITC from '@/assets/imgs/it_career.webp';
+import MKTC from '@/assets/imgs/mkt_career.webp';
+import { ROUTES } from '@/constants';
+import { ProgTypeEnum } from '@/utils';
 
 export const useCrUpData = (): { data: Array<CardUp> } => {
-  // const { t } = useTranslation('careerGuid');
+  const { t } = useTranslation('careerGuid');
   const data = useMemo<Array<CardUp>>(
     () => [
       {
         id: '1',
-        cTit: 'Tối ưu hoá vận hành cho đơn vị hướng nghiệp',
-        cImg: HOU,
-        decs: 'Triển khai giải pháp chuyển đổi số để tự động hóa quy trình hướng nghiệp, cá nhân hóa lộ trình nghề nghiệp và nâng cao hiệu quả tư vấn cho sinh viên.',
+        cTit: t('cTit1'),
+        cImg: CT,
+        decs: t('cdecs1'),
         topic: true,
+        goTo: ROUTES.ADMISSIONSVOCA_ALL,
       },
       {
         id: '2',
-        cTit: 'Bùng nổ kỷ nguyên số, Công nghệ Thông tin',
-        cImg: HOU,
-        decs: 'Trang bị kỹ năng tin học thực tiễn nhằm nâng cao hiệu suất học tập, làm việc và thích ứng với môi trường số hiện đại.',
+        cTit: t('cTit2'),
+        cImg: ITC,
+        decs: t('cdecs2'),
         topic: false,
+        goTo: `${ROUTES.DEMICS_DETAIL}/${ProgTypeEnum.IT}`,
       },
-      // { id: '3', cTit: t('slide3'), cImg: TKVP },
-      // { id: '4', cTit: t('slide4'), cImg: QLKS },
-      // { id: '5', cTit: t('slide5'), cImg: MKT },
-      // { id: '6', cTit: t('slide6'), cImg: QLDN },
-      // { id: '7', cTit: t('slide7'), cImg: VTK },
-      // { id: '8', cTit: t('slide8'), cImg: KTDN },
     ],
-    [],
+    [t],
   );
   return { data };
 };
@@ -48,32 +41,36 @@ export type CardUp = {
   cImg: string;
   decs: string;
   topic: boolean;
+  goTo: string;
 };
 
 export const useCrDownData = (): { data: Array<CardDown> } => {
-  // const { t } = useTranslation('careerGuid');
+  const { t } = useTranslation('careerGuid');
   const data = useMemo<Array<CardDown>>(
     () => [
       {
         id: '1',
-        img: HOU,
-        des: 'Trang bị kỹ năng tin học thực tiễn nhằm nâng cao hiệu suất học tập, làm việc và thích ứng với môi trường số hiện đại.',
-        tit: 'Tin học ứng dụng cho học tập và doanh nghiệp',
+        img: APC,
+        des: t('decsd1'),
+        tit: t('dtit1'),
+        goTo: `${ROUTES.DEMICS_DETAIL}/${ProgTypeEnum.AppInfo}`,
       },
       {
         id: '2',
-        img: HOU,
-        tit: 'Thiết kế đồ họa sáng tạo cho truyền thông số',
-        des: 'Phát triển tư duy sáng tạo và kỹ năng thiết kế hiện đại nhằm xây dựng hình ảnh thương hiệu và nội dung trực quan chuyên nghiệp.',
+        img: DSC,
+        tit: t('dtit2'),
+        des: t('decsd2'),
+        goTo: `${ROUTES.DEMICS_DETAIL}/${ProgTypeEnum.CompuDs}`,
       },
       {
         id: '3',
-        img: HOU,
-        des: 'Ứng dụng chiến lược marketing số và phân tích dữ liệu để tăng khả năng tiếp cận khách hàng và nâng cao hiệu quả truyền thông.',
-        tit: 'Marketing hiện đại cho kỷ nguyên số',
+        img: MKTC,
+        des: t('decsd3'),
+        tit: t('dtit3'),
+        goTo: `${ROUTES.DEMICS_DETAIL}/${ProgTypeEnum.Mkt}`,
       },
     ],
-    [],
+    [t],
   );
   return { data };
 };
@@ -83,4 +80,5 @@ export type CardDown = {
   img: string;
   des: string;
   tit: string;
+  goTo: string;
 };

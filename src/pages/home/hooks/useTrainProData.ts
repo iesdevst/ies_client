@@ -1,8 +1,8 @@
 import { useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
-import CTLK from '@/assets/imgs/ctlk.avif';
-import CTTC from '@/assets/imgs/cttc.avif';
-import CTTT from '@/assets/imgs/cttt.avif';
+import CTTC from '@/assets/imgs/imidate.webp';
+import CTLK from '@/assets/imgs/ps_imi.webp';
+import CTTT from '@/assets/imgs/short_imi.webp';
 import { ROUTES } from '@/constants';
 
 export const useTrainProData = (): { data: Array<NoFeatCdt> } => {

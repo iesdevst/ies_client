@@ -1,18 +1,23 @@
 export default {
-  sectionTitle: 'Hướng nghiệp',
-  sectionDesc:
-    'Hướng nghiệp giúp sinh viên khám phá thế mạnh và sở thích để chọn con đường nghề nghiệp phù hợp. Nó hỗ trợ họ tìm hiểu cơ hội và theo đuổi mục tiêu, giúp đạt được nghề nghiệp và đóng góp cho xã hội.',
-  slide1: 'Công nghệ Thông tin Ứng dụng',
-  slide2: 'Công nghệ Thông tin',
-  slide3: 'Thư ký Văn phòng',
-  slide4: 'Quản trị Khách sạn',
-  slide5: 'Marketing',
-  slide6: 'Quản trị Kinh doanh',
-  slide7: 'Thiết kế Đồ họa Hỗ trợ Máy tính',
-  slide8: 'Kế toán Doanh nghiệp',
-  bonusTitle: 'Dự án Khám phá Nghề nghiệp',
-  moreBtn: 'Khám phá tất cả dự án',
-  card1: 'Marketing – Lựa chọn nghề an toàn cho Gen Z: Khám phá và tìm hiểu',
-  card2: 'Khám phá Công nghệ Sản xuất Cơ khí',
-  card3: 'Công nghệ Thông tin Ứng dụng và Cơ hội nghề nghiệp cho Gen Z',
+  secTit: 'Hướng nghiệp',
+  more: 'Xem chi tiết',
+  topic1: 'Cung cấp thông tin học tập và cơ hội phát triển nghề nghiệp.',
+  topic2: 'Hỗ trợ học viên khám phá kỹ năng và định hướng nghề nghiệp số.',
+  topic3:
+    'Tăng lượng học viên, phụ huynh được tư vấn và giảm thời gian chờ 25%.',
+  cTit1: 'Tối ưu hoá vận hành cho đơn vị hướng nghiệp',
+  cdecs1:
+    'Triển khai giải pháp chuyển đổi số để tự động hóa quy trình hướng nghiệp, cá nhân hóa lộ trình nghề nghiệp và nâng cao hiệu quả tư vấn cho sinh viên.',
+  cTit2: 'Bùng nổ kỷ nguyên số, Công nghệ Thông tin',
+  cdecs2:
+    'Trang bị kỹ năng tin học thực tiễn nhằm nâng cao hiệu suất học tập, làm việc và thích ứng với môi trường số hiện đại.',
+  dtit1: 'Tin học ứng dụng cho học tập và doanh nghiệp',
+  dtit2: 'Thiết kế đồ họa sáng tạo cho truyền thông số',
+  dtit3: 'Marketing hiện đại cho kỷ nguyên số',
+  decsd1:
+    'Trang bị kỹ năng tin học thực tiễn nhằm nâng cao hiệu suất học tập, làm việc và thích ứng với môi trường số hiện đại.',
+  decsd2:
+    'Phát triển tư duy sáng tạo và kỹ năng thiết kế hiện đại nhằm xây dựng hình ảnh thương hiệu và nội dung trực quan chuyên nghiệp.',
+  decsd3:
+    'Ứng dụng chiến lược marketing số và phân tích dữ liệu để tăng khả năng tiếp cận khách hàng và nâng cao hiệu quả truyền thông.',
 };

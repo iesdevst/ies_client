@@ -1,18 +1,25 @@
 export default {
-  sectionTitle: 'Career guidance',
-  sectionDesc:
-    'Career Guidance helps students discover their strengths and interests to choose suitable career paths. It supports them in exploring opportunities and pursuing goals, helping them achieve their careers and contribute to society.',
-  slide1: 'Applied Information Technology',
-  slide2: 'Information Technology',
-  slide3: 'Office Secretary',
-  slide4: 'Hospitality Management',
-  slide5: 'Marketing',
-  slide6: 'Business Management',
-  slide7: 'Computer-Aided Graphic Design',
-  slide8: 'Business Accounting',
-  bonusTitle: 'Career Exploration Project',
-  moreBtn: 'Explore all Projects',
-  card1: 'Marketing – A Safe Career Choice for Gen Z: Explore and Discover',
-  card2: 'Exploring Mechanical Manufacturing Technology',
-  card3: 'Applied Information Technology and Career Opportunities for Gen Z',
+  secTit: 'Career Orientation',
+  more: 'Learn More',
+  topic1:
+    'Providing learning information and career development opportunities.',
+  topic2:
+    'Supporting learners in discovering skills and digital career orientation.',
+  topic3:
+    'Increase the number of students and parents receiving consultation while reducing waiting time by 25%.',
+  cTit1: 'Optimizing operations for career orientation organizations',
+  cdecs1:
+    'Implementing digital transformation solutions to automate career orientation processes, personalize career pathways, and improve counseling efficiency for students.',
+  cTit2: 'The Digital Era of IT',
+  cdecs2:
+    'Equipping learners with practical IT skills to improve learning and working efficiency while adapting to the modern digital environment.',
+  dtit1: 'Applied Informatics for Education and Business',
+  dtit2: 'Creative Graphic Design for Digital Media',
+  dtit3: 'Modern Marketing for the Digital Era',
+  decsd1:
+    'Equipping learners with practical IT skills to improve learning and working efficiency while adapting to the modern digital environment.',
+  decsd2:
+    'Developing creative thinking and modern design skills to build professional branding and visual content.',
+  decsd3:
+    'Applying digital marketing strategies and data analysis to enhance customer reach and improve communication effectiveness.',
 };
