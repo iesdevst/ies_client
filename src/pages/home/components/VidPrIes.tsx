@@ -8,16 +8,20 @@ import { useUserStore } from '@/store';
 
 const VidPrIes: React.FC = () => {
   const { device } = useDevice();
-
   const { isDark } = useUserStore();
   const { t } = useTranslation('vidPrIes');
 
+  const mb = device === 'mobile';
+  const tl = device === 'tablet';
+  const tlpr = device === 'tabletPro';
+  const dk = device === 'desktop';
+
   const scHeight = useMemo(() => {
-    if (device === 'mobile') return '30vh';
-    if (device === 'tablet') return '25vh';
-    if (device === 'tabletPro') return '70vh';
+    if (mb) return '30vh';
+    if (tl) return '25vh';
+    if (tlpr) return '30vh';
     return '70vh';
-  }, [device]);
+  }, [mb, tl, tlpr]);
 
   return (
     <IesClSection
@@ -32,9 +36,10 @@ const VidPrIes: React.FC = () => {
       mb={device === 'mobile'}
       navigateGo={ROUTES.ABOUT_OVERVIEW}
       height={scHeight}
-      tabletVid={device === 'tablet'}
-      miniSc={device === 'tabletPro'}
-      className='pb-10'
+      tl={tl}
+      tlpr={tlpr}
+      dk={dk}
+      className={!dk ? 'px-3' : ''}
     />
   );
 };

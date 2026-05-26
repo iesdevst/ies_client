@@ -1,5 +1,6 @@
 export default {
   featNews: 'Featured News & Events',
+  evTit: 'Event',
   viewAll: 'View all News & Events',
   acadQA: 'ACADEMICS & QUALITY ASSURANCE',
   profQuote:

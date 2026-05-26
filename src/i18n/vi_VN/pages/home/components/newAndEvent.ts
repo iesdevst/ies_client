@@ -1,5 +1,6 @@
 export default {
   featNews: 'Tin tức & Sự kiện nổi bật',
+  evTit: 'Sự kiện',
   viewAll: 'Xem tất cả Tin & Sự kiện',
   acadQA: 'HỌC THUẬT & ĐẢM BẢO CHẤT LƯỢNG',
   profQuote: 'GS. Ngô Bảo Châu: “Không nhất thiết phải có bằng đại học.”',

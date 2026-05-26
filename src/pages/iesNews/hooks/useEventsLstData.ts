@@ -24,7 +24,7 @@ export const useEventLstData = (): { data: Array<EventLstData> } => {
         categories: 'admissions',
         authors: 'admiss',
         authorN: 'Phòng tuyển sinh',
-        highlight: 'Hoạt động tuyển sinh & hướng nghiệp',
+        highlight: 'Tuyển sinh & hướng nghiệp',
       },
       {
         id: '2',
@@ -36,7 +36,7 @@ export const useEventLstData = (): { data: Array<EventLstData> } => {
         categories: 'workshop',
         authors: 'admisstr',
         authorN: 'Phòng hành chính',
-        highlight: 'IES workshop\n Claude Code - AI agent',
+        highlight: 'Claude Code - IES workshop',
       },
       {
         id: '3',

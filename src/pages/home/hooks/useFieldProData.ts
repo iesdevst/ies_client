@@ -11,16 +11,12 @@ export const useFieldProData = (): { data: Array<FieldPro> } => {
     () => [
       {
         id: '1',
-        icon: THVP,
-        tit: t('itOffice'),
+        icon: TKST,
+        tit: t('designCreat'),
         fieldLst: [
           {
             key: '1',
-            fie: t('appliedInfo'),
-          },
-          {
-            key: '2',
-            fie: t('it'),
+            fie: t('fineArts'),
           },
         ],
       },
@@ -37,12 +33,20 @@ export const useFieldProData = (): { data: Array<FieldPro> } => {
       },
       {
         id: '3',
-        icon: TKST,
-        tit: t('designCreat'),
+        icon: THVP,
+        tit: t('itOffice'),
         fieldLst: [
           {
             key: '1',
-            fie: t('fineArts'),
+            fie: t('appliedInfo'),
+          },
+          {
+            key: '2',
+            fie: t('indus'),
+          },
+          {
+            key: '3',
+            fie: t('it'),
           },
         ],
       },
@@ -53,7 +57,7 @@ export const useFieldProData = (): { data: Array<FieldPro> } => {
         fieldLst: [
           {
             key: '1',
-            fie: t('busiAdmin'),
+            fie: t('accounting'),
           },
           {
             key: '2',
@@ -61,7 +65,11 @@ export const useFieldProData = (): { data: Array<FieldPro> } => {
           },
           {
             key: '3',
-            fie: t('accounting'),
+            fie: t('busiAdmin'),
+          },
+          {
+            key: '4',
+            fie: t('offAd'),
           },
         ],
       },

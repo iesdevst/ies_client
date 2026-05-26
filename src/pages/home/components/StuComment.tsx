@@ -1,17 +1,20 @@
 import Col from 'antd/es/col';
 import Flex from 'antd/es/flex';
-import Image from 'antd/es/image';
 import { lazy } from 'react';
 import { useTranslation } from 'react-i18next';
-import { useMediaQuery } from 'react-responsive';
 import STUC from '@/assets/imgs/stu_cm.webp';
 import STBG from '@/assets/imgs/stu_cmt_bg.webp';
+import { Text } from '@/components';
+import { useDevice } from '@/hooks';
 
 const IesClSection = lazy(() => import('@/components/SPS/IesClSection'));
 
 const StuComment = () => {
-  const mb = useMediaQuery({ maxWidth: 1024 });
   const { t } = useTranslation('stuComment');
+  const { device } = useDevice();
+
+  const mb = device === 'mobile';
+  const tl = device === 'tablet';
   return (
     <IesClSection
       id='stuCm'
@@ -19,18 +22,17 @@ const StuComment = () => {
       divider={false}
       children={
         <div className='relative w-full h-full'>
-          <div className='absolute w-full h-full inset-0 bg-[#090a20]/90'></div>
+          <div className='absolute !w-full !h-full !inset-0 bg-[#090a20]/90'></div>
           <Flex
-            vertical={mb}
+            vertical={mb || tl}
             justify='space-between'
-            align={!mb ? 'flex-start' : 'center'}
+            align={mb ? 'center' : tl ? 'center' : 'flex-start'}
             className={`!py-25 ${!mb ? '!pt-23 !px-25' : ''}`}
             gap={!mb ? 60 : 10}
           >
-            <div className={`flex-1 flex justify-end ${!mb ? '' : 'px-3'}`}>
-              <Image
+            <div className={`flex-1 flex justify-end ${mb ? 'px-3' : ''}`}>
+              <img
                 src={STUC}
-                preview={false}
                 className='!h-[450px] !w-[380px] object-cover !rounded-b-[200px]'
                 style={{
                   clipPath: 'ellipse(75% 60% at 50% 40%)',
@@ -40,28 +42,30 @@ const StuComment = () => {
             </div>
             <div className='flex-2'>
               <Col
-                className={`!space-y-5 ${!mb ? "'pl-15 mt-15'" : 'px-6.5 mt-10'}`}
+                className={`!space-y-5 ${mb ? 'px-6.5 mt-10' : tl ? '' : 'pl-15 mt-15'}`}
               >
-                <p
-                  className={`!text-[#e0e1e2]  ${!mb ? 'pr-7 !text-[24px]' : '!text-sm'}`}
-                >
+                <Text color='#e0e1e2' className={`${tl ? '!text-lg' : ''}`}>
                   {t('stuVoid')}
-                </p>
-                <div className='space-y-1'>
-                  <p className='!text-white !font-bold text-xl'>{t('name')}</p>
-                  <p className='text-[#a5a7b9] text-lg'>{t('stu')}</p>
+                </Text>
+                <div className='space-y-1 !mt-5'>
+                  <Text color='white' className='!block !font-bold !text-xl'>
+                    {t('name')}
+                  </Text>
+                  <Text color='#a5a7b9' className='!block !text-lg'>
+                    {t('stu')}
+                  </Text>
                 </div>
               </Col>
             </div>
           </Flex>
         </div>
       }
-      className='my-20'
+      className='!my-10'
       style={{
         backgroundImage: `url(${STBG})`,
         backgroundRepeat: 'no-repeat',
-        backgroundSize: 'cover',
-        backgroundAttachment: 'fixed',
+        backgroundSize: 'fill',
+        // backgroundAttachment: 'fixed',
       }}
     />
   );

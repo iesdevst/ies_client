@@ -4,25 +4,23 @@ import PlusOutlined from '@ant-design/icons/es/icons/PlusOutlined';
 import RightOutlined from '@ant-design/icons/es/icons/RightOutlined';
 import Button from 'antd/es/button';
 import Row from 'antd/es/row';
+import { motion } from 'framer-motion';
 import { lazy, useMemo, useState } from 'react';
 import { useTranslation } from 'react-i18next';
+import FT_BG from '@/assets/imgs/intro_bg.webp';
 import { Text, Title } from '@/components';
 import { useDevice } from '@/hooks';
-import { useUserStore } from '@/store';
 
 const IesCtModal = lazy(() => import('@/pages/home/components/IesCtModal'));
 const IesClSection = lazy(() => import('@/components/SPS/IesClSection'));
 
 const ContactKey: React.FC = () => {
-  const { isDark } = useUserStore();
   const { device } = useDevice();
   const [ctOpen, setCtOpen] = useState(false);
   const { t } = useTranslation('contactKey');
 
-  const textColor = useMemo(
-    () => (isDark ? 'text-white' : 'text-black'),
-    [isDark],
-  );
+  const mb = device === 'mobile';
+  const tl = device === 'tablet';
 
   const contacts = useMemo(
     () => [
@@ -54,7 +52,7 @@ const ContactKey: React.FC = () => {
     mobile: '45vh',
     tablet: '30vh',
     tabletPro: '30vh',
-    desktop: '',
+    desktop: '40vh',
   };
 
   const classsMap = {
@@ -71,109 +69,145 @@ const ContactKey: React.FC = () => {
         layout='simple'
         divider={false}
         children={
-          <div className={`mt-10 flex flex-col ${classsMap[device]}`}>
-            {/* TITLE */}
-            <Title
-              className={`${isDark ? '!text-white' : ''} ${device === 'mobile' ? '!text-center' : ''}`}
+          <motion.section
+            className='relative w-full overflow-hidden rounded-2xl'
+            style={{
+              backgroundImage: `url(${FT_BG})`,
+              backgroundSize: 'cover',
+              backgroundPosition: 'center',
+            }}
+            initial={{
+              scaleX: 0,
+              scaleY: 0.95,
+              opacity: 0.6,
+              transformOrigin: 'center center',
+            }}
+            whileInView={{
+              scaleX: 1,
+              scaleY: 1,
+              opacity: 1,
+            }}
+            viewport={{ once: true, amount: 0.3 }}
+            transition={{
+              duration: 1,
+              ease: [0.83, 0, 0.17, 1],
+            }}
+          >
+            {/* blur overlay */}
+            <div className='absolute inset-0 z-10 backdrop-blur-[30px] bg-white/25' />
+
+            {/* CONTENT */}
+            <motion.div
+              className={`relative z-20 pb-10`}
+              style={{
+                flexDirection: mb || tl ? 'column' : 'row',
+                gap: mb ? 24 : tl ? 32 : 80,
+                alignItems: mb || tl ? 'flex-start' : 'flex-end',
+              }}
+              initial={{
+                opacity: 0,
+                y: 40,
+              }}
+              animate={{
+                opacity: 1,
+                y: 0,
+              }}
+              transition={{
+                delay: 0.9,
+                duration: 0.8,
+                ease: 'easeOut',
+              }}
             >
-              {t('ctKey')}
-            </Title>
+              <div className={`flex flex-col ${classsMap[device]}`}>
+                {/* TITLE */}
+                <Title className={`!text-black ${mb ? '!text-center' : ''}`}>
+                  {t('ctKey')}
+                </Title>
 
-            {/* ACCORDION (custom instead of antd Collapse) */}
-            <div className=' w-full md:w-1/2'>
-              {contacts.map((item) => {
-                const isOpen = active === item.key;
+                {/* ACCORDION (custom instead of antd Collapse) */}
+                <div className=' w-full md:w-1/2'>
+                  {contacts.map((item) => {
+                    const isOpen = active === item.key;
 
-                return (
-                  <div
-                    key={item.key}
-                    className='border-b border-gray-400 !pt-1.5 !pb-3'
-                  >
-                    {/* HEADER */}
-                    <button
-                      onClick={() => setActive(isOpen ? null : item.key)}
-                      className='w-full flex items-center justify-between'
-                    >
-                      <Title
-                        level={5}
-                        className={`${textColor} font-semibold !m-0`}
+                    return (
+                      <div
+                        key={item.key}
+                        className='border-b border-gray-400 !pt-1.5 !pb-3'
                       >
-                        {item.title}
-                      </Title>
-
-                      <PlusOutlined
-                        className={`transition-transform ${
-                          isOpen ? 'rotate-45 !text-red-500' : ''
-                        } ${isDark ? '!text-green-400' : '!text-blue-600'}`}
-                      />
-                    </button>
-
-                    {/* BODY */}
-                    {isOpen && (
-                      <>
-                        <Row
-                          justify={'start'}
-                          align={'middle'}
-                          className='gap-x-2 my-1'
-                        >
-                          <PhoneFilled
-                            className={`${isDark ? '!text-white' : '!text-black'}`}
-                          />
-                          <Text color={isDark ? 'white' : ''}>
-                            {item.phone}
-                          </Text>
-                        </Row>
-
-                        <Row
-                          justify={'start'}
-                          align={'middle'}
-                          className='gap-x-2'
-                        >
-                          <MailFilled
-                            className={`${isDark ? '!text-white' : '!text-black'}`}
-                          />
-                          <Text color={isDark ? 'white' : ''}>{item.mail}</Text>
-                        </Row>
-                        <Row
-                          justify={'start'}
-                          align={'middle'}
-                          className='gap-x-1'
+                        {/* HEADER */}
+                        <button
+                          onClick={() => setActive(isOpen ? null : item.key)}
+                          className='w-full flex items-center justify-between'
                         >
                           <Title
                             level={5}
-                            className={`!m-0 ${isDark ? '!text-white' : '!text-black'}`}
+                            className='font-semibold !m-0 !text-black'
                           >
-                            {t('office')}
+                            {item.title}
                           </Title>
-                          <Text
-                            className='mt-0.5'
-                            color={isDark ? 'white' : ''}
-                          >
-                            {t('location')}
-                          </Text>
-                        </Row>
-                      </>
-                    )}
-                  </div>
-                );
-              })}
-            </div>
 
-            {/* BUTTON */}
-            <div className={`mt-7 ${device === 'mobile' ? 'text-end' : ''}`}>
-              <Button type='text' onClick={() => setCtOpen(true)}>
-                <Title
-                  className={`!m-0 ${isDark ? '!text-white' : '!text-black'}`}
-                  level={4}
-                >
-                  {t('getAdviceBtn')}
-                </Title>
-                <div className='w-full h-full !bg-blue-500 rounded-r-full flex items-center justify-center px-3'>
-                  <RightOutlined className='!text-white !font-semibold' />
+                          <PlusOutlined
+                            className={`transition-transform ${
+                              isOpen
+                                ? 'rotate-45 !text-red-500'
+                                : '!text-blue-600'
+                            }`}
+                          />
+                        </button>
+
+                        {/* BODY */}
+                        {isOpen && (
+                          <>
+                            <Row
+                              justify={'start'}
+                              align={'middle'}
+                              className='gap-x-2 my-1'
+                            >
+                              <PhoneFilled className='!text-black' />
+                              <Text color='black'>{item.phone}</Text>
+                            </Row>
+
+                            <Row
+                              justify={'start'}
+                              align={'middle'}
+                              className='gap-x-2'
+                            >
+                              <MailFilled className='!text-black' />
+                              <Text color='black'>{item.mail}</Text>
+                            </Row>
+                            <Row
+                              justify={'start'}
+                              align={'middle'}
+                              className='gap-x-1'
+                            >
+                              <Title level={5} className='!m-0 !text-black'>
+                                {t('office')}
+                              </Title>
+                              <Text className='mt-0.5' color='black'>
+                                {t('location')}
+                              </Text>
+                            </Row>
+                          </>
+                        )}
+                      </div>
+                    );
+                  })}
                 </div>
-              </Button>
-            </div>
-          </div>
+
+                {/* BUTTON */}
+                <div className={`mt-7 ${mb ? 'text-end' : ''}`}>
+                  <Button type='text' onClick={() => setCtOpen(true)}>
+                    <Title className='!m-0 !text-black' level={4}>
+                      {t('getAdviceBtn')}
+                    </Title>
+                    <div className='w-full h-full !bg-blue-500 rounded-r-full flex items-center justify-center px-3'>
+                      <RightOutlined className='!text-white !font-semibold' />
+                    </div>
+                  </Button>
+                </div>
+              </div>
+            </motion.div>
+          </motion.section>
         }
         height={hMap[device]}
       />

@@ -59,8 +59,9 @@ export interface VidPrLayoutProps extends BasePageIesSecProps {
   titVid: string;
   desVid: string;
   bottomTit: string;
-  tabletVid?: boolean;
-  miniSc?: boolean;
+  tl?: boolean;
+  tlpr?: boolean;
+  dk?: boolean;
   imgWait: string;
 }
 
@@ -107,6 +108,7 @@ export interface NewsFeatureLayoutProps extends BasePageIesSecProps {
     eventTit?: string;
     evDate?: string;
     highlight?: string;
+    authorN?: string;
   }>;
   bonusTit?: string;
   moreBut?: string;

@@ -23,7 +23,7 @@ interface IEvsLst {
 export type EvsNavi = {
   id: string;
   authorN: string;
-  evsDate: string;
+  evDate: string;
 };
 
 const EvsLst: React.FC<IEvsLst> = (props) => {
@@ -35,7 +35,7 @@ const EvsLst: React.FC<IEvsLst> = (props) => {
   const handleNavigate = (navi: EvsNavi) => {
     const searchParams = new URLSearchParams({
       authorN: navi.authorN,
-      evsDate: navi.evsDate,
+      evDate: navi.evDate,
     });
     navigate(`${ROUTES.EVENTS_DETAILS}/${navi.id}?${searchParams.toString()}`);
   };
@@ -123,7 +123,7 @@ const EvsLst: React.FC<IEvsLst> = (props) => {
               handleNavigate({
                 id: evLst.id,
                 authorN: evLst.authorN,
-                evsDate: evLst.evDate,
+                evDate: evLst.evDate,
               })
             }
           >

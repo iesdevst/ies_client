@@ -20,7 +20,7 @@ const IesEventsDetails = () => {
   const { id } = useParams();
   const [searchParams] = useSearchParams();
   const authorN = searchParams.get('authorN');
-  const evsDate = searchParams.get('evsDate');
+  const evDate = searchParams.get('evDate');
   const currUrl = window.location.href;
   const { data } = useEventsData();
 
@@ -115,7 +115,7 @@ const IesEventsDetails = () => {
           img={detailDt.img}
           imgBonus={detailDt.imgBonus ? detailDt.imgBonus : []}
           ato={authorN ? authorN : ''}
-          date={evsDate ? evsDate : ''}
+          date={evDate ? evDate : ''}
           linkTo={detailDt.desc ? detailDt.linkTo : ''}
           urlForShare={currUrl}
           paddingClass={paddingClass}

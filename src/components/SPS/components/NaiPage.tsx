@@ -97,7 +97,7 @@ const NaiPage: React.FC<NaiPageLayoutProps> = (props) => {
   const hdlNaviEvs = (navi: EvsNavi) => {
     const searchParams = new URLSearchParams({
       authorN: navi.authorN,
-      evsDate: navi.evsDate,
+      evDate: navi.evDate,
     });
     navigate(`${ROUTES.EVENTS_DETAILS}/${navi.id}?${searchParams.toString()}`);
   };
@@ -344,7 +344,7 @@ const NaiPage: React.FC<NaiPageLayoutProps> = (props) => {
                           hdlNaviEvs({
                             id: item.id,
                             authorN: item.authorN,
-                            evsDate: item.evDate,
+                            evDate: item.evDate,
                           })
                         }
                       >

@@ -7,7 +7,9 @@ import Flex from 'antd/es/flex';
 import React, { memo, useCallback, useMemo } from 'react';
 import { useNavigate } from 'react-router-dom';
 import type { NewsFeatureLayoutProps } from '../types';
-import { Text, Title } from '@/components/AntTypography';
+import { Title } from '@/components/AntTypography';
+import { ROUTES } from '@/constants';
+import type { EvsNavi } from '@/pages/iesNews/components/EvsLst';
 
 const NewsFeat: React.FC<NewsFeatureLayoutProps> = (props) => {
   const {
@@ -24,9 +26,24 @@ const NewsFeat: React.FC<NewsFeatureLayoutProps> = (props) => {
     className,
     children,
   } = props;
+
   const navigate = useNavigate();
+
   const handleNavigate = useCallback(
     (url: string) => navigate(url),
+    [navigate],
+  );
+
+  const hdlNavigate = useCallback(
+    (navi: EvsNavi) => {
+      const searchParams = new URLSearchParams({
+        authorN: navi.authorN,
+        evDate: navi.evDate,
+      });
+      navigate(
+        `${ROUTES.EVENTS_DETAILS}/${navi.id}?${searchParams.toString()}`,
+      );
+    },
     [navigate],
   );
 
@@ -37,7 +54,7 @@ const NewsFeat: React.FC<NewsFeatureLayoutProps> = (props) => {
       <Card
         key={item.id}
         hoverable
-        className={`${dark ? '!bg-gray-700' : '!bg-white'} rounded-2xl overflow-hidden shadow-lg !border-none !cursor-default`}
+        className={`${dark ? '!bg-gray-700' : '!bg-white'} rounded-2xl overflow-hidden shadow-lg !border-none !cursor-pointer`}
         cover={
           <img
             src={item.img}
@@ -46,39 +63,38 @@ const NewsFeat: React.FC<NewsFeatureLayoutProps> = (props) => {
             loading='lazy'
           />
         }
+        onClick={() =>
+          hdlNavigate({
+            id: item.id,
+            authorN: item.authorN!,
+            evDate: item.evDate!,
+          })
+        }
       >
-        <div className='!px-5 !py-3'>
+        <div>
           {(item.tit || item.highlight) && (
-            <Flex justify='space-between' align='center' className='!py-2'>
-              <Title level={5} className='!text-blue-500 !m-0 '>
+            <div className='!pb-5'>
+              <Flex
+                justify='space-between'
+                align='center'
+                className={`${dark ? '!text-white' : '!text-black'} !bg-[#6d82bc] !px-5 !py-1`}
+              >
+                <Title level={5} className='!text-white !m-0'>
+                  {bonusTit}
+                </Title>
+                <Title level={5} className='!text-white !m-0'>
+                  {item.butCard || item.evDate}
+                </Title>
+              </Flex>
+              <Title level={5} className='!text-center !mt-4'>
                 {item.tit || item.highlight}
               </Title>
-
-              {(item.butCard || item.evDate) && (
-                <div className='relative '>
-                  <div
-                    className={`${dark ? '!text-white' : '!text-black'} !bg-blue-600 px-5 py-1 font-semibold text-sm`}
-                  >
-                    {item.butCard || item.evDate}
-                  </div>
-                  <div
-                    className={`${dark ? 'bg-gray-700' : 'bg-white'} absolute right-[-8px] top-1/2 -translate-y-1/2 w-3 h-3 rotate-45`}
-                  />
-                </div>
-              )}
-            </Flex>
+            </div>
           )}
-
-          <Text
-            className='font-semibold mb-6 !text-lg !block'
-            color={dark ? 'white' : ''}
-          >
-            {item.des || item.eventTit}
-          </Text>
         </div>
       </Card>
     ));
-  }, [feature, featCard, dark]);
+  }, [feature, featCard, dark, bonusTit, hdlNavigate]);
 
   const renderNormalCards = useMemo(() => {
     if (feature) return null;
@@ -95,9 +111,7 @@ const NewsFeat: React.FC<NewsFeatureLayoutProps> = (props) => {
           {item.tit}
         </Title>
         <p
-          className={`mb-2 ${dark ? 'text-white' : ''} ${
-            !mb ? '!text-lg' : '!text-sm'
-          }`}
+          className={`mb-2 ${dark ? 'text-white' : ''} ${!mb ? '!text-lg' : '!text-sm'}`}
         >
           {item.des}
         </p>
@@ -161,7 +175,7 @@ const NewsFeat: React.FC<NewsFeatureLayoutProps> = (props) => {
             </Title>
           </Flex>
         )}
-        <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8'>
+        <div className='grid grid-cols-1 md:grid-cols-1 lg:grid-cols-3 gap-8'>
           {feature ? renderFeatureCards : renderNormalCards}
         </div>
       </div>

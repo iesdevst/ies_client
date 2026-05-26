@@ -1,71 +1,110 @@
+import { motion } from 'framer-motion';
+import { useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
+
 import IT_BG from '@/assets/imgs/intro_bg.webp';
 import IT_CT from '@/assets/imgs/intro_img_cont.webp';
-import { IesClSection, Text } from '@/components';
+
+import { IesClSection, Text, Title } from '@/components';
 import { useDevice } from '@/hooks';
 
 const IesIntro = () => {
   const { device } = useDevice();
   const { t } = useTranslation('iesIntro');
 
-  const isMobile = device === 'mobile';
-  const isTablet = device === 'tablet';
-  const isTabletPro = device === 'tabletPro';
-  const isDesktop = device === 'desktop';
+  const mb = device === 'mobile';
+  const tl = device === 'tablet';
+  const tlpr = device === 'tabletPro';
+  const dk = device === 'desktop';
+
+  const introH = useMemo(() => {
+    if (mb) return '50vh';
+    if (tl) return '73vh';
+    if (tlpr) return '45vh';
+    return '90vh';
+  }, [mb, tl, tlpr]);
 
   return (
     <IesClSection
       id='intro'
       layout='simple'
       divider={false}
-      className={`${isDesktop ? 'px-5' : isTablet ? 'px-3' : isTabletPro ? 'px-3' : 'px-1.5'} mb-20`}
+      className={`${dk ? 'px-5 mb-20' : tl ? 'px-3 mb-15' : tlpr ? 'px-3' : 'px-1.5 mb-15'}`}
       children={
-        <section
+        <motion.section
           className='relative w-full overflow-hidden rounded-2xl'
           style={{
             backgroundImage: `url(${IT_BG})`,
             backgroundSize: 'cover',
             backgroundPosition: 'center',
+            transformOrigin: 'center',
+          }}
+          initial={{
+            scaleX: 0,
+            opacity: 0.7,
+          }}
+          animate={{
+            scaleX: 1,
+            opacity: 1,
+          }}
+          transition={{
+            duration: 1,
+            ease: [0.83, 0, 0.17, 1],
           }}
         >
           {/* blur overlay */}
           <div className='absolute inset-0 z-10 backdrop-blur-[30px] bg-white/25' />
 
           {/* CONTENT */}
-          <div
-            className={`relative z-20 flex justify-between items-end pb-10 ${isMobile ? 'mt-25 px-3' : isTablet ? 'mt-35 px-7' : isTabletPro ? 'mt-50 px-10' : 'mt-80 px-13'}`}
+          <motion.div
+            className={`relative z-20 flex justify-between items-end pb-10 ${
+              mb
+                ? 'mt-25 px-3'
+                : tl
+                  ? 'mt-35 px-7'
+                  : tlpr
+                    ? 'mt-50 px-10'
+                    : 'mt-80 px-13'
+            }`}
             style={{
-              flexDirection: isMobile || isTablet ? 'column' : 'row',
-              gap: isMobile ? 24 : isTablet ? 32 : 80,
-              alignItems: isMobile || isTablet ? 'flex-start' : 'flex-end',
+              flexDirection: mb || tl ? 'column' : 'row',
+              gap: mb ? 24 : tl ? 32 : 80,
+              alignItems: mb || tl ? 'flex-start' : 'flex-end',
+            }}
+            initial={{
+              opacity: 0,
+              y: 40,
+            }}
+            animate={{
+              opacity: 1,
+              y: 0,
+            }}
+            transition={{
+              delay: 0.9,
+              duration: 0.8,
+              ease: 'easeOut',
             }}
           >
             {/* LEFT */}
-            <div style={{ maxWidth: isDesktop ? 700 : '100%' }}>
-              <h1
+            <div style={{ maxWidth: dk ? 700 : '100%' }}>
+              <Title
                 style={{
                   margin: 0,
                   fontFamily: 'Geist, sans-serif',
                   fontWeight: 500,
                   lineHeight: 1.05,
                   color: '#000',
-                  fontSize: isMobile
-                    ? 40
-                    : isTablet
-                      ? 48
-                      : isTabletPro
-                        ? 60
-                        : 80,
+                  fontSize: mb ? 40 : tl ? 48 : tlpr ? 60 : 80,
                 }}
               >
                 {t('shaping')}
-              </h1>
+              </Title>
 
               <Text
                 className='block mt-4'
                 style={{
                   color: '#1f2937',
-                  fontSize: isMobile ? 14 : isTablet ? 16 : 18,
+                  fontSize: mb ? 14 : tl ? 16 : 18,
                   lineHeight: 1.6,
                   maxWidth: 700,
                 }}
@@ -77,13 +116,7 @@ const IesIntro = () => {
             {/* RIGHT IMAGE */}
             <div
               style={{
-                width: isMobile
-                  ? '100%'
-                  : isTablet
-                    ? '100%'
-                    : isTabletPro
-                      ? 430
-                      : 480,
+                width: mb ? '100%' : tl ? '100%' : tlpr ? 430 : 480,
               }}
             >
               <div className='rounded-2xl overflow-hidden shadow-2xl'>
@@ -98,9 +131,10 @@ const IesIntro = () => {
                 />
               </div>
             </div>
-          </div>
-        </section>
+          </motion.div>
+        </motion.section>
       }
+      height={introH}
     />
   );
 };
