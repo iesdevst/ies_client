@@ -49,6 +49,7 @@ export const NEWS_DETAILS_SEGMENT = 'news-details' as const;
 export const EVENTS_SEGMENT = 'events' as const;
 export const EVENTS_DETAILS_SEGMENT = 'events-details' as const;
 export const PUBDIS_SEGMENT = 'disclosure' as const;
+export const LEAD_SCHOOL = 'lead-school' as const;
 
 export type RoutePath = (typeof ROUTES)[keyof typeof ROUTES];
 
@@ -104,4 +105,5 @@ export const ROUTES = {
   EVENTS: `/${EVENTS_SEGMENT}`,
   EVENTS_DETAILS: `/${EVENTS_DETAILS_SEGMENT}`,
   PUBDIS: `/${PUBDIS_SEGMENT}`,
+  LEAD_SCHOOL: `/${LEAD_SCHOOL}`,
 };

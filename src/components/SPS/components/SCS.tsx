@@ -11,11 +11,13 @@ const SCS: React.FC<SCSLayoutProps> = (props) => {
   return (
     <Col className='w-full'>
       {title && (
-        <Col
-          className={`flex flex-col items-center justify-center ${mb ? 'mb-5' : ' mb-15'}`}
+        <Flex
+          justify='flex-start'
+          align='center'
+          className={`${mb ? '!mb-5' : '!mb-10'}`}
         >
-          <Title className='!text-white'>{title}</Title>
-        </Col>
+          <Title className='!text-white !m-0'>{title}</Title>
+        </Flex>
       )}
       <Flex
         vertical={mb}

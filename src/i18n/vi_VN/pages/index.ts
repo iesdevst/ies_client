@@ -58,3 +58,7 @@ export { default as useLearnTfData } from './training/hooks/useLearnTfData';
 export { default as useShortCrsData } from './training/hooks/useShortCrsData';
 export { default as iesVocaTraining } from './training/iesVocaTraining';
 export { default as vocaTrainDetail } from './training/vocaTrainDetail';
+
+export { default as introLc } from './leadSchool/components/introLc';
+export { default as leadership } from './leadSchool/components/leadership';
+export { default as ourLead } from './leadSchool/components/ourLead';

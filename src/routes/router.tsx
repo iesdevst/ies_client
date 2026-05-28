@@ -16,6 +16,7 @@ const IesNewsDetails = lazy(() => import('@/pages/iesNews/IesNewsDetails'));
 const EvsPage = lazy(() => import('@/pages/iesNews/EvsPage'));
 const IesEventsDetails = lazy(() => import('@/pages/iesNews/IesEventsDetail'));
 const IesClientLayout = lazy(() => import('@/layouts/IesClientLayout'));
+const LeadSchool = lazy(() => import('@/pages/leadSchool/LeadSchool'));
 
 export const router = createBrowserRouter([
   {
@@ -67,6 +68,7 @@ export const router = createBrowserRouter([
             path: `${ROUTES.EVENTS_DETAILS}/:id`,
             element: <IesEventsDetails />,
           },
+          { path: `${ROUTES.LEAD_SCHOOL}`, element: <LeadSchool /> },
         ],
       },
       { path: '*', element: <div>Not Found Page</div> },
