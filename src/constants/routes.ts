@@ -36,6 +36,14 @@ export const ShortCrsTab = {
 
 export type ShortCrsTab = (typeof ShortCrsTab)[keyof typeof ShortCrsTab];
 
+export const EduDicsType = {
+  TrainingPlan: 'training-plan',
+  Degress: 'degress',
+  LegalDoc: 'legal-doc',
+};
+
+export type EduDicsType = (typeof EduDicsType)[keyof typeof EduDicsType];
+
 export const HOME_SEGMENT = 'dashboard' as const;
 export const ABOUT_SEGMENT = 'about-ies' as const;
 export const ACADEMICS_SEGMENT = 'academics' as const;
@@ -48,8 +56,9 @@ export const NEWS_SEGMENT = 'news' as const;
 export const NEWS_DETAILS_SEGMENT = 'news-details' as const;
 export const EVENTS_SEGMENT = 'events' as const;
 export const EVENTS_DETAILS_SEGMENT = 'events-details' as const;
-export const PUBDIS_SEGMENT = 'disclosure' as const;
-export const LEAD_SCHOOL = 'lead-school' as const;
+export const LEAD_SCHOOL_SEGMENT = 'lead-school' as const;
+
+export const EDU_DISC_SEGMENT = 'edu-disc' as const;
 
 export type RoutePath = (typeof ROUTES)[keyof typeof ROUTES];
 
@@ -104,6 +113,10 @@ export const ROUTES = {
   NEWS_DETAILS: `/${NEWS_DETAILS_SEGMENT}`,
   EVENTS: `/${EVENTS_SEGMENT}`,
   EVENTS_DETAILS: `/${EVENTS_DETAILS_SEGMENT}`,
-  PUBDIS: `/${PUBDIS_SEGMENT}`,
-  LEAD_SCHOOL: `/${LEAD_SCHOOL}`,
+  LEAD_SCHOOL: `/${LEAD_SCHOOL_SEGMENT}`,
+  EDU_DISC: `/${EDU_DISC_SEGMENT}`,
+
+  TRAININGPL: `/${EDU_DISC_SEGMENT}/${EduDicsType.TrainingPlan}`,
+  DEGRESS: `/${EDU_DISC_SEGMENT}/${EduDicsType.Degress}`,
+  LEGALDOC: `/${EDU_DISC_SEGMENT}/${EduDicsType.LegalDoc}`,
 };

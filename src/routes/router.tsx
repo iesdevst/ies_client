@@ -17,6 +17,10 @@ const EvsPage = lazy(() => import('@/pages/iesNews/EvsPage'));
 const IesEventsDetails = lazy(() => import('@/pages/iesNews/IesEventsDetail'));
 const IesClientLayout = lazy(() => import('@/layouts/IesClientLayout'));
 const LeadSchool = lazy(() => import('@/pages/leadSchool/LeadSchool'));
+const IesOffLayout = lazy(() => import('@/layouts/IesOffLayout'));
+const TrainingPlan = lazy(() => import('@/pages/eduPublic/TrainingPlan'));
+const Degress = lazy(() => import('@/pages/eduPublic/Degress'));
+const LegalDoc = lazy(() => import('@/pages/eduPublic/LegalDoc'));
 
 export const router = createBrowserRouter([
   {
@@ -69,6 +73,19 @@ export const router = createBrowserRouter([
             element: <IesEventsDetails />,
           },
           { path: `${ROUTES.LEAD_SCHOOL}`, element: <LeadSchool /> },
+          {
+            path: ROUTES.EDU_DISC,
+            element: <IesOffLayout />,
+            children: [
+              {
+                index: true,
+                element: <Navigate to={ROUTES.TRAININGPL} replace />,
+              },
+              { path: ROUTES.TRAININGPL, element: <TrainingPlan /> },
+              { path: ROUTES.DEGRESS, element: <Degress /> },
+              { path: ROUTES.LEGALDOC, element: <LegalDoc /> },
+            ],
+          },
         ],
       },
       { path: '*', element: <div>Not Found Page</div> },

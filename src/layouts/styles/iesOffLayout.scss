@@ -1,0 +1,11 @@
+.off-sidebar {
+  .ant-menu-light {
+    .ant-menu-item-selected,
+    > .ant-menu .ant-menu-item-selected {
+      background-color: #1677ff !important;
+      color: #fff !important;
+      border-radius: 8px;
+      margin: 0  !important;
+    }
+  }
+}

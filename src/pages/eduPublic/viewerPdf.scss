@@ -1,0 +1,9 @@
+/* Hide upload/open PDF button */
+
+button[data-testid="open__button"] {
+  display: none !important;
+}
+
+button[data-testid="open-menu__item"] {
+  display: none !important;
+}

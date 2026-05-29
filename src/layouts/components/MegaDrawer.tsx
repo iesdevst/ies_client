@@ -138,7 +138,7 @@ const MegaDrawer: React.FC<IMegaDrawer> = ({ activeKey, onClose }) => {
         <div
           className='!w-2/5 h-full'
           style={{
-            backdropFilter: 'blur(2px)', // giảm blur để nhẹ hơn
+            backdropFilter: 'blur(2px)',
             background: bgGradient,
           }}
         />
