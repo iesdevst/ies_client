@@ -15,6 +15,7 @@ export const useMegaNavData = (): { data: Array<MegaNavItem> } => {
             links: [
               { label: t('vAm'), route: ROUTES.ABOUT_VISION },
               { label: t('values'), route: ROUTES.ABOUT_COREVALUES },
+              { label: t('bgh'), route: ROUTES.LEAD_SCHOOL },
             ],
           },
         ],
@@ -68,6 +69,9 @@ export const useMegaNavData = (): { data: Array<MegaNavItem> } => {
           {
             title: t('iesAca'),
             links: [
+              { label: t('regulations'), route: ROUTES.TRAINDOCS },
+              { label: t('trainForm'), route: ROUTES.TRAINFORM },
+
               { label: t('acadeL'), route: ROUTES.ACADEMICS },
 
               { label: t('digiLib'), route: ROUTES.DGTLIB },
@@ -93,13 +97,32 @@ export const useMegaNavData = (): { data: Array<MegaNavItem> } => {
 
       {
         key: ROUTES.EDU_DISC,
-        label: 'Educational disclosure',
+        label: t('ckgd'),
         overW: false,
         sections: [
           {
             links: [
-              { label: 'Training Plan', route: ROUTES.TRAININGPL },
-              { label: 'Degress', route: ROUTES.DEGRESS },
+              { label: t('khdt'), route: ROUTES.TRAININGPL },
+              { label: t('degress'), route: ROUTES.DEGRESS },
+              { label: t('legal'), route: ROUTES.LEGALDOC },
+              { label: t('quality'), route: ROUTES.QUALITY },
+              { label: t('vocadoc'), route: ROUTES.VOCATIONAL },
+            ],
+          },
+        ],
+      },
+      {
+        key: ROUTES.REGUSTU,
+        label: t('stu'),
+        overW: false,
+        sections: [
+          {
+            links: [
+              { label: t('stuRegu'), route: ROUTES.REGUSTU },
+              { label: t('stuAct'), route: ROUTES.ACTSTU },
+              { label: t('handbook'), route: ROUTES.HANDBOOK },
+              { label: t('stuForm'), route: ROUTES.STUFORM },
+              { label: t('stuInfo'), route: ROUTES.STUINFO },
             ],
           },
         ],

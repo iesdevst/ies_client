@@ -40,6 +40,17 @@ export const EduDicsType = {
   TrainingPlan: 'training-plan',
   Degress: 'degress',
   LegalDoc: 'legal-doc',
+  Quality: 'quality',
+  Vocational: 'voca-docs',
+
+  TrainDocs: 'train-docs',
+  TrainingForm: 'training-form',
+
+  ReguStu: 'regu-stu',
+  Actstu: 'stu-act',
+  Handbook: 'hand-book',
+  StuForm: 'stu-form',
+  StuInfo: 'stu-info',
 };
 
 export type EduDicsType = (typeof EduDicsType)[keyof typeof EduDicsType];
@@ -119,4 +130,15 @@ export const ROUTES = {
   TRAININGPL: `/${EDU_DISC_SEGMENT}/${EduDicsType.TrainingPlan}`,
   DEGRESS: `/${EDU_DISC_SEGMENT}/${EduDicsType.Degress}`,
   LEGALDOC: `/${EDU_DISC_SEGMENT}/${EduDicsType.LegalDoc}`,
+  QUALITY: `/${EDU_DISC_SEGMENT}/${EduDicsType.Quality}`,
+  VOCATIONAL: `/${EDU_DISC_SEGMENT}/${EduDicsType.Vocational}`,
+
+  TRAINDOCS: `/${EDU_DISC_SEGMENT}/${EduDicsType.TrainDocs}`,
+  TRAINFORM: `/${EDU_DISC_SEGMENT}/${EduDicsType.TrainingForm}`,
+
+  REGUSTU: `/${EDU_DISC_SEGMENT}/${EduDicsType.ReguStu}`,
+  ACTSTU: `/${EDU_DISC_SEGMENT}/${EduDicsType.Actstu}`,
+  HANDBOOK: `/${EDU_DISC_SEGMENT}/${EduDicsType.Handbook}`,
+  STUFORM: `/${EDU_DISC_SEGMENT}/${EduDicsType.StuForm}`,
+  STUINFO: `/${EDU_DISC_SEGMENT}/${EduDicsType.StuInfo}`,
 };

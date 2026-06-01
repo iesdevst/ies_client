@@ -62,3 +62,12 @@ export { default as vocaTrainDetail } from './training/vocaTrainDetail';
 export { default as introLc } from './leadSchool/components/introLc';
 export { default as leadership } from './leadSchool/components/leadership';
 export { default as ourLead } from './leadSchool/components/ourLead';
+
+export { default as useOffSidebarData } from './eduPublic/hooks/useOffSidebarData';
+export { default as trainingPlan } from './eduPublic/trainingPlan';
+export { default as degress } from './eduPublic/degress';
+export { default as legalDoc } from './eduPublic/legalDoc';
+export { default as trainDocs } from './eduPublic/trainDocs';
+export { default as stuRegulation } from './eduPublic/stuRegulation';
+export { default as handbook } from './eduPublic/handbook';
+export { default as stuForm } from './eduPublic/stuForm';

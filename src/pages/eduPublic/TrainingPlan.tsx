@@ -2,38 +2,40 @@ import { Viewer, Worker } from '@react-pdf-viewer/core';
 import { defaultLayoutPlugin } from '@react-pdf-viewer/default-layout';
 import { Select } from 'antd';
 import Flex from 'antd/es/flex';
-import { useState } from 'react';
+import { useMemo, useState } from 'react';
 
 import '@react-pdf-viewer/core/lib/styles/index.css';
 import '@react-pdf-viewer/default-layout/lib/styles/index.css';
 
+import { useTranslation } from 'react-i18next';
 import { Title } from '@/components';
 
-const pdfList = [
-  {
-    value: '2025',
-    label: 'Kế hoạch đào tạo 2025 - 2026',
-    file: '/files/training_plan_2025_2026.pdf',
-  },
-  {
-    value: '2024',
-    label: 'Kế hoạch đào tạo 2024 - 2025',
-    file: '/files/training_plan_2024_2025.pdf',
-  },
-];
-
 const TrainingPlan = () => {
+  const { t } = useTranslation('trainingPlan');
+
+  const pdfList = useMemo(
+    () => [
+      {
+        id: '1',
+        label: t('label1'),
+        file: '/files/training_plan_2025_2026.pdf',
+      },
+      {
+        id: '2',
+        label: t('label2'),
+        file: '/files/training_plan_2024_2025.pdf',
+      },
+    ],
+    [t],
+  );
+
   const defaultLayoutPluginInstance = defaultLayoutPlugin();
 
-  const [selectedPdf, setSelectedPdf] = useState(pdfList[0]);
+  const [selectedId, setSelectedId] = useState<string>('1');
 
-  const handleChange = (value: string) => {
-    const found = pdfList.find((item) => item.value === value);
-
-    if (found) {
-      setSelectedPdf(found);
-    }
-  };
+  const selectedPdf = useMemo(() => {
+    return pdfList.find((item) => item.id === selectedId) ?? pdfList[0];
+  }, [selectedId, pdfList]);
 
   return (
     <section className='h-screen pt-5 px-10'>
@@ -42,10 +44,12 @@ const TrainingPlan = () => {
 
         <div>
           <Select
-            value={selectedPdf.value}
-            onChange={handleChange}
-            options={pdfList}
-            placeholder='Chọn kế hoạch đào tạo'
+            value={selectedId}
+            onChange={setSelectedId}
+            options={pdfList.map((item) => ({
+              value: item.id,
+              label: item.label,
+            }))}
           />
         </div>
       </Flex>

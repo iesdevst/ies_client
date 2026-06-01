@@ -21,6 +21,11 @@ const IesOffLayout = lazy(() => import('@/layouts/IesOffLayout'));
 const TrainingPlan = lazy(() => import('@/pages/eduPublic/TrainingPlan'));
 const Degress = lazy(() => import('@/pages/eduPublic/Degress'));
 const LegalDoc = lazy(() => import('@/pages/eduPublic/LegalDoc'));
+const TrainDocs = lazy(() => import('@/pages/eduPublic/TrainDocs'));
+const WaitingPage = lazy(() => import('@/hooks/WaitingPage'));
+const StuForm = lazy(() => import('@/pages/eduPublic/StuForm'));
+const Handbook = lazy(() => import('@/pages/eduPublic/Handbook'));
+const StuRegulation = lazy(() => import('@/pages/eduPublic/StuRegulation'));
 
 export const router = createBrowserRouter([
   {
@@ -84,6 +89,17 @@ export const router = createBrowserRouter([
               { path: ROUTES.TRAININGPL, element: <TrainingPlan /> },
               { path: ROUTES.DEGRESS, element: <Degress /> },
               { path: ROUTES.LEGALDOC, element: <LegalDoc /> },
+              { path: ROUTES.QUALITY, element: <WaitingPage /> },
+              { path: ROUTES.VOCATIONAL, element: <WaitingPage /> },
+
+              { path: ROUTES.TRAINDOCS, element: <TrainDocs /> },
+              { path: ROUTES.TRAINFORM, element: <WaitingPage /> },
+
+              { path: ROUTES.REGUSTU, element: <StuRegulation /> },
+              { path: ROUTES.HANDBOOK, element: <Handbook /> },
+              { path: ROUTES.STUFORM, element: <StuForm /> },
+              { path: ROUTES.ACTSTU, element: <WaitingPage /> },
+              { path: ROUTES.STUINFO, element: <WaitingPage /> },
             ],
           },
         ],

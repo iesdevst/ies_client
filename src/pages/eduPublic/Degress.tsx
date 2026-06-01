@@ -5,14 +5,16 @@ import '@react-pdf-viewer/core/lib/styles/index.css';
 import '@react-pdf-viewer/default-layout/lib/styles/index.css';
 
 import './viewerPdf.scss';
+import { useTranslation } from 'react-i18next';
 import { Title } from '@/components';
 
 const Degress = () => {
+  const { t } = useTranslation('degress');
   const defaultLayoutPluginInstance = defaultLayoutPlugin();
 
   return (
-    <section className='h-screen pt-5'>
-      <Title className='!text-center'>Văn bằng - Chứng chỉ</Title>
+    <section className='h-screen pt-5 px-10'>
+      <Title className='!text-center'>{t('degress')}</Title>
       <div className='mt-10 !h-4/5 overflow-hidden !rounded-3xl'>
         <Worker workerUrl='/pdf.worker.min.js'>
           <Viewer
