@@ -78,7 +78,7 @@ const StatIes = () => {
               {/* Description */}
               <Text
                 color={isDark ? '#99a1af' : 'white'}
-                className={`${isTablet ? '' : 'mb-10'} !text-[15px] leading-relaxed relative z-10 block`}
+                className={`${isTablet ? '' : 'mb-10'} !text-lg leading-relaxed relative z-10 block`}
               >
                 {stat.des}
               </Text>
@@ -90,7 +90,7 @@ const StatIes = () => {
                 >
                   {stat.num}
                 </Title>
-                <Title level={5} className='!text-gray-300 font-medium'>
+                <Title level={4} className='!text-gray-300 font-medium'>
                   {stat.label}
                 </Title>
               </div>

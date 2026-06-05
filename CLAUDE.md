@@ -143,6 +143,85 @@ export const IesButton = React.memo(({ label, onClick }: IesButtonProps) => { ..
 - Write comments only when the **why** is non-obvious.
 - No inline docstrings, no JSDoc on obvious functions.
 
+### Page Sub-Component Conventions
+
+Khi tách một page thành nhiều sub-component file (ví dụ: `BoA` → `BoaMemberCard`, `BoaSpotlight`):
+
+**1. Component signature — dùng `React.FC<Props>` + destructure trong body:**
+```tsx
+// ✅ Đúng
+const BoaMemberCard: React.FC<BoaMemberCardProps> = (props) => {
+  const { member, dark } = props;
+  ...
+};
+
+// ❌ Sai — không dùng shorthand destructure ở signature
+const BoaMemberCard = ({ member, dark }: BoaMemberCardProps) => { ... };
+```
+
+**2. Props interface — export ra ngoài:**
+```tsx
+export interface BoaMemberCardProps {
+  member: BoaMember;
+  dark: boolean;
+}
+```
+
+**3. Lazy load sub-component trong parent bằng absolute path `@/`:**
+```tsx
+const BoaMemberCard = lazy(() => import('@/pages/about/components/BoaMemberCard'));
+const BoaSpotlight  = lazy(() => import('@/pages/about/components/BoaSpotlight'));
+```
+Mỗi lazy child bọc `<Suspense fallback={false}>` inline tại nơi dùng. `ContactKey` / `LazySec` dùng `fallback={null}`.
+
+**4. Tailwind v4 important modifier — dùng suffix `class!` không phải prefix `!class`:**
+```tsx
+// ✅ Đúng (Tailwind v4)
+className='text-sm! font-bold! block! m-0!'
+
+// ❌ Sai (Tailwind v3 cũ)
+className='!text-sm !font-bold !block !m-0'
+```
+
+**5. `Text` component thay cho `<p>` — dùng `color` prop + `block!`:**
+```tsx
+// ✅ Đúng
+<Text color={dark ? 'white' : '#111827'} className='font-semibold! text-sm! block!'>
+  {member.name}
+</Text>
+
+// ❌ Sai
+<p className={`font-semibold text-sm ${dark ? 'text-white' : 'text-gray-900'}`}>
+  {member.name}
+</p>
+```
+`Text` render là `<span>` — luôn thêm `block!` khi cần display block.
+
+**6. Array data — luôn khai báo trên `return`, KHÔNG bao giờ inline trong JSX:**
+```tsx
+// ✅ Đúng — khai báo trên return, dùng useMemo nếu phụ thuộc vào t/state/props
+const sectionGo = useMemo(
+  () => [
+    { label: t('botTitle'), id: 'boa-bot' },
+    { label: t('abTitle'),  id: 'boa-ab'  },
+  ],
+  [t],
+);
+
+// ❌ Sai — inline array trong JSX
+{[
+  { label: t('botTitle'), id: 'boa-bot' },
+].map(...)}
+```
+Nếu array là constant thực sự (không phụ thuộc gì), khai báo ngoài component. Nếu phụ thuộc `t`, `isDark`, hay bất kỳ state/prop nào → dùng `useMemo`.
+
+**7. Page wrapper — dùng `IesClSection layout='simple'` thay `PageContainer`:**
+```tsx
+<IesClSection id='boa' layout='simple' divider={false}>
+  {/* nội dung page */}
+</IesClSection>
+```
+
 ---
 
 ## Environment

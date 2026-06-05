@@ -29,6 +29,8 @@ const HeaderIes: React.FC<IHeaderIes> = (props) => {
 
   const showDesktop = device === 'desktop' || device === 'tabletPro';
   const mbtl = device === 'mobile' || device === 'tablet';
+  const tl = device === 'tablet';
+  const mb = device === 'mobile';
 
   const getIesLogo = () => {
     if (isDark && mbtl) return IES_LGMB_DARK;
@@ -46,7 +48,7 @@ const HeaderIes: React.FC<IHeaderIes> = (props) => {
             className='!block !flex !items-center'
           >
             <img
-              className={`${showDesktop ? '!w-16 !h-8' : '!w-100 !h-23'} ${device === 'tablet' ? 'ml-45' : ''} mt-2`}
+              className={`${showDesktop ? '!w-16 !h-8' : '!w-100 !h-23'} ${tl ? 'ml-45 mb-1!' : mb ? 'mb-1!' : ''} mt-2`}
               src={getIesLogo()}
               alt='ies_logo'
               loading='lazy'

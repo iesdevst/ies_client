@@ -44,7 +44,7 @@ const StuComment = () => {
               <Col
                 className={`!space-y-5 ${mb ? 'px-6.5 mt-10' : tl ? '' : 'pl-15 mt-15'}`}
               >
-                <Text color='#e0e1e2' className={`${tl ? '!text-lg' : ''}`}>
+                <Text color='#e0e1e2' className='!text-lg'>
                   {t('stuVoid')}
                 </Text>
                 <div className='space-y-1 !mt-5'>

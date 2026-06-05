@@ -48,17 +48,10 @@ const ContactKey: React.FC = () => {
 
   const [active, setActive] = useState<string | null>(null);
 
-  const hMap = {
-    mobile: '45vh',
-    tablet: '30vh',
-    tabletPro: '30vh',
-    desktop: '40vh',
-  };
-
   const classsMap = {
-    mobile: 'pt-10 pb-20 px-5',
-    tablet: 'pl-8',
-    tabletPro: 'pl-8',
+    mobile: 'py-10 px-5',
+    tablet: 'pl-8 py-10',
+    tabletPro: 'pl-8 py-10',
     desktop: 'pl-20 pt-20',
   };
 
@@ -137,17 +130,17 @@ const ContactKey: React.FC = () => {
                         {/* HEADER */}
                         <button
                           onClick={() => setActive(isOpen ? null : item.key)}
-                          className='w-full flex items-center justify-between'
+                          className='w-full flex items-center justify-between cursor-pointer'
                         >
                           <Title
-                            level={5}
+                            level={4}
                             className='font-semibold !m-0 !text-black'
                           >
                             {item.title}
                           </Title>
 
                           <PlusOutlined
-                            className={`transition-transform ${
+                            className={`transition-transform !text-lg ${
                               isOpen
                                 ? 'rotate-45 !text-red-500'
                                 : '!text-blue-600'
@@ -163,8 +156,10 @@ const ContactKey: React.FC = () => {
                               align={'middle'}
                               className='gap-x-2 my-1'
                             >
-                              <PhoneFilled className='!text-black' />
-                              <Text color='black'>{item.phone}</Text>
+                              <PhoneFilled className='!text-black !text-lg' />
+                              <Text color='black' className='!text-lg'>
+                                {item.phone}
+                              </Text>
                             </Row>
 
                             <Row
@@ -172,18 +167,20 @@ const ContactKey: React.FC = () => {
                               align={'middle'}
                               className='gap-x-2'
                             >
-                              <MailFilled className='!text-black' />
-                              <Text color='black'>{item.mail}</Text>
+                              <MailFilled className='!text-black !text-lg' />
+                              <Text color='black' className='!text-lg'>
+                                {item.mail}
+                              </Text>
                             </Row>
                             <Row
                               justify={'start'}
                               align={'middle'}
                               className='gap-x-1'
                             >
-                              <Title level={5} className='!m-0 !text-black'>
+                              <Title level={4} className='!m-0 !text-black'>
                                 {t('office')}
                               </Title>
-                              <Text className='mt-0.5' color='black'>
+                              <Text className='mt-0.5 !text-lg' color='black'>
                                 {t('location')}
                               </Text>
                             </Row>
@@ -209,7 +206,6 @@ const ContactKey: React.FC = () => {
             </motion.div>
           </motion.section>
         }
-        height={hMap[device]}
       />
 
       {ctOpen && (

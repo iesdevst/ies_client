@@ -1,12 +1,12 @@
 import { lazy, Suspense } from 'react';
 import IesIntro from './components/IesIntro';
-import StatIes from './components/StatIes';
 import { PageContainer } from '@/components';
 import { LazySec } from '@/hooks';
 
 const VidPrIes = lazy(() => import('@/pages/home/components/VidPrIes'));
 const NewAndEvent = lazy(() => import('@/pages/home/components/NewAndEvent'));
 const FieldOfStudy = lazy(() => import('@/pages/home/components/FieldOfStudy'));
+const StatIes = lazy(() => import('@/pages/home/components/StatIes'));
 const SlideCusIes = lazy(() => import('@/pages/home/components/SlideCusIes'));
 const TrainPro = lazy(() => import('@/pages/home/components/TrainPro'));
 const InternCollab = lazy(() => import('@/pages/home/components/InternCollab'));

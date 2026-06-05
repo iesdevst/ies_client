@@ -7,7 +7,7 @@ import Flex from 'antd/es/flex';
 import React, { memo, useCallback, useMemo } from 'react';
 import { useNavigate } from 'react-router-dom';
 import type { NewsFeatureLayoutProps } from '../types';
-import { Title } from '@/components/AntTypography';
+import { Text, Title } from '@/components/AntTypography';
 import { ROUTES } from '@/constants';
 import type { EvsNavi } from '@/pages/iesNews/components/EvsLst';
 
@@ -79,14 +79,14 @@ const NewsFeat: React.FC<NewsFeatureLayoutProps> = (props) => {
                 align='center'
                 className={`${dark ? '!text-white' : '!text-black'} !bg-[#6d82bc] !px-5 !py-1`}
               >
-                <Title level={5} className='!text-white !m-0'>
+                <Title level={4} className='!text-white !m-0'>
                   {bonusTit}
                 </Title>
-                <Title level={5} className='!text-white !m-0'>
+                <Title level={4} className='!text-white !m-0'>
                   {item.butCard || item.evDate}
                 </Title>
               </Flex>
-              <Title level={5} className='!text-center !mt-4'>
+              <Title level={4} className='!text-center !mt-4'>
                 {item.tit || item.highlight}
               </Title>
             </div>
@@ -110,11 +110,12 @@ const NewsFeat: React.FC<NewsFeatureLayoutProps> = (props) => {
         <Title level={4} className={`${dark ? '!text-white' : '!text-black'}`}>
           {item.tit}
         </Title>
-        <p
-          className={`mb-2 ${dark ? 'text-white' : ''} ${!mb ? '!text-lg' : '!text-sm'}`}
+        <Text
+          color={dark ? 'white' : 'black'}
+          className={`!block mb-2 ${dark ? 'text-white' : ''} ${!mb ? '!text-lg' : '!text-sm'}`}
         >
           {item.des}
-        </p>
+        </Text>
         {item.navigo && (
           <Button
             type='text'

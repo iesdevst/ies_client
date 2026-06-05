@@ -1,4 +1,3 @@
-import { useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
 import IMGW from '@/assets/imgs/vid_wait.webp';
 import { IesClSection } from '@/components';
@@ -11,17 +10,9 @@ const VidPrIes: React.FC = () => {
   const { isDark } = useUserStore();
   const { t } = useTranslation('vidPrIes');
 
-  const mb = device === 'mobile';
   const tl = device === 'tablet';
   const tlpr = device === 'tabletPro';
   const dk = device === 'desktop';
-
-  const scHeight = useMemo(() => {
-    if (mb) return '30vh';
-    if (tl) return '25vh';
-    if (tlpr) return '30vh';
-    return '70vh';
-  }, [mb, tl, tlpr]);
 
   return (
     <IesClSection
@@ -35,7 +26,6 @@ const VidPrIes: React.FC = () => {
       imgWait={IMGW}
       mb={device === 'mobile'}
       navigateGo={ROUTES.ABOUT_OVERVIEW}
-      height={scHeight}
       tl={tl}
       tlpr={tlpr}
       dk={dk}

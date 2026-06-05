@@ -17,6 +17,7 @@ const EvsPage = lazy(() => import('@/pages/iesNews/EvsPage'));
 const IesEventsDetails = lazy(() => import('@/pages/iesNews/IesEventsDetail'));
 const IesClientLayout = lazy(() => import('@/layouts/IesClientLayout'));
 const LeadSchool = lazy(() => import('@/pages/leadSchool/LeadSchool'));
+const BoA = lazy(() => import('@/pages/about/components/BoA'));
 const IesOffLayout = lazy(() => import('@/layouts/IesOffLayout'));
 const TrainingPlan = lazy(() => import('@/pages/eduPublic/TrainingPlan'));
 const Degress = lazy(() => import('@/pages/eduPublic/Degress'));
@@ -78,6 +79,7 @@ export const router = createBrowserRouter([
             element: <IesEventsDetails />,
           },
           { path: `${ROUTES.LEAD_SCHOOL}`, element: <LeadSchool /> },
+          { path: `${ROUTES.BOA}`, element: <BoA /> },
           {
             path: ROUTES.EDU_DISC,
             element: <IesOffLayout />,

@@ -39,7 +39,7 @@ const MegaLink = React.memo(
         className={`hover:!underline ${isDark ? '!text-white' : '!text-black'}`}
         style={{
           fontWeight: 550,
-          fontSize: '1.1rem',
+          fontSize: '1.3rem',
           fontFamily: "'IBM Plex Sans', sans-serif",
         }}
       >
@@ -154,8 +154,8 @@ const MegaDrawer: React.FC<IMegaDrawer> = ({ activeKey, onClose }) => {
           <Flex
             justify='space-between'
             align='center'
-            className={`${
-              !activeMenu.overW ? 'border-b !pb-8 border-[#e2e4e9]' : ''
+            className={`!pt-5 ${
+              !activeMenu.overW ? 'border-b !pb-15 border-[#e2e4e9]' : ''
             }`}
           >
             <Title
@@ -178,17 +178,17 @@ const MegaDrawer: React.FC<IMegaDrawer> = ({ activeKey, onClose }) => {
 
           {/* OVERVIEW BUTTON */}
           {activeMenu.overW && (
-            <div className='mt-6 border-b border-[#e2e4e9] pb-11'>
+            <div className='mt-15 border-b border-[#e2e4e9] pb-15'>
               <Button
                 className='!bg-transparent !p-0'
                 type='text'
                 onClick={handleNavigate}
               >
                 <Title
+                  level={2}
                   className={`!m-0 !mr-2 uppercase ${
                     isDark ? '!text-white' : '!text-black'
                   }`}
-                  level={4}
                 >
                   {t('ovw')}
                 </Title>
@@ -200,9 +200,9 @@ const MegaDrawer: React.FC<IMegaDrawer> = ({ activeKey, onClose }) => {
           )}
 
           {/* SECTIONS */}
-          <div className='space-y-8 mt-8'>
+          <div className='space-y-8 mt-15'>
             {activeMenu.sections.map((section) => (
-              <div key={section.title}>
+              <div key={section.title} className='!mb-15'>
                 {section.title && (
                   <Row
                     justify='start'
@@ -217,7 +217,6 @@ const MegaDrawer: React.FC<IMegaDrawer> = ({ activeKey, onClose }) => {
                     />
 
                     <Title
-                      level={3}
                       className={`${
                         isDark ? '!text-blue-500' : '!text-[#797a97]'
                       } uppercase !m-0`}
@@ -227,7 +226,7 @@ const MegaDrawer: React.FC<IMegaDrawer> = ({ activeKey, onClose }) => {
                   </Row>
                 )}
 
-                <div className='grid grid-cols-2 gap-x-10 gap-y-3'>
+                <div className='grid grid-cols-2 gap-x-10 gap-y-10 mt-10'>
                   {section.links.map((link) => (
                     <MegaLink
                       key={link.route}

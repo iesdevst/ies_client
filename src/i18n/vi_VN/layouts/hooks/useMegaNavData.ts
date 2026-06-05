@@ -3,6 +3,7 @@ export default {
   vAm: 'Tầm nhìn & Sứ mệnh',
   values: 'Giá trị cốt lõi',
   bgh: 'Ban giám hiệu',
+  boa: 'Hội đồng trường',
   admiss: 'Tuyển sinh',
   shortTt: 'Chương trình đào tạo ngắn hạn',
   shortTl: 'Trang đào tạo ngắn hạn',
@@ -38,4 +39,8 @@ export default {
   handbook: 'Sổ tay sinh viên',
   stuForm: 'Biểu mẫu sinh viên',
   stuInfo: 'Sinh viên cần biết',
+
+  ablayer: 'Phân mục tổng quan',
+  pbTit: 'Các mục văn bản',
+  stuif: 'Thông tin cho sinh viên',
 };

@@ -1,6 +1,7 @@
 export { default as abOverview } from './about/components/abOverview';
 export { default as abVision } from './about/components/abVision';
 export { default as abCoreValue } from './about/components/abCoreValue';
+export { default as boa } from './about/components/boa';
 export { default as aboutIes } from './about/aboutIes';
 
 export { default as aboutVoca } from './education/components/aboutVoca';

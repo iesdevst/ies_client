@@ -25,12 +25,11 @@ const SlideCusIes: React.FC = () => {
       textsl={t('spotlight')}
       nowtext={t('now')}
       images={images}
-      className={`!w-full ${mb ? '!mb-10' : '!mb-20'} !mt-10`}
+      className={`!w-full ${mb ? '!mb-10' : '!mb-25'} !mt-10`}
       mb={mb}
       tl={tl}
       tlpr={tlpr}
       dark={isDark}
-      height={mb ? '55vh' : tl ? '45vh' : tlpr ? '45vh' : '80vh'}
     />
   );
 };

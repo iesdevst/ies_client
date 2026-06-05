@@ -119,7 +119,7 @@ const VidPr: React.FC<VidPrLayoutProps> = (props) => {
           {/* DESCRIPTION */}
           <Text
             color={dark ? 'white' : '#2d334d'}
-            className={`!block !text-start mb-5 ${tl || tlpr ? '!text-lg' : ''}`}
+            className='!block !text-start mb-5 !text-lg'
           >
             {desVid}
           </Text>
@@ -131,10 +131,7 @@ const VidPr: React.FC<VidPrLayoutProps> = (props) => {
               onClick={handleNavigate}
               className='cursor-pointer !p-0 !gap-x-5'
             >
-              <Text
-                color={dark ? 'white' : ''}
-                className={`block ${tl || tlpr ? '!text-lg' : ''}`}
-              >
+              <Text color={dark ? 'white' : ''} className='block !text-lg'>
                 {bottomTit}
               </Text>
 

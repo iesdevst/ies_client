@@ -111,7 +111,7 @@ const FooterIes: React.FC = () => {
                 dataSource={aboutLst}
                 renderItem={(item) => (
                   <List.Item
-                    className='!text-[#797a97]'
+                    className='!text-[#797a97] !text-lg'
                     key={item.key}
                     style={{ borderBottom: 'none' }}
                   >
@@ -129,7 +129,7 @@ const FooterIes: React.FC = () => {
                 dataSource={sAndF}
                 renderItem={(item) => (
                   <List.Item
-                    className='!text-[#797a97]'
+                    className='!text-[#797a97] !text-lg'
                     key={item.key}
                     style={{ borderBottom: 'none' }}
                   >
@@ -167,7 +167,7 @@ const FooterIes: React.FC = () => {
                           preview={false}
                           loading='lazy'
                         />
-                        <Title level={5} className='m-0 !text-[#797a97]'>
+                        <Title level={4} className='m-0 !text-[#797a97]'>
                           {item.label}
                         </Title>
                       </Row>

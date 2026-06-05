@@ -66,7 +66,7 @@ const NewAndEvent: React.FC = () => {
       mb={mb}
       dark={isDark}
       navigateGo={ROUTES.NEWS}
-      className={`mt-15 ${device === 'mobile' ? 'px-2' : 'px-10'}`}
+      className={`!my-30 ${mb ? 'px-2' : 'px-10'}`}
       featCard={latestEv}
       butTit={t('viewAll')}
       children={
@@ -140,7 +140,7 @@ const NewAndEvent: React.FC = () => {
                 <Col xs={24} md={18}>
                   <div className='flex flex-col'>
                     {item.typeTit && (
-                      <Title level={4} className='!text-blue-500'>
+                      <Title level={3} className='!text-blue-500'>
                         {item.typeTit}
                       </Title>
                     )}
@@ -148,14 +148,14 @@ const NewAndEvent: React.FC = () => {
                     <Paragraph
                       className={`${
                         isDark ? '!text-white' : ''
-                      } !font-bold !text-md`}
+                      } !font-bold !text-lg`}
                       ellipsis={{ rows: 2 }}
                     >
                       {item.newsTit}
                     </Paragraph>
 
                     <Row justify='space-between' align='middle'>
-                      <Title level={5} className='!m-0'>
+                      <Title level={4} className='!m-0'>
                         {item.authorN}
                       </Title>
 

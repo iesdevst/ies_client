@@ -68,6 +68,7 @@ export const NEWS_DETAILS_SEGMENT = 'news-details' as const;
 export const EVENTS_SEGMENT = 'events' as const;
 export const EVENTS_DETAILS_SEGMENT = 'events-details' as const;
 export const LEAD_SCHOOL_SEGMENT = 'lead-school' as const;
+export const BOA_SEGMENT = 'boa-trust' as const;
 
 export const EDU_DISC_SEGMENT = 'edu-disc' as const;
 
@@ -125,6 +126,7 @@ export const ROUTES = {
   EVENTS: `/${EVENTS_SEGMENT}`,
   EVENTS_DETAILS: `/${EVENTS_DETAILS_SEGMENT}`,
   LEAD_SCHOOL: `/${LEAD_SCHOOL_SEGMENT}`,
+  BOA: `/${BOA_SEGMENT}`,
   EDU_DISC: `/${EDU_DISC_SEGMENT}`,
 
   TRAININGPL: `/${EDU_DISC_SEGMENT}/${EduDicsType.TrainingPlan}`,

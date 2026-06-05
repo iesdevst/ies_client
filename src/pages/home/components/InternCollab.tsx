@@ -40,7 +40,7 @@ const InternCollab: React.FC = () => {
             {t('secTit')}
           </Title>
 
-          <Text color='black' className={`${!mb ? '!w-5/6' : ''} block mb-5`}>
+          <Text color='black' className='block mb-5 !text-lg'>
             {t('sectionDesc')}
           </Text>
 
@@ -61,7 +61,6 @@ const InternCollab: React.FC = () => {
         </Flex>
       }
       className={`!bg-[#5bd4ce] mb-40 mt-15 ${dk ? 'px-50' : tlpr ? 'px-10' : 'px-5 pt-15'}`}
-      height={!mb ? '20vh' : '29vh'}
     />
   );
 };

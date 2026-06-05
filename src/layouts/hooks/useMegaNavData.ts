@@ -12,10 +12,12 @@ export const useMegaNavData = (): { data: Array<MegaNavItem> } => {
         overW: true,
         sections: [
           {
+            title: t('ablayer'),
             links: [
               { label: t('vAm'), route: ROUTES.ABOUT_VISION },
               { label: t('values'), route: ROUTES.ABOUT_COREVALUES },
               { label: t('bgh'), route: ROUTES.LEAD_SCHOOL },
+              { label: t('boa'), route: ROUTES.BOA },
             ],
           },
         ],
@@ -79,6 +81,7 @@ export const useMegaNavData = (): { data: Array<MegaNavItem> } => {
           },
         ],
       },
+
       {
         key: ROUTES.NEWS,
         label: t('newAe'),
@@ -101,6 +104,7 @@ export const useMegaNavData = (): { data: Array<MegaNavItem> } => {
         overW: false,
         sections: [
           {
+            title: t('pbTit'),
             links: [
               { label: t('khdt'), route: ROUTES.TRAININGPL },
               { label: t('degress'), route: ROUTES.DEGRESS },
@@ -117,6 +121,7 @@ export const useMegaNavData = (): { data: Array<MegaNavItem> } => {
         overW: false,
         sections: [
           {
+            title: t('stuif'),
             links: [
               { label: t('stuRegu'), route: ROUTES.REGUSTU },
               { label: t('stuAct'), route: ROUTES.ACTSTU },

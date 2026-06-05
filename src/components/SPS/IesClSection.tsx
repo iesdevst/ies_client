@@ -49,7 +49,7 @@ const IesClSection: React.FC<SubSectionProps> = (props) => {
             backgroundPosition: 'center',
             backgroundRepeat: 'no-repeat',
             width: '100%',
-            minHeight: !height ? '65vh' : height,
+            minHeight: !height ? 'auto' : height,
             ...style,
           }}
         >

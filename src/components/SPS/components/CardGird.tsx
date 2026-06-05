@@ -97,7 +97,10 @@ ${
                       {card.cTit}
                     </Title>
 
-                    <Text color={card.topic ? 'black' : '#9ca3af'}>
+                    <Text
+                      color={card.topic ? 'black' : '#9ca3af'}
+                      className='!text-lg'
+                    >
                       {card.decs}
                     </Text>
                   </div>
@@ -111,13 +114,15 @@ ${
                             key={index}
                             className='!border-none !p-0 !pt-2'
                           >
-                            <Text color='black'>{item}</Text>
+                            <Text color='black' className='!text-lg'>
+                              {item}
+                            </Text>
                           </List.Item>
                         )}
                       />
                       <Button
                         type='text'
-                        className='!p-0 !text-black !font-semibold !mt-3'
+                        className='!p-0 !text-black !font-semibold !mt-3 !text-lg'
                       >
                         {butTxt} <RightOutlined className='!text-xs' />
                       </Button>
@@ -149,7 +154,7 @@ ${
                   {!card.topic && (
                     <Button
                       type='text'
-                      className={`!p-0 !text-white !font-semibold !my-4 ${dk ? styles.cardBtn : ''}`}
+                      className={`!p-0 !text-white !font-semibold !my-4 ${dk ? styles.cardBtn : ''} !text-lg`}
                     >
                       {butTxt} <RightOutlined className='!text-xs' />
                     </Button>
@@ -180,7 +185,9 @@ ${
                   {card.tit}
                 </Title>
 
-                <Text color='#9ca3af'>{card.des}</Text>
+                <Text color='#9ca3af' className='!text-lg'>
+                  {card.des}
+                </Text>
               </div>
 
               <div>
@@ -205,7 +212,7 @@ ${
 
                 <Button
                   type='text'
-                  className={`card-btn !p-0 !text-white !font-semibold ${dk ? styles.cardBtn : ''}`}
+                  className={`card-btn !p-0 !text-white !font-semibold ${dk ? styles.cardBtn : ''} !text-lg`}
                 >
                   {butTxt} <RightOutlined className='!text-xs' />
                 </Button>

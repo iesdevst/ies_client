@@ -25,7 +25,6 @@ const FieldOfStudy: React.FC = () => {
 
   const mb = device === 'mobile';
   const tl = device === 'tablet';
-  const tlpr = device === 'tabletPro';
   const dk = device === 'desktop';
 
   const handleNavigate = useCallback(() => {
@@ -51,10 +50,7 @@ const FieldOfStudy: React.FC = () => {
                   {t('sectionTitle')}
                 </Title>
 
-                <Text
-                  color={isDark ? 'white' : ''}
-                  className={`${(tl || tlpr) && '!text-lg'} !block`}
-                >
+                <Text color={isDark ? 'white' : ''} className='!text-lg !block'>
                   {t('sectionDesc')}
                 </Text>
 
@@ -121,7 +117,7 @@ const FieldOfStudy: React.FC = () => {
                         >
                           <Text
                             color={isDark ? 'white' : 'black'}
-                            className={`${(tl || tlpr) && '!text-lg'} !block`}
+                            className='!text-lg !block'
                           >
                             {item.fie}
                           </Text>
@@ -136,7 +132,6 @@ const FieldOfStudy: React.FC = () => {
           </Row>
         </div>
       }
-      height={!mb ? '' : '36vh'}
     />
   );
 };

@@ -3,6 +3,7 @@ export default {
   vAm: 'Vision & Mission',
   values: 'Core Values',
   bgh: 'School administration',
+  boa: 'Board of Trustees',
   admiss: 'Admissions',
   shortTt: 'Short-term Training Programs',
   shortTl: 'Short-term Training Page',
@@ -38,4 +39,8 @@ export default {
   handbook: 'Handbook',
   stuForm: 'Student Forms',
   stuInfo: 'Student Information',
+
+  ablayer: 'Overview Section',
+  pbTit: 'Text Sections',
+  stuif: 'Student Information',
 };

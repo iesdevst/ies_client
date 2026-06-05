@@ -1,5 +1,4 @@
 import { motion } from 'framer-motion';
-import { useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import IT_BG from '@/assets/imgs/intro_bg.webp';
@@ -16,13 +15,6 @@ const IesIntro = () => {
   const tl = device === 'tablet';
   const tlpr = device === 'tabletPro';
   const dk = device === 'desktop';
-
-  const introH = useMemo(() => {
-    if (mb) return '50vh';
-    if (tl) return '73vh';
-    if (tlpr) return '45vh';
-    return '90vh';
-  }, [mb, tl, tlpr]);
 
   return (
     <IesClSection
@@ -134,7 +126,7 @@ const IesIntro = () => {
           </motion.div>
         </motion.section>
       }
-      height={introH}
+      height='auto'
     />
   );
 };
