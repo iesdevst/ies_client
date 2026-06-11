@@ -16,7 +16,9 @@ export const useShortCrsData = (): { data: Array<DetailShortCrs> } => {
         intro: t('mixologyIntro'),
         objective: t('mixologyObj'),
         decs: t('mixologyDesc'),
+        decsTagName: t('mixologyDecsTagName'),
         career: t('mixologyCareer'),
+        tagName: t('mixologyTagName'),
       },
       info: {
         require: t('req'),
@@ -37,7 +39,9 @@ export const useShortCrsData = (): { data: Array<DetailShortCrs> } => {
         intro: t('cookingIntro'),
         objective: t('cookingObj'),
         decs: t('cookingDesc'),
+        decsTagName: t('cookingDecsTagName'),
         career: t('cookingCareer'),
+        tagName: t('cookingTagName'),
       },
 
       info: {
@@ -59,7 +63,9 @@ export const useShortCrsData = (): { data: Array<DetailShortCrs> } => {
         intro: t('bakingIntro'),
         objective: t('bakingObj'),
         decs: t('bakingDesc'),
+        decsTagName: t('bakingDecsTagName'),
         career: t('bakingCareer'),
+        tagName: t('bakingTagName'),
       },
 
       info: {
@@ -81,7 +87,9 @@ export const useShortCrsData = (): { data: Array<DetailShortCrs> } => {
         intro: t('aiIntro'),
         objective: t('aiObj'),
         decs: t('aiDesc'),
+        decsTagName: t('aiDecsTagName'),
         career: t('aiCareer'),
+        tagName: t('aiTagName'),
       },
 
       info: {
@@ -102,7 +110,9 @@ export type OvwScDetail = {
   intro: string;
   objective: string;
   decs: string;
+  decsTagName: string;
   career: string;
+  tagName: string;
 };
 export type AdmissScInfo = {
   require: string;

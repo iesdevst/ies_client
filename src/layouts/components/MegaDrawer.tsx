@@ -39,7 +39,7 @@ const MegaLink = React.memo(
         className={`hover:!underline ${isDark ? '!text-white' : '!text-black'}`}
         style={{
           fontWeight: 550,
-          fontSize: '1.3rem',
+          fontSize: '1.2rem',
           fontFamily: "'IBM Plex Sans', sans-serif",
         }}
       >
@@ -185,7 +185,7 @@ const MegaDrawer: React.FC<IMegaDrawer> = ({ activeKey, onClose }) => {
                 onClick={handleNavigate}
               >
                 <Title
-                  level={2}
+                  level={5}
                   className={`!m-0 !mr-2 uppercase ${
                     isDark ? '!text-white' : '!text-black'
                   }`}
@@ -217,6 +217,7 @@ const MegaDrawer: React.FC<IMegaDrawer> = ({ activeKey, onClose }) => {
                     />
 
                     <Title
+                      level={4}
                       className={`${
                         isDark ? '!text-blue-500' : '!text-[#797a97]'
                       } uppercase !m-0`}

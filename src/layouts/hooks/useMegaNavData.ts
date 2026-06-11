@@ -16,7 +16,6 @@ export const useMegaNavData = (): { data: Array<MegaNavItem> } => {
             links: [
               { label: t('vAm'), route: ROUTES.ABOUT_VISION },
               { label: t('values'), route: ROUTES.ABOUT_COREVALUES },
-              { label: t('bgh'), route: ROUTES.LEAD_SCHOOL },
               { label: t('boa'), route: ROUTES.BOA },
             ],
           },
@@ -83,17 +82,19 @@ export const useMegaNavData = (): { data: Array<MegaNavItem> } => {
       },
 
       {
-        key: ROUTES.NEWS,
-        label: t('newAe'),
+        key: ROUTES.REGUSTU,
+        label: t('stu'),
         overW: false,
         sections: [
           {
-            title: t('iesNs'),
-            links: [{ label: t('ltNs'), route: ROUTES.NEWS }],
-          },
-          {
-            title: t('iesEv'),
-            links: [{ label: t('evs'), route: ROUTES.EVENTS }],
+            title: t('stuif'),
+            links: [
+              { label: t('stuRegu'), route: ROUTES.REGUSTU },
+              { label: t('stuAct'), route: ROUTES.ACTSTU },
+              { label: t('handbook'), route: ROUTES.HANDBOOK },
+              { label: t('stuForm'), route: ROUTES.STUFORM },
+              { label: t('stuInfo'), route: ROUTES.STUINFO },
+            ],
           },
         ],
       },
@@ -115,20 +116,19 @@ export const useMegaNavData = (): { data: Array<MegaNavItem> } => {
           },
         ],
       },
+
       {
-        key: ROUTES.REGUSTU,
-        label: t('stu'),
+        key: ROUTES.NEWS,
+        label: t('newAe'),
         overW: false,
         sections: [
           {
-            title: t('stuif'),
-            links: [
-              { label: t('stuRegu'), route: ROUTES.REGUSTU },
-              { label: t('stuAct'), route: ROUTES.ACTSTU },
-              { label: t('handbook'), route: ROUTES.HANDBOOK },
-              { label: t('stuForm'), route: ROUTES.STUFORM },
-              { label: t('stuInfo'), route: ROUTES.STUINFO },
-            ],
+            title: t('iesNs'),
+            links: [{ label: t('ltNs'), route: ROUTES.NEWS }],
+          },
+          {
+            title: t('iesEv'),
+            links: [{ label: t('evs'), route: ROUTES.EVENTS }],
           },
         ],
       },

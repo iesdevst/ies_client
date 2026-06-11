@@ -139,6 +139,7 @@ const MegaMbDrawer: React.FC = () => {
         closable={false}
         open={mbDrawerOpen}
         className={`${isDark ? '!bg-[#212223]' : '!bg-white'} ${styles.mbDrawer}`}
+        size='large'
       >
         <div className='px-3 py-2.5'>
           <Flex justify='space-between' align='center'>

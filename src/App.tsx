@@ -26,6 +26,7 @@ function App() {
         token: {
           colorPrimary: '#474669',
           colorText: isDark ? 'white' : 'black',
+          fontFamily: 'IBM Plex Sans, sans-serif',
         },
         algorithm: isDark ? theme.darkAlgorithm : theme.defaultAlgorithm,
         components: {

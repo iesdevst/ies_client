@@ -46,4 +46,20 @@ export default {
     'Graduates of the Using AI program can work in:\n- Technology and software development companies\n- Businesses implementing AI solutions for operations and marketing\n- Educational institutions and training centers\n- Research and development organizations\n- Startups and innovation labs focusing on AI applications',
   aiCareer:
     'After graduation, students can pursue careers as:\n- AI assistants and automation specialists\n- Data analysts using AI tools\n- AI solution consultants for businesses\n- AI trainers or instructors\n- Digital innovation specialists\n- AI project coordinators in research or startups',
+  mixologyDecsTagName:
+    'Coffee Preparation, Bartending, Latte Art, Cocktail Mixing, Beverage Presentation',
+  mixologyTagName:
+    'Bartender, Coffee Specialist, Bar Manager, Barista, Beverage Consultant',
+  cookingDecsTagName:
+    'Food Preparation, Kitchen Management, Food Hygiene, Menu Planning, Culinary Techniques',
+  cookingTagName:
+    'Professional Chef, Sous Chef, Pastry Specialist, Kitchen Manager, Culinary Instructor',
+  bakingDecsTagName:
+    'Baking Techniques, Cake Decorating, Recipe Development, Quality Control, Bakery Management',
+  bakingTagName:
+    'Baker, Cake Decorator, Bakery Manager, Baking Instructor, Product Developer',
+  aiDecsTagName:
+    'AI Tools, Machine Learning, Data Analysis, Automation, Digital Transformation',
+  aiTagName:
+    'AI Specialist, Data Analyst, AI Consultant, AI Instructor, Digital Innovation Specialist',
 };

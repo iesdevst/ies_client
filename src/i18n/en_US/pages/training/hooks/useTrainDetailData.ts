@@ -84,6 +84,42 @@ export default {
     'Training includes bookkeeping, financial reporting, tax management, and accounting systems used in enterprises.',
   accCareer:
     'Accountant, financial analyst, tax staff, payroll officer, or finance specialist.',
+  appInfoDecsTagName:
+    'Software Development, System Operations, IT Support, Web Applications, Database Management',
+  appInfoTagName:
+    'IT Support Specialist, Web Developer, System Administrator, Graphic Designer, Technical Staff',
+  itDecsTagName:
+    'Programming, Data Structures, Operating Systems, Computer Networks, AI, Cybersecurity, Cloud Computing',
+  itTagName:
+    'Software Developer, IT Engineer, System Administrator, Network Technician, IT Support Specialist',
+  indusDecsTagName:
+    'Electrical Circuits, Power Systems, PLC Control, Automation, Electrical Installation',
+  indusTagName:
+    'Electrical Technician, Maintenance Staff, Automation Operator, System Installer, Technical Staff',
+  officeDecsTagName:
+    'Document Management, Office Operations, Communication, Administrative Procedures, Office Tools',
+  officeTagName:
+    'Office Administrator, Executive Assistant, HR Support Staff, Clerical Officer, Administrative Specialist',
+  hospiDecsTagName:
+    'Front Office, Housekeeping, Food & Beverage, Marketing, Hotel Business Management',
+  hospiTagName:
+    'Hotel Staff, Restaurant Manager, Front Office Executive, Hospitality Supervisor, Tourism Professional',
+  mktDecsTagName:
+    'Marketing Principles, Sales, Brand Building, Digital Marketing, Market Research',
+  mktTagName:
+    'Marketing Executive, Brand Specialist, Market Researcher, PR Officer, Digital Marketing Specialist',
+  busiDecsTagName:
+    'Business Management, Sales, Finance, Logistics, Leadership Skills',
+  busiTagName:
+    'Business Executive, Project Coordinator, Sales Manager, HR Staff, Operations Specialist',
+  designDecsTagName:
+    'Graphic Design, Multimedia Production, Web Design, Visual Communication, 2D & 3D Graphics',
+  designTagName:
+    'Graphic Designer, Multimedia Artist, Web Designer, Creative Specialist, Design Technician',
+  accDecsTagName:
+    'Bookkeeping, Financial Reporting, Tax Management, Accounting Systems, Business Accounting',
+  accTagName:
+    'Accountant, Financial Analyst, Tax Staff, Payroll Officer, Finance Specialist',
   req: 'Graduated from Lower Secondary School (THCS) or higher. Open to students who completed High School (THPT) or are currently enrolled in intermediate, college, or university programs.',
   method:
     'Admission is based on Lower Secondary School transcripts (THCS). No entrance exam required.',

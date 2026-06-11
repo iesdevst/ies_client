@@ -1,4 +1,7 @@
-import Col from 'antd/es/col';
+import CheckOutlined from '@ant-design/icons/CheckOutlined';
+import EnvironmentOutlined from '@ant-design/icons/EnvironmentOutlined';
+import FileOutlined from '@ant-design/icons/FileOutlined';
+
 import { useTranslation } from 'react-i18next';
 import { useMediaQuery } from 'react-responsive';
 import type { ScTuiApply, TuiApply } from '../hooks';
@@ -15,124 +18,185 @@ const TuiApply: React.FC<ITuiApplyProps> = (props) => {
   const isMb = useMediaQuery({ maxWidth: 1024 });
   const { t } = useTranslation('tuiApply');
 
+  const pad = !isMb ? 'px-10 py-7' : 'px-4 py-5';
+  const containerCls = `rounded-2xl overflow-hidden divide-y ${dark ? 'bg-[#111827] divide-white/10' : 'bg-white divide-gray-100'}`;
+  const romanCls = `text-sm font-bold shrink-0 w-7 pt-0.5 ${dark ? 'text-white/25' : 'text-gray-400'}`;
+
   return (
     <section>
       {tuiApplyDt && (
-        <div
-          className={`${dark ? '!bg-gray-600' : 'bg-white'} rounded-2xl ${!isMb ? 'p-10' : 'pb-10 pt-5 px-3.5'}`}
-        >
-          <div className='space-y-5'>
-            <Col className='!space-y-4'>
-              <Title
-                className={`!m-0 ${dark ? '!text-[#ca78ca]' : ' !text-[#BE3691]'}`}
-                level={3}
-              >
-                I. {t('admissRe')}
-              </Title>
+        <div className={containerCls}>
+          {/* I. Điều kiện tuyển sinh */}
+          <div className={`flex gap-4 ${pad}`}>
+            <span className={romanCls}>I.</span>
+            <div className='flex-1 space-y-2'>
+              <div className='flex items-center gap-2.5'>
+                <span
+                  className={`w-7 h-7 rounded-lg flex items-center justify-center shrink-0 ${dark ? 'bg-[#c92cc9]/20' : 'bg-[#BE3691]/10'}`}
+                >
+                  <CheckOutlined
+                    className={`${dark ? 'text-[#ca78ca]!' : 'text-[#BE3691]!'} text-sm!`}
+                  />
+                </span>
+                <Title
+                  level={5}
+                  className={`${dark ? 'text-white!' : 'text-gray-900!'} m-0! font-semibold!`}
+                >
+                  {t('admissRe')}
+                </Title>
+              </div>
               <Text
-                color={dark ? 'white' : ''}
-                style={{
-                  whiteSpace: 'pre-line',
-                }}
-                className='!text-md !font-semibold !mt-2 !block'
+                color={dark ? 'rgba(255,255,255,0.65)' : '#4b5563'}
+                className='text-sm! block! whitespace-pre-line!'
               >
                 {tuiApplyDt.requirement}
               </Text>
-            </Col>
-            <Col>
-              <Title
-                className={`!m-0 ${dark ? '!text-[#ca78ca]' : ' !text-[#BE3691]'}`}
-                level={3}
-              >
-                II. {t('applyD')}
-              </Title>
+            </div>
+          </div>
+
+          {/* II. Hồ sơ đăng ký */}
+          <div className={`flex gap-4 ${pad}`}>
+            <span className={romanCls}>II.</span>
+            <div className='flex-1 space-y-2'>
+              <div className='flex items-center gap-2.5'>
+                <span
+                  className={`w-7 h-7 rounded-lg flex items-center justify-center shrink-0 ${dark ? 'bg-[#c92cc9]/20' : 'bg-[#BE3691]/10'}`}
+                >
+                  <FileOutlined
+                    className={`${dark ? 'text-[#ca78ca]!' : 'text-[#BE3691]!'} text-sm!`}
+                  />
+                </span>
+                <Title
+                  level={5}
+                  className={`${dark ? 'text-white!' : 'text-gray-900!'} m-0! font-semibold!`}
+                >
+                  {t('applyD')}
+                </Title>
+              </div>
               <Text
-                color={dark ? 'white' : ''}
-                style={{
-                  whiteSpace: 'pre-line',
-                }}
-                className='!text-md !font-semibold !mt-2 !block'
+                color={dark ? 'rgba(255,255,255,0.65)' : '#4b5563'}
+                className='text-sm! block! whitespace-pre-line!'
               >
                 {tuiApplyDt.document}
               </Text>
-            </Col>
-            <Col>
-              <Title
-                className={`!m-0 ${dark ? '!text-[#ca78ca]' : ' !text-[#BE3691]'}`}
-                level={3}
-              >
-                III. {t('loca')}
-              </Title>
+            </div>
+          </div>
+
+          {/* III. Địa điểm và thời gian */}
+          <div className={`flex gap-4 ${pad}`}>
+            <span className={romanCls}>III.</span>
+            <div className='flex-1 space-y-2'>
+              <div className='flex items-center gap-2.5'>
+                <span
+                  className={`w-7 h-7 rounded-lg flex items-center justify-center shrink-0 ${dark ? 'bg-[#c92cc9]/20' : 'bg-[#BE3691]/10'}`}
+                >
+                  <EnvironmentOutlined
+                    className={`${dark ? 'text-[#ca78ca]!' : 'text-[#BE3691]!'} text-sm!`}
+                  />
+                </span>
+                <Title
+                  level={5}
+                  className={`${dark ? 'text-white!' : 'text-gray-900!'} m-0! font-semibold!`}
+                >
+                  {t('loca')}
+                </Title>
+              </div>
               <Text
-                color={dark ? 'white' : ''}
-                style={{
-                  whiteSpace: 'pre-line',
-                }}
-                className='!text-md !font-semibold !mt-2 !block'
+                color={dark ? 'rgba(255,255,255,0.65)' : '#4b5563'}
+                className='text-sm! block! whitespace-pre-line!'
               >
                 {tuiApplyDt.work}
               </Text>
-            </Col>
+            </div>
           </div>
         </div>
       )}
 
+      {/* SC variant — blue theme */}
       {tuiApplyScDt && (
-        <div
-          className={`${dark ? '!bg-gray-600' : 'bg-white'} rounded-2xl ${!isMb ? 'p-10' : 'pb-10 pt-5 px-3.5'}`}
-        >
-          <div className='space-y-5'>
-            <Col className='!space-y-4'>
-              <Title
-                className={`!m-0 ${dark ? '!text-[#98c3ff]' : ' !text-[#6472cf]'}`}
-                level={3}
-              >
-                I. {t('admissRe')}
-              </Title>
+        <div className={containerCls}>
+          {/* I. Điều kiện tuyển sinh */}
+          <div className={`flex gap-4 ${pad}`}>
+            <span className={romanCls}>I.</span>
+            <div className='flex-1 space-y-2'>
+              <div className='flex items-center gap-2.5'>
+                <span
+                  className={`w-7 h-7 rounded-lg flex items-center justify-center shrink-0 ${dark ? 'bg-[#6472cf]/20' : 'bg-[#6472cf]/10'}`}
+                >
+                  <CheckOutlined
+                    className={`${dark ? 'text-[#98c3ff]!' : 'text-[#6472cf]!'} text-sm!`}
+                  />
+                </span>
+                <Title
+                  level={5}
+                  className={`${dark ? 'text-white!' : 'text-gray-900!'} m-0! font-semibold!`}
+                >
+                  {t('admissRe')}
+                </Title>
+              </div>
               <Text
-                color={dark ? 'white' : ''}
-                style={{
-                  whiteSpace: 'pre-line',
-                }}
-                className='!text-md !font-semibold !mt-2 !block'
+                color={dark ? 'rgba(255,255,255,0.65)' : '#4b5563'}
+                className='text-sm! block! whitespace-pre-line!'
               >
                 {tuiApplyScDt.requirement}
               </Text>
-            </Col>
-            <Col>
-              <Title
-                className={`!m-0 ${dark ? '!text-[#98c3ff]' : ' !text-[#6472cf]'}`}
-                level={3}
-              >
-                II. {t('applyD')}
-              </Title>
+            </div>
+          </div>
+
+          {/* II. Hồ sơ đăng ký */}
+          <div className={`flex gap-4 ${pad}`}>
+            <span className={romanCls}>II.</span>
+            <div className='flex-1 space-y-2'>
+              <div className='flex items-center gap-2.5'>
+                <span
+                  className={`w-7 h-7 rounded-lg flex items-center justify-center shrink-0 ${dark ? 'bg-[#6472cf]/20' : 'bg-[#6472cf]/10'}`}
+                >
+                  <FileOutlined
+                    className={`${dark ? 'text-[#98c3ff]!' : 'text-[#6472cf]!'} text-sm!`}
+                  />
+                </span>
+                <Title
+                  level={5}
+                  className={`${dark ? 'text-white!' : 'text-gray-900!'} m-0! font-semibold!`}
+                >
+                  {t('applyD')}
+                </Title>
+              </div>
               <Text
-                color={dark ? 'white' : ''}
-                style={{
-                  whiteSpace: 'pre-line',
-                }}
-                className='!text-md !font-semibold !mt-2 !block'
+                color={dark ? 'rgba(255,255,255,0.65)' : '#4b5563'}
+                className='text-sm! block! whitespace-pre-line!'
               >
                 {tuiApplyScDt.document}
               </Text>
-            </Col>
-            <Col>
-              <Title
-                className={`!m-0 ${dark ? '!text-[#98c3ff]' : ' !text-[#6472cf]'}`}
-                level={3}
-              >
-                III. {t('loca')}
-              </Title>
+            </div>
+          </div>
+
+          {/* III. Địa điểm và thời gian */}
+          <div className={`flex gap-4 ${pad}`}>
+            <span className={romanCls}>III.</span>
+            <div className='flex-1 space-y-2'>
+              <div className='flex items-center gap-2.5'>
+                <span
+                  className={`w-7 h-7 rounded-lg flex items-center justify-center shrink-0 ${dark ? 'bg-[#6472cf]/20' : 'bg-[#6472cf]/10'}`}
+                >
+                  <EnvironmentOutlined
+                    className={`${dark ? 'text-[#98c3ff]!' : 'text-[#6472cf]!'} text-sm!`}
+                  />
+                </span>
+                <Title
+                  level={5}
+                  className={`${dark ? 'text-white!' : 'text-gray-900!'} m-0! font-semibold!`}
+                >
+                  {t('loca')}
+                </Title>
+              </div>
               <Text
-                color={dark ? 'white' : ''}
-                style={{
-                  whiteSpace: 'pre-line',
-                }}
-                className='!text-md !font-semibold !mt-2 !block'
+                color={dark ? 'rgba(255,255,255,0.65)' : '#4b5563'}
+                className='text-sm! block! whitespace-pre-line!'
               >
                 {tuiApplyScDt.work}
               </Text>
-            </Col>
+            </div>
           </div>
         </div>
       )}

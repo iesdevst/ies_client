@@ -31,6 +31,7 @@ const HeaderIes: React.FC<IHeaderIes> = (props) => {
   const mbtl = device === 'mobile' || device === 'tablet';
   const tl = device === 'tablet';
   const mb = device === 'mobile';
+  const tlpr = device === 'tabletPro';
 
   const getIesLogo = () => {
     if (isDark && mbtl) return IES_LGMB_DARK;
@@ -41,33 +42,37 @@ const HeaderIes: React.FC<IHeaderIes> = (props) => {
 
   return (
     <>
-      <Header className='!flex !items-center !p-0 !px-4 justify-between'>
-        <Row>
-          <PrefetchLink
-            to={ROUTES.DASHBOARD}
-            className='!block !flex !items-center'
-          >
-            <img
-              className={`${showDesktop ? '!w-16 !h-8' : '!w-100 !h-23'} ${tl ? 'ml-45 mb-1!' : mb ? 'mb-1!' : ''} mt-2`}
-              src={getIesLogo()}
-              alt='ies_logo'
-              loading='lazy'
-              decoding='async'
-            />
-          </PrefetchLink>
-          {showDesktop && (
-            <Row className='gap-x-5'>
-              <NavLst setDrawerKey={setDrawerKey} />
-            </Row>
-          )}
-        </Row>
-
+      {showDesktop && (
+        <div
+          className={`!w-full px-20 py-1 ${isDark ? 'bg-[#2b2f6b]' : 'bg-gray-500'}`}
+        >
+          <Row className='gap-x-7' justify={'end'}>
+            <ThemeSwitcher classN='!text-white' />
+            <IesClientLang colorT='!text-white' />
+          </Row>
+        </div>
+      )}
+      <Header
+        className={`${mb ? 'mt-3 !justify-between' : tl ? 'mt-3 !justify-between pr-5!' : tlpr ? '!justify-between' : 'gap-x-50 !justify-center !px-4 my-1.5'} !flex !items-center !p-0`}
+      >
+        <PrefetchLink
+          to={ROUTES.DASHBOARD}
+          className='!block !flex !items-center'
+        >
+          <img
+            className={`${showDesktop ? '!w-25 !h-10' : '!w-100 !h-23'} ${tl ? 'ml-45 mb-1!' : mb ? 'mb-1!' : ''}`}
+            src={getIesLogo()}
+            alt='ies_logo'
+            loading='lazy'
+            decoding='async'
+          />
+        </PrefetchLink>
         {showDesktop && (
           <Row className='gap-x-5'>
-            <IesClientLang colorT={isDark ? '!text-white' : ''} />
-            <ThemeSwitcher classN={`${!isDark ? '!text-[#212223]' : ''}`} />
+            <NavLst setDrawerKey={setDrawerKey} />
           </Row>
         )}
+
         {mbtl && <MegaMbDrawer />}
       </Header>
     </>

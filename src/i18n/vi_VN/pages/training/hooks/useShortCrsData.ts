@@ -45,4 +45,20 @@ export default {
     'Sinh viên có thể làm việc tại:\n- Công ty công nghệ\n- Doanh nghiệp ứng dụng AI\n- Trung tâm đào tạo\n- Viện nghiên cứu\n- Startup AI',
   aiCareer:
     'Có thể làm:\n- Chuyên viên AI\n- Phân tích dữ liệu\n- Tư vấn AI\n- Giảng viên AI\n- Điều phối dự án AI',
+  mixologyDecsTagName:
+    'Pha chế cà phê, Bartending, Nghệ thuật latte, Pha cocktail, Trình bày đồ uống',
+  mixologyTagName:
+    'Bartender, Chuyên viên cà phê, Quản lý quầy bar, Barista, Tư vấn đồ uống',
+  cookingDecsTagName:
+    'Chế biến món ăn, Quản lý bếp, Vệ sinh thực phẩm, Xây dựng thực đơn, Kỹ thuật ẩm thực',
+  cookingTagName:
+    'Đầu bếp chuyên nghiệp, Phụ bếp, Chuyên viên bánh, Quản lý bếp, Giảng viên ẩm thực',
+  bakingDecsTagName:
+    'Kỹ thuật làm bánh, Trang trí bánh, Phát triển công thức, Kiểm soát chất lượng, Quản lý tiệm bánh',
+  bakingTagName:
+    'Thợ làm bánh, Trang trí bánh, Quản lý tiệm bánh, Giảng viên làm bánh, Phát triển sản phẩm',
+  aiDecsTagName:
+    'Công cụ AI, Học máy, Phân tích dữ liệu, Tự động hóa, Chuyển đổi số',
+  aiTagName:
+    'Chuyên viên AI, Phân tích dữ liệu, Tư vấn AI, Giảng viên AI, Chuyên viên đổi mới số',
 };

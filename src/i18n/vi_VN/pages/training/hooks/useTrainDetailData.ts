@@ -84,6 +84,42 @@ export default {
     'Chương trình bao gồm ghi sổ kế toán, báo cáo tài chính, quản lý thuế và hệ thống kế toán trong doanh nghiệp.',
   accCareer:
     'Kế toán viên, phân tích tài chính, nhân viên thuế, kế toán tiền lương hoặc chuyên viên tài chính.',
+  appInfoDecsTagName:
+    'Phát triển phần mềm, Vận hành hệ thống, Hỗ trợ CNTT, Ứng dụng web, Quản lý cơ sở dữ liệu',
+  appInfoTagName:
+    'Chuyên viên hỗ trợ IT, Lập trình web, Quản trị hệ thống, Thiết kế đồ họa, Nhân sự kỹ thuật',
+  itDecsTagName:
+    'Lập trình, Cấu trúc dữ liệu, Hệ điều hành, Mạng máy tính, AI, An ninh mạng, Điện toán đám mây',
+  itTagName:
+    'Lập trình viên, Kỹ sư IT, Quản trị hệ thống, Kỹ thuật viên mạng, Chuyên viên hỗ trợ CNTT',
+  indusDecsTagName:
+    'Mạch điện, Hệ thống điện, Điều khiển PLC, Tự động hóa, Lắp đặt điện',
+  indusTagName:
+    'Kỹ thuật viên điện, Nhân viên bảo trì, Vận hành tự động hóa, Lắp đặt hệ thống, Nhân sự kỹ thuật',
+  officeDecsTagName:
+    'Quản lý văn bản, Vận hành văn phòng, Giao tiếp, Quy trình hành chính, Công cụ văn phòng',
+  officeTagName:
+    'Nhân viên hành chính, Trợ lý điều hành, Nhân sự hỗ trợ, Văn thư, Chuyên viên hành chính',
+  hospiDecsTagName:
+    'Lễ tân, Buồng phòng, Dịch vụ ẩm thực, Marketing, Quản lý kinh doanh khách sạn',
+  hospiTagName:
+    'Nhân viên khách sạn, Quản lý nhà hàng, Lễ tân, Giám sát dịch vụ, Nhân sự du lịch',
+  mktDecsTagName:
+    'Nguyên lý marketing, Bán hàng, Xây dựng thương hiệu, Digital marketing, Nghiên cứu thị trường',
+  mktTagName:
+    'Nhân viên marketing, Chuyên viên thương hiệu, Nghiên cứu thị trường, PR, Marketing số',
+  busiDecsTagName:
+    'Quản lý doanh nghiệp, Bán hàng, Tài chính, Logistics, Kỹ năng lãnh đạo',
+  busiTagName:
+    'Nhân viên kinh doanh, Điều phối dự án, Quản lý bán hàng, Nhân sự, Vận hành doanh nghiệp',
+  designDecsTagName:
+    'Thiết kế đồ họa, Sản xuất multimedia, Thiết kế web, Truyền thông hình ảnh, Đồ họa 2D & 3D',
+  designTagName:
+    'Nhà thiết kế đồ họa, Họa sĩ multimedia, Thiết kế web, Chuyên viên sáng tạo, Kỹ thuật viên thiết kế',
+  accDecsTagName:
+    'Ghi sổ kế toán, Báo cáo tài chính, Quản lý thuế, Hệ thống kế toán, Kế toán doanh nghiệp',
+  accTagName:
+    'Kế toán viên, Phân tích tài chính, Nhân viên thuế, Kế toán tiền lương, Chuyên viên tài chính',
   req: 'Tốt nghiệp Trung học cơ sở (THCS) trở lên. Dành cho học sinh đã hoàn thành THPT hoặc đang theo học tại trung cấp, cao đẳng hoặc đại học.',
   method: 'Xét tuyển dựa trên học bạ THCS. Không yêu cầu thi đầu vào.',
   apply:

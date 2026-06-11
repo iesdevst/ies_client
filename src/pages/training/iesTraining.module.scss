@@ -147,6 +147,146 @@
   align-items: center;
 }
 
+/* ===================== VocaTrainDetail / ShortCrsDetail redesign ===================== */
+
+.vocaDetailBreadcrumb {
+  ol {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+  }
+}
+
+.vocaDetailTabs {
+  :global {
+    .ant-tabs-nav::before {
+      border-bottom: none !important;
+    }
+
+    .ant-tabs-nav-wrap {
+      background: rgba(255, 255, 255, 0.1);
+      padding: 6px;
+      border-radius: 999px;
+      margin: 0 200px;
+    }
+
+    .ant-tabs-tab {
+      color: rgba(255, 255, 255, 0.75);
+      border-radius: 999px;
+      padding: 8px 24px;
+      font-weight: 500;
+      transition: all 0.25s ease;
+    }
+
+    .ant-tabs-tab:hover {
+      color: #fff;
+    }
+
+    .ant-tabs-tab-active {
+      background: rgba(255, 255, 255, 0.92);
+    }
+
+    .ant-tabs-tab-active .ant-tabs-tab-btn {
+      color: #c92cc9 !important;
+      font-weight: 700;
+    }
+
+    .ant-tabs-ink-bar {
+      display: none;
+    }
+
+    .ant-tabs-content-holder {
+      padding-top: 8px;
+    }
+  }
+
+  @media (max-width: 1024px) {
+    :global(.ant-tabs-nav-wrap) {
+      margin: 0 60px;
+    }
+  }
+
+  @media (max-width: 768px) {
+    :global {
+      .ant-tabs-nav-wrap {
+        margin: 0 8px;
+        padding: 4px;
+      }
+
+      .ant-tabs-tab {
+        padding: 5px 14px;
+        font-size: 12px;
+      }
+    }
+  }
+}
+
+/* Short Course detail — same pill style, blue accent */
+.vocaScDetailTabs {
+  :global {
+    .ant-tabs-nav::before {
+      border-bottom: none !important;
+    }
+
+    .ant-tabs-nav-wrap {
+      background: rgba(255, 255, 255, 0.1);
+      padding: 6px;
+      border-radius: 999px;
+      margin: 0 200px;
+    }
+
+    .ant-tabs-tab {
+      color: rgba(255, 255, 255, 0.75);
+      border-radius: 999px;
+      padding: 8px 24px;
+      font-weight: 500;
+      transition: all 0.25s ease;
+      
+    }
+
+    .ant-tabs-tab:hover {
+      color: #fff;
+    }
+
+    .ant-tabs-tab-active {
+      background: rgba(255, 255, 255, 0.92);
+    }
+
+    .ant-tabs-tab-active .ant-tabs-tab-btn {
+      color: #6472cf !important;
+      font-weight: 700;
+    }
+
+    .ant-tabs-ink-bar {
+      display: none;
+    }
+
+    .ant-tabs-content-holder {
+      padding-top: 8px;
+    }
+  }
+
+  @media (max-width: 1024px) {
+    :global(.ant-tabs-nav-wrap) {
+      margin: 0 60px;
+    }
+  }
+
+  @media (max-width: 768px) {
+    :global {
+      .ant-tabs-nav-wrap {
+        margin: 0 8px;
+        padding: 4px;
+      }
+
+      .ant-tabs-tab {
+        padding: 5px 14px;
+        font-size: 12px;
+      }
+    }
+  }
+}
+
 .iesShortCrsTabs {
   :global {
     .ant-tabs-nav::before {

@@ -5,4 +5,6 @@ export default {
   admissIf: 'Admissions Info',
   tui: 'Tuition & Apply',
   form: 'Register Form',
+  registerBtn: 'Register Now',
+  downloadBtn: 'Download Program',
 };

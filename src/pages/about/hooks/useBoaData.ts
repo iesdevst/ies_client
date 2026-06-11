@@ -1,9 +1,9 @@
 import { useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
 import HIEP from '@/assets/imgs/hiep_tht.webp';
-import NHH from '@/assets/imgs/nhh_hdt.webp';
+// import NHH from '@/assets/imgs/nhh_hdt.webp';
 import THUY from '@/assets/imgs/thuy_hp.webp';
-import VTL from '@/assets/imgs/vtl_teach.webp';
+// import VTL from '@/assets/imgs/vtl_teach.webp';
 
 export type BoaMember = {
   id: string;
@@ -35,9 +35,14 @@ export const useBoaData = (): {
         desc: t('botFeatDesc'),
       },
       members: [
-        { id: 'bot-1', name: t('botM1Name'), role: t('botM1Role'), image: THUY },
-        { id: 'bot-2', name: t('botM2Name'), role: t('botM2Role'), image: NHH },
-        { id: 'bot-3', name: t('botM3Name'), role: t('botM3Role'), image: VTL },
+        {
+          id: 'bot-1',
+          name: t('botM1Name'),
+          role: t('botM1Role'),
+          image: THUY,
+        },
+        // { id: 'bot-2', name: t('botM2Name'), role: t('botM2Role'), image: NHH },
+        // { id: 'bot-3', name: t('botM3Name'), role: t('botM3Role'), image: VTL },
       ],
     }),
     [t],

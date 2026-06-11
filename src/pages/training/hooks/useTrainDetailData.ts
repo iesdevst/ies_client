@@ -22,7 +22,9 @@ export const useTrainDetailData = (): { data: Array<DetailTrain> } => {
         intro: t('appInfoIntro'),
         objective: t('appInfoObj'),
         decs: t('appInfoDesc'),
+        decsTagName: t('appInfoDecsTagName'),
         career: t('appInfoCareer'),
+        tagName: t('appInfoTagName'),
       },
       info: {
         require: t('req'),
@@ -44,7 +46,9 @@ export const useTrainDetailData = (): { data: Array<DetailTrain> } => {
         intro: t('itIntro'),
         objective: t('itObj'),
         decs: t('itDesc'),
+        decsTagName: t('itDecsTagName'),
         career: t('itCareer'),
+        tagName: t('itTagName'),
       },
 
       info: {
@@ -67,7 +71,9 @@ export const useTrainDetailData = (): { data: Array<DetailTrain> } => {
         intro: t('indusIntro'),
         objective: t('indusObj'),
         decs: t('indusDesc'),
+        decsTagName: t('indusDecsTagName'),
         career: t('indusCareer'),
+        tagName: t('indusTagName'),
       },
 
       info: {
@@ -90,7 +96,9 @@ export const useTrainDetailData = (): { data: Array<DetailTrain> } => {
         intro: t('officeIntro'),
         objective: t('officeObj'),
         decs: t('officeDesc'),
+        decsTagName: t('officeDecsTagName'),
         career: t('officeCareer'),
+        tagName: t('officeTagName'),
       },
 
       info: {
@@ -113,7 +121,9 @@ export const useTrainDetailData = (): { data: Array<DetailTrain> } => {
         intro: t('hospiIntro'),
         objective: t('hospiObj'),
         decs: t('hospiDesc'),
+        decsTagName: t('hospiDecsTagName'),
         career: t('hospiCareer'),
+        tagName: t('hospiTagName'),
       },
 
       info: {
@@ -136,7 +146,9 @@ export const useTrainDetailData = (): { data: Array<DetailTrain> } => {
         intro: t('mktIntro'),
         objective: t('mktObj'),
         decs: t('mktDesc'),
+        decsTagName: t('mktDecsTagName'),
         career: t('mktCareer'),
+        tagName: t('mktTagName'),
       },
 
       info: {
@@ -159,7 +171,9 @@ export const useTrainDetailData = (): { data: Array<DetailTrain> } => {
         intro: t('busiIntro'),
         objective: t('busiObj'),
         decs: t('busiDesc'),
+        decsTagName: t('busiDecsTagName'),
         career: t('busiCareer'),
+        tagName: t('busiTagName'),
       },
 
       info: {
@@ -182,7 +196,9 @@ export const useTrainDetailData = (): { data: Array<DetailTrain> } => {
         intro: t('designIntro'),
         objective: t('designObj'),
         decs: t('designDesc'),
+        decsTagName: t('designDecsTagName'),
         career: t('designCareer'),
+        tagName: t('designTagName'),
       },
       info: {
         require: t('req'),
@@ -204,7 +220,9 @@ export const useTrainDetailData = (): { data: Array<DetailTrain> } => {
         intro: t('accIntro'),
         objective: t('accObj'),
         decs: t('accDesc'),
+        decsTagName: t('accDecsTagName'),
         career: t('accCareer'),
+        tagName: t('accTagName'),
       },
 
       info: {
@@ -225,7 +243,9 @@ export type OvwDetail = {
   intro: string;
   objective: string;
   decs: string;
+  decsTagName: string;
   career: string;
+  tagName: string;
 };
 export type AdmissInfo = {
   require: string;

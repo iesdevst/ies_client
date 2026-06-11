@@ -21,7 +21,7 @@ const IesIntro = () => {
       id='intro'
       layout='simple'
       divider={false}
-      className={`${dk ? 'px-5 mb-20' : tl ? 'px-3 mb-15' : tlpr ? 'px-3' : 'px-1.5 mb-15'}`}
+      className={`${dk ? 'px-5 mb-20' : tl ? 'px-3 mb-15' : tlpr ? 'px-3 mb-10' : 'px-1.5 mb-15'}`}
       children={
         <motion.section
           className='relative w-full overflow-hidden rounded-2xl'

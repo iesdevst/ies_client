@@ -6,11 +6,10 @@ import RightOutlined from '@ant-design/icons/RightOutlined';
 import WalletOutlined from '@ant-design/icons/WalletOutlined';
 
 import Breadcrumb from 'antd/es/breadcrumb';
-import Col from 'antd/es/col';
+import Button from 'antd/es/button';
 import Image from 'antd/es/image';
-import Row from 'antd/es/row';
-import Tabs from 'antd/es/tabs';
 import type { TabsProps } from 'antd/es/tabs';
+import Tabs from 'antd/es/tabs';
 import Tooltip from 'antd/es/tooltip';
 import { lazy, useCallback, useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
@@ -18,7 +17,6 @@ import { useMediaQuery } from 'react-responsive';
 import { useParams, useSearchParams } from 'react-router-dom';
 import { useTrainDetailData } from './hooks';
 import styles from './iesTraining.module.scss';
-import DTP from '@/assets/imgs/detail__train_paint.webp';
 import { Text, Title } from '@/components';
 import { PrefetchLink } from '@/components/PrefetchLink';
 import { ROUTES, TrainDetailTab } from '@/constants';
@@ -52,15 +50,15 @@ const VocaTrainDetail: React.FC = () => {
         key: TrainDetailTab.Overview,
         label: !isMb ? (
           <Title
-            level={4}
-            className={`${trainDtActKey === TrainDetailTab.Overview ? '!text-white' : '!text-black'} !m-0`}
+            level={5}
+            className={`${trainDtActKey === TrainDetailTab.Overview ? 'text-[#c92cc9]!' : 'text-white!'} m-0!`}
           >
             {t('progOvw')}
           </Title>
         ) : (
           <Tooltip title={t('progOvw')}>
             <ProfileOutlined
-              className={`${trainDtActKey === TrainDetailTab.Overview ? '!text-white' : '!text-black'} !text-lg`}
+              className={`${trainDtActKey === TrainDetailTab.Overview ? 'text-[#c92cc9]!' : 'text-white!'} text-base!`}
             />
           </Tooltip>
         ),
@@ -70,15 +68,15 @@ const VocaTrainDetail: React.FC = () => {
         key: TrainDetailTab.Admission,
         label: !isMb ? (
           <Title
-            level={4}
-            className={`${trainDtActKey === TrainDetailTab.Admission ? '!text-white' : '!text-black'} !m-0`}
+            level={5}
+            className={`${trainDtActKey === TrainDetailTab.Admission ? 'text-[#c92cc9]!' : 'text-white!'} m-0!`}
           >
             {t('admissIf')}
           </Title>
         ) : (
           <Tooltip title={t('admissIf')}>
             <InfoCircleOutlined
-              className={`${trainDtActKey === TrainDetailTab.Admission ? '!text-white' : '!text-black'} !text-lg`}
+              className={`${trainDtActKey === TrainDetailTab.Admission ? 'text-[#c92cc9]!' : 'text-white!'} text-base!`}
             />
           </Tooltip>
         ),
@@ -90,15 +88,15 @@ const VocaTrainDetail: React.FC = () => {
         key: TrainDetailTab.Apply,
         label: !isMb ? (
           <Title
-            level={4}
-            className={`${trainDtActKey === TrainDetailTab.Apply ? '!text-white' : '!text-black'} !m-0`}
+            level={5}
+            className={`${trainDtActKey === TrainDetailTab.Apply ? 'text-[#c92cc9]!' : 'text-white!'} m-0!`}
           >
             {t('tui')}
           </Title>
         ) : (
           <Tooltip title={t('tui')}>
             <WalletOutlined
-              className={`${trainDtActKey === TrainDetailTab.Apply ? '!text-white' : '!text-black'} !text-lg`}
+              className={`${trainDtActKey === TrainDetailTab.Apply ? 'text-[#c92cc9]!' : 'text-white!'} text-base!`}
             />
           </Tooltip>
         ),
@@ -108,15 +106,15 @@ const VocaTrainDetail: React.FC = () => {
         key: TrainDetailTab.Register,
         label: !isMb ? (
           <Title
-            level={4}
-            className={`${trainDtActKey === TrainDetailTab.Register ? '!text-white' : '!text-black'} !m-0`}
+            level={5}
+            className={`${trainDtActKey === TrainDetailTab.Register ? 'text-[#c92cc9]!' : 'text-white!'} m-0!`}
           >
             {t('form')}
           </Title>
         ) : (
           <Tooltip title={t('form')}>
             <FormOutlined
-              className={`${trainDtActKey === TrainDetailTab.Register ? '!text-white' : '!text-black'} !text-lg`}
+              className={`${trainDtActKey === TrainDetailTab.Register ? 'text-[#c92cc9]!' : 'text-white!'} text-base!`}
             />
           </Tooltip>
         ),
@@ -134,89 +132,123 @@ const VocaTrainDetail: React.FC = () => {
   );
 
   return (
-    <section className={`${isMb || isTl ? 'pt-10 py-20' : 'px-10 py-20'}`}>
-      <Breadcrumb
-        className={`${isDark ? '!bg-gray-800 !border-gray-600' : '!bg-[#eaeaea] !border-[#dac7da]'} !rounded-t-xl !border-t !border-x ${isMb ? 'w-2/3 !py-1.5 !ml-5' : isTl ? 'w-2/3 !py-1.5 !ml-5' : 'w-1/3 !ml-5.5 !py-3'}  ${styles.breadCrumbCus}`}
-        separator={
-          <RightOutlined
-            className={`${isDark ? '!text-white' : '!text-black'} ${isMb ? 'px-3' : isTl ? 'px-15' : '!px-10'}`}
-          />
-        }
-        items={[
-          {
-            title: (
-              <PrefetchLink
-                to={ROUTES.ADMISSIONS}
-                style={{
-                  color: isDark ? 'white' : 'black',
-                  fontWeight: 700,
-                  fontSize: '15px',
-                }}
-              >
-                {!isMb ? (
-                  <Text color={isDark ? 'white' : 'black'}> {t('iv')}</Text>
-                ) : (
-                  <ApartmentOutlined className='!text-xl' />
-                )}
-              </PrefetchLink>
-            ),
-          },
-          {
-            title: (
-              <Text color='#C92CC9' className='!text-[16px] !font-semibold'>
-                {t('progDt')}
-              </Text>
-            ),
-          },
-        ]}
-      />
+    <div
+      className={`${isDark ? 'bg-linear-to-br from-[#0a0e1a] via-[#1d1147] to-[#0a1628]' : 'bg-gray-500'} pt-10! py-20!  min-h-screen`}
+    >
       <div
-        className={`${isDark ? '!bg-gray-800 !border-gray-600' : '!bg-[#eaeaea] !border-[#dac7da]'} !rounded-3xl !border ${isMb || isTl ? 'px-2 pt-10 py-20' : 'p-20'}`}
+        className={`${isMb ? 'px-4 pt-6' : isTl ? 'px-8 pt-10' : 'px-16 pt-12'}`}
       >
+        {/* Breadcrumb */}
+        <Breadcrumb
+          className={styles.vocaDetailBreadcrumb}
+          separator={<RightOutlined className='text-white/40!' />}
+          items={[
+            {
+              title: (
+                <PrefetchLink to={ROUTES.ADMISSIONS}>
+                  {!isMb ? (
+                    <Text
+                      color='rgba(255,255,255,0.6)'
+                      className='font-bold! text-sm!'
+                    >
+                      {t('iv')}
+                    </Text>
+                  ) : (
+                    <ApartmentOutlined className='text-base! text-white/60!' />
+                  )}
+                </PrefetchLink>
+              ),
+            },
+            {
+              title: (
+                <Text
+                  color='#C92CC9'
+                  className='text-sm! font-semibold! block!'
+                >
+                  {t('progDt')}
+                </Text>
+              ),
+            },
+          ]}
+        />
+
+        {/* Hero: text left + image right */}
         {detailTrainDt && (
-          <Row
-            justify='center'
-            align='middle'
-            className={`${isMb || isTl ? 'gap-y-12' : 'gap-x-30'}`}
+          <div
+            className={`flex ${isMb ? 'flex-col gap-6' : 'flex-row items-center gap-16'} mt-8 mb-10`}
           >
-            <Col xs={24} md={10} className='!text-center'>
-              <Title className='!m-0 !font-normal' level={5}>
+            {/* Left: text content */}
+            <div
+              className={`${isMb ? 'w-full' : 'flex-1'} flex flex-col gap-4`}
+            >
+              <Text
+                color='#a78bfa'
+                className='text-xs! font-semibold! uppercase! tracking-widest! block!'
+              >
+                IES COLLEGE
+              </Text>
+
+              <Text
+                color='rgba(255,255,255,0.45)'
+                className='text-xs! uppercase! tracking-widest! block!'
+              >
                 {detailTrainDt.program}
-              </Title>
+              </Text>
 
               <Title
-                level={isMb || isTl ? 3 : 1}
-                className='!m-0 !text-[#BE3691] !mt-0.5 !mb-5'
+                level={isMb ? 2 : 1}
+                className='text-white! m-0! leading-tight!'
               >
                 {detailTrainDt.progTitle}
               </Title>
 
-              <Image src={DTP} preview={false} loading='lazy' />
-            </Col>
+              <div
+                className={`flex ${isMb ? 'flex-col' : 'flex-row'} gap-3 mt-3`}
+              >
+                <Button
+                  type='primary'
+                  size='large'
+                  className='bg-[#c92cc9]! border-[#c92cc9]! rounded-full! font-semibold! px-8! hover:bg-[#a81ea8]! hover:border-[#a81ea8]!'
+                  onClick={() => hdlChangeTab(TrainDetailTab.Register)}
+                >
+                  {t('registerBtn')}
+                </Button>
+                {/* <Button
+                  size='large'
+                  icon={<DownloadOutlined />}
+                  className='rounded-full! border-white/30! text-white! bg-transparent! font-medium! hover:border-white/60! hover:text-white!'
+                >
+                  {t('downloadBtn')}
+                </Button> */}
+              </div>
+            </div>
 
-            <Col xs={24} md={10} className='!text-center'>
-              <Image
-                src={detailTrainDt.imgDetail}
-                preview={false}
-                className={`${isMb ? '!h-[20vh] !w-[600px]' : isTl ? '!h-[20vh] !w-[350px]' : '!h-[30vh] !w-[600px]'} rounded-xl shadow-2xl`}
-                loading='lazy'
-                alt='vocatrain'
-              />
-            </Col>
-          </Row>
+            {/* Right: program image (desktop + tablet only) */}
+            {!isMb && (
+              <div className='flex-1 flex justify-center'>
+                <Image
+                  src={detailTrainDt.imgDetail}
+                  preview={false}
+                  loading='lazy'
+                  alt={detailTrainDt.progTitle}
+                  className={`rounded-2xl! shadow-2xl! object-cover! w-full! ${isTl ? 'max-h-70!' : 'max-h-95!'}`}
+                />
+              </div>
+            )}
+          </div>
         )}
-        <div className='!mt-10'>
-          <Tabs
-            activeKey={trainDtActKey}
-            items={tabs}
-            onChange={hdlChangeTab}
-            className={styles.iesTrainDtTabs}
-            centered={isMb}
-            destroyOnHidden
-          />
-        </div>
+
+        {/* Tabs navigation + content */}
+        <Tabs
+          activeKey={trainDtActKey}
+          items={tabs}
+          onChange={hdlChangeTab}
+          className={`${styles.vocaDetailTabs}`}
+          centered
+          destroyOnHidden
+        />
       </div>
-    </section>
+    </div>
   );
 };
 
