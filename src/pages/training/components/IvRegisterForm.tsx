@@ -263,14 +263,14 @@ const IvRegisterForm: React.FC<IIvRegisterForm> = (props) => {
                     />
                     <SelectOutlined
                       className='!text-xl'
-                      style={{ cursor: 'pointer', color: '#c92cc9' }}
+                      style={{ cursor: 'pointer', color: '#E8622A' }}
                       onClick={() => setProgTopen(true)}
                     />
                   </Row>
                 ) : (
                   <SelectOutlined
                     className='!text-xl'
-                    style={{ cursor: 'pointer', color: '#c92cc9' }}
+                    style={{ cursor: 'pointer', color: '#E8622A' }}
                     onClick={() => setProgTopen(true)}
                   />
                 )

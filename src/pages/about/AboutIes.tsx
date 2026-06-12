@@ -124,7 +124,7 @@ const AboutIes: React.FC = () => {
           },
           {
             title: (
-              <Text color='#199b9f' className='!text-[16px] !font-semibold'>
+              <Text color='#0EA5C8' className='!text-[16px] !font-semibold'>
                 {t('abIes')}
               </Text>
             ),

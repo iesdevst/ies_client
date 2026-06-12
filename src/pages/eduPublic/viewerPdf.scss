@@ -1,9 +1,12 @@
-/* Hide upload/open PDF button */
+/* Hide upload/open PDF — toolbar button + More-actions menu item (testId from open.js source) */
 
-button[data-testid="open__button"] {
+[data-testid="open__button"],
+[data-testid="open__menu"] {
   display: none !important;
 }
 
-button[data-testid="open-menu__item"] {
+/* Hide input wrapper + file input rendered by @react-pdf-viewer/open */
+.rpv-open__input-wrapper,
+.rpv-open__input {
   display: none !important;
 }

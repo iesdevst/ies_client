@@ -128,9 +128,9 @@ const ContactKey: React.FC = () => {
                         className='border-b border-gray-400 !pt-1.5 !pb-3'
                       >
                         {/* HEADER */}
-                        <button
+                        <div
                           onClick={() => setActive(isOpen ? null : item.key)}
-                          className='w-full flex items-center justify-between cursor-pointer'
+                          className='w-full flex items-center! justify-between! cursor-pointer'
                         >
                           <Title
                             level={4}
@@ -146,7 +146,7 @@ const ContactKey: React.FC = () => {
                                 : '!text-blue-600'
                             }`}
                           />
-                        </button>
+                        </div>
 
                         {/* BODY */}
                         {isOpen && (

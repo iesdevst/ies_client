@@ -38,75 +38,83 @@ const ShortCrsTabLst: React.FC<IShortCrsTabLst> = (props) => {
         label: !mb ? (
           <Title
             level={4}
-            className={`${shortCrsActKey === ShortCrsTab.Mixology ? '!text-[#8990bc]' : '!text-white'} !m-0`}
+            className={`${shortCrsActKey === ShortCrsTab.Mixology ? 'text-[#4A6FA5]!' : '!text-white'} !m-0`}
           >
             {t('mixology')}
           </Title>
         ) : (
           <Tooltip title={t('mixology')}>
             <CoffeeOutlined
-              className={`${shortCrsActKey === ShortCrsTab.Mixology ? '!text-[#8990bc]' : '!text-white'} !text-2xl`}
+              className={`${shortCrsActKey === ShortCrsTab.Mixology ? 'text-[#4A6FA5]!' : '!text-white'} !text-2xl`}
             />
           </Tooltip>
         ),
-        children: <ShortCrsDetail scType={ShortCrsTypeEnum.Mixology} />,
+        children: (
+          <ShortCrsDetail dark={dark} scType={ShortCrsTypeEnum.Mixology} />
+        ),
       },
       {
         key: ShortCrsTab.Cooking,
         label: !mb ? (
           <Title
             level={4}
-            className={`${shortCrsActKey === ShortCrsTab.Cooking ? '!text-[#8990bc]' : '!text-white'} !m-0`}
+            className={`${shortCrsActKey === ShortCrsTab.Cooking ? 'text-[#4A6FA5]!' : '!text-white'} !m-0`}
           >
             {t('proCook')}
           </Title>
         ) : (
           <Tooltip title={t('proCook')}>
             <FireOutlined
-              className={`${shortCrsActKey === ShortCrsTab.Cooking ? '!text-[#8990bc]' : '!text-white'} !text-2xl`}
+              className={`${shortCrsActKey === ShortCrsTab.Cooking ? 'text-[#4A6FA5]!' : '!text-white'} !text-2xl`}
             />
           </Tooltip>
         ),
-        children: <ShortCrsDetail scType={ShortCrsTypeEnum.Cooking} />,
+        children: (
+          <ShortCrsDetail dark={dark} scType={ShortCrsTypeEnum.Cooking} />
+        ),
       },
       {
         key: ShortCrsTab.Baking,
         label: !mb ? (
           <Title
             level={4}
-            className={`${shortCrsActKey === ShortCrsTab.Baking ? '!text-[#8990bc]' : '!text-white'} !m-0`}
+            className={`${shortCrsActKey === ShortCrsTab.Baking ? 'text-[#4A6FA5]!' : '!text-white'} !m-0`}
           >
             {t('baking')}
           </Title>
         ) : (
           <Tooltip title={t('baking')}>
             <PieChartOutlined
-              className={`${shortCrsActKey === ShortCrsTab.Baking ? '!text-[#8990bc]' : '!text-white'} !text-2xl`}
+              className={`${shortCrsActKey === ShortCrsTab.Baking ? 'text-[#4A6FA5]!' : '!text-white'} !text-2xl`}
             />
           </Tooltip>
         ),
-        children: <ShortCrsDetail scType={ShortCrsTypeEnum.Baking} />,
+        children: (
+          <ShortCrsDetail dark={dark} scType={ShortCrsTypeEnum.Baking} />
+        ),
       },
       {
         key: ShortCrsTab.UsingAi,
         label: !mb ? (
           <Title
             level={4}
-            className={`${shortCrsActKey === ShortCrsTab.UsingAi ? '!text-[#8990bc]' : '!text-white'} !m-0`}
+            className={`${shortCrsActKey === ShortCrsTab.UsingAi ? 'text-[#4A6FA5]!' : '!text-white'} !m-0`}
           >
             {t('aiApp')}
           </Title>
         ) : (
           <Tooltip title={t('aiApp')}>
             <RobotOutlined
-              className={`${shortCrsActKey === ShortCrsTab.UsingAi ? '!text-[#8990bc]' : '!text-white'} !text-2xl`}
+              className={`${shortCrsActKey === ShortCrsTab.UsingAi ? 'text-[#4A6FA5]!' : '!text-white'} !text-2xl`}
             />
           </Tooltip>
         ),
-        children: <ShortCrsDetail scType={ShortCrsTypeEnum.UsingAi} />,
+        children: (
+          <ShortCrsDetail dark={dark} scType={ShortCrsTypeEnum.UsingAi} />
+        ),
       },
     ],
-    [shortCrsActKey, mb, t],
+    [shortCrsActKey, mb, t, dark],
   );
 
   const hdlChangeTab = useCallback(
@@ -129,9 +137,9 @@ const ShortCrsTabLst: React.FC<IShortCrsTabLst> = (props) => {
 
   return (
     <section className='pt-15'>
-      <div className={`${dark ? 'bg-gray-700' : '!bg-[#FFFCF2]'} pt-10`}>
+      <div className='pt-10'>
         <div className='text-center mb-6'>
-          <Title level={!mb ? 1 : 3} className='!text-[#6472cf]'>
+          <Title level={!mb ? 1 : 3} className='text-[#2B6CB0]!'>
             {t('shortT')}
           </Title>
         </div>

@@ -27,13 +27,13 @@ const BoaMemberCard: React.FC<BoaMemberCardProps> = (props) => {
         />
       </div>
       <Text
-        color={dark ? 'white' : '#111827'}
+        color='white'
         className='font-semibold! text-lg! leading-snug! block!'
       >
         {member.name}
       </Text>
       <Text
-        color={dark ? '#9ca3af' : '#6b7280'}
+        color={dark ? '#9ca3af' : 'white'}
         className='leading-snug! block! mt-0.5'
       >
         {member.role}

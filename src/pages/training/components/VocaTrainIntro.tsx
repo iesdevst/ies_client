@@ -63,7 +63,7 @@ const VocaTrainIntro: React.FC<IVocaTrainIntro> = (props) => {
             gap={mb || tl ? 25 : 60}
             className='!p-7 !rounded-2xl'
             style={{
-              background: 'linear-gradient(135deg, #2F6FA3, #4A90C2)',
+              background: 'linear-gradient(135deg, #1B3A6B, #2B6CB0)',
               boxShadow: '0 25px 12px rgba(0,0,0,0.1)',
             }}
           >

@@ -49,7 +49,7 @@ const IesVocaTraining = () => {
           },
           {
             title: (
-              <Text color='#3984ed' className='!text-[16px] !font-semibold'>
+              <Text color='#2B6CB0' className='!text-[16px] !font-semibold'>
                 {t('iv')}
               </Text>
             ),

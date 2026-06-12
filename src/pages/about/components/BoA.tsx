@@ -57,7 +57,6 @@ const BoA: React.FC = () => {
           borderBottom: '1px solid rgba(255,255,255,0.10)',
         }}
       >
-
         {/* Content — z-10 above overlay */}
         <motion.div
           className='relative z-10'
@@ -66,7 +65,7 @@ const BoA: React.FC = () => {
           transition={{ duration: 0.5 }}
         >
           <Text
-            color='#a8a6d2'
+            color='#8BB5D8'
             className='text-lg! font-semibold! uppercase! tracking-widest! block! mb-4!'
           >
             IES — {t('sectionTitle')}
@@ -98,7 +97,7 @@ const BoA: React.FC = () => {
                   transition-all! duration-300! ease-in-out!
                   hover:shadow-lg! hover:-translate-y-px!
                   border! border-white/40! bg-transparent! text-white!
-                  hover:bg-white! hover:text-[#474669]! hover:border-white!
+                  hover:bg-white! hover:text-[#1B3A6B]! hover:border-white!
                 `}
               >
                 {label}
@@ -111,23 +110,32 @@ const BoA: React.FC = () => {
       {/* ── Board of Trustees ── */}
       <section
         id='boa-bot'
-        className={`${isDark ? 'bg-gray-900' : 'bg-[#fdfaf6]'} ${px} py-16`}
+        className={`${px} py-16`}
+        style={{
+          background: isDark
+            ? '#1f2937'
+            : 'linear-gradient(135deg, #0EA5C8 0%, #1E4D8C 100%)',
+        }}
       >
-        <Title
-          level={1}
-          className={`m-0! mb-10! ${isDark ? 'text-white!' : 'text-gray-900!'}`}
-        >
+        <Title level={1} className='m-0! mb-10! text-white!'>
           {t('botTitle')}
         </Title>
         <BoaSpotlight
           section={boardOfTrustees}
           dark={isDark}
-          accentLine='#474669'
+          accentLine='#1B3A6B'
         />
       </section>
 
       {/* ── Quote ── */}
-      <div className='bg-[#111827] py-20 px-6'>
+      <div
+        className='py-20 px-6'
+        style={{
+          background: isDark
+            ? '#0f172a'
+            : 'linear-gradient(135deg, #0F2547 0%, #1B3A6B 100%)',
+        }}
+      >
         <motion.div
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
@@ -141,7 +149,10 @@ const BoA: React.FC = () => {
           >
             {t('quote')}
           </Text>
-          <Text color='#6b7280' className='text-lg! font-medium! block!'>
+          <Text
+            color='rgba(255,255,255,0.55)'
+            className='text-lg! font-medium! block!'
+          >
             {t('quoteAuthor')}
           </Text>
         </motion.div>
@@ -150,18 +161,20 @@ const BoA: React.FC = () => {
       {/* ── Admin Board ── */}
       <section
         id='boa-ab'
-        className={`${isDark ? 'bg-gray-800' : 'bg-[#ede8de]'} ${px} py-16`}
+        className={`${px} py-16`}
+        style={{
+          background: isDark
+            ? '#1f2937'
+            : 'linear-gradient(135deg, #1E4D8C 0%, #0EA5C8 100%)',
+        }}
       >
         <Text
-          color='#474669'
+          color='white'
           className='text-xs! font-semibold! uppercase! tracking-widest! block! mb-2!'
         >
           {t('abTitle')}
         </Text>
-        <Title
-          level={2}
-          className={`m-0! mb-10! ${isDark ? 'text-white!' : 'text-gray-900!'}`}
-        >
+        <Title level={2} className='m-0! mb-10! text-white!'>
           {t('abTitle')}
         </Title>
 
@@ -169,7 +182,7 @@ const BoA: React.FC = () => {
           <BoaSpotlight
             section={adminBoard}
             dark={isDark}
-            accentLine='#166534'
+            accentLine='#0EA5C8'
           />
         </Suspense>
       </section>
@@ -177,18 +190,20 @@ const BoA: React.FC = () => {
       {/* ── Founding Board ── */}
       <section
         id='boa-fb'
-        className={`${isDark ? 'bg-gray-900' : 'bg-[#f5f0e8]'} ${px} py-16`}
+        className={`${px} py-16`}
+        style={{
+          background: isDark
+            ? '#111827'
+            : 'linear-gradient(135deg, #2B6CB0 0%, #1E4D8C 50%, #1B3A6B 100%)',
+        }}
       >
         <Text
-          color='#474669'
+          color='white'
           className='text-xs! font-semibold! uppercase! tracking-widest! block! mb-2!'
         >
           {t('fbTitle')}
         </Text>
-        <Title
-          level={2}
-          className={`m-0! mb-10! ${isDark ? 'text-white!' : 'text-gray-900!'}`}
-        >
+        <Title level={2} className='m-0! mb-10! text-white!'>
           {t('fbTitle')}
         </Title>
         <Row gutter={[24, 32]}>

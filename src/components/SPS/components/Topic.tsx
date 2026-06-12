@@ -56,8 +56,8 @@ const Topic: React.FC<TopicLayoutProps> = (props) => {
               >
                 {topTitBut}
               </Title>
-              <div className='w-full h-full !bg-[#FBBF24] rounded-r-full flex items-center justify-center px-3'>
-                <RightOutlined className='!text-red-500 !font-semibold ' />
+              <div className='w-full h-full !bg-[#E8622A] rounded-r-full flex items-center justify-center px-3'>
+                <RightOutlined className='!text-blue-200 !font-semibold ' />
               </div>
             </Button>
           </div>
@@ -116,8 +116,8 @@ const Topic: React.FC<TopicLayoutProps> = (props) => {
                 >
                   {botBut}
                 </Title>
-                <div className='w-full h-full !bg-[#FBBF24] rounded-r-full flex items-center justify-center px-3'>
-                  <RightOutlined className='!text-red-500 !font-semibold' />
+                <div className='w-full h-full !bg-[#E8622A] rounded-r-full flex items-center justify-center px-3'>
+                  <RightOutlined className='!text-blue-200 !font-semibold' />
                 </div>
               </Button>
             </div>

@@ -66,8 +66,8 @@ const FieldOfStudy: React.FC = () => {
                     {t('exploreBtn')}
                   </Title>
 
-                  <div className='w-full h-full !bg-[#FBBF24] rounded-r-full flex items-center justify-center px-3'>
-                    <RightOutlined className='!text-red-500 !font-semibold' />
+                  <div className='w-full h-full !bg-[#E8622A] rounded-r-full flex items-center justify-center px-3'>
+                    <RightOutlined className='!text-blue-200 !font-semibold' />
                   </div>
                 </Button>
               </div>

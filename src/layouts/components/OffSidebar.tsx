@@ -10,7 +10,12 @@ import {
 } from '@/pages/eduPublic/hooks';
 import { useUserStore } from '@/store';
 
-const OffSidebar = () => {
+export interface OffSidebarProps {
+  onNavigate?: () => void;
+}
+
+const OffSidebar: React.FC<OffSidebarProps> = (props) => {
+  const { onNavigate } = props;
   const { isDark } = useUserStore();
   const navigate = useNavigate();
   const location = useLocation();
@@ -43,20 +48,28 @@ const OffSidebar = () => {
   return (
     <div className='h-full off-sidebar'>
       <Menu
-        mode='inline'
+        mode='vertical'
         selectedKeys={[location.pathname]}
-        onClick={({ key }) => navigate(key)}
+        onClick={({ key }) => {
+          navigate(key);
+          onNavigate?.();
+        }}
         style={{
           height: '100%',
           borderRight: 0,
+          background: isDark
+            ? 'linear-gradient(180deg,#1e3a8a 0%,#0f172a 50%,#050505 100%)'
+            : 'linear-gradient(135deg, #0EA5C8 0%, #1E4D8C 100%)',
         }}
-        className={`!rounded-t-xl !pt-3 ${isDark ? '' : '!bg-gray-500'}`}
+        className='pt-3!'
         items={dataSidebar.flatMap((group) => [
           {
             type: 'group' as const,
             label: (
-              <div className='!border-b'>
-                <Title level={3}>{group.tit}</Title>
+              <div className='border-b!'>
+                <Title level={3} className='text-white!'>
+                  {group.tit}
+                </Title>
               </div>
             ),
             children: group.section,

@@ -31,10 +31,10 @@ const AdmissInfo: React.FC<IAdmissInfoProps> = (props) => {
             <div className='flex-1 space-y-2'>
               <div className='flex items-center gap-2.5'>
                 <span
-                  className={`w-7 h-7 rounded-lg flex items-center justify-center shrink-0 ${dark ? 'bg-[#c92cc9]/20' : 'bg-[#BE3691]/10'}`}
+                  className={`w-7 h-7 rounded-lg flex items-center justify-center shrink-0 ${dark ? 'bg-[#c92cc9]/20' : 'bg-[#E8622A]/10'}`}
                 >
                   <CheckCircleOutlined
-                    className={`${dark ? 'text-[#ca78ca]!' : 'text-[#BE3691]!'} text-sm!`}
+                    className={`${dark ? 'text-[#ca78ca]!' : 'text-[#E8622A]!'} text-sm!`}
                   />
                 </span>
                 <Title
@@ -59,10 +59,10 @@ const AdmissInfo: React.FC<IAdmissInfoProps> = (props) => {
             <div className='flex-1 space-y-2'>
               <div className='flex items-center gap-2.5'>
                 <span
-                  className={`w-7 h-7 rounded-lg flex items-center justify-center shrink-0 ${dark ? 'bg-[#c92cc9]/20' : 'bg-[#BE3691]/10'}`}
+                  className={`w-7 h-7 rounded-lg flex items-center justify-center shrink-0 ${dark ? 'bg-[#c92cc9]/20' : 'bg-[#E8622A]/10'}`}
                 >
                   <SendOutlined
-                    className={`${dark ? 'text-[#ca78ca]!' : 'text-[#BE3691]!'} text-sm!`}
+                    className={`${dark ? 'text-[#ca78ca]!' : 'text-[#E8622A]!'} text-sm!`}
                   />
                 </span>
                 <Title
@@ -92,10 +92,10 @@ const AdmissInfo: React.FC<IAdmissInfoProps> = (props) => {
             <div className='flex-1 space-y-2'>
               <div className='flex items-center gap-2.5'>
                 <span
-                  className={`w-7 h-7 rounded-lg flex items-center justify-center shrink-0 ${dark ? 'bg-[#6472cf]/20' : 'bg-[#6472cf]/10'}`}
+                  className={`w-7 h-7 rounded-lg flex items-center justify-center shrink-0 ${dark ? 'bg-[#6472cf]/20' : 'bg-[#2B6CB0]/10'}`}
                 >
                   <CheckCircleOutlined
-                    className={`${dark ? 'text-[#98c3ff]!' : 'text-[#6472cf]!'} text-sm!`}
+                    className={`${dark ? 'text-[#98c3ff]!' : 'text-[#2B6CB0]!'} text-sm!`}
                   />
                 </span>
                 <Title
@@ -120,10 +120,10 @@ const AdmissInfo: React.FC<IAdmissInfoProps> = (props) => {
             <div className='flex-1 space-y-2'>
               <div className='flex items-center gap-2.5'>
                 <span
-                  className={`w-7 h-7 rounded-lg flex items-center justify-center shrink-0 ${dark ? 'bg-[#6472cf]/20' : 'bg-[#6472cf]/10'}`}
+                  className={`w-7 h-7 rounded-lg flex items-center justify-center shrink-0 ${dark ? 'bg-[#6472cf]/20' : 'bg-[#2B6CB0]/10'}`}
                 >
                   <SendOutlined
-                    className={`${dark ? 'text-[#98c3ff]!' : 'text-[#6472cf]!'} text-sm!`}
+                    className={`${dark ? 'text-[#98c3ff]!' : 'text-[#2B6CB0]!'} text-sm!`}
                   />
                 </span>
                 <Title

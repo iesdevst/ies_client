@@ -30,7 +30,10 @@ const ShortCrsIntro = () => {
               vertical
               justify='space-between'
               align='center'
-              className='!bg-[#7680c4] !text-center !py-10 opacity-85 !rounded-l-xs !h-3/4'
+              className='!text-center !py-10 opacity-85 !rounded-l-xs !h-3/4'
+              style={{
+                background: 'linear-gradient(135deg, #1E4D8C 0%, #0EA5C8 100%)',
+              }}
             >
               <Image
                 src={IRL}
@@ -41,22 +44,34 @@ const ShortCrsIntro = () => {
               />
 
               <div>
-                <Title level={5} className='!uppercase !font-bold'>
+                <Title level={5} className='!uppercase !font-bold !text-white'>
                   {t('shortTitleTop')}
                 </Title>
-                <Title level={2} className='!m-0 !uppercase !font-bold '>
+                <Title
+                  level={2}
+                  className='!m-0 !uppercase !font-bold !text-white'
+                >
                   {t('shortTitleMain1')}
                 </Title>
-                <Title level={2} className='!m-0 !uppercase  !font-bold'>
+                <Title
+                  level={2}
+                  className='!m-0 !uppercase  !font-bold !text-white'
+                >
                   {t('shortTitleMain2')}
                 </Title>
               </div>
 
               <div>
-                <Title level={5} className='!m-0 !uppercase !font-bold'>
+                <Title
+                  level={5}
+                  className='!m-0 !uppercase !font-bold !text-white'
+                >
                   {t('shortDesc1')}
                 </Title>
-                <Title level={5} className='!m-0 !uppercase !font-bold'>
+                <Title
+                  level={5}
+                  className='!m-0 !uppercase !font-bold !text-white'
+                >
                   {t('shortDesc2')}
                 </Title>
               </div>

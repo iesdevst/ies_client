@@ -34,7 +34,7 @@ const DetailsBonus: React.FC<IDetaisBouns> = (props) => {
               rel='noopener noreferrer'
             >
               <Text
-                color={dark ? '#b1e0f7' : 'blue'}
+                color={dark ? '#b1e0f7' : '#2B6CB0'}
                 className='!underline !text-lg !ml-1'
               >
                 https://www.ies.edu.vn/demics-detail/infoTech?tab=register

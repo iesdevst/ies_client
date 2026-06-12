@@ -125,7 +125,7 @@ const PsRegisModal: React.FC<IPsRegisModal> = (props) => {
               loading='lazy'
               alt='psrm'
             />
-            <Title className='!m-0 !text-[#28156E]' level={3}>
+            <Title className='m-0! text-[#1B3A6B]!' level={3}>
               {t('mt')}
             </Title>
           </Row>
@@ -133,7 +133,7 @@ const PsRegisModal: React.FC<IPsRegisModal> = (props) => {
           <Button
             icon={
               <CloseCircleFilled
-                className={`${dark ? '!text-gray-400' : '!text-[#28156E]'}`}
+                className={`${dark ? 'text-gray-400!' : 'text-[#1B3A6B]!'}`}
               />
             }
             type='link'
@@ -263,7 +263,7 @@ const PsRegisModal: React.FC<IPsRegisModal> = (props) => {
                       className='!text-xl'
                       style={{
                         cursor: 'pointer',
-                        color: !dark ? '#28156E' : '#3677d2',
+                        color: !dark ? '#1B3A6B' : '#3677d2',
                       }}
                       onClick={() => setPsProgTopen(true)}
                     />
@@ -273,7 +273,7 @@ const PsRegisModal: React.FC<IPsRegisModal> = (props) => {
                     className='!text-xl'
                     style={{
                       cursor: 'pointer',
-                      color: !dark ? '#28156E' : '#3677d2',
+                      color: !dark ? '#1B3A6B' : '#3677d2',
                     }}
                     onClick={() => setPsProgTopen(true)}
                   />
@@ -287,7 +287,7 @@ const PsRegisModal: React.FC<IPsRegisModal> = (props) => {
               selectProg={hdlSelectPsProg}
               deselectProg={hdlDeselectPsProg}
               options={partnershipProgOptions}
-              bgC='!bg-[#6472cf]'
+              bgC='bg-[#2B6CB0]!'
               clearAll={() => form.setFieldsValue({ major: [] })}
             />
           </Form.Item>
@@ -302,7 +302,7 @@ const PsRegisModal: React.FC<IPsRegisModal> = (props) => {
             block
             icon={<SendOutlined />}
             loading={isLoad}
-            className='!bg-[#28156E]'
+            className='bg-[#1B3A6B]!'
           >
             {t('bs')}
           </Button>

@@ -16,7 +16,6 @@ import { useShortCrsData } from '../hooks';
 import styles from '../iesTraining.module.scss';
 import { Text, Title } from '@/components';
 import { TrainDetailTab } from '@/constants';
-import { useUserStore } from '@/store';
 import type { ShortCrsTypeEnum } from '@/utils';
 
 const ProgOvw = lazy(() => import('@/pages/training/components/ProgOvw'));
@@ -28,11 +27,11 @@ const StRegisForm = lazy(
 
 interface IShortCrsDetailProps {
   scType: ShortCrsTypeEnum;
+  dark: boolean;
 }
 
 const ShortCrsDetail: React.FC<IShortCrsDetailProps> = (props) => {
-  const { scType } = props;
-  const { isDark } = useUserStore();
+  const { scType, dark } = props;
   const { t } = useTranslation('shortCrsDetail');
   const isMb = useMediaQuery({ maxWidth: 768 });
   const isTl = useMediaQuery({ minWidth: 769, maxWidth: 1024 });
@@ -53,75 +52,75 @@ const ShortCrsDetail: React.FC<IShortCrsDetailProps> = (props) => {
         label: !isMb ? (
           <Title
             level={5}
-            className={`${stActKey === TrainDetailTab.Overview ? 'text-[#6472cf]!' : 'text-white!'} m-0!`}
+            className={`${stActKey === TrainDetailTab.Overview ? 'text-[#2B6CB0]!' : 'text-white!'} m-0!`}
           >
             {t('progOvw')}
           </Title>
         ) : (
           <Tooltip title={t('progOvw')}>
             <ProfileOutlined
-              className={`${stActKey === TrainDetailTab.Overview ? 'text-[#6472cf]!' : 'text-white!'} text-base!`}
+              className={`${stActKey === TrainDetailTab.Overview ? 'text-[#2B6CB0]!' : 'text-white!'} text-base!`}
             />
           </Tooltip>
         ),
-        children: <ProgOvw ovwScDt={shortCrsDt?.overview} dark={isDark} />,
+        children: <ProgOvw ovwScDt={shortCrsDt?.overview} dark={dark} />,
       },
       {
         key: TrainDetailTab.Admission,
         label: !isMb ? (
           <Title
             level={5}
-            className={`${stActKey === TrainDetailTab.Admission ? 'text-[#6472cf]!' : 'text-white!'} m-0!`}
+            className={`${stActKey === TrainDetailTab.Admission ? 'text-[#2B6CB0]!' : 'text-white!'} m-0!`}
           >
             {t('admissIf')}
           </Title>
         ) : (
           <Tooltip title={t('admissIf')}>
             <InfoCircleOutlined
-              className={`${stActKey === TrainDetailTab.Admission ? 'text-[#6472cf]!' : 'text-white!'} text-base!`}
+              className={`${stActKey === TrainDetailTab.Admission ? 'text-[#2B6CB0]!' : 'text-white!'} text-base!`}
             />
           </Tooltip>
         ),
-        children: <AdmissInfo admisScInfoDt={shortCrsDt?.info} dark={isDark} />,
+        children: <AdmissInfo admisScInfoDt={shortCrsDt?.info} dark={dark} />,
       },
       {
         key: TrainDetailTab.Apply,
         label: !isMb ? (
           <Title
             level={5}
-            className={`${stActKey === TrainDetailTab.Apply ? 'text-[#6472cf]!' : 'text-white!'} m-0!`}
+            className={`${stActKey === TrainDetailTab.Apply ? 'text-[#2B6CB0]!' : 'text-white!'} m-0!`}
           >
             {t('tui')}
           </Title>
         ) : (
           <Tooltip title={t('tui')}>
             <WalletOutlined
-              className={`${stActKey === TrainDetailTab.Apply ? 'text-[#6472cf]!' : 'text-white!'} text-base!`}
+              className={`${stActKey === TrainDetailTab.Apply ? 'text-[#2B6CB0]!' : 'text-white!'} text-base!`}
             />
           </Tooltip>
         ),
-        children: <TuiApply tuiApplyScDt={shortCrsDt?.apply} dark={isDark} />,
+        children: <TuiApply tuiApplyScDt={shortCrsDt?.apply} dark={dark} />,
       },
       {
         key: TrainDetailTab.Register,
         label: !isMb ? (
           <Title
             level={5}
-            className={`${stActKey === TrainDetailTab.Register ? 'text-[#6472cf]!' : 'text-white!'} m-0!`}
+            className={`${stActKey === TrainDetailTab.Register ? 'text-[#2B6CB0]!' : 'text-white!'} m-0!`}
           >
             {t('form')}
           </Title>
         ) : (
           <Tooltip title={t('form')}>
             <FormOutlined
-              className={`${stActKey === TrainDetailTab.Register ? 'text-[#6472cf]!' : 'text-white!'} text-base!`}
+              className={`${stActKey === TrainDetailTab.Register ? 'text-[#2B6CB0]!' : 'text-white!'} text-base!`}
             />
           </Tooltip>
         ),
-        children: <StRegisForm dark={isDark} />,
+        children: <StRegisForm dark={dark} />,
       },
     ],
-    [stActKey, isMb, shortCrsDt, isDark, t],
+    [stActKey, isMb, shortCrsDt, dark, t],
   );
 
   const hdlChangeTab = useCallback(
@@ -136,7 +135,14 @@ const ShortCrsDetail: React.FC<IShortCrsDetailProps> = (props) => {
   );
 
   return (
-    <div className='pb-20 pt-10 mt-10 bg-linear-to-br from-[#0a0e1a] via-[#1d1147] to-[#0a1628] rounded-2xl overflow-hidden'>
+    <div
+      className='pb-20 pt-10 mt-10  rounded-2xl overflow-hidden'
+      style={{
+        background: dark
+          ? 'linear-gradient(to bottom right, #0a0e1a,#1d1147,#0a1628)'
+          : 'linear-gradient(135deg, #0EA5C8 0%, #1E4D8C 100%)',
+      }}
+    >
       <div
         className={`${isMb ? 'px-4 pt-6' : isTl ? 'px-8 pt-10' : 'px-16 pt-12'}`}
       >
@@ -176,7 +182,7 @@ const ShortCrsDetail: React.FC<IShortCrsDetailProps> = (props) => {
                 <Button
                   type='primary'
                   size='large'
-                  className='bg-[#6472cf]! border-[#6472cf]! rounded-full! font-semibold! px-8! hover:bg-[#4f5eaf]! hover:border-[#4f5eaf]!'
+                  className='bg-[#2B6CB0]! border-[#2B6CB0]! rounded-full! font-semibold! px-8! hover:bg-[#1E4D8C]! hover:border-[#1E4D8C]!'
                   onClick={() => hdlChangeTab(TrainDetailTab.Register)}
                 >
                   {t('registerBtn')}

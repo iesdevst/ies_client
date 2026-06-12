@@ -42,7 +42,7 @@ const EvsFilters: React.FC<IEvsFilters> = (props) => {
     <Title
       level={5}
       style={{
-        color: isCollAct(key) ? '#1677ff' : undefined,
+        color: isCollAct(key) ? '#2B6CB0' : undefined,
         transition: '0.2s',
       }}
     >
@@ -226,7 +226,7 @@ const EvsFilters: React.FC<IEvsFilters> = (props) => {
           className={`${styles.filterCol}`}
           expandIcon={({ isActive }) =>
             isActive ? (
-              <DownOutlined className='!text-lg !text-[#1677ff]' />
+              <DownOutlined className='!text-lg text-[#2B6CB0]!' />
             ) : (
               <RightOutlined className='!text-lg' />
             )

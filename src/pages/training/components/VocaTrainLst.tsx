@@ -146,12 +146,14 @@ const VocaTrainLst: React.FC<IVocaTrainLst> = (props) => {
 
   return (
     <section className='!mt-20'>
-      <div className={`${dark ? '!bg-gray-800' : '!bg-[#FFFCF2]'} pt-10`}>
+      <div
+        className='pt-10'
+        style={{
+          background: 'linear-gradient(135deg, #1E4D8C 0%, #0EA5C8 100%)',
+        }}
+      >
         <div className='text-center mb-6'>
-          <Title
-            level={mb || tl ? 3 : 1}
-            className={`${dark ? '!text-blue-100' : '!text-[#2974D7]'}`}
-          >
+          <Title level={mb || tl ? 3 : 1} className='!text-white'>
             {t('discover')}
           </Title>
         </div>

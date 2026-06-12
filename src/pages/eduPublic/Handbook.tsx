@@ -13,9 +13,9 @@ const Handbook = () => {
   const { t } = useTranslation('handbook');
 
   return (
-    <section className='h-screen pt-5 px-10'>
-      <Title className='!text-center'>{t('handbook')}</Title>
-      <div className='mt-10 !h-4/5 overflow-hidden !rounded-3xl'>
+    <section className='flex flex-col h-full py-5 px-3 sm:px-6 md:px-10'>
+      <Title className='text-center! shrink-0'>{t('handbook')}</Title>
+      <div className='flex-1 min-h-0 mt-3 sm:mt-5 md:mt-10 overflow-hidden rounded-xl! sm:rounded-3xl!'>
         <Worker workerUrl='/pdf.worker.min.js'>
           <Viewer
             fileUrl='/files/hand_book.pdf'

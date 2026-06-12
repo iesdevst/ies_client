@@ -83,7 +83,7 @@ const SlideCus: React.FC<SlideCusLayoutProps> = (props) => {
 
           {/* Dots */}
           {images.length > 1 && (
-            <div className='absolute bottom-3 left-4 flex gap-x-3 z-10'>
+            <div className='absolute bottom-3 right-4 flex gap-x-3 z-10'>
               {images.map((_, idx) => (
                 <button
                   key={idx}

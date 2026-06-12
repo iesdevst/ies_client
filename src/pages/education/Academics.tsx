@@ -109,7 +109,7 @@ const Academics: React.FC = () => {
           {
             title: (
               <Text
-                color={isDark ? '#9393f1' : '#545969'}
+                color={isDark ? '#9393f1' : '#1E4D8C'}
                 className='!text-[16px] !font-bold'
               >
                 {t('pageTitle')}

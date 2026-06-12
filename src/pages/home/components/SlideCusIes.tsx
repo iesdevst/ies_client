@@ -1,8 +1,8 @@
 import { useTranslation } from 'react-i18next';
-import ADDKSC from '@/assets/imgs/addmis_dk_screen.webp';
+import ADMSL from '@/assets/imgs/addmis_slide.webp';
+import NPS from '@/assets/imgs/nine_plus_slide.webp';
 import PSHOU from '@/assets/imgs/ps_hou_sl.webp';
-// import PSHOUMB from '@/assets/imgs/ps_hou_sl_mb.webp';
-// import TSMBSC from '@/assets/imgs/ts_mb_screen.webp';
+import TS from '@/assets/imgs/trainings_slide.webp';
 import { IesClSection } from '@/components';
 import { useDevice } from '@/hooks';
 import { useUserStore } from '@/store';
@@ -11,7 +11,7 @@ const SlideCusIes: React.FC = () => {
   const { t } = useTranslation('slideCusIes');
   const { device } = useDevice();
   const { isDark } = useUserStore();
-  const images = [ADDKSC, PSHOU];
+  const images = [ADMSL, NPS, TS, PSHOU];
 
   const mb = device === 'mobile';
   const tl = device === 'tablet';

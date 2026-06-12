@@ -51,14 +51,14 @@ const VocaTrainDetail: React.FC = () => {
         label: !isMb ? (
           <Title
             level={5}
-            className={`${trainDtActKey === TrainDetailTab.Overview ? 'text-[#c92cc9]!' : 'text-white!'} m-0!`}
+            className={`${trainDtActKey === TrainDetailTab.Overview ? 'text-[#E8622A]!' : 'text-white!'} m-0!`}
           >
             {t('progOvw')}
           </Title>
         ) : (
           <Tooltip title={t('progOvw')}>
             <ProfileOutlined
-              className={`${trainDtActKey === TrainDetailTab.Overview ? 'text-[#c92cc9]!' : 'text-white!'} text-base!`}
+              className={`${trainDtActKey === TrainDetailTab.Overview ? 'text-[#E8622A]!' : 'text-white!'} text-base!`}
             />
           </Tooltip>
         ),
@@ -69,14 +69,14 @@ const VocaTrainDetail: React.FC = () => {
         label: !isMb ? (
           <Title
             level={5}
-            className={`${trainDtActKey === TrainDetailTab.Admission ? 'text-[#c92cc9]!' : 'text-white!'} m-0!`}
+            className={`${trainDtActKey === TrainDetailTab.Admission ? 'text-[#E8622A]!' : 'text-white!'} m-0!`}
           >
             {t('admissIf')}
           </Title>
         ) : (
           <Tooltip title={t('admissIf')}>
             <InfoCircleOutlined
-              className={`${trainDtActKey === TrainDetailTab.Admission ? 'text-[#c92cc9]!' : 'text-white!'} text-base!`}
+              className={`${trainDtActKey === TrainDetailTab.Admission ? 'text-[#E8622A]!' : 'text-white!'} text-base!`}
             />
           </Tooltip>
         ),
@@ -89,14 +89,14 @@ const VocaTrainDetail: React.FC = () => {
         label: !isMb ? (
           <Title
             level={5}
-            className={`${trainDtActKey === TrainDetailTab.Apply ? 'text-[#c92cc9]!' : 'text-white!'} m-0!`}
+            className={`${trainDtActKey === TrainDetailTab.Apply ? 'text-[#E8622A]!' : 'text-white!'} m-0!`}
           >
             {t('tui')}
           </Title>
         ) : (
           <Tooltip title={t('tui')}>
             <WalletOutlined
-              className={`${trainDtActKey === TrainDetailTab.Apply ? 'text-[#c92cc9]!' : 'text-white!'} text-base!`}
+              className={`${trainDtActKey === TrainDetailTab.Apply ? 'text-[#E8622A]!' : 'text-white!'} text-base!`}
             />
           </Tooltip>
         ),
@@ -107,14 +107,14 @@ const VocaTrainDetail: React.FC = () => {
         label: !isMb ? (
           <Title
             level={5}
-            className={`${trainDtActKey === TrainDetailTab.Register ? 'text-[#c92cc9]!' : 'text-white!'} m-0!`}
+            className={`${trainDtActKey === TrainDetailTab.Register ? 'text-[#E8622A]!' : 'text-white!'} m-0!`}
           >
             {t('form')}
           </Title>
         ) : (
           <Tooltip title={t('form')}>
             <FormOutlined
-              className={`${trainDtActKey === TrainDetailTab.Register ? 'text-[#c92cc9]!' : 'text-white!'} text-base!`}
+              className={`${trainDtActKey === TrainDetailTab.Register ? 'text-[#E8622A]!' : 'text-white!'} text-base!`}
             />
           </Tooltip>
         ),
@@ -133,7 +133,12 @@ const VocaTrainDetail: React.FC = () => {
 
   return (
     <div
-      className={`${isDark ? 'bg-linear-to-br from-[#0a0e1a] via-[#1d1147] to-[#0a1628]' : 'bg-gray-500'} pt-10! py-20!  min-h-screen`}
+      className='pt-10! py-20!  min-h-screen'
+      style={{
+        background: isDark
+          ? 'linear-gradient(to bottom right,#121a33,#2a1b66,#12243f)'
+          : 'linear-gradient(135deg, #1E4D8C 0%, #0EA5C8 100%)',
+      }}
     >
       <div
         className={`${isMb ? 'px-4 pt-6' : isTl ? 'px-8 pt-10' : 'px-16 pt-12'}`}
@@ -149,12 +154,12 @@ const VocaTrainDetail: React.FC = () => {
                   {!isMb ? (
                     <Text
                       color='rgba(255,255,255,0.6)'
-                      className='font-bold! text-sm!'
+                      className='font-bold! text-lg!'
                     >
                       {t('iv')}
                     </Text>
                   ) : (
-                    <ApartmentOutlined className='text-base! text-white/60!' />
+                    <ApartmentOutlined className='text-lg! text-white/60!' />
                   )}
                 </PrefetchLink>
               ),
@@ -162,8 +167,8 @@ const VocaTrainDetail: React.FC = () => {
             {
               title: (
                 <Text
-                  color='#C92CC9'
-                  className='text-sm! font-semibold! block!'
+                  color='#E8622A'
+                  className='text-lg! font-semibold! block!'
                 >
                   {t('progDt')}
                 </Text>
@@ -182,14 +187,14 @@ const VocaTrainDetail: React.FC = () => {
               className={`${isMb ? 'w-full' : 'flex-1'} flex flex-col gap-4`}
             >
               <Text
-                color='#a78bfa'
+                color='#E8622A'
                 className='text-xs! font-semibold! uppercase! tracking-widest! block!'
               >
                 IES COLLEGE
               </Text>
 
               <Text
-                color='rgba(255,255,255,0.45)'
+                color='white'
                 className='text-xs! uppercase! tracking-widest! block!'
               >
                 {detailTrainDt.program}
@@ -208,7 +213,7 @@ const VocaTrainDetail: React.FC = () => {
                 <Button
                   type='primary'
                   size='large'
-                  className='bg-[#c92cc9]! border-[#c92cc9]! rounded-full! font-semibold! px-8! hover:bg-[#a81ea8]! hover:border-[#a81ea8]!'
+                  className='bg-[#E8622A]! border-[#E8622A]! rounded-full! font-semibold! px-8! hover:bg-[#c4511e]! hover:border-[#c4511e]!'
                   onClick={() => hdlChangeTab(TrainDetailTab.Register)}
                 >
                   {t('registerBtn')}

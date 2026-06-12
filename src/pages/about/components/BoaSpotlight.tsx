@@ -20,7 +20,7 @@ const BoaSpotlight: React.FC<BoaSpotlightProps> = (props) => {
   return (
     <div
       className={`rounded-2xl overflow-hidden grid grid-cols-1 lg:grid-cols-2 ${
-        dark ? 'bg-gray-800' : 'bg-[#e8e0d0]'
+        dark ? 'bg-gray-500' : 'bg-[#e1e5eb]'
       }`}
     >
       {/* Left — animated photo */}
@@ -79,12 +79,12 @@ const BoaSpotlight: React.FC<BoaSpotlightProps> = (props) => {
               className={`
                 text-left py-3 px-4 rounded-lg border-l-7  transition-colors duration-200
                 cursor-pointer bg-transparent w-full
-                ${active ? (dark ? 'bg-gray-700! border-blue-500!' : 'bg-white shadow-sm border-orange-300!') : 'border-transparent!'}
+                ${active ? (dark ? 'bg-gray-700! border-blue-500!' : 'bg-white shadow-sm border-[#F4A340]!') : 'border-transparent!'}
               `}
               style={{ borderLeftColor: active ? accentLine : 'transparent' }}
             >
               <Text
-                color={active ? (dark ? 'white' : '#111827') : '#9ca3af'}
+                color={active ? (dark ? 'white' : '#1B3A6B') : '#9ca3af'}
                 className='font-semibold! text-lg! leading-snug! transition-colors block!'
               >
                 {m.name}
@@ -94,7 +94,7 @@ const BoaSpotlight: React.FC<BoaSpotlightProps> = (props) => {
                   active
                     ? dark
                       ? '#d1d5db'
-                      : '#4b5563'
+                      : '#4A6FA5'
                     : dark
                       ? '#4b5563'
                       : '#9ca3af'

@@ -60,7 +60,7 @@
   width: 40px;
   line-height: 40px;
   border-radius: 4px;
-  background: linear-gradient(to bottom right, #1f1b2e, #4f46e5);
+  background: linear-gradient(135deg, #1B3A6B, #2B6CB0);
   color: #fff;
   text-align: center;
   font-size: 22px;
@@ -76,7 +76,7 @@
   display: flex !important;
   align-items: center;
   justify-content: center;
-  color: rgb(6, 6, 85) !important;
+  color: #1B3A6B !important;
   margin-top: 4px;
 }
 
@@ -95,14 +95,14 @@
 }
 
 .ant-carousel .slick-dots li.slick-active::after {
-  background: #0f5787 !important;
+  background: #1B3A6B !important;
   width: 30px !important;
   height: 30px !important;
   border-radius: 50% !important;
 }
 
 .ant-carousel .dot-train .slick-dots li.slick-active::after {
-  background: rgb(191, 124, 191) !important;
+  background: #F4A340 !important;
   width: 16px !important;
   height: 16px !important;
   border-radius: 50% !important;

@@ -258,7 +258,7 @@ const NaiPage: React.FC<NaiPageLayoutProps> = (props) => {
                 {linkTo && (
                   <a href={linkTo} target='blank' rel='noopener noreferrer'>
                     <Text
-                      color={dark ? '#b1e0f7' : 'blue'}
+                      color={dark ? '#b1e0f7' : '#2B6CB0'}
                       className='!underline !text-lg'
                     >
                       {readOri}

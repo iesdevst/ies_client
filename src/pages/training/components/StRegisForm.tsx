@@ -109,7 +109,7 @@ const StRegisterForm: React.FC<IStRegisterForm> = (props) => {
       className={`${dark ? '!bg-gray-600' : 'bg-white'} rounded-2xl ${!mb ? 'py-10 px-17' : 'pb-10 pt-5 px-3.5'}`}
     >
       <Title
-        className={`!text-center !mb-12 italic !font-bold ${dark ? '!text-[#98c3ff]' : ' !text-[#6472cf]'}`}
+        className={`!text-center !mb-12 italic !font-bold ${dark ? 'text-[#98c3ff]!' : 'text-[#2B6CB0]!'}`}
       >
         {t('title')}
       </Title>
@@ -254,7 +254,7 @@ const StRegisterForm: React.FC<IStRegisterForm> = (props) => {
                       className='!text-xl'
                       style={{
                         cursor: 'pointer',
-                        color: !dark ? '#6472cf' : '#3677d2',
+                        color: !dark ? '#2B6CB0' : '#3677d2',
                       }}
                       onClick={() => setStTopen(true)}
                     />
@@ -264,7 +264,7 @@ const StRegisterForm: React.FC<IStRegisterForm> = (props) => {
                     className='!text-xl'
                     style={{
                       cursor: 'pointer',
-                      color: !dark ? '#6472cf' : '#3677d2',
+                      color: !dark ? '#2B6CB0' : '#3677d2',
                     }}
                     onClick={() => setStTopen(true)}
                   />
@@ -278,7 +278,7 @@ const StRegisterForm: React.FC<IStRegisterForm> = (props) => {
               selectProg={handleSelectSt}
               deselectProg={handleDeselectSt}
               options={shortTermTrainOptions}
-              bgC='!bg-[#6472cf]'
+              bgC='!bg-[#2B6CB0]'
               clearAll={() => form.setFieldsValue({ shortTermType: [] })}
               lstBgCus={dark ? 'bg-[#708db5]' : ''}
             />
@@ -312,7 +312,7 @@ const StRegisterForm: React.FC<IStRegisterForm> = (props) => {
             block
             icon={<SendOutlined />}
             loading={isLoad}
-            className='!bg-[#6472cf]'
+            className='bg-[#2B6CB0]!'
           >
             {t('submit')}
           </Button>

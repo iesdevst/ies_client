@@ -24,7 +24,7 @@ function App() {
       theme={{
         hashed: false,
         token: {
-          colorPrimary: '#474669',
+          colorPrimary: '#1B3A6B',
           colorText: isDark ? 'white' : 'black',
           fontFamily: 'IBM Plex Sans, sans-serif',
         },
@@ -32,7 +32,7 @@ function App() {
         components: {
           Layout: { headerBg: 'transparent' },
           Button: {
-            colorBgContainer: '#B5B5B5',
+            colorBgContainer: '#2B6CB0',
             colorText: 'white',
           },
           Tabs: { horizontalMargin: '0px' },

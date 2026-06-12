@@ -25,7 +25,9 @@ const Dashboard: React.FC = () => {
       <Suspense fallback={null}>
         <LazySec Component={FieldOfStudy} />
       </Suspense>
-      <StatIes />
+      <Suspense fallback={null}>
+        <StatIes />
+      </Suspense>
       <Suspense fallback={null}>
         <LazySec Component={SlideCusIes} />
       </Suspense>

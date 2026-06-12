@@ -1,7 +1,7 @@
 import VerticalAlignTopOutlined from '@ant-design/icons/es/icons/VerticalAlignTopOutlined';
 import BackTop from 'antd/es/back-top';
 import Layout from 'antd/es/layout';
-import React, { lazy, useEffect, useRef, useState } from 'react';
+import React, { lazy, Suspense, useEffect, useRef, useState } from 'react';
 import { Outlet, useLocation } from 'react-router-dom';
 import FooterIes from './components/FooterIes';
 import HeaderIes from './components/HeaderIes';
@@ -69,12 +69,16 @@ const IesClientLayout: React.FC = () => {
           </BackTop>
         ) : (
           // <div className='fixed right-5 bottom-24 z-50 rounded-xl shadow-lg bg-white px-1 pt-1.5'>
-          <RadialMenu />
+          <Suspense fallback={null}>
+            <RadialMenu />
+          </Suspense>
           // </div>
         )}
       </Layout>
       {drawerKey && (
-        <MegaDrawer activeKey={drawerKey} onClose={() => setDrawerKey(null)} />
+        <Suspense fallback={null}>
+          <MegaDrawer activeKey={drawerKey} onClose={() => setDrawerKey(null)} />
+        </Suspense>
       )}
     </>
   );

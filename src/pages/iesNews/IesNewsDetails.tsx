@@ -72,7 +72,7 @@ const IesNewsDetails = () => {
       {
         title: (
           <Text
-            color={isDark ? '#74abf9' : '#545969'}
+            color={isDark ? '#74abf9' : '#1E4D8C'}
             className='!text-[16px] !font-bold'
           >
             {t('newsD')}

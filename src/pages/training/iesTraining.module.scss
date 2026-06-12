@@ -4,7 +4,7 @@
       border-bottom: none !important;
     }
     .ant-tabs-nav-wrap {
-      background: #2f6fd6;
+      background: #1E4D8C;
       padding: 10px;
       border-radius: 999px;
       margin: 0 200px;
@@ -102,12 +102,12 @@
     .ant-tabs-tab:hover {
       color: #fff;
       opacity: 0.85;
-      background-color: #c44bc4;
+      background-color: #E8622A;
       cursor: pointer;
     }
 
     .ant-tabs-tab-active {
-      background: #c92cc9;
+      background: #E8622A;
     }
 
     .ant-tabs-tab-active .ant-tabs-tab-btn {
@@ -187,7 +187,7 @@
     }
 
     .ant-tabs-tab-active .ant-tabs-tab-btn {
-      color: #c92cc9 !important;
+      color: #E8622A !important;
       font-weight: 700;
     }
 
@@ -253,7 +253,7 @@
     }
 
     .ant-tabs-tab-active .ant-tabs-tab-btn {
-      color: #6472cf !important;
+      color: #2B6CB0 !important;
       font-weight: 700;
     }
 
@@ -294,7 +294,7 @@
     }
 
     .ant-tabs-nav-wrap {
-      background: #8990bc;
+      background: #4A6FA5;
       padding: 10px;
       border-radius: 999px;
       margin: 0 320px;
@@ -392,16 +392,16 @@
     .ant-tabs-tab:hover {
       color: #fff;
       opacity: 0.85;
-      background-color: #656b94;
+      background-color: #3A5F94;
     }
 
     .ant-tabs-tab-active {
-      background: #6472cf !important;
+      background: #2B6CB0 !important;
     }
 
     .ant-tabs-tab-active .ant-tabs-tab-btn {
       font-weight: 600;
-      color: white !important; /* Đảm bảo chữ active trắng */
+      color: white !important;
     }
 
     .ant-tabs-ink-bar {
