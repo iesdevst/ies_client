@@ -4,7 +4,7 @@
       border-bottom: none !important;
     }
     .ant-tabs-nav-wrap {
-      background: #1E4D8C;
+      background: #1e4d8c;
       padding: 10px;
       border-radius: 999px;
       margin: 0 200px;
@@ -102,12 +102,12 @@
     .ant-tabs-tab:hover {
       color: #fff;
       opacity: 0.85;
-      background-color: #E8622A;
+      background-color: #e8622a;
       cursor: pointer;
     }
 
     .ant-tabs-tab-active {
-      background: #E8622A;
+      background: #e8622a;
     }
 
     .ant-tabs-tab-active .ant-tabs-tab-btn {
@@ -187,7 +187,7 @@
     }
 
     .ant-tabs-tab-active .ant-tabs-tab-btn {
-      color: #E8622A !important;
+      color: #e8622a !important;
       font-weight: 700;
     }
 
@@ -241,7 +241,6 @@
       padding: 8px 24px;
       font-weight: 500;
       transition: all 0.25s ease;
-      
     }
 
     .ant-tabs-tab:hover {
@@ -253,7 +252,7 @@
     }
 
     .ant-tabs-tab-active .ant-tabs-tab-btn {
-      color: #2B6CB0 !important;
+      color: #2b6cb0 !important;
       font-weight: 700;
     }
 
@@ -289,15 +288,13 @@
 
 .iesShortCrsTabs {
   :global {
-    .ant-tabs-nav::before {
-      border-bottom: none !important;
-    }
-
     .ant-tabs-nav-wrap {
-      background: #4A6FA5;
+      background: #4a6fa5;
       padding: 10px;
       border-radius: 999px;
-      margin: 0 320px;
+      width: fit-content !important;
+      flex: none !important;
+      margin: 0 auto;
     }
 
     .ant-tabs-tab {
@@ -307,18 +304,8 @@
       padding: 6px 18px;
       transition: all 0.3s ease;
     }
-
-    .ant-tabs-tab:hover {
-      color: #fff;
-      opacity: 0.85;
-    }
-
     .ant-tabs-tab-active {
       background: #fff;
-    }
-
-    .ant-tabs-tab-active .ant-tabs-tab-btn {
-      font-weight: 600;
     }
 
     .ant-tabs-ink-bar {
@@ -329,11 +316,12 @@
   /* Tablet lg */
   @media (max-width: 1024px) {
     :global {
-      .ant-tabs-nav-wrap {
-        padding: 20px 0;
+      .ant-tabs-nav {
+        padding: 0 30px 0 30px !important;
       }
       .ant-tabs-nav-wrap {
-        margin: 0 50px;
+        width: fit-content !important;
+        flex: none !important;
       }
     }
   }
@@ -342,7 +330,9 @@
   @media (max-width: 912px) {
     :global {
       .ant-tabs-nav-wrap {
-        margin: 0 6px;
+        width: 100% !important;
+        flex: none !important;
+        margin: 0 auto;
         padding: 15px 8px;
       }
 
@@ -362,71 +352,64 @@
         font-size: 12px;
         margin: 0 15px !important;
       }
+      .ant-tabs-nav-wrap {
+        width: 100% !important;
+        flex: none !important;
+        margin: 0 auto;
+      }
     }
   }
 }
 
 .iesShortSrcnDtTabs {
   :global {
-    .ant-tabs-nav::before {
-      border-bottom: none !important;
+    .ant-tabs-nav {
+      width: fit-content !important;
     }
 
     .ant-tabs-nav-wrap {
-      background: transparent !important;
-      padding: 0 !important;
-      border-radius: 0 !important;
+      background: rgba(255, 255, 255, 0.1);
+      width: fit-content !important;
       margin: 0 !important;
+      margin-bottom: 10px !important;
+      border-radius: 5px;
     }
 
     .ant-tabs-tab {
-      font-weight: 700;
-      padding: 6px 18px;
+      padding: 5px 12px;
       transition: all 0.3s ease !important;
-      background: white !important; /* Light mode */
-      border-radius: 10px 10px 0 0;
-      margin: 0 0 0 10px !important;
-      color: #333; /* Thêm màu chữ light */
+      margin: 0 !important;
     }
 
-    .ant-tabs-tab:hover {
-      color: #fff;
-      opacity: 0.85;
-      background-color: #3A5F94;
+    .ant-tabs-nav-list {
+      display: flex !important;
+      gap: 10px;
     }
 
     .ant-tabs-tab-active {
-      background: #2B6CB0 !important;
+      background: #2b6cb0;
+      border-radius: 5px !important;
+      margin: 0 !important;
+      padding: 6px 12px;
     }
+  }
 
-    .ant-tabs-tab-active .ant-tabs-tab-btn {
-      font-weight: 600;
-      color: white !important;
+  @media (max-width: 1024px) {
+    :global(.ant-tabs-nav-wrap) {
+      margin: 0 60px;
     }
+  }
 
-    .ant-tabs-ink-bar {
-      display: none;
-    }
-
-    /* ==================== DARK MODE ==================== */
-    :global(.dark) & {
-      .ant-tabs-tab {
-        background: gray !important;
-      }
-
-      .ant-tabs-tab-active {
-        background: #4c5ab8 !important;
-      }
-    }
-
-    /* Responsive */
-    @media (max-width: 768px) {
+  @media (max-width: 768px) {
+    :global {
       .ant-tabs-nav-wrap {
-        margin: 0 !important;
+        margin: 0 8px;
+        padding: 4px;
       }
+
       .ant-tabs-tab {
-        padding: 5px 20px !important;
-        margin-right: 5px !important;
+        padding: 5px 14px;
+        font-size: 12px;
       }
     }
   }

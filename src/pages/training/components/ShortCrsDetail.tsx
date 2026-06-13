@@ -10,12 +10,12 @@ import Tabs from 'antd/es/tabs';
 import Tooltip from 'antd/es/tooltip';
 import { lazy, useCallback, useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
-import { useMediaQuery } from 'react-responsive';
 import { useSearchParams } from 'react-router-dom';
 import { useShortCrsData } from '../hooks';
 import styles from '../iesTraining.module.scss';
 import { Text, Title } from '@/components';
 import { TrainDetailTab } from '@/constants';
+import { useDevice } from '@/hooks';
 import type { ShortCrsTypeEnum } from '@/utils';
 
 const ProgOvw = lazy(() => import('@/pages/training/components/ProgOvw'));
@@ -33,10 +33,10 @@ interface IShortCrsDetailProps {
 const ShortCrsDetail: React.FC<IShortCrsDetailProps> = (props) => {
   const { scType, dark } = props;
   const { t } = useTranslation('shortCrsDetail');
-  const isMb = useMediaQuery({ maxWidth: 768 });
-  const isTl = useMediaQuery({ minWidth: 769, maxWidth: 1024 });
   const [stSearchPrs, setStSearchPrs] = useSearchParams();
   const stActKey = stSearchPrs.get('subTab') || TrainDetailTab.Overview;
+
+  const { isMobile: mb, isTablet: tl } = useDevice();
 
   const { data } = useShortCrsData();
 
@@ -49,17 +49,17 @@ const ShortCrsDetail: React.FC<IShortCrsDetailProps> = (props) => {
     () => [
       {
         key: TrainDetailTab.Overview,
-        label: !isMb ? (
+        label: !mb ? (
           <Title
             level={5}
-            className={`${stActKey === TrainDetailTab.Overview ? 'text-[#2B6CB0]!' : 'text-white!'} m-0!`}
+            className={`${stActKey === TrainDetailTab.Overview ? 'text-white!' : 'text-gray-400!'} m-0!`}
           >
             {t('progOvw')}
           </Title>
         ) : (
           <Tooltip title={t('progOvw')}>
             <ProfileOutlined
-              className={`${stActKey === TrainDetailTab.Overview ? 'text-[#2B6CB0]!' : 'text-white!'} text-base!`}
+              className={`${stActKey === TrainDetailTab.Overview ? 'text-white!' : 'text-gray-400!'} text-base!`}
             />
           </Tooltip>
         ),
@@ -67,17 +67,17 @@ const ShortCrsDetail: React.FC<IShortCrsDetailProps> = (props) => {
       },
       {
         key: TrainDetailTab.Admission,
-        label: !isMb ? (
+        label: !mb ? (
           <Title
             level={5}
-            className={`${stActKey === TrainDetailTab.Admission ? 'text-[#2B6CB0]!' : 'text-white!'} m-0!`}
+            className={`${stActKey === TrainDetailTab.Admission ? 'text-white!' : 'text-gray-400!'} m-0!`}
           >
             {t('admissIf')}
           </Title>
         ) : (
           <Tooltip title={t('admissIf')}>
             <InfoCircleOutlined
-              className={`${stActKey === TrainDetailTab.Admission ? 'text-[#2B6CB0]!' : 'text-white!'} text-base!`}
+              className={`${stActKey === TrainDetailTab.Admission ? 'text-white!' : 'text-gray-400!'} text-base!`}
             />
           </Tooltip>
         ),
@@ -85,17 +85,17 @@ const ShortCrsDetail: React.FC<IShortCrsDetailProps> = (props) => {
       },
       {
         key: TrainDetailTab.Apply,
-        label: !isMb ? (
+        label: !mb ? (
           <Title
             level={5}
-            className={`${stActKey === TrainDetailTab.Apply ? 'text-[#2B6CB0]!' : 'text-white!'} m-0!`}
+            className={`${stActKey === TrainDetailTab.Apply ? 'text-white!' : 'text-gray-400!'} m-0!`}
           >
             {t('tui')}
           </Title>
         ) : (
           <Tooltip title={t('tui')}>
             <WalletOutlined
-              className={`${stActKey === TrainDetailTab.Apply ? 'text-[#2B6CB0]!' : 'text-white!'} text-base!`}
+              className={`${stActKey === TrainDetailTab.Apply ? 'text-white!' : 'text-gray-400!'} text-base!`}
             />
           </Tooltip>
         ),
@@ -103,24 +103,24 @@ const ShortCrsDetail: React.FC<IShortCrsDetailProps> = (props) => {
       },
       {
         key: TrainDetailTab.Register,
-        label: !isMb ? (
+        label: !mb ? (
           <Title
             level={5}
-            className={`${stActKey === TrainDetailTab.Register ? 'text-[#2B6CB0]!' : 'text-white!'} m-0!`}
+            className={`${stActKey === TrainDetailTab.Register ? 'text-white!' : 'text-gray-400!'} m-0!`}
           >
             {t('form')}
           </Title>
         ) : (
           <Tooltip title={t('form')}>
             <FormOutlined
-              className={`${stActKey === TrainDetailTab.Register ? 'text-[#2B6CB0]!' : 'text-white!'} text-base!`}
+              className={`${stActKey === TrainDetailTab.Register ? 'text-white!' : 'text-gray-400!'} text-base!`}
             />
           </Tooltip>
         ),
         children: <StRegisForm dark={dark} />,
       },
     ],
-    [stActKey, isMb, shortCrsDt, dark, t],
+    [stActKey, mb, shortCrsDt, dark, t],
   );
 
   const hdlChangeTab = useCallback(
@@ -144,17 +144,15 @@ const ShortCrsDetail: React.FC<IShortCrsDetailProps> = (props) => {
       }}
     >
       <div
-        className={`${isMb ? 'px-4 pt-6' : isTl ? 'px-8 pt-10' : 'px-16 pt-12'}`}
+        className={`${mb ? 'px-4 pt-6' : tl ? 'px-8 pt-10' : 'px-16 pt-12'}`}
       >
         {/* Hero: text left + image right */}
         {shortCrsDt && (
           <div
-            className={`flex ${isMb ? 'flex-col gap-6' : 'flex-row items-center gap-16'} mb-10`}
+            className={`flex ${mb ? 'flex-col gap-6' : 'flex-row items-center gap-16'} mb-10`}
           >
             {/* Left: text content */}
-            <div
-              className={`${isMb ? 'w-full' : 'flex-1'} flex flex-col gap-4`}
-            >
+            <div className={`${mb ? 'w-full' : 'flex-1'} flex flex-col gap-4`}>
               <Text
                 color='#a78bfa'
                 className='text-xs! font-semibold! uppercase! tracking-widest! block!'
@@ -170,14 +168,14 @@ const ShortCrsDetail: React.FC<IShortCrsDetailProps> = (props) => {
               </Text>
 
               <Title
-                level={isMb ? 2 : 1}
+                level={mb ? 2 : 1}
                 className='text-white! m-0! leading-tight!'
               >
                 {shortCrsDt.shortCrsTit}
               </Title>
 
               <div
-                className={`flex ${isMb ? 'flex-col' : 'flex-row'} gap-3 mt-3`}
+                className={`flex ${mb ? 'flex-col' : 'flex-row'} gap-3 mt-3`}
               >
                 <Button
                   type='primary'
@@ -198,14 +196,14 @@ const ShortCrsDetail: React.FC<IShortCrsDetailProps> = (props) => {
             </div>
 
             {/* Right: course image (desktop + tablet only) */}
-            {!isMb && (
+            {!mb && (
               <div className='flex-1 flex justify-center'>
                 <Image
                   src={shortCrsDt.imgDetail}
                   preview={false}
                   loading='lazy'
                   alt={shortCrsDt.shortCrsTit}
-                  className={`rounded-2xl! shadow-2xl! object-cover! w-full! ${isTl ? 'max-h-70!' : 'max-h-95!'}`}
+                  className={`rounded-2xl! shadow-2xl! object-cover! w-full! ${tl ? 'max-h-70!' : 'max-h-95!'}`}
                 />
               </div>
             )}
@@ -217,8 +215,8 @@ const ShortCrsDetail: React.FC<IShortCrsDetailProps> = (props) => {
           activeKey={stActKey}
           onChange={hdlChangeTab}
           items={tabs}
-          className={styles.vocaScDetailTabs}
-          centered
+          className={styles.iesShortSrcnDtTabs}
+          // centered
           destroyOnHidden
         />
       </div>

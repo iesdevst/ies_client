@@ -149,7 +149,7 @@ const ShortCrsTabLst: React.FC<IShortCrsTabLst> = (props) => {
           items={tabs}
           onChange={hdlChangeTab}
           centered
-          className={`${styles.iesShortCrsTabs}`}
+          className={`${styles.iesShortCrsTabs} w-full!`}
         />
       </div>
     </section>
