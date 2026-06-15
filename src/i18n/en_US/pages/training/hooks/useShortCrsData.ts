@@ -3,7 +3,7 @@ export default {
   method:
     'Admission is based on Lower Secondary School transcripts (THCS). No entrance exam required.',
   apply:
-    'The school offers flexible study pathways for both lower secondary (THCS) and upper secondary (THPT) students, including general education and specialized training programs. Please contact the Admissions Office via the main Key Contact section or complete the registration form to receive detailed consultation on programs and tuition fees.',
+    'IES College offers flexible study pathways for both lower secondary and high school graduates, including combined general education and specialized vocational training tracks. Please contact the Admissions Office via the main Contact section or complete the Advisory Registration form to receive detailed information on programs and tuition fees.',
   doc: 'Application form, graduation certificate or temporary certificate, academic transcript, ID copies, birth certificate, and recent photos.',
   work: 'Submit applications at 98 Pham Van Chieu Street, Ho Chi Minh City. Office hours: Monday to Saturday, 8:00 AM – 12:00 PM and 1:00 PM – 5:00 PM.',
 

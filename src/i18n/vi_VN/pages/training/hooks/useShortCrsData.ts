@@ -2,7 +2,8 @@ export default {
   req: 'Tốt nghiệp Trung học cơ sở (THCS) trở lên. Dành cho học sinh đã hoàn thành THPT hoặc đang theo học tại trung cấp, cao đẳng hoặc đại học.',
   method: 'Xét tuyển dựa trên học bạ THCS. Không yêu cầu thi đầu vào.',
   apply:
-    'Nhà trường cung cấp lộ trình linh hoạt cho học sinh THCS và THPT, bao gồm chương trình văn hóa và đào tạo chuyên ngành. Liên hệ tuyển sinh trong phần Liên hệ chính hoặc điền vào biểu mẫu đăng ký để được tư vấn chi tiết về chương trình cũng như học phí.',
+    'Nhà trường cung cấp lộ trình linh hoạt cho học sinh THCS và THPT, bao gồm chương trình văn hóa và đào tạo chuyên ngành. Liên hệ tuyển sinh trong phần Liên hệ chính hoặc điền vào Đăng ký tư vấn để được tư vấn chi tiết về chương trình cũng như học phí.',
+
   doc: 'Đơn đăng ký, bằng tốt nghiệp hoặc giấy chứng nhận tạm thời, học bạ, bản sao CCCD/CMND, giấy khai sinh và ảnh thẻ gần đây.',
   work: 'Nộp hồ sơ tại 98 Phạm Văn Chiêu, TP.HCM. Giờ làm việc: Thứ Hai đến Thứ Bảy, 8:00 – 12:00 và 13:00 – 17:00.',
 

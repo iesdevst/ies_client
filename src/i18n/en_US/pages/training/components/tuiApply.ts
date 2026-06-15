@@ -1,5 +1,5 @@
 export default {
-  admissRe: 'Admission Requirements',
+  admissRe: 'Enrollment Support',
   applyD: 'Application Documents',
   loca: 'Location and Working Hours',
 };

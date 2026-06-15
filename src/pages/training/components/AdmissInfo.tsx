@@ -46,7 +46,7 @@ const AdmissInfo: React.FC<IAdmissInfoProps> = (props) => {
               </div>
               <Text
                 color={dark ? 'rgba(255,255,255,0.65)' : '#4b5563'}
-                className='text-sm! block! whitespace-pre-line!'
+                className='text-lg! block! whitespace-pre-line!'
               >
                 {admisInfoDt.require}
               </Text>
@@ -74,7 +74,7 @@ const AdmissInfo: React.FC<IAdmissInfoProps> = (props) => {
               </div>
               <Text
                 color={dark ? 'rgba(255,255,255,0.65)' : '#4b5563'}
-                className='text-sm! block! whitespace-pre-line!'
+                className='text-lg! block! whitespace-pre-line!'
               >
                 {admisInfoDt.method}
               </Text>
@@ -107,7 +107,7 @@ const AdmissInfo: React.FC<IAdmissInfoProps> = (props) => {
               </div>
               <Text
                 color={dark ? 'rgba(255,255,255,0.65)' : '#4b5563'}
-                className='text-sm! block! whitespace-pre-line!'
+                className='text-lg! block! whitespace-pre-line!'
               >
                 {admisScInfoDt.require}
               </Text>
@@ -135,7 +135,7 @@ const AdmissInfo: React.FC<IAdmissInfoProps> = (props) => {
               </div>
               <Text
                 color={dark ? 'rgba(255,255,255,0.65)' : '#4b5563'}
-                className='text-sm! block! whitespace-pre-line!'
+                className='text-lg! block! whitespace-pre-line!'
               >
                 {admisScInfoDt.method}
               </Text>

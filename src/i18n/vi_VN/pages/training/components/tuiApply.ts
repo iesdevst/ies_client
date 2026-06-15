@@ -1,5 +1,5 @@
 export default {
-  admissRe: 'Điều kiện tuyển sinh',
+  admissRe: 'Hỗ trợ đăng ký',
   applyD: 'Hồ sơ đăng ký',
   loca: 'Địa điểm và thời gian làm việc',
 };

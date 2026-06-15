@@ -4,7 +4,7 @@ export default {
   progOvw: 'Program Overview',
   admissIf: 'Admissions Info',
   tui: 'Tuition & Apply',
-  form: 'Register Form',
+  form: 'Advisory Registration',
   registerBtn: 'Register Now',
   downloadBtn: 'Download Program',
 };

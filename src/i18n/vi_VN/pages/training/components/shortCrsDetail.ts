@@ -3,7 +3,7 @@ export default {
   progOvw: 'Tổng quan',
   admissIf: 'Tuyển sinh',
   tui: 'Học phí & Đăng ký',
-  form: 'Biểu mẫu đăng ký',
+  form: 'Đăng ký tư vấn',
   registerBtn: 'Đăng ký ngay',
   downloadBtn: 'Tải chương trình',
 };

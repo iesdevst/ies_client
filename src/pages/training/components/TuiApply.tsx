@@ -47,7 +47,7 @@ const TuiApply: React.FC<ITuiApplyProps> = (props) => {
               </div>
               <Text
                 color={dark ? 'rgba(255,255,255,0.65)' : '#4b5563'}
-                className='text-sm! block! whitespace-pre-line!'
+                className='text-lg! block! whitespace-pre-line!'
               >
                 {tuiApplyDt.requirement}
               </Text>
@@ -75,7 +75,7 @@ const TuiApply: React.FC<ITuiApplyProps> = (props) => {
               </div>
               <Text
                 color={dark ? 'rgba(255,255,255,0.65)' : '#4b5563'}
-                className='text-sm! block! whitespace-pre-line!'
+                className='text-lg! block! whitespace-pre-line!'
               >
                 {tuiApplyDt.document}
               </Text>
@@ -103,7 +103,7 @@ const TuiApply: React.FC<ITuiApplyProps> = (props) => {
               </div>
               <Text
                 color={dark ? 'rgba(255,255,255,0.65)' : '#4b5563'}
-                className='text-sm! block! whitespace-pre-line!'
+                className='text-lg! block! whitespace-pre-line!'
               >
                 {tuiApplyDt.work}
               </Text>
@@ -136,7 +136,7 @@ const TuiApply: React.FC<ITuiApplyProps> = (props) => {
               </div>
               <Text
                 color={dark ? 'rgba(255,255,255,0.65)' : '#4b5563'}
-                className='text-sm! block! whitespace-pre-line!'
+                className='text-lg! block! whitespace-pre-line!'
               >
                 {tuiApplyScDt.requirement}
               </Text>
@@ -164,7 +164,7 @@ const TuiApply: React.FC<ITuiApplyProps> = (props) => {
               </div>
               <Text
                 color={dark ? 'rgba(255,255,255,0.65)' : '#4b5563'}
-                className='text-sm! block! whitespace-pre-line!'
+                className='text-lg! block! whitespace-pre-line!'
               >
                 {tuiApplyScDt.document}
               </Text>
@@ -192,7 +192,7 @@ const TuiApply: React.FC<ITuiApplyProps> = (props) => {
               </div>
               <Text
                 color={dark ? 'rgba(255,255,255,0.65)' : '#4b5563'}
-                className='text-sm! block! whitespace-pre-line!'
+                className='text-lg! block! whitespace-pre-line!'
               >
                 {tuiApplyScDt.work}
               </Text>

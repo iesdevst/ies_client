@@ -13,13 +13,13 @@ import Tabs from 'antd/es/tabs';
 import Tooltip from 'antd/es/tooltip';
 import { lazy, useCallback, useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
-import { useMediaQuery } from 'react-responsive';
 import { useParams, useSearchParams } from 'react-router-dom';
 import { useTrainDetailData } from './hooks';
 import styles from './iesTraining.module.scss';
 import { Text, Title } from '@/components';
 import { PrefetchLink } from '@/components/PrefetchLink';
 import { ROUTES, TrainDetailTab } from '@/constants';
+import { useDevice } from '@/hooks';
 import { useUserStore } from '@/store';
 
 const ProgOvw = lazy(() => import('@/pages/training/components/ProgOvw'));
@@ -30,8 +30,7 @@ const IvRegisterForm = lazy(
 );
 
 const VocaTrainDetail: React.FC = () => {
-  const isMb = useMediaQuery({ maxWidth: 768 });
-  const isTl = useMediaQuery({ minWidth: 769, maxWidth: 1024 });
+  const { isMobile: isMb, isTablet: isTl } = useDevice();
   const { isDark } = useUserStore();
   const { t } = useTranslation('vocaTrainDetail');
   const [trainDtSearchPrs, setTrainDtSearchPrs] = useSearchParams();
@@ -249,7 +248,6 @@ const VocaTrainDetail: React.FC = () => {
           items={tabs}
           onChange={hdlChangeTab}
           className={`${styles.vocaDetailTabs}`}
-          centered
           destroyOnHidden
         />
       </div>
