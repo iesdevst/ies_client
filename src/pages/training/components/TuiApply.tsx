@@ -1,4 +1,3 @@
-import CheckOutlined from '@ant-design/icons/CheckOutlined';
 import EnvironmentOutlined from '@ant-design/icons/EnvironmentOutlined';
 import FileOutlined from '@ant-design/icons/FileOutlined';
 
@@ -27,36 +26,10 @@ const TuiApply: React.FC<ITuiApplyProps> = (props) => {
       {tuiApplyDt && (
         <div className={containerCls}>
           {/* I. Điều kiện tuyển sinh */}
-          <div className={`flex gap-4 ${pad}`}>
-            <span className={romanCls}>I.</span>
-            <div className='flex-1 space-y-2'>
-              <div className='flex items-center gap-2.5'>
-                <span
-                  className={`w-7 h-7 rounded-lg flex items-center justify-center shrink-0 ${dark ? 'bg-[#c92cc9]/20' : 'bg-[#E8622A]/10'}`}
-                >
-                  <CheckOutlined
-                    className={`${dark ? 'text-[#ca78ca]!' : 'text-[#E8622A]!'} text-sm!`}
-                  />
-                </span>
-                <Title
-                  level={5}
-                  className={`${dark ? 'text-white!' : 'text-gray-900!'} m-0! font-semibold!`}
-                >
-                  {t('admissRe')}
-                </Title>
-              </div>
-              <Text
-                color={dark ? 'rgba(255,255,255,0.65)' : '#4b5563'}
-                className='text-lg! block! whitespace-pre-line!'
-              >
-                {tuiApplyDt.requirement}
-              </Text>
-            </div>
-          </div>
 
           {/* II. Hồ sơ đăng ký */}
           <div className={`flex gap-4 ${pad}`}>
-            <span className={romanCls}>II.</span>
+            <span className={romanCls}>I.</span>
             <div className='flex-1 space-y-2'>
               <div className='flex items-center gap-2.5'>
                 <span
@@ -84,13 +57,13 @@ const TuiApply: React.FC<ITuiApplyProps> = (props) => {
 
           {/* III. Địa điểm và thời gian */}
           <div className={`flex gap-4 ${pad}`}>
-            <span className={romanCls}>III.</span>
+            <span className={romanCls}>II.</span>
             <div className='flex-1 space-y-2'>
               <div className='flex items-center gap-2.5'>
                 <span
                   className={`w-7 h-7 rounded-lg flex items-center justify-center shrink-0 ${dark ? 'bg-[#c92cc9]/20' : 'bg-[#E8622A]/10'}`}
                 >
-                  <EnvironmentOutlined
+                  <FileOutlined
                     className={`${dark ? 'text-[#ca78ca]!' : 'text-[#E8622A]!'} text-sm!`}
                   />
                 </span>
@@ -116,36 +89,10 @@ const TuiApply: React.FC<ITuiApplyProps> = (props) => {
       {tuiApplyScDt && (
         <div className={containerCls}>
           {/* I. Điều kiện tuyển sinh */}
-          <div className={`flex gap-4 ${pad}`}>
-            <span className={romanCls}>I.</span>
-            <div className='flex-1 space-y-2'>
-              <div className='flex items-center gap-2.5'>
-                <span
-                  className={`w-7 h-7 rounded-lg flex items-center justify-center shrink-0 ${dark ? 'bg-[#6472cf]/20' : 'bg-[#2B6CB0]/10'}`}
-                >
-                  <CheckOutlined
-                    className={`${dark ? 'text-[#98c3ff]!' : 'text-[#2B6CB0]!'} text-sm!`}
-                  />
-                </span>
-                <Title
-                  level={5}
-                  className={`${dark ? 'text-white!' : 'text-gray-900!'} m-0! font-semibold!`}
-                >
-                  {t('admissRe')}
-                </Title>
-              </div>
-              <Text
-                color={dark ? 'rgba(255,255,255,0.65)' : '#4b5563'}
-                className='text-lg! block! whitespace-pre-line!'
-              >
-                {tuiApplyScDt.requirement}
-              </Text>
-            </div>
-          </div>
 
           {/* II. Hồ sơ đăng ký */}
           <div className={`flex gap-4 ${pad}`}>
-            <span className={romanCls}>II.</span>
+            <span className={romanCls}>I.</span>
             <div className='flex-1 space-y-2'>
               <div className='flex items-center gap-2.5'>
                 <span
@@ -173,7 +120,7 @@ const TuiApply: React.FC<ITuiApplyProps> = (props) => {
 
           {/* III. Địa điểm và thời gian */}
           <div className={`flex gap-4 ${pad}`}>
-            <span className={romanCls}>III.</span>
+            <span className={romanCls}>II.</span>
             <div className='flex-1 space-y-2'>
               <div className='flex items-center gap-2.5'>
                 <span

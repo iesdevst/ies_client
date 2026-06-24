@@ -1,11 +1,13 @@
 export default {
   req: 'Graduated from Lower Secondary School (THCS) or higher. Open to students who completed High School (THPT) or are currently enrolled in intermediate, college, or university programs.',
+  timets:
+    '- Period: From March 1 until enrollment quota is filled (expected November 18, 2026).\n- Application submission: Vocational Education & Continuing Education Centers in Ho Chi Minh City affiliated with Saigon Informatics Economics Secondary School.',
   method:
-    'Admission is based on Lower Secondary School transcripts (THCS). No entrance exam required.',
-  apply:
-    'IES College offers flexible study pathways for both lower secondary and high school graduates, including combined general education and specialized vocational training tracks. Please contact the Admissions Office via the main Contact section or complete the Advisory Registration form to receive detailed information on programs and tuition fees.',
-  doc: 'Application form, graduation certificate or temporary certificate, academic transcript, ID copies, birth certificate, and recent photos.',
-  work: 'Submit applications at 98 Pham Van Chieu Street, Ho Chi Minh City. Office hours: Monday to Saturday, 8:00 AM – 12:00 PM and 1:00 PM – 5:00 PM.',
+    'Admission is conducted based on Lower Secondary School (THCS) academic transcripts.\n1. Selection Process\nBased on the number of registered applicants versus available spots and class size regulations for each program, the school conducts selection in multiple rounds throughout the year.\n2. Admission Results and Enrollment Notice\nAdmission results will be announced and enrollment notification letters issued within 15 days of the announcement date.',
+  docmethod:
+    "01 Application package using the school's form — submitted in 01 envelope, including:\n- 01 Secondary-level admission application form;\n- 01 Personal biography (certified by local authority);\n- 01 Valid notarized photocopy of:\nLower Secondary School (THCS) graduation certificate or temporary graduation certificate; THCS academic transcript.\nFor students applying to study directly at the school, originals must be submitted:\nTHCS graduation certificate or temporary graduation certificate and THCS academic transcript.\n- 01 Certified extract or notarized photocopy of Birth Certificate;\n- 01 Valid notarized photocopy of National ID Card;\n- 04 New 3×4 cm photos taken within the past 6 months (full name and date of birth written on the back);\n- 01 Original health certificate issued within the past 6 months, certified by a medical facility.",
+  doc: 'Tuition fees are determined in accordance with Decree No. 238/2025/ND-CP dated September 3, 2025 of the Government. Students who meet the eligibility criteria will benefit from the tuition support and exemption policies described above (benefits are subject to students submitting complete documentation in accordance with current regulations).',
+  work: "Students receive government-subsidized vocational training tuition pursuant to Decree No. 81/2021/ND-CP dated August 27, 2021, Decree No. 97/2023/ND-CP dated December 31, 2023, and Decree No. 238/2025/ND-CP dated September 3, 2025 of the Government (subsidies are granted based on the student's enrolled program/trade, subject to completing all required documentation for tuition support eligibility).",
 
   mixologyTit: 'Beverage Preparation',
   mixologyIntro:

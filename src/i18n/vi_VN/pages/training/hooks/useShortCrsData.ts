@@ -1,11 +1,13 @@
 export default {
   req: 'Tốt nghiệp Trung học cơ sở (THCS) trở lên. Dành cho học sinh đã hoàn thành THPT hoặc đang theo học tại trung cấp, cao đẳng hoặc đại học.',
-  method: 'Xét tuyển dựa trên học bạ THCS. Không yêu cầu thi đầu vào.',
-  apply:
-    'Nhà trường cung cấp lộ trình linh hoạt cho học sinh THCS và THPT, bao gồm chương trình văn hóa và đào tạo chuyên ngành. Liên hệ tuyển sinh trong phần Liên hệ chính hoặc điền vào Đăng ký tư vấn để được tư vấn chi tiết về chương trình cũng như học phí.',
-
-  doc: 'Đơn đăng ký, bằng tốt nghiệp hoặc giấy chứng nhận tạm thời, học bạ, bản sao CCCD/CMND, giấy khai sinh và ảnh thẻ gần đây.',
-  work: 'Nộp hồ sơ tại 98 Phạm Văn Chiêu, TP.HCM. Giờ làm việc: Thứ Hai đến Thứ Bảy, 8:00 – 12:00 và 13:00 – 17:00.',
+  timets:
+    '- Thời gian: Từ ngày 01/3 đến khi đủ chỉ tiêu (dự kiến 18/11/2026).\n- Địa điểm nhận hồ sơ: Trung tâm GDNN-GDTX trên địa bàn TP. HCM liên kết đào tạo với Trường Trung cấp Tin học Kinh tế Sài Gòn.',
+  method:
+    'Nhà trường thực hiện phương thức xét học bạ THCS.\n1. Tổ chức xét tuyển\nTrên cơ sở số lượng học sinh đăng kí/chỉ tiêu và quy định biên chế lớp học của ngành, nghề đào tạo; Nhà trường sẽ tổ chức xét tuyển theo từng đợt trong năm.\n2. Công bố trúng tuyển và triệu tập nhập học\nThời gian công bố học sinh trúng tuyển, phát hành giấy báo và tổ chức nhập học đào tạo cho học sinh trúng tuyển là sau 15 ngày kể từ ngày công bố trúng tuyển.',
+  docmethod:
+    '01 Bộ hồ sơ theo mẫu của Nhà trường - đựng trong 01 túi, gồm:\n- 01 Phiếu đăng kí xét tuyển trình độ trung cấp;\n- 01 Bản sơ yếu lí lịch (có xác nhận của chính quyền địa phương);\n- 01 Bản photo công chứng còn thời hạn: \nBằng tốt nghiệp THCS hoặc giấy chứng nhận tốt nghiệp tạm thời; học bạ THCS. \nĐối với học sinh xét tuyển đào tạo tại Nhà trường thì nộp bản gốc: \nBằng tốt nghiệp THCS hoặc giấy chứng nhận tốt nghiệp tạm thời và học bạ THCS.\n- 01 Bản sao Giấy khai sinh trích lục hoặc photo công chứng\n- 01 Bản photo công chứng còn thời hạn của Căn cước công dân;\n- 04 Ảnh cỡ 3 x 4 loại mới chụp trong vòng 6 (ghi đầy đủ học tên, ngày sinh)\n- 01 Bản gốc giấy khám sức khỏe, cấp trong vòng 6 tháng, có xác nhận của cơ sở y tế.',
+  doc: 'Học phí căn cứ theo Nghị định số 238/2025/NĐ-CP ngày 03/9/2025 của Chính phủ, học sinh sẽ được hưởng chính sách hỗ trợ, miễn giảm học phí như trên nếu học sinh thuộc đối tượng theo quy định (Việc hưởng chính sách được thực hiện trên cơ sở học sinh hoàn thiện đầy đủ hồ sơ theo quy định hiện hành).',
+  work: 'Học sinh được cấp bù học phí học nghề từ Nhà nước căn cứ Nghị định số 81/2021/NĐ-CP ngày 27/8/2021, Nghị định số 97/2023/NĐ-CP ngày 31/12/2023 và Nghị định số 238/2025/NĐ-CP ngày 03/9/2025 của Chính phủ (học sinh được cấp bù học phí học nghề từ Nhà nước theo ngành/nghề đào tạo trong trường hợp học sinh hoàn thiện đầy đủ hồ sơ nhận chính sách hỗ trợ học phí theo quy định)',
 
   mixologyTit: 'Pha chế đồ uống',
   mixologyIntro:

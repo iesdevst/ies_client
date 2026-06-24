@@ -1,4 +1,6 @@
 export default {
-  admissRe: 'Admission Requirements',
+  admissRe: 'Eligible Applicants',
+  admissTime: 'Admission Period',
   admissMt: 'Admission Method',
+  admissDocs: 'Application Documents',
 };

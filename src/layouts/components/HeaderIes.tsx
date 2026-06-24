@@ -42,9 +42,7 @@ const HeaderIes: React.FC<IHeaderIes> = (props) => {
   return (
     <>
       {dk && (
-        <div
-          className={`!w-full px-20 py-1 ${isDark ? 'bg-[#2b2f6b]' : 'bg-gray-500'}`}
-        >
+        <div className='!w-full px-20 py-1 bg-[#2b2f6b]'>
           <Row className='gap-x-7' justify={'end'}>
             <ThemeSwitcher classN='!text-white' />
             <IesClientLang colorT='!text-white' />

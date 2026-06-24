@@ -1,5 +1,5 @@
 export default {
-  admissRe: 'Enrollment Support',
-  applyD: 'Application Documents',
-  loca: 'Location and Working Hours',
+  admissRe: 'Tuition',
+  applyD: 'General Education (Continuing Education – THPT)',
+  loca: 'Vocational Training',
 };
