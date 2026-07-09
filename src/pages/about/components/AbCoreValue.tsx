@@ -1,99 +1,133 @@
-import ArrowUpOutlined from '@ant-design/icons/ArrowUpOutlined';
-import CheckCircleOutlined from '@ant-design/icons/CheckCircleOutlined';
+import BulbOutlined from '@ant-design/icons/BulbOutlined';
+import HeartOutlined from '@ant-design/icons/HeartOutlined';
+import RightOutlined from '@ant-design/icons/RightOutlined';
+import RocketOutlined from '@ant-design/icons/RocketOutlined';
+import SafetyCertificateOutlined from '@ant-design/icons/SafetyCertificateOutlined';
+import TeamOutlined from '@ant-design/icons/TeamOutlined';
+import TrophyOutlined from '@ant-design/icons/TrophyOutlined';
 import Button from 'antd/es/button';
-import Flex from 'antd/es/flex';
-import List from 'antd/es/list';
-import { lazy, useState } from 'react';
+import { lazy, useMemo, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useMediaQuery } from 'react-responsive';
 import { Text, Title } from '@/components';
+import {
+  accentForSurface,
+  IES_BLUE,
+  IES_NAVY,
+  IES_ORANGE,
+  IES_SKY,
+} from '@/constants';
 
 const IesCtModal = lazy(() => import('@/pages/home/components/IesCtModal'));
 
-const AbCoreValue: React.FC = () => {
-  const mb = useMediaQuery({ maxWidth: 1024 });
+export interface AbCoreValueProps {
+  dark: boolean;
+}
+
+const VALUE_ICONS = [
+  HeartOutlined,
+  SafetyCertificateOutlined,
+  BulbOutlined,
+  RocketOutlined,
+  TeamOutlined,
+  TrophyOutlined,
+];
+
+const VALUE_ACCENTS = [
+  IES_ORANGE,
+  IES_NAVY,
+  IES_BLUE,
+  IES_SKY,
+  IES_ORANGE,
+  IES_NAVY,
+];
+
+const AbCoreValue: React.FC<AbCoreValueProps> = (props) => {
+  const { dark } = props;
   const { t } = useTranslation('abCoreValue');
-  const coreVals = [
-    {
-      title: t('val1'),
-      desc: t('desc1'),
-    },
-    {
-      title: t('val2'),
-      desc: t('desc2'),
-    },
-    {
-      title: t('val3'),
-      desc: t('desc3'),
-    },
-    {
-      title: t('val4'),
-      desc: t('desc4'),
-    },
-    {
-      title: t('val5'),
-      desc: t('desc5'),
-    },
-    {
-      title: t('val6'),
-      desc: t('desc6'),
-    },
-  ];
+  const mb = useMediaQuery({ maxWidth: 767 });
   const [ctOpen, setCtOpen] = useState(false);
+
+  const coreVals = useMemo(
+    () => [
+      { title: t('val1'), desc: t('desc1') },
+      { title: t('val2'), desc: t('desc2') },
+      { title: t('val3'), desc: t('desc3') },
+      { title: t('val5'), desc: t('desc5') },
+      { title: t('val6'), desc: t('desc6') },
+      { title: t('val4'), desc: t('desc4') },
+    ],
+    [t],
+  );
 
   return (
     <>
       <div
-        className={`!bg-[#4B1B1B] rounded-3xl ${!mb ? 'px-35 mt-10 mb-25 mx-7 pt-20 pb-25' : 'mx-3 mt-10 pb-10'}`}
+        id='ab-core-value'
+        className={`max-w-280! mx-auto! py-16! ${mb ? 'px-4!' : 'px-6!'}`}
       >
-        <Flex
-          vertical={mb}
-          className={`border-b border-[#EEB585] ${!mb ? ' !pb-8' : '!py-6'}`}
-          justify='space-between'
-          align='center'
-          gap={!mb ? 0 : 10}
+        <div
+          className={`flex! ${mb ? 'flex-col!' : 'flex-row!'} items-end! justify-between! gap-6! mb-8!`}
         >
-          <Title level={!mb ? 1 : 3} className='!text-[#EEB585] !m-0'>
+          <Title style={{ color: dark ? '#fff' : IES_NAVY }} className='m-0!'>
             {t('title')}
           </Title>
 
-          <div>
-            <Button
-              size={!mb ? 'large' : 'small'}
-              type='default'
-              className={`!bg-[#EEB585] !text-black !font-bold hover:!bg-[#916a4a] hover:!text-white ${!mb ? '!px-8 !py-6 !text-lg' : '!px-4 !py-4'}`}
-              onClick={() => setCtOpen(true)}
+          <Button
+            type='text'
+            className={`shrink-0! inline-flex! items-center! gap-2.5! rounded-full! pl-5! pr-1.5! py-1.5! h-auto! border! ${dark ? 'bg-white/6! border-white/15! hover:bg-white/10!' : 'bg-[#125484]/6! border-[#125484]/20! hover:bg-[#125484]/10!'}`}
+            onClick={() => setCtOpen(true)}
+          >
+            <Title
+              className='m-0!'
+              level={4}
+              style={{ color: dark ? '#fff' : IES_NAVY }}
             >
               {t('contactBtn')}
+            </Title>
+            <div
+              className='w-7.5! h-7.5! rounded-full! flex! items-center! justify-center! shrink-0!'
+              style={{ backgroundColor: IES_ORANGE }}
+            >
+              <RightOutlined className='text-white! text-xs!' />
+            </div>
+          </Button>
+        </div>
 
-              <ArrowUpOutlined className='rotate-45 !font-bold' />
-            </Button>
-          </div>
-        </Flex>
+        <div className='grid! grid-cols-1! md:grid-cols-2! lg:grid-cols-3! gap-5.5!'>
+          {coreVals.map((val, index) => {
+            const Icon = VALUE_ICONS[index % VALUE_ICONS.length];
+            const rawAccent = VALUE_ACCENTS[index % VALUE_ACCENTS.length];
+            const textAccent = accentForSurface(rawAccent, dark);
 
-        <List
-          dataSource={coreVals}
-          renderItem={(item) => (
-            <List.Item className={`${!mb ? '!border-none !px-0' : '!px-3'}`}>
-              <Flex align='flex-start' gap={!mb ? 10 : 6}>
-                <CheckCircleOutlined className='!text-[#f5cfa8] !mt-2' />
-
-                <div>
-                  <Title className='!text-[#f5cfa8] uppercase' level={4}>
-                    {item.title}
-                  </Title>
-
-                  <Text
-                    className={`!block !text-white ${!mb ? 'pr-10' : 'pr-3'} !text-xs md:!text-2xl lg:!text-2xl`}
-                  >
-                    {item.desc}
-                  </Text>
+            return (
+              <div
+                key={val.title}
+                className={`rounded-xl! border! p-6! transition-all! duration-300! hover:-translate-y-1! hover:shadow-xl! ${dark ? 'bg-[#201d2c]! border-[#332f45]!' : 'bg-white! border-[#e5e2ed]!'}`}
+              >
+                <div
+                  className='w-11! h-11! rounded-xl! flex! items-center! justify-center! mb-4!'
+                  style={{ backgroundColor: rawAccent }}
+                >
+                  <Icon className='text-lg!' style={{ color: '#fff' }} />
                 </div>
-              </Flex>
-            </List.Item>
-          )}
-          className={`${!mb ? '!mt-10' : '!mt-3'}`}
-        />
+                <Title
+                  level={4}
+                  className='m-0! mb-2! uppercase! tracking-wide!'
+                  style={{ color: textAccent }}
+                >
+                  {val.title}
+                </Title>
+                <Text
+                  color={dark ? '#a9a6c2' : '#5b5876'}
+                  className='block! text-lg! leading-relaxed!'
+                >
+                  {val.desc}
+                </Text>
+              </div>
+            );
+          })}
+        </div>
       </div>
       <IesCtModal openCtM={ctOpen} closeCtM={() => setCtOpen(false)} />
     </>

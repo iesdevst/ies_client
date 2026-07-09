@@ -118,7 +118,7 @@ const EvsLst: React.FC<IEvsLst> = (props) => {
         {evLstData.map((evLst) => (
           <Card
             key={evLst.id}
-            className={`${cardPadMap[device]} ${isDark ? '!bg-[#191f23]' : '!bg-gray-400'} cursor-pointer`}
+            className={`${cardPadMap[device]} ${isDark ? 'bg-[#191f23]!' : 'bg-[#2b2f6b]!'} cursor-pointer`}
             onClick={() =>
               handleNavigate({
                 id: evLst.id,
@@ -145,6 +145,7 @@ const EvsLst: React.FC<IEvsLst> = (props) => {
                   style={{
                     whiteSpace: 'pre-line',
                   }}
+                  className='text-white!'
                 >
                   {evLst.eventTit}
                 </Title>
@@ -153,15 +154,15 @@ const EvsLst: React.FC<IEvsLst> = (props) => {
                   style={{
                     whiteSpace: 'pre-line',
                   }}
-                  color={isDark ? 'white' : 'black'}
+                  color='white'
                 >
                   {evLst.desc}
                 </Text>
                 <Row justify='space-between' align='middle'>
-                  <Title level={5} className='!m-0 !mt-3'>
+                  <Title level={5} className='m-0! mt-3! text-white!'>
                     {evLst.authorN}
                   </Title>
-                  <Title level={5} className='!m-0 !mt-3'>
+                  <Title level={5} className='m-0! mt-3! text-white!'>
                     {evLst.evDate}
                   </Title>
                 </Row>

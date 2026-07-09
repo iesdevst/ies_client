@@ -1,43 +1,56 @@
-import Col from 'antd/es/col';
-import Row from 'antd/es/row';
-import Typography from 'antd/es/typography';
-
-import { lazy, useMemo } from 'react';
+import RightOutlined from '@ant-design/icons/es/icons/RightOutlined';
+import Button from 'antd/es/button';
+import { lazy, Suspense, useCallback, useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
-
 import { useNavigate } from 'react-router-dom';
 import TSN from '@/assets/imgs/top_str_news.webp';
 import TSNMB from '@/assets/imgs/top_str_news_mb.webp';
 import { Text, Title } from '@/components';
-import { ROUTES } from '@/constants';
+import { IES_NAVY, IES_ORANGE, ROUTES } from '@/constants';
 import { useDevice } from '@/hooks';
+import type { EvsNavi } from '@/pages/iesNews/components/EvsLst';
 import type { NewsNavi } from '@/pages/iesNews/components/NewsLst';
 import { useEventLstData, useNewsLstData } from '@/pages/iesNews/hooks';
 import { useUserStore } from '@/store';
 
 const IesClSection = lazy(() => import('@/components/SPS/IesClSection'));
-
-const { Paragraph } = Typography;
+const EventFeatureCard = lazy(() => import('./EventFeatureCard'));
+const NewsHeadlineRow = lazy(() => import('./NewsHeadlineRow'));
 
 const NewAndEvent: React.FC = () => {
   const { device } = useDevice();
-  const { isDark } = useUserStore();
+  const { isDark, locale } = useUserStore();
   const { t } = useTranslation('newAndEvent');
   const navigate = useNavigate();
 
   const mb = device === 'mobile';
-  const tl = device === 'tablet';
 
   const { data: topNews } = useNewsLstData();
   const { data: featEvs } = useEventLstData();
 
-  const hdlNavigate = (navi: NewsNavi) => {
-    const searchParams = new URLSearchParams({
-      authorN: navi.authorN,
-      newsDate: navi.newsDate,
-    });
-    navigate(`${ROUTES.NEWS_DETAILS}/${navi.id}?${searchParams.toString()}`);
-  };
+  const hdlNavigateNews = useCallback(
+    (navi: NewsNavi) => {
+      const searchParams = new URLSearchParams({
+        authorN: navi.authorN,
+        newsDate: navi.newsDate,
+      });
+      navigate(`${ROUTES.NEWS_DETAILS}/${navi.id}?${searchParams.toString()}`);
+    },
+    [navigate],
+  );
+
+  const hdlNavigateEvent = useCallback(
+    (navi: EvsNavi) => {
+      const searchParams = new URLSearchParams({
+        authorN: navi.authorN,
+        evDate: navi.evDate,
+      });
+      navigate(
+        `${ROUTES.EVENTS_DETAILS}/${navi.id}?${searchParams.toString()}`,
+      );
+    },
+    [navigate],
+  );
 
   const latestNews = useMemo(() => {
     return [...topNews]
@@ -56,121 +69,139 @@ const NewAndEvent: React.FC = () => {
       .slice(0, 3);
   }, [featEvs]);
 
+  const heroNews = useMemo(
+    () => topNews.find((item) => item.id === '6') ?? topNews[0],
+    [topNews],
+  );
+
   return (
     <IesClSection
       id='newAe'
-      layout='newsFeature'
-      title={t('featNews')}
-      bonusTit={t('evTit')}
-      feature
-      mb={mb}
+      layout='simple'
+      divider={false}
       dark={isDark}
-      navigateGo={ROUTES.NEWS}
-      className={`!my-30 ${mb ? 'px-2' : 'px-10'}`}
-      featCard={latestEv}
-      butTit={t('viewAll')}
-      children={
-        <Row gutter={[32, 32]} className='!mb-20'>
-          {/* LEFT */}
-          <Col
-            xs={24}
-            md={24}
-            lg={12}
-            className={`${mb ? 'mt-6' : 'pb-16'} !cursor-pointer`}
-            onClick={() =>
-              hdlNavigate({
-                id: '6',
-                authorN: 'Ngân Anh',
-                newsDate: '2026-04-30',
-              })
-            }
+      className={`my-30! ${mb ? 'px-2!' : 'px-10!'}`}
+    >
+      {/* masthead */}
+      <div
+        className={`flex! ${mb ? 'flex-col!' : 'flex-row!'} items-center! justify-between! gap-4! pb-5! border-b! ${isDark ? 'border-[#332f45]!' : 'border-[#e5e2ed]!'} mb-10!`}
+      >
+        <Title
+          style={{
+            color: isDark ? '#fff' : IES_NAVY,
+          }}
+        >
+          {t('featNews')}
+        </Title>
+
+        <Button
+          type='text'
+          className={`inline-flex! items-center! gap-3! rounded-full! pl-5! pr-1.5! py-1.5! h-auto! border! bg-transparent! ${isDark ? 'border-white/15! hover:bg-white/5!' : 'border-[#125484]/20! hover:bg-[#125484]/5!'}`}
+          onClick={() => navigate(ROUTES.NEWS)}
+        >
+          <Title
+            className='m-0!'
+            level={4}
+            style={{ color: isDark ? '#fff' : IES_NAVY }}
           >
-            <img
-              src={mb ? TSNMB : TSN}
-              loading='lazy'
-              alt='newaaev'
-              className='!rounded-xl !w-full !h-full'
-            />
-
-            <div className={`${mb ? '' : 'w-4/5'} mt-3`}>
-              <Title className='!text-blue-500' level={5}>
-                {t('acadQA')}
-              </Title>
-
-              <Text
-                className='!text-xl !font-bold'
-                color={isDark ? 'white' : ''}
-              >
-                {t('profQuote')}
-              </Text>
-            </div>
-          </Col>
-
-          {/* RIGHT */}
-          <Col
-            xs={24}
-            md={24}
-            lg={12}
-            className={`${mb ? '!mt-25' : tl ? '!mt-15' : ''}`}
+            {t('viewAll')}
+          </Title>
+          <div
+            className='w-8! h-8! rounded-full! flex! items-center! justify-center! shrink-0!'
+            style={{ backgroundColor: IES_ORANGE }}
           >
-            {latestNews.map((item, index) => (
-              <Row
-                key={item.id}
-                gutter={[16, 16]}
-                className={`mb-3.5 !cursor-pointer ${
-                  index !== 0 ? 'border-t border-gray-300 pt-7' : ''
-                }`}
+            <RightOutlined className='text-white! text-xs!' />
+          </div>
+        </Button>
+      </div>
+
+      {/* hero story + latest headlines */}
+      <div className='grid! grid-cols-1! lg:grid-cols-2! gap-10! lg:gap-14! mb-16!'>
+        <div
+          className='cursor-pointer!'
+          onClick={() =>
+            hdlNavigateNews({
+              id: heroNews.id,
+              authorN: heroNews.authorN,
+              newsDate: heroNews.newsDate,
+            })
+          }
+        >
+          <img
+            src={mb ? TSNMB : TSN}
+            loading='lazy'
+            alt={heroNews.newsTit}
+            className='rounded-xl! w-full! h-auto!'
+          />
+          <Text
+            color={IES_ORANGE}
+            className='block! text-xs! font-bold! uppercase! tracking-wider! mt-4!'
+          >
+            {t('acadQA')}
+          </Text>
+          <Text
+            className='block! text-2xl! font-bold! leading-snug! mt-1.5!'
+            color={isDark ? 'white' : ''}
+          >
+            {t('profQuote')}
+          </Text>
+        </div>
+
+        <div
+          className='lg:border-l! lg:pl-10! flex! flex-col! h-full!'
+          style={{ borderColor: isDark ? '#332f45' : '#e5e2ed' }}
+        >
+          {latestNews.map((item, index) => (
+            <Suspense key={item.id} fallback={null}>
+              <NewsHeadlineRow
+                item={item}
+                dark={isDark}
+                divider={index !== 0}
                 onClick={() =>
-                  hdlNavigate({
+                  hdlNavigateNews({
                     id: item.id,
                     authorN: item.authorN,
                     newsDate: item.newsDate,
                   })
                 }
-              >
-                <Col xs={24} md={6}>
-                  <img
-                    src={item.img}
-                    loading='lazy'
-                    className={`rounded-lg ${mb ? '!w-full' : '!w-46 !h-25'}`}
-                    alt='nav'
-                  />
-                </Col>
+              />
+            </Suspense>
+          ))}
+        </div>
+      </div>
 
-                <Col xs={24} md={18}>
-                  <div className='flex flex-col'>
-                    {item.typeTit && (
-                      <Title level={3} className='!text-blue-500'>
-                        {item.typeTit}
-                      </Title>
-                    )}
+      {/* upcoming events */}
+      <div>
+        <Title
+          level={3}
+          className='m-0! font-bold! mb-6!'
+          style={{
+            color: isDark ? '#fff' : IES_NAVY,
+          }}
+        >
+          {t('evTit')}
+        </Title>
 
-                    <Paragraph
-                      className={`${
-                        isDark ? '!text-white' : ''
-                      } !font-bold !text-lg`}
-                      ellipsis={{ rows: 2 }}
-                    >
-                      {item.newsTit}
-                    </Paragraph>
-
-                    <Row justify='space-between' align='middle'>
-                      <Title level={4} className='!m-0'>
-                        {item.authorN}
-                      </Title>
-
-                      <Title level={5} className='!m-0'>
-                        {item.newsDate}
-                      </Title>
-                    </Row>
-                  </div>
-                </Col>
-              </Row>
-            ))}
-          </Col>
-        </Row>
-      }
-    />
+        <div className='grid! grid-cols-1! md:grid-cols-1! lg:grid-cols-3! gap-8!'>
+          {latestEv.map((item) => (
+            <Suspense key={item.id} fallback={null}>
+              <EventFeatureCard
+                item={item}
+                dark={isDark}
+                locale={locale}
+                onClick={() =>
+                  hdlNavigateEvent({
+                    id: item.id,
+                    authorN: item.authorN,
+                    evDate: item.evDate,
+                  })
+                }
+              />
+            </Suspense>
+          ))}
+        </div>
+      </div>
+    </IesClSection>
   );
 };
 

@@ -92,7 +92,7 @@ const NaiPage: React.FC<NaiPageLayoutProps> = (props) => {
 
   return (
     <div
-      className={`px-4 sm:px-8 lg:px-16 xl:px-20 py-8 lg:py-12 ${dark ? 'bg-[#0D0D1A]' : 'bg-[#F8F7FF]'}`}
+      className={`px-4 sm:px-8 lg:px-16 xl:px-20 py-8 lg:py-12 ${dark ? 'bg-[#0D0D1A]' : 'bg-[#e9e7f7]'}`}
     >
       {/* ── ARTICLE HEADER CARD ── */}
       <div className={`rounded-2xl p-7 lg:p-10 mb-7 border shadow-sm ${card}`}>
@@ -214,7 +214,7 @@ const NaiPage: React.FC<NaiPageLayoutProps> = (props) => {
               href={linkTo}
               target='_blank'
               rel='noopener noreferrer'
-              className='inline-flex items-center gap-2 mt-8 px-6 py-3 rounded-full text-sm font-semibold transition-colors no-underline! bg-[#474669] hover:bg-[#5c5a8a] text-white!'
+              className={`${dark ? 'text-white!' : 'text-black!'} inline-flex items-center gap-2 mt-8 px-6 py-3 rounded-full text-sm font-semibold transition-colors no-underline!`}
             >
               {readOri}&nbsp;→
             </a>

@@ -11,5 +11,5 @@ export default {
   partnership: 'Chương trình Đối tác đào tạo',
   partnershipBtn: 'Khám phá Chương trình Đối tác đào tạo',
   partnershipDesc:
-    'Chương trình hợp tác cùng các trường uy tín như Đại học Mở Hà Nội. Học viên nhận bằng cử nhân từ các trường đối tác.',
+    'Chương trình hợp tác cùng các trường uy tín như trường Đại học Mở Hà Nội. Học viên được tào tạo chuyên sâu và sẽ được nhận bằng cử nhân từ các trường đối tác.',
 };

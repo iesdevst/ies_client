@@ -29,7 +29,7 @@ const VidPrIes: React.FC = () => {
       tl={tl}
       tlpr={tlpr}
       dk={dk}
-      className={!dk ? 'px-3' : ''}
+      className={!dk ? 'px-3' : 'pr-15'}
     />
   );
 };

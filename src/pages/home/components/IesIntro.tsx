@@ -1,4 +1,3 @@
-import { Flex } from 'antd';
 import { motion } from 'framer-motion';
 import { useTranslation } from 'react-i18next';
 
@@ -22,7 +21,7 @@ const IesIntro = () => {
       id='intro'
       layout='simple'
       divider={false}
-      className={`${dk ? 'px-5 mb-20' : tl ? 'px-3 mb-15' : tlpr ? 'px-3 mb-10' : 'px-1.5 mb-15'}`}
+      className={`${dk ? 'px-10 mb-20' : tl ? 'px-3 mb-15' : tlpr ? 'px-3 mb-10' : 'px-20! mb-15'}`}
       children={
         <motion.section
           className='relative w-full overflow-hidden rounded-2xl'
@@ -50,18 +49,18 @@ const IesIntro = () => {
 
           {/* CONTENT */}
           <motion.div
-            className={`relative z-20 flex justify-between items-center! pb-10 ${
+            className={`relative z-20 flex justify-center items-start! ${
               mb
                 ? 'mt-25 px-3'
                 : tl
                   ? 'mt-35 px-7'
                   : tlpr
                     ? 'mt-50 px-10'
-                    : 'px-13 py-20 '
+                    : 'py-15!'
             }`}
             style={{
               flexDirection: mb || tl ? 'column' : 'row',
-              gap: mb ? 24 : tl ? 32 : 0,
+              gap: mb ? 24 : tl ? 32 : 100,
               alignItems: mb || tl ? 'flex-start' : 'flex-end',
             }}
             initial={{
@@ -79,7 +78,10 @@ const IesIntro = () => {
             }}
           >
             {/* LEFT */}
-            <div style={{ maxWidth: dk ? 700 : '100%' }} className='mb-7.5'>
+            <div
+              style={{ maxWidth: dk ? 700 : '100%' }}
+              className='space-y-12!'
+            >
               <Title
                 style={{
                   margin: 0,
@@ -105,78 +107,17 @@ const IesIntro = () => {
                 {t('we')}
               </Text>
             </div>
-
             {/* RIGHT IMAGE */}
-            <div className='grid grid-cols-2 gap-7'>
-              <div
+            <div className='rounded-2xl overflow-hidden shadow-2xl aspect-video'>
+              <img
+                src={IT_CT}
+                alt='intro'
                 style={{
-                  width: mb ? '100%' : tl ? '100%' : tlpr ? 430 : 480,
+                  width: '100%',
+                  height: 'auto',
+                  objectFit: 'cover',
                 }}
-              >
-                <div className='rounded-2xl overflow-hidden shadow-2xl'>
-                  <img
-                    src={IT_CT}
-                    alt='intro'
-                    style={{
-                      width: '100%',
-                      height: 'auto',
-                      objectFit: 'cover',
-                    }}
-                  />
-                </div>
-              </div>
-
-              <div
-                style={{
-                  width: mb ? '100%' : tl ? '100%' : tlpr ? 430 : 480,
-                }}
-              >
-                <div className='rounded-2xl overflow-hidden shadow-2xl'>
-                  <img
-                    src={IT_CT}
-                    alt='intro'
-                    style={{
-                      width: '100%',
-                      height: 'auto',
-                      objectFit: 'cover',
-                    }}
-                  />
-                </div>
-              </div>
-              <div
-                style={{
-                  width: mb ? '100%' : tl ? '100%' : tlpr ? 430 : 480,
-                }}
-              >
-                <div className='rounded-2xl overflow-hidden shadow-2xl'>
-                  <img
-                    src={IT_CT}
-                    alt='intro'
-                    style={{
-                      width: '100%',
-                      height: 'auto',
-                      objectFit: 'cover',
-                    }}
-                  />
-                </div>
-              </div>
-              <div
-                style={{
-                  width: mb ? '100%' : tl ? '100%' : tlpr ? 430 : 480,
-                }}
-              >
-                <div className='rounded-2xl overflow-hidden shadow-2xl'>
-                  <img
-                    src={IT_CT}
-                    alt='intro'
-                    style={{
-                      width: '100%',
-                      height: 'auto',
-                      objectFit: 'cover',
-                    }}
-                  />
-                </div>
-              </div>
+              />
             </div>
           </motion.div>
         </motion.section>

@@ -79,7 +79,17 @@ src/
 - Use the project's generic types: `QueryFn<T>`, `MutationFn<T, V>`, `QueryConfig<T>`, `MutationConfig<T>`.
 
 ### Theming
-- Primary color: `#474669`.
+- Primary color: `#474669` (legacy `ConfigProvider` token — still the base until migrated).
+- **Brand palette — sampled directly from the IES logo (`src/assets/imgs/ies_logo_notext.webp`).** New UI work, especially anything brand-facing (news/events, headings, CTAs, badges, links), should pull colors from this palette first instead of ad-hoc Tailwind colors (`blue-600`, `red-500`, arbitrary hexes, etc.):
+
+  | Role | Hex | Where it comes from in the logo |
+  |---|---|---|
+  | Navy | `#125484` | "IES" wordmark + outer arc — use for headings/primary text on brand sections |
+  | Blue | `#366BAF` | middle arc — use for links/secondary accents |
+  | Sky | `#36A1D2` | inner arc (lightest) — use for lighter accents/hover states |
+  | Orange | `#F3762D` | top arc — the logo's thinnest, most restrained stroke; use sparingly for CTAs/kickers/badges, not as a base color |
+
+  Keep neutrals (card surfaces, dark-mode backgrounds, borders) on the existing gray scale — the logo palette replaces *accent* colors, not structural neutrals.
 - Dark mode toggled by adding/removing `.dark` class on `document.documentElement` — handled by `useUserStore.setIsDark()`.
 - Ant Design `ConfigProvider` wraps the whole app — use its `token` prop for theme customization, not inline styles.
 

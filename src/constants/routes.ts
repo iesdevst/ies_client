@@ -1,11 +1,3 @@
-export const AboutTab = {
-  Aboverview: 'aboverview',
-  Vision: 'vision',
-  Corevalues: 'core-value',
-};
-
-export type AboutTab = (typeof AboutTab)[keyof typeof AboutTab];
-
 export const AdmissionVocaTab = {
   AllCour: 'all-courses',
   ItOffice: 'it-office',
@@ -77,9 +69,9 @@ export const ROUTES = {
   ROOT: '/',
   DASHBOARD: `/${HOME_SEGMENT}`,
   ABOUT: `/${ABOUT_SEGMENT}`,
-  ABOUT_OVERVIEW: `/${ABOUT_SEGMENT}?tab=${AboutTab.Aboverview}`,
-  ABOUT_VISION: `/${ABOUT_SEGMENT}?tab=${AboutTab.Vision}`,
-  ABOUT_COREVALUES: `/${ABOUT_SEGMENT}?tab=${AboutTab.Corevalues}`,
+  ABOUT_OVERVIEW: `/${ABOUT_SEGMENT}#ab-overview`,
+  ABOUT_VISION: `/${ABOUT_SEGMENT}#ab-vision`,
+  ABOUT_COREVALUES: `/${ABOUT_SEGMENT}#ab-core-value`,
   ADMISSIONS: `/${ADMISSIONS_SEGMENT}`,
   ADMISSIONSVOCA_ALL: `/${ADMISSIONS_SEGMENT}?tab=${AdmissionVocaTab.AllCour}`,
   ADMISSIONSVOCA_IT: `/${ADMISSIONS_SEGMENT}?tab=${AdmissionVocaTab.ItOffice}`,

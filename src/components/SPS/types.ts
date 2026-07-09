@@ -9,7 +9,6 @@ export type SubSecLayout =
   | 'cardGird'
   | 'trainingSl'
   | 'vidPr'
-  | 'newsFeature'
   | 'nailPage'
   | 'simple';
 
@@ -93,28 +92,6 @@ export interface TopicLayoutProps extends BasePageIesSecProps {
   methodLst: Array<MethodPr>;
 }
 
-/* ===== News ===== */
-export interface NewsFeatureLayoutProps extends BasePageIesSecProps {
-  layout: 'newsFeature';
-  feature: boolean;
-  butTit?: string;
-  featCard: Array<{
-    id: string;
-    img: string;
-    tit?: string;
-    butCard?: string;
-    des?: string;
-    navigo?: string;
-    eventTit?: string;
-    evDate?: string;
-    highlight?: string;
-    authorN?: string;
-  }>;
-  bonusTit?: string;
-  moreBut?: string;
-  moreClass?: string;
-}
-
 /* ===== Event & News Pagwe ===== */
 
 export type AdmissionTableRow = {
@@ -163,6 +140,5 @@ export type SubSectionProps =
   | VidPrLayoutProps
   | CardGirdProps
   | TopicLayoutProps
-  | NewsFeatureLayoutProps
   | NaiPageLayoutProps
   | SimpleLayoutProps;

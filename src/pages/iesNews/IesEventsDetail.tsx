@@ -92,17 +92,19 @@ const IesEventsDetails = () => {
   return (
     <section>
       {/* BREADCRUMB */}
-      <Breadcrumb
-        className={`${
-          mb ? '!ml-5 !mb-10' : tl ? '!ml-10 !mb-15' : '!ml-25 !py-15'
-        }`}
-        separator={
-          <RightOutlined
-            className={`${isDark ? '!text-white' : '!text-black'} px-6`}
-          />
-        }
-        items={breadcrumbItems}
-      />
+      <div className={`${isDark ? 'bg-[#0D0D1A]' : 'bg-[#e9e7f7]'}`}>
+        <Breadcrumb
+          className={`${
+            mb ? '!ml-5 !mb-10' : tl ? '!ml-10 !mb-15' : '!ml-25 !py-8'
+          }`}
+          separator={
+            <RightOutlined
+              className={`${isDark ? '!text-white' : '!text-black'} px-6`}
+            />
+          }
+          items={breadcrumbItems}
+        />
+      </div>
       {detailDt && latestNews && latestEv && (
         <IesClSection
           layout='naiPage'

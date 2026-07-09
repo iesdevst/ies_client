@@ -8,4 +8,6 @@ export default {
     'Thư viện cung cấp nhiều đầu sách, tài nguyên số và tạp chí. Không gian học tập hiện đại cùng công nghệ tiên tiến hỗ trợ sinh viên và nhà nghiên cứu trong học tập và khám phá.',
   libDesc2:
     'Thư viện trung tâm là trung tâm học thuật, cung cấp bộ sưu tập sách, tạp chí điện tử và tài nguyên số. Đây là không gian hiện đại để học tập, hợp tác và nghiên cứu.',
+  libKicker1: 'Không gian học tập',
+  libKicker2: 'Tài nguyên số',
 };

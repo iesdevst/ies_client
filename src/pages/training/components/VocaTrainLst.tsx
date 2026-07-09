@@ -145,7 +145,7 @@ const VocaTrainLst: React.FC<IVocaTrainLst> = (props) => {
   );
 
   return (
-    <section className='!mt-20'>
+    <section className='mt-20!'>
       <div
         className='pt-10'
         style={{

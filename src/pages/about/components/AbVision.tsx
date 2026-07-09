@@ -1,157 +1,152 @@
-import EyeFilled from '@ant-design/icons/EyeFilled';
-import FileTextFilled from '@ant-design/icons/FileTextFilled';
+import CheckOutlined from '@ant-design/icons/CheckOutlined';
+import EyeOutlined from '@ant-design/icons/EyeOutlined';
+import FileTextOutlined from '@ant-design/icons/FileTextOutlined';
+import RightOutlined from '@ant-design/icons/RightOutlined';
 import Button from 'antd/es/button';
-import Col from 'antd/es/col';
-import Flex from 'antd/es/flex';
-import List from 'antd/es/list';
-import Row from 'antd/es/row';
-import { lazy, useState } from 'react';
+import { lazy, useMemo, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useMediaQuery } from 'react-responsive';
 import AB_VS_CR from '@/assets/imgs/about_vision_crs.webp';
 import AB_VS_MB_CR from '@/assets/imgs/about_vision_mb_crs.webp';
 import { Text, Title } from '@/components';
+import {
+  accentForSurface,
+  IES_NAVY,
+  IES_ORANGE,
+  IES_SHADOW_DARK,
+  IES_SHADOW_LIGHT,
+  IES_SKY,
+} from '@/constants';
 
 const IesCtModal = lazy(() => import('@/pages/home/components/IesCtModal'));
 
-interface IAbVision {
+export interface AbVisionProps {
   dark: boolean;
 }
 
-const AbVision: React.FC<IAbVision> = (props) => {
+const AbVision: React.FC<AbVisionProps> = (props) => {
   const { dark } = props;
   const { t } = useTranslation('abVision');
   const mb = useMediaQuery({ maxWidth: 767 });
   const tablet = useMediaQuery({ minWidth: 768, maxWidth: 1024 });
   const [ctOpen, setCtOpen] = useState(false);
 
-  const mission = [t('miss1'), t('miss2'), t('miss3'), t('miss4'), t('miss5')];
+  const missionItems = useMemo(
+    () => [t('miss1'), t('miss2'), t('miss3'), t('miss4'), t('miss5')],
+    [t],
+  );
+
+  const cardCls = `rounded-[14px]! border! p-7! ${dark ? 'bg-[#201d2c]! border-[#332f45]!' : 'bg-white! border-[#e5e2ed]!'}`;
+  const cardShadow = { boxShadow: dark ? IES_SHADOW_DARK : IES_SHADOW_LIGHT };
 
   return (
     <>
-      <div>
-        <div className='!w-full !h-full'>
-          <img
-            src={mb || tablet ? AB_VS_MB_CR : AB_VS_CR}
-            className='!w-full'
-            style={{
-              objectFit: 'fill',
-              height: '65vh',
-            }}
-            loading='lazy'
-            alt='abvs'
-          />
+      <div
+        id='ab-vision'
+        className={`max-w-280! mx-auto! py-16! ${mb ? 'px-4!' : 'px-6!'}`}
+      >
+        <img
+          src={mb || tablet ? AB_VS_MB_CR : AB_VS_CR}
+          alt={`${t('heading1')} ${t('heading2')}`}
+          loading='lazy'
+          className='rounded-2xl! w-full! h-auto! mb-8!'
+          style={{ boxShadow: dark ? IES_SHADOW_DARK : IES_SHADOW_LIGHT }}
+        />
+
+        <div
+          className={`flex! ${mb ? 'flex-col!' : 'flex-row!'} items-end! justify-between! gap-6! mb-9!`}
+        >
+          <div>
+            <Title className='m-0!' style={{ color: dark ? '#fff' : IES_NAVY }}>
+              {t('heading1')}{' '}
+              <span style={{ color: IES_SKY }}>{t('heading2')}</span>
+            </Title>
+            <Text
+              color={dark ? '#a9a6c2' : '#5b5876'}
+              className='block! text-lg! leading-relaxed! max-w-[62ch]! mt-4!'
+            >
+              {t('subDesc')} {t('subDesc2')}
+            </Text>
+          </div>
+
+          <Button
+            type='text'
+            className={`shrink-0! inline-flex! items-center! gap-2.5! rounded-full! pl-5! pr-1.5! py-1.5! h-auto! border! ${dark ? 'bg-white/6! border-white/15! hover:bg-white/10!' : 'bg-[#125484]/6! border-[#125484]/20! hover:bg-[#125484]/10!'}`}
+            onClick={() => setCtOpen(true)}
+          >
+            <Title
+              className='m-0!'
+              level={4}
+              style={{ color: dark ? '#fff' : IES_NAVY }}
+            >
+              {t('contactBtn')}
+            </Title>
+            <div
+              className='w-7.5! h-7.5! rounded-full! flex! items-center! justify-center! shrink-0!'
+              style={{ backgroundColor: IES_ORANGE }}
+            >
+              <RightOutlined className='text-white! text-xs!' />
+            </div>
+          </Button>
         </div>
 
-        <div className={`${mb || tablet ? '!pt-10' : '!space-y-17 !pt-17'}`}>
-          <Flex vertical={mb || tablet} justify='center' align='center'>
-            <Col className={`${mb || tablet ? '' : 'flex-2'}`}>
-              <Row
-                className={`gap-x-2.5 ${mb || tablet ? '' : '!w-1/2'}`}
-                justify={'center'}
-                align={'middle'}
-              >
-                <Title
-                  className={`${dark ? '!text-white' : '!text-black'} !m-0`}
-                >
-                  {t('heading1')}
-                </Title>
-                <Title className='!m-0 !text-[#199BB2]'> {t('heading2')}</Title>
-              </Row>
-              <Row justify={'center'} align={'middle'}>
-                <Text
-                  color={dark ? 'white' : ''}
-                  className={`${mb ? 'my-2' : tablet ? '!text-2xl my-5' : '!text-2xl !font-semibold !w-5/6 ml-5 mt-5'}`}
-                >
-                  {t('subDesc')}
-                  <br />
-                  {t('subDesc2')}
-                </Text>
-              </Row>
-            </Col>
+        <div className='grid! grid-cols-1! md:grid-cols-2! gap-7!'>
+          <div className={cardCls} style={cardShadow}>
             <div
-              className={`${mb || tablet ? '!w-full !px-20' : 'flex-1 flex justify-center'}`}
+              className='w-11! h-11! rounded-xl! flex! items-center! justify-center! mb-4!'
+              style={{
+                backgroundColor: `${IES_NAVY}1f`,
+                color: accentForSurface(IES_NAVY, dark),
+              }}
             >
-              <Button
-                type='default'
-                className={`!border-none !bg-[#5EA61F] !rounded-3xl !px-7 !py-6 !font-semibold !text-lg hover:!bg-[#b1e087] hover:!text-black ${mb || tablet ? '!w-full' : ''}`}
-                onClick={() => setCtOpen(true)}
-              >
-                {t('contactBtn')}
-              </Button>
+              <EyeOutlined className='text-xl!' />
             </div>
-          </Flex>
-
-          <Flex
-            vertical={mb}
-            justify='center'
-            className={`${mb ? '!mt-5 !w-full' : tablet ? '!mt-8' : '!mt-10'}`}
-          >
-            <div
-              className={`!bg-[#4F79B8] !rounded-2xl !text-white !overflow-hidden  ${mb ? '!w-full ' : tablet ? '!w-5/6' : '!w-5/6'}`}
+            <Title
+              level={3}
+              className='m-0! mb-2.5!'
+              style={{ color: dark ? '#fff' : IES_NAVY }}
             >
-              <Row className={`${!mb ? '' : '!gap-y-6'}`}>
-                {/* VISION */}
-                <Col
-                  xs={24}
-                  sm={24}
-                  md={12}
-                  lg={12}
-                  className={`${!mb ? 'border-r border-white !pb-10 !pt-10 px-8' : 'px-3 pt-7'}`}
-                >
-                  <Row
-                    className='!border-b !border-white !border-b pb-5 gap-x-4 mb-5'
-                    justify={'start'}
-                    align={'middle'}
-                  >
-                    <EyeFilled className='!text-2xl !text-white !bg-[#5EA61F] px-1 py-1 rounded-md' />
-                    <Title level={3} className='!text-white !m-0'>
-                      {t('visionTitle')}
-                    </Title>
-                  </Row>
+              {t('visionTitle')}
+            </Title>
+            <Text
+              color={dark ? '#a9a6c2' : '#5b5876'}
+              className='block! text-lg! leading-relaxed!'
+            >
+              {t('visionDesc')}
+            </Text>
+          </div>
 
-                  <Text
-                    className={`!text-white !w-full italic ${!mb ? '!text-xl !leading-9' : ''}`}
-                  >
-                    {t('visionDesc')}
-                  </Text>
-                </Col>
-
-                {/* MISSION */}
-                <Col
-                  xs={24}
-                  sm={24}
-                  md={12}
-                  lg={12}
-                  className={`${!mb ? '!px-8 !pb-15 !pt-10' : 'px-3 pb-10'}`}
-                >
-                  <Row
-                    className='!border-b !border-white !border-b pb-5 gap-x-4 mb-5'
-                    justify={'start'}
-                    align={'middle'}
-                  >
-                    <FileTextFilled className='!text-2xl !text-[#5EA61F] rounded-md' />
-                    <Title level={3} className='!text-white !m-0'>
-                      {t('missionTitle')}
-                    </Title>
-                  </Row>
-
-                  <List
-                    dataSource={mission}
-                    renderItem={(item) => (
-                      <List.Item className='!border-none !p-0'>
-                        <Text
-                          className={`!text-white !w-full italic ${!mb ? '!text-xl !leading-8.5' : ''}`}
-                        >
-                          {item}
-                        </Text>
-                      </List.Item>
-                    )}
+          <div className={cardCls} style={cardShadow}>
+            <div
+              className='w-11! h-11! rounded-xl! flex! items-center! justify-center! mb-4!'
+              style={{ backgroundColor: `${IES_ORANGE}1f`, color: IES_ORANGE }}
+            >
+              <FileTextOutlined className='text-xl!' />
+            </div>
+            <Title
+              level={3}
+              className='m-0! mb-3.5!'
+              style={{ color: dark ? '#fff' : IES_NAVY }}
+            >
+              {t('missionTitle')}
+            </Title>
+            <div className='flex! flex-col! gap-3!'>
+              {missionItems.map((item) => (
+                <div key={item} className='flex! gap-2.5!'>
+                  <CheckOutlined
+                    className='mt-1! shrink-0! text-xs!'
+                    style={{ color: IES_SKY }}
                   />
-                </Col>
-              </Row>
+                  <Text
+                    color={dark ? '#a9a6c2' : '#5b5876'}
+                    className='block! text-lg! leading-relaxed!'
+                  >
+                    {item}
+                  </Text>
+                </div>
+              ))}
             </div>
-          </Flex>
+          </div>
         </div>
       </div>
       <IesCtModal openCtM={ctOpen} closeCtM={() => setCtOpen(false)} />

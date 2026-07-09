@@ -71,7 +71,7 @@ const VidPr: React.FC<VidPrLayoutProps> = (props) => {
       )}
 
       {/* CONTENT */}
-      <div className={`${dk && 'flex-[1.5] px-5'}`}>
+      <div className={`${dk && 'flex-[1.5] pl-15'}`}>
         {/* HEADER */}
         <Flex
           justify='space-between'

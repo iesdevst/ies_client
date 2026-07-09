@@ -8,4 +8,6 @@ export default {
     'Our libraries offer books, digital resources, and journals. Modern study spaces and advanced technology support students and researchers in learning and discovery.',
   libDesc2:
     'Our central library is the hub of academic life, offering collections of books, e-journals, and digital resources. It provides a modern space to learn, collaborate, and conduct research.',
+  libKicker1: 'Study Spaces',
+  libKicker2: 'Digital Resources',
 };

@@ -6,7 +6,6 @@ import type { SubSectionProps } from './types';
 const SCS = lazy(() => import('@/components/SPS/components/SCS'));
 const VidPr = lazy(() => import('@/components/SPS/components/VidPr'));
 const Topic = lazy(() => import('@/components/SPS/components/Topic'));
-const NewsFeat = lazy(() => import('@/components/SPS/components/NewsFeat'));
 const Simple = lazy(() => import('@/components/SPS/components/Simple'));
 const NaiPage = lazy(() => import('@/components/SPS/components/naiPage/NaiPage'));
 const CardGird = lazy(() => import('@/components/SPS/components/CardGird'));
@@ -16,7 +15,6 @@ const layoutMap = {
   topic: Topic,
   systemCardSplit: SCS,
   vidPr: VidPr,
-  newsFeature: NewsFeat,
   naiPage: NaiPage,
   simple: Simple,
   cardGird: CardGird,

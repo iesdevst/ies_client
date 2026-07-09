@@ -1,22 +1,16 @@
-import EyeOutlined from '@ant-design/icons/EyeOutlined';
-import HeartOutlined from '@ant-design/icons/HeartOutlined';
-import ProfileOutlined from '@ant-design/icons/ProfileOutlined';
 import RightOutlined from '@ant-design/icons/RightOutlined';
 import Breadcrumb from 'antd/es/breadcrumb';
-import Tabs from 'antd/es/tabs';
-import type { TabsProps } from 'antd/es/tabs';
-import Tooltip from 'antd/es/tooltip';
-import { lazy, useCallback, useMemo } from 'react';
+import { lazy, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useMediaQuery } from 'react-responsive';
-import { useSearchParams } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 import ContactKey from '../home/components/ContactKey';
 import styles from './iesAbout.module.scss';
 import VAMMB from '@/assets/imgs/v_ad_m_mb_banner.webp';
 import VAM from '@/assets/imgs/vision_and_mission_bn_page.webp';
-import { Text, Title } from '@/components';
+import { Text } from '@/components';
 import { PrefetchLink } from '@/components/PrefetchLink';
-import { AboutTab, ROUTES } from '@/constants';
+import { ROUTES } from '@/constants';
 import { useUserStore } from '@/store';
 
 const AbOverview = lazy(() => import('@/pages/about/components/AbOverview'));
@@ -24,79 +18,24 @@ const AbVision = lazy(() => import('@/pages/about/components/AbVision'));
 const AbCoreValue = lazy(() => import('@/pages/about/components/AbCoreValue'));
 
 const AboutIes: React.FC = () => {
-  const [abtSearchParams, setAbtSearchParams] = useSearchParams();
-  const abtActiveKey = abtSearchParams.get('tab') || AboutTab.Aboverview;
   const { isDark } = useUserStore();
   const { t } = useTranslation('aboutIes');
+  const location = useLocation();
   const mb = useMediaQuery({ maxWidth: 767 });
   const tablet = useMediaQuery({ minWidth: 768, maxWidth: 1024 });
 
-  const tabs: TabsProps['items'] = useMemo(
-    () => [
-      {
-        key: AboutTab.Aboverview,
-        label: !mb ? (
-          <Title
-            level={4}
-            className={`${abtActiveKey === AboutTab.Aboverview ? '!text-white' : '!text-black'} !m-0`}
-          >
-            {t('ovw')}
-          </Title>
-        ) : (
-          <Tooltip title={t('ovw')}>
-            <ProfileOutlined
-              className={`${abtActiveKey === AboutTab.Aboverview ? '!text-white' : '!text-black'} !text-lg`}
-            />
-          </Tooltip>
-        ),
-        children: <AbOverview dark={isDark} />,
-      },
-      {
-        key: AboutTab.Vision,
-        label: !mb ? (
-          <Title
-            level={4}
-            className={`${abtActiveKey === AboutTab.Vision ? '!text-white' : '!text-black'} !m-0`}
-          >
-            {t('vs')}
-          </Title>
-        ) : (
-          <Tooltip title={t('vs')}>
-            <EyeOutlined
-              className={`${abtActiveKey === AboutTab.Vision ? '!text-white' : '!text-black'} !text-lg`}
-            />
-          </Tooltip>
-        ),
-        children: <AbVision dark={isDark} />,
-      },
-      {
-        key: AboutTab.Corevalues,
-        label: !mb ? (
-          <Title
-            level={4}
-            className={`${abtActiveKey === AboutTab.Corevalues ? '!text-white' : '!text-black'} !m-0`}
-          >
-            {t('vl')}
-          </Title>
-        ) : (
-          <Tooltip title={t('vl')}>
-            <HeartOutlined
-              className={`${abtActiveKey === AboutTab.Corevalues ? '!text-white' : '!text-black'} !text-lg`}
-            />
-          </Tooltip>
-        ),
-        children: <AbCoreValue />,
-      },
-    ],
-    [abtActiveKey, mb, isDark, t],
-  );
+  useEffect(() => {
+    if (!location.hash) return;
 
-  const handleChangeTab = useCallback(
-    (key: string) => {
-      setAbtSearchParams({ tab: key }, { replace: true });
-    },
-    [setAbtSearchParams],
-  );
+    const id = location.hash.replace('#', '');
+    const timer = setTimeout(() => {
+      document
+        .getElementById(id)
+        ?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }, 100);
+
+    return () => clearTimeout(timer);
+  }, [location]);
 
   return (
     <section className='pt-5'>
@@ -141,14 +80,10 @@ const AboutIes: React.FC = () => {
           backgroundRepeat: 'no-repeat',
         }}
       ></div>
-      <Tabs
-        activeKey={abtActiveKey}
-        items={tabs}
-        onChange={handleChangeTab}
-        type='card'
-        className={`${styles.customTabs} ${mb || tablet ? '' : '!mt-3'}`}
-        centered={mb}
-      />
+
+      <AbOverview dark={isDark} />
+      <AbVision dark={isDark} />
+      <AbCoreValue dark={isDark} />
 
       <ContactKey />
     </section>

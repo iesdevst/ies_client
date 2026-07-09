@@ -110,7 +110,7 @@ const NewsLst: React.FC<INewsLst> = (props) => {
         {newsLstdata.map((newsLst) => (
           <Card
             key={newsLst.id}
-            className={`${cardPadMap[device]} ${isDark ? '!bg-[#191f23]' : '!bg-gray-400'} cursor-pointer`}
+            className={`${cardPadMap[device]} ${isDark ? '!bg-[#191f23]' : 'bg-[#2b2f6b]!'} cursor-pointer`}
             onClick={() =>
               handleNavigate({
                 id: newsLst.id,
@@ -145,7 +145,7 @@ const NewsLst: React.FC<INewsLst> = (props) => {
                   style={{
                     whiteSpace: 'pre-line',
                   }}
-                  className='!m-0'
+                  className='!m-0 text-white!'
                 >
                   {newsLst.newsTit}
                 </Title>
@@ -154,15 +154,15 @@ const NewsLst: React.FC<INewsLst> = (props) => {
                   style={{
                     whiteSpace: 'pre-line',
                   }}
-                  color={isDark ? 'white' : 'black'}
+                  color='white'
                 >
                   {newsLst.desc}
                 </Text>
                 <Row justify='space-between' align='middle'>
-                  <Title level={5} className='!m-0 !mt-3'>
+                  <Title level={5} className='m-0! mt-3! text-white!'>
                     {newsLst.authorN}
                   </Title>
-                  <Title level={5} className='!m-0 !mt-3'>
+                  <Title level={5} className='m-0! mt-3! text-white!'>
                     {newsLst.newsDate}
                   </Title>
                 </Row>
