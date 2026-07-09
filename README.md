@@ -1,5 +1,6 @@
 -- ies_client   --
 
+git config user.email "longnn@iescollege.edu.vn"         
 ies_client -henwir42@gmail.com  -vercel only
 
 
