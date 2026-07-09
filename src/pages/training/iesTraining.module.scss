@@ -1,3 +1,17 @@
+.breadCrumbCus ol {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.vocaDetailBreadcrumb {
+  ol {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+  }
+}
+/* ===================== VocaTrainDetail / ShortCrsDetail redesign ===================== */
+
 .iesTrainTabs {
   :global {
     .ant-tabs-nav::before {
@@ -7,9 +21,15 @@
       background: #1e4d8c;
       padding: 10px;
       border-radius: 999px;
-      margin: 0 200px;
+      width: fit-content !important;
+      flex: none !important;
+      margin: 0 auto;
     }
 
+    .ant-tabs-nav-list {
+      display: flex !important;
+      gap: 30px;
+    }
     .ant-tabs-tab {
       font-weight: 500;
       border-radius: 999px;
@@ -17,277 +37,125 @@
       transition: all 0.3s ease;
     }
 
-    .ant-tabs-tab:hover {
-      color: #fff;
-      opacity: 0.85;
-      cursor: pointer;
-    }
-
     .ant-tabs-tab-active {
       background: #fff;
     }
 
-    .ant-tabs-tab-active .ant-tabs-tab-btn {
-      font-weight: 600;
-    }
-
     .ant-tabs-ink-bar {
       display: none;
-    }
-  }
-  /* Tablet lg */
-  @media (max-width: 1024px) {
-    :global {
-      .ant-tabs-nav-wrap {
-        padding: 20px 0;
-        margin: 0 250px !important;
-      }
-
-      .ant-tabs-tab {
-        margin: 0 35px 0 0 !important;
-      }
-    }
-  }
-
-  /* Tablet md */
-  @media (max-width: 912px) {
-    :global {
-      .ant-tabs-nav-wrap {
-        padding: 15px 20px;
-        margin: 0 150px !important;
-      }
-
-      .ant-tabs-tab {
-        padding: 4px 10px;
-        font-size: 12px;
-        margin: 0 20px !important;
-      }
     }
   }
 
   /* Mobile */
   @media (max-width: 767px) {
     :global {
+      .ant-tabs-nav {
+        width: 100% !important;
+        justify-content: center;
+      }
+
       .ant-tabs-nav-wrap {
-        padding: 15px 10px;
-        margin: 0 15px !important;
+        width: fit-content !important;
+        margin: 0 auto !important;
       }
+
       .ant-tabs-tab {
-        padding: 4px 10px;
-        font-size: 12px;
-        margin: 0 7.5px !important;
+        padding: 6px 10px;
+      }
+      .ant-tabs-nav-list {
+        display: flex !important;
+        gap: 0 !important;
       }
     }
-  }
-}
-
-.iesTrainDtTabs {
-  :global {
-    .ant-tabs-nav::before {
-      border-bottom: none !important;
-    }
-    .ant-tabs-nav-wrap {
-      padding: 0;
-    }
-
-    .ant-tabs-tab {
-      font-weight: 700;
-      padding: 6px 18px;
-      transition: all 0.3s ease !important;
-      background: white;
-      border-radius: 10px 10px 0 0;
-      margin: 0 0 0 10px !important;
-    }
-
-    .ant-tabs-tab:hover {
-      color: #fff;
-      opacity: 0.85;
-      background-color: #e8622a;
-      cursor: pointer;
-    }
-
-    .ant-tabs-tab-active {
-      background: #e8622a;
-    }
-
-    .ant-tabs-tab-active .ant-tabs-tab-btn {
-      font-weight: 600;
-    }
-
-    .ant-tabs-ink-bar {
-      display: none;
-    }
-
-    /* ==================== DARK MODE ==================== */
-    :global(.dark) & {
-      .ant-tabs-tab {
-        background: gray !important;
-      }
-
-      .ant-tabs-tab-active {
-        background: #c92cc9 !important;
-      }
-    }
-  }
-
-  @media (max-width: 768px) {
-    :global(.ant-tabs-nav-wrap) {
-      margin: 0 !important;
-    }
-    :global(.ant-tabs-tab) {
-      padding: 5px 20px !important;
-      margin-right: 5px !important;
-    }
-  }
-}
-
-.breadCrumbCus ol {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-/* ===================== VocaTrainDetail / ShortCrsDetail redesign ===================== */
-
-.vocaDetailBreadcrumb {
-  ol {
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
   }
 }
 
 .vocaDetailTabs {
   :global {
+    .ant-tabs-nav {
+      width: fit-content !important;
+    }
+
     .ant-tabs-nav::before {
       border-bottom: none !important;
     }
-
     .ant-tabs-nav-wrap {
       background: rgba(255, 255, 255, 0.1);
-      padding: 6px;
-      border-radius: 999px;
-      margin: 0 200px;
+      width: fit-content !important;
+      margin: 0 !important;
+      margin-bottom: 10px !important;
+      border-radius: 5px;
+      padding: 13px;
     }
 
     .ant-tabs-tab {
-      color: rgba(255, 255, 255, 0.75);
-      border-radius: 999px;
-      padding: 8px 24px;
-      font-weight: 500;
-      transition: all 0.25s ease;
+      padding: 10px 12px;
+      transition: all 0.3s ease !important;
+      margin: 0 !important;
     }
 
-    .ant-tabs-tab:hover {
-      color: #fff;
+    .ant-tabs-nav-list {
+      display: flex !important;
+      gap: 10px;
     }
 
     .ant-tabs-tab-active {
       background: rgba(255, 255, 255, 0.92);
+      border-radius: 5px !important;
+      margin: 0 !important;
+      padding: 6px 12px;
     }
 
     .ant-tabs-tab-active .ant-tabs-tab-btn {
       color: #e8622a !important;
       font-weight: 700;
     }
-
     .ant-tabs-ink-bar {
       display: none;
-    }
-
-    .ant-tabs-content-holder {
-      padding-top: 8px;
     }
   }
 
   @media (max-width: 1024px) {
-    :global(.ant-tabs-nav-wrap) {
-      margin: 0 60px;
+    :global {
+      .ant-tabs-nav {
+        width: 100% !important;
+        justify-content: center;
+        margin-bottom: 10px;
+      }
+
+      .ant-tabs-nav-wrap {
+        flex: none !important;
+        width: fit-content !important;
+        margin: 0 auto !important;
+      }
     }
   }
 
   @media (max-width: 768px) {
     :global {
-      .ant-tabs-nav-wrap {
-        margin: 0 8px;
-        padding: 4px;
+      .ant-tabs-nav {
+        width: 100% !important;
+        justify-content: center;
+        margin-bottom: 10px;
       }
 
-      .ant-tabs-tab {
-        padding: 5px 14px;
-        font-size: 12px;
+      .ant-tabs-nav-wrap {
+        flex: none !important;
+        width: fit-content !important;
+        margin: 0 auto !important;
+        padding: 8px;
       }
     }
   }
 }
 
 /* Short Course detail — same pill style, blue accent */
-.vocaScDetailTabs {
+
+.iesShortCrsTabs {
   :global {
     .ant-tabs-nav::before {
       border-bottom: none !important;
     }
-
-    .ant-tabs-nav-wrap {
-      background: rgba(255, 255, 255, 0.1);
-      padding: 6px;
-      border-radius: 999px;
-      margin: 0 200px;
-    }
-
-    .ant-tabs-tab {
-      color: rgba(255, 255, 255, 0.75);
-      border-radius: 999px;
-      padding: 8px 24px;
-      font-weight: 500;
-      transition: all 0.25s ease;
-    }
-
-    .ant-tabs-tab:hover {
-      color: #fff;
-    }
-
-    .ant-tabs-tab-active {
-      background: rgba(255, 255, 255, 0.92);
-    }
-
-    .ant-tabs-tab-active .ant-tabs-tab-btn {
-      color: #2b6cb0 !important;
-      font-weight: 700;
-    }
-
-    .ant-tabs-ink-bar {
-      display: none;
-    }
-
-    .ant-tabs-content-holder {
-      padding-top: 8px;
-    }
-  }
-
-  @media (max-width: 1024px) {
-    :global(.ant-tabs-nav-wrap) {
-      margin: 0 60px;
-    }
-  }
-
-  @media (max-width: 768px) {
-    :global {
-      .ant-tabs-nav-wrap {
-        margin: 0 8px;
-        padding: 4px;
-      }
-
-      .ant-tabs-tab {
-        padding: 5px 14px;
-        font-size: 12px;
-      }
-    }
-  }
-}
-
-.iesShortCrsTabs {
-  :global {
     .ant-tabs-nav-wrap {
       background: #4a6fa5;
       padding: 10px;
@@ -297,6 +165,10 @@
       margin: 0 auto;
     }
 
+    .ant-tabs-nav-list {
+      display: flex !important;
+      gap: 30px;
+    }
     .ant-tabs-tab {
       color: #fff;
       font-weight: 500;
@@ -312,50 +184,12 @@
       display: none;
     }
   }
-
-  /* Tablet lg */
-  @media (max-width: 1024px) {
-    :global {
-      .ant-tabs-nav {
-        padding: 0 30px 0 30px !important;
-      }
-      .ant-tabs-nav-wrap {
-        width: fit-content !important;
-        flex: none !important;
-      }
-    }
-  }
-
-  /* Tablet md */
-  @media (max-width: 912px) {
-    :global {
-      .ant-tabs-nav-wrap {
-        width: 100% !important;
-        flex: none !important;
-        margin: 0 auto;
-        padding: 15px 8px;
-      }
-
-      .ant-tabs-tab {
-        padding: 4px 10px;
-        font-size: 12px;
-        margin: 0 11px !important;
-      }
-    }
-  }
-
   /* Mobile */
   @media (max-width: 767px) {
     :global {
-      .ant-tabs-tab {
-        padding: 4px 10px;
-        font-size: 12px;
-        margin: 0 15px !important;
-      }
-      .ant-tabs-nav-wrap {
-        width: 100% !important;
-        flex: none !important;
-        margin: 0 auto;
+      .ant-tabs-nav-list {
+        display: flex !important;
+        gap: 8px;
       }
     }
   }
@@ -366,7 +200,9 @@
     .ant-tabs-nav {
       width: fit-content !important;
     }
-
+    .ant-tabs-nav::before {
+      border-bottom: none !important;
+    }
     .ant-tabs-nav-wrap {
       background: rgba(255, 255, 255, 0.1);
       width: fit-content !important;
@@ -395,21 +231,33 @@
   }
 
   @media (max-width: 1024px) {
-    :global(.ant-tabs-nav-wrap) {
-      margin: 0 60px;
+    :global {
+      .ant-tabs-nav {
+        width: 100% !important;
+        justify-content: center;
+        margin-bottom: 10px;
+      }
+
+      .ant-tabs-nav-wrap {
+        flex: none !important;
+        width: fit-content !important;
+        margin: 0 auto !important;
+      }
     }
   }
 
   @media (max-width: 768px) {
     :global {
-      .ant-tabs-nav-wrap {
-        margin: 0 8px;
-        padding: 4px;
+      .ant-tabs-nav {
+        width: 100% !important;
+        justify-content: center;
+        margin-bottom: 10px;
       }
 
-      .ant-tabs-tab {
-        padding: 5px 14px;
-        font-size: 12px;
+      .ant-tabs-nav-wrap {
+        flex: none !important;
+        width: fit-content !important;
+        margin: 0 auto !important;
       }
     }
   }

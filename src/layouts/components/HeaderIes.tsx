@@ -24,28 +24,25 @@ interface IHeaderIes {
 
 const HeaderIes: React.FC<IHeaderIes> = (props) => {
   const { setDrawerKey } = props;
-  const { device } = useDevice();
+  const {
+    isDesktop: dk,
+    isMobile: mb,
+    isTablet: tl,
+    isTabletPro: tlpr,
+  } = useDevice();
   const { isDark } = useUserStore();
 
-  const showDesktop = device === 'desktop' || device === 'tabletPro';
-  const mbtl = device === 'mobile' || device === 'tablet';
-  const tl = device === 'tablet';
-  const mb = device === 'mobile';
-  const tlpr = device === 'tabletPro';
-
   const getIesLogo = () => {
-    if (isDark && mbtl) return IES_LGMB_DARK;
+    if (isDark && !dk) return IES_LGMB_DARK;
     if (isDark) return IES_LG_DARK;
-    if (mbtl) return IES_LGMB;
+    if (!dk) return IES_LGMB;
     return IES_LG;
   };
 
   return (
     <>
-      {showDesktop && (
-        <div
-          className={`!w-full px-20 py-1 ${isDark ? 'bg-[#2b2f6b]' : 'bg-gray-500'}`}
-        >
+      {dk && (
+        <div className='!w-full px-20 py-1 bg-[#2b2f6b]'>
           <Row className='gap-x-7' justify={'end'}>
             <ThemeSwitcher classN='!text-white' />
             <IesClientLang colorT='!text-white' />
@@ -53,27 +50,27 @@ const HeaderIes: React.FC<IHeaderIes> = (props) => {
         </div>
       )}
       <Header
-        className={`${mb ? 'mt-3 !justify-between' : tl ? 'mt-3 !justify-between pr-5!' : tlpr ? '!justify-between' : 'gap-x-50 !justify-center !px-4 my-1.5'} !flex !items-center !p-0`}
+        className={`${mb ? 'mt-3 !justify-between' : tl ? 'mt-3 !justify-between pr-5!' : tlpr ? '!justify-between mt-4 px-5!' : 'gap-x-30 !justify-center !px-4 my-1.5'} !flex !items-center !p-0`}
       >
         <PrefetchLink
           to={ROUTES.DASHBOARD}
           className='!block !flex !items-center'
         >
           <img
-            className={`${showDesktop ? '!w-25 !h-10' : '!w-100 !h-23'} ${tl ? 'ml-45 mb-1!' : mb ? 'mb-1!' : ''}`}
+            className={`${dk ? '!w-25 !h-10' : '!w-100 !h-23'} ${tl ? 'ml-45 mb-1!' : mb ? 'mb-1!' : ''}`}
             src={getIesLogo()}
             alt='ies_logo'
             loading='lazy'
             decoding='async'
           />
         </PrefetchLink>
-        {showDesktop && (
+        {dk && (
           <Row className='gap-x-5'>
             <NavLst setDrawerKey={setDrawerKey} />
           </Row>
         )}
 
-        {mbtl && <MegaMbDrawer />}
+        {!dk && <MegaMbDrawer />}
       </Header>
     </>
   );

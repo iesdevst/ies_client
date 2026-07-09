@@ -16,7 +16,9 @@ export const useTrainDetailData = (): { data: Array<DetailTrain> } => {
     {
       program: t('itCat'),
       progTitle: t('appInfoProg'),
+      engTitle: 'APPLIED INFORMATICS',
       industryType: ProgTypeEnum.AppInfo,
+      industryCode: '6480101',
       imgDetail: APPIFD,
       overview: {
         intro: t('appInfoIntro'),
@@ -28,10 +30,11 @@ export const useTrainDetailData = (): { data: Array<DetailTrain> } => {
       },
       info: {
         require: t('req'),
+        timets: t('timets'),
         method: t('method'),
+        docmethod: t('docmethod'),
       },
       apply: {
-        requirement: t('apply'),
         document: t('doc'),
         work: t('work'),
       },
@@ -40,7 +43,9 @@ export const useTrainDetailData = (): { data: Array<DetailTrain> } => {
     {
       program: t('itCat'),
       progTitle: t('itProg'),
+      engTitle: 'INFORMATION TECHNOLOGY',
       industryType: ProgTypeEnum.IT,
+      industryCode: '6480201',
       imgDetail: ITD,
       overview: {
         intro: t('itIntro'),
@@ -50,13 +55,13 @@ export const useTrainDetailData = (): { data: Array<DetailTrain> } => {
         career: t('itCareer'),
         tagName: t('itTagName'),
       },
-
       info: {
         require: t('req'),
+        timets: t('timets'),
         method: t('method'),
+        docmethod: t('docmethod'),
       },
       apply: {
-        requirement: t('apply'),
         document: t('doc'),
         work: t('work'),
       },
@@ -65,7 +70,9 @@ export const useTrainDetailData = (): { data: Array<DetailTrain> } => {
     {
       program: t('itCat'),
       progTitle: t('indusProg'),
+      engTitle: 'INDUSTRIAL & ELECTRICAL',
       industryType: ProgTypeEnum.Indus,
+      industryCode: '6520201',
       imgDetail: INDUSD,
       overview: {
         intro: t('indusIntro'),
@@ -75,13 +82,13 @@ export const useTrainDetailData = (): { data: Array<DetailTrain> } => {
         career: t('indusCareer'),
         tagName: t('indusTagName'),
       },
-
       info: {
         require: t('req'),
+        timets: t('timets'),
         method: t('method'),
+        docmethod: t('docmethod'),
       },
       apply: {
-        requirement: t('apply'),
         document: t('doc'),
         work: t('work'),
       },
@@ -90,7 +97,9 @@ export const useTrainDetailData = (): { data: Array<DetailTrain> } => {
     {
       program: t('officeCat'),
       progTitle: t('officeProg'),
+      engTitle: 'OFFICE ADMINISTRATION',
       industryType: ProgTypeEnum.Office,
+      industryCode: '6340402',
       imgDetail: OFAD,
       overview: {
         intro: t('officeIntro'),
@@ -100,13 +109,13 @@ export const useTrainDetailData = (): { data: Array<DetailTrain> } => {
         career: t('officeCareer'),
         tagName: t('officeTagName'),
       },
-
       info: {
         require: t('req'),
+        timets: t('timets'),
         method: t('method'),
+        docmethod: t('docmethod'),
       },
       apply: {
-        requirement: t('apply'),
         document: t('doc'),
         work: t('work'),
       },
@@ -115,7 +124,9 @@ export const useTrainDetailData = (): { data: Array<DetailTrain> } => {
     {
       program: t('officeCat'),
       progTitle: t('hospiProg'),
+      engTitle: 'HOSPITALITY MANAGEMENT',
       industryType: ProgTypeEnum.Hospi,
+      industryCode: '6810201',
       imgDetail: HOSD,
       overview: {
         intro: t('hospiIntro'),
@@ -125,13 +136,13 @@ export const useTrainDetailData = (): { data: Array<DetailTrain> } => {
         career: t('hospiCareer'),
         tagName: t('hospiTagName'),
       },
-
       info: {
         require: t('req'),
+        timets: t('timets'),
         method: t('method'),
+        docmethod: t('docmethod'),
       },
       apply: {
-        requirement: t('apply'),
         document: t('doc'),
         work: t('work'),
       },
@@ -140,7 +151,9 @@ export const useTrainDetailData = (): { data: Array<DetailTrain> } => {
     {
       program: t('bsCat'),
       progTitle: t('mktProg'),
+      engTitle: 'MARKETING',
       industryType: ProgTypeEnum.Mkt,
+      industryCode: '6340204',
       imgDetail: MTKD,
       overview: {
         intro: t('mktIntro'),
@@ -150,13 +163,13 @@ export const useTrainDetailData = (): { data: Array<DetailTrain> } => {
         career: t('mktCareer'),
         tagName: t('mktTagName'),
       },
-
       info: {
         require: t('req'),
+        timets: t('timets'),
         method: t('method'),
+        docmethod: t('docmethod'),
       },
       apply: {
-        requirement: t('apply'),
         document: t('doc'),
         work: t('work'),
       },
@@ -165,7 +178,9 @@ export const useTrainDetailData = (): { data: Array<DetailTrain> } => {
     {
       program: t('bsCat'),
       progTitle: t('busiProg'),
+      engTitle: 'BUSINESS ADMINISTRATION',
       industryType: ProgTypeEnum.Business,
+      industryCode: '6340101',
       imgDetail: BUSID,
       overview: {
         intro: t('busiIntro'),
@@ -175,13 +190,13 @@ export const useTrainDetailData = (): { data: Array<DetailTrain> } => {
         career: t('busiCareer'),
         tagName: t('busiTagName'),
       },
-
       info: {
         require: t('req'),
+        timets: t('timets'),
         method: t('method'),
+        docmethod: t('docmethod'),
       },
       apply: {
-        requirement: t('apply'),
         document: t('doc'),
         work: t('work'),
       },
@@ -190,7 +205,9 @@ export const useTrainDetailData = (): { data: Array<DetailTrain> } => {
     {
       program: t('designProg'),
       progTitle: t('designCat'),
+      engTitle: 'COMPUTER GRAPHIC DESIGN',
       industryType: ProgTypeEnum.CompuDs,
+      industryCode: '6210403',
       imgDetail: ADSD,
       overview: {
         intro: t('designIntro'),
@@ -202,10 +219,11 @@ export const useTrainDetailData = (): { data: Array<DetailTrain> } => {
       },
       info: {
         require: t('req'),
+        timets: t('timets'),
         method: t('method'),
+        docmethod: t('docmethod'),
       },
       apply: {
-        requirement: t('apply'),
         document: t('doc'),
         work: t('work'),
       },
@@ -214,7 +232,9 @@ export const useTrainDetailData = (): { data: Array<DetailTrain> } => {
     {
       program: t('bsCat'),
       progTitle: t('accProg'),
+      engTitle: 'ACCOUNTING',
       industryType: ProgTypeEnum.Accounting,
+      industryCode: '6340301',
       imgDetail: ACCTD,
       overview: {
         intro: t('accIntro'),
@@ -224,13 +244,13 @@ export const useTrainDetailData = (): { data: Array<DetailTrain> } => {
         career: t('accCareer'),
         tagName: t('accTagName'),
       },
-
       info: {
         require: t('req'),
+        timets: t('timets'),
         method: t('method'),
+        docmethod: t('docmethod'),
       },
       apply: {
-        requirement: t('apply'),
         document: t('doc'),
         work: t('work'),
       },
@@ -249,11 +269,12 @@ export type OvwDetail = {
 };
 export type AdmissInfo = {
   require: string;
+  timets: string;
   method: string;
+  docmethod: string;
 };
 
 export type TuiApply = {
-  requirement: string;
   document: string;
   work: string;
 };
@@ -261,8 +282,10 @@ export type TuiApply = {
 export type DetailTrain = {
   program: string;
   progTitle: string;
+  engTitle: string;
   imgDetail: string;
   industryType: ProgTypeEnum;
+  industryCode: string;
   overview: OvwDetail;
   info: AdmissInfo;
   apply: TuiApply;

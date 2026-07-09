@@ -155,11 +155,11 @@ const MegaDrawer: React.FC<IMegaDrawer> = ({ activeKey, onClose }) => {
             justify='space-between'
             align='center'
             className={`!pt-5 ${
-              !activeMenu.overW ? 'border-b !pb-15 border-[#e2e4e9]' : ''
+              !activeMenu.overW ? 'border-b !pb-10 border-[#e2e4e9]' : ''
             }`}
           >
             <Title
-              className={`!font-semibold !m-0 !text-5xl ${
+              className={`!font-semibold !m-0 !text-5xl uppercase ${
                 isDark ? '!text-white' : '!text-black'
               }`}
             >
@@ -200,7 +200,7 @@ const MegaDrawer: React.FC<IMegaDrawer> = ({ activeKey, onClose }) => {
           )}
 
           {/* SECTIONS */}
-          <div className='space-y-8 mt-15'>
+          <div className='space-y-8 mt-10'>
             {activeMenu.sections.map((section) => (
               <div key={section.title} className='!mb-15'>
                 {section.title && (
@@ -227,7 +227,7 @@ const MegaDrawer: React.FC<IMegaDrawer> = ({ activeKey, onClose }) => {
                   </Row>
                 )}
 
-                <div className='grid grid-cols-2 gap-x-10 gap-y-10 mt-10'>
+                <div className='grid grid-cols-2 gap-x-10 gap-y-6 mt-10'>
                   {section.links.map((link) => (
                     <MegaLink
                       key={link.route}

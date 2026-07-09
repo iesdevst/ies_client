@@ -1,4 +1,6 @@
 export default {
-  admissRe: 'Điều kiện tuyển sinh',
+  admissRe: 'Đối tượng tuyển sinh',
+  admissTime: 'Thời gian xét tuyển',
   admissMt: 'Phương thức tuyển sinh',
+  admissDocs: 'Hồ sơ đăng ký',
 };

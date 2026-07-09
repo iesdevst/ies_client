@@ -10,6 +10,7 @@ export const useShortCrsData = (): { data: Array<DetailShortCrs> } => {
   const data: Array<DetailShortCrs> = [
     {
       shortCrsTit: t('mixologyTit'),
+      engTitle: 'BEVERAGE PREPARATION',
       shortCrsType: ShortCrsTypeEnum.Mixology,
       imgDetail: MSC,
       overview: {
@@ -22,10 +23,11 @@ export const useShortCrsData = (): { data: Array<DetailShortCrs> } => {
       },
       info: {
         require: t('req'),
+        timets: t('timets'),
         method: t('method'),
+        docmethod: t('docmethod'),
       },
       apply: {
-        requirement: t('apply'),
         document: t('doc'),
         work: t('work'),
       },
@@ -33,6 +35,7 @@ export const useShortCrsData = (): { data: Array<DetailShortCrs> } => {
 
     {
       shortCrsTit: t('cookingTit'),
+      engTitle: 'PROFESSIONAL COOKING',
       shortCrsType: ShortCrsTypeEnum.Cooking,
       imgDetail: CSC,
       overview: {
@@ -43,13 +46,13 @@ export const useShortCrsData = (): { data: Array<DetailShortCrs> } => {
         career: t('cookingCareer'),
         tagName: t('cookingTagName'),
       },
-
       info: {
         require: t('req'),
+        timets: t('timets'),
         method: t('method'),
+        docmethod: t('docmethod'),
       },
       apply: {
-        requirement: t('apply'),
         document: t('doc'),
         work: t('work'),
       },
@@ -57,6 +60,7 @@ export const useShortCrsData = (): { data: Array<DetailShortCrs> } => {
 
     {
       shortCrsTit: t('bakingTit'),
+      engTitle: 'BAKING',
       shortCrsType: ShortCrsTypeEnum.Baking,
       imgDetail: BSC,
       overview: {
@@ -67,13 +71,13 @@ export const useShortCrsData = (): { data: Array<DetailShortCrs> } => {
         career: t('bakingCareer'),
         tagName: t('bakingTagName'),
       },
-
       info: {
         require: t('req'),
+        timets: t('timets'),
         method: t('method'),
+        docmethod: t('docmethod'),
       },
       apply: {
-        requirement: t('apply'),
         document: t('doc'),
         work: t('work'),
       },
@@ -81,6 +85,7 @@ export const useShortCrsData = (): { data: Array<DetailShortCrs> } => {
 
     {
       shortCrsTit: t('aiTit'),
+      engTitle: 'AI APPLICATIONS',
       shortCrsType: ShortCrsTypeEnum.UsingAi,
       imgDetail: ASC,
       overview: {
@@ -91,13 +96,13 @@ export const useShortCrsData = (): { data: Array<DetailShortCrs> } => {
         career: t('aiCareer'),
         tagName: t('aiTagName'),
       },
-
       info: {
         require: t('req'),
+        timets: t('timets'),
         method: t('method'),
+        docmethod: t('docmethod'),
       },
       apply: {
-        requirement: t('apply'),
         document: t('doc'),
         work: t('work'),
       },
@@ -116,17 +121,19 @@ export type OvwScDetail = {
 };
 export type AdmissScInfo = {
   require: string;
+  timets: string;
   method: string;
+  docmethod: string;
 };
 
 export type ScTuiApply = {
-  requirement: string;
   document: string;
   work: string;
 };
 
 export type DetailShortCrs = {
   shortCrsTit: string;
+  engTitle: string;
   imgDetail: string;
   shortCrsType: ShortCrsTypeEnum;
   overview: OvwScDetail;

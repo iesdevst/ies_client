@@ -1,5 +1,5 @@
 export default {
-  admissRe: 'Điều kiện tuyển sinh',
-  applyD: 'Hồ sơ đăng ký',
-  loca: 'Địa điểm và thời gian làm việc',
+  admissRe: 'Học phí',
+  applyD: 'Đào tạo văn hoá hệ Giáo dục thường xuyên cấp THPT',
+  loca: 'Đào tạo nghề',
 };

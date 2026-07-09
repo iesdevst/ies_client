@@ -16,7 +16,10 @@ interface IProgOvwProps {
 }
 
 const splitTags = (tagName: string) =>
-  tagName.split(',').map((s) => s.trim()).filter(Boolean);
+  tagName
+    .split(',')
+    .map((s) => s.trim())
+    .filter(Boolean);
 
 const ProgOvw: React.FC<IProgOvwProps> = (props) => {
   const isMb = useMediaQuery({ maxWidth: 1024 });
@@ -69,7 +72,7 @@ const ProgOvw: React.FC<IProgOvwProps> = (props) => {
               </div>
               <Text
                 color={dark ? 'rgba(255,255,255,0.65)' : '#4b5563'}
-                className='text-sm! block! whitespace-pre-line!'
+                className='text-lg! block! whitespace-pre-line!'
               >
                 {ovwDt.intro}
               </Text>
@@ -97,7 +100,7 @@ const ProgOvw: React.FC<IProgOvwProps> = (props) => {
               </div>
               <Text
                 color={dark ? 'rgba(255,255,255,0.65)' : '#4b5563'}
-                className='text-sm! block! whitespace-pre-line!'
+                className='text-lg! block! whitespace-pre-line!'
               >
                 {ovwDt.objective}
               </Text>
@@ -125,7 +128,7 @@ const ProgOvw: React.FC<IProgOvwProps> = (props) => {
               </div>
               <Text
                 color={dark ? 'rgba(255,255,255,0.65)' : '#4b5563'}
-                className='text-sm! block! whitespace-pre-line!'
+                className='text-lg! block! whitespace-pre-line!'
               >
                 {ovwDt.decs}
               </Text>
@@ -169,7 +172,7 @@ const ProgOvw: React.FC<IProgOvwProps> = (props) => {
               </div>
               <Text
                 color={dark ? 'rgba(255,255,255,0.65)' : '#4b5563'}
-                className='text-sm! block! whitespace-pre-line!'
+                className='text-lg! block! whitespace-pre-line!'
               >
                 {ovwDt.career}
               </Text>
@@ -218,7 +221,7 @@ const ProgOvw: React.FC<IProgOvwProps> = (props) => {
               </div>
               <Text
                 color={dark ? 'rgba(255,255,255,0.65)' : '#4b5563'}
-                className='text-sm! block! whitespace-pre-line!'
+                className='text-lg! block! whitespace-pre-line!'
               >
                 {ovwScDt.intro}
               </Text>
@@ -246,7 +249,7 @@ const ProgOvw: React.FC<IProgOvwProps> = (props) => {
               </div>
               <Text
                 color={dark ? 'rgba(255,255,255,0.65)' : '#4b5563'}
-                className='text-sm! block! whitespace-pre-line!'
+                className='text-lg! block! whitespace-pre-line!'
               >
                 {ovwScDt.objective}
               </Text>
@@ -274,7 +277,7 @@ const ProgOvw: React.FC<IProgOvwProps> = (props) => {
               </div>
               <Text
                 color={dark ? 'rgba(255,255,255,0.65)' : '#4b5563'}
-                className='text-sm! block! whitespace-pre-line!'
+                className='text-lg! block! whitespace-pre-line!'
               >
                 {ovwScDt.decs}
               </Text>
@@ -318,7 +321,7 @@ const ProgOvw: React.FC<IProgOvwProps> = (props) => {
               </div>
               <Text
                 color={dark ? 'rgba(255,255,255,0.65)' : '#4b5563'}
-                className='text-sm! block! whitespace-pre-line!'
+                className='text-lg! block! whitespace-pre-line!'
               >
                 {ovwScDt.career}
               </Text>

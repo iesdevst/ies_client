@@ -25,7 +25,7 @@ const AdmissInfo: React.FC<IAdmissInfoProps> = (props) => {
     <section>
       {admisInfoDt && (
         <div className={containerCls}>
-          {/* I. Điều kiện tuyển sinh */}
+          {/* I. đối tượng */}
           <div className={`flex gap-4 ${pad}`}>
             <span className={romanCls}>I.</span>
             <div className='flex-1 space-y-2'>
@@ -46,16 +46,43 @@ const AdmissInfo: React.FC<IAdmissInfoProps> = (props) => {
               </div>
               <Text
                 color={dark ? 'rgba(255,255,255,0.65)' : '#4b5563'}
-                className='text-sm! block! whitespace-pre-line!'
+                className='text-lg! block! whitespace-pre-line!'
               >
                 {admisInfoDt.require}
               </Text>
             </div>
           </div>
 
-          {/* II. Phương thức tuyển sinh */}
+          {/* II. thời gian */}
           <div className={`flex gap-4 ${pad}`}>
             <span className={romanCls}>II.</span>
+            <div className='flex-1 space-y-2'>
+              <div className='flex items-center gap-2.5'>
+                <span
+                  className={`w-7 h-7 rounded-lg flex items-center justify-center shrink-0 ${dark ? 'bg-[#c92cc9]/20' : 'bg-[#E8622A]/10'}`}
+                >
+                  <SendOutlined
+                    className={`${dark ? 'text-[#ca78ca]!' : 'text-[#E8622A]!'} text-sm!`}
+                  />
+                </span>
+                <Title
+                  level={5}
+                  className={`${dark ? 'text-white!' : 'text-gray-900!'} m-0! font-semibold!`}
+                >
+                  {t('admissTime')}
+                </Title>
+              </div>
+              <Text
+                color={dark ? 'rgba(255,255,255,0.65)' : '#4b5563'}
+                className='text-lg! block! whitespace-pre-line!'
+              >
+                {admisInfoDt.timets}
+              </Text>
+            </div>
+          </div>
+          {/* III. phương thức */}
+          <div className={`flex gap-4 ${pad}`}>
+            <span className={romanCls}>III.</span>
             <div className='flex-1 space-y-2'>
               <div className='flex items-center gap-2.5'>
                 <span
@@ -74,9 +101,36 @@ const AdmissInfo: React.FC<IAdmissInfoProps> = (props) => {
               </div>
               <Text
                 color={dark ? 'rgba(255,255,255,0.65)' : '#4b5563'}
-                className='text-sm! block! whitespace-pre-line!'
+                className='text-lg! block! whitespace-pre-line!'
               >
                 {admisInfoDt.method}
+              </Text>
+            </div>
+          </div>
+          {/* IV. hồ sơ */}
+          <div className={`flex gap-4 ${pad}`}>
+            <span className={romanCls}>IV.</span>
+            <div className='flex-1 space-y-2'>
+              <div className='flex items-center gap-2.5'>
+                <span
+                  className={`w-7 h-7 rounded-lg flex items-center justify-center shrink-0 ${dark ? 'bg-[#c92cc9]/20' : 'bg-[#E8622A]/10'}`}
+                >
+                  <SendOutlined
+                    className={`${dark ? 'text-[#ca78ca]!' : 'text-[#E8622A]!'} text-sm!`}
+                  />
+                </span>
+                <Title
+                  level={5}
+                  className={`${dark ? 'text-white!' : 'text-gray-900!'} m-0! font-semibold!`}
+                >
+                  {t('admissDocs')}
+                </Title>
+              </div>
+              <Text
+                color={dark ? 'rgba(255,255,255,0.65)' : '#4b5563'}
+                className='text-lg! block! whitespace-pre-line!'
+              >
+                {admisInfoDt.docmethod}
               </Text>
             </div>
           </div>
@@ -86,7 +140,7 @@ const AdmissInfo: React.FC<IAdmissInfoProps> = (props) => {
       {/* SC variant — blue theme */}
       {admisScInfoDt && (
         <div className={containerCls}>
-          {/* I. Điều kiện tuyển sinh */}
+          {/* I. đối tượng */}
           <div className={`flex gap-4 ${pad}`}>
             <span className={romanCls}>I.</span>
             <div className='flex-1 space-y-2'>
@@ -107,14 +161,14 @@ const AdmissInfo: React.FC<IAdmissInfoProps> = (props) => {
               </div>
               <Text
                 color={dark ? 'rgba(255,255,255,0.65)' : '#4b5563'}
-                className='text-sm! block! whitespace-pre-line!'
+                className='text-lg! block! whitespace-pre-line!'
               >
                 {admisScInfoDt.require}
               </Text>
             </div>
           </div>
 
-          {/* II. Phương thức tuyển sinh */}
+          {/* II. thời gian */}
           <div className={`flex gap-4 ${pad}`}>
             <span className={romanCls}>II.</span>
             <div className='flex-1 space-y-2'>
@@ -130,14 +184,69 @@ const AdmissInfo: React.FC<IAdmissInfoProps> = (props) => {
                   level={5}
                   className={`${dark ? 'text-white!' : 'text-gray-900!'} m-0! font-semibold!`}
                 >
+                  {t('admissTime')}
+                </Title>
+              </div>
+              <Text
+                color={dark ? 'rgba(255,255,255,0.65)' : '#4b5563'}
+                className='text-lg! block! whitespace-pre-line!'
+              >
+                {admisScInfoDt.timets}
+              </Text>
+            </div>
+          </div>
+
+          {/* III. phương thức */}
+          <div className={`flex gap-4 ${pad}`}>
+            <span className={romanCls}>III.</span>
+            <div className='flex-1 space-y-2'>
+              <div className='flex items-center gap-2.5'>
+                <span
+                  className={`w-7 h-7 rounded-lg flex items-center justify-center shrink-0 ${dark ? 'bg-[#c92cc9]/20' : 'bg-[#E8622A]/10'}`}
+                >
+                  <SendOutlined
+                    className={`${dark ? 'text-[#98c3ff]!' : 'text-[#2B6CB0]!'} text-sm!`}
+                  />
+                </span>
+                <Title
+                  level={5}
+                  className={`${dark ? 'text-white!' : 'text-gray-900!'} m-0! font-semibold!`}
+                >
                   {t('admissMt')}
                 </Title>
               </div>
               <Text
                 color={dark ? 'rgba(255,255,255,0.65)' : '#4b5563'}
-                className='text-sm! block! whitespace-pre-line!'
+                className='text-lg! block! whitespace-pre-line!'
               >
                 {admisScInfoDt.method}
+              </Text>
+            </div>
+          </div>
+          {/* IV. hồ sơ */}
+          <div className={`flex gap-4 ${pad}`}>
+            <span className={romanCls}>IV.</span>
+            <div className='flex-1 space-y-2'>
+              <div className='flex items-center gap-2.5'>
+                <span
+                  className={`w-7 h-7 rounded-lg flex items-center justify-center shrink-0 ${dark ? 'bg-[#c92cc9]/20' : 'bg-[#E8622A]/10'}`}
+                >
+                  <SendOutlined
+                    className={`${dark ? 'text-[#98c3ff]!' : 'text-[#2B6CB0]!'} text-sm!`}
+                  />
+                </span>
+                <Title
+                  level={5}
+                  className={`${dark ? 'text-white!' : 'text-gray-900!'} m-0! font-semibold!`}
+                >
+                  {t('admissDocs')}
+                </Title>
+              </div>
+              <Text
+                color={dark ? 'rgba(255,255,255,0.65)' : '#4b5563'}
+                className='text-lg! block! whitespace-pre-line!'
+              >
+                {admisScInfoDt?.docmethod}
               </Text>
             </div>
           </div>

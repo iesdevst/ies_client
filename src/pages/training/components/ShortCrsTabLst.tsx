@@ -3,16 +3,16 @@ import FireOutlined from '@ant-design/icons/FireOutlined';
 import PieChartOutlined from '@ant-design/icons/PieChartOutlined';
 import RobotOutlined from '@ant-design/icons/RobotOutlined';
 
-import Tabs from 'antd/es/tabs';
 import type { TabsProps } from 'antd/es/tabs';
+import Tabs from 'antd/es/tabs';
 import Tooltip from 'antd/es/tooltip';
 import { lazy, useCallback, useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
-import { useMediaQuery } from 'react-responsive';
 import { useSearchParams } from 'react-router-dom';
 import styles from '../iesTraining.module.scss';
 import { Title } from '@/components';
 import { ShortCrsTab, TrainDetailTab } from '@/constants';
+import { useDevice } from '@/hooks';
 import { ShortCrsTypeEnum } from '@/utils';
 
 const ShortCrsDetail = lazy(
@@ -26,7 +26,7 @@ interface IShortCrsTabLst {
 const ShortCrsTabLst: React.FC<IShortCrsTabLst> = (props) => {
   const { dark } = props;
   const { t } = useTranslation('shortCrsTabLst');
-  const mb = useMediaQuery({ maxWidth: 767 });
+  const { isMobile: mb, isTablet: tl } = useDevice();
   const [shortCrsSearchPrs, setshortCrsSearchPrs] = useSearchParams();
 
   const shortCrsActKey = shortCrsSearchPrs.get('tab') || ShortCrsTab.Mixology;
@@ -35,86 +35,90 @@ const ShortCrsTabLst: React.FC<IShortCrsTabLst> = (props) => {
     () => [
       {
         key: ShortCrsTab.Mixology,
-        label: !mb ? (
-          <Title
-            level={4}
-            className={`${shortCrsActKey === ShortCrsTab.Mixology ? 'text-[#4A6FA5]!' : '!text-white'} !m-0`}
-          >
-            {t('mixology')}
-          </Title>
-        ) : (
-          <Tooltip title={t('mixology')}>
-            <CoffeeOutlined
-              className={`${shortCrsActKey === ShortCrsTab.Mixology ? 'text-[#4A6FA5]!' : '!text-white'} !text-2xl`}
-            />
-          </Tooltip>
-        ),
+        label:
+          mb || tl ? (
+            <Tooltip title={t('mixology')}>
+              <CoffeeOutlined
+                className={`${shortCrsActKey === ShortCrsTab.Mixology ? 'text-[#4A6FA5]!' : '!text-white'} !text-2xl`}
+              />
+            </Tooltip>
+          ) : (
+            <Title
+              level={4}
+              className={`${shortCrsActKey === ShortCrsTab.Mixology ? 'text-[#4A6FA5]!' : '!text-white'} !m-0`}
+            >
+              {t('mixology')}
+            </Title>
+          ),
         children: (
           <ShortCrsDetail dark={dark} scType={ShortCrsTypeEnum.Mixology} />
         ),
       },
       {
         key: ShortCrsTab.Cooking,
-        label: !mb ? (
-          <Title
-            level={4}
-            className={`${shortCrsActKey === ShortCrsTab.Cooking ? 'text-[#4A6FA5]!' : '!text-white'} !m-0`}
-          >
-            {t('proCook')}
-          </Title>
-        ) : (
-          <Tooltip title={t('proCook')}>
-            <FireOutlined
-              className={`${shortCrsActKey === ShortCrsTab.Cooking ? 'text-[#4A6FA5]!' : '!text-white'} !text-2xl`}
-            />
-          </Tooltip>
-        ),
+        label:
+          mb || tl ? (
+            <Tooltip title={t('proCook')}>
+              <FireOutlined
+                className={`${shortCrsActKey === ShortCrsTab.Cooking ? 'text-[#4A6FA5]!' : '!text-white'} !text-2xl`}
+              />
+            </Tooltip>
+          ) : (
+            <Title
+              level={4}
+              className={`${shortCrsActKey === ShortCrsTab.Cooking ? 'text-[#4A6FA5]!' : '!text-white'} !m-0`}
+            >
+              {t('proCook')}
+            </Title>
+          ),
         children: (
           <ShortCrsDetail dark={dark} scType={ShortCrsTypeEnum.Cooking} />
         ),
       },
       {
         key: ShortCrsTab.Baking,
-        label: !mb ? (
-          <Title
-            level={4}
-            className={`${shortCrsActKey === ShortCrsTab.Baking ? 'text-[#4A6FA5]!' : '!text-white'} !m-0`}
-          >
-            {t('baking')}
-          </Title>
-        ) : (
-          <Tooltip title={t('baking')}>
-            <PieChartOutlined
-              className={`${shortCrsActKey === ShortCrsTab.Baking ? 'text-[#4A6FA5]!' : '!text-white'} !text-2xl`}
-            />
-          </Tooltip>
-        ),
+        label:
+          mb || tl ? (
+            <Tooltip title={t('baking')}>
+              <PieChartOutlined
+                className={`${shortCrsActKey === ShortCrsTab.Baking ? 'text-[#4A6FA5]!' : '!text-white'} !text-2xl`}
+              />
+            </Tooltip>
+          ) : (
+            <Title
+              level={4}
+              className={`${shortCrsActKey === ShortCrsTab.Baking ? 'text-[#4A6FA5]!' : '!text-white'} !m-0`}
+            >
+              {t('baking')}
+            </Title>
+          ),
         children: (
           <ShortCrsDetail dark={dark} scType={ShortCrsTypeEnum.Baking} />
         ),
       },
       {
         key: ShortCrsTab.UsingAi,
-        label: !mb ? (
-          <Title
-            level={4}
-            className={`${shortCrsActKey === ShortCrsTab.UsingAi ? 'text-[#4A6FA5]!' : '!text-white'} !m-0`}
-          >
-            {t('aiApp')}
-          </Title>
-        ) : (
-          <Tooltip title={t('aiApp')}>
-            <RobotOutlined
-              className={`${shortCrsActKey === ShortCrsTab.UsingAi ? 'text-[#4A6FA5]!' : '!text-white'} !text-2xl`}
-            />
-          </Tooltip>
-        ),
+        label:
+          mb || tl ? (
+            <Tooltip title={t('aiApp')}>
+              <RobotOutlined
+                className={`${shortCrsActKey === ShortCrsTab.UsingAi ? 'text-[#4A6FA5]!' : '!text-white'} !text-2xl`}
+              />
+            </Tooltip>
+          ) : (
+            <Title
+              level={4}
+              className={`${shortCrsActKey === ShortCrsTab.UsingAi ? 'text-[#4A6FA5]!' : '!text-white'} !m-0`}
+            >
+              {t('aiApp')}
+            </Title>
+          ),
         children: (
           <ShortCrsDetail dark={dark} scType={ShortCrsTypeEnum.UsingAi} />
         ),
       },
     ],
-    [shortCrsActKey, mb, t, dark],
+    [shortCrsActKey, mb, tl, t, dark],
   );
 
   const hdlChangeTab = useCallback(
