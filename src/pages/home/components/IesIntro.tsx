@@ -56,7 +56,7 @@ const IesIntro = () => {
                   ? 'mt-35 px-7'
                   : tlpr
                     ? 'mt-50 px-10'
-                    : 'py-15!'
+                    : 'px-10! py-15!'
             }`}
             style={{
               flexDirection: mb || tl ? 'column' : 'row',
