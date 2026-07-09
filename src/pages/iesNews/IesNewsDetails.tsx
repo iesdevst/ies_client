@@ -116,7 +116,8 @@ const IesNewsDetails = () => {
           decs2={detailDt.decs2 ? detailDt.decs2 : ''}
           img={detailDt.img}
           imgBonus={detailDt.imgBonus ? detailDt.imgBonus : []}
-          linkTo={detailDt.desc ? detailDt.linkTo : ''}
+          linkTo={detailDt.linkTo ?? ''}
+          admTable={detailDt.admTable}
           urlForShare={currUrl}
           paddingClass={paddingClass}
           titleLv={titleLv}

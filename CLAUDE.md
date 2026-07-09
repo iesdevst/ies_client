@@ -97,15 +97,34 @@ src/
 - Export as named export — not default — unless it's a route-level page.
 - Apply `React.memo()` to leaf/reusable components. Use `useMemo`/`useCallback` for derived values and callbacks passed as props.
 - Props type: inline interface named `<ComponentName>Props`.
+- **Mỗi file chỉ chứa đúng một React component** — không bao giờ định nghĩa 2 component trong cùng một file, kể cả component nhỏ/helper. Tách riêng thành file độc lập.
+- **Luôn dùng cú pháp React.FC (typed arrow function component)** khi khai báo component:
 
 ```tsx
+// ✅ Đúng — React.FC pattern
 interface IesButtonProps {
   label: string;
   onClick: () => void;
 }
 
-export const IesButton = React.memo(({ label, onClick }: IesButtonProps) => { ... });
+const IesButton: React.FC<IesButtonProps> = (props) => {
+  const { label, onClick } = props;
+  // ...
+};
+
+export default IesButton;
+
+// ❌ Sai — shorthand destructure ở signature
+const IesButton = ({ label, onClick }: IesButtonProps) => { ... };
+
+// ❌ Sai — function declaration
+function IesButton({ label }: IesButtonProps) { ... }
 ```
+
+**Tại sao React.FC pattern?**
+- Type inference rõ ràng, `children` và `displayName` được handle tự động.
+- Dễ đọc hơn khi component có nhiều prop — destructure trong body thay vì ở signature.
+- Nhất quán toàn codebase, không phụ thuộc vào suy luận của TypeScript.
 
 ### TypeScript
 - Strict mode — `noUnusedLocals` and `noUnusedParameters` are on. Fix warnings, don't suppress.
@@ -122,6 +141,28 @@ export const IesButton = React.memo(({ label, onClick }: IesButtonProps) => { ..
 | Stores | camelCase, `use` prefix | `useUserStore.ts` |
 | SCSS modules | kebab-case | `iesClLayout.module.scss` |
 | Utilities | camelCase | `logger.ts` |
+
+### Typography
+- **Never** use raw `<p>`, `<span>`, `<h1>`–`<h6>` for text content. Always use `Text` and `Title` from `@/components/AntTypography`.
+- `Text` renders as `<span>` — add `block!` when block/paragraph display is needed.
+- `Title` has no `color` prop — set color via `style={{ color: '...' }}`.
+- Use `color` prop on `Text` for dynamic colors instead of Tailwind color classes.
+
+```tsx
+// ✅ Đúng
+<Text color={dark ? '#C5C4DC' : '#374151'} className='text-[16.5px]! leading-[1.9]! mb-5! block!'>
+  Nội dung đoạn văn
+</Text>
+
+<Title level={3} style={{ color: dark ? '#E8E7F5' : '#1A1A2E' }} className='text-[17px]! font-bold! mt-8! mb-3.5!'>
+  Tiêu đề mục
+</Title>
+
+// ❌ Sai
+<p className={`text-[16.5px] leading-[1.9] ${textCls}`}>...</p>
+<h3 className={`text-[17px] font-bold ${headingCls}`}>...</h3>
+<span className={`text-sm ${muted}`}>...</span>
+```
 
 ### Styling
 1. **Ant Design** components as the structural base.

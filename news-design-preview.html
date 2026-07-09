@@ -1,0 +1,699 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>IES News Detail — Design Preview</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --brand: #474669;
+    --brand-light: #6B6891;
+    --brand-subtle: #F0EFF8;
+    --brand-border: #E5E3F2;
+    --page-bg: #F8F7FF;
+    --heading: #1A1A2E;
+    --body: #374151;
+    --muted: #6B7280;
+    --white: #FFFFFF;
+    --accent-red: #D94F3F;
+  }
+
+  body {
+    font-family: 'Segoe UI', 'Arial', sans-serif;
+    background: var(--page-bg);
+    color: var(--body);
+    font-size: 16px;
+    line-height: 1.8;
+  }
+
+  /* ── NAV placeholder ── */
+  .nav-placeholder {
+    background: var(--brand);
+    height: 64px;
+    display: flex;
+    align-items: center;
+    padding: 0 48px;
+    color: white;
+    font-size: 13px;
+    letter-spacing: 1px;
+    opacity: 0.95;
+  }
+  .nav-placeholder span { opacity: 0.6; margin-right: 24px; }
+  .nav-logo { font-weight: 800; font-size: 20px; letter-spacing: 2px; opacity: 1 !important; margin-right: auto; }
+
+  /* ── PAGE WRAPPER ── */
+  .page-wrapper {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 32px 24px 80px;
+  }
+
+  /* ── BREADCRUMB ── */
+  .breadcrumb {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+    color: var(--muted);
+    margin-bottom: 28px;
+  }
+  .breadcrumb a { color: var(--brand); font-weight: 600; text-decoration: none; }
+  .breadcrumb .sep { color: var(--brand-border); }
+  .breadcrumb .current { color: var(--brand); font-weight: 700; }
+
+  /* ── ARTICLE HEADER CARD ── */
+  .article-header {
+    background: var(--white);
+    border: 1px solid var(--brand-border);
+    border-radius: 20px;
+    padding: 36px 40px 28px;
+    margin-bottom: 28px;
+    box-shadow: 0 2px 12px rgba(71,70,105,0.07);
+  }
+
+  .category-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: var(--brand);
+    color: white;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+    padding: 5px 14px;
+    border-radius: 100px;
+    margin-bottom: 20px;
+  }
+  .category-badge .dot { width: 6px; height: 6px; background: #A8A6D0; border-radius: 50%; }
+
+  .article-headline {
+    font-size: 38px;
+    font-weight: 800;
+    color: var(--heading);
+    line-height: 1.25;
+    margin-bottom: 24px;
+    letter-spacing: -0.5px;
+  }
+
+  .article-meta {
+    display: flex;
+    align-items: center;
+    gap: 0;
+    flex-wrap: wrap;
+    padding-top: 20px;
+    border-top: 1px solid var(--brand-border);
+  }
+
+  .meta-author {
+    display: flex;
+    flex-direction: column;
+    padding-right: 24px;
+    border-right: 1px solid var(--brand-border);
+    margin-right: 24px;
+  }
+  .meta-label {
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--muted);
+    margin-bottom: 2px;
+  }
+  .meta-value {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--heading);
+  }
+
+  .meta-date {
+    display: flex;
+    flex-direction: column;
+    padding-right: 24px;
+    border-right: 1px solid var(--brand-border);
+    margin-right: auto;
+  }
+
+  .meta-read {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 12px;
+    color: var(--muted);
+    margin-right: 24px;
+  }
+
+  .share-bar {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .share-label {
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--muted);
+    margin-right: 4px;
+  }
+  .share-btn {
+    width: 36px; height: 36px;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 14px;
+    cursor: pointer;
+    border: 1.5px solid var(--brand-border);
+    color: white;
+    font-weight: 700;
+  }
+  .share-btn.fb { background: #1877F2; border-color: #1877F2; }
+  .share-btn.tw { background: #000; border-color: #000; }
+  .share-btn.li { background: #0A66C2; border-color: #0A66C2; }
+
+  /* ── HERO IMAGE ── */
+  .hero-image-wrap {
+    margin-bottom: 36px;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 4px 24px rgba(71,70,105,0.12);
+    background: #DDD;
+    position: relative;
+  }
+  .hero-image-wrap img {
+    width: 100%;
+    height: 460px;
+    object-fit: cover;
+    display: block;
+  }
+  .hero-caption {
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    background: linear-gradient(transparent, rgba(26,26,46,0.75));
+    color: white;
+    font-size: 12px;
+    padding: 24px 20px 14px;
+    letter-spacing: 0.3px;
+  }
+
+  /* ── CONTENT GRID ── */
+  .content-grid {
+    display: grid;
+    grid-template-columns: 1fr 340px;
+    gap: 36px;
+    align-items: start;
+  }
+
+  /* ── MAIN CONTENT ── */
+  .main-content {
+    background: var(--white);
+    border: 1px solid var(--brand-border);
+    border-radius: 20px;
+    padding: 40px 44px;
+    box-shadow: 0 2px 12px rgba(71,70,105,0.06);
+  }
+
+  .article-body p {
+    font-size: 16.5px;
+    line-height: 1.9;
+    color: var(--body);
+    text-align: justify;
+    margin-bottom: 22px;
+  }
+
+  .article-body h3 {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--heading);
+    margin: 32px 0 14px;
+    padding-left: 14px;
+    border-left: 4px solid var(--brand);
+  }
+
+  .article-body h4 {
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--brand);
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    margin: 24px 0 10px;
+  }
+
+  .bonus-image {
+    width: 100%;
+    border-radius: 14px;
+    margin: 28px 0;
+    display: block;
+    box-shadow: 0 2px 12px rgba(71,70,105,0.1);
+  }
+
+  /* styled table */
+  .article-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 24px 0 32px;
+    font-size: 14px;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(71,70,105,0.08);
+  }
+  .article-table thead tr {
+    background: var(--brand);
+    color: white;
+  }
+  .article-table thead th {
+    padding: 12px 16px;
+    text-align: left;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.6px;
+    text-transform: uppercase;
+  }
+  .article-table tbody tr:nth-child(even) { background: var(--brand-subtle); }
+  .article-table tbody tr:nth-child(odd) { background: var(--white); }
+  .article-table tbody td {
+    padding: 11px 16px;
+    border-bottom: 1px solid var(--brand-border);
+    color: var(--body);
+  }
+  .article-table tfoot tr { background: var(--brand); color: white; }
+  .article-table tfoot td {
+    padding: 12px 16px;
+    font-weight: 700;
+    font-size: 13px;
+  }
+
+  /* read original CTA */
+  .read-original-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 28px;
+    padding: 12px 28px;
+    background: var(--brand);
+    color: white;
+    border-radius: 100px;
+    font-size: 14px;
+    font-weight: 600;
+    text-decoration: none;
+    letter-spacing: 0.3px;
+    transition: background 0.2s;
+    cursor: pointer;
+  }
+  .read-original-btn:hover { background: var(--brand-light); }
+  .read-original-btn .arrow { font-size: 16px; }
+
+  /* ── SIDEBAR ── */
+  .sidebar { display: flex; flex-direction: column; gap: 24px; }
+
+  .sidebar-card {
+    background: var(--white);
+    border: 1px solid var(--brand-border);
+    border-radius: 16px;
+    padding: 24px;
+    box-shadow: 0 2px 10px rgba(71,70,105,0.06);
+  }
+
+  .sidebar-card-title {
+    font-size: 12px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: var(--brand);
+    padding-bottom: 12px;
+    border-bottom: 2px solid var(--brand);
+    margin-bottom: 16px;
+  }
+
+  .news-item {
+    display: flex;
+    gap: 12px;
+    padding: 12px 0;
+    border-bottom: 1px solid var(--brand-border);
+    cursor: pointer;
+  }
+  .news-item:last-of-type { border-bottom: none; }
+  .news-item-img {
+    width: 80px; height: 54px;
+    border-radius: 8px;
+    object-fit: cover;
+    flex-shrink: 0;
+    background: #DDD;
+    overflow: hidden;
+  }
+  .news-item-img img { width: 100%; height: 100%; object-fit: cover; }
+  .news-item-info { flex: 1; }
+  .news-item-type {
+    font-size: 10px;
+    font-weight: 700;
+    color: var(--accent-red);
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    margin-bottom: 4px;
+  }
+  .news-item-title {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--heading);
+    line-height: 1.4;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+  .news-item-date { font-size: 11px; color: var(--muted); margin-top: 4px; }
+
+  .see-all-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    margin-top: 16px;
+    padding: 9px 20px;
+    border: 1.5px solid var(--brand);
+    color: var(--brand);
+    border-radius: 100px;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    letter-spacing: 0.3px;
+  }
+  .see-all-btn:hover { background: var(--brand); color: white; }
+
+  /* ── DETAILS BONUS ── */
+  .details-bonus {
+    background: var(--white);
+    border: 1px solid var(--brand-border);
+    border-radius: 20px;
+    padding: 36px 44px;
+    margin-top: 36px;
+    box-shadow: 0 2px 12px rgba(71,70,105,0.06);
+  }
+  .bonus-section-label {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 12px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: var(--brand);
+    margin-bottom: 24px;
+  }
+  .bonus-section-label::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--brand-border);
+  }
+
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+  }
+  .contact-info-block {
+    background: var(--brand-subtle);
+    border-radius: 14px;
+    padding: 20px 24px;
+    border: 1px solid var(--brand-border);
+  }
+  .contact-info-block h4 {
+    font-size: 13px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    color: var(--brand);
+    margin-bottom: 12px;
+  }
+  .contact-row {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    margin-bottom: 8px;
+    font-size: 14px;
+    color: var(--body);
+    line-height: 1.5;
+  }
+  .contact-row .icon { color: var(--brand); font-size: 14px; flex-shrink: 0; margin-top: 2px; }
+  .contact-row a { color: var(--brand); text-decoration: none; font-weight: 500; }
+  .contact-row a:hover { text-decoration: underline; }
+
+  /* ── DECORATIVE ── */
+  .section-divider {
+    height: 1px;
+    background: linear-gradient(to right, transparent, var(--brand-border), transparent);
+    margin: 32px 0;
+  }
+
+  /* placeholder image blocks */
+  .img-placeholder {
+    background: linear-gradient(135deg, #DDD8F5, #C5C2E8);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--brand-light);
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV placeholder -->
+<div class="nav-placeholder">
+  <span class="nav-logo">IES</span>
+  <span>Trang chủ</span>
+  <span>Chương trình đào tạo</span>
+  <span>Tin tức</span>
+  <span>Sự kiện</span>
+  <span>Liên hệ</span>
+</div>
+
+<div class="page-wrapper">
+
+  <!-- BREADCRUMB -->
+  <nav class="breadcrumb">
+    <a href="#">Tin tức</a>
+    <span class="sep">›</span>
+    <span class="current">Chi tiết tin tức</span>
+  </nav>
+
+  <!-- ARTICLE HEADER CARD -->
+  <div class="article-header">
+    <div class="category-badge">
+      <span class="dot"></span>
+      Tin nhà trường
+    </div>
+
+    <h1 class="article-headline">
+      Tuyển sinh đào tạo — năm học 2026-2027
+    </h1>
+
+    <div class="article-meta">
+      <div class="meta-author">
+        <span class="meta-label">Tác giả</span>
+        <span class="meta-value">Phòng tuyển sinh</span>
+      </div>
+      <div class="meta-date">
+        <span class="meta-label">Ngày đăng</span>
+        <span class="meta-value">12/05/2026</span>
+      </div>
+      <span class="meta-read">📖 &nbsp;5 phút đọc</span>
+      <div class="share-bar">
+        <span class="share-label">Chia sẻ</span>
+        <div class="share-btn fb">f</div>
+        <div class="share-btn tw">𝕏</div>
+        <div class="share-btn li">in</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- HERO IMAGE -->
+  <div class="hero-image-wrap">
+    <div class="img-placeholder" style="height:460px; font-size:15px;">
+      📷 &nbsp; Ảnh tuyển sinh (hero image full-width)
+    </div>
+    <div class="hero-caption">Trường Trung cấp Tin học Kinh tế Sài Gòn — Khai giảng năm học 2026-2027</div>
+  </div>
+
+  <!-- CONTENT GRID -->
+  <div class="content-grid">
+
+    <!-- MAIN CONTENT -->
+    <div class="main-content">
+      <div class="article-body">
+
+        <p>Trường Trung cấp Tin học Kinh tế Sài Gòn thông báo tuyển sinh đào tạo năm học 2026 - 2027 như sau:</p>
+
+        <h3>I. Ngành, nghề và chỉ tiêu tuyển sinh</h3>
+
+        <table class="article-table">
+          <thead>
+            <tr>
+              <th style="width:40px">STT</th>
+              <th>Ngành, nghề tuyển sinh</th>
+              <th style="width:110px">Mã ngành</th>
+              <th style="width:110px; text-align:right">Chỉ tiêu</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>1</td><td>Vẽ thiết kế mỹ thuật có trợ giúp bằng máy tính</td><td>5480212</td><td style="text-align:right">110</td></tr>
+            <tr><td>2</td><td>Quản lý doanh nghiệp</td><td>5340420</td><td style="text-align:right">160</td></tr>
+            <tr><td>3</td><td>Marketing</td><td>5340116</td><td style="text-align:right">130</td></tr>
+            <tr><td>4</td><td>Quản lý kinh doanh khách sạn</td><td>5340422</td><td style="text-align:right">185</td></tr>
+            <tr><td>5</td><td>Kế toán doanh nghiệp</td><td>5340302</td><td style="text-align:right">190</td></tr>
+            <tr><td>6</td><td>Thư ký văn phòng</td><td>5320306</td><td style="text-align:right">110</td></tr>
+            <tr><td>7</td><td>Tin học ứng dụng</td><td>5480205</td><td style="text-align:right">145</td></tr>
+          </tbody>
+          <tfoot>
+            <tr>
+              <td colspan="3">Tổng cộng</td>
+              <td style="text-align:right">1.030</td>
+            </tr>
+          </tfoot>
+        </table>
+
+        <h3>II. Đối tượng và hồ sơ tuyển sinh</h3>
+
+        <h4>1. Đối tượng tuyển sinh</h4>
+        <p>Học sinh tốt nghiệp Trung học cơ sở (THCS) có nguyện vọng học chương trình trung cấp chính quy kết hợp văn hóa hệ GDTX cấp THPT.</p>
+
+        <h4>2. Hồ sơ tuyển sinh</h4>
+        <p>Một bộ hồ sơ theo mẫu của Nhà trường đựng trong một túi, bao gồm các giấy tờ sau: Phiếu đăng ký xét tuyển trình độ trung cấp; bản sơ yếu lý lịch có xác nhận của chính quyền địa phương; bản photo công chứng bằng tốt nghiệp THCS hoặc giấy chứng nhận tốt nghiệp tạm thời và học bạ THCS; bản sao giấy khai sinh; bản photo công chứng căn cước công dân; 04 ảnh cỡ 3×4 chụp trong vòng 6 tháng; và giấy khám sức khoẻ cấp trong vòng 6 tháng.</p>
+
+        <!-- bonus image placeholder -->
+        <div class="img-placeholder bonus-image" style="height: 280px; border-radius: 14px;">
+          📷 &nbsp; Ảnh bổ sung (bonus image)
+        </div>
+
+        <h3>III. Thời gian và địa điểm nhận hồ sơ</h3>
+        <p>Trường tuyển sinh liên tục trong năm 2026 từ ngày 01/02 đến khi đủ chỉ tiêu. Thời gian tiếp nhận hồ sơ từ thứ Hai đến thứ Sáu, buổi sáng từ 08h00 đến 12h00 và buổi chiều từ 13h30 đến 16h30.</p>
+
+        <p>Địa điểm nhận hồ sơ tại Phòng Công tác HS-SV và Tuyển sinh, Trường Trung cấp Tin học Kinh tế Sài Gòn, cơ sở tại số 12-14-16-18 Nguyễn An Ninh, phường Bình Thạnh, TP. Hồ Chí Minh và cơ sở tại số 98 Phạm Văn Chiêu, phường Thông Tây Hội, TP. Hồ Chí Minh.</p>
+
+        <h3>IV. Quyền lợi của học sinh</h3>
+        <p>Học sinh trúng tuyển được theo học song song hai chương trình: đào tạo văn hóa hệ GDTX cấp THPT (lớp 10, 11, 12) và đào tạo nghề trung cấp chính quy theo ngành đã đăng ký, thời gian 20 tháng. Sau khi tốt nghiệp, học sinh được cấp đồng thời <strong>Bằng tốt nghiệp THPT</strong> và <strong>Bằng tốt nghiệp Trung cấp chính quy</strong>, đủ điều kiện dự thi cao đẳng, đại học trong nước và quốc tế.</p>
+
+        <a class="read-original-btn" href="#">
+          Đọc bài gốc &nbsp;<span class="arrow">→</span>
+        </a>
+      </div>
+    </div>
+
+    <!-- SIDEBAR -->
+    <div class="sidebar">
+
+      <!-- Recent News -->
+      <div class="sidebar-card">
+        <div class="sidebar-card-title">Tin mới nhất</div>
+
+        <div class="news-item">
+          <div class="news-item-img img-placeholder" style="font-size:10px;">ảnh</div>
+          <div class="news-item-info">
+            <div class="news-item-title">Bộ trưởng Hoàng Minh Sơn: "Đừng chỉ học để cầm tấm bằng đi tìm việc"</div>
+            <div class="news-item-date">09/05/2026</div>
+          </div>
+        </div>
+
+        <div class="news-item">
+          <div class="news-item-img img-placeholder" style="font-size:10px;">ảnh</div>
+          <div class="news-item-info">
+            <div class="news-item-title">Cầu nối học sinh với cơ sở đào tạo và thị trường lao động</div>
+            <div class="news-item-date">07/05/2026</div>
+          </div>
+        </div>
+
+        <div class="news-item">
+          <div class="news-item-img img-placeholder" style="font-size:10px;">ảnh</div>
+          <div class="news-item-info">
+            <div class="news-item-title">Học nghề — một lựa chọn phù hợp cho học sinh sau THCS</div>
+            <div class="news-item-date">03/05/2026</div>
+          </div>
+        </div>
+
+        <div class="see-all-btn">Xem tất cả tin tức &nbsp;→</div>
+      </div>
+
+      <!-- Recent Events -->
+      <div class="sidebar-card">
+        <div class="sidebar-card-title">Sự kiện sắp diễn ra</div>
+
+        <div class="news-item">
+          <div class="news-item-img img-placeholder" style="font-size:10px;">ảnh</div>
+          <div class="news-item-info">
+            <div class="news-item-type">Sự kiện</div>
+            <div class="news-item-title">Ngày hội tư vấn hướng nghiệp 2026</div>
+            <div class="news-item-date">20/05/2026</div>
+          </div>
+        </div>
+
+        <div class="news-item">
+          <div class="news-item-img img-placeholder" style="font-size:10px;">ảnh</div>
+          <div class="news-item-info">
+            <div class="news-item-type">Sự kiện</div>
+            <div class="news-item-title">Khai giảng khoá học ngắn hạn thiết kế đồ hoạ</div>
+            <div class="news-item-date">01/06/2026</div>
+          </div>
+        </div>
+
+        <div class="see-all-btn">Xem tất cả sự kiện &nbsp;→</div>
+      </div>
+
+    </div>
+    <!-- /SIDEBAR -->
+
+  </div>
+  <!-- /CONTENT GRID -->
+
+  <!-- DETAILS BONUS -->
+  <div class="details-bonus">
+    <div class="bonus-section-label">Có thể bạn quan tâm</div>
+
+    <div class="contact-grid">
+      <div class="contact-info-block">
+        <h4>Thông tin liên hệ</h4>
+        <div class="contact-row">
+          <span class="icon">📍</span>
+          <span>Trường mở cửa từ thứ Hai đến thứ Sáu, 07:30 – 17:00 tại cơ sở chính: 98 Phạm Văn Chiêu, Phường Thông Tây Hội, TP. Hồ Chí Minh.</span>
+        </div>
+        <div class="contact-row">
+          <span class="icon">🔗</span>
+          <span>Đăng ký trải nghiệm và tư vấn trực tuyến:
+            <a href="#">ies.edu.vn/register</a>
+          </span>
+        </div>
+      </div>
+
+      <div class="contact-info-block">
+        <h4>Phòng tuyển sinh IES</h4>
+        <div class="contact-row">
+          <span class="icon">🏫</span>
+          <span><strong>Cơ sở chính:</strong> 98 Phạm Văn Chiêu, Phường Thông Tây Hội, TP. Hồ Chí Minh</span>
+        </div>
+        <div class="contact-row">
+          <span class="icon">📞</span>
+          <span><strong>Hotline:</strong> <a href="tel:0901309866">0901.309.866</a></span>
+        </div>
+        <div class="contact-row">
+          <span class="icon">💬</span>
+          <span><strong>Zalo:</strong> <a href="#">Trường Trung Cấp Tin Học Kinh Tế Sài Gòn</a></span>
+        </div>
+        <div class="contact-row">
+          <span class="icon">👍</span>
+          <span><strong>Fanpage:</strong> <a href="#">IES College</a></span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div><!-- /page-wrapper -->
+
+<div style="background: var(--brand); color: rgba(255,255,255,0.5); text-align: center; padding: 24px; font-size: 12px; letter-spacing: 0.5px; margin-top: 60px;">
+  IES — Trường Trung cấp Tin học Kinh tế Sài Gòn &nbsp;|&nbsp; Preview mockup — chưa phải code thật
+</div>
+
+</body>
+</html>

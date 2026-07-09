@@ -8,7 +8,7 @@ const VidPr = lazy(() => import('@/components/SPS/components/VidPr'));
 const Topic = lazy(() => import('@/components/SPS/components/Topic'));
 const NewsFeat = lazy(() => import('@/components/SPS/components/NewsFeat'));
 const Simple = lazy(() => import('@/components/SPS/components/Simple'));
-const NaiPage = lazy(() => import('@/components/SPS/components/NaiPage'));
+const NaiPage = lazy(() => import('@/components/SPS/components/naiPage/NaiPage'));
 const CardGird = lazy(() => import('@/components/SPS/components/CardGird'));
 
 const layoutMap = {

@@ -117,6 +117,18 @@ export interface NewsFeatureLayoutProps extends BasePageIesSecProps {
 
 /* ===== Event & News Pagwe ===== */
 
+export type AdmissionTableRow = {
+  stt: number;
+  major: string;
+  code: string;
+  quota: number;
+};
+
+export type AdmissionTable = {
+  rows: Array<AdmissionTableRow>;
+  total: number;
+};
+
 export interface NaiPageLayoutProps extends BasePageIesSecProps {
   layout: 'naiPage';
   tl: boolean;
@@ -142,6 +154,7 @@ export interface NaiPageLayoutProps extends BasePageIesSecProps {
   titleLv: 1 | 2 | 3 | 4 | 5 | undefined;
   recentNews: Array<NewsLstData>;
   recentEv: Array<EventLstData>;
+  admTable?: AdmissionTable;
 }
 
 export type SubSectionProps =

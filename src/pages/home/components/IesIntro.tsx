@@ -1,3 +1,4 @@
+import { Flex } from 'antd';
 import { motion } from 'framer-motion';
 import { useTranslation } from 'react-i18next';
 
@@ -49,18 +50,18 @@ const IesIntro = () => {
 
           {/* CONTENT */}
           <motion.div
-            className={`relative z-20 flex justify-between items-end pb-10 ${
+            className={`relative z-20 flex justify-between items-center! pb-10 ${
               mb
                 ? 'mt-25 px-3'
                 : tl
                   ? 'mt-35 px-7'
                   : tlpr
                     ? 'mt-50 px-10'
-                    : 'mt-80 px-13'
+                    : 'px-13 py-20 '
             }`}
             style={{
               flexDirection: mb || tl ? 'column' : 'row',
-              gap: mb ? 24 : tl ? 32 : 80,
+              gap: mb ? 24 : tl ? 32 : 0,
               alignItems: mb || tl ? 'flex-start' : 'flex-end',
             }}
             initial={{
@@ -78,7 +79,7 @@ const IesIntro = () => {
             }}
           >
             {/* LEFT */}
-            <div style={{ maxWidth: dk ? 700 : '100%' }}>
+            <div style={{ maxWidth: dk ? 700 : '100%' }} className='mb-7.5'>
               <Title
                 style={{
                   margin: 0,
@@ -96,9 +97,9 @@ const IesIntro = () => {
                 className='block mt-4'
                 style={{
                   color: '#1f2937',
-                  fontSize: mb ? 14 : tl ? 16 : 18,
+                  fontSize: mb ? 14 : tl ? 16 : 22,
                   lineHeight: 1.6,
-                  maxWidth: 700,
+                  textAlign: 'justify',
                 }}
               >
                 {t('we')}
@@ -106,21 +107,75 @@ const IesIntro = () => {
             </div>
 
             {/* RIGHT IMAGE */}
-            <div
-              style={{
-                width: mb ? '100%' : tl ? '100%' : tlpr ? 430 : 480,
-              }}
-            >
-              <div className='rounded-2xl overflow-hidden shadow-2xl'>
-                <img
-                  src={IT_CT}
-                  alt='intro'
-                  style={{
-                    width: '100%',
-                    height: 'auto',
-                    objectFit: 'cover',
-                  }}
-                />
+            <div className='grid grid-cols-2 gap-7'>
+              <div
+                style={{
+                  width: mb ? '100%' : tl ? '100%' : tlpr ? 430 : 480,
+                }}
+              >
+                <div className='rounded-2xl overflow-hidden shadow-2xl'>
+                  <img
+                    src={IT_CT}
+                    alt='intro'
+                    style={{
+                      width: '100%',
+                      height: 'auto',
+                      objectFit: 'cover',
+                    }}
+                  />
+                </div>
+              </div>
+
+              <div
+                style={{
+                  width: mb ? '100%' : tl ? '100%' : tlpr ? 430 : 480,
+                }}
+              >
+                <div className='rounded-2xl overflow-hidden shadow-2xl'>
+                  <img
+                    src={IT_CT}
+                    alt='intro'
+                    style={{
+                      width: '100%',
+                      height: 'auto',
+                      objectFit: 'cover',
+                    }}
+                  />
+                </div>
+              </div>
+              <div
+                style={{
+                  width: mb ? '100%' : tl ? '100%' : tlpr ? 430 : 480,
+                }}
+              >
+                <div className='rounded-2xl overflow-hidden shadow-2xl'>
+                  <img
+                    src={IT_CT}
+                    alt='intro'
+                    style={{
+                      width: '100%',
+                      height: 'auto',
+                      objectFit: 'cover',
+                    }}
+                  />
+                </div>
+              </div>
+              <div
+                style={{
+                  width: mb ? '100%' : tl ? '100%' : tlpr ? 430 : 480,
+                }}
+              >
+                <div className='rounded-2xl overflow-hidden shadow-2xl'>
+                  <img
+                    src={IT_CT}
+                    alt='intro'
+                    style={{
+                      width: '100%',
+                      height: 'auto',
+                      objectFit: 'cover',
+                    }}
+                  />
+                </div>
               </div>
             </div>
           </motion.div>

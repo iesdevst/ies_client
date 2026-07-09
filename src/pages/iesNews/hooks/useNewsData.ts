@@ -1,4 +1,5 @@
 import { useMemo } from 'react';
+import type { AdmissionTable } from '@/components/SPS/types';
 import NOEX from '@/assets/imgs/17k_noexam.webp';
 import BTHMSN from '@/assets/imgs/bt_hms_news.webp';
 import CNOT2 from '@/assets/imgs/cn_oto2.webp';
@@ -192,138 +193,150 @@ Nếu bạn thật sự đã xác định hướng đi về ngành này, có th�
       {
         id: '10',
         newsTit: 'Tuyển sinh đào tạo - năm học 2026-2027',
-        desc: `Trường Trung cấp Tin học Kinh tế Sài Gòn thông báo tuyển sinh đào tạo năm học 2026 - 2027 như sau:\n
-I. NGÀNH, NGHỀ, CHỈ TIÊU
-STT\tCơ sở đào tạo/ngành, nghề tuyển sinh\tMã ngành, nghề\tChỉ tiêu tuyển sinh\tGhi chú
-1\tVẽ thiết kế mỹ thuật có trợ giúp bằng máy tính\t5480212\t110
-2\tQuản lý doanh nghiệp\t5340420\t160
-3\tMarketing\t5340116\t130
-4\tQuản lý kinh doanh khách sạn\t5340422\t185
-5\tKế toán doanh nghiệp\t5340302\t190
-6\tThư ký văn phòng\t5320306\t110
-7\tTin học ứng dụng\t5480205\t145
-\tTổng cộng:\t\t1.030\n`,
+        desc: `Trường Trung cấp Tin học Kinh tế Sài Gòn thông báo tuyển sinh đào tạo năm học 2026 - 2027.
+
+I. NGÀNH, NGHỀ VÀ CHỈ TIÊU TUYỂN SINH`,
         decs2: `II. ĐỐI TƯỢNG, HỒ SƠ TUYỂN SINH
-1. Đối tượng tuyển sinh: Học sinh tốt nghiệp THCS.
+
+1. Đối tượng tuyển sinh
+
+Học sinh đã tốt nghiệp Trung học cơ sở (THCS) có nguyện vọng học chương trình trung cấp chính quy kết hợp văn hóa hệ GDTX cấp THPT.
+
 2. Hồ sơ tuyển sinh
-01 Bộ hồ sơ theo mẫu của Nhà trường - đựng trong 01 túi, gồm:
-- 01 Phiếu đăng kí xét tuyển trình độ trung cấp;
-- 01 Bản sơ yếu lí lịch (có xác nhận của chính quyền địa phương);
-- 01 Bản photo công chứng còn thời hạn: Bằng tốt nghiệp Trung học cơ sở (THCS) hoặc giấy chứng nhận tốt nghiệp tạm thời; học bạ THCS. Đối với học sinh xét tuyển đào tạo tại Nhà trường thì nộp bản gốc: Bằng tốt nghiệp THCS hoặc giấy chứng nhận tốt nghiệp tạm thời và học bạ THCS.
-- 01 Bản sao trích lục hoặc photo công chứng còn thời hạn của Giấy khai sinh;
-- 01 Bản photo công chứng còn thời hạn của Căn cước công dân;
-- 04 Ảnh cỡ 3 x 4 loại mới chụp trong vòng 6 tháng gần đây (ghi họ tên, ngày sinh sau mỗi tấm ảnh);
-- 01 Bản gốc giấy khám sức khỏe, cấp trong vòng 6 tháng, có xác nhận của cơ sở y tế.
+
+Một bộ hồ sơ theo mẫu của Nhà trường đựng trong một túi, gồm các giấy tờ sau:
+- Phiếu đăng kí xét tuyển trình độ trung cấp;
+- Bản sơ yếu lí lịch (có xác nhận của chính quyền địa phương);
+- Bản photo công chứng còn thời hạn: Bằng tốt nghiệp THCS hoặc giấy chứng nhận tốt nghiệp tạm thời; học bạ THCS;
+- Bản sao trích lục hoặc photo công chứng còn thời hạn của Giấy khai sinh;
+- Bản photo công chứng còn thời hạn của Căn cước công dân;
+- 04 Ảnh cỡ 3×4 chụp trong vòng 6 tháng gần đây;
+- Bản gốc giấy khám sức khỏe cấp trong vòng 6 tháng, có xác nhận của cơ sở y tế.
+
 3. Hình thức nộp hồ sơ và lệ phí
-3.1. Tuyển sinh đào tạo tại Trường
-- Học sinh nộp trực tiếp tại trường hoặc gửi hồ sơ quan đường bưu điện đến Phòng Công tác HS-SV và tuyển sinh Nhà trường.
-- Lệ phí xét tuyển: 120.000 đồng/hồ sơ; học sinh nộp trực tiếp khi trường tiếp nhận hồ sơ hoặc chuyển khoản vào số tài khoản Nhà trường.
-3.2. Tuyển sinh đào tạo tại các Trung tâm GDNN-GDTX trên địa bàn Thành phố Hồ Chí Minh liên kết đào tạo với Nhà trường
-Học sinh xem thông báo tuyển sinh của các Trung tâm GDNN-GDTX trên địa bàn Thành phố Hồ Chí Minh liên kết đào tạo với Nhà trường để được tư vấn, nộp hồ sơ tuyển sinh tại trung tâm tổng hợp, gửi về Nhà trường xét tuyển.\n
+
+Học sinh nộp trực tiếp tại Nhà trường hoặc gửi qua đường bưu điện đến Phòng Công tác HS-SV và Tuyển sinh. Lệ phí xét tuyển: 120.000 đồng/hồ sơ.
+
+Học sinh có thể nộp hồ sơ tại các Trung tâm GDNN-GDTX trên địa bàn Thành phố Hồ Chí Minh liên kết đào tạo với Nhà trường.
+
 III. THỜI GIAN, ĐỊA ĐIỂM NHẬN HỒ SƠ
-1. Tuyển sinh đào tạo tại Nhà trường
-- Trường tuyển sinh liên tục trong năm 2026 từ ngày 01/02 đến khi đủ chỉ tiêu.
-- Thời gian: Từ thứ Hai đến thứ Bảy hằng tuần:
-+ Buổi sáng từ 08h00 đến 12h00;
-+ Buổi chiều từ 13h30 đến 16h30.
-- Địa điểm nhận hồ sơ: Phòng Công tác HS-SV và tuyển sinh, Trường Trung cấp Tin học Kinh tế Sài Gòn:
-+ Số 12-14-16-18 Nguyễn An Ninh, phường Bình Thạnh, Thành phố Hồ Chí Minh;
-+ Số 98, Phạm Văn Chiêu, phường Thông Tây Hội, Thành phố Hồ Chí Minh.
-2. Tuyển sinh đào tạo tại các Trung tâm GDNN-GDTX trên địa bàn Thành phố Hồ Chí Minh liên kết đào tạo với Nhà trường
-- Thời gian: Từ ngày 01/3 đến khi đủ chỉ tiêu (dự kiến 18/11/2026).
-- Địa điểm nhận hồ sơ: Trung tâm GDNN-GDTX trên địa bàn Thành phố Hồ Chí Minh liên kết đào tạo với Trường Trung cấp Tin học Kinh tế Sài Gòn.\n
+
+1. Tuyển sinh tại Nhà trường
+
+Trường tuyển sinh liên tục trong năm 2026 từ ngày 01/02 đến khi đủ chỉ tiêu. Thời gian tiếp nhận từ thứ Hai đến thứ Bảy, buổi sáng từ 08h00 – 12h00 và buổi chiều từ 13h30 – 16h30.
+
+Địa điểm nhận hồ sơ:
+- Số 12-14-16-18 Nguyễn An Ninh, phường Bình Thạnh, Thành phố Hồ Chí Minh;
+- Số 98 Phạm Văn Chiêu, phường Thông Tây Hội, Thành phố Hồ Chí Minh.
+
+2. Tuyển sinh tại các Trung tâm GDNN-GDTX liên kết
+
+Thời gian từ ngày 01/03 đến khi đủ chỉ tiêu (dự kiến 18/11/2026).
+
 IV. PHƯƠNG THỨC TUYỂN SINH
-Nhà trường thực hiện phương thức xét học bạ THCS.
-1. Tổ chức xét tuyển
-Trên cơ sở số lượng học sinh đăng kí/chỉ tiêu và quy định biên chế lớp học của ngành, nghề đào tạo; Nhà trường sẽ tổ chức xét tuyển theo từng đợt trong năm.
-2. Công bố trúng tuyển và triệu tập nhập học
-Thời gian công bố học sinh trúng tuyển, phát hành giấy báo và tổ chức nhập học đào tạo cho học sinh trúng tuyển là sau 15 ngày kể từ ngày công bố trúng tuyển.\n
+
+Nhà trường thực hiện phương thức xét học bạ THCS. Trên cơ sở số lượng học sinh đăng kí và quy định biên chế lớp học, Nhà trường tổ chức xét tuyển theo từng đợt trong năm. Học sinh trúng tuyển sẽ được thông báo và triệu tập nhập học sau 15 ngày kể từ ngày công bố kết quả.
+
 V. CHƯƠNG TRÌNH ĐÀO TẠO
-Học sinh trúng tuyển được học song song hai chương trình đào tạo:
-1. Đào tạo văn hóa hệ GDTX cấp THPT (lớp 10, 11, 12)
-Sau 03 năm học THPT, học sinh đủ điều kiện sẽ được tham dự kỳ thi tốt nghiệp THPT quốc gia; bằng tốt nghiệp THPT theo quy định của Bộ Giáo dục và Đào tạo.
-2. Đào tạo nghề
-- Trung cấp chính quy theo ngành/nghề học sinh đăng ký xét tuyển;
-- Thời gian đào tạo: 20 tháng, học sinh đủ điều kiện sẽ được Nhà trường cấp bằng tốt nghiệp trung cấp chính quy theo quy định của Bộ Giáo dục và Đào tạo.\n
+
+Học sinh trúng tuyển được học song song hai chương trình:
+- Đào tạo văn hóa hệ GDTX cấp THPT (lớp 10, 11, 12): Sau 03 năm, học sinh đủ điều kiện được tham dự kỳ thi tốt nghiệp THPT quốc gia và nhận Bằng tốt nghiệp THPT.
+- Đào tạo nghề trung cấp chính quy theo ngành/nghề đã đăng ký, thời gian 20 tháng. Học sinh đủ điều kiện được cấp Bằng tốt nghiệp trung cấp chính quy.
+
 VI. QUYỀN LỢI CỦA HỌC SINH
+
 1. Học sinh tốt nghiệp được cấp 02 văn bằng
+
 - Bằng tốt nghiệp THPT;
 - Bằng tốt nghiệp Trung cấp chính quy theo ngành/nghề đã đăng kí khi nhập học.
-2. Học sinh tốt nghiệp THPT và trung cấp
-- Đủ điều kiện dự thi cao đẳng, đại học trong nước và quốc tế;
-- Được dự thi liên thông lên cao đẳng, đại học theo quy định của Bộ Giáo dục và Đào tạo; được liên thông thẳng lên đại học: Đại học Mở, Viện Smartech,…`,
+
+2. Học sinh tốt nghiệp có thể
+
+- Dự thi cao đẳng, đại học trong nước và quốc tế;
+- Liên thông lên cao đẳng, đại học theo quy định của Bộ Giáo dục và Đào tạo, bao gồm liên thông thẳng lên Đại học Mở, Viện Smartech và nhiều cơ sở đào tạo uy tín khác.`,
         img: TSDT,
         imgBonus: [TSDT2, TSDT3],
+        admTable: {
+          rows: [
+            { stt: 1, major: 'Vẽ thiết kế mỹ thuật có trợ giúp bằng máy tính', code: '5480212', quota: 110 },
+            { stt: 2, major: 'Quản lý doanh nghiệp', code: '5340420', quota: 160 },
+            { stt: 3, major: 'Marketing', code: '5340116', quota: 130 },
+            { stt: 4, major: 'Quản lý kinh doanh khách sạn', code: '5340422', quota: 185 },
+            { stt: 5, major: 'Kế toán doanh nghiệp', code: '5340302', quota: 190 },
+            { stt: 6, major: 'Thư ký văn phòng', code: '5320306', quota: 110 },
+            { stt: 7, major: 'Tin học ứng dụng', code: '5480205', quota: 145 },
+          ],
+          total: 1030,
+        },
       },
 
       {
         id: '11',
         newsTit: 'Kế hoạch tuyển sinh - năm học 2026-2027',
-        desc: `Thực hiện Quyết định số /QĐ-THKTSG ngày / /2026 của Chủ tịch Hội đồng Quản trị Nhà trường về việc Ban hành Kế hoạch chỉ tiêu tuyển sinh đào tạo trình độ trung cấp - năm học 2026-2027;
-        Trường Trung cấp Tin học Kinh tế Sài Gòn ban hành Kế hoạch tuyển sinh đào tạo năm học 2026 - 2027 như sau:
-        I. MỤC ĐÍCH – YÊU CẦU
-        1. Mục đích
-- Hoàn thành chỉ tiêu tuyển sinh năm 2026 của Nhà tường;
-- Định hướng, xác định các nội dung, huy động các nguồn lực trong và ngoài nhà trường hoàn thành công tác tuyển sinh năm 2026 đạt được kết quả cao nhất;
-- Làm cơ sở hoạt động đào tạo của nhà trường trong năm học 2026 - 2027.
+        desc: `Thực hiện Quyết định của Chủ tịch Hội đồng Quản trị Nhà trường về việc ban hành Kế hoạch chỉ tiêu tuyển sinh đào tạo trình độ trung cấp năm học 2026-2027, Trường Trung cấp Tin học Kinh tế Sài Gòn ban hành kế hoạch tuyển sinh như sau.
+
+I. MỤC ĐÍCH VÀ YÊU CẦU
+
+1. Mục đích
+
+- Hoàn thành chỉ tiêu tuyển sinh năm 2026 của Nhà trường;
+- Định hướng, huy động các nguồn lực trong và ngoài nhà trường để hoàn thành công tác tuyển sinh đạt kết quả cao nhất;
+- Làm cơ sở cho hoạt động đào tạo trong năm học 2026-2027.
+
 2. Yêu cầu
-- Tổ chức thực hiện tuyển sinh đúng, chính xác, nghiêm túc theo quy chế, quy định tuyển sinh của Bộ Lao động – Thương binh và Xã hội, Bộ Giáo dục và Đào tạo và của Nhà trường.
-- Phân công rõ ràng trách nhiệm và nhiệm vụ của từng cá nhân thực hiện các nội dung tuyển sinh.\n
+
+- Tổ chức tuyển sinh đúng, chính xác, nghiêm túc theo quy chế của Bộ Lao động – Thương binh và Xã hội, Bộ Giáo dục và Đào tạo và của Nhà trường;
+- Phân công rõ ràng trách nhiệm của từng cá nhân trong quá trình thực hiện.
+
 II. NỘI DUNG TUYỂN SINH
-1. Chỉ tiêu, ngành, nghề tuyển sinh
-STT\tTrình độ/ngành, nghề tuyển sinh\tMã ngành, nghề\tChỉ tiêu tuyển sinh\tGhi chú
-1.\tVẽ thiết kế mỹ thuật có trợ giúp bằng máy tính\t5480212\t110
-2.\tQuản lý doanh nghiệp\t5340420\t160
-3.\tMarketing\t5340116\t130
-4.\tQuản lý kinh doanh khách sạn\t5340422\t185
-5.\tKế toán doanh nghiệp\t5340302\t190
-6.\tThư ký văn phòng\t5320306\t110
-7.\tTin học ứng dụng\t5480205\t145
-\tTổng cộng:\t\t1.030
-2. Hình thức tuyển sinh, hồ sơ tuyển sinh, lệ phí và phương thức nộp hồ sơ
-2.1. Hình thức tuyển sinh
-Hình thức: Xét tuyển
-2.2. Hồ sơ tuyển sinh
-01 Bộ hồ sơ theo mẫu của Nhà trường - đựng trong 01 túi, gồm:
-- 01 Phiếu đăng kí xét tuyển trình độ trung cấp;
-- 01 Bản sơ yếu lí lịch (có xác nhận của chính quyền địa phương);
-- 01 Bản photo công chứng còn thời hạn: Bằng tốt nghiệp Trung học cơ sở (THCS) hoặc giấy chứng nhận tốt nghiệp tạm thời; học bạ THCS. Đối với học sinh xét tuyển đào tạo tại Nhà trường thì nộp bản gốc: Bằng tốt nghiệp THCS hoặc giấy chứng nhận tốt nghiệp tạm thời và học bạ THCS.
-- 01 Bản sao trích lục hoặc photo công chứng còn thời hạn của Giấy khai sinh;
-- 01 Bản photo công chứng còn thời hạn của Căn cước công dân;
-- 04 Ảnh cỡ 3 x 4 loại mới chụp trong vòng 6 tháng gần đây (ghi họ tên, ngày sinh sau mỗi tấm ảnh);
-- 01 Bản gốc giấy khám sức khỏe, cấp trong vòng 6 tháng, có xác nhận của cơ sở y tế.
-2.3. Phương thức nộp hồ sơ tuyển sinh
-- Nộp trực tiếp tại Nhà trường;
-- Nộp tại các cơ sở Nhà trường liên kết đào tạo;
-- Học sinh gửi hồ sơ qua đường bưu điện, địa chỉ nhận: Phòng Công tác HS-SV và tuyển sinh, Trường Trung cấp Tin học Kinh tế Sài Gòn:
-+ Cơ sở số 98, Phạm Văn Chiêu, phường Thông Tây Hội, Tp Hồ Chí Minh
-2.4. Lệ phí xét tuyển
-Liên hệ phòng tuyển sinh để nắm thông tin chi tiết
-3. Đối tượng tuyển sinh: Học sinh đã tốt nghiệp THCS để đào tạo trình độ trung cấp với đào tạo văn hóa hệ giáo dục thường xuyên cấp THPT.
-4. Thời gian tuyển sinh, xét tuyển, công bố trúng tuyển
-4.1. Đăng kí tuyển sinh
-Nhà trường tuyển sinh liên tục trong năm 2026, từ ngày 01/02/2026 cho đến khi đủ chỉ tiêu tuyển sinh.
-4.2. Tổ chức xét tuyển
-Trên cơ sở số lượng học sinh đăng kí/chỉ tiêu và quy định về biên chế lớp học của ngành, nghề đào tạo; Nhà trường sẽ tổ chức xét tuyển theo từng đợt trong năm.
-4.3. Công bố trúng tuyển và triệu tập nhập học
-Thời gian công bố học sinh trúng tuyển, phát hành giấy báo và tổ chức nhập học cho học sinh trúng tuyển là sau 15 ngày kể từ ngày công bố trúng tuyển.\n`,
-        decs2: `III. THỜI GIAN THỰC HIỆN VÀ PHÂN CÔNG NHIỆM VỤ
+
+1. Chỉ tiêu, ngành, nghề tuyển sinh`,
+        decs2: `2. Hình thức tuyển sinh và hồ sơ
+
+Hình thức tuyển sinh: Xét tuyển hồ sơ học bạ THCS.
+
+Học sinh đăng kí nộp hồ sơ trực tiếp tại Nhà trường, tại các cơ sở liên kết đào tạo hoặc gửi qua đường bưu điện. Lệ phí xét tuyển: Liên hệ Phòng Tuyển sinh để biết chi tiết.
+
+3. Đối tượng tuyển sinh
+
+Học sinh đã tốt nghiệp THCS có nguyện vọng học chương trình trung cấp chính quy kết hợp văn hóa hệ GDTX cấp THPT.
+
+4. Thời gian tuyển sinh
+
+Nhà trường tuyển sinh liên tục trong năm 2026, từ ngày 01/02/2026 cho đến khi đủ chỉ tiêu. Kết quả xét tuyển được công bố và học sinh được triệu tập nhập học sau 15 ngày kể từ ngày thông báo trúng tuyển.
+
+III. THỜI GIAN THỰC HIỆN VÀ PHÂN CÔNG NHIỆM VỤ
+
 1. Thời gian thực hiện
-Tháng 1+2+3: Xây dựng kế hoạch, chuẩn bị cơ sở vật chất, tư vấn tuyển sinh.
-Tháng 4+5+6: Tiếp tục tư vấn, cập nhật danh sách học sinh.
-Tháng 7+8: Xét tuyển đợt 1, nhập học.
-Tháng 9+10: Tiếp tục tuyển sinh.
-Tháng 11+12: Xét tuyển đợt 2, nhập học.
+
+- Tháng 1–3: Xây dựng kế hoạch, chuẩn bị cơ sở vật chất, tư vấn tuyển sinh;
+- Tháng 4–6: Tiếp tục tư vấn, cập nhật danh sách học sinh đăng kí;
+- Tháng 7–8: Xét tuyển đợt 1, tổ chức nhập học;
+- Tháng 9–10: Tiếp tục nhận hồ sơ và tuyển sinh;
+- Tháng 11–12: Xét tuyển đợt 2, tổ chức nhập học.
+
 2. Phân công nhiệm vụ
-- Hội đồng tuyển sinh: Chỉ đạo chung.
-- Ban Thư ký: Tham mưu, chuẩn bị hồ sơ.
-- Ban Truyền thông: Tuyển sinh, truyền thông.
-- Phòng Phát triển đối tác: Liên kết đào tạo.
-- Phòng HS-SV: Tiếp nhận hồ sơ.
-- Phòng Hành chính: Cơ sở vật chất.
-Trên đây là Kế hoạch tuyển sinh năm học 2026 - 2027 của Trường Trung cấp Tin học Kinh tế Sài Gòn.\n`,
+
+- Hội đồng tuyển sinh: Chỉ đạo chung toàn bộ công tác tuyển sinh;
+- Ban Thư ký: Tham mưu, chuẩn bị hồ sơ pháp lý;
+- Ban Truyền thông: Quảng bá, tiếp thị tuyển sinh;
+- Phòng Phát triển đối tác: Liên kết đào tạo với các Trung tâm GDNN-GDTX;
+- Phòng HS-SV: Tiếp nhận và quản lý hồ sơ;
+- Phòng Hành chính: Chuẩn bị cơ sở vật chất.`,
         imgBonus: [KHTS2],
         img: KHTS,
+        admTable: {
+          rows: [
+            { stt: 1, major: 'Vẽ thiết kế mỹ thuật có trợ giúp bằng máy tính', code: '5480212', quota: 110 },
+            { stt: 2, major: 'Quản lý doanh nghiệp', code: '5340420', quota: 160 },
+            { stt: 3, major: 'Marketing', code: '5340116', quota: 130 },
+            { stt: 4, major: 'Quản lý kinh doanh khách sạn', code: '5340422', quota: 185 },
+            { stt: 5, major: 'Kế toán doanh nghiệp', code: '5340302', quota: 190 },
+            { stt: 6, major: 'Thư ký văn phòng', code: '5320306', quota: 110 },
+            { stt: 7, major: 'Tin học ứng dụng', code: '5480205', quota: 145 },
+          ],
+          total: 1030,
+        },
       },
 
       {
@@ -456,4 +469,5 @@ export type NewsData = {
   imgBonus?: Array<string>;
   img: string;
   linkTo?: string;
+  admTable?: AdmissionTable;
 };
